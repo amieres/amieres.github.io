@@ -129,7 +129,7 @@ To solve that lets create two helper functions: get and set.</p>
 <p><code>val get : key:string -&gt; ChainDSL&lt;string&gt;</code></p>
 <p><code>val set : key:string -&gt; value:string -&gt; ChainDSL&lt;unit&gt;</code></p>
 <p>Notice <code>get</code> returns a <code>ChainDSL&lt;string&gt;</code> and <code>set</code> returns a <code>ChainDSL&lt;unit&gt;</code>.
-They both return a <code>ChainDSL</code> chain with just one <code>DSL</code> action.</p>
+They both return a <code>ChainDSL</code> chain with a single <code>DSL</code> action.</p>
 <p>With these functions we can create Get &amp; Set operations like this:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
