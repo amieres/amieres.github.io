@@ -116,7 +116,7 @@ except that each <code>DSL</code> in the chain can be of a different type.</p>
 Do (Set ("name","John",Do (Get ("name",&lt;fun:exF1@49-3&gt;))))</code></p>
 <p>Compare the resulting type with the prior case: <code>ChainDSL&lt;unit&gt;</code> vs <code>DSL&lt;DSL&lt;DSL&lt;unit&gt;&gt;&gt;</code>.
 No matter how deep the chain is, the value will always be of type <code>ChainDSL&lt;unit&gt;</code> or <code>ChainDSL&lt;string&gt;</code>.</p>
-<p>Still creating the chain is much more complex than before.
+<p>But creating the chain is much more complex than before.
 To solve that lets create two helper functions: get and set.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
