@@ -232,11 +232,11 @@ Do (Set ("name","John",Do (Get ("name",&lt;fun:mapDSL@87-2&gt;))))</code></p>
 <span class="l">4: </span>
 <span class="l">5: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> (<span class="o">&gt;</span><span class="o">=&gt;</span>) <span class="i">v</span> <span class="i">f</span> <span class="o">=</span> <span class="i">bindChain</span> <span class="i">f</span> <span class="i">v</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> (<span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span>) <span class="i">v</span> <span class="i">f</span> <span class="o">=</span> <span class="i">bindChain</span> <span class="i">f</span> <span class="i">v</span>
 
 <span class="k">let</span> <span class="i">exF4</span> <span class="o">=</span> <span class="i">set</span> <span class="s">&quot;name&quot;</span> <span class="s">&quot;John&quot;</span> 
-           <span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> _    <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;name&quot;</span> 
-           <span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> <span class="i">name</span> <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;greeting&quot;</span> (<span class="i">sprintf</span> <span class="s">&quot;Hello %s&quot;</span> <span class="i">name</span>)
+           <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> _    <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;name&quot;</span> 
+           <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> <span class="i">name</span> <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;greeting&quot;</span> (<span class="i">sprintf</span> <span class="s">&quot;Hello %s&quot;</span> <span class="i">name</span>)
 </code></pre></td>
 </tr>
 </table>
@@ -257,7 +257,7 @@ First we define a builder class.</p>
     <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Return</span>      <span class="i">v</span> <span class="o">=</span> <span class="i">Return</span> <span class="i">v</span>
     <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">ReturnFrom</span> <span class="i">mv</span> <span class="o">=</span> <span class="i">mv</span>
     <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Zero</span>       () <span class="o">=</span> <span class="i">Return</span> ()
-    <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>   (<span class="i">v</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">v</span> <span class="o">&gt;</span><span class="o">=&gt;</span> <span class="i">f</span>
+    <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>   (<span class="i">v</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">v</span> <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="i">f</span>
 
 <span class="k">let</span> <span class="i">chainDSL</span> <span class="o">=</span> <span class="i">ChainDSLBuilder</span> ()
 </code></pre></td>
@@ -419,12 +419,12 @@ requires explicitly nesting some of the calls.</p>
 <span class="l">8: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">set</span> <span class="s">&quot;first-name&quot;</span> <span class="s">&quot;John&quot;</span> 
-<span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;last-name&quot;</span>  <span class="s">&quot;Smith&quot;</span>            
-<span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;first-name&quot;</span>                    
-<span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> <span class="i">first</span> <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;last-name&quot;</span> 
-                 <span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> <span class="i">last</span> <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;full-name&quot;</span> (<span class="i">first</span> <span class="o">+</span> <span class="s">&quot; &quot;</span>  <span class="o">+</span> <span class="i">last</span>)
-<span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;full-name&quot;</span>
-<span class="o">&gt;</span><span class="o">=&gt;</span> <span class="k">fun</span> <span class="i">full</span>  <span class="k">-&gt;</span> <span class="i">Return</span> (<span class="i">sprintf</span> <span class="s">&quot;Hello %s&quot;</span> <span class="i">full</span>)
+<span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;last-name&quot;</span>  <span class="s">&quot;Smith&quot;</span>            
+<span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;first-name&quot;</span>                    
+<span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> <span class="i">first</span> <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;last-name&quot;</span> 
+                 <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> <span class="i">last</span> <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;full-name&quot;</span> (<span class="i">first</span> <span class="o">+</span> <span class="s">&quot; &quot;</span>  <span class="o">+</span> <span class="i">last</span>)
+<span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;full-name&quot;</span>
+<span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> <span class="i">full</span>  <span class="k">-&gt;</span> <span class="i">Return</span> (<span class="i">sprintf</span> <span class="s">&quot;Hello %s&quot;</span> <span class="i">full</span>)
 <span class="o">|&gt;</span> <span class="i">interpreter2</span>
 </code></pre></td>
 </tr>
