@@ -441,6 +441,119 @@ map
   [("first-name", "John"); ("full-name", "John Smith"); ("last-name", "Smith")]</code></pre></td></tr></table>
 <p>Return value:</p>
 <table class="pre"><tr><td><pre><code>"Hello John Smith"</code></pre></td></tr></table>
+<h2>Two in one</h2>
+<p>So, do we really need two types, the Free Monad and the DSL?</p>
+<p>I do not think it is necessary, the free monad helps in binding the elements of the DSL.
+The same can be achieved just by adding the <code>Return</code> option to the DSL.</p>
+<p>Here is the same implementation with just the DSL type:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+<span class="l">24: </span>
+<span class="l">25: </span>
+<span class="l">26: </span>
+<span class="l">27: </span>
+<span class="l">28: </span>
+<span class="l">29: </span>
+<span class="l">30: </span>
+<span class="l">31: </span>
+<span class="l">32: </span>
+<span class="l">33: </span>
+<span class="l">34: </span>
+<span class="l">35: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">DSL2</span> <span class="o">=</span>
+    <span class="k">type</span> <span class="i">DSL</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span> <span class="o">=</span>
+        | <span class="i">Set</span> <span class="k">of</span> <span class="i">key</span><span class="o">:</span> <span class="i">string</span> <span class="o">*</span> <span class="i">value</span><span class="o">:</span> <span class="i">string</span> <span class="o">*</span>  <span class="i">DSL</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span>
+        | <span class="i">Get</span> <span class="k">of</span> <span class="i">key</span><span class="o">:</span> <span class="i">string</span> <span class="o">*</span>       (<span class="i">string</span> <span class="k">-&gt;</span> <span class="i">DSL</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span>)
+        | <span class="i">Return</span> <span class="k">of</span> <span class="o">&#39;</span><span class="i">a</span>
+    
+    <span class="k">let</span> <span class="i">set</span> <span class="i">key</span> <span class="i">value</span> <span class="o">=</span> <span class="i">Set</span> (<span class="i">key</span>, <span class="i">value</span>,          <span class="i">Return</span> ())
+    <span class="k">let</span> <span class="i">get</span> <span class="i">key</span>       <span class="o">=</span> <span class="i">Get</span> (<span class="i">key</span>,        <span class="k">fun</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">Return</span> <span class="i">v</span> )
+    
+    <span class="k">let</span> <span class="i">bind</span><span class="o">:</span> (<span class="o">&#39;</span><span class="i">a</span> <span class="k">-&gt;</span> <span class="i">DSL</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">b</span><span class="o">&gt;</span>) <span class="k">-&gt;</span> <span class="i">DSL</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span> <span class="k">-&gt;</span> <span class="i">DSL</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">b</span><span class="o">&gt;</span> <span class="o">=</span>
+        <span class="k">fun</span>   <span class="i">fChain</span>             <span class="i">chainTo</span> <span class="k">-&gt;</span>
+           <span class="k">let</span> <span class="k">rec</span> <span class="i">appendTo</span> <span class="i">chain</span> <span class="o">=</span>
+               <span class="k">match</span> <span class="i">chain</span> <span class="k">with</span>
+               | <span class="i">Set</span> (<span class="i">k</span>, <span class="i">v</span>,  <span class="i">next</span>) <span class="k">-&gt;</span> <span class="i">Set</span> (<span class="i">k</span>, <span class="i">v</span>,  <span class="i">next</span> <span class="o">|&gt;</span> <span class="i">appendTo</span>)
+               | <span class="i">Get</span> (<span class="i">k</span>,    <span class="i">fNext</span>) <span class="k">-&gt;</span> <span class="i">Get</span> (<span class="i">k</span>,    <span class="i">fNext</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="i">appendTo</span>)
+               | <span class="i">Return</span>  <span class="i">v</span>         <span class="k">-&gt;</span> <span class="i">fChain</span> <span class="i">v</span>
+           <span class="i">appendTo</span> <span class="i">chainTo</span>
+
+    <span class="k">let</span> (<span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span>) <span class="i">v</span> <span class="i">f</span> <span class="o">=</span> <span class="i">bind</span> <span class="i">f</span> <span class="i">v</span>
+
+    <span class="k">let</span> <span class="i">interpreter2</span> <span class="i">dsl</span> <span class="o">=</span>
+        <span class="k">let</span> <span class="k">rec</span> <span class="i">interpreter2r</span><span class="o">:</span> <span class="i">Map</span><span class="o">&lt;</span><span class="i">string</span>, <span class="i">string</span><span class="o">&gt;</span> <span class="k">-&gt;</span> <span class="i">DSL</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span> <span class="k">-&gt;</span> <span class="o">&#39;</span><span class="i">a</span> <span class="o">=</span>
+            <span class="k">fun</span>                <span class="i">dataStore</span>              <span class="i">dslR</span>    <span class="k">-&gt;</span>
+                <span class="k">match</span> <span class="i">dslR</span> <span class="k">with</span>
+                | <span class="i">Return</span> <span class="i">v</span>               <span class="k">-&gt;</span> <span class="i">printfn</span> <span class="s">&quot;return %A\n%A&quot;</span> <span class="i">v</span> <span class="i">dataStore</span>
+                                            <span class="i">v</span>
+                | <span class="i">Get</span>(<span class="i">key</span>,        <span class="i">nextF</span>) <span class="k">-&gt;</span> <span class="i">dataStore</span> 
+                                            <span class="o">|&gt;</span> <span class="i">Map</span><span class="o">.</span><span class="i">find</span> <span class="i">key</span> 
+                                            <span class="o">|&gt;</span> (<span class="k">fun</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">printfn</span> <span class="s">&quot;Get %s -&gt; &#39;%s&#39;&quot;</span> <span class="i">key</span> <span class="i">v</span> ; <span class="i">v</span> )
+                                            <span class="o">|&gt;</span> <span class="i">nextF</span>
+                                            <span class="o">|&gt;</span> <span class="i">interpreter2r</span> <span class="i">dataStore</span>
+                | <span class="i">Set</span>(<span class="i">key</span>, <span class="i">value</span>, <span class="i">next</span> ) <span class="k">-&gt;</span> <span class="i">printfn</span> <span class="s">&quot;Set %s &#39;%s&#39;&quot;</span> <span class="i">key</span> <span class="i">value</span>
+                                            <span class="i">next</span>
+                                            <span class="o">|&gt;</span> <span class="i">interpreter2r</span> (<span class="i">dataStore</span> <span class="o">|&gt;</span> <span class="i">Map</span><span class="o">.</span><span class="i">add</span> <span class="i">key</span> <span class="i">value</span>)
+        <span class="i">interpreter2r</span> (<span class="i">Map</span><span class="o">.</span><span class="i">ofList</span> []) <span class="i">dsl</span>
+</code></pre></td>
+</tr>
+</table>
+<p>There you have it the DSL definition, helper functions, the bind function and the interpreter.
+Here is the last example again.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">    <span class="i">set</span> <span class="s">&quot;first-name&quot;</span> <span class="s">&quot;John&quot;</span> 
+    <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;last-name&quot;</span>  <span class="s">&quot;Smith&quot;</span>            
+    <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;first-name&quot;</span>                    
+    <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> <span class="i">first</span> <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;last-name&quot;</span> 
+                     <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> <span class="i">last</span> <span class="k">-&gt;</span> <span class="i">set</span> <span class="s">&quot;full-name&quot;</span> (<span class="i">first</span> <span class="o">+</span> <span class="s">&quot; &quot;</span>  <span class="o">+</span> <span class="i">last</span>)
+    <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> _     <span class="k">-&gt;</span> <span class="i">get</span> <span class="s">&quot;full-name&quot;</span>
+    <span class="o">&gt;</span><span class="o">&gt;</span><span class="o">=</span> <span class="k">fun</span> <span class="i">full</span>  <span class="k">-&gt;</span> <span class="i">Return</span> (<span class="i">sprintf</span> <span class="s">&quot;Hello %s&quot;</span> <span class="i">full</span>)
+    <span class="o">|&gt;</span> <span class="i">interpreter2</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Output:</p>
+<table class="pre"><tr><td><pre><code>Set first-name 'John'
+Set last-name 'Smith'
+Get first-name -&gt; 'John'
+Get last-name -&gt; 'Smith'
+Set full-name 'John Smith'
+Get full-name -&gt; 'John Smith'
+return "Hello John Smith"
+map
+  [("first-name", "John"); ("full-name", "John Smith"); ("last-name", "Smith")]</code></pre></td></tr></table>
+<p>Return value:</p>
+<table class="pre"><tr><td><pre><code>"Hello John Smith"</code></pre></td></tr></table>
 
 
           
