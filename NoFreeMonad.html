@@ -237,7 +237,7 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
     <span class="k">let!</span> <span class="i">date</span>           <span class="o">=</span> <span class="i">promptForDate</span>   <span class="s">&quot;Please enter your desired date:&quot;</span>  <span class="s">&quot;Not a valid date.&quot;</span>
     <span class="k">let!</span> <span class="i">slots</span>          <span class="o">=</span> <span class="i">getSlotsHttp</span> <span class="i">date</span>
     <span class="k">let</span>  <span class="i">availableSeats</span> <span class="o">=</span> <span class="i">slots</span> <span class="o">|&gt;</span> <span class="i">List</span><span class="o">.</span><span class="i">sumBy</span> (<span class="k">fun</span> <span class="i">slot</span> <span class="k">-&gt;</span> <span class="i">slot</span><span class="o">.</span><span class="i">SeatsLeft</span>)
-    <span class="k">if</span> <span class="i">availableSeats</span> <span class="o">&lt;</span> <span class="i">count</span>
+    <span class="k">if</span> <span class="i">availableSeats</span>   <span class="o">&lt;</span> <span class="i">count</span>
     <span class="k">then</span> <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;Only %i remaining seats.&quot;</span> <span class="i">availableSeats</span>                         <span class="o">|&gt;</span> <span class="i">writeLine</span>
     <span class="k">else</span> <span class="k">let!</span> <span class="i">name</span>      <span class="o">=</span> <span class="i">promptForString</span> <span class="s">&quot;Please enter your name:&quot;</span>          <span class="s">&quot;Not a valid name.&quot;</span>
          <span class="k">let!</span> <span class="i">email</span>     <span class="o">=</span> <span class="i">promptForEMail</span>  <span class="s">&quot;Please enter your email address:&quot;</span> <span class="s">&quot;Not a valid email.&quot;</span>
@@ -246,6 +246,53 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
     }
 
 <span class="k">let</span> <span class="i">reserve</span>() <span class="o">=</span> <span class="i">tryReserve</span> <span class="o">|&gt;</span> <span class="i">Async</span><span class="o">.</span><span class="i">RunSynchronously</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="o">&gt;</span> <span class="i">reserve</span>();;
+<span class="i">Please</span> <span class="i">enter</span> <span class="i">number</span> <span class="k">of</span> <span class="i">diners</span><span class="o">:</span>
+<span class="n">4</span>
+<span class="i">Please</span> <span class="i">enter</span> <span class="i">your</span> <span class="i">desired</span> <span class="i">date</span><span class="o">:</span>
+<span class="n">11</span><span class="o">/</span><span class="n">11</span><span class="o">/</span><span class="n">11</span>
+<span class="i">Please</span> <span class="i">enter</span> <span class="i">your</span> <span class="i">name</span><span class="o">:</span>
+<span class="i">Abe</span>
+<span class="i">Please</span> <span class="i">enter</span> <span class="i">your</span> <span class="i">email</span> <span class="i">address</span><span class="o">:</span>
+<span class="i">a</span><span class="o">@</span><span class="i">a</span>
+<span class="i">Abe</span> <span class="i">party</span> <span class="k">of</span> <span class="n">4</span>, <span class="i">reserved</span> <span class="k">for</span> <span class="n">11</span><span class="o">/</span><span class="n">11</span><span class="o">/</span><span class="n">2011</span> <span class="n">12</span><span class="o">:</span><span class="n">00</span><span class="o">:</span><span class="n">00</span> <span class="i">AM</span><span class="o">.</span>
+<span class="k">val</span> <span class="i">it</span> <span class="o">:</span> <span class="i">unit</span> <span class="o">=</span> ()
+
+<span class="o">&gt;</span> <span class="i">reserve</span>();;
+<span class="i">Please</span> <span class="i">enter</span> <span class="i">number</span> <span class="k">of</span> <span class="i">diners</span><span class="o">:</span>
+<span class="n">33</span>
+<span class="i">Please</span> <span class="i">enter</span> <span class="i">your</span> <span class="i">desired</span> <span class="i">date</span><span class="o">:</span>
+<span class="n">11</span><span class="o">/</span><span class="n">11</span><span class="o">/</span><span class="n">11</span>
+<span class="i">Only</span> <span class="n">3</span> <span class="i">remaining</span> <span class="i">seats</span><span class="o">.</span>
+<span class="k">val</span> <span class="i">it</span> <span class="o">:</span> <span class="i">unit</span> <span class="o">=</span> ()
+
+<span class="o">&gt;</span>
 </code></pre></td>
 </tr>
 </table>
