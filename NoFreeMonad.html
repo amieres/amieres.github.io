@@ -48,7 +48,14 @@
         <div class="span1"></div>
         <div class="span10" id="main">
           <h1>No Free Monad for old men</h1>
-<h3>What is better than Free Monad? Async Monad!</h3>
+<h3><strong> <em>Update!</em> </strong></h3>
+<p>Clarifications from Seemann et al. showed me
+that Free Monads are used not just for keeping code pure but also as the equivalent of an interface in OOP.
+In that sense Free Monads are valuable and cannot be replaced by just the Async Monad.
+I will continue my analysis of the Free Monad in a separate post.
+I will leave this post up as an exercise in learning.
+Nothing to see here, carry on.</p>
+<h3><del>What is better than Free Monad? Async Monad!</del></h3>
 <p>I have been reading with great interest a series of posts by Mark Seemann
 about dependency injection (and 'rejection') using F#.
 His very pedagogical style together with the fact that he, like
@@ -66,7 +73,7 @@ was intended mainly for my own consumption. In it, I concluded that two types: t
 could be fused into one, thus reducing boilerplate. I wanted to try the same approach with Seamann's
 case study where he combines two Free Monads (by stacking them and/or adding them as suggested by a commenter)
 to see if my conclusion still held true.</p>
-<h3>A funny thing happened.</h3>
+<h3><del>A funny thing happened.</del></h3>
 <p>I could not finish. As is logical, my mock HTTP Client functions return <code>Async&lt;&gt;</code> and
 so I wrote my interpreter with type <code>ReservationsApi&lt;'a&gt; -&gt; Async&lt;'a&gt;</code>.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
@@ -208,10 +215,12 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
 <span class="l">2: </span>
 <span class="l">3: </span>
 <span class="l">4: </span>
+<span class="l">5: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">random</span> <span class="o">=</span> <span class="k">lazy</span> (<span class="i">System</span><span class="o">.</span><span class="i">Random</span> <span class="i">DateTime</span><span class="o">.</span><span class="i">Now</span><span class="o">.</span><span class="i">Millisecond</span>)
 
-<span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">random</span><span class="o">.</span><span class="i">Force</span>()<span class="o">.</span><span class="i">Next</span>(<span class="n">20</span>) } ] }
+<span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
+                                                    <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">random</span><span class="o">.</span><span class="i">Force</span>()<span class="o">.</span><span class="i">Next</span>(<span class="n">20</span>) } ] }
 <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>                                             }
 </code></pre></td>
 </tr>
@@ -296,7 +305,7 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
 </code></pre></td>
 </tr>
 </table>
-<p>Using async we accomplish the same objective and avoid a lot of boilerplate.</p>
+<del>Using async we accomplish the same objective and avoid a lot of boilerplate.</del>
 
 
           
