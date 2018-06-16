@@ -102,7 +102,8 @@ This means a strongly type function cannot process all posible values.</p>
 <p>The <code>Do</code> option creates a chain of <code>ChainDSL</code>s that ends with the <code>Return</code> option.
 This chain ends up having a type equal to the last <code>DSL</code> in the chain.
 This is almost like creating a <code>List</code> of <code>DSL</code>s (<code>List&lt;DSL&lt;'a&gt;&gt; or DSL&lt;'a&gt; list</code>),
-except that each <code>DSL</code> in the chain can be of a different type.</p>
+<del>except that each <code>DSL</code> in the chain can be of a different type</del>
+except that some elements are chained using functions.</p>
 <p>Lets look at the same value above with <code>ChainDSL</code>:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
@@ -195,7 +196,7 @@ The difference is that the chain to be appended <code>fChain</code> is passed wi
 <code>bindChain</code> navigates recursively down <code>chainTo</code> and replaces the last element with the result of <code>fChain</code>:</p>
 <ul>
 <li>On the <code>Do</code> side <code>bindChain</code> calls <code>mapDSL</code> to apply the function to the next <code>ChainDSL</code> node.</li>
-<li>On the <code>Return</code> side it replaces the 'Return a' for a call to the chain to be appended <code>fChain</code>.</li>
+<li>On the <code>Return</code> side it replaces the <code>Return a</code> for a call to the chain to be appended <code>fChain</code>.</li>
 </ul>
 <p>In a sense <code>ChainDSL</code> is actually the opposite of a <code>List&lt;DSL&lt;'a&gt;&gt;</code>. In a List new elements are
 inserted at the head, here they are attached at the tail end.</p>
@@ -280,7 +281,7 @@ First we define a builder class.</p>
 </table>
 <p><code>val exF5 : ChainDSL&lt;unit&gt; =
 Do (Set ("name","John",Do (Get ("name",&lt;fun:mapDSL@87-2&gt;))))</code></p>
-<h2>The Interpreter(s)</h2>
+<h2>The Interpreters</h2>
 <p>Now we are going to create an interpreter to execute the AST created.</p>
 <p>This first version is very simple it does not store or retrieve any values, just prints out the commands.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
