@@ -315,6 +315,8 @@ Schroedinger@dead.alive
  Name = "Schroedinger's cat";
  Email = "Schroedinger@dead.alive";
  Quantity = 15;}</code></pre></td></tr></table>
+<p>To call it with the actual Console implementation:
+getReservation &lt;| (Console.ReadLine, Console.WriteLine)</p>
 <h2>2.- <a href="http://blog.ploeh.dk/2017/07/31/combining-free-monads-in-f/">HTTP API client module</a></h2>
 <p>Taken from <a href="http://blog.ploeh.dk/2017/07/31/combining-free-monads-in-f/">here</a>.</p>
 <p>The Slot type:</p>
@@ -422,12 +424,8 @@ The only difference is that we already expect the functions to return <code>Asyn
 15
 :: Please enter your desired date:
 12/31/1911
-:: Please enter your name:
-Schroedinger's cat
-:: Please enter your email address:
-Schroedinger@dead.alive
 :: ****************
-   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
+   Only 14 remaining seats.
 ****************</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
