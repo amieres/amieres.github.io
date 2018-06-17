@@ -49,8 +49,13 @@
         <div class="span10" id="main">
           <h1>Composing Free Monads</h1>
 <p>A second analysis of the Free Monad - Interpreter pattern in F# based on
-Mark Seemann's articles: <a href="http://blog.ploeh.dk/2017/07/10/pure-interactions/">http://blog.ploeh.dk/2017/07/10/pure-interactions/</a></p>
-<p>In this article I'm going to copy Seemann's definition but with only minor changes in my personal style.
+Mark Seemann's series of articles:</p>
+<ul>
+<li><a href="http://blog.ploeh.dk/2017/01/27/from-dependency-injection-to-dependency-rejection/">From dependency injection to dependency rejection</a></li>
+<li><a href="http://blog.ploeh.dk/2017/07/10/pure-interactions/">Pure interactions</a></li>
+</ul>
+<p>The main purpose of writing this post is to enhance my own understanding on these issues.
+I'm going to copy Seemann's definition with minor changes using my own style of coding.
 In those articles Seemann poses a restaurant reservation case divided in two parts.
 To understand this article I recommend you read them first. Seemann methodically and very pedagogically
 explains step by step every detail of his solution.</p>
@@ -107,6 +112,7 @@ That way we can have versions for testing or for other type of user interaction 
 </code></pre></td>
 </tr>
 </table>
+<h3>The Functor and the Monad</h3>
 <p>In a previous article I argued that creating two types to create a Monad was not necessary. The purpose of the
 Free Monad is to chain (or bind) the elements of the DSL and to provide an end point to the chain
 (the <code>Pure</code> element above, although I will use <code>Return</code> in the next code).</p>
@@ -127,10 +133,10 @@ In that case it is simpler to just merge the two types into one this way:</p>
 </code></pre></td>
 </tr>
 </table>
-<p>It may seem too much to use the suffix Program when it is only a
+<p>I use the suffix Program even though it is only a
 couple of instructions (read and write) and some parameters. But when we bind several
 of these together with other code it can truly become a program.</p>
-<p>For now we are going to create a couple of helper functions.</p>
+<p>Now we are going to create a couple of helper functions.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 </pre></td>
@@ -189,22 +195,14 @@ Every time we use a <code>let!</code> (called let bang), <code>do!</code>, and <
 inserts a call to bind.</p>
 <p>The following function uses <code>readLine</code> and <code>writeLine</code> to ask for an input from the user
 and then validates it with the <code>test</code> function. If validation fails it repeats the question again.</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
-<span class="l">11: </span>
-<span class="l">12: </span>
-<span class="l">13: </span>
-<span class="l">14: </span>
-<span class="l">15: </span>
-<span class="l">16: </span>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="k">rec</span> <span class="i">promptFor</span> <span class="i">test</span> <span class="i">prompt</span> <span class="i">reject</span> <span class="o">=</span> <span class="i">console</span> {
     <span class="k">do!</span>         <span class="i">writeLine</span> <span class="i">prompt</span>
@@ -214,8 +212,19 @@ and then validates it with the <code>test</code> function. If validation fails i
     | <span class="i">None</span>   <span class="k">-&gt;</span> <span class="k">do!</span>     <span class="i">writeLine</span>             <span class="i">reject</span>
                 <span class="k">return!</span> <span class="i">promptFor</span> <span class="i">test</span> <span class="i">prompt</span> <span class="i">reject</span>
 }
-
-<span class="k">type</span> <span class="i">Net</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">MailAddress</span> <span class="k">with</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Now we can create other derived functions:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">Net</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">MailAddress</span> <span class="k">with</span>
     <span class="k">static</span> <span class="k">member</span> <span class="i">TryParse</span> <span class="i">s</span> <span class="o">=</span> <span class="k">try</span> <span class="i">Net</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">MailAddress</span> <span class="i">s</span> <span class="o">|&gt;</span> <span class="i">Some</span> <span class="k">with</span> <span class="i">e</span> <span class="k">-&gt;</span> <span class="i">None</span>
 
 <span class="k">let</span> <span class="i">promptForString</span> <span class="o">=</span> <span class="i">promptFor</span> (<span class="k">fun</span> (<span class="i">s</span><span class="o">:</span><span class="i">string</span>) <span class="k">-&gt;</span>  <span class="i">s</span><span class="o">.</span><span class="i">Trim</span>()   <span class="o">|&gt;</span> <span class="k">function</span> <span class="s">&quot;&quot;</span>      <span class="k">-&gt;</span> <span class="i">None</span>   | <span class="i">r</span> <span class="k">-&gt;</span> <span class="i">Some</span> <span class="i">r</span>)
@@ -225,7 +234,7 @@ and then validates it with the <code>test</code> function. If validation fails i
 </code></pre></td>
 </tr>
 </table>
-<p>With these derived console functions we can ask for reservation information.</p>
+<p>Lets use this CLI functions to collect the information for a reservation:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
 <span class="l"> 2: </span>
 <span class="l"> 3: </span>
@@ -261,13 +270,13 @@ and then validates it with the <code>test</code> function. If validation fails i
 <p>The object <code>readReservationRequest</code> is of type <code>ConsoleProgram&lt;Reservation&gt;</code>.
 It is not a function, it is a wrapper object that defines the steps needed to read
 a Reservation from the console.</p>
-<h3>The CLI Interpreter</h3>
+<h3>The CLI Interpreter(s)</h3>
 <p>If you look at the code above you can clearly understand what the intention
 of the code is: to read and write to the console. You can understand it from the names
 of the functions and the prompts but at no point has there
 been any calls to actual read/write Console commands.</p>
 <p>For that, we need an interpreter that can process the ConsoleProgram returning the result.
-The intepreter goes step by step executing the program:</p>
+The intepreter recursively traverses the Monad executing the chain of instructions:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
@@ -316,7 +325,7 @@ The intepreter goes step by step executing the program:</p>
 </code></pre></td>
 </tr>
 </table>
-<p>Another version may be created for testing:</p>
+<p>A second version of the interpreter may be used for testing:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
 <span class="l"> 2: </span>
 <span class="l"> 3: </span>
@@ -357,7 +366,7 @@ The intepreter goes step by step executing the program:</p>
 </code></pre></td>
 </tr>
 </table>
-<p>And run it this way:</p>
+<p>And run this way:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
@@ -415,8 +424,8 @@ The intepreter goes step by step executing the program:</p>
 </code></pre></td>
 </tr>
 </table>
-<h2>The Reservation HTTP Client</h2>
-<p>For the second part we are going to interact with a HTTP Service that provides
+<h2>Part 2 - The Reservation HTTP Client</h2>
+<p>For the second part we are going to interact with a mock HTTP Service that provides
 an API to query availablity and to perform the reservation. For that we define another DSL and Free Monad.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
@@ -481,7 +490,7 @@ an API to query availablity and to perform the reservation. For that we define a
 </code></pre></td>
 </tr>
 </table>
-<p>Here we have a function that given a reservation record interacts with the API to either deny it or confirm it.</p>
+<p>Here we have a function that given a reservation record interacts with the API and returns a boolean confirming or denying the reservation.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
@@ -491,7 +500,7 @@ an API to query availablity and to perform the reservation. For that we define a
 <span class="l">7: </span>
 <span class="l">8: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">getReservation</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">reservationsApi</span> {
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">confirmReservation</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">reservationsApi</span> {
     <span class="k">let!</span> <span class="i">slots</span>          <span class="o">=</span> <span class="i">getSlots</span> <span class="i">res</span><span class="o">.</span><span class="i">Date</span>
     <span class="k">let</span>  <span class="i">availableSeats</span> <span class="o">=</span> <span class="i">slots</span> <span class="o">|&gt;</span> <span class="i">List</span><span class="o">.</span><span class="i">sumBy</span> (<span class="k">fun</span> <span class="i">slot</span> <span class="k">-&gt;</span> <span class="i">slot</span><span class="o">.</span><span class="i">SeatsLeft</span>)
     <span class="k">if</span> <span class="i">availableSeats</span> <span class="o">&lt;</span> <span class="i">res</span><span class="o">.</span><span class="i">Quantity</span>
@@ -502,7 +511,7 @@ an API to query availablity and to perform the reservation. For that we define a
 </code></pre></td>
 </tr>
 </table>
-<p>Let us call the function with some reservation for right now.</p>
+<p>Let us call the function with a reservation record.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
@@ -510,18 +519,18 @@ an API to query availablity and to perform the reservation. For that we define a
 <span class="l">5: </span>
 <span class="l">6: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">reservationA</span> <span class="o">=</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">reservationConfirmed</span> <span class="o">=</span>
     {     <span class="i">Date</span>     <span class="o">=</span> <span class="i">DateTime</span><span class="o">.</span><span class="i">Now</span>
           <span class="i">Name</span>     <span class="o">=</span> <span class="s">&quot;Schroedinger&quot;</span>
           <span class="i">Email</span>    <span class="o">=</span> <span class="s">&quot;Schroedinger@dead.alive&quot;</span>
           <span class="i">Quantity</span> <span class="o">=</span> <span class="n">11</span>
-    } <span class="o">|&gt;</span> <span class="i">getReservation</span>
+    } <span class="o">|&gt;</span> <span class="i">confirmReservation</span>
 </code></pre></td>
 </tr>
 </table>
-<p>The type of <code>reservationA</code> is <code>ReservationsApi&lt;bool&gt;</code> which means
+<p>The type of <code>reservationConfirmed</code> is <code>ReservationsApi&lt;bool&gt;</code> which means
 that even though we have all the data and the program correctly set up,
-we do not know if the reservation is good or not.
+we do not yet know if the reservation is good or not.
 The reservation is like the Schroedinger cat, it is neither dead nor alive (or is both simultaneously).</p>
 <p>To find out which is it, we have to run it through the interpreter which we have not defined yet.
 First we define a generic interpreter that receives the functions <code>getSlots</code> and <code>postReservation</code>:</p>
@@ -543,9 +552,10 @@ First we define a generic interpreter that receives the functions <code>getSlots
 </code></pre></td>
 </tr>
 </table>
-<p>In the module <code>MockReservationAPI</code> we are going to create the impure functions <code>getSlotsHttp</code> and <code>postReservationHttp</code>
+<p>In the module <code>MockReservationAPI</code> we are going to create the functions <code>getSlotsHttp</code> and <code>postReservationHttp</code>
 that simulate going to a web server and performing the operations.
-Since Http operations are typically asynchronous we are going to make them return async.</p>
+Since Http operations are typically asynchronous we are going to make them return async.
+Also this version determines availability at random.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
@@ -553,7 +563,7 @@ Since Http operations are typically asynchronous we are going to make them retur
 <span class="l">5: </span>
 <span class="l">6: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">MockReservationAPI</span> <span class="o">=</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">RandomReservationAPI</span> <span class="o">=</span>
     <span class="k">let</span> <span class="i">random</span> <span class="o">=</span> <span class="k">lazy</span> (<span class="i">System</span><span class="o">.</span><span class="i">Random</span> <span class="i">DateTime</span><span class="o">.</span><span class="i">Now</span><span class="o">.</span><span class="i">Millisecond</span>)
 
     <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
@@ -573,18 +583,338 @@ Since Http operations are typically asynchronous we are going to make them retur
 </code></pre></td>
 </tr>
 </table>
-<p>Now we can use <code>Async.RunSynchronously</code> to actually run the operation.</p>
+<p>We can run it through the interpreter like this.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reservationA</span>
-<span class="o">|&gt;</span> <span class="i">MockReservationAPI</span><span class="o">.</span><span class="i">interpreter</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reservationConfirmed</span>
+<span class="o">|&gt;</span> <span class="i">RandomReservationAPI</span><span class="o">.</span><span class="i">interpreter</span>
 <span class="o">|&gt;</span> <span class="i">printfn</span> <span class="s">&quot;%A&quot;</span>
 </code></pre></td>
 </tr>
 </table>
 <p>The output is sometimes <code>true</code> and sometimes <code>false</code> depending on the pseudo-random number generator above.</p>
+<p>A second version could have an initial fixed number of available spots. Like this:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">MockReservationAPI</span> <span class="o">=</span>
+    <span class="k">let</span> <span class="k">mutable</span> <span class="i">available</span> <span class="o">=</span> <span class="n">30</span>
+
+    <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
+                                                        <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">available</span> } ] }
+    <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>
+                                                        <span class="i">available</span> <span class="o">&lt;-</span> <span class="i">available</span> <span class="o">-</span> <span class="i">res</span><span class="o">.</span><span class="i">Quantity</span> }
+    <span class="k">let</span> <span class="i">interpreter</span> <span class="o">=</span> <span class="i">interpreterReservationsApi</span> 
+                        (<span class="i">getSlotsHttp</span>        <span class="o">&gt;</span><span class="o">&gt;</span> <span class="i">Async</span><span class="o">.</span><span class="i">RunSynchronously</span>) 
+                        (<span class="i">postReservationHttp</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="i">Async</span><span class="o">.</span><span class="i">RunSynchronously</span>)
+</code></pre></td>
+</tr>
+</table>
+<p>We run it several times through the interpreter like this.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">[<span class="n">1..</span><span class="n">4</span>]
+<span class="o">|&gt;</span> <span class="i">Seq</span><span class="o">.</span><span class="i">iter</span> (<span class="k">fun</span> _ <span class="k">-&gt;</span>
+    <span class="i">reservationConfirmed</span>
+    <span class="o">|&gt;</span> <span class="i">MockReservationAPI</span><span class="o">.</span><span class="i">interpreter</span>
+    <span class="o">|&gt;</span> <span class="i">printfn</span> <span class="s">&quot;%A&quot;</span>
+)
+</code></pre></td>
+</tr>
+</table>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">true</span>
+<span class="k">true</span>
+<span class="k">false</span>
+<span class="k">false</span>
+</code></pre></td>
+</tr>
+</table>
+<h1>Combining the two Free Monads</h1>
+<p>We have two DSL Monads that seem to work well individually, but how do we use them together?
+I see several options:</p>
+<ul>
+<li>Stacking the monads and creating a Computational Expression Builder. This is the approach used in the original article.</li>
+<li>
+Creating a third Free Monad that combines the other two. <del>I am going to try this one.</del>. Tried it, turns out is not possible.
+Long story short the free monad cannot have 2 generic types ('DSL and 'next)
+because every element of the chain needs to have the same type which impedes conversion of types.
+Since the elements of one DSL monad cannot tie directly with the other DSL they need to have same resulting type.
+type CombinedOperation<'a, 'b> =
+| CliOperation   of ConsoleProgram< 'a> <em> ('a -&gt; 'b)
+| ReservationApi of ReservationsApi<'a> </em> ('a -&gt; 'b)
+</li>
+<li>
+Adding the DSL Functors and using a Free Monad. This is a suggestion by <a href="http://blog.ploeh.dk/2017/07/24/combining-free-monads-in-haskell/">George Pollard</a> in a comment to the Haskell article.
+I am going to try this one.
+</li>
+</ul>
+<p>If we want to be able to compose the DSLs we need to have them separate from the Free Monad.
+That is an argument for having the Free Monad separate from the DSL.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+<span class="l">24: </span>
+<span class="l">25: </span>
+<span class="l">26: </span>
+<span class="l">27: </span>
+<span class="l">28: </span>
+<span class="l">29: </span>
+<span class="l">30: </span>
+<span class="l">31: </span>
+<span class="l">32: </span>
+<span class="l">33: </span>
+<span class="l">34: </span>
+<span class="l">35: </span>
+<span class="l">36: </span>
+<span class="l">37: </span>
+<span class="l">38: </span>
+<span class="l">39: </span>
+<span class="l">40: </span>
+<span class="l">41: </span>
+<span class="l">42: </span>
+<span class="l">43: </span>
+<span class="l">44: </span>
+<span class="l">45: </span>
+<span class="l">46: </span>
+<span class="l">47: </span>
+<span class="l">48: </span>
+<span class="l">49: </span>
+<span class="l">50: </span>
+<span class="l">51: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">Composite</span> <span class="o">=</span>
+
+    <span class="k">type</span> <span class="i">ConsoleProgram</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">next</span><span class="o">&gt;</span> <span class="o">=</span>
+    | <span class="i">ReadLine</span>  <span class="k">of</span> (<span class="i">string</span> <span class="k">-&gt;</span> <span class="o">&#39;</span><span class="i">next</span>)
+    | <span class="i">WriteLine</span> <span class="k">of</span>  <span class="i">string</span>  <span class="o">*</span> <span class="o">&#39;</span><span class="i">next</span>
+    
+    <span class="k">let</span> <span class="i">mapConsoleProgram</span> <span class="i">f</span> <span class="o">=</span> 
+        <span class="k">function</span>
+        | <span class="i">ReadLine</span>     <span class="i">fNext</span>  <span class="k">-&gt;</span> <span class="i">ReadLine</span> (  <span class="i">fNext</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="i">f</span>)
+        | <span class="i">WriteLine</span> (<span class="i">s</span>, <span class="i">next</span>) <span class="k">-&gt;</span> <span class="i">WriteLine</span>(<span class="i">s</span>, <span class="i">next</span> <span class="o">|&gt;</span> <span class="i">f</span>)
+    
+    <span class="k">let</span> <span class="i">writeLine</span> (<span class="i">s</span><span class="o">:</span><span class="i">string</span>) <span class="o">=</span> <span class="i">WriteLine</span>(<span class="i">s</span>, ()) 
+    <span class="k">let</span> <span class="i">readLine</span>             <span class="o">=</span> <span class="i">ReadLine</span>     <span class="i">id</span>
+    
+    <span class="k">type</span> <span class="i">ConsoleMonad</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span> <span class="o">=</span>
+    | <span class="i">ConsoleP</span>  <span class="k">of</span> <span class="i">ConsoleProgram</span><span class="o">&lt;</span><span class="i">ConsoleMonad</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span><span class="o">&gt;</span>
+    | <span class="i">ReturnCP</span>  <span class="k">of</span>                             <span class="o">&#39;</span><span class="i">a</span>
+    
+    <span class="k">let</span> <span class="i">bindConsole</span> <span class="i">fChain</span>   <span class="i">chainTo</span> <span class="o">=</span>
+        <span class="k">let</span> <span class="k">rec</span> <span class="i">appendTo</span> <span class="i">chain</span>   <span class="o">=</span>
+            <span class="k">match</span> <span class="i">chain</span> <span class="k">with</span>
+            | <span class="i">ConsoleP</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">ConsoleP</span>  (<span class="i">mapConsoleProgram</span> <span class="i">appendTo</span> <span class="i">v</span>)
+            | <span class="i">ReturnCP</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">fChain</span> <span class="i">v</span>
+        <span class="i">appendTo</span> <span class="i">chainTo</span>        
+
+    <span class="k">let</span> <span class="i">liftCP</span> <span class="i">x</span> <span class="o">=</span> <span class="i">ConsoleP</span> (<span class="i">mapConsoleProgram</span> <span class="i">ReturnCP</span> <span class="i">x</span>)
+
+    <span class="k">type</span> <span class="i">ConsoleProgramBuilder</span> () <span class="o">=</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>       (<span class="i">x</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">bindConsole</span> <span class="i">f</span>         <span class="i">x</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>       (<span class="i">x</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">bindConsole</span> <span class="i">f</span> (<span class="i">liftCP</span> <span class="i">x</span>)
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">ReturnFrom</span>  <span class="i">x</span>     <span class="o">=</span>           <span class="i">x</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Return</span>      <span class="i">x</span>     <span class="o">=</span> <span class="i">ReturnCP</span>  <span class="i">x</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Zero</span>       ()     <span class="o">=</span> <span class="i">ReturnCP</span> ()
+    
+    <span class="k">let</span> <span class="i">console</span> <span class="o">=</span> <span class="i">ConsoleProgramBuilder</span> ()
+    <span class="k">let</span> <span class="k">rec</span> <span class="i">promptFor</span> <span class="i">test</span> <span class="i">prompt</span> <span class="i">reject</span> <span class="o">=</span> <span class="i">console</span> {
+        <span class="k">do!</span>         <span class="i">writeLine</span> <span class="i">prompt</span>
+        <span class="k">let!</span>   <span class="i">v</span> <span class="o">=</span>  <span class="i">readLine</span>
+        <span class="k">match</span>  <span class="i">v</span> <span class="o">|&gt;</span> <span class="i">test</span> <span class="k">with</span>
+        | <span class="i">Some</span> <span class="i">r</span> <span class="k">-&gt;</span> <span class="k">return</span>  <span class="i">r</span>
+        | <span class="i">None</span>   <span class="k">-&gt;</span> <span class="k">do!</span>     <span class="i">writeLine</span>             <span class="i">reject</span>
+                    <span class="k">return!</span> <span class="i">promptFor</span> <span class="i">test</span> <span class="i">prompt</span> <span class="i">reject</span>
+    }
+    <span class="c">(**</span>
+<span class="c">    Now we can create other derived functions:</span>
+<span class="c">    *)</span>
+    
+    <span class="k">let</span> <span class="i">promptForString</span> <span class="o">=</span> <span class="i">promptFor</span> (<span class="k">fun</span> (<span class="i">s</span><span class="o">:</span><span class="i">string</span>) <span class="k">-&gt;</span>  <span class="i">s</span><span class="o">.</span><span class="i">Trim</span>()   <span class="o">|&gt;</span> <span class="k">function</span> <span class="s">&quot;&quot;</span>      <span class="k">-&gt;</span> <span class="i">None</span>   | <span class="i">r</span> <span class="k">-&gt;</span> <span class="i">Some</span> <span class="i">r</span>)
+    <span class="k">let</span> <span class="i">promptForEMail</span>  <span class="o">=</span> <span class="i">promptFor</span> (<span class="i">Net</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">MailAddress</span><span class="o">.</span><span class="i">TryParse</span>                                            )
+    <span class="k">let</span> <span class="i">promptForNumber</span> <span class="o">=</span> <span class="i">promptFor</span> (<span class="i">Int32</span>               <span class="o">.</span><span class="i">TryParse</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="k">function</span> <span class="k">true</span>, <span class="i">r</span> <span class="k">-&gt;</span> <span class="i">Some</span> <span class="i">r</span> | _ <span class="k">-&gt;</span> <span class="i">None</span>  )
+    <span class="k">let</span> <span class="i">promptForDate</span>   <span class="o">=</span> <span class="i">promptFor</span> (<span class="i">DateTime</span>            <span class="o">.</span><span class="i">TryParse</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="k">function</span> <span class="k">true</span>, <span class="i">r</span> <span class="k">-&gt;</span> <span class="i">Some</span> <span class="i">r</span> | _ <span class="k">-&gt;</span> <span class="i">None</span>  )
+</code></pre></td>
+</tr>
+</table>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+<span class="l">24: </span>
+<span class="l">25: </span>
+<span class="l">26: </span>
+<span class="l">27: </span>
+<span class="l">28: </span>
+<span class="l">29: </span>
+<span class="l">30: </span>
+<span class="l">31: </span>
+<span class="l">32: </span>
+<span class="l">33: </span>
+<span class="l">34: </span>
+<span class="l">35: </span>
+<span class="l">36: </span>
+<span class="l">37: </span>
+<span class="l">38: </span>
+<span class="l">39: </span>
+<span class="l">40: </span>
+<span class="l">41: </span>
+<span class="l">42: </span>
+<span class="l">43: </span>
+<span class="l">44: </span>
+<span class="l">45: </span>
+<span class="l">46: </span>
+<span class="l">47: </span>
+<span class="l">48: </span>
+<span class="l">49: </span>
+<span class="l">50: </span>
+<span class="l">51: </span>
+<span class="l">52: </span>
+<span class="l">53: </span>
+<span class="l">54: </span>
+<span class="l">55: </span>
+<span class="l">56: </span>
+<span class="l">57: </span>
+<span class="l">58: </span>
+<span class="l">59: </span>
+<span class="l">60: </span>
+<span class="l">61: </span>
+<span class="l">62: </span>
+<span class="l">63: </span>
+<span class="l">64: </span>
+<span class="l">65: </span>
+<span class="l">66: </span>
+<span class="l">67: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">    <span class="k">type</span> <span class="i">ReservationsApi</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">next</span><span class="o">&gt;</span> <span class="o">=</span>
+    | <span class="i">GetSlots</span>        <span class="k">of</span> <span class="i">DateTime</span>    <span class="o">*</span> (<span class="i">Slot</span> <span class="i">list</span> <span class="k">-&gt;</span> <span class="o">&#39;</span><span class="i">next</span>)
+    | <span class="i">PostReservation</span> <span class="k">of</span> <span class="i">Reservation</span> <span class="o">*</span>               <span class="o">&#39;</span><span class="i">next</span>
+    
+    <span class="k">let</span> <span class="i">mapReservationsApi</span> <span class="i">f</span> <span class="o">=</span> 
+        <span class="k">function</span>
+        | <span class="i">GetSlots</span>        (<span class="i">d</span>, <span class="i">fNext</span>) <span class="k">-&gt;</span> <span class="i">GetSlots</span>       (<span class="i">d</span>, <span class="i">fNext</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="i">f</span>)
+        | <span class="i">PostReservation</span> (<span class="i">s</span>,  <span class="i">next</span>) <span class="k">-&gt;</span> <span class="i">PostReservation</span>(<span class="i">s</span>,  <span class="i">next</span> <span class="o">|&gt;</span> <span class="i">f</span>)
+    
+    <span class="k">let</span> <span class="i">getSlots</span>        <span class="i">date</span> <span class="o">=</span> <span class="i">GetSlots</span>        (<span class="i">date</span>, <span class="i">id</span>)
+    <span class="k">let</span> <span class="i">postReservation</span> <span class="i">res</span>  <span class="o">=</span> <span class="i">PostReservation</span> (<span class="i">res</span> , ())
+    
+    <span class="k">type</span> <span class="i">CompositeMonad</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">result</span><span class="o">&gt;</span> <span class="o">=</span>
+    | <span class="i">ConsoleProgram</span>  <span class="k">of</span> <span class="i">ConsoleProgram</span><span class="o">&lt;</span> <span class="i">CompositeMonad</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">result</span><span class="o">&gt;</span><span class="o">&gt;</span>
+    | <span class="i">ReservationsApi</span> <span class="k">of</span> <span class="i">ReservationsApi</span><span class="o">&lt;</span><span class="i">CompositeMonad</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">result</span><span class="o">&gt;</span><span class="o">&gt;</span>
+    | <span class="i">ReturnC</span>         <span class="k">of</span>                                <span class="o">&#39;</span><span class="i">result</span>
+    
+    <span class="k">let</span> <span class="i">bindCompositeDSL</span> <span class="i">fChain</span>   <span class="i">chainTo</span> <span class="o">=</span>
+        <span class="k">let</span> <span class="k">rec</span> <span class="i">appendTo</span> <span class="i">chain</span>   <span class="o">=</span>
+            <span class="k">match</span> <span class="i">chain</span> <span class="k">with</span>
+            | <span class="i">ConsoleProgram</span>  <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">ConsoleProgram</span> (<span class="i">mapConsoleProgram</span>  <span class="i">appendTo</span> <span class="i">v</span>)
+            | <span class="i">ReservationsApi</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">ReservationsApi</span>(<span class="i">mapReservationsApi</span> <span class="i">appendTo</span> <span class="i">v</span>)
+            | <span class="i">ReturnC</span>         <span class="i">v</span> <span class="k">-&gt;</span>                                      <span class="i">fChain</span> <span class="i">v</span>
+        <span class="i">appendTo</span> <span class="i">chainTo</span>
+
+    <span class="k">let</span>     <span class="i">liftCPtoCD</span> <span class="i">cp</span> <span class="o">=</span> <span class="i">ConsoleProgram</span>  (<span class="i">mapConsoleProgram</span>  <span class="i">ReturnC</span> <span class="i">cp</span>)
+    <span class="k">let</span>     <span class="i">liftRAtoCD</span> <span class="i">ra</span> <span class="o">=</span> <span class="i">ReservationsApi</span> (<span class="i">mapReservationsApi</span> <span class="i">ReturnC</span> <span class="i">ra</span>)
+    <span class="k">let</span> <span class="k">rec</span> <span class="i">liftCMtoCD</span> <span class="o">=</span>
+        <span class="k">function</span>
+        | <span class="i">ConsoleP</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">mapConsoleProgram</span> <span class="i">liftCMtoCD</span> <span class="i">v</span> <span class="o">|&gt;</span> <span class="i">ConsoleProgram</span>
+        | <span class="i">ReturnCP</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">ReturnC</span> <span class="i">v</span>
+    
+    <span class="k">type</span> <span class="i">CombinedProgramBuilder</span> () <span class="o">=</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>       (<span class="i">x</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">bindCompositeDSL</span> <span class="i">f</span>         <span class="i">x</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>       (<span class="i">x</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">bindCompositeDSL</span> <span class="i">f</span> (<span class="i">liftCPtoCD</span> <span class="i">x</span>)
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>       (<span class="i">x</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">bindCompositeDSL</span> <span class="i">f</span> (<span class="i">liftCMtoCD</span> <span class="i">x</span>)
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Bind</span>       (<span class="i">x</span>, <span class="i">f</span>) <span class="o">=</span> <span class="i">bindCompositeDSL</span> <span class="i">f</span> (<span class="i">liftRAtoCD</span> <span class="i">x</span>)
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">ReturnFrom</span>  <span class="i">x</span>     <span class="o">=</span>           <span class="i">x</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Return</span>      <span class="i">x</span>     <span class="o">=</span> <span class="i">ReturnC</span>   <span class="i">x</span>
+        <span class="k">member</span> <span class="i">this</span><span class="o">.</span><span class="i">Zero</span>       ()     <span class="o">=</span> <span class="i">ReturnC</span>  ()
+    
+    <span class="k">let</span> <span class="i">composite</span> <span class="o">=</span> <span class="i">CombinedProgramBuilder</span> ()
+    
+    <span class="k">let</span> <span class="i">tryReserve</span>          <span class="o">=</span> <span class="i">composite</span> {
+        <span class="k">let!</span> <span class="i">count</span>          <span class="o">=</span> <span class="i">promptForNumber</span> <span class="s">&quot;Please enter number of diners:&quot;</span>   <span class="s">&quot;Not a valid integer.&quot;</span> 
+        <span class="k">let!</span> <span class="i">date</span>           <span class="o">=</span> <span class="i">promptForDate</span>   <span class="s">&quot;Please enter your desired date:&quot;</span>  <span class="s">&quot;Not a valid date.&quot;</span>
+        <span class="k">let!</span> <span class="i">slots</span>          <span class="o">=</span> <span class="i">getSlots</span> <span class="i">date</span>
+        <span class="k">let</span>  <span class="i">availableSeats</span> <span class="o">=</span> <span class="i">slots</span>  <span class="o">|&gt;</span> <span class="i">List</span><span class="o">.</span><span class="i">sumBy</span> (<span class="k">fun</span> <span class="i">slot</span> <span class="k">-&gt;</span> <span class="i">slot</span><span class="o">.</span><span class="i">SeatsLeft</span>)
+        <span class="k">if</span>   <span class="i">availableSeats</span> <span class="o">&lt;</span> <span class="i">count</span>
+        <span class="k">then</span> <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;Only %i remaining seats.&quot;</span> <span class="i">availableSeats</span>                         <span class="o">|&gt;</span> <span class="i">writeLine</span>
+        <span class="k">else</span> <span class="k">let!</span> <span class="i">name</span>      <span class="o">=</span> <span class="i">promptForString</span> <span class="s">&quot;Please enter your name:&quot;</span>          <span class="s">&quot;Not a valid name.&quot;</span>
+             <span class="k">let!</span> <span class="i">email</span>     <span class="o">=</span> <span class="i">promptForEMail</span>  <span class="s">&quot;Please enter your email address:&quot;</span> <span class="s">&quot;Not a valid email.&quot;</span>
+             <span class="k">do!</span> { <span class="i">Date</span>     <span class="o">=</span> <span class="i">date</span>; <span class="i">Name</span> <span class="o">=</span> <span class="i">name</span>; <span class="i">Email</span> <span class="o">=</span> <span class="i">email</span><span class="o">.</span><span class="i">Address</span>; <span class="i">Quantity</span> <span class="o">=</span> <span class="i">count</span> } <span class="o">|&gt;</span> <span class="i">postReservation</span>
+             <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;%s party of %d, reserved for %A.&quot;</span> <span class="i">name</span> <span class="i">count</span> <span class="i">date</span>                <span class="o">|&gt;</span> <span class="i">writeLine</span>
+    }
+
+<span class="c">(*</span>
+<span class="c">    module MockComposite =</span>
+<span class="c">        let interpreter = </span>
+<span class="c">    </span>
+<span class="c">    [1..4]</span>
+<span class="c">    |&gt; Seq.iter (fun _ -&gt;</span>
+<span class="c">        tryReserve</span>
+<span class="c">        |&gt; MockComposite.interpreter</span>
+<span class="c">        |&gt; printfn &quot;%A&quot;</span>
+<span class="c">    )</span>
+<span class="c">    *)</span>
+</code></pre></td>
+</tr>
+</table>
 
 
           

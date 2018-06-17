@@ -414,14 +414,14 @@ The only difference is that we already expect the functions to return <code>Asyn
     <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
                                                         <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">random</span><span class="o">.</span><span class="i">Force</span>()<span class="o">.</span><span class="i">Next</span>(<span class="n">20</span>) } ] }
     <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>                                             }
-    <span class="k">let</span> <span class="i">toInject</span> <span class="o">=</span> (<span class="i">getSlotsHttp</span>, <span class="i">postReservationHttp</span>)
+    <span class="k">let</span> <span class="i">toInject</span>() <span class="o">=</span> (<span class="i">getSlotsHttp</span>, <span class="i">postReservationHttp</span>)
 </code></pre></td>
 </tr>
 </table>
 <p>We call <code>reserve</code> passing both apis</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject2</span>() <span class="o">&lt;|</span> <span class="i">RandomResApi</span><span class="o">.</span><span class="i">toInject</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject2</span>() <span class="o">&lt;|</span> <span class="i">RandomResApi</span><span class="o">.</span><span class="i">toInject</span>()
 </code></pre></td>
 </tr>
 </table>
@@ -430,7 +430,7 @@ The only difference is that we already expect the functions to return <code>Asyn
 :: Please enter your desired date:
 12/31/1911
 :: ****************
-   Only 3 remaining seats.
+   Only 1 remaining seats.
 ****************</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
