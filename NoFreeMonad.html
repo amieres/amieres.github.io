@@ -429,12 +429,8 @@ The only difference is that we already expect the functions to return <code>Asyn
 15
 :: Please enter your desired date:
 12/31/1911
-:: Please enter your name:
-Schroedinger's cat
-:: Please enter your email address:
-Schroedinger@dead.alive
 :: ****************
-   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
+   Only 11 remaining seats.
 ****************</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
@@ -475,6 +471,9 @@ Schroedinger@dead.alive
 :: ****************
    Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
 ****************</code></pre></td></tr></table>
+<p>Since originally there were 18 seats, reservation of 5 more will fail.
+Notice the difference in the WriteLine
+output between the 2 outputs:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject1</span>() <span class="o">&lt;|</span> <span class="i">MockReservationAPI</span><span class="o">.</span><span class="i">toInject</span>()
