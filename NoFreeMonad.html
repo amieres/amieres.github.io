@@ -368,6 +368,10 @@ The only difference is that we already expect the functions to return <code>Asyn
 <span class="l">10: </span>
 <span class="l">11: </span>
 <span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">tryReserve</span>          <span class="o">=</span> <span class="i">async</span> {
     <span class="k">let!</span> <span class="i">count</span>          <span class="o">=</span> <span class="i">promptForNumber</span> <span class="s">&quot;Please enter number of diners:&quot;</span>   <span class="s">&quot;Not a valid integer.&quot;</span>
@@ -375,11 +379,15 @@ The only difference is that we already expect the functions to return <code>Asyn
     <span class="k">let!</span> <span class="i">slots</span>          <span class="o">=</span> <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">GetSlots</span> <span class="i">date</span>
     <span class="k">let</span>  <span class="i">availableSeats</span> <span class="o">=</span> <span class="i">slots</span> <span class="o">|&gt;</span> <span class="i">List</span><span class="o">.</span><span class="i">sumBy</span> (<span class="k">fun</span> <span class="i">slot</span> <span class="k">-&gt;</span> <span class="i">slot</span><span class="o">.</span><span class="i">SeatsLeft</span>)
     <span class="k">if</span> <span class="i">availableSeats</span>   <span class="o">&lt;</span> <span class="i">count</span>
-    <span class="k">then</span> <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************\n   Only %i remaining seats.\n****************&quot;</span> <span class="i">availableSeats</span><span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
+    <span class="k">then</span> <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************    </span>
+<span class="s">Only %i remaining seats.</span>
+<span class="s">****************&quot;</span> <span class="i">availableSeats</span>  <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
     <span class="k">else</span> <span class="k">let!</span> <span class="i">name</span>      <span class="o">=</span> <span class="i">promptForString</span> <span class="s">&quot;Please enter your name:&quot;</span>          <span class="s">&quot;Not a valid name.&quot;</span>
          <span class="k">let!</span> <span class="i">email</span>     <span class="o">=</span> <span class="i">promptForEMail</span>  <span class="s">&quot;Please enter your email address:&quot;</span> <span class="s">&quot;Not a valid email.&quot;</span>
          <span class="k">do!</span> { <span class="i">Date</span>     <span class="o">=</span> <span class="i">date</span>; <span class="i">Name</span> <span class="o">=</span> <span class="i">name</span>; <span class="i">Email</span> <span class="o">=</span> <span class="i">email</span><span class="o">.</span><span class="i">Address</span>; <span class="i">Quantity</span> <span class="o">=</span> <span class="i">count</span> } <span class="o">|&gt;</span> <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">PostReservation</span>
-         <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************\n   %s party of %d, reserved for %A.\n****************&quot;</span> <span class="i">name</span> <span class="i">count</span> <span class="i">date</span> <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
+         <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************</span>
+<span class="s">%s party of %d, reserved for %A.</span>
+<span class="s">****************&quot;</span> <span class="i">name</span> <span class="i">count</span> <span class="i">date</span> <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
     }
 </code></pre></td>
 </tr>
@@ -425,31 +433,33 @@ The only difference is that we already expect the functions to return <code>Asyn
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>:: Please enter number of diners:
-15
-:: Please enter your desired date:
-12/31/1911
-:: ****************
-   Only 1 remaining seats.
-****************</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-<span class="l">4: </span>
-<span class="l">5: </span>
-<span class="l">6: </span>
-<span class="l">7: </span>
-<span class="l">8: </span>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">MockReservationAPI</span> <span class="o">=</span>
     <span class="k">let</span> <span class="k">mutable</span> <span class="i">available</span> <span class="o">=</span> <span class="n">18</span>
 
-    <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
-                                                        <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">available</span> } ] }
-    <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>
-                                                        <span class="i">available</span> <span class="o">&lt;-</span> <span class="i">available</span> <span class="o">-</span> <span class="i">res</span><span class="o">.</span><span class="i">Quantity</span> }
+    <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { 
+        <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
+        <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">available</span> } ] 
+      }
+    <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { 
+        <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>
+        <span class="i">available</span> <span class="o">&lt;-</span> <span class="i">available</span> <span class="o">-</span> <span class="i">res</span><span class="o">.</span><span class="i">Quantity</span> 
+      }
     <span class="k">let</span> <span class="i">toInject</span>() <span class="o">=</span> (<span class="i">getSlotsHttp</span>, <span class="i">postReservationHttp</span>)
 </code></pre></td>
 </tr>
@@ -460,17 +470,7 @@ The only difference is that we already expect the functions to return <code>Asyn
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>:: Please enter number of diners:
-15
-:: Please enter your desired date:
-12/31/1911
-:: Please enter your name:
-Schroedinger's cat
-:: Please enter your email address:
-Schroedinger@dead.alive
-:: ****************
-   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
-****************</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
 <p>Since originally there were 18 seats, reservation for 5 more will fail.
 Notice the difference in the WriteLine
 output between the 2 outputs:</p>
@@ -480,19 +480,7 @@ output between the 2 outputs:</p>
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>Please enter number of diners:
-x
-Not a valid integer.
-Please enter number of diners:
-5
-Please enter your desired date:
-x
-Not a valid date.
-Please enter your desired date:
-11/11/11
-****************
-   Only 3 remaining seats.
-****************</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
 <p>Using async we accomplish the same objective and avoid a lot of boilerplate.
 True, this does not follow the DSL-interpreter pattern typical of the Free Monad
 and there may be other uses that are possible with the Free Monad,
