@@ -429,8 +429,12 @@ The only difference is that we already expect the functions to return <code>Asyn
 15
 :: Please enter your desired date:
 12/31/1911
+:: Please enter your name:
+Schroedinger's cat
+:: Please enter your email address:
+Schroedinger@dead.alive
 :: ****************
-   Only 8 remaining seats.
+   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
 ****************</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
@@ -494,10 +498,10 @@ Please enter your desired date:
 True, this does not follow the DSL-interpreter pattern typical of the Free Monad
 and there may be other uses that are possible with the Free Monad,
 but this solution allows dependency injection
-separation of pure and impure code, separation of concerns and composition
-all in a very clean and powerful way.
-Also, using the <code>async</code> Computational Expression has the advantage of
-already having implementations for <code>try-finally</code>, <code>try-with</code>, <code>use</code>, <code>while</code>, <code>for</code> and other
+separation of pure and impure code, separation of concerns and composition,
+all in a very clean and powerful way.</p>
+<p>Using the <code>async</code> Computational Expression has the added advantage of
+already having strong implementations for <code>try-finally</code>, <code>try-with</code>, <code>use</code>, <code>while</code>, <code>for</code> and other
 features that are not easy to implement.</p>
 
 
