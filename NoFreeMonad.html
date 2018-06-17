@@ -51,8 +51,7 @@
 <h3><strong> <em>Update!</em> </strong></h3>
 <p>Clarifications from Seemann et al. showed me
 that Free Monads are used not just for keeping code pure but also as the equivalent of an interface in OOP.
-For that reason I am going to use a good all mutable global.
-I know it is anti-functional by definition by I think it is an effective way to do dependency injection.</p>
+For that reason I added a mechanism for dependency injection.</p>
 <h3>What is better than Free Monad? Async Monad!</h3>
 <p>I have been reading with great interest a series of posts by Mark Seemann
 about dependency injection (and 'rejection') using F#.
@@ -103,21 +102,17 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
 <p>So I rewrote the exercise using Asyncs instead:</p>
 <h2>1.- <a href="http://blog.ploeh.dk/2017/07/17/a-pure-command-line-wizard/">Command-line wizard</a>:</h2>
 <p>Taken from <a href="http://blog.ploeh.dk/2017/07/17/a-pure-command-line-wizard/">here</a>.</p>
-<p>The basic functions:</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
+<p>The console api functions are defined in a module with a dummy definition, but they are mutable:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span class="i">System</span>
-
-<span class="k">module</span> <span class="i">CliInjection</span> <span class="o">=</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">CliInjection</span> <span class="o">=</span>
     <span class="k">let</span> <span class="k">mutable</span> <span class="k">private</span>       <span class="i">readLine</span>  <span class="o">:</span> <span class="i">unit</span>   <span class="k">-&gt;</span> <span class="i">string</span> <span class="o">=</span> <span class="k">fun</span> () <span class="k">-&gt;</span> <span class="s">&quot;&quot;</span>
     <span class="k">let</span> <span class="k">mutable</span> <span class="k">private</span>       <span class="i">writeLine</span> <span class="o">:</span> <span class="i">string</span> <span class="k">-&gt;</span> <span class="i">unit</span>   <span class="o">=</span> <span class="i">ignore</span>
     <span class="k">let</span> <span class="i">inject</span>(<span class="i">read</span>, <span class="i">write</span>) <span class="o">=</span> <span class="i">readLine</span>  <span class="o">&lt;-</span> <span class="i">read</span>
@@ -128,6 +123,8 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
 </code></pre></td>
 </tr>
 </table>
+<p>The <code>inject</code> function provides the mechanism for injecting the implementation
+The public functions <code>WriteLine</code> <code>ReadLine</code> use the <code>Async&lt;&gt;</code> monad to make them pure.</p>
 <p>Some derived Console API functions</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
 <span class="l"> 2: </span>
@@ -182,20 +179,14 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
 </code></pre></td>
 </tr>
 </table>
-<p>A wizard to read it:</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
-<span class="l">11: </span>
-<span class="l">12: </span>
-<span class="l">13: </span>
+<p>A wizard to read the reservation:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">readReservationRequest</span> <span class="o">=</span> <span class="i">async</span> {
     <span class="k">let!</span> <span class="i">count</span> <span class="o">=</span> <span class="i">promptForNumber</span> <span class="s">&quot;Please enter number of diners:&quot;</span>   <span class="s">&quot;Not a valid integer.&quot;</span>
@@ -204,8 +195,17 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
     <span class="k">let!</span> <span class="i">email</span> <span class="o">=</span> <span class="i">promptForEMail</span>  <span class="s">&quot;Please enter your email address:&quot;</span> <span class="s">&quot;Not a valid email.&quot;</span>
     <span class="k">return</span> { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span>; <span class="i">Name</span> <span class="o">=</span> <span class="i">name</span>; <span class="i">Email</span> <span class="o">=</span> <span class="i">email</span><span class="o">.</span><span class="i">Address</span>; <span class="i">Quantity</span> <span class="o">=</span> <span class="i">count</span> } 
   }
-
-<span class="k">let</span> <span class="i">getReservation</span> <span class="i">cli</span> <span class="o">=</span>
+</code></pre></td>
+</tr>
+</table>
+<p>To execute the monad we inject the desired implementation and call Async.RunSynchronously</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">getReservation</span> <span class="i">cli</span> <span class="o">=</span>
     <span class="i">CliInjection</span><span class="o">.</span><span class="i">inject</span> <span class="i">cli</span>
     <span class="i">readReservationRequest</span>
     <span class="o">|&gt;</span> <span class="i">Async</span><span class="o">.</span><span class="i">RunSynchronously</span>
@@ -263,8 +263,8 @@ was wrap the impure functions with <code>Async&lt;&gt;</code>. What could be eas
 <span class="s">        Schroedinger&#39;s cat</span>
 <span class="s">        Schroedinger@dead.alive</span>
 <span class="s">    &quot;</span>
-    <span class="k">let</span> <span class="i">toInject1</span>() <span class="o">=</span> (<span class="i">readLines</span> <span class="i">input1</span>, <span class="i">printfn</span> <span class="s">&quot;%s&quot;</span>)
-    <span class="k">let</span> <span class="i">toInject2</span>() <span class="o">=</span> (<span class="i">readLines</span> <span class="i">input2</span>, <span class="i">printfn</span> <span class="s">&quot;%s&quot;</span>)
+    <span class="k">let</span> <span class="i">toInject1</span>() <span class="o">=</span> (<span class="i">readLines</span> <span class="i">input1</span>, <span class="i">printfn</span> <span class="s">&quot;%s&quot;</span>   )
+    <span class="k">let</span> <span class="i">toInject2</span>() <span class="o">=</span> (<span class="i">readLines</span> <span class="i">input2</span>, <span class="i">printfn</span> <span class="s">&quot;:: %s&quot;</span>)
 </code></pre></td>
 </tr>
 </table>
@@ -303,13 +303,13 @@ amieres@b.c
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>Please enter number of diners:
+<table class="pre"><tr><td><pre><code>:: Please enter number of diners:
 15
-Please enter your desired date:
+:: Please enter your desired date:
 12/31/1911
-Please enter your name:
+:: Please enter your name:
 Schroedinger's cat
-Please enter your email address:
+:: Please enter your email address:
 Schroedinger@dead.alive
 {Date = 12/31/1911 12:00:00 AM;
  Name = "Schroedinger's cat";
@@ -324,7 +324,8 @@ Schroedinger@dead.alive
 </code></pre></td>
 </tr>
 </table>
-<p>The basic HTTP (mock) functions:</p>
+<p>Lets define the api injection module this way, following the same recipe as above.
+The only difference is that we already expect the functions to return <code>Async&lt;&gt;</code>:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
@@ -360,29 +361,6 @@ Schroedinger@dead.alive
 <span class="l">10: </span>
 <span class="l">11: </span>
 <span class="l">12: </span>
-<span class="l">13: </span>
-<span class="l">14: </span>
-<span class="l">15: </span>
-<span class="l">16: </span>
-<span class="l">17: </span>
-<span class="l">18: </span>
-<span class="l">19: </span>
-<span class="l">20: </span>
-<span class="l">21: </span>
-<span class="l">22: </span>
-<span class="l">23: </span>
-<span class="l">24: </span>
-<span class="l">25: </span>
-<span class="l">26: </span>
-<span class="l">27: </span>
-<span class="l">28: </span>
-<span class="l">29: </span>
-<span class="l">30: </span>
-<span class="l">31: </span>
-<span class="l">32: </span>
-<span class="l">33: </span>
-<span class="l">34: </span>
-<span class="l">35: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">tryReserve</span>          <span class="o">=</span> <span class="i">async</span> {
     <span class="k">let!</span> <span class="i">count</span>          <span class="o">=</span> <span class="i">promptForNumber</span> <span class="s">&quot;Please enter number of diners:&quot;</span>   <span class="s">&quot;Not a valid integer.&quot;</span>
@@ -396,22 +374,73 @@ Schroedinger@dead.alive
          <span class="k">do!</span> { <span class="i">Date</span>     <span class="o">=</span> <span class="i">date</span>; <span class="i">Name</span> <span class="o">=</span> <span class="i">name</span>; <span class="i">Email</span> <span class="o">=</span> <span class="i">email</span><span class="o">.</span><span class="i">Address</span>; <span class="i">Quantity</span> <span class="o">=</span> <span class="i">count</span> } <span class="o">|&gt;</span> <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">PostReservation</span>
          <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************\n   %s party of %d, reserved for %A.\n****************&quot;</span> <span class="i">name</span> <span class="i">count</span> <span class="i">date</span> <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
     }
-
-<span class="k">let</span> <span class="i">reserve</span> <span class="i">cli</span> <span class="i">resApi</span> <span class="o">=</span> 
+</code></pre></td>
+</tr>
+</table>
+<p>To run it we pass both the Console api and the reservations api:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">reserve</span> <span class="i">cli</span> <span class="i">resApi</span> <span class="o">=</span> 
     <span class="i">CliInjection</span>   <span class="o">.</span><span class="i">inject</span> <span class="i">cli</span>
     <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">inject</span> <span class="i">resApi</span>
     <span class="i">tryReserve</span> 
     <span class="o">|&gt;</span> <span class="i">Async</span><span class="o">.</span><span class="i">RunSynchronously</span>
-
-<span class="k">module</span> <span class="i">RandomResApi</span> <span class="o">=</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Here is an implementation for the Reservations api that returns a random number of available seats:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">RandomResApi</span> <span class="o">=</span>
     <span class="k">let</span> <span class="i">random</span> <span class="o">=</span> <span class="k">lazy</span> (<span class="i">System</span><span class="o">.</span><span class="i">Random</span> <span class="i">DateTime</span><span class="o">.</span><span class="i">Now</span><span class="o">.</span><span class="i">Millisecond</span>)
     
     <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
                                                         <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">random</span><span class="o">.</span><span class="i">Force</span>()<span class="o">.</span><span class="i">Next</span>(<span class="n">20</span>) } ] }
     <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>                                             }
     <span class="k">let</span> <span class="i">toInject</span> <span class="o">=</span> (<span class="i">getSlotsHttp</span>, <span class="i">postReservationHttp</span>)
-
-<span class="k">module</span> <span class="i">MockReservationAPI</span> <span class="o">=</span>
+</code></pre></td>
+</tr>
+</table>
+<p>We call <code>reserve</code> passing both api</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject2</span>() <span class="o">&lt;|</span> <span class="i">RandomResApi</span><span class="o">.</span><span class="i">toInject</span>
+</code></pre></td>
+</tr>
+</table>
+<table class="pre"><tr><td><pre><code>:: Please enter number of diners:
+15
+:: Please enter your desired date:
+12/31/1911
+:: Please enter your name:
+Schroedinger's cat
+:: Please enter your email address:
+Schroedinger@dead.alive
+:: ****************
+   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
+****************</code></pre></td></tr></table>
+<p>As its name indicates the output is random.</p>
+<p>For testing we can have another version with a fixed number of available seats:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">MockReservationAPI</span> <span class="o">=</span>
     <span class="k">let</span> <span class="k">mutable</span> <span class="i">available</span> <span class="o">=</span> <span class="n">18</span>
 
     <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
@@ -424,37 +453,28 @@ Schroedinger@dead.alive
 </table>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject2</span>() <span class="o">&lt;|</span> <span class="i">RandomResApi</span><span class="o">.</span><span class="i">toInject</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject2</span>() <span class="o">&lt;|</span> <span class="i">MockReservationAPI</span><span class="o">.</span><span class="i">toInject</span>
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>Please enter number of diners:
+<table class="pre"><tr><td><pre><code>:: Please enter number of diners:
 15
-Please enter your desired date:
+:: Please enter your desired date:
 12/31/1911
-****************
-   Only 14 remaining seats.
+:: Please enter your name:
+Schroedinger's cat
+:: Please enter your email address:
+Schroedinger@dead.alive
+:: ****************
+   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
 ****************</code></pre></td></tr></table>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject2</span>() <span class="o">&lt;|</span> <span class="i">MockReservationAPI</span><span class="o">.</span><span class="i">toInject</span>
-<span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject1</span>() <span class="o">&lt;|</span> <span class="i">MockReservationAPI</span><span class="o">.</span><span class="i">toInject</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject1</span>() <span class="o">&lt;|</span> <span class="i">MockReservationAPI</span><span class="o">.</span><span class="i">toInject</span>
 </code></pre></td>
 </tr>
 </table>
 <table class="pre"><tr><td><pre><code>Please enter number of diners:
-15
-Please enter your desired date:
-12/31/1911
-Please enter your name:
-Schroedinger's cat
-Please enter your email address:
-Schroedinger@dead.alive
-****************
-   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
-****************
-Please enter number of diners:
 x
 Not a valid integer.
 Please enter number of diners:
@@ -467,13 +487,9 @@ Please enter your desired date:
 ****************
    Only 3 remaining seats.
 ****************</code></pre></td></tr></table>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"> 
-</code></pre></td>
-</tr>
-</table>
-<p>Using async we accomplish the same objective and avoid a lot of boilerplate.</p>
+<p>Using async we accomplish the same objective and avoid a lot of boilerplate.
+True this does not follow the DSL-interpreter pattern typical of the Free Monad
+but allows separation of concerns, purity and dependency injection.</p>
 
 
           
