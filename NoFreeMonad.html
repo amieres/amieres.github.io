@@ -408,20 +408,28 @@ The only difference is that we already expect the functions to return <code>Asyn
 </tr>
 </table>
 <p>Here is an implementation for the Reservations api that returns a random number of available seats:</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-<span class="l">4: </span>
-<span class="l">5: </span>
-<span class="l">6: </span>
-<span class="l">7: </span>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="i">RandomResApi</span> <span class="o">=</span>
     <span class="k">let</span> <span class="i">random</span> <span class="o">=</span> <span class="k">lazy</span> (<span class="i">System</span><span class="o">.</span><span class="i">Random</span> <span class="i">DateTime</span><span class="o">.</span><span class="i">Now</span><span class="o">.</span><span class="i">Millisecond</span>)
     
-    <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
-                                                        <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">random</span><span class="o">.</span><span class="i">Force</span>()<span class="o">.</span><span class="i">Next</span>(<span class="n">20</span>) } ] }
-    <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>                                             }
+    <span class="k">let</span> <span class="i">getSlotsHttp</span>         <span class="i">date</span>             <span class="o">=</span> <span class="i">async</span> { 
+        <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1000</span>
+        <span class="k">return</span> [ { <span class="i">Date</span> <span class="o">=</span> <span class="i">date</span> ; <span class="i">SeatsLeft</span> <span class="o">=</span> <span class="i">random</span><span class="o">.</span><span class="i">Force</span>()<span class="o">.</span><span class="i">Next</span>(<span class="n">20</span>) } ] 
+      }
+    <span class="k">let</span> <span class="i">postReservationHttp</span> (<span class="i">res</span><span class="o">:</span><span class="i">Reservation</span>) <span class="o">=</span> <span class="i">async</span> { 
+        <span class="k">do!</span> <span class="i">Async</span><span class="o">.</span><span class="i">Sleep</span> <span class="n">1500</span>
+      }
     <span class="k">let</span> <span class="i">toInject</span>() <span class="o">=</span> (<span class="i">getSlotsHttp</span>, <span class="i">postReservationHttp</span>)
 </code></pre></td>
 </tr>
@@ -433,7 +441,13 @@ The only difference is that we already expect the functions to return <code>Asyn
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>:: Please enter number of diners:
+15
+:: Please enter your desired date:
+12/31/1911
+:: ****************    
+Only 0 remaining seats.
+****************</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
@@ -470,7 +484,17 @@ The only difference is that we already expect the functions to return <code>Asyn
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>:: Please enter number of diners:
+15
+:: Please enter your desired date:
+12/31/1911
+:: Please enter your name:
+Schroedinger's cat
+:: Please enter your email address:
+Schroedinger@dead.alive
+:: ****************
+Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
+****************</code></pre></td></tr></table>
 <p>Since originally there were 18 seats, reservation for 5 more will fail.
 Notice the difference in the WriteLine
 output between the 2 outputs:</p>
@@ -480,7 +504,19 @@ output between the 2 outputs:</p>
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>Please enter number of diners:
+x
+Not a valid integer.
+Please enter number of diners:
+5
+Please enter your desired date:
+x
+Not a valid date.
+Please enter your desired date:
+11/11/11
+****************    
+Only 3 remaining seats.
+****************</code></pre></td></tr></table>
 <p>Using async we accomplish the same objective and avoid a lot of boilerplate.
 True, this does not follow the DSL-interpreter pattern typical of the Free Monad
 and there may be other uses that are possible with the Free Monad,
