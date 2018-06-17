@@ -71,7 +71,7 @@ was intended mainly for my own consumption. In it, I concluded that two types: t
 could be fused into one, thus reducing boilerplate. I wanted to try the same approach with Seamann's
 case study where he combines two Free Monads (by stacking them and/or adding them as suggested by a commenter)
 to see if my conclusion still held true.</p>
-<h3><del>A funny thing happened.</del></h3>
+<h3>A funny thing happened.</h3>
 <p>I could not finish. As is logical, my mock HTTP Client functions return <code>Async&lt;&gt;</code> and
 so I wrote my interpreter with type <code>ReservationsApi&lt;'a&gt; -&gt; Async&lt;'a&gt;</code>.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
@@ -390,11 +390,11 @@ Schroedinger@dead.alive
     <span class="k">let!</span> <span class="i">slots</span>          <span class="o">=</span> <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">GetSlots</span> <span class="i">date</span>
     <span class="k">let</span>  <span class="i">availableSeats</span> <span class="o">=</span> <span class="i">slots</span> <span class="o">|&gt;</span> <span class="i">List</span><span class="o">.</span><span class="i">sumBy</span> (<span class="k">fun</span> <span class="i">slot</span> <span class="k">-&gt;</span> <span class="i">slot</span><span class="o">.</span><span class="i">SeatsLeft</span>)
     <span class="k">if</span> <span class="i">availableSeats</span>   <span class="o">&lt;</span> <span class="i">count</span>
-    <span class="k">then</span> <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;Only %i remaining seats.&quot;</span> <span class="i">availableSeats</span>                         <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
+    <span class="k">then</span> <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************\n   Only %i remaining seats.\n****************&quot;</span> <span class="i">availableSeats</span><span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
     <span class="k">else</span> <span class="k">let!</span> <span class="i">name</span>      <span class="o">=</span> <span class="i">promptForString</span> <span class="s">&quot;Please enter your name:&quot;</span>          <span class="s">&quot;Not a valid name.&quot;</span>
          <span class="k">let!</span> <span class="i">email</span>     <span class="o">=</span> <span class="i">promptForEMail</span>  <span class="s">&quot;Please enter your email address:&quot;</span> <span class="s">&quot;Not a valid email.&quot;</span>
          <span class="k">do!</span> { <span class="i">Date</span>     <span class="o">=</span> <span class="i">date</span>; <span class="i">Name</span> <span class="o">=</span> <span class="i">name</span>; <span class="i">Email</span> <span class="o">=</span> <span class="i">email</span><span class="o">.</span><span class="i">Address</span>; <span class="i">Quantity</span> <span class="o">=</span> <span class="i">count</span> } <span class="o">|&gt;</span> <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">PostReservation</span>
-         <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;%s party of %d, reserved for %A.&quot;</span> <span class="i">name</span> <span class="i">count</span> <span class="i">date</span>                <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
+         <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************\n   %s party of %d, reserved for %A.\n****************&quot;</span> <span class="i">name</span> <span class="i">count</span> <span class="i">date</span> <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
     }
 
 <span class="k">let</span> <span class="i">reserve</span> <span class="i">cli</span> <span class="i">resApi</span> <span class="o">=</span> 
@@ -424,11 +424,17 @@ Schroedinger@dead.alive
 </table>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject1</span>() <span class="o">&lt;|</span> <span class="i">RandomResApi</span><span class="o">.</span><span class="i">toInject</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">reserve</span> <span class="o">&lt;|</span> <span class="i">MockConsole</span><span class="o">.</span><span class="i">toInject2</span>() <span class="o">&lt;|</span> <span class="i">RandomResApi</span><span class="o">.</span><span class="i">toInject</span>
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>Please enter number of diners:
+15
+Please enter your desired date:
+12/31/1911
+****************
+   Only 14 remaining seats.
+****************</code></pre></td></tr></table>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 </pre></td>
@@ -437,7 +443,30 @@ Schroedinger@dead.alive
 </code></pre></td>
 </tr>
 </table>
-<table class="pre"><tr><td><pre><code>No output has been produced.</code></pre></td></tr></table>
+<table class="pre"><tr><td><pre><code>Please enter number of diners:
+15
+Please enter your desired date:
+12/31/1911
+Please enter your name:
+Schroedinger's cat
+Please enter your email address:
+Schroedinger@dead.alive
+****************
+   Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
+****************
+Please enter number of diners:
+x
+Not a valid integer.
+Please enter number of diners:
+5
+Please enter your desired date:
+x
+Not a valid date.
+Please enter your desired date:
+11/11/11
+****************
+   Only 3 remaining seats.
+****************</code></pre></td></tr></table>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"> 
