@@ -372,6 +372,7 @@ The only difference is that we already expect the functions to return <code>Asyn
 <span class="l">14: </span>
 <span class="l">15: </span>
 <span class="l">16: </span>
+<span class="l">17: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">tryReserve</span>          <span class="o">=</span> <span class="i">async</span> {
     <span class="k">let!</span> <span class="i">count</span>          <span class="o">=</span> <span class="i">promptForNumber</span> <span class="s">&quot;Please enter number of diners:&quot;</span>   <span class="s">&quot;Not a valid integer.&quot;</span>
@@ -384,7 +385,8 @@ The only difference is that we already expect the functions to return <code>Asyn
 <span class="s">****************&quot;</span> <span class="i">availableSeats</span>  <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
     <span class="k">else</span> <span class="k">let!</span> <span class="i">name</span>      <span class="o">=</span> <span class="i">promptForString</span> <span class="s">&quot;Please enter your name:&quot;</span>          <span class="s">&quot;Not a valid name.&quot;</span>
          <span class="k">let!</span> <span class="i">email</span>     <span class="o">=</span> <span class="i">promptForEMail</span>  <span class="s">&quot;Please enter your email address:&quot;</span> <span class="s">&quot;Not a valid email.&quot;</span>
-         <span class="k">do!</span> { <span class="i">Date</span>     <span class="o">=</span> <span class="i">date</span>; <span class="i">Name</span> <span class="o">=</span> <span class="i">name</span>; <span class="i">Email</span> <span class="o">=</span> <span class="i">email</span><span class="o">.</span><span class="i">Address</span>; <span class="i">Quantity</span> <span class="o">=</span> <span class="i">count</span> } <span class="o">|&gt;</span> <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">PostReservation</span>
+         <span class="k">do!</span> { <span class="i">Date</span>     <span class="o">=</span> <span class="i">date</span>; <span class="i">Name</span> <span class="o">=</span> <span class="i">name</span>; <span class="i">Email</span> <span class="o">=</span> <span class="i">email</span><span class="o">.</span><span class="i">Address</span>; <span class="i">Quantity</span> <span class="o">=</span> <span class="i">count</span> } 
+                                  <span class="o">|&gt;</span> <span class="i">ResApiInjection</span><span class="o">.</span><span class="i">PostReservation</span>
          <span class="k">do!</span> <span class="i">sprintf</span> <span class="s">&quot;****************</span>
 <span class="s">%s party of %d, reserved for %A.</span>
 <span class="s">****************&quot;</span> <span class="i">name</span> <span class="i">count</span> <span class="i">date</span> <span class="o">|&gt;</span> <span class="i">CliInjection</span><span class="o">.</span><span class="i">WriteLine</span>
@@ -445,8 +447,12 @@ The only difference is that we already expect the functions to return <code>Asyn
 15
 :: Please enter your desired date:
 12/31/1911
-:: ****************    
-Only 0 remaining seats.
+:: Please enter your name:
+Schroedinger's cat
+:: Please enter your email address:
+Schroedinger@dead.alive
+:: ****************
+Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
 ****************</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
