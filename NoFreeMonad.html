@@ -448,12 +448,8 @@ The only difference is that we already expect the functions to return <code>Asyn
 15
 :: Please enter your desired date:
 12/31/1911
-:: Please enter your name:
-Schroedinger's cat
-:: Please enter your email address:
-Schroedinger@dead.alive
-:: ****************
-Schroedinger's cat party of 15, reserved for 12/31/1911 12:00:00 AM.
+:: ****************    
+Only 4 remaining seats.
 ****************</code></pre></td></tr></table>
 <p>As its name indicates the output is random.</p>
 <p>For testing we can have another version with a fixed number of available seats:</p>
@@ -525,12 +521,19 @@ Only 3 remaining seats.
 <p>Using async we accomplish the same objective and avoid a lot of boilerplate.
 True, this does not follow the DSL-interpreter pattern typical of the Free Monad
 and there may be other uses that are possible with the Free Monad,
-but this solution allows dependency injection
+but this solution allows dependency injection,
 separation of pure and impure code, separation of concerns and composition,
 all in a very clean and powerful way.</p>
 <p>Using the <code>async</code> Computational Expression has the added advantage of
-already having strong implementations for <code>try-finally</code>, <code>try-with</code>, <code>use</code>, <code>while</code>, <code>for</code> and other
-features that are not easy to implement.</p>
+already having strong implementations for:</p>
+<ul>
+<li><code>try-finally</code></li>
+<li><code>try-with</code></li>
+<li><code>use</code> an <code>use!</code></li>
+<li><code>while</code></li>
+<li><code>for</code></li>
+</ul>
+<p>... and other computational expressions features that are not easy to implement and/or new ones that may be added in the future.</p>
 
 
           
