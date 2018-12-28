@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <title>Markdown Tester</title>
+  </head>
+  <body>
+    <span style="font-size: 40px">Markdown tester</span>
+    <span style="font-size: 8px">Powered by <a href="https://forums.websharper.com/blog/86199">Bolero</a></span>
+    <div id="main"></div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+      function storageChange(event) {
+        DotNet.invokeMethod("Markdown.Client", "storageChange", event.key, event.newValue, event.oldValue);
+      }
+      window.addEventListener("storage", storageChange);
+      function setItem(key, value) {
+        localStorage.setItem(key, value);
+      }
+  </script>
+</body>
+</html>
