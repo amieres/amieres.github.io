@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <title>Regex tester for .Net</title>
+  </head>
+  <body>
+    <span style="font-size: 40px">Regex tester for .Net</span>
+    <span style="font-size: 8px">Powered by <a href="https://forums.websharper.com/blog/86199">Bolero</a></span>
+    <div><a href="REGEXJS.html">Regex tester for Javascript</a></div>
+    <h1></h1>
+    <div id="main"></div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        function storageChange(event) {
+          console.log(event);
+          DotNet.invokeMethod("MyApp.Client", "storageChange", event.key, event.newValue, event.oldValue);
+          console.log(event.key, event.newValue, event.oldValue);
+        }
+        window.addEventListener("storage", storageChange);
+        function setItem(key, value) {
+          localStorage.setItem(key, value);
+        }
+    </script>
+  </body>
+</html>
