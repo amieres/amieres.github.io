@@ -361,7 +361,7 @@ if (!console) {
 (function()
 {
  "use strict";
- var Global,FsRoot,TestingJS,Msal,Policy,SC$1,WebSharper,Operators,Library,testing_GeneratedPrintf,Utils,Obj,UI,Var$1,Unchecked,Var,View,LibraryJS,Msal$1,UserAgentApplication,JavaScript,Promise,List,T,HtmlModule,attr,Seq,JS,ViewBuilder,Pervasives,Doc,EventTarget,Node,WindowOrWorkerGlobalScope,String,Strings,Slice,Char,Arrays,ConcreteVar,Snap,Concurrency,Pojo,AttrModule,AttrProxy,Enumerator,T$1,Array,Client,Templates,Abbrev,Fresh,Object,AsyncBody,SC$2,Error,NonStandardPromiseRejectionException,CT,Attrs,DomUtility,Docs,Collections,Dictionary,Scheduler,CancellationTokenSource,DynamicAttrNode,Elt,DocElemNode,CharacterData,SC$3,HashSet,An,Settings,Mailbox,SC$4,OperationCanceledException,SC$5,Updates,Attrs$1,Dyn,DictionaryUtil,Prepare,KeyCollection,Docs$1,RunState,NodeSet,Anims,SC$6,Queue,SC$7,SC$8,AppendList,Easing,HashSet$1,HashSetUtil,DomNodes,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,console,IntelliFactory,Runtime,$,Date;
+ var Global,FsRoot,TestingJS,Msal,Policy,SC$1,WebSharper,Operators,Library,testing_GeneratedPrintf,Utils,Obj,UI,Var$1,Unchecked,Var,View,LibraryJS,Msal$1,UserAgentApplication,JavaScript,Promise,List,T,HtmlModule,attr,Seq,JS,ViewBuilder,Doc,Pervasives,EventTarget,Node,WindowOrWorkerGlobalScope,String,Strings,Slice,Char,Arrays,ConcreteVar,Snap,Concurrency,Pojo,AttrModule,AttrProxy,Enumerator,T$1,Array,Client,Templates,Abbrev,Fresh,Object,AsyncBody,SC$2,Error,NonStandardPromiseRejectionException,CT,Attrs,DomUtility,Docs,Collections,Dictionary,Scheduler,CancellationTokenSource,DynamicAttrNode,Elt,DocElemNode,CharacterData,SC$3,HashSet,An,Settings,Mailbox,SC$4,OperationCanceledException,SC$5,Updates,Attrs$1,Dyn,DictionaryUtil,Prepare,KeyCollection,Docs$1,RunState,NodeSet,Anims,SC$6,Queue,SC$7,SC$8,AppendList,Easing,HashSet$1,HashSetUtil,DomNodes,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,console,IntelliFactory,Runtime,$,Date;
  Global=self;
  FsRoot=Global.FsRoot=Global.FsRoot||{};
  TestingJS=FsRoot.TestingJS=FsRoot.TestingJS||{};
@@ -391,8 +391,8 @@ if (!console) {
  Seq=WebSharper.Seq=WebSharper.Seq||{};
  JS=JavaScript.JS=JavaScript.JS||{};
  ViewBuilder=UI.ViewBuilder=UI.ViewBuilder||{};
- Pervasives=JavaScript.Pervasives=JavaScript.Pervasives||{};
  Doc=UI.Doc=UI.Doc||{};
+ Pervasives=JavaScript.Pervasives=JavaScript.Pervasives||{};
  EventTarget=Global.EventTarget;
  Node=Global.Node;
  WindowOrWorkerGlobalScope=Global.WindowOrWorkerGlobalScope;
@@ -880,10 +880,10 @@ if (!console) {
     }
    else
     Msal.agentO().Set(null);
-  }),null,checkbox("Refresh before Edit",Msal.refreshBeforeB()))])]),Doc.Element("br",[],[]),Doc.Element("table",[AttrProxy.Create("style","width: 95%")],[Doc.Element("tbody",[],[input("App Id",Msal.localTestingApp()),input("tenant Name",Msal.tenantName()),input("ref/state",Msal.ref()),input("extra query parameters",Msal.extraQueryParms()),input0(buttonP(Policy.SignIn,signInW,function()
+  }),null,checkbox("Refresh before Edit",Msal.refreshBeforeB()))])]),Doc.Element("br",[],[]),Doc.Element("table",[AttrProxy.Create("style","width: 95%")],[Doc.Element("tbody",[],[input("App Id",Msal.localTestingApp()),input("tenant Name",Msal.tenantName()),input("ref/state",Msal.ref()),input("extra query parameters",Msal.extraQueryParms()),input0(Doc.Concat(List.ofArray([checkbox("Force login dialog",Msal.forceLoginB()),buttonP(Policy.SignIn,signInW,function()
   {
    setAndRunPolicy(Msal.forceLoginB().Get(),Policy.SignIn);
-  }),Msal.signInPolicy()),input0(buttonP(Policy.SignUp,signUpW,function()
+  })])),Msal.signInPolicy()),input0(buttonP(Policy.SignUp,signUpW,function()
   {
    setAndRunPolicy(true,Policy.SignUp);
   }),Msal.signUpPolicy()),input0(buttonP(Policy.EditProfile,editProfileW,function()
@@ -895,7 +895,7 @@ if (!console) {
   }),Msal.resetPasswordPolicy()),Doc.Element("tr",[],[]),(_var=Msal.policyTypeT(),(ops=Msal.policies(),(elem=Doc.Select([enabledV()],Global.String,ops,_var),row0({
    $:1,
    $0:AttrProxy.Create("style","text-align:right; width: 20%")
-  },Doc.Element("label",[],[Doc.TextNode("policy type"+":")]),null,elem)))),input("Authority",Msal.authority())])]),checkbox("Force login",Msal.forceLoginB()),Doc.Element("br",[],[]),Doc.Element("div",[],[Doc.Button("Logout",[disabledV()],logout)]),loginMessageDoc,Doc.Element("div",[],[buttonV("Popup",false,function()
+  },Doc.Element("label",[],[Doc.TextNode("policy type"+":")]),null,elem)))),input("Authority",Msal.authority())])]),Doc.Element("br",[],[]),Doc.Element("div",[],[Doc.Button("Logout",[disabledV()],logout)]),loginMessageDoc,Doc.Element("div",[],[buttonV("Popup",false,function()
   {
    executePolicy(function(agent)
    {
@@ -1982,26 +1982,6 @@ if (!console) {
  ViewBuilder.B={
   $:0
  };
- Pervasives.NewFromSeq=function(fields)
- {
-  var r,e,f;
-  r={};
-  e=Enumerator.Get(fields);
-  try
-  {
-   while(e.MoveNext())
-    {
-     f=e.Current();
-     r[f[0]]=f[1];
-    }
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
-  return r;
- };
  Doc=UI.Doc=Runtime.Class({},Obj,Doc);
  Doc.Concat=function(xs)
  {
@@ -2044,6 +2024,14 @@ if (!console) {
    return Seq.append(attrs,[AttrProxy.Create("type","checkbox"),AttrModule.Checked(chk)]);
   });
  };
+ Doc.Append=function(a,b)
+ {
+  return Doc.Mk({
+   $:0,
+   $0:a.docNode,
+   $1:b.docNode
+  },View.Map2Unit(a.updates,b.updates));
+ };
  Doc.TextView=function(txt)
  {
   var node;
@@ -2055,14 +2043,6 @@ if (!console) {
   {
    Docs.UpdateTextNode(node,t);
   },txt));
- };
- Doc.Append=function(a,b)
- {
-  return Doc.Mk({
-   $:0,
-   $0:a.docNode,
-   $1:b.docNode
-  },View.Map2Unit(a.updates,b.updates));
  };
  Doc.Mk=function(node,updates)
  {
@@ -2190,6 +2170,26 @@ if (!console) {
   this.docNode=docNode;
   this.updates=updates;
  },Doc);
+ Pervasives.NewFromSeq=function(fields)
+ {
+  var r,e,f;
+  r={};
+  e=Enumerator.Get(fields);
+  try
+  {
+   while(e.MoveNext())
+    {
+     f=e.Current();
+     r[f[0]]=f[1];
+    }
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+  return r;
+ };
  String.unindent=function(s)
  {
   var lines,n,o,o$1;
@@ -3823,6 +3823,7 @@ if (!console) {
   if(el.parentNode===parent)
    parent.removeChild(el);
  };
+ View=UI.View=Runtime.Class({},null,View);
  Docs.CreateTextNode=function()
  {
   return{
@@ -4040,7 +4041,6 @@ if (!console) {
   }),DomNodes.Except(DomNodes.DocChildren(el),DomNodes.Children(el.El,Runtime.GetOptional(el.Delimiters))));
   ins(el.Children,(m=Runtime.GetOptional(el.Delimiters),m!=null&&m.$==1?m.$0[1]:null));
  };
- View=UI.View=Runtime.Class({},null,View);
  Dictionary=Collections.Dictionary=Runtime.Class({
   set_Item:function(k,v)
   {
