@@ -832,7 +832,7 @@ if (!console) {
       case 3:
        return View.Const(Doc.TextNode(function($2)
        {
-        return $2("To Sign Up make sure to have clicked on <Logout> first and then click on Sign Up Popup or Redirect!");
+        return $2("To Sign Up make sure to really be logged out by clicking on <Logout> first and then click on Sign Up Popup or Redirect!");
        }(Global.id)));
       case 4:
        return View.Const(Doc.TextNode(function($2)
@@ -869,7 +869,7 @@ if (!console) {
   {
    return function($2)
    {
-    return $1("Msal.js "+Utils.toSafe($2)+" (Microsoft authentication library)");
+    return $1("Msal.js "+Utils.toSafe($2)+" (Microsoft authentication library) & Azure AD B2C");
    };
   }(Global.id))(Msal.version()))]),Doc.Element("br",[],[]),Doc.Element("table",[],[Doc.Element("tbody",[],[row0(null,Doc.Button("Create Agent",[enabledV()],createAgent),null,checkbox("Create on Start",Msal.createOnStartB())),row0(null,Doc.Button("Edit",[disabledV()],function()
   {
@@ -922,7 +922,7 @@ if (!console) {
    {
     return true;
    },user.idToken)])))):View.Const(Doc.get_Empty());
-  },Msal.userO().get_View())))]);
+  },Msal.userO().get_View()))),Doc.Element("a",[AttrProxy.Create("href","https://gist.github.com/amieres/bc8e39f2e1e6e54fd1dfaeeae24ad304")],[Doc.TextNode("gist")])]);
   !DoNotShowUI?(parent=self.document.body,Templates.LoadLocalTemplates(""),Doc.Run(parent,doc)):void 0;
  };
  Msal.main=function()
