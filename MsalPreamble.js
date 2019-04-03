@@ -653,7 +653,7 @@ if (!console) {
  };
  Msal.ui=function()
  {
-  var loginMessageDoc,b,signInW,signUpW,resetPasswordW,p,action,b$1,DoNotShowUI,doc,b$2,parent;
+  var loginMessageDoc,b,signInW,signUpW,editProfileW,resetPasswordW,p,action,b$1,DoNotShowUI,doc,b$2,parent;
   function checkUser()
   {
    var a,o,m;
@@ -965,7 +965,7 @@ if (!console) {
   {
    return $1!=null&&$2==null;
   },Msal.agentO().get_View(),Msal.userO().get_View());
-  View.Map2(function($1,$2)
+  editProfileW=View.Map2(function($1,$2)
   {
    return $1!=null&&$2!=null;
   },Msal.agentO().get_View(),Msal.userO().get_View());
@@ -1032,7 +1032,7 @@ if (!console) {
     }
    else
     Msal.agentO().Set(null);
-  }),null,checkbox("Refresh before Edit",Msal.refreshBeforeB()))])]),Doc.Element("br",[],[]),Doc.Element("table",[AttrProxy.Create("style","width: 95%")],[Doc.Element("tbody",[],[row("preamble state",Doc.Concat([select0(T.Empty,Msal.preambleState(),Msal.preambleStates()),Doc.TextNode("Refresh (F5) to update state")])),input("App Id",Msal.applicationId()),input("tenant Name",Msal.tenantName()),input("ref/state",Msal.ref()),input("extra query parameters",Msal.extraQueryParms()),input("go Inside link",Msal.goInsideLink()),input0(Doc.Concat(List.ofArray([checkbox("Force login dialog",Msal.forceLoginB()),buttonP(Policy.SignIn,signInW,actSignIn)])),Msal.signInPolicy()),input0(buttonP(Policy.SignUp,signUpW,actSignUp),Msal.signUpPolicy()),input0(buttonP(Policy.ResetPassword,resetPasswordW,actResetPassword),Msal.resetPasswordPolicy()),Doc.Element("tr",[],[]),row("policy type",select0(List.ofArray([enabledV()]),Msal.policyType(),Msal$1.policies())),input("Authority",Msal.authority())])]),Doc.Element("br",[],[]),Doc.Element("div",[],[Doc.Button("Logout",[disabledV()],logout)]),loginMessageDoc,Doc.Element("div",[],[buttonV("Popup",false,function()
+  }),null,checkbox("Refresh before Edit",Msal.refreshBeforeB()))])]),Doc.Element("br",[],[]),Doc.Element("table",[AttrProxy.Create("style","width: 95%")],[Doc.Element("tbody",[],[row("preamble state",Doc.Concat([select0(T.Empty,Msal.preambleState(),Msal.preambleStates()),Doc.TextNode("Refresh (F5) to update state")])),input("App Id",Msal.applicationId()),input("tenant Name",Msal.tenantName()),input("ref/state",Msal.ref()),input("extra query parameters",Msal.extraQueryParms()),input("go Inside link",Msal.goInsideLink()),input0(Doc.Concat(List.ofArray([checkbox("Force login dialog",Msal.forceLoginB()),buttonP(Policy.SignIn,signInW,actSignIn)])),Msal.signInPolicy()),input0(buttonP(Policy.SignUp,signUpW,actSignUp),Msal.signUpPolicy()),input0(buttonP(Policy.EditProfile,editProfileW,actEditProfile),Msal.editProfilePolicy()),input0(buttonP(Policy.ResetPassword,resetPasswordW,actResetPassword),Msal.resetPasswordPolicy()),Doc.Element("tr",[],[]),row("policy type",select0(List.ofArray([enabledV()]),Msal.policyType(),Msal$1.policies())),input("Authority",Msal.authority())])]),Doc.Element("br",[],[]),Doc.Element("div",[],[Doc.Button("Logout",[disabledV()],logout)]),loginMessageDoc,Doc.Element("div",[],[buttonV("Popup",false,function()
   {
    executePolicy(function(agent)
    {
@@ -2099,18 +2099,18 @@ if (!console) {
  {
   return ViewBuilder.B;
  };
- View.Map2=function(fn,a,a$1)
- {
-  return View.CreateLazy(function()
-  {
-   return Snap.Map2(fn,a(),a$1());
-  });
- };
  View.GetAsync=function(v)
  {
   return Concurrency.FromContinuations(function(ok)
   {
    return View.Get(ok,v);
+  });
+ };
+ View.Map2=function(fn,a,a$1)
+ {
+  return View.CreateLazy(function()
+  {
+   return Snap.Map2(fn,a(),a$1());
   });
  };
  View.CreateLazy=function(observe)
@@ -2321,11 +2321,11 @@ if (!console) {
  Policy.SignUp=new Policy({
   $:1
  });
- Policy.ResetPassword=new Policy({
-  $:3
- });
  Policy.EditProfile=new Policy({
   $:2
+ });
+ Policy.ResetPassword=new Policy({
+  $:3
  });
  Policy.Parse=function(txt)
  {
