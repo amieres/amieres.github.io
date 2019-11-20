@@ -3509,7 +3509,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    SnippetsUI.parseNewLY();
   })));
   MonacoPlugIn.plugInAdded();
-  AppFramework.mainDocV().Set("lytDemo.main2");
  };
  Operators.range=function(min,max)
  {
