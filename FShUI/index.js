@@ -7,8 +7,6 @@ requirejs([
 function   (jquery, fileSaver, markedJS, FShUI) {
     marked = markedJS;
     FsRoot.TestingJS.SnippetsUI.addLayout("lytDemo", `
-marked    View "https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-requireMk ViewJS "require(['@{marked}'], mk => marked = mk ),'';"
 
 lytTarget2 PlugIn
 : Var ParseMsgs
@@ -57,7 +55,7 @@ editor2  Doc    Monaco.editor Snippets.curSnp_explanation "markdown" "vs-dark" "
 MarkDown1 ViewJS "t => marked(t.split('\\\\-\\\\-')[0])"      Snippets.curSnp_explanation
 MarkDown2 ViewJS "t => marked(t.split('\\\\-\\\\-')[1])"      Snippets.curSnp_explanation
 
-content div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger requireMk
+content div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
 :  h2        ""              Snippets.curSnp_name
 :  Doc       AF.HtmlDoc MarkDown1
 :  div       "height:100%;class=relative;flex:2" editor
