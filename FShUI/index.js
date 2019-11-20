@@ -6,7 +6,7 @@ requirejs([
 ],
 function   (jquery, fileSaver, markedJS, FShUI) {
     marked = markedJS;
-    FShUI.FsRoot.TestingJS.SnippetsUI.addLayout("lytDemo", `
+    FsRoot.TestingJS.SnippetsUI.addLayout("lytDemo", `
 marked    View "https://cdn.jsdelivr.net/npm/marked/marked.min.js"
 requireMk ViewJS "require(['@{marked}'], mk => marked = mk ),'';"
 
@@ -90,5 +90,5 @@ main0 vertical 0-60-100
 : Docs Right
     
     `);
-    FShUI.FsRootDll.LibraryJS.AppFramework.mainDocV.Set("lytDemo.main2");
+    FsRootDll.LibraryJS.AppFramework.mainDocV.Set("lytDemo.main2");
 });
