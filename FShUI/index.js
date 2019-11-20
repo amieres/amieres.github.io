@@ -79,8 +79,8 @@ list div "display: flex;flex-direction: column" gotoMain File
 :: button "click=@{Snippets.AddSnippet}   ;title=Add New Snippet" "+"
 :: button "margin-left:20px;click=@{Snippets.DeleteSnippet};title=Delete  Snippet" "x"
 
-editor   Docs    "Monaco.editor Snippets.curSnp_content    " "fsharp"   "vs-dark" ""
-editor2  Docs    "Monaco.editor Snippets.curSnp_explanation" "markdown" "vs-dark" ""
+editor   Docs    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
+editor2  Docs    Monaco.editor Snippets.curSnp_explanation "markdown" "vs-dark" ""
 MarkDown1 ViewJS "t => marked(t.split('\\\\-\\\\-')[0])"      Snippets.curSnp_explanation
 MarkDown2 ViewJS "t => marked(t.split('\\\\-\\\\-')[1])"      Snippets.curSnp_explanation
 
