@@ -6,7 +6,7 @@ requirejs([
     , "/FShUi/MonacoPlugIn.js"
     , "/FShUi/testing.js"
 ],
-function   (jquery, fileSaver, markedJS) {
+function   (jquery, fileSaver, markedJS,a,b,c) {
     marked = markedJS;
     FsRoot.TestingJS.SnippetsUI.addLayout("lytDemo", `
 
