@@ -362,7 +362,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
 (function()
 {
  "use strict";
- var Global,FsRoot,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,TestingJS,SnippetTemplates,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,WebSharper,Obj,Unchecked,Collections,Dictionary,SC$1,Operators,Option$1,Seq$1,Arrays,List,T,Utils,Strings,System,Guid,Set,FSharpSet,FSharpMap,UI,View,Var$1,Var,Numeric,Slice,ListModel,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,FsRootDll,LibraryJS,AppFramework,ListModelData,Handler,testing_Templates,Doc,EventTarget,FileReader,JavaScript,Pervasives,LibraryJS$1,Serializer$1,JS,LayoutEngine,LayoutEngineModule,PlugInName,StartAppFramework,Library$1,Monads$1,Depend,AppFrameworkTemplate,Object,ViewBuilder,LM,PlugInBuilder,NewLY,Node,MonacoPlugIn,Enumerator,T$1,BalancedTree,MapUtil,Tree,AttrModule,Snap,FromView,DictionaryUtil,List$1,HashSet,Client,Array,Abbrev,Fresh,PlgElemName,SC$2,DateUtil,Storage,ConcreteVar,ListModel$1,Async,PlugIn,Syntax,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,Lazy,WindowOrWorkerGlobalScope,SC$3,Pair,Attrs,DomUtility,AttrProxy,CheckedInput,View$1,Client$1,Templates,State,CEBuilder,Result,Builder,DependBuilder,String,ParseO$1,WebComponent,WcTabStrip,WcTabStripT,LayoutEngine_Templates,LayoutEngine_GeneratedPrintf,GeneratedPrintf,Val,Extract0,Operators$1,AAttr,HtmlModule,attr,WcSplitter,AppFrameworkTemplate$1,P,ArrayStorage,Result$1,RefType,LazyExtensionsProxy,LazyRecord,Result$2,Builder$1,BuilderP,ResultM,Builder$2,AsyncResultM,AsyncResultMBuilder,Monaco,Editor,GenEditor,GenEditor$1,DynamicAttrNode,Docs,Elt,DocElemNode,CharacterData,SC$4,WcSplitterT,Fun,P$1,Layout,Concurrency,GenEditorHook,MonacoGenAdapter,Updates,Attrs$1,Dyn,SC$5,Measures,Hoverable,Hoverable$1,CancellationTokenSource,SC$6,Event,UIEvent,ResizeObserver,HashSetUtil,Error,FormatException,AsyncBody,Position,Queue,SC$7,Prepare,KeyCollection,MatchFailureException,AggregateException,CT,Scheduler,MonacoRT,String$1,An,Settings,Mailbox,SC$8,OperationCanceledException,MarkerData,Position$1,ResizeObserver$1,HoverProvider,DefinitionProvider,CompletionItemProvider,Char,Docs$1,RunState,NodeSet,Anims,SC$9,SC$10,AppendList,Easing,HashSet$1,DomNodes,SC$11,IntelliFactory,Runtime$1,Date,console,Math,$,JSON,Reflect;
+ var Global,FsRoot,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,TestingJS,SnippetTemplates,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,WebSharper,Obj,Unchecked,Collections,Dictionary,SC$1,Operators,Option$1,Seq$1,Arrays,List,T,Utils,Strings,System,Guid,Set,FSharpSet,FSharpMap,UI,View,Var$1,Var,Numeric,Slice,ListModel,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,FsRootDll,LibraryJS,AppFramework,ListModelData,Handler,testing_Templates,Doc,EventTarget,FileReader,JavaScript,Pervasives,LibraryJS$1,Serializer$1,JS,LayoutEngine,LayoutEngineModule,PlugInName,NewLY,StartAppFramework,Library$1,Monads$1,Depend,AppFrameworkTemplate,Object,ViewBuilder,LM,PlugInBuilder,Node,MonacoPlugIn,Enumerator,T$1,BalancedTree,MapUtil,Tree,AttrModule,Snap,FromView,DictionaryUtil,List$1,HashSet,Client,Array,Abbrev,Fresh,PlgElemName,SC$2,DateUtil,Storage,ConcreteVar,ListModel$1,Async,PlugIn,Syntax,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,Lazy,WindowOrWorkerGlobalScope,SC$3,Pair,Attrs,DomUtility,AttrProxy,CheckedInput,View$1,Client$1,Templates,State,CEBuilder,Result,Builder,DependBuilder,String,ParseO$1,WebComponent,WcTabStrip,WcTabStripT,LayoutEngine_Templates,LayoutEngine_GeneratedPrintf,GeneratedPrintf,Val,Extract0,Operators$1,AAttr,HtmlModule,attr,WcSplitter,AppFrameworkTemplate$1,P,ArrayStorage,Result$1,RefType,LazyExtensionsProxy,LazyRecord,Result$2,Builder$1,BuilderP,ResultM,Builder$2,AsyncResultM,AsyncResultMBuilder,Monaco,Editor,GenEditor,GenEditor$1,DynamicAttrNode,Docs,Elt,DocElemNode,CharacterData,SC$4,WcSplitterT,Fun,P$1,Layout,Concurrency,GenEditorHook,MonacoGenAdapter,Updates,Attrs$1,Dyn,SC$5,Hoverable,Hoverable$1,CancellationTokenSource,SC$6,Event,UIEvent,ResizeObserver,HashSetUtil,Error,FormatException,Measures,AsyncBody,Position,Queue,SC$7,Prepare,KeyCollection,AggregateException,MatchFailureException,CT,Scheduler,MonacoRT,String$1,An,Settings,Mailbox,SC$8,OperationCanceledException,MarkerData,Position$1,ResizeObserver$1,HoverProvider,DefinitionProvider,CompletionItemProvider,Char,Docs$1,RunState,NodeSet,Anims,SC$9,SC$10,AppendList,Easing,HashSet$1,DomNodes,SC$11,IntelliFactory,Runtime$1,Date,console,Math,$,JSON,Reflect;
  Global=self;
  FsRoot=Global.FsRoot=Global.FsRoot||{};
  Library=FsRoot.Library=FsRoot.Library||{};
@@ -435,6 +435,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  LayoutEngine=LibraryJS.LayoutEngine=LibraryJS.LayoutEngine||{};
  LayoutEngineModule=LibraryJS.LayoutEngineModule=LibraryJS.LayoutEngineModule||{};
  PlugInName=AppFramework.PlugInName=AppFramework.PlugInName||{};
+ NewLY=LibraryJS.NewLY=LibraryJS.NewLY||{};
  StartAppFramework=LibraryJS.StartAppFramework=LibraryJS.StartAppFramework||{};
  Library$1=FsRootDll.Library=FsRootDll.Library||{};
  Monads$1=Library$1.Monads=Library$1.Monads||{};
@@ -444,7 +445,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  ViewBuilder=UI.ViewBuilder=UI.ViewBuilder||{};
  LM=LibraryJS.LM=LibraryJS.LM||{};
  PlugInBuilder=AppFramework.PlugInBuilder=AppFramework.PlugInBuilder||{};
- NewLY=LibraryJS.NewLY=LibraryJS.NewLY||{};
  Node=Global.Node;
  MonacoPlugIn=LibraryJS$1.MonacoPlugIn=LibraryJS$1.MonacoPlugIn||{};
  Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
@@ -542,7 +542,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Attrs$1=Client$1.Attrs=Client$1.Attrs||{};
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
  SC$5=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
- Measures=LayoutEngineModule.Measures=LayoutEngineModule.Measures||{};
  Hoverable=LibraryJS.Hoverable=LibraryJS.Hoverable||{};
  Hoverable$1=Hoverable.Hoverable=Hoverable.Hoverable||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
@@ -553,14 +552,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  Error=Global.Error;
  FormatException=WebSharper.FormatException=WebSharper.FormatException||{};
+ Measures=LayoutEngineModule.Measures=LayoutEngineModule.Measures||{};
  AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
  Position=GenEditor.Position=GenEditor.Position||{};
  Queue=WebSharper.Queue=WebSharper.Queue||{};
  SC$7=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  Prepare=Templates.Prepare=Templates.Prepare||{};
  KeyCollection=Collections.KeyCollection=Collections.KeyCollection||{};
- MatchFailureException=WebSharper.MatchFailureException=WebSharper.MatchFailureException||{};
  AggregateException=WebSharper.AggregateException=WebSharper.AggregateException||{};
+ MatchFailureException=WebSharper.MatchFailureException=WebSharper.MatchFailureException||{};
  CT=Concurrency.CT=Concurrency.CT||{};
  Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
  MonacoRT=MonacoGenAdapter.MonacoRT=MonacoGenAdapter.MonacoRT||{};
@@ -2471,7 +2471,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  SnippetsUI.addLayout=function(name,content)
  {
-  LayoutEngineModule.addLayout(LayoutEngineModule.newLyt(new PlugInName({
+  NewLY.addLayout(LayoutEngineModule.newLyt(new PlugInName({
    $:0,
    $0:name
   }),content));
@@ -6173,43 +6173,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return LayoutEngine.New(name,Var$1.Create$1(lyt));
  };
- LayoutEngineModule.addLayout=function(lyt)
- {
-  View.Sink(function(txt)
-  {
-   var x;
-   LayoutEngineModule.set_currentViewTriggger(View.Map2(function($1,$2)
-   {
-    return $1+$2;
-   },lyt.lytDefinition.get_View(),AppFramework.mainDocV().get_View()));
-   LayoutEngineModule.refreshEntries(lyt.lytName,(x=(LayoutEngineModule.createEntries(lyt.lytName))(txt),Seq$1.append(List.ofArray([{
-    $:0,
-    $0:AppFramework.newVar(new PlgElemName({
-     $:0,
-     $0:"Layout"
-    }),lyt.lytDefinition)
-   }]),x)));
-  },lyt.lytDefinition.get_View());
- };
  LayoutEngineModule.parseEntries=function(lytNm,txt)
  {
   return LayoutEngineModule.processText(Syntax.createEntryO2(lytNm,new Dictionary.New$5()),txt);
- };
- LayoutEngineModule.set_currentViewTriggger=function($1)
- {
-  SC$2.$cctor();
-  SC$2.currentViewTriggger=$1;
- };
- LayoutEngineModule.createEntries=function(lytNm)
- {
-  function f(l)
-  {
-   return LayoutEngineModule.createEntryO(lytNm,l);
-  }
-  return function(t)
-  {
-   return LayoutEngineModule.processText(f,t);
-  };
  };
  LayoutEngineModule.refreshEntries=function(lytN,entries)
  {
@@ -6274,55 +6240,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  LayoutEngineModule.processText=function(f,txt)
  {
   return LayoutEngineModule.processLines(f,Strings.SplitChars(txt,["\n","\r"],1));
- };
- LayoutEngineModule.createEntryO=function(lytNm,line)
- {
-  var m,$1,a,a$1,name,$2,a$2,a$3,name$1,$3,a$4,a$5,name$2,$4,a$6,a$7,name$3,$5,a$8,a$9,name$4,$6,a$10,name$5,$7,a$11,name$6,$8,a$12,name$7,$9,a$13,name$8,$10,a$14,name$9,$11,a$15,a$16,name$10,$12,a$17,a$18,name$11;
-  try
-  {
-   m=LayoutEngineModule.splitTokens(line);
-   return m.$==1&&(a=LayoutEngineModule.Identifier(m.$0),a!=null&&a.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==0&&(m.$1.$1.$==1&&(a$1=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$1!=null&&a$1.$==1&&($1=[m.$1.$1.$1,a$1.$0,a.$0],true))))))?(name=$1[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name
-   }),(LayoutEngineModule.createSplitterM())([lytNm,name,true,$1[1],$1[0]]))):m.$==1&&(a$2=LayoutEngineModule.Identifier(m.$0),a$2!=null&&a$2.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$3=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$3!=null&&a$3.$==1&&($2=[m.$1.$1.$1,a$3.$0,a$2.$0],true))))))?(name$1=$2[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$1
-   }),(LayoutEngineModule.createSplitterM())([lytNm,name$1,false,$2[1],$2[0]]))):m.$==1&&(a$4=LayoutEngineModule.Identifier(m.$0),a$4!=null&&a$4.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$5=LayoutEngineModule.Identifier(m.$1.$1.$0),a$5!=null&&a$5.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$1.$==0&&($3=[a$5.$0,m.$1.$1.$1.$0,a$4.$0,m.$1.$1.$1.$1.$0],true)))))))))?(name$2=$3[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$2
-   }),(LayoutEngineModule.createButtonM())([lytNm,name$2,$3[0],$3[1],$3[3]]))):m.$==1&&(a$6=LayoutEngineModule.Identifier(m.$0),a$6!=null&&a$6.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==2&&(m.$1.$1.$==1&&(a$7=LayoutEngineModule.Identifier(m.$1.$1.$0),a$7!=null&&a$7.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($4=[m.$1.$1.$1.$0,a$6.$0,a$7.$0],true))))))))?(name$3=$4[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$3
-   }),(LayoutEngineModule.createInputM())([lytNm,name$3,$4[2],$4[0]]))):m.$==1&&(a$8=LayoutEngineModule.Identifier(m.$0),a$8!=null&&a$8.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==3&&(m.$1.$1.$==1&&(a$9=LayoutEngineModule.Identifier(m.$1.$1.$0),a$9!=null&&a$9.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($5=[m.$1.$1.$1.$0,a$8.$0,a$9.$0],true))))))))?(name$4=$5[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$4
-   }),(LayoutEngineModule.createTextAreaM())([lytNm,name$4,$5[2],$5[0]]))):m.$==1&&(a$10=LayoutEngineModule.Identifier(m.$0),a$10!=null&&a$10.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==0&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==0&&($6=[a$10.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$5=$6[0],LayoutEngineModule.entryVar(new PlgElemName({
-    $:0,
-    $0:name$5
-   }),(LayoutEngineModule.createVarM())([lytNm,name$5,$6[1]]))):m.$==1&&(a$11=LayoutEngineModule.Identifier(m.$0),a$11!=null&&a$11.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==1&&(m.$1.$1.$==1&&($7=[LayoutEngineModule.S(m.$1.$1.$0),a$11.$0,m.$1.$1.$1],true)))))?(name$6=$7[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$6
-   }),(LayoutEngineModule.createDocM())([lytNm,name$6,$7[0],$7[2]]))):m.$==1&&(a$12=LayoutEngineModule.Identifier(m.$0),a$12!=null&&a$12.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==2&&($8=[a$12.$0,m.$1.$1],true))))?(name$7=$8[0],LayoutEngineModule.entryView(new PlgElemName({
-    $:0,
-    $0:name$7
-   }),(LayoutEngineModule.createViewM())([lytNm,name$7,$8[1]]))):m.$==1&&(a$13=LayoutEngineModule.Identifier(m.$0),a$13!=null&&a$13.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==4&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==1&&($9=[m.$1.$1.$1.$0,m.$1.$1.$1.$1,a$13.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$8=$9[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$8
-   }),(LayoutEngineModule.createTemplateM())([lytNm,name$8,$9[3],$9[0],$9[1]]))):m.$==1&&(a$14=LayoutEngineModule.Identifier(m.$0),a$14!=null&&a$14.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==4&&($10=[m.$1.$1,a$14.$0],true))))?(name$9=$10[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$9
-   }),(LayoutEngineModule.createConcatM())([lytNm,name$9,$10[0]]))):m.$==1&&(a$15=LayoutEngineModule.Identifier(m.$0),a$15!=null&&a$15.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==5&&(m.$1.$1.$==1&&(a$16=LayoutEngineModule.Identifier(m.$1.$1.$0),a$16!=null&&a$16.$==1&&($11=[a$16.$0,a$15.$0,m.$1.$1.$1],true))))))?(name$10=$11[1],LayoutEngineModule.entryAct(new PlgElemName({
-    $:0,
-    $0:name$10
-   }),(LayoutEngineModule.createActionM())([lytNm,name$10,$11[0],$11[2]]))):m.$==1&&(a$17=LayoutEngineModule.Identifier(m.$0),a$17!=null&&a$17.$==1&&(m.$1.$==1&&(a$18=LayoutEngineModule.Vertical(m.$1.$0),a$18.$==5&&(m.$1.$1.$==1&&($12=[m.$1.$1.$0,m.$1.$1.$1,a$18.$0,a$17.$0],true)))))?(name$11=$12[3],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$11
-   }),(LayoutEngineModule.createElementM())([lytNm,name$11,$12[2],$12[0],$12[1]]))):null;
-  }
-  catch(e)
-  {
-   return null;
-  }
  };
  LayoutEngineModule.getVarEntries=function(entries)
  {
@@ -6873,238 +6790,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   }
   return processLinesR(ls);
  };
- LayoutEngineModule.splitTokens=function(line)
- {
-  return LayoutEngineModule.doubleQuote(List.ofSeq(Seq$1.collect(Global.id,Seq$1.mapi(function(i,s)
-  {
-   var t;
-   return i%2===1?[{
-    $:0,
-    $0:s
-   }]:s===""?[{
-    $:0,
-    $0:"\""
-   }]:(t=Strings.Trim(s),t===""?[]:Arrays.map(function(a)
-   {
-    return{
-     $:1,
-     $0:a
-    };
-   },Strings.SplitChars(t,[" "],1)));
-  },String.splitByChar("\"",line)))));
- };
- LayoutEngineModule.Identifier=function(a)
- {
-  var $1,a$1,t;
-  return a.$==1&&(a$1=LibraryJS.REGEX$1("^[$a-zA-Z_][0-9a-zA-Z_\\.\\-$]*$","",a.$0),a$1!=null&&a$1.$==1&&((t=a$1.$0,!Unchecked.Equals(t,null)&&t.length===1)&&($1=Arrays.get(a$1.$0,0),true)))?{
-   $:1,
-   $0:$1
-  }:null;
- };
- LayoutEngineModule.Measures$1=function(a)
- {
-  var a$1,$1,a$2,$2,a$3,$3,a$4,a$5,a$6;
-  return a.$==1?(a$1=String.splitByChar("-",a.$0),!Unchecked.Equals(a$1,null)&&a$1.length===1&&(a$2=(ParseO$1.Double())(Arrays.get(a$1,0)),a$2!=null&&a$2.$==1&&($1=a$2.$0,true))?{
-   $:1,
-   $0:new Measures({
-    $:0,
-    $0:$1,
-    $1:true
-   })
-  }:!Unchecked.Equals(a$1,null)&&a$1.length===2&&(Arrays.get(a$1,0)===""&&(a$3=(ParseO$1.Double())(Arrays.get(a$1,1)),a$3!=null&&a$3.$==1&&($2=a$3.$0,true)))?{
-   $:1,
-   $0:new Measures({
-    $:0,
-    $0:$2,
-    $1:false
-   })
-  }:!Unchecked.Equals(a$1,null)&&a$1.length===3&&(a$4=(ParseO$1.Double())(Arrays.get(a$1,0)),a$4!=null&&a$4.$==1&&(a$5=(ParseO$1.Double())(Arrays.get(a$1,1)),a$5!=null&&a$5.$==1&&(a$6=(ParseO$1.Double())(Arrays.get(a$1,2)),a$6!=null&&a$6.$==1&&($3=[a$6.$0,a$4.$0,a$5.$0],true))))?{
-   $:1,
-   $0:new Measures({
-    $:1,
-    $0:$3[1],
-    $1:$3[2],
-    $2:$3[0]
-   })
-  }:null):null;
- };
- LayoutEngineModule.Vertical=function(a)
- {
-  var $1,$2,$3,$4,$5,a$1;
-  return a.$==1&&(a.$0==="vertical"&&($1=a.$0,true))?{
-   $:0,
-   $0:null
-  }:a.$==1&&(a.$0==="horizontal"&&($2=a.$0,true))?{
-   $:1,
-   $0:null
-  }:a.$==1&&(a.$0==="layout"&&($3=a.$0,true))?{
-   $:2,
-   $0:null
-  }:a.$==1&&(a.$0==="grid"&&($4=a.$0,true))?{
-   $:3,
-   $0:null
-  }:a.$==1&&(a.$0==="template"&&($5=a.$0,true))?{
-   $:4,
-   $0:null
-  }:(a$1=LayoutEngineModule.Identifier(a),a$1!=null&&a$1.$==1?{
-   $:5,
-   $0:a$1.$0
-  }:{
-   $:6,
-   $0:null
-  });
- };
- LayoutEngineModule.entryDoc=function(n,doc)
- {
-  return{
-   $:1,
-   $0:{
-    $:2,
-    $0:AppFramework.newDoc(n,Lazy.Create(function()
-    {
-     return doc;
-    }))
-   }
-  };
- };
- LayoutEngineModule.createSplitterM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createSplitterM;
- };
- LayoutEngineModule.PlugIn=function(a)
- {
-  var $1,$2,$3,$4,$5;
-  return a.$==1&&(a.$0==="PlugIn"&&($1=a.$0,true))?{
-   $:0,
-   $0:null
-  }:a.$==1&&(a.$0==="Button"&&($2=a.$0,true))?{
-   $:1,
-   $0:null
-  }:a.$==1&&(a.$0==="input"&&($3=a.$0,true))?{
-   $:2,
-   $0:null
-  }:a.$==1&&(a.$0==="textarea"&&($4=a.$0,true))?{
-   $:3,
-   $0:null
-  }:a.$==1&&(a.$0==="select"&&($5=a.$0,true))?{
-   $:4,
-   $0:null
-  }:{
-   $:5,
-   $0:null
-  };
- };
- LayoutEngineModule.createButtonM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createButtonM;
- };
- LayoutEngineModule.createInputM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createInputM;
- };
- LayoutEngineModule.createTextAreaM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createTextAreaM;
- };
- LayoutEngineModule.S=function(a)
- {
-  return a.$==1?a.$0:a.$0;
- };
- LayoutEngineModule.Var=function(a)
- {
-  var $1,$2,$3,$4,$5,$6;
-  return a.$==1&&(a.$0==="Var"&&($1=a.$0,true))?{
-   $:0,
-   $0:null
-  }:a.$==1&&(a.$0==="Doc"&&($2=a.$0,true))?{
-   $:1,
-   $0:null
-  }:a.$==1&&(a.$0==="View"&&($3=a.$0,true))?{
-   $:2,
-   $0:null
-  }:a.$==1&&(a.$0==="ViewJS"&&($4=a.$0,true))?{
-   $:3,
-   $0:null
-  }:a.$==1&&(a.$0==="Docs"&&($5=a.$0,true))?{
-   $:4,
-   $0:null
-  }:a.$==1&&(a.$0==="Action"&&($6=a.$0,true))?{
-   $:5,
-   $0:null
-  }:{
-   $:6,
-   $0:null
-  };
- };
- LayoutEngineModule.entryVar=function(n,v)
- {
-  return{
-   $:1,
-   $0:{
-    $:0,
-    $0:AppFramework.newVar(n,v)
-   }
-  };
- };
- LayoutEngineModule.createVarM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createVarM;
- };
- LayoutEngineModule.createDocM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createDocM;
- };
- LayoutEngineModule.entryView=function(n,w)
- {
-  return{
-   $:1,
-   $0:{
-    $:1,
-    $0:AppFramework.newViw(n,w)
-   }
-  };
- };
- LayoutEngineModule.createViewM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createViewM;
- };
- LayoutEngineModule.createTemplateM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createTemplateM;
- };
- LayoutEngineModule.createConcatM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createConcatM;
- };
- LayoutEngineModule.entryAct=function(n,a)
- {
-  return{
-   $:1,
-   $0:{
-    $:3,
-    $0:AppFramework.newActF(n,a)
-   }
-  };
- };
- LayoutEngineModule.createActionM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createActionM;
- };
- LayoutEngineModule.createElementM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createElementM;
- };
  LayoutEngineModule.splitName=function()
  {
   SC$2.$cctor();
@@ -7265,6 +6950,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Doc.EmbedView(View.Map(f,LayoutEngineModule.currentViewTriggger()));
  };
+ LayoutEngineModule.S=function(a)
+ {
+  return a.$==1?a.$0:a.$0;
+ };
  LayoutEngineModule.getAllDocs=function(lytNm,tokens)
  {
   return tokens.$==1?new T({
@@ -7284,6 +6973,14 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     return LayoutEngine_GeneratedPrintf.p$27($4);
    },$3));
   }))(Global.id))(doc))(parms));
+ };
+ LayoutEngineModule.Identifier=function(a)
+ {
+  var $1,a$1,t;
+  return a.$==1&&(a$1=LibraryJS.REGEX$1("^[$a-zA-Z_][0-9a-zA-Z_\\.\\-$]*$","",a.$0),a$1!=null&&a$1.$==1&&((t=a$1.$0,!Unchecked.Equals(t,null)&&t.length===1)&&($1=Arrays.get(a$1.$0,0),true)))?{
+   $:1,
+   $0:$1
+  }:null;
  };
  LayoutEngineModule.getDocF=function(parms,doc)
  {
@@ -7331,6 +7028,70 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    else
     f(a.$0);
   },LayoutEngineModule.getTextToken(lytNm,token));
+ };
+ LayoutEngineModule.addLayout=function(lyt)
+ {
+  View.Sink(function(txt)
+  {
+   var x;
+   LayoutEngineModule.set_currentViewTriggger(View.Map2(function($1,$2)
+   {
+    return $1+$2;
+   },lyt.lytDefinition.get_View(),AppFramework.mainDocV().get_View()));
+   LayoutEngineModule.refreshEntries(lyt.lytName,(x=(LayoutEngineModule.createEntries(lyt.lytName))(txt),Seq$1.append(List.ofArray([{
+    $:0,
+    $0:AppFramework.newVar(new PlgElemName({
+     $:0,
+     $0:"Layout"
+    }),lyt.lytDefinition)
+   }]),x)));
+  },lyt.lytDefinition.get_View());
+ };
+ LayoutEngineModule.splitTokens=function(line)
+ {
+  return LayoutEngineModule.doubleQuote(List.ofSeq(Seq$1.collect(Global.id,Seq$1.mapi(function(i,s)
+  {
+   var t;
+   return i%2===1?[{
+    $:0,
+    $0:s
+   }]:s===""?[{
+    $:0,
+    $0:"\""
+   }]:(t=Strings.Trim(s),t===""?[]:Arrays.map(function(a)
+   {
+    return{
+     $:1,
+     $0:a
+    };
+   },Strings.SplitChars(t,[" "],1)));
+  },String.splitByChar("\"",line)))));
+ };
+ LayoutEngineModule.Vertical=function(a)
+ {
+  var $1,$2,$3,$4,$5,a$1;
+  return a.$==1&&(a.$0==="vertical"&&($1=a.$0,true))?{
+   $:0,
+   $0:null
+  }:a.$==1&&(a.$0==="horizontal"&&($2=a.$0,true))?{
+   $:1,
+   $0:null
+  }:a.$==1&&(a.$0==="layout"&&($3=a.$0,true))?{
+   $:2,
+   $0:null
+  }:a.$==1&&(a.$0==="grid"&&($4=a.$0,true))?{
+   $:3,
+   $0:null
+  }:a.$==1&&(a.$0==="template"&&($5=a.$0,true))?{
+   $:4,
+   $0:null
+  }:(a$1=LayoutEngineModule.Identifier(a),a$1!=null&&a$1.$==1?{
+   $:5,
+   $0:a$1.$0
+  }:{
+   $:6,
+   $0:null
+  });
  };
  LayoutEngineModule.getExtraLines=function(pred,ls)
  {
@@ -7382,46 +7143,81 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }));
   })),i+1,p[1]))))))):[names,lines]):[names,lines];
  };
- LayoutEngineModule.doubleQuote=function(a)
+ LayoutEngineModule.PlugIn=function(a)
  {
-  var $1,$2,$3;
-  switch(a.$==1?a.$0.$==1?Strings.StartsWith(a.$0.$0,"//")?($1=a.$0.$0,1):2:2:0)
-  {
-   case 0:
-    return T.Empty;
-   case 1:
-    return T.Empty;
-   case 2:
-    switch(a.$==1?a.$0.$==0?a.$1.$==1?a.$1.$0.$==0?a.$1.$0.$0==="\""?a.$1.$1.$==0?($3=a.$0.$0,1):a.$1.$1.$0.$==0?($3=[a.$1.$1.$1,a.$0.$0,a.$1.$1.$0.$0],0):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):3)
-    {
-     case 0:
-      $2=LayoutEngineModule.doubleQuote(new T({
-       $:1,
-       $0:{
-        $:0,
-        $0:$3[1]+"\""+$3[2]
-       },
-       $1:$3[0]
-      }));
-      break;
-     case 1:
-      $2=List.ofArray([{
-       $:0,
-       $0:$3
-      }]);
-      break;
-     case 2:
-      $2=new T({
-       $:1,
-       $0:$3[0],
-       $1:LayoutEngineModule.doubleQuote($3[1])
-      });
-      break;
-     case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2600,38);
-    }
-    return $2;
-  }
+  var $1,$2,$3,$4,$5;
+  return a.$==1&&(a.$0==="PlugIn"&&($1=a.$0,true))?{
+   $:0,
+   $0:null
+  }:a.$==1&&(a.$0==="Button"&&($2=a.$0,true))?{
+   $:1,
+   $0:null
+  }:a.$==1&&(a.$0==="input"&&($3=a.$0,true))?{
+   $:2,
+   $0:null
+  }:a.$==1&&(a.$0==="textarea"&&($4=a.$0,true))?{
+   $:3,
+   $0:null
+  }:a.$==1&&(a.$0==="select"&&($5=a.$0,true))?{
+   $:4,
+   $0:null
+  }:{
+   $:5,
+   $0:null
+  };
+ };
+ LayoutEngineModule.Var=function(a)
+ {
+  var $1,$2,$3,$4,$5,$6;
+  return a.$==1&&(a.$0==="Var"&&($1=a.$0,true))?{
+   $:0,
+   $0:null
+  }:a.$==1&&(a.$0==="Doc"&&($2=a.$0,true))?{
+   $:1,
+   $0:null
+  }:a.$==1&&(a.$0==="View"&&($3=a.$0,true))?{
+   $:2,
+   $0:null
+  }:a.$==1&&(a.$0==="ViewJS"&&($4=a.$0,true))?{
+   $:3,
+   $0:null
+  }:a.$==1&&(a.$0==="Docs"&&($5=a.$0,true))?{
+   $:4,
+   $0:null
+  }:a.$==1&&(a.$0==="Action"&&($6=a.$0,true))?{
+   $:5,
+   $0:null
+  }:{
+   $:6,
+   $0:null
+  };
+ };
+ LayoutEngineModule.Measures$1=function(a)
+ {
+  var a$1,$1,a$2,$2,a$3,$3,a$4,a$5,a$6;
+  return a.$==1?(a$1=String.splitByChar("-",a.$0),!Unchecked.Equals(a$1,null)&&a$1.length===1&&(a$2=(ParseO$1.Double())(Arrays.get(a$1,0)),a$2!=null&&a$2.$==1&&($1=a$2.$0,true))?{
+   $:1,
+   $0:new Measures({
+    $:0,
+    $0:$1,
+    $1:true
+   })
+  }:!Unchecked.Equals(a$1,null)&&a$1.length===2&&(Arrays.get(a$1,0)===""&&(a$3=(ParseO$1.Double())(Arrays.get(a$1,1)),a$3!=null&&a$3.$==1&&($2=a$3.$0,true)))?{
+   $:1,
+   $0:new Measures({
+    $:0,
+    $0:$2,
+    $1:false
+   })
+  }:!Unchecked.Equals(a$1,null)&&a$1.length===3&&(a$4=(ParseO$1.Double())(Arrays.get(a$1,0)),a$4!=null&&a$4.$==1&&(a$5=(ParseO$1.Double())(Arrays.get(a$1,1)),a$5!=null&&a$5.$==1&&(a$6=(ParseO$1.Double())(Arrays.get(a$1,2)),a$6!=null&&a$6.$==1&&($3=[a$6.$0,a$4.$0,a$5.$0],true))))?{
+   $:1,
+   $0:new Measures({
+    $:1,
+    $0:$3[1],
+    $1:$3[2],
+    $2:$3[0]
+   })
+  }:null):null;
  };
  LayoutEngineModule.getTextData=function(lytNm,txt)
  {
@@ -7502,1304 +7298,216 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    });
   },AppFramework.tryGetActW(plg,n));
  };
+ LayoutEngineModule.set_currentViewTriggger=function($1)
+ {
+  SC$2.$cctor();
+  SC$2.currentViewTriggger=$1;
+ };
+ LayoutEngineModule.createEntries=function(lytNm)
+ {
+  function f(l)
+  {
+   return LayoutEngineModule.createEntryO(lytNm,l);
+  }
+  return function(t)
+  {
+   return LayoutEngineModule.processText(f,t);
+  };
+ };
+ LayoutEngineModule.doubleQuote=function(a)
+ {
+  var $1,$2,$3;
+  switch(a.$==1?a.$0.$==1?Strings.StartsWith(a.$0.$0,"//")?($1=a.$0.$0,1):2:2:0)
+  {
+   case 0:
+    return T.Empty;
+   case 1:
+    return T.Empty;
+   case 2:
+    switch(a.$==1?a.$0.$==0?a.$1.$==1?a.$1.$0.$==0?a.$1.$0.$0==="\""?a.$1.$1.$==0?($3=a.$0.$0,1):a.$1.$1.$0.$==0?($3=[a.$1.$1.$1,a.$0.$0,a.$1.$1.$0.$0],0):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):3)
+    {
+     case 0:
+      $2=LayoutEngineModule.doubleQuote(new T({
+       $:1,
+       $0:{
+        $:0,
+        $0:$3[1]+"\""+$3[2]
+       },
+       $1:$3[0]
+      }));
+      break;
+     case 1:
+      $2=List.ofArray([{
+       $:0,
+       $0:$3
+      }]);
+      break;
+     case 2:
+      $2=new T({
+       $:1,
+       $0:$3[0],
+       $1:LayoutEngineModule.doubleQuote($3[1])
+      });
+      break;
+     case 3:
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2600,38);
+    }
+    return $2;
+  }
+ };
+ LayoutEngineModule.createEntryO=function(lytNm,line)
+ {
+  var m,$1,a,a$1,name,$2,a$2,a$3,name$1,$3,a$4,a$5,name$2,$4,a$6,a$7,name$3,$5,a$8,a$9,name$4,$6,a$10,name$5,$7,a$11,name$6,$8,a$12,name$7,$9,a$13,name$8,$10,a$14,name$9,$11,a$15,a$16,name$10,$12,a$17,a$18,name$11;
+  try
+  {
+   m=LayoutEngineModule.splitTokens(line);
+   return m.$==1&&(a=LayoutEngineModule.Identifier(m.$0),a!=null&&a.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==0&&(m.$1.$1.$==1&&(a$1=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$1!=null&&a$1.$==1&&($1=[m.$1.$1.$1,a$1.$0,a.$0],true))))))?(name=$1[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name
+   }),(LayoutEngineModule.createSplitterM())([lytNm,name,true,$1[1],$1[0]]))):m.$==1&&(a$2=LayoutEngineModule.Identifier(m.$0),a$2!=null&&a$2.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$3=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$3!=null&&a$3.$==1&&($2=[m.$1.$1.$1,a$3.$0,a$2.$0],true))))))?(name$1=$2[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$1
+   }),(LayoutEngineModule.createSplitterM())([lytNm,name$1,false,$2[1],$2[0]]))):m.$==1&&(a$4=LayoutEngineModule.Identifier(m.$0),a$4!=null&&a$4.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$5=LayoutEngineModule.Identifier(m.$1.$1.$0),a$5!=null&&a$5.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$1.$==0&&($3=[a$5.$0,m.$1.$1.$1.$0,a$4.$0,m.$1.$1.$1.$1.$0],true)))))))))?(name$2=$3[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$2
+   }),(LayoutEngineModule.createButtonM())([lytNm,name$2,$3[0],$3[1],$3[3]]))):m.$==1&&(a$6=LayoutEngineModule.Identifier(m.$0),a$6!=null&&a$6.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==2&&(m.$1.$1.$==1&&(a$7=LayoutEngineModule.Identifier(m.$1.$1.$0),a$7!=null&&a$7.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($4=[m.$1.$1.$1.$0,a$6.$0,a$7.$0],true))))))))?(name$3=$4[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$3
+   }),(LayoutEngineModule.createInputM())([lytNm,name$3,$4[2],$4[0]]))):m.$==1&&(a$8=LayoutEngineModule.Identifier(m.$0),a$8!=null&&a$8.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==3&&(m.$1.$1.$==1&&(a$9=LayoutEngineModule.Identifier(m.$1.$1.$0),a$9!=null&&a$9.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($5=[m.$1.$1.$1.$0,a$8.$0,a$9.$0],true))))))))?(name$4=$5[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$4
+   }),(LayoutEngineModule.createTextAreaM())([lytNm,name$4,$5[2],$5[0]]))):m.$==1&&(a$10=LayoutEngineModule.Identifier(m.$0),a$10!=null&&a$10.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==0&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==0&&($6=[a$10.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$5=$6[0],LayoutEngineModule.entryVar(new PlgElemName({
+    $:0,
+    $0:name$5
+   }),(LayoutEngineModule.createVarM())([lytNm,name$5,$6[1]]))):m.$==1&&(a$11=LayoutEngineModule.Identifier(m.$0),a$11!=null&&a$11.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==1&&(m.$1.$1.$==1&&($7=[LayoutEngineModule.S(m.$1.$1.$0),a$11.$0,m.$1.$1.$1],true)))))?(name$6=$7[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$6
+   }),(LayoutEngineModule.createDocM())([lytNm,name$6,$7[0],$7[2]]))):m.$==1&&(a$12=LayoutEngineModule.Identifier(m.$0),a$12!=null&&a$12.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==2&&($8=[a$12.$0,m.$1.$1],true))))?(name$7=$8[0],LayoutEngineModule.entryView(new PlgElemName({
+    $:0,
+    $0:name$7
+   }),(LayoutEngineModule.createViewM())([lytNm,name$7,$8[1]]))):m.$==1&&(a$13=LayoutEngineModule.Identifier(m.$0),a$13!=null&&a$13.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==4&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==1&&($9=[m.$1.$1.$1.$0,m.$1.$1.$1.$1,a$13.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$8=$9[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$8
+   }),(LayoutEngineModule.createTemplateM())([lytNm,name$8,$9[3],$9[0],$9[1]]))):m.$==1&&(a$14=LayoutEngineModule.Identifier(m.$0),a$14!=null&&a$14.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==4&&($10=[m.$1.$1,a$14.$0],true))))?(name$9=$10[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$9
+   }),(LayoutEngineModule.createConcatM())([lytNm,name$9,$10[0]]))):m.$==1&&(a$15=LayoutEngineModule.Identifier(m.$0),a$15!=null&&a$15.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==5&&(m.$1.$1.$==1&&(a$16=LayoutEngineModule.Identifier(m.$1.$1.$0),a$16!=null&&a$16.$==1&&($11=[a$16.$0,a$15.$0,m.$1.$1.$1],true))))))?(name$10=$11[1],LayoutEngineModule.entryAct(new PlgElemName({
+    $:0,
+    $0:name$10
+   }),(LayoutEngineModule.createActionM())([lytNm,name$10,$11[0],$11[2]]))):m.$==1&&(a$17=LayoutEngineModule.Identifier(m.$0),a$17!=null&&a$17.$==1&&(m.$1.$==1&&(a$18=LayoutEngineModule.Vertical(m.$1.$0),a$18.$==5&&(m.$1.$1.$==1&&($12=[m.$1.$1.$0,m.$1.$1.$1,a$18.$0,a$17.$0],true)))))?(name$11=$12[3],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$11
+   }),(LayoutEngineModule.createElementM())([lytNm,name$11,$12[2],$12[0],$12[1]]))):null;
+  }
+  catch(e)
+  {
+   return null;
+  }
+ };
+ LayoutEngineModule.entryDoc=function(n,doc)
+ {
+  return{
+   $:1,
+   $0:{
+    $:2,
+    $0:AppFramework.newDoc(n,Lazy.Create(function()
+    {
+     return doc;
+    }))
+   }
+  };
+ };
+ LayoutEngineModule.createSplitterM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createSplitterM;
+ };
+ LayoutEngineModule.createButtonM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createButtonM;
+ };
+ LayoutEngineModule.createInputM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createInputM;
+ };
+ LayoutEngineModule.createTextAreaM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createTextAreaM;
+ };
+ LayoutEngineModule.entryVar=function(n,v)
+ {
+  return{
+   $:1,
+   $0:{
+    $:0,
+    $0:AppFramework.newVar(n,v)
+   }
+  };
+ };
+ LayoutEngineModule.createVarM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createVarM;
+ };
+ LayoutEngineModule.createDocM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createDocM;
+ };
+ LayoutEngineModule.entryView=function(n,w)
+ {
+  return{
+   $:1,
+   $0:{
+    $:1,
+    $0:AppFramework.newViw(n,w)
+   }
+  };
+ };
+ LayoutEngineModule.createViewM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createViewM;
+ };
+ LayoutEngineModule.createTemplateM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createTemplateM;
+ };
+ LayoutEngineModule.createConcatM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createConcatM;
+ };
+ LayoutEngineModule.entryAct=function(n,a)
+ {
+  return{
+   $:1,
+   $0:{
+    $:3,
+    $0:AppFramework.newActF(n,a)
+   }
+  };
+ };
+ LayoutEngineModule.createActionM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createActionM;
+ };
+ LayoutEngineModule.createElementM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createElementM;
+ };
  PlugInName=AppFramework.PlugInName=Runtime$1.Class({
   get_Id:function()
   {
    return this.$0;
   }
  },null,PlugInName);
- StartAppFramework.startWithHtmlD=function()
- {
-  SC$2.$cctor();
-  return SC$2.startWithHtmlD;
- };
- StartAppFramework.htmlD=function()
- {
-  SC$2.$cctor();
-  return SC$2.htmlD;
- };
- Depend.resolver=function(lst,depend)
- {
-  function resolve(a)
-  {
-   var $1,k,nm,o,o$1;
-   function f(t)
-   {
-    return t[0];
-   }
-   function g(y)
-   {
-    return nm===y;
-   }
-   return a.$==1?a.$0:($1=a.$0,$1!=null&&$1.$==1)?(k=a.$1,(nm=a.$0.$0[0],resolve((o=(o$1=Seq$1.tryFind(function(x)
-   {
-    return g(f(x));
-   },lst),o$1==null?null:{
-    $:1,
-    $0:k(o$1.$0[1])
-   }),o==null?k(a.$0.$0[1]):o.$0)))):resolve(a.$1(void 0));
-  }
-  return resolve(depend);
- };
- Depend.rtn=function(a)
- {
-  return{
-   $:1,
-   $0:a
-  };
- };
- Depend.depend=function()
- {
-  SC$2.$cctor();
-  return SC$2.depend;
- };
- Depend.dependByName=function(nm,defF,kf)
- {
-  return{
-   $:0,
-   $0:{
-    $:1,
-    $0:[nm,defF]
-   },
-   $1:function(f)
-   {
-    return{
-     $:1,
-     $0:kf(f)
-    };
-   }
-  };
- };
- Depend.bind=function(f,pa)
- {
-  function bindR(a)
-  {
-   var v,k;
-   return a.$==1?(v=a.$0,{
-    $:0,
-    $0:null,
-    $1:function()
-    {
-     return f(v);
-    }
-   }):(k=a.$1,{
-    $:0,
-    $0:a.$0,
-    $1:function(p)
-    {
-     return bindR(k(p));
-    }
-   });
-  }
-  return bindR(pa);
- };
- Depend.map=function(f)
- {
-  var f$1;
-  f$1=function(x)
-  {
-   return Depend.rtn(f(x));
-  };
-  return function(p)
-  {
-   return Depend.bind(f$1,p);
-  };
- };
- AppFrameworkTemplate.html=function()
- {
-  SC$1.$cctor();
-  return SC$1.html;
- };
- Numeric.TryParseInt64=function(s,r)
- {
-  return Numeric.TryParse(s,-9223372036854775808,9223372036854775807,r);
- };
- ListModel.Create=function(key,init)
- {
-  return ListModel.CreateWithStorage(key,Storage.InMemory(Arrays.ofSeq(init)));
- };
- ListModel.CreateWithStorage=function(key,storage)
- {
-  return new ListModel.New(key,storage);
- };
- ViewBuilder.B={
-  $:0
- };
- LM.getDocFor=function(elements,def,newF,predWO,elUI)
- {
-  var keyF,selected0,selectedV,b,result,elUIF;
-  function f(a)
-  {
-   var $1;
-   return a!=null&&a.$==1&&(elements.ContainsKey(a.$0)&&($1=a.$0,true))?{
-    $:1,
-    $0:$1
-   }:null;
-  }
-  function g(v)
-  {
-   if(!Unchecked.Equals(selected0.Get(),v))
-    selected0.Set(v);
-  }
-  function _delete(k,u)
-  {
-   selectedV.Set(null);
-   return elements.RemoveByKey(k);
-  }
-  keyF=elements.key;
-  selected0=Var$1.Create$1(null);
-  selectedV=new FromView.New((b=View.get_Do(),View.Bind(function(a)
-  {
-   var sel;
-   return a!=null&&a.$==1?(sel=a.$0,View.Bind(function(a$1)
-   {
-    return!a$1?View.Const(null):View.Const({
-     $:1,
-     $0:sel
-    });
-   },elements.ContainsKeyAsView(sel))):View.Const(null);
-  },selected0.get_View())),function(x)
-  {
-   return g(f(x));
-  });
-  result=ListModelData.New(elements,Doc.get_Empty(),selectedV,function()
-  {
-   var n;
-   n=newF();
-   elements.Append(n);
-   selectedV.Set({
-    $:1,
-    $0:keyF(n)
-   });
-   return n;
-  },function()
-  {
-   var o;
-   o=selectedV.Get();
-   o==null?void 0:_delete(o.$0,null);
-  },def);
-  elUIF=elUI(result);
-  return ListModelData.New(result.elems,Doc.Convert(Global.id,ListModel$1.MapLens(predWO,function(k,v)
-  {
-   return(elUIF(View.Const({
-    $:1,
-    $0:k
-   })))(v);
-  },elements)),result.selV,result.add,result.delCur,result.def);
- };
- AppFramework.plugin=function()
- {
-  SC$2.$cctor();
-  return SC$2.plugin;
- };
- AppFramework.addPlugIn=function(p)
- {
-  AppFramework.plugIns().Append(p);
- };
- AppFramework.mainDocV=function()
- {
-  SC$2.$cctor();
-  return SC$2.mainDocV;
- };
- AppFramework.newVar=function(name,_var)
- {
-  return PlugInVar.New(name,_var);
- };
- AppFramework.newViw=function(name,viw)
- {
-  return PlugInView.New(name,viw);
- };
- AppFramework.newAct=function(name,fnc)
- {
-  return PlugInAction.New(name,{
-   $:0,
-   $0:fnc
-  },View.Const(true));
- };
- AppFramework.plugIns=function()
- {
-  SC$2.$cctor();
-  return SC$2.plugIns;
- };
- AppFramework.tryGetPlugIn=function(plgName)
- {
-  return AppFramework.plugIns().TryFindByKey(plgName);
- };
- AppFramework.defaultPlugIn=function()
- {
-  return PlugIn.New(new PlugInName({
-   $:0,
-   $0:""
-  }),new ListModel.New$1(function(_var)
-  {
-   return _var.varName;
-  }),new ListModel.New$1(function(viw)
-  {
-   return viw.viwName;
-  }),new ListModel.New$1(function(doc)
-  {
-   return doc.docName;
-  }),new ListModel.New$1(function(act)
-  {
-   return act.actName;
-  }),new ListModel.New$1(function(qry)
-  {
-   return qry.qryName;
-  }));
- };
- AppFramework.newDocF=function(name,docF)
- {
-  return PlugInDoc.New(name,docF);
- };
- AppFramework.selectionPlugInO=function()
- {
-  SC$2.$cctor();
-  return SC$2.selectionPlugInO;
- };
- AppFramework.currentPlugInW=function()
- {
-  SC$2.$cctor();
-  return SC$2.currentPlugInW;
- };
- AppFramework.renderPlugIns=function()
- {
-  return Doc.Flatten(AppFramework.plugIns().MapLens(function($1)
-  {
-   var b,t,N,p,i;
-   return(b=(t=(N=$1.get_Id(),ProviderBuilder.Make().WithHole({
-    $:1,
-    $0:"name",
-    $1:N
-   })),t.WithHole(Handler.EventQ2(t.k,"select",function()
-   {
-    return t.i;
-   },function()
-   {
-    AppFramework.selectionPlugInO().Set({
-     $:1,
-     $0:$1
-    });
-   }))).WithHole({
-    $:2,
-    $0:"selected",
-    $1:View.Map(function($2)
-    {
-     return Unchecked.Equals($2,{
-      $:1,
-      $0:$1
-     })?"selected":"";
-    },AppFramework.selectionPlugInO().get_View())
-   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
-  }));
- };
- AppFramework.renderVars=function()
- {
-  function a(plg,_var)
-  {
-   return[plg.plgName,_var.varName];
-  }
-  function a$1(plg,_var)
-  {
-   var b,N,p,i;
-   return(b=(N=_var.varName.get_Id(),ProviderBuilder.Make().WithHole({
-    $:1,
-    $0:"name",
-    $1:N
-   })).WithHole({
-    $:8,
-    $0:"value",
-    $1:_var.varVar
-   }),(p=Handler.CompleteHoles(b.k,b.h,[["value",0]]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.namevalueinput(p[0])),(b.i=i,i)))).get_Doc();
-  }
-  return Doc.ConvertBy(function($1)
-  {
-   return a($1[0],$1[1]);
-  },function($1)
-  {
-   return a$1($1[0],$1[1]);
-  },View.Map(function(plg)
-  {
-   return Seq$1.map(function(v)
-   {
-    return[plg,v];
-   },plg.plgVars);
-  },AppFramework.currentPlugInW()));
- };
- AppFramework.renderViews=function()
- {
-  function a(plg,viw)
-  {
-   return[plg.plgName,viw.viwName];
-  }
-  function a$1(plg,viw)
-  {
-   var b,N,p,i;
-   return(b=(N=viw.viwName.get_Id(),ProviderBuilder.Make().WithHole({
-    $:1,
-    $0:"name",
-    $1:N
-   })).WithHole({
-    $:2,
-    $0:"value",
-    $1:viw.viwView
-   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.namevalue(p[0])),(b.i=i,i)))).get_Doc();
-  }
-  return Doc.ConvertBy(function($1)
-  {
-   return a($1[0],$1[1]);
-  },function($1)
-  {
-   return a$1($1[0],$1[1]);
-  },View.Map(function(plg)
-  {
-   return Seq$1.map(function(v)
-   {
-    return[plg,v];
-   },plg.plgViews);
-  },AppFramework.currentPlugInW()));
- };
- AppFramework.renderDocs=function()
- {
-  function a(plg,doc)
-  {
-   return[plg.plgName,doc.docName];
-  }
-  function a$1(plg,doc)
-  {
-   var parms,m,x,x$1,x$2,x$3,x$4,b,t,N,p,i;
-   parms=(m=doc.docDoc,m.$==1?(x=Strings.concat(", ",List.ofArray([m.$1])),(function($1)
-   {
-    return function($2)
-    {
-     return $1("("+Utils.toSafe($2)+")");
-    };
-   }(Global.id))(x)):m.$==2?(x$1=Strings.concat(", ",List.ofArray([m.$1,m.$2])),(function($1)
-   {
-    return function($2)
-    {
-     return $1("("+Utils.toSafe($2)+")");
-    };
-   }(Global.id))(x$1)):m.$==3?(x$2=Strings.concat(", ",List.ofArray([m.$1,m.$2,m.$3])),(function($1)
-   {
-    return function($2)
-    {
-     return $1("("+Utils.toSafe($2)+")");
-    };
-   }(Global.id))(x$2)):m.$==4?(x$3=Strings.concat(", ",List.ofArray([m.$1,m.$2,m.$3,m.$4])),(function($1)
-   {
-    return function($2)
-    {
-     return $1("("+Utils.toSafe($2)+")");
-    };
-   }(Global.id))(x$3)):m.$==5?(x$4=Strings.concat(", ",List.ofArray([m.$1,m.$2,m.$3,m.$4,m.$5])),(function($1)
-   {
-    return function($2)
-    {
-     return $1("("+Utils.toSafe($2)+")");
-    };
-   }(Global.id))(x$4)):"");
-   return(b=(t=(N=doc.docName.get_Id()+parms,ProviderBuilder.Make().WithHole({
-    $:1,
-    $0:"name",
-    $1:N
-   })),t.WithHole(Handler.EventQ2(t.k,"select",function()
-   {
-    return t.i;
-   },function()
-   {
-    View.Get(function(plg$1)
-    {
-     var a$2;
-     a$2=plg$1.plgName.get_Id()+"."+doc.docName.get_Id();
-     AppFramework.mainDocV().Set(a$2);
-    },AppFramework.currentPlugInW());
-   }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
-  }
-  return Doc.ConvertBy(function($1)
-  {
-   return a($1[0],$1[1]);
-  },function($1)
-  {
-   return a$1($1[0],$1[1]);
-  },View.Map(function(plg)
-  {
-   return Seq$1.map(function(v)
-   {
-    return[plg,v];
-   },plg.plgDocs);
-  },AppFramework.currentPlugInW()));
- };
- AppFramework.renderActions=function()
- {
-  function a(plg,act)
-  {
-   return[plg.plgName,act.actName];
-  }
-  function a$1(plg,act)
-  {
-   var parms,m,x,x$1;
-   parms=(m=act.actFunction,m.$==1?(x=Strings.concat(", ",List.ofArray([m.$1])),(function($1)
-   {
-    return function($2)
-    {
-     return $1("("+Utils.toSafe($2)+")");
-    };
-   }(Global.id))(x)):m.$==2?(x$1=Strings.concat(", ",List.ofArray([m.$1,m.$2])),(function($1)
-   {
-    return function($2)
-    {
-     return $1("("+Utils.toSafe($2)+")");
-    };
-   }(Global.id))(x$1)):"");
-   return Doc.EmbedView(View.Map(function(a$2)
-   {
-    var b,t,N,p,i,b$1,t$1,N$1,p$1,i$1;
-    return a$2?(b=(t=(N=act.actName.get_Id()+parms,ProviderBuilder.Make().WithHole({
-     $:1,
-     $0:"name",
-     $1:N
-    })),t.WithHole(Handler.EventQ2(t.k,"click",function()
-    {
-     return t.i;
-    },function(ev)
-    {
-     AppFramework.callFunction(ev,null,act.actFunction);
-    }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.action(p[0])),(b.i=i,i)))).get_Doc():(b$1=(t$1=(N$1=act.actName.get_Id(),ProviderBuilder.Make().WithHole({
-     $:1,
-     $0:"name",
-     $1:N$1
-    })),t$1.WithHole(Handler.EventQ2(t$1.k,"click",function()
-    {
-     return t$1.i;
-    },function(ev)
-    {
-     AppFramework.callFunction(ev,null,act.actFunction);
-    }))),(p$1=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i$1=new TemplateInstance.New(p$1[1],LayoutEngine_Templates.actiondisabled(p$1[0])),(b$1.i=i$1,i$1)))).get_Doc();
-   },act.actEnabled));
-  }
-  return Doc.ConvertBy(function($1)
-  {
-   return a($1[0],$1[1]);
-  },function($1)
-  {
-   return a$1($1[0],$1[1]);
-  },View.Map(function(plg)
-  {
-   return Seq$1.map(function(v)
-   {
-    return[plg,v];
-   },plg.plgActions);
-  },AppFramework.currentPlugInW()));
- };
- AppFramework.renderQueries=function()
- {
-  function a(plg,qry)
-  {
-   return[plg.plgName,qry.qryName];
-  }
-  function a$1(plg,qry)
-  {
-   var b,t,N,p,i;
-   return(b=(t=(N=qry.qryName.get_Id(),ProviderBuilder.Make().WithHole({
-    $:1,
-    $0:"name",
-    $1:N
-   })),t.WithHole(Handler.EventQ2(t.k,"select",function()
-   {
-    return t.i;
-   },function()
-   {
-    Global.alert(qry.qryFunction(null));
-   }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
-  }
-  return Doc.ConvertBy(function($1)
-  {
-   return a($1[0],$1[1]);
-  },function($1)
-  {
-   return a$1($1[0],$1[1]);
-  },View.Map(function(plg)
-  {
-   return Seq$1.map(function(v)
-   {
-    return[plg,v];
-   },plg.plgQueries);
-  },AppFramework.currentPlugInW()));
- };
- AppFramework.a11V=function()
- {
-  SC$2.$cctor();
-  return SC$2.a11V;
- };
- AppFramework.add1=function(a)
- {
-  return a+1;
- };
- AppFramework.callFunction=function(p1,p2,actF)
- {
-  if(actF.$==1)
-   actF.$0(p1);
-  else
-   if(actF.$==2)
-    (actF.$0(p1))(p2);
-   else
-    actF.$0();
- };
- AppFramework.valToAttr=function(atn,a)
- {
-  return a.$==0?AttrModule.Dynamic(atn,a.$0):AttrProxy.Create(atn,a.$0);
- };
- AppFramework.valToStyle=function(atn,a)
- {
-  return a.$==0?AttrModule.DynamicStyle(atn,a.$0):AttrModule.Style(atn,a.$0);
- };
- AppFramework.currentPlugInNameDef=function()
- {
-  SC$2.$cctor();
-  return SC$2.currentPlugInNameDef;
- };
- AppFramework.currentPlugInNameD=function()
- {
-  SC$2.$cctor();
-  return SC$2.currentPlugInNameD;
- };
- AppFramework.splitName=function(lytNm)
- {
-  function f(s)
-  {
-   return String.splitByChar(".",s);
-  }
-  function g(a)
-  {
-   return Arrays.length(a)===1?[lytNm,new PlgElemName({
-    $:0,
-    $0:Strings.Trim(Arrays.get(a,0))
-   })]:[new PlugInName({
-    $:0,
-    $0:Strings.Trim(Arrays.get(a,0))
-   }),new PlgElemName({
-    $:0,
-    $0:Strings.Trim(Arrays.get(a,1))
-   })];
-  }
-  return function(x)
-  {
-   return g(f(x));
-  };
- };
- AppFramework.tryGetDocW=function(plgName,docName)
- {
-  return View.Bind(function(a)
-  {
-   return a!=null&&a.$==1?a.$0.plgDocs.TryFindByKeyAsView(docName):View.Const(null);
-  },AppFramework.tryGetPlugInW(plgName));
- };
- AppFramework.getLazyDoc=function(doc)
- {
-  var m;
-  m=doc.docDoc;
-  return m.$==0?m.$0.f():Doc.Element("div",[],[Doc.TextNode((function($1)
-  {
-   return function($2)
-   {
-    return $1("Doc with parameters not allowed here: "+GeneratedPrintf.p($2));
-   };
-  }(Global.id))(doc))]);
- };
- AppFramework.tryGetWoWW=function(plgName,viwName)
- {
-  return View.Bind(function(a)
-  {
-   return a==null?View.Bind(function(a$1)
-   {
-    return a$1==null?View.Const(null):View.Map(function(a$2)
-    {
-     return{
-      $:1,
-      $0:a$2
-     };
-    },a$1.$0.varVar.get_View());
-   },AppFramework.tryGetVarW(plgName,viwName)):View.Map(function(a$1)
-   {
-    return{
-     $:1,
-     $0:a$1
-    };
-   },a.$0.viwView);
-  },AppFramework.tryGetViwW(plgName,viwName));
- };
- AppFramework.tryGetActW=function(plgName,actName)
- {
-  return View.Bind(function(a)
-  {
-   return a!=null&&a.$==1?a.$0.plgActions.TryFindByKeyAsView(actName):View.Const(null);
-  },AppFramework.tryGetPlugInW(plgName));
- };
- AppFramework.extractAtsD=function()
- {
-  SC$2.$cctor();
-  return SC$2.extractAtsD$1;
- };
- AppFramework.depWithExtracts=function(f)
- {
-  var b;
-  return AppFramework.runDef((b=Depend.depend(),b.Delay(function()
-  {
-   return b.Bind(AppFramework.extractAtsD(),function(a)
-   {
-    return b.Bind(AppFramework.extractDocD(),function(a$1)
-    {
-     return b.Bind(AppFramework.extractTextD(),function(a$2)
-     {
-      return b.Return(f(a,a$1,a$2));
-     });
-    });
-   });
-  })));
- };
- AppFramework.docWithVar=function(f,_var)
- {
-  var g,t;
-  function f$1(o)
-  {
-   return o==null?null:{
-    $:1,
-    $0:f(o.$0)
-   };
-  }
-  function d()
-  {
-   return AppFramework.errDoc((function($1)
-   {
-    return function($2)
-    {
-     return $1("Var not found "+Utils.toSafe($2));
-    };
-   }(Global.id))(_var));
-  }
-  return Doc.BindView((g=function(o)
-  {
-   return o==null?d():o.$0;
-  },function(x)
-  {
-   return g(f$1(x));
-  }),(t=AppFramework.getParmRef(_var),AppFramework.tryGetVoVW(t[0],t[1])));
- };
- AppFramework.getParmRef=function(_var)
- {
-  var x,o,o$1,$1,b;
-  x=(o=(o$1=String.delimitedO("@{","}",_var),o$1==null?null:{
-   $:1,
-   $0:($1=o$1.$0,($1[0],b=$1[1],$1[2],b))
-  }),o==null?_var:o.$0);
-  return(AppFramework.splitName(AppFramework.defPlugInName()))(x);
- };
- AppFramework.tryGetAct=function(plgName,actName)
- {
-  var o;
-  o=AppFramework.tryGetPlugIn(plgName);
-  return o==null?null:o.$0.plgActions.TryFindByKey(actName);
- };
- AppFramework.AppFwkClient=function()
- {
-  SC$2.$cctor();
-  return SC$2.AppFwkClient;
- };
- AppFramework.htmlDoc=function()
- {
-  SC$2.$cctor();
-  return SC$2.htmlDoc;
- };
- AppFramework.trigAct=function()
- {
-  SC$2.$cctor();
-  return SC$2.trigAct;
- };
- AppFramework.input=function()
- {
-  SC$2.$cctor();
-  return SC$2.input;
- };
- AppFramework.textArea=function()
- {
-  SC$2.$cctor();
-  return SC$2.textArea;
- };
- AppFramework.select=function()
- {
-  SC$2.$cctor();
-  return SC$2.select;
- };
- AppFramework.inputFile=function(attrs,labelName,actName)
- {
-  var o,o$1,t,act;
-  o=(o$1=(t=(AppFramework.splitName(AppFramework.defPlugInName()))(actName),AppFramework.tryGetAct(t[0],t[1])),o$1==null?null:{
-   $:1,
-   $0:(act=o$1.$0,Doc.Element("div",AppFramework.getAttrs(AppFramework.defPlugInName(),attrs),[Doc.Element("div",[AttrProxy.Create("class","input-group")],[Doc.Element("span",[AttrProxy.Create("class","input-group-btn")],[Doc.Element("label",[AttrProxy.Create("class","btn")],[Doc.TextNode(labelName),Doc.Element("input",[AttrProxy.Create("class","form-control"),AttrProxy.Create("type","file"),AttrModule.Style("display","none"),AttrProxy.HandlerImpl("click",function(el)
-   {
-    return function()
-    {
-     el.value="";
-    };
-   }),AttrProxy.HandlerImpl("change",function(el)
-   {
-    return function()
-    {
-     return AppFramework.callFunction(el,null,act.actFunction);
-    };
-   })],[])])])])]))
-  });
-  return o==null?AppFramework.errDoc((function($1)
-  {
-   return function($2)
-   {
-    return $1("Action not found "+Utils.toSafe($2));
-   };
-  }(Global.id))(actName)):o.$0;
- };
- AppFramework.inputLabel=function()
- {
-  SC$2.$cctor();
-  return SC$2.inputLabel;
- };
- AppFramework.setVar=function(varN,value)
- {
-  var o,t;
-  o=(t=(AppFramework.splitName(AppFramework.defPlugInName()))(varN),AppFramework.tryGetVar(t[0],t[1]));
-  o==null?void 0:o.$0.varVar.Set(value);
- };
- AppFramework.horizontal=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
- {
-  var b,t,p,i;
-  return(b=(t=ProviderBuilder.Make().WithHole({
-   $:2,
-   $0:"partsizes",
-   $1:partSizes
-  }).WithHole({
-   $:7,
-   $0:"afterrender",
-   $1:afterRender
-  }).WithHole({
-   $:7,
-   $0:"afterrendersp",
-   $1:afterRenderSp
-  }),t.WithHole(Handler.EventQ2(t.k,"mousedown",function()
-  {
-   return t.i;
-  },function(te)
-  {
-   mouseDown(te.Event);
-  }))).WithHole({
-   $:2,
-   $0:"gap",
-   $1:gap
-  }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterhor(p[0])),(b.i=i,i)))).get_Doc();
- };
- AppFramework.vertical=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
- {
-  var b,t,p,i;
-  return(b=(t=ProviderBuilder.Make().WithHole({
-   $:2,
-   $0:"partsizes",
-   $1:partSizes
-  }).WithHole({
-   $:7,
-   $0:"afterrender",
-   $1:afterRender
-  }).WithHole({
-   $:7,
-   $0:"afterrendersp",
-   $1:afterRenderSp
-  }),t.WithHole(Handler.EventQ2(t.k,"mousedown",function()
-  {
-   return t.i;
-  },function(te)
-  {
-   mouseDown(te.Event);
-  }))).WithHole({
-   $:2,
-   $0:"gap",
-   $1:gap
-  }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterver(p[0])),(b.i=i,i)))).get_Doc();
- };
- AppFramework.mainDoc=function()
- {
-  var b,M,t,M$1,p,i;
-  return(b=(M=AppFramework.getMainClientDoc(),(t=(M$1=AppFramework.mainDocV().get_View(),ProviderBuilder.Make().WithHole({
-   $:2,
-   $0:"maindoc",
-   $1:M$1
-  })),t.WithHole(Handler.EventQ2(t.k,"goclient",function()
-  {
-   return t.i;
-  },function()
-  {
-   AppFramework.mainDocV().Set("AppFramework.AppFwkClient");
-  }))).WithHole({
-   $:0,
-   $0:"mainclient",
-   $1:M
-  })),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.appframework(p[0])),(b.i=i,i)))).get_Doc();
- };
- AppFramework.getMainDoc=function()
- {
-  SC$2.$cctor();
-  return SC$2.getMainDoc;
- };
- AppFramework.defPlugInName=function()
- {
-  SC$2.$cctor();
-  return SC$2.defPlugInName;
- };
- AppFramework.newActF=function(name,fncF)
- {
-  return PlugInAction.New(name,fncF,View.Const(true));
- };
- AppFramework.op_Dereference=function(v)
- {
-  return P.New((Operators$1.rtn())({
-   $:1,
-   $0:v
-  }));
- };
- AppFramework.makeAViewDoc=function(f)
- {
-  return Doc.BindView(function()
-  {
-   return f();
-  },AppFramework.baseView());
- };
- AppFramework.tryGetVar=function(plgName,varName)
- {
-  var o;
-  o=AppFramework.tryGetPlugIn(plgName);
-  return o==null?null:o.$0.plgVars.TryFindByKey(varName);
- };
- AppFramework.tryGetVarW=function(plgName,varName)
- {
-  return View.Bind(function(a)
-  {
-   return a!=null&&a.$==1?a.$0.plgVars.TryFindByKeyAsView(varName):View.Const(null);
-  },AppFramework.tryGetPlugInW(plgName));
- };
- AppFramework.tryGetViwW=function(plgName,viwName)
- {
-  return View.Bind(function(a)
-  {
-   return a!=null&&a.$==1?a.$0.plgViews.TryFindByKeyAsView(viwName):View.Const(null);
-  },AppFramework.tryGetPlugInW(plgName));
- };
- AppFramework.tryGetDoc=function(plgName,docName)
- {
-  var o;
-  o=AppFramework.tryGetPlugIn(plgName);
-  return o==null?null:o.$0.plgDocs.TryFindByKey(docName);
- };
- AppFramework.tryGetViw=function(plgName,viwName)
- {
-  var o;
-  o=AppFramework.tryGetPlugIn(plgName);
-  return o==null?null:o.$0.plgViews.TryFindByKey(viwName);
- };
- AppFramework.newDoc=function(name,doc)
- {
-  return PlugInDoc.New(name,{
-   $:0,
-   $0:doc
-  });
- };
- AppFramework.errDoc=function(txt)
- {
-  return Doc.Element("div",[],[Doc.TextNode(txt)]);
- };
- AppFramework.tryGetPlugInW=function(plgName)
- {
-  return AppFramework.plugIns().TryFindByKeyAsView(plgName);
- };
- AppFramework.extractDocD=function()
- {
-  SC$2.$cctor();
-  return SC$2.extractDocD$1;
- };
- AppFramework.extractTextD=function()
- {
-  SC$2.$cctor();
-  return SC$2.extractTextD$1;
- };
- AppFramework.runDef=function(d)
- {
-  return AppFramework.run(AppFramework.defPlugInName(),d);
- };
- AppFramework.tryGetVoVW=function(plgName,varName)
- {
-  return View.Bind(function(a)
-  {
-   return a==null?View.Map(function(a$1)
-   {
-    return a$1==null?null:{
-     $:1,
-     $0:new FromView.New(a$1.$0.viwView,Global.ignore)
-    };
-   },AppFramework.tryGetViwW(plgName,varName)):View.Const({
-    $:1,
-    $0:a.$0.varVar
-   });
-  },AppFramework.tryGetVarW(plgName,varName));
- };
- AppFramework.newQry=function(name,qry)
- {
-  return PlugInQuery.New(name,qry);
- };
- AppFramework.getAttrs=function(lytNm,attrs)
- {
-  return List.ofSeq(Seq$1.delay(function()
-  {
-   return Seq$1.append(Seq$1.choose(function(a)
-   {
-    var $1,value,value$1,name;
-    function s(el,a$1)
-    {
-     var act;
-     return a$1.$==1?(act=a$1.$0,el.addEventListener(Strings.Trim(name),function(ev)
-     {
-      return AppFramework.callFunction(el,ev,act.actFunction);
-     },false)):el.setAttribute(Strings.Trim(name),Strings.Trim(a$1.$0));
-    }
-    return!Unchecked.Equals(a,null)&&a.length===2&&(value=Arrays.get(a,1),Strings.Trim(Arrays.get(a,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a,1),(name=Arrays.get(a,0),{
-     $:1,
-     $0:AttrModule.DynamicCustom(function($2)
-     {
-      return function($3)
-      {
-       return s($2,$3);
-      };
-     },AppFramework.getTextData(lytNm,Strings.Trim(value$1)))
-    })):null;
-   },Seq$1.map(function(s)
-   {
-    return String.splitByChar("=",s);
-   },String.splitByChar(";",attrs))),Seq$1.delay(function()
-   {
-    return Seq$1.choose(function(a)
-    {
-     var $1,value,value$1,name,x;
-     return!Unchecked.Equals(a,null)&&a.length===2&&(value=Arrays.get(a,1),Strings.Trim(Arrays.get(a,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a,1),(name=Arrays.get(a,0),{
-      $:1,
-      $0:(x=View.Map(function(a$1)
-      {
-       return a$1.$==1?(function($2)
-       {
-        return function($3)
-        {
-         return $2("@{"+Utils.toSafe($3)+"}");
-        };
-       }(Global.id))(a$1.$0.actName.get_Id()):Strings.Trim(a$1.$0);
-      },AppFramework.getTextData(lytNm,Strings.Trim(value$1))),AttrModule.DynamicStyle(Strings.Trim(name),x))
-     })):null;
-    },Seq$1.map(function(s)
-    {
-     return String.splitByChar(":",s);
-    },String.splitByChar(";",attrs)));
-   }));
-  }));
- };
- AppFramework.getMainClientDoc=function()
- {
-  var x;
-  return Doc.EmbedView((x=AppFramework.plugIns().v,View.Map2(function(mainDoc,plgs)
-  {
-   var x$1,v;
-   x$1=Seq$1.tryPick(function(plg)
-   {
-    var o;
-    o=Seq$1.tryFind(function(doc)
-    {
-     return plg.plgName.get_Id()===mainDoc||plg.plgName.get_Id()+"."+doc.docName.get_Id()===mainDoc;
-    },plg.plgDocs);
-    return o==null?null:{
-     $:1,
-     $0:AppFramework.getLazyDoc(o.$0)
-    };
-   },plgs);
-   v=AppFramework.AppFwkClient().f();
-   return x$1==null?v:x$1.$0;
-  },AppFramework.mainDocV().get_View(),x)));
- };
- AppFramework.bindWrap=function(f,pv)
- {
-  return P.New(Operators$1.op_GreaterGreaterEquals(pv,function(v)
-  {
-   return f(v).r;
-  }));
- };
- AppFramework.unwrapBindWrap=function(f,pv)
- {
-  return P.New(Operators$1.op_BarGreaterGreater(pv.r,f));
- };
- AppFramework.baseView=function()
- {
-  SC$2.$cctor();
-  return SC$2.baseView;
- };
- AppFramework.run=function(pin,d)
- {
-  var x,b;
-  x=(b=Operators$1.depend(),b.Delay(function()
-  {
-   return b.Bind(AppFramework.getDocD(),function(a)
-   {
-    return b.Bind(AppFramework.getTextActViewD(),function(a$1)
-    {
-     return b.Return(Depend.resolver(List.ofArray([["getDocFromReference",a],["getTextActViewFromReference",a$1],["currentPlugInName",pin]]),d));
-    });
-   });
-  }));
-  return Depend.resolver(List.ofArray([["currentPlugInName",pin]]),x);
- };
- AppFramework.errDocf=function(fmt)
- {
-  return fmt(AppFramework.errDoc);
- };
- AppFramework.makeAViewDocL=function(f)
- {
-  return Lazy.Create(function()
-  {
-   return AppFramework.makeAViewDoc(f);
-  });
- };
- AppFramework.getTextData=function(lytNm,txt)
- {
-  var o,o$1,$1,bef;
-  o=(o$1=String.delimitedO("@{","}",txt),o$1==null?null:{
-   $:1,
-   $0:($1=o$1.$0,(bef=$1[0],AppFramework.getOneTextData(lytNm,$1[1],bef,$1[2])))
-  });
-  return o==null?View.Const({
-   $:0,
-   $0:txt
-  }):o.$0;
- };
- AppFramework.getDocD=function()
- {
-  SC$2.$cctor();
-  return SC$2.getDocD;
- };
- AppFramework.getTextActViewD=function()
- {
-  SC$2.$cctor();
-  return SC$2.getTextActViewD;
- };
- AppFramework.getOneTextData=function(lytNm,name,bef,aft)
- {
-  var p,plg,n;
-  p=(AppFramework.splitName(lytNm))(name);
-  plg=p[0];
-  n=p[1];
-  return View.Bind(function(a)
-  {
-   return a==null?View.Bind(function(a$1)
-   {
-    var txt;
-    return a$1==null?View.Const({
-     $:0,
-     $0:((((Runtime$1.Curried(function($1,$2,$3,$4)
-     {
-      return $1(Utils.toSafe($2)+" @{Missing "+Utils.toSafe($3)+"}"+Utils.toSafe($4));
-     },4))(Global.id))(bef))(name))(aft)
-    }):(txt=a$1.$0,View.Bind(function(a$2)
-    {
-     return a$2.$==1?View.Const({
-      $:0,
-      $0:(function($1)
-      {
-       return function($2)
-       {
-        return $1("Unexpected Action @{"+Utils.toSafe($2)+"}");
-       };
-      }(Global.id))(a$2.$0.actName.get_Id())
-     }):View.Const({
-      $:0,
-      $0:bef+txt+a$2.$0
-     });
-    },AppFramework.getTextData(lytNm,aft)));
-   },AppFramework.tryGetWoWW(plg,n)):View.Const({
-    $:1,
-    $0:a.$0
-   });
-  },AppFramework.tryGetActW(plg,n));
- };
- PlugInBuilder=AppFramework.PlugInBuilder=Runtime$1.Class({
-  AddVar:function(plg,name,_var)
-  {
-   plg.plgVars.Append(AppFramework.newVar(new PlgElemName({
-    $:0,
-    $0:name
-   }),_var));
-   return plg;
-  },
-  Yield:function()
-  {
-   return this.Zero();
-  },
-  AddAct:function(plg,name,act)
-  {
-   plg.plgActions.Append(AppFramework.newAct(new PlgElemName({
-    $:0,
-    $0:name
-   }),act));
-   return plg;
-  },
-  Merge:function(plg,prefix,p2)
-  {
-   plg.plgVars.AppendMany(Seq$1.map(function(v)
-   {
-    return PlugInVar.New(new PlgElemName({
-     $:0,
-     $0:prefix+v.varName.get_Id()
-    }),v.varVar);
-   },p2.plgVars));
-   plg.plgViews.AppendMany(Seq$1.map(function(w)
-   {
-    return PlugInView.New(new PlgElemName({
-     $:0,
-     $0:prefix+w.viwName.get_Id()
-    }),w.viwView);
-   },p2.plgViews));
-   plg.plgDocs.AppendMany(Seq$1.map(function(d)
-   {
-    return PlugInDoc.New(new PlgElemName({
-     $:0,
-     $0:prefix+d.docName.get_Id()
-    }),d.docDoc);
-   },p2.plgDocs));
-   plg.plgActions.AppendMany(Seq$1.map(function(a)
-   {
-    return PlugInAction.New(new PlgElemName({
-     $:0,
-     $0:prefix+a.actName.get_Id()
-    }),a.actFunction,a.actEnabled);
-   },p2.plgActions));
-   plg.plgQueries.AppendMany(Seq$1.map(function(q)
-   {
-    return PlugInQuery.New(new PlgElemName({
-     $:0,
-     $0:prefix+q.qryName.get_Id()
-    }),q.qryFunction);
-   },p2.plgQueries));
-   return plg;
-  },
-  AddViw:function(plg,name,viw)
-  {
-   plg.plgViews.Append(AppFramework.newViw(new PlgElemName({
-    $:0,
-    $0:name
-   }),viw));
-   return plg;
-  },
-  Name:function(plg,name)
-  {
-   return PlugIn.New(new PlugInName({
-    $:0,
-    $0:name
-   }),plg.plgVars,plg.plgViews,plg.plgDocs,plg.plgActions,plg.plgQueries);
-  },
-  Zero:function()
-  {
-   var i;
-   i=AppFramework.defaultPlugIn();
-   return PlugIn.New(new PlugInName({
-    $:0,
-    $0:"Main"
-   }),i.plgVars,i.plgViews,i.plgDocs,i.plgActions,i.plgQueries);
-  },
-  AddDoc:function(plg,name,doc)
-  {
-   plg.plgDocs.Append(AppFramework.newDoc(new PlgElemName({
-    $:0,
-    $0:name
-   }),doc));
-   return plg;
-  },
-  AddQry:function(plg,name,qry)
-  {
-   plg.plgQueries.Append(AppFramework.newQry(new PlgElemName({
-    $:0,
-    $0:name
-   }),qry));
-   return plg;
-  },
-  AddAct2:function(plg,name,act,p1,p2)
-  {
-   plg.plgActions.Append(AppFramework.newActF(new PlgElemName({
-    $:0,
-    $0:name
-   }),{
-    $:2,
-    $0:act,
-    $1:p1,
-    $2:p2
-   }));
-   return plg;
-  },
-  AddDoc3:function(plg,name,doc,a,b,c)
-  {
-   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
-    $:0,
-    $0:name
-   }),{
-    $:3,
-    $0:doc,
-    $1:a,
-    $2:b,
-    $3:c
-   }));
-   return plg;
-  },
-  AddDoc4:function(plg,name,doc,a,b,c,d)
-  {
-   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
-    $:0,
-    $0:name
-   }),{
-    $:4,
-    $0:doc,
-    $1:a,
-    $2:b,
-    $3:c,
-    $4:d
-   }));
-   return plg;
-  },
-  AddDoc2:function(plg,name,doc,p1,p2)
-  {
-   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
-    $:0,
-    $0:name
-   }),{
-    $:2,
-    $0:doc,
-    $1:p1,
-    $2:p2
-   }));
-   return plg;
-  },
-  AddDoc1:function(plg,name,doc,p1)
-  {
-   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
-    $:0,
-    $0:name
-   }),{
-    $:1,
-    $0:doc,
-    $1:p1
-   }));
-   return plg;
-  }
- },Obj,PlugInBuilder);
- PlugInBuilder.New=Runtime$1.Ctor(function()
- {
-  Obj.New.call(this);
- },PlugInBuilder);
  NewLY.addLayout=function(lyt)
  {
   var parseW,l,errorsW,f,defsW,f$1,g,entries,g$1,l$1;
@@ -8977,6 +7685,63 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     return c($1[0],$1[1]);
    },s);
   };
+ };
+ NewLY.defButtonM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defButtonM;
+ };
+ NewLY.defInputM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defInputM;
+ };
+ NewLY.defTextAreaM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defTextAreaM;
+ };
+ NewLY.defConcatM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defConcatM;
+ };
+ NewLY.defElementM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defElementM;
+ };
+ NewLY.defDocFM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defDocFM;
+ };
+ NewLY.defSplitterM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defSplitterM;
+ };
+ NewLY.defActionM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defActionM;
+ };
+ NewLY.defViewM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defViewM;
+ };
+ NewLY.defViewJSM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defViewJSM;
+ };
+ NewLY.defVarM=function(l,n,i)
+ {
+  var v;
+  v=(NewLY.defVarM0())([l,n,NewLY.initVal()]);
+  v.Get()===NewLY.initVal()?v.Set(i):void 0;
+  return v;
  };
  NewLY.aV=function()
  {
@@ -9468,62 +8233,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    });
   })));
  };
- NewLY.defButtonM=function()
+ NewLY.defVarM0=function()
  {
   SC$2.$cctor();
-  return SC$2.defButtonM;
+  return SC$2.defVarM0;
  };
- NewLY.defInputM=function()
+ NewLY.initVal=function()
  {
   SC$2.$cctor();
-  return SC$2.defInputM;
- };
- NewLY.defTextAreaM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defTextAreaM;
- };
- NewLY.defConcatM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defConcatM;
- };
- NewLY.defElementM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defElementM;
- };
- NewLY.defDocFM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defDocFM;
- };
- NewLY.defSplitterM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defSplitterM;
- };
- NewLY.defActionM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defActionM;
- };
- NewLY.defViewM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defViewM;
- };
- NewLY.defViewJSM=function()
- {
-  SC$2.$cctor();
-  return SC$2.defViewJSM;
- };
- NewLY.defVarM=function(l,n,i)
- {
-  var v;
-  v=(NewLY.defVarM0())([l,n,NewLY.initVal()]);
-  v.Get()===NewLY.initVal()?v.Set(i):void 0;
-  return v;
+  return SC$2.initVal;
  };
  NewLY.getParam2D=function()
  {
@@ -9545,16 +8263,1298 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$2.$cctor();
   return SC$2.getParamD;
  };
- NewLY.defVarM0=function()
+ StartAppFramework.startWithHtmlD=function()
  {
   SC$2.$cctor();
-  return SC$2.defVarM0;
+  return SC$2.startWithHtmlD;
  };
- NewLY.initVal=function()
+ StartAppFramework.htmlD=function()
  {
   SC$2.$cctor();
-  return SC$2.initVal;
+  return SC$2.htmlD;
  };
+ Depend.resolver=function(lst,depend)
+ {
+  function resolve(a)
+  {
+   var $1,k,nm,o,o$1;
+   function f(t)
+   {
+    return t[0];
+   }
+   function g(y)
+   {
+    return nm===y;
+   }
+   return a.$==1?a.$0:($1=a.$0,$1!=null&&$1.$==1)?(k=a.$1,(nm=a.$0.$0[0],resolve((o=(o$1=Seq$1.tryFind(function(x)
+   {
+    return g(f(x));
+   },lst),o$1==null?null:{
+    $:1,
+    $0:k(o$1.$0[1])
+   }),o==null?k(a.$0.$0[1]):o.$0)))):resolve(a.$1(void 0));
+  }
+  return resolve(depend);
+ };
+ Depend.rtn=function(a)
+ {
+  return{
+   $:1,
+   $0:a
+  };
+ };
+ Depend.depend=function()
+ {
+  SC$2.$cctor();
+  return SC$2.depend;
+ };
+ Depend.dependByName=function(nm,defF,kf)
+ {
+  return{
+   $:0,
+   $0:{
+    $:1,
+    $0:[nm,defF]
+   },
+   $1:function(f)
+   {
+    return{
+     $:1,
+     $0:kf(f)
+    };
+   }
+  };
+ };
+ Depend.bind=function(f,pa)
+ {
+  function bindR(a)
+  {
+   var v,k;
+   return a.$==1?(v=a.$0,{
+    $:0,
+    $0:null,
+    $1:function()
+    {
+     return f(v);
+    }
+   }):(k=a.$1,{
+    $:0,
+    $0:a.$0,
+    $1:function(p)
+    {
+     return bindR(k(p));
+    }
+   });
+  }
+  return bindR(pa);
+ };
+ Depend.map=function(f)
+ {
+  var f$1;
+  f$1=function(x)
+  {
+   return Depend.rtn(f(x));
+  };
+  return function(p)
+  {
+   return Depend.bind(f$1,p);
+  };
+ };
+ AppFrameworkTemplate.html=function()
+ {
+  SC$1.$cctor();
+  return SC$1.html;
+ };
+ Numeric.TryParseInt64=function(s,r)
+ {
+  return Numeric.TryParse(s,-9223372036854775808,9223372036854775807,r);
+ };
+ ListModel.Create=function(key,init)
+ {
+  return ListModel.CreateWithStorage(key,Storage.InMemory(Arrays.ofSeq(init)));
+ };
+ ListModel.CreateWithStorage=function(key,storage)
+ {
+  return new ListModel.New(key,storage);
+ };
+ ViewBuilder.B={
+  $:0
+ };
+ LM.getDocFor=function(elements,def,newF,predWO,elUI)
+ {
+  var keyF,selected0,selectedV,b,result,elUIF;
+  function f(a)
+  {
+   var $1;
+   return a!=null&&a.$==1&&(elements.ContainsKey(a.$0)&&($1=a.$0,true))?{
+    $:1,
+    $0:$1
+   }:null;
+  }
+  function g(v)
+  {
+   if(!Unchecked.Equals(selected0.Get(),v))
+    selected0.Set(v);
+  }
+  function _delete(k,u)
+  {
+   selectedV.Set(null);
+   return elements.RemoveByKey(k);
+  }
+  keyF=elements.key;
+  selected0=Var$1.Create$1(null);
+  selectedV=new FromView.New((b=View.get_Do(),View.Bind(function(a)
+  {
+   var sel;
+   return a!=null&&a.$==1?(sel=a.$0,View.Bind(function(a$1)
+   {
+    return!a$1?View.Const(null):View.Const({
+     $:1,
+     $0:sel
+    });
+   },elements.ContainsKeyAsView(sel))):View.Const(null);
+  },selected0.get_View())),function(x)
+  {
+   return g(f(x));
+  });
+  result=ListModelData.New(elements,Doc.get_Empty(),selectedV,function()
+  {
+   var n;
+   n=newF();
+   elements.Append(n);
+   selectedV.Set({
+    $:1,
+    $0:keyF(n)
+   });
+   return n;
+  },function()
+  {
+   var o;
+   o=selectedV.Get();
+   o==null?void 0:_delete(o.$0,null);
+  },def);
+  elUIF=elUI(result);
+  return ListModelData.New(result.elems,Doc.Convert(Global.id,ListModel$1.MapLens(predWO,function(k,v)
+  {
+   return(elUIF(View.Const({
+    $:1,
+    $0:k
+   })))(v);
+  },elements)),result.selV,result.add,result.delCur,result.def);
+ };
+ AppFramework.plugin=function()
+ {
+  SC$2.$cctor();
+  return SC$2.plugin;
+ };
+ AppFramework.addPlugIn=function(p)
+ {
+  AppFramework.plugIns().Append(p);
+ };
+ AppFramework.newVar=function(name,_var)
+ {
+  return PlugInVar.New(name,_var);
+ };
+ AppFramework.newViw=function(name,viw)
+ {
+  return PlugInView.New(name,viw);
+ };
+ AppFramework.newAct=function(name,fnc)
+ {
+  return PlugInAction.New(name,{
+   $:0,
+   $0:fnc
+  },View.Const(true));
+ };
+ AppFramework.plugIns=function()
+ {
+  SC$2.$cctor();
+  return SC$2.plugIns;
+ };
+ AppFramework.tryGetPlugIn=function(plgName)
+ {
+  return AppFramework.plugIns().TryFindByKey(plgName);
+ };
+ AppFramework.defaultPlugIn=function()
+ {
+  return PlugIn.New(new PlugInName({
+   $:0,
+   $0:""
+  }),new ListModel.New$1(function(_var)
+  {
+   return _var.varName;
+  }),new ListModel.New$1(function(viw)
+  {
+   return viw.viwName;
+  }),new ListModel.New$1(function(doc)
+  {
+   return doc.docName;
+  }),new ListModel.New$1(function(act)
+  {
+   return act.actName;
+  }),new ListModel.New$1(function(qry)
+  {
+   return qry.qryName;
+  }));
+ };
+ AppFramework.newDocF=function(name,docF)
+ {
+  return PlugInDoc.New(name,docF);
+ };
+ AppFramework.newDoc=function(name,doc)
+ {
+  return PlugInDoc.New(name,{
+   $:0,
+   $0:doc
+  });
+ };
+ AppFramework.newActF=function(name,fncF)
+ {
+  return PlugInAction.New(name,fncF,View.Const(true));
+ };
+ AppFramework.selectionPlugInO=function()
+ {
+  SC$2.$cctor();
+  return SC$2.selectionPlugInO;
+ };
+ AppFramework.currentPlugInW=function()
+ {
+  SC$2.$cctor();
+  return SC$2.currentPlugInW;
+ };
+ AppFramework.renderPlugIns=function()
+ {
+  return Doc.Flatten(AppFramework.plugIns().MapLens(function($1)
+  {
+   var b,t,N,p,i;
+   return(b=(t=(N=$1.get_Id(),ProviderBuilder.Make().WithHole({
+    $:1,
+    $0:"name",
+    $1:N
+   })),t.WithHole(Handler.EventQ2(t.k,"select",function()
+   {
+    return t.i;
+   },function()
+   {
+    AppFramework.selectionPlugInO().Set({
+     $:1,
+     $0:$1
+    });
+   }))).WithHole({
+    $:2,
+    $0:"selected",
+    $1:View.Map(function($2)
+    {
+     return Unchecked.Equals($2,{
+      $:1,
+      $0:$1
+     })?"selected":"";
+    },AppFramework.selectionPlugInO().get_View())
+   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
+  }));
+ };
+ AppFramework.renderVars=function()
+ {
+  function a(plg,_var)
+  {
+   return[plg.plgName,_var.varName];
+  }
+  function a$1(plg,_var)
+  {
+   var b,N,p,i;
+   return(b=(N=_var.varName.get_Id(),ProviderBuilder.Make().WithHole({
+    $:1,
+    $0:"name",
+    $1:N
+   })).WithHole({
+    $:8,
+    $0:"value",
+    $1:_var.varVar
+   }),(p=Handler.CompleteHoles(b.k,b.h,[["value",0]]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.namevalueinput(p[0])),(b.i=i,i)))).get_Doc();
+  }
+  return Doc.ConvertBy(function($1)
+  {
+   return a($1[0],$1[1]);
+  },function($1)
+  {
+   return a$1($1[0],$1[1]);
+  },View.Map(function(plg)
+  {
+   return Seq$1.map(function(v)
+   {
+    return[plg,v];
+   },plg.plgVars);
+  },AppFramework.currentPlugInW()));
+ };
+ AppFramework.renderViews=function()
+ {
+  function a(plg,viw)
+  {
+   return[plg.plgName,viw.viwName];
+  }
+  function a$1(plg,viw)
+  {
+   var b,N,p,i;
+   return(b=(N=viw.viwName.get_Id(),ProviderBuilder.Make().WithHole({
+    $:1,
+    $0:"name",
+    $1:N
+   })).WithHole({
+    $:2,
+    $0:"value",
+    $1:viw.viwView
+   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.namevalue(p[0])),(b.i=i,i)))).get_Doc();
+  }
+  return Doc.ConvertBy(function($1)
+  {
+   return a($1[0],$1[1]);
+  },function($1)
+  {
+   return a$1($1[0],$1[1]);
+  },View.Map(function(plg)
+  {
+   return Seq$1.map(function(v)
+   {
+    return[plg,v];
+   },plg.plgViews);
+  },AppFramework.currentPlugInW()));
+ };
+ AppFramework.renderDocs=function()
+ {
+  function a(plg,doc)
+  {
+   return[plg.plgName,doc.docName];
+  }
+  function a$1(plg,doc)
+  {
+   var parms,m,x,x$1,x$2,x$3,x$4,b,t,N,p,i;
+   parms=(m=doc.docDoc,m.$==1?(x=Strings.concat(", ",List.ofArray([m.$1])),(function($1)
+   {
+    return function($2)
+    {
+     return $1("("+Utils.toSafe($2)+")");
+    };
+   }(Global.id))(x)):m.$==2?(x$1=Strings.concat(", ",List.ofArray([m.$1,m.$2])),(function($1)
+   {
+    return function($2)
+    {
+     return $1("("+Utils.toSafe($2)+")");
+    };
+   }(Global.id))(x$1)):m.$==3?(x$2=Strings.concat(", ",List.ofArray([m.$1,m.$2,m.$3])),(function($1)
+   {
+    return function($2)
+    {
+     return $1("("+Utils.toSafe($2)+")");
+    };
+   }(Global.id))(x$2)):m.$==4?(x$3=Strings.concat(", ",List.ofArray([m.$1,m.$2,m.$3,m.$4])),(function($1)
+   {
+    return function($2)
+    {
+     return $1("("+Utils.toSafe($2)+")");
+    };
+   }(Global.id))(x$3)):m.$==5?(x$4=Strings.concat(", ",List.ofArray([m.$1,m.$2,m.$3,m.$4,m.$5])),(function($1)
+   {
+    return function($2)
+    {
+     return $1("("+Utils.toSafe($2)+")");
+    };
+   }(Global.id))(x$4)):"");
+   return(b=(t=(N=doc.docName.get_Id()+parms,ProviderBuilder.Make().WithHole({
+    $:1,
+    $0:"name",
+    $1:N
+   })),t.WithHole(Handler.EventQ2(t.k,"select",function()
+   {
+    return t.i;
+   },function()
+   {
+    View.Get(function(plg$1)
+    {
+     var a$2;
+     a$2=plg$1.plgName.get_Id()+"."+doc.docName.get_Id();
+     AppFramework.mainDocV().Set(a$2);
+    },AppFramework.currentPlugInW());
+   }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
+  }
+  return Doc.ConvertBy(function($1)
+  {
+   return a($1[0],$1[1]);
+  },function($1)
+  {
+   return a$1($1[0],$1[1]);
+  },View.Map(function(plg)
+  {
+   return Seq$1.map(function(v)
+   {
+    return[plg,v];
+   },plg.plgDocs);
+  },AppFramework.currentPlugInW()));
+ };
+ AppFramework.renderActions=function()
+ {
+  function a(plg,act)
+  {
+   return[plg.plgName,act.actName];
+  }
+  function a$1(plg,act)
+  {
+   var parms,m,x,x$1;
+   parms=(m=act.actFunction,m.$==1?(x=Strings.concat(", ",List.ofArray([m.$1])),(function($1)
+   {
+    return function($2)
+    {
+     return $1("("+Utils.toSafe($2)+")");
+    };
+   }(Global.id))(x)):m.$==2?(x$1=Strings.concat(", ",List.ofArray([m.$1,m.$2])),(function($1)
+   {
+    return function($2)
+    {
+     return $1("("+Utils.toSafe($2)+")");
+    };
+   }(Global.id))(x$1)):"");
+   return Doc.EmbedView(View.Map(function(a$2)
+   {
+    var b,t,N,p,i,b$1,t$1,N$1,p$1,i$1;
+    return a$2?(b=(t=(N=act.actName.get_Id()+parms,ProviderBuilder.Make().WithHole({
+     $:1,
+     $0:"name",
+     $1:N
+    })),t.WithHole(Handler.EventQ2(t.k,"click",function()
+    {
+     return t.i;
+    },function(ev)
+    {
+     AppFramework.callFunction(ev,null,act.actFunction);
+    }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.action(p[0])),(b.i=i,i)))).get_Doc():(b$1=(t$1=(N$1=act.actName.get_Id(),ProviderBuilder.Make().WithHole({
+     $:1,
+     $0:"name",
+     $1:N$1
+    })),t$1.WithHole(Handler.EventQ2(t$1.k,"click",function()
+    {
+     return t$1.i;
+    },function(ev)
+    {
+     AppFramework.callFunction(ev,null,act.actFunction);
+    }))),(p$1=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i$1=new TemplateInstance.New(p$1[1],LayoutEngine_Templates.actiondisabled(p$1[0])),(b$1.i=i$1,i$1)))).get_Doc();
+   },act.actEnabled));
+  }
+  return Doc.ConvertBy(function($1)
+  {
+   return a($1[0],$1[1]);
+  },function($1)
+  {
+   return a$1($1[0],$1[1]);
+  },View.Map(function(plg)
+  {
+   return Seq$1.map(function(v)
+   {
+    return[plg,v];
+   },plg.plgActions);
+  },AppFramework.currentPlugInW()));
+ };
+ AppFramework.renderQueries=function()
+ {
+  function a(plg,qry)
+  {
+   return[plg.plgName,qry.qryName];
+  }
+  function a$1(plg,qry)
+  {
+   var b,t,N,p,i;
+   return(b=(t=(N=qry.qryName.get_Id(),ProviderBuilder.Make().WithHole({
+    $:1,
+    $0:"name",
+    $1:N
+   })),t.WithHole(Handler.EventQ2(t.k,"select",function()
+   {
+    return t.i;
+   },function()
+   {
+    Global.alert(qry.qryFunction(null));
+   }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
+  }
+  return Doc.ConvertBy(function($1)
+  {
+   return a($1[0],$1[1]);
+  },function($1)
+  {
+   return a$1($1[0],$1[1]);
+  },View.Map(function(plg)
+  {
+   return Seq$1.map(function(v)
+   {
+    return[plg,v];
+   },plg.plgQueries);
+  },AppFramework.currentPlugInW()));
+ };
+ AppFramework.a11V=function()
+ {
+  SC$2.$cctor();
+  return SC$2.a11V;
+ };
+ AppFramework.add1=function(a)
+ {
+  return a+1;
+ };
+ AppFramework.mainDocV=function()
+ {
+  SC$2.$cctor();
+  return SC$2.mainDocV;
+ };
+ AppFramework.callFunction=function(p1,p2,actF)
+ {
+  if(actF.$==1)
+   actF.$0(p1);
+  else
+   if(actF.$==2)
+    (actF.$0(p1))(p2);
+   else
+    actF.$0();
+ };
+ AppFramework.valToAttr=function(atn,a)
+ {
+  return a.$==0?AttrModule.Dynamic(atn,a.$0):AttrProxy.Create(atn,a.$0);
+ };
+ AppFramework.valToStyle=function(atn,a)
+ {
+  return a.$==0?AttrModule.DynamicStyle(atn,a.$0):AttrModule.Style(atn,a.$0);
+ };
+ AppFramework.currentPlugInNameDef=function()
+ {
+  SC$2.$cctor();
+  return SC$2.currentPlugInNameDef;
+ };
+ AppFramework.currentPlugInNameD=function()
+ {
+  SC$2.$cctor();
+  return SC$2.currentPlugInNameD;
+ };
+ AppFramework.splitName=function(lytNm)
+ {
+  function f(s)
+  {
+   return String.splitByChar(".",s);
+  }
+  function g(a)
+  {
+   return Arrays.length(a)===1?[lytNm,new PlgElemName({
+    $:0,
+    $0:Strings.Trim(Arrays.get(a,0))
+   })]:[new PlugInName({
+    $:0,
+    $0:Strings.Trim(Arrays.get(a,0))
+   }),new PlgElemName({
+    $:0,
+    $0:Strings.Trim(Arrays.get(a,1))
+   })];
+  }
+  return function(x)
+  {
+   return g(f(x));
+  };
+ };
+ AppFramework.tryGetDocW=function(plgName,docName)
+ {
+  return View.Bind(function(a)
+  {
+   return a!=null&&a.$==1?a.$0.plgDocs.TryFindByKeyAsView(docName):View.Const(null);
+  },AppFramework.tryGetPlugInW(plgName));
+ };
+ AppFramework.getLazyDoc=function(doc)
+ {
+  var m;
+  m=doc.docDoc;
+  return m.$==0?m.$0.f():Doc.Element("div",[],[Doc.TextNode((function($1)
+  {
+   return function($2)
+   {
+    return $1("Doc with parameters not allowed here: "+GeneratedPrintf.p($2));
+   };
+  }(Global.id))(doc))]);
+ };
+ AppFramework.tryGetWoWW=function(plgName,viwName)
+ {
+  return View.Bind(function(a)
+  {
+   return a==null?View.Bind(function(a$1)
+   {
+    return a$1==null?View.Const(null):View.Map(function(a$2)
+    {
+     return{
+      $:1,
+      $0:a$2
+     };
+    },a$1.$0.varVar.get_View());
+   },AppFramework.tryGetVarW(plgName,viwName)):View.Map(function(a$1)
+   {
+    return{
+     $:1,
+     $0:a$1
+    };
+   },a.$0.viwView);
+  },AppFramework.tryGetViwW(plgName,viwName));
+ };
+ AppFramework.tryGetActW=function(plgName,actName)
+ {
+  return View.Bind(function(a)
+  {
+   return a!=null&&a.$==1?a.$0.plgActions.TryFindByKeyAsView(actName):View.Const(null);
+  },AppFramework.tryGetPlugInW(plgName));
+ };
+ AppFramework.extractAtsD=function()
+ {
+  SC$2.$cctor();
+  return SC$2.extractAtsD$1;
+ };
+ AppFramework.depWithExtracts=function(f)
+ {
+  var b;
+  return AppFramework.runDef((b=Depend.depend(),b.Delay(function()
+  {
+   return b.Bind(AppFramework.extractAtsD(),function(a)
+   {
+    return b.Bind(AppFramework.extractDocD(),function(a$1)
+    {
+     return b.Bind(AppFramework.extractTextD(),function(a$2)
+     {
+      return b.Return(f(a,a$1,a$2));
+     });
+    });
+   });
+  })));
+ };
+ AppFramework.docWithVar=function(f,_var)
+ {
+  var g,t;
+  function f$1(o)
+  {
+   return o==null?null:{
+    $:1,
+    $0:f(o.$0)
+   };
+  }
+  function d()
+  {
+   return AppFramework.errDoc((function($1)
+   {
+    return function($2)
+    {
+     return $1("Var not found "+Utils.toSafe($2));
+    };
+   }(Global.id))(_var));
+  }
+  return Doc.BindView((g=function(o)
+  {
+   return o==null?d():o.$0;
+  },function(x)
+  {
+   return g(f$1(x));
+  }),(t=AppFramework.getParmRef(_var),AppFramework.tryGetVoVW(t[0],t[1])));
+ };
+ AppFramework.getParmRef=function(_var)
+ {
+  var x,o,o$1,$1,b;
+  x=(o=(o$1=String.delimitedO("@{","}",_var),o$1==null?null:{
+   $:1,
+   $0:($1=o$1.$0,($1[0],b=$1[1],$1[2],b))
+  }),o==null?_var:o.$0);
+  return(AppFramework.splitName(AppFramework.defPlugInName()))(x);
+ };
+ AppFramework.tryGetAct=function(plgName,actName)
+ {
+  var o;
+  o=AppFramework.tryGetPlugIn(plgName);
+  return o==null?null:o.$0.plgActions.TryFindByKey(actName);
+ };
+ AppFramework.AppFwkClient=function()
+ {
+  SC$2.$cctor();
+  return SC$2.AppFwkClient;
+ };
+ AppFramework.htmlDoc=function()
+ {
+  SC$2.$cctor();
+  return SC$2.htmlDoc;
+ };
+ AppFramework.trigAct=function()
+ {
+  SC$2.$cctor();
+  return SC$2.trigAct;
+ };
+ AppFramework.input=function()
+ {
+  SC$2.$cctor();
+  return SC$2.input;
+ };
+ AppFramework.textArea=function()
+ {
+  SC$2.$cctor();
+  return SC$2.textArea;
+ };
+ AppFramework.select=function()
+ {
+  SC$2.$cctor();
+  return SC$2.select;
+ };
+ AppFramework.inputFile=function(attrs,labelName,actName)
+ {
+  var o,o$1,t,act;
+  o=(o$1=(t=(AppFramework.splitName(AppFramework.defPlugInName()))(actName),AppFramework.tryGetAct(t[0],t[1])),o$1==null?null:{
+   $:1,
+   $0:(act=o$1.$0,Doc.Element("div",AppFramework.getAttrs(AppFramework.defPlugInName(),attrs),[Doc.Element("div",[AttrProxy.Create("class","input-group")],[Doc.Element("span",[AttrProxy.Create("class","input-group-btn")],[Doc.Element("label",[AttrProxy.Create("class","btn")],[Doc.TextNode(labelName),Doc.Element("input",[AttrProxy.Create("class","form-control"),AttrProxy.Create("type","file"),AttrModule.Style("display","none"),AttrProxy.HandlerImpl("click",function(el)
+   {
+    return function()
+    {
+     el.value="";
+    };
+   }),AttrProxy.HandlerImpl("change",function(el)
+   {
+    return function()
+    {
+     return AppFramework.callFunction(el,null,act.actFunction);
+    };
+   })],[])])])])]))
+  });
+  return o==null?AppFramework.errDoc((function($1)
+  {
+   return function($2)
+   {
+    return $1("Action not found "+Utils.toSafe($2));
+   };
+  }(Global.id))(actName)):o.$0;
+ };
+ AppFramework.inputLabel=function()
+ {
+  SC$2.$cctor();
+  return SC$2.inputLabel;
+ };
+ AppFramework.setVar=function(varN,value)
+ {
+  var o,t;
+  o=(t=(AppFramework.splitName(AppFramework.defPlugInName()))(varN),AppFramework.tryGetVar(t[0],t[1]));
+  o==null?void 0:o.$0.varVar.Set(value);
+ };
+ AppFramework.horizontal=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
+ {
+  var b,t,p,i;
+  return(b=(t=ProviderBuilder.Make().WithHole({
+   $:2,
+   $0:"partsizes",
+   $1:partSizes
+  }).WithHole({
+   $:7,
+   $0:"afterrender",
+   $1:afterRender
+  }).WithHole({
+   $:7,
+   $0:"afterrendersp",
+   $1:afterRenderSp
+  }),t.WithHole(Handler.EventQ2(t.k,"mousedown",function()
+  {
+   return t.i;
+  },function(te)
+  {
+   mouseDown(te.Event);
+  }))).WithHole({
+   $:2,
+   $0:"gap",
+   $1:gap
+  }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterhor(p[0])),(b.i=i,i)))).get_Doc();
+ };
+ AppFramework.vertical=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
+ {
+  var b,t,p,i;
+  return(b=(t=ProviderBuilder.Make().WithHole({
+   $:2,
+   $0:"partsizes",
+   $1:partSizes
+  }).WithHole({
+   $:7,
+   $0:"afterrender",
+   $1:afterRender
+  }).WithHole({
+   $:7,
+   $0:"afterrendersp",
+   $1:afterRenderSp
+  }),t.WithHole(Handler.EventQ2(t.k,"mousedown",function()
+  {
+   return t.i;
+  },function(te)
+  {
+   mouseDown(te.Event);
+  }))).WithHole({
+   $:2,
+   $0:"gap",
+   $1:gap
+  }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterver(p[0])),(b.i=i,i)))).get_Doc();
+ };
+ AppFramework.mainDoc=function()
+ {
+  var b,M,t,M$1,p,i;
+  return(b=(M=AppFramework.getMainClientDoc(),(t=(M$1=AppFramework.mainDocV().get_View(),ProviderBuilder.Make().WithHole({
+   $:2,
+   $0:"maindoc",
+   $1:M$1
+  })),t.WithHole(Handler.EventQ2(t.k,"goclient",function()
+  {
+   return t.i;
+  },function()
+  {
+   AppFramework.mainDocV().Set("AppFramework.AppFwkClient");
+  }))).WithHole({
+   $:0,
+   $0:"mainclient",
+   $1:M
+  })),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.appframework(p[0])),(b.i=i,i)))).get_Doc();
+ };
+ AppFramework.getMainDoc=function()
+ {
+  SC$2.$cctor();
+  return SC$2.getMainDoc;
+ };
+ AppFramework.defPlugInName=function()
+ {
+  SC$2.$cctor();
+  return SC$2.defPlugInName;
+ };
+ AppFramework.op_Dereference=function(v)
+ {
+  return P.New((Operators$1.rtn())({
+   $:1,
+   $0:v
+  }));
+ };
+ AppFramework.makeAViewDoc=function(f)
+ {
+  return Doc.BindView(function()
+  {
+   return f();
+  },AppFramework.baseView());
+ };
+ AppFramework.tryGetVar=function(plgName,varName)
+ {
+  var o;
+  o=AppFramework.tryGetPlugIn(plgName);
+  return o==null?null:o.$0.plgVars.TryFindByKey(varName);
+ };
+ AppFramework.tryGetVarW=function(plgName,varName)
+ {
+  return View.Bind(function(a)
+  {
+   return a!=null&&a.$==1?a.$0.plgVars.TryFindByKeyAsView(varName):View.Const(null);
+  },AppFramework.tryGetPlugInW(plgName));
+ };
+ AppFramework.tryGetViwW=function(plgName,viwName)
+ {
+  return View.Bind(function(a)
+  {
+   return a!=null&&a.$==1?a.$0.plgViews.TryFindByKeyAsView(viwName):View.Const(null);
+  },AppFramework.tryGetPlugInW(plgName));
+ };
+ AppFramework.tryGetDoc=function(plgName,docName)
+ {
+  var o;
+  o=AppFramework.tryGetPlugIn(plgName);
+  return o==null?null:o.$0.plgDocs.TryFindByKey(docName);
+ };
+ AppFramework.tryGetViw=function(plgName,viwName)
+ {
+  var o;
+  o=AppFramework.tryGetPlugIn(plgName);
+  return o==null?null:o.$0.plgViews.TryFindByKey(viwName);
+ };
+ AppFramework.errDoc=function(txt)
+ {
+  return Doc.Element("div",[],[Doc.TextNode(txt)]);
+ };
+ AppFramework.tryGetPlugInW=function(plgName)
+ {
+  return AppFramework.plugIns().TryFindByKeyAsView(plgName);
+ };
+ AppFramework.extractDocD=function()
+ {
+  SC$2.$cctor();
+  return SC$2.extractDocD$1;
+ };
+ AppFramework.extractTextD=function()
+ {
+  SC$2.$cctor();
+  return SC$2.extractTextD$1;
+ };
+ AppFramework.runDef=function(d)
+ {
+  return AppFramework.run(AppFramework.defPlugInName(),d);
+ };
+ AppFramework.tryGetVoVW=function(plgName,varName)
+ {
+  return View.Bind(function(a)
+  {
+   return a==null?View.Map(function(a$1)
+   {
+    return a$1==null?null:{
+     $:1,
+     $0:new FromView.New(a$1.$0.viwView,Global.ignore)
+    };
+   },AppFramework.tryGetViwW(plgName,varName)):View.Const({
+    $:1,
+    $0:a.$0.varVar
+   });
+  },AppFramework.tryGetVarW(plgName,varName));
+ };
+ AppFramework.newQry=function(name,qry)
+ {
+  return PlugInQuery.New(name,qry);
+ };
+ AppFramework.getAttrs=function(lytNm,attrs)
+ {
+  return List.ofSeq(Seq$1.delay(function()
+  {
+   return Seq$1.append(Seq$1.choose(function(a)
+   {
+    var $1,value,value$1,name;
+    function s(el,a$1)
+    {
+     var act;
+     return a$1.$==1?(act=a$1.$0,el.addEventListener(Strings.Trim(name),function(ev)
+     {
+      return AppFramework.callFunction(el,ev,act.actFunction);
+     },false)):el.setAttribute(Strings.Trim(name),Strings.Trim(a$1.$0));
+    }
+    return!Unchecked.Equals(a,null)&&a.length===2&&(value=Arrays.get(a,1),Strings.Trim(Arrays.get(a,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a,1),(name=Arrays.get(a,0),{
+     $:1,
+     $0:AttrModule.DynamicCustom(function($2)
+     {
+      return function($3)
+      {
+       return s($2,$3);
+      };
+     },AppFramework.getTextData(lytNm,Strings.Trim(value$1)))
+    })):null;
+   },Seq$1.map(function(s)
+   {
+    return String.splitByChar("=",s);
+   },String.splitByChar(";",attrs))),Seq$1.delay(function()
+   {
+    return Seq$1.choose(function(a)
+    {
+     var $1,value,value$1,name,x;
+     return!Unchecked.Equals(a,null)&&a.length===2&&(value=Arrays.get(a,1),Strings.Trim(Arrays.get(a,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a,1),(name=Arrays.get(a,0),{
+      $:1,
+      $0:(x=View.Map(function(a$1)
+      {
+       return a$1.$==1?(function($2)
+       {
+        return function($3)
+        {
+         return $2("@{"+Utils.toSafe($3)+"}");
+        };
+       }(Global.id))(a$1.$0.actName.get_Id()):Strings.Trim(a$1.$0);
+      },AppFramework.getTextData(lytNm,Strings.Trim(value$1))),AttrModule.DynamicStyle(Strings.Trim(name),x))
+     })):null;
+    },Seq$1.map(function(s)
+    {
+     return String.splitByChar(":",s);
+    },String.splitByChar(";",attrs)));
+   }));
+  }));
+ };
+ AppFramework.getMainClientDoc=function()
+ {
+  var x;
+  return Doc.EmbedView((x=AppFramework.plugIns().v,View.Map2(function(mainDoc,plgs)
+  {
+   var x$1,v;
+   x$1=Seq$1.tryPick(function(plg)
+   {
+    var o;
+    o=Seq$1.tryFind(function(doc)
+    {
+     return plg.plgName.get_Id()===mainDoc||plg.plgName.get_Id()+"."+doc.docName.get_Id()===mainDoc;
+    },plg.plgDocs);
+    return o==null?null:{
+     $:1,
+     $0:AppFramework.getLazyDoc(o.$0)
+    };
+   },plgs);
+   v=AppFramework.AppFwkClient().f();
+   return x$1==null?v:x$1.$0;
+  },AppFramework.mainDocV().get_View(),x)));
+ };
+ AppFramework.bindWrap=function(f,pv)
+ {
+  return P.New(Operators$1.op_GreaterGreaterEquals(pv,function(v)
+  {
+   return f(v).r;
+  }));
+ };
+ AppFramework.unwrapBindWrap=function(f,pv)
+ {
+  return P.New(Operators$1.op_BarGreaterGreater(pv.r,f));
+ };
+ AppFramework.baseView=function()
+ {
+  SC$2.$cctor();
+  return SC$2.baseView;
+ };
+ AppFramework.run=function(pin,d)
+ {
+  var x,b;
+  x=(b=Operators$1.depend(),b.Delay(function()
+  {
+   return b.Bind(AppFramework.getDocD(),function(a)
+   {
+    return b.Bind(AppFramework.getTextActViewD(),function(a$1)
+    {
+     return b.Return(Depend.resolver(List.ofArray([["getDocFromReference",a],["getTextActViewFromReference",a$1],["currentPlugInName",pin]]),d));
+    });
+   });
+  }));
+  return Depend.resolver(List.ofArray([["currentPlugInName",pin]]),x);
+ };
+ AppFramework.errDocf=function(fmt)
+ {
+  return fmt(AppFramework.errDoc);
+ };
+ AppFramework.makeAViewDocL=function(f)
+ {
+  return Lazy.Create(function()
+  {
+   return AppFramework.makeAViewDoc(f);
+  });
+ };
+ AppFramework.getTextData=function(lytNm,txt)
+ {
+  var o,o$1,$1,bef;
+  o=(o$1=String.delimitedO("@{","}",txt),o$1==null?null:{
+   $:1,
+   $0:($1=o$1.$0,(bef=$1[0],AppFramework.getOneTextData(lytNm,$1[1],bef,$1[2])))
+  });
+  return o==null?View.Const({
+   $:0,
+   $0:txt
+  }):o.$0;
+ };
+ AppFramework.getDocD=function()
+ {
+  SC$2.$cctor();
+  return SC$2.getDocD;
+ };
+ AppFramework.getTextActViewD=function()
+ {
+  SC$2.$cctor();
+  return SC$2.getTextActViewD;
+ };
+ AppFramework.getOneTextData=function(lytNm,name,bef,aft)
+ {
+  var p,plg,n;
+  p=(AppFramework.splitName(lytNm))(name);
+  plg=p[0];
+  n=p[1];
+  return View.Bind(function(a)
+  {
+   return a==null?View.Bind(function(a$1)
+   {
+    var txt;
+    return a$1==null?View.Const({
+     $:0,
+     $0:((((Runtime$1.Curried(function($1,$2,$3,$4)
+     {
+      return $1(Utils.toSafe($2)+" @{Missing "+Utils.toSafe($3)+"}"+Utils.toSafe($4));
+     },4))(Global.id))(bef))(name))(aft)
+    }):(txt=a$1.$0,View.Bind(function(a$2)
+    {
+     return a$2.$==1?View.Const({
+      $:0,
+      $0:(function($1)
+      {
+       return function($2)
+       {
+        return $1("Unexpected Action @{"+Utils.toSafe($2)+"}");
+       };
+      }(Global.id))(a$2.$0.actName.get_Id())
+     }):View.Const({
+      $:0,
+      $0:bef+txt+a$2.$0
+     });
+    },AppFramework.getTextData(lytNm,aft)));
+   },AppFramework.tryGetWoWW(plg,n)):View.Const({
+    $:1,
+    $0:a.$0
+   });
+  },AppFramework.tryGetActW(plg,n));
+ };
+ PlugInBuilder=AppFramework.PlugInBuilder=Runtime$1.Class({
+  AddVar:function(plg,name,_var)
+  {
+   plg.plgVars.Append(AppFramework.newVar(new PlgElemName({
+    $:0,
+    $0:name
+   }),_var));
+   return plg;
+  },
+  Yield:function()
+  {
+   return this.Zero();
+  },
+  AddAct:function(plg,name,act)
+  {
+   plg.plgActions.Append(AppFramework.newAct(new PlgElemName({
+    $:0,
+    $0:name
+   }),act));
+   return plg;
+  },
+  Merge:function(plg,prefix,p2)
+  {
+   plg.plgVars.AppendMany(Seq$1.map(function(v)
+   {
+    return PlugInVar.New(new PlgElemName({
+     $:0,
+     $0:prefix+v.varName.get_Id()
+    }),v.varVar);
+   },p2.plgVars));
+   plg.plgViews.AppendMany(Seq$1.map(function(w)
+   {
+    return PlugInView.New(new PlgElemName({
+     $:0,
+     $0:prefix+w.viwName.get_Id()
+    }),w.viwView);
+   },p2.plgViews));
+   plg.plgDocs.AppendMany(Seq$1.map(function(d)
+   {
+    return PlugInDoc.New(new PlgElemName({
+     $:0,
+     $0:prefix+d.docName.get_Id()
+    }),d.docDoc);
+   },p2.plgDocs));
+   plg.plgActions.AppendMany(Seq$1.map(function(a)
+   {
+    return PlugInAction.New(new PlgElemName({
+     $:0,
+     $0:prefix+a.actName.get_Id()
+    }),a.actFunction,a.actEnabled);
+   },p2.plgActions));
+   plg.plgQueries.AppendMany(Seq$1.map(function(q)
+   {
+    return PlugInQuery.New(new PlgElemName({
+     $:0,
+     $0:prefix+q.qryName.get_Id()
+    }),q.qryFunction);
+   },p2.plgQueries));
+   return plg;
+  },
+  AddViw:function(plg,name,viw)
+  {
+   plg.plgViews.Append(AppFramework.newViw(new PlgElemName({
+    $:0,
+    $0:name
+   }),viw));
+   return plg;
+  },
+  Name:function(plg,name)
+  {
+   return PlugIn.New(new PlugInName({
+    $:0,
+    $0:name
+   }),plg.plgVars,plg.plgViews,plg.plgDocs,plg.plgActions,plg.plgQueries);
+  },
+  Zero:function()
+  {
+   var i;
+   i=AppFramework.defaultPlugIn();
+   return PlugIn.New(new PlugInName({
+    $:0,
+    $0:"Main"
+   }),i.plgVars,i.plgViews,i.plgDocs,i.plgActions,i.plgQueries);
+  },
+  AddDoc:function(plg,name,doc)
+  {
+   plg.plgDocs.Append(AppFramework.newDoc(new PlgElemName({
+    $:0,
+    $0:name
+   }),doc));
+   return plg;
+  },
+  AddQry:function(plg,name,qry)
+  {
+   plg.plgQueries.Append(AppFramework.newQry(new PlgElemName({
+    $:0,
+    $0:name
+   }),qry));
+   return plg;
+  },
+  AddAct2:function(plg,name,act,p1,p2)
+  {
+   plg.plgActions.Append(AppFramework.newActF(new PlgElemName({
+    $:0,
+    $0:name
+   }),{
+    $:2,
+    $0:act,
+    $1:p1,
+    $2:p2
+   }));
+   return plg;
+  },
+  AddDoc3:function(plg,name,doc,a,b,c)
+  {
+   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
+    $:0,
+    $0:name
+   }),{
+    $:3,
+    $0:doc,
+    $1:a,
+    $2:b,
+    $3:c
+   }));
+   return plg;
+  },
+  AddDoc4:function(plg,name,doc,a,b,c,d)
+  {
+   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
+    $:0,
+    $0:name
+   }),{
+    $:4,
+    $0:doc,
+    $1:a,
+    $2:b,
+    $3:c,
+    $4:d
+   }));
+   return plg;
+  },
+  AddDoc2:function(plg,name,doc,p1,p2)
+  {
+   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
+    $:0,
+    $0:name
+   }),{
+    $:2,
+    $0:doc,
+    $1:p1,
+    $2:p2
+   }));
+   return plg;
+  },
+  AddDoc1:function(plg,name,doc,p1)
+  {
+   plg.plgDocs.Append(AppFramework.newDocF(new PlgElemName({
+    $:0,
+    $0:name
+   }),{
+    $:1,
+    $0:doc,
+    $1:p1
+   }));
+   return plg;
+  }
+ },Obj,PlugInBuilder);
+ PlugInBuilder.New=Runtime$1.Ctor(function()
+ {
+  Obj.New.call(this);
+ },PlugInBuilder);
  MonacoPlugIn.plugInAdded=function()
  {
   SC$3.$cctor();
@@ -17477,15 +17477,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$5.LocalTemplatesLoaded=false;
   SC$5.TextHoleRE="\\${([^}]+)}";
  };
- Measures=LayoutEngineModule.Measures=Runtime$1.Class({
-  toString:function()
-  {
-   return this.$==1?((((Runtime$1.Curried(function($1,$2,$3,$4)
-   {
-    return $1(Global.String($2)+"-"+Global.String($3)+"-"+Global.String($4));
-   },4))(Global.id))(Operators.toInt(this.$0)))(Operators.toInt(this.$1)))(Operators.toInt(this.$2)):Global.String(Operators.toInt(this.$1?this.$0:-this.$0));
-  }
- },null,Measures);
  Hoverable$1=Hoverable.Hoverable=Runtime$1.Class({
   Content:function(e)
   {
@@ -17627,6 +17618,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.message=message;
   Object.setPrototypeOf(this,FormatException.prototype);
  },FormatException);
+ Measures=LayoutEngineModule.Measures=Runtime$1.Class({
+  toString:function()
+  {
+   return this.$==1?((((Runtime$1.Curried(function($1,$2,$3,$4)
+   {
+    return $1(Global.String($2)+"-"+Global.String($3)+"-"+Global.String($4));
+   },4))(Global.id))(Operators.toInt(this.$0)))(Operators.toInt(this.$1)))(Operators.toInt(this.$2)):Global.String(Operators.toInt(this.$1?this.$0:-this.$0));
+  }
+ },null,Measures);
  AsyncBody.New=function(k,ct)
  {
   return{
@@ -17881,12 +17881,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   Obj.New.call(this);
   this.d=d;
  },KeyCollection);
- MatchFailureException=WebSharper.MatchFailureException=Runtime$1.Class({},Error,MatchFailureException);
- MatchFailureException.New=Runtime$1.Ctor(function(message,line,column)
- {
-  this.message=message+" at "+Global.String(line)+":"+Global.String(column);
-  Object.setPrototypeOf(this,MatchFailureException.prototype);
- },MatchFailureException);
  AggregateException=WebSharper.AggregateException=Runtime$1.Class({},Error,AggregateException);
  AggregateException.New$3=Runtime$1.Ctor(function(innerExceptions)
  {
@@ -17967,6 +17961,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }
   };
  };
+ MatchFailureException=WebSharper.MatchFailureException=Runtime$1.Class({},Error,MatchFailureException);
+ MatchFailureException.New=Runtime$1.Ctor(function(message,line,column)
+ {
+  this.message=message+" at "+Global.String(line)+":"+Global.String(column);
+  Object.setPrototypeOf(this,MatchFailureException.prototype);
+ },MatchFailureException);
  CT.New=function(IsCancellationRequested,Registrations)
  {
   return{
