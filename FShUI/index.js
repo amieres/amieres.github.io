@@ -2,9 +2,9 @@ requirejs([
       "https://code.jquery.com/jquery-3.1.1.min.js"
     , "/EPFileX/FileSaver/FileSaver.js"
     , "https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-    , "FShUi/LayoutEngine.js"
-    , "FShUi/MonacoPlugIn.js"
-    , "FShUi/testing.js"
+    , "/FShUi/LayoutEngine.js"
+    , "/FShUi/MonacoPlugIn.js"
+    , "/FShUi/testing.js"
 ],
 function   (jquery, fileSaver, markedJS) {
     marked = markedJS;
