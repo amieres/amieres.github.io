@@ -10,9 +10,9 @@ requirejs([
     ,"https://cdn.jsdelivr.net/npm/marked/marked.min.js"
     ,"/EPFileX/FileSaver/FileSaver.js"
     ,"FShUI/WebSharper/WebSharper.Core.JavaScript/Runtime.min.js"
-], function (jquery  , markedJS) {
-    $      =  jquery  ;
-    marked =  markedJS;
+], function( jquery  , markedJS) {
+    $      = jquery  ;
+    marked = markedJS;
     requireSync([
          "FShUI/WebSharper/WebSharper.Main.js?h=1127374076"
         ,"FShUI/WebSharper/WebSharper.Collections.js?h=-598830617"
@@ -24,7 +24,11 @@ requirejs([
         ,"FShUI/LayoutEngine.js"
         ,"FShUI/MonacoPlugIn.js"
         ,"FShUI/SnippetsUI.js"
-    ], startPage);
+    ], function() {
+        IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
+        IntelliFactory.Runtime.Start();
+        startPage();
+    });
 });
 
 function startPage() {
