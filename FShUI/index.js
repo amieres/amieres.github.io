@@ -54,8 +54,8 @@ list div "display: flex;flex-direction: column" gotoMain File
 
 editor   Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
 editor2  Doc    Monaco.editor Snippets.curSnp_explanation "markdown" "vs-dark" ""
-MarkDown1 ViewJS "t => marked(t.split('\\\-\\\-')[0])"      Snippets.curSnp_explanation
-MarkDown2 ViewJS "t => marked(t.split('\\\-\\\-')[1])"      Snippets.curSnp_explanation
+MarkDown1 ViewJS "t => marked(t.split('\\\\\\-\\\\\\-')[0])"      Snippets.curSnp_explanation
+MarkDown2 ViewJS "t => marked(t.split('\\\\\\-\\\\\\-')[1])"      Snippets.curSnp_explanation
 
 content div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger requireMk
 :  h2        ""              Snippets.curSnp_name
