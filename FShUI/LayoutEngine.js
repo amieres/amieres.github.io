@@ -3737,6 +3737,12 @@
    return e;
   };
  };
+ StartAppFramework.startWith=function(html)
+ {
+  var x;
+  x=StartAppFramework.startWithHtmlD();
+  (Depend.resolver(List.ofArray([["AppFrameworkTemplate.html",AppFrameworkTemplate.html()+html]]),x))();
+ };
  StartAppFramework.startWithHtmlD=function()
  {
   SC$1.$cctor();
@@ -4776,11 +4782,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3453$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3459$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3452$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3458$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5880,7 +5886,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2600,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2606,38);
     }
     return $2;
   }
@@ -6064,7 +6070,14 @@
  {
   return AppFramework.run(pin,p.r);
  };
- NewLY.addLayout=function(lyt)
+ NewLY.addLayout=function(name,content)
+ {
+  NewLY.addNewLayout(LayoutEngineModule.newLyt(new PlugInName({
+   $:0,
+   $0:name
+  }),content));
+ };
+ NewLY.addNewLayout=function(lyt)
  {
   var parseW,l,errorsW,f,defsW,f$1,g,entries,g$1,l$1;
   function c(a)
@@ -6746,11 +6759,6 @@
    $0:a.$0
   };
  };
- NewLY.pName=function()
- {
-  SC$1.$cctor();
-  return SC$1.pName;
- };
  NewLY.callDocPFn=function(pin,pf)
  {
   var f;
@@ -6896,7 +6904,7 @@
  };
  SC$1.$cctor=function()
  {
-  var f,g,x,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,a,b$8,a$1,b$9,b$10,p,cache,getOrAdd,p$1,cache$1,getOrAdd$1,p$2,cache$2,getOrAdd$2,p$3,cache$3,getOrAdd$3,p$4,cache$4,getOrAdd$4,p$5,cache$5,getOrAdd$5,p$6,cache$6,getOrAdd$6,p$7,cache$7,getOrAdd$7,p$8,cache$8,getOrAdd$8,p$9,cache$9,getOrAdd$9,p$10,cache$10,getOrAdd$10,o,pf,p$11,pf$1,p$12,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$13,p$14,pc$1,vf$3,p$15,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$16,b$11,b$12,b$13,b$14,b$15,b$16,p$17,cache$11,getOrAdd$11,p$18,cache$12,getOrAdd$12,p$19,cache$13,getOrAdd$13,p$20,cache$14,getOrAdd$14,p$21,cache$15,getOrAdd$15,p$22,cache$16,getOrAdd$16,p$23,cache$17,getOrAdd$17,p$24,cache$18,getOrAdd$18,p$25,cache$19,getOrAdd$19,p$26,cache$20,getOrAdd$20,p$27,cache$21,getOrAdd$21;
+  var f,g,x,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,a,b$8,a$1,b$9,b$10,p,cache,getOrAdd,p$1,cache$1,getOrAdd$1,p$2,cache$2,getOrAdd$2,p$3,cache$3,getOrAdd$3,p$4,cache$4,getOrAdd$4,p$5,cache$5,getOrAdd$5,p$6,cache$6,getOrAdd$6,p$7,cache$7,getOrAdd$7,p$8,cache$8,getOrAdd$8,p$9,cache$9,getOrAdd$9,p$10,cache$10,getOrAdd$10,o,pf,p$11,pf$1,p$12,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$13,p$14,pc$1,vf$3,p$15,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$16,b$11,b$12,b$13,b$14,b$15,p$17,cache$11,getOrAdd$11,p$18,cache$12,getOrAdd$12,p$19,cache$13,getOrAdd$13,p$20,cache$14,getOrAdd$14,p$21,cache$15,getOrAdd$15,p$22,cache$16,getOrAdd$16,p$23,cache$17,getOrAdd$17,p$24,cache$18,getOrAdd$18,p$25,cache$19,getOrAdd$19,p$26,cache$20,getOrAdd$20,p$27,cache$21,getOrAdd$21;
   SC$1.$cctor=Global.ignore;
   function g$1(s)
   {
@@ -6908,13 +6916,13 @@
   }
   function g$2(s)
   {
-   var a$4,b$17;
+   var a$4,b$16;
    return Slice.array(s,{
     $:1,
     $0:0
    },{
     $:1,
-    $0:(a$4=0,(b$17=Arrays.length(s)-2,Unchecked.Compare(a$4,b$17)===1?a$4:b$17))
+    $0:(a$4=0,(b$16=Arrays.length(s)-2,Unchecked.Compare(a$4,b$16)===1?a$4:b$16))
    });
   }
   function g$3(s)
@@ -6928,7 +6936,7 @@
   function a$3(a$4)
   {
    var f$6;
-   function b$17(a$5)
+   function b$16(a$5)
    {
     return AppFramework.plugIns().TryFindByKey(a$5);
    }
@@ -6938,7 +6946,7 @@
    }
    f$6=function(o$1)
    {
-    return o$1==null?null:b$17(o$1.$0);
+    return o$1==null?null:b$16(o$1.$0);
    };
    return function(x$1)
    {
@@ -7762,8 +7770,8 @@
   });
   SC$1.AppFwkClient=Lazy.Create(function()
   {
-   var b$17,Q,A,D,V,V$1,P$2,p$28,i;
-   return(b$17=(Q=AppFramework.renderQueries(),(A=AppFramework.renderActions(),(D=AppFramework.renderDocs(),(V=AppFramework.renderViews(),(V$1=AppFramework.renderVars(),(P$2=AppFramework.renderPlugIns(),ProviderBuilder.Make().WithHole({
+   var b$16,Q,A,D,V,V$1,P$2,p$28,i;
+   return(b$16=(Q=AppFramework.renderQueries(),(A=AppFramework.renderActions(),(D=AppFramework.renderDocs(),(V=AppFramework.renderViews(),(V$1=AppFramework.renderVars(),(P$2=AppFramework.renderPlugIns(),ProviderBuilder.Make().WithHole({
     $:0,
     $0:"plugins",
     $1:P$2
@@ -7794,7 +7802,7 @@
     $:0,
     $0:"queries",
     $1:Q
-   })),(p$28=Handler.CompleteHoles(b$17.k,b$17.h,[]),(i=new TemplateInstance.New(p$28[1],LayoutEngine_Templates.appfwkclient(p$28[0])),(b$17.i=i,i)))).get_Doc();
+   })),(p$28=Handler.CompleteHoles(b$16.k,b$16.h,[]),(i=new TemplateInstance.New(p$28[1],LayoutEngine_Templates.appfwkclient(p$28[0])),(b$16.i=i,i)))).get_Doc();
   });
   SC$1.plugin=new PlugInBuilder.New();
   SC$1.a11V=Var$2.Create$1(11);
@@ -8660,9 +8668,9 @@
   });
   SC$1.main0=(pc=(pf$2=AppFramework.op_Dereference(function(a$4)
   {
-   return function(b$17)
+   return function(b$16)
    {
-    return NewLY.concat(a$4,b$17);
+    return NewLY.concat(a$4,b$16);
    };
   }),(p$13={
    $:0,
@@ -9030,56 +9038,26 @@
     $0:c$13.f.$0(c$13.p.$0)
    },p$16);
   }))));
-  SC$1.pName=new PlugInName({
-   $:0,
-   $0:"NewLY"
-  });
-  AppFramework.addPlugIn((b$11=AppFramework.plugin(),b$11.AddDoc(b$11.AddDoc(b$11.AddDoc(b$11.AddDoc(b$11.AddDoc(b$11.AddDoc(b$11.AddVar(b$11.AddVar(b$11.Name(b$11.Yield(),NewLY.pName().get_Id()),"name",NewLY.name()),"a",NewLY.aString()),"split",Lazy.Create(function()
+  SC$1.nodeRefToDocD=(b$11=Depend.depend(),b$11.Delay(function()
   {
-   var p$28;
-   p$28=NewLY.split();
-   return NewLY.callDocPFn(NewLY.pName(),p$28);
-  })),"split2",Lazy.Create(function()
-  {
-   var p$28;
-   p$28=NewLY.split2();
-   return NewLY.callDocPFn(NewLY.pName(),p$28);
-  })),"main",Lazy.Create(function()
-  {
-   var p$28;
-   p$28=NewLY.main();
-   return NewLY.callDocPFn(NewLY.pName(),p$28);
-  })),"main2",Lazy.Create(NewLY.main2)),"sayHello",Lazy.Create(function()
-  {
-   var p$28;
-   p$28=NewLY.sayHello();
-   return NewLY.callDocPFn(NewLY.pName(),p$28);
-  })),"sayHello2",Lazy.Create(function()
-  {
-   var p$28;
-   p$28=NewLY.sayHello();
-   return NewLY.callDocPFn(NewLY.pName(),p$28);
-  }))));
-  SC$1.nodeRefToDocD=(b$12=Depend.depend(),b$12.Delay(function()
-  {
-   return b$12.Bind(Extract0.getDocFromTextTypesD(),function(a$4)
+   return b$11.Bind(Extract0.getDocFromTextTypesD(),function(a$4)
    {
     function f$6(a$5)
     {
      var $1;
      return(a$5.$==1?($1=a$5.$0.$0,false):a$5.$==2?($1=a$5.$0.$0,false):a$5.$==3?($1=a$5.$0.$0,false):true)?List.map(NewLY.textValToTextType,a$5.$0):List.ofArray([NewLY.itemRefToTextType($1)]);
     }
-    return b$12.Return(function(x$1)
+    return b$11.Return(function(x$1)
     {
      return a$4(f$6(x$1));
     });
    });
   }));
-  SC$1.varRefToVarD=(b$13=Depend.depend(),b$13.Delay(function()
+  SC$1.varRefToVarD=(b$12=Depend.depend(),b$12.Delay(function()
   {
-   return b$13.Bind(NewLY.currentPlugInNameD(),function(a$4)
+   return b$12.Bind(NewLY.currentPlugInNameD(),function(a$4)
    {
-    return b$13.Return(function(a$5)
+    return b$12.Return(function(a$5)
     {
      var r,o$1,o$2,t;
      r=NewLY.itemRefToString(a$5.$0);
@@ -9097,13 +9075,13 @@
     });
    });
   }));
-  SC$1.getParamD=(b$14=Depend.depend(),b$14.Delay(function()
+  SC$1.getParamD=(b$13=Depend.depend(),b$13.Delay(function()
   {
-   return b$14.Bind(NewLY.currentPlugInNameD(),function(a$4)
+   return b$13.Bind(NewLY.currentPlugInNameD(),function(a$4)
    {
-    return b$14.Bind(Extract0.getTextValFromSeqD(),function(a$5)
+    return b$13.Bind(Extract0.getTextValFromSeqD(),function(a$5)
     {
-     return b$14.Return(function(p$28)
+     return b$13.Return(function(p$28)
      {
       var refToSplit,g$4,r,f$6,m,g$5,t,r$1,f$7,m$1,g$6,g$7,t$1,r$2,f$8,m$2,g$8,g$9,t$2,r$3,f$9,m$3,g$10,t$3;
       function f$10(d$4)
@@ -9241,13 +9219,13 @@
     });
    });
   }));
-  SC$1.getParam2D=(b$15=Depend.depend(),b$15.Delay(function()
+  SC$1.getParam2D=(b$14=Depend.depend(),b$14.Delay(function()
   {
-   return b$15.Bind(NewLY.currentPlugInNameD(),function(a$4)
+   return b$14.Bind(NewLY.currentPlugInNameD(),function(a$4)
    {
-    return b$15.Bind(Extract0.getTextValFromSeqD(),function()
+    return b$14.Bind(Extract0.getTextValFromSeqD(),function()
     {
-     return b$15.Return(function(p$28)
+     return b$14.Return(function(p$28)
      {
       var toAbs,f$6,g$4,$1;
       toAbs=(f$6=NewLY.itemRefToAbsolute(a$4.get_Id()),(g$4=function($2)
@@ -9269,13 +9247,13 @@
     });
    });
   }));
-  SC$1.getParamTextD=(b$16=Depend.depend(),b$16.Delay(function()
+  SC$1.getParamTextD=(b$15=Depend.depend(),b$15.Delay(function()
   {
-   return b$16.Bind(NewLY.currentPlugInNameD(),function(a$4)
+   return b$15.Bind(NewLY.currentPlugInNameD(),function(a$4)
    {
-    return b$16.Bind(Extract0.getTextValFromSeqD(),function(a$5)
+    return b$15.Bind(Extract0.getTextValFromSeqD(),function(a$5)
     {
-     return b$16.Return(function(p$28)
+     return b$15.Return(function(p$28)
      {
       return function(f$6)
       {
@@ -9557,17 +9535,17 @@
    $0:"namevalueinput"
   },h):void 0;
  };
- LayoutEngine_GeneratedPrintf.p$25=function($1)
+ LayoutEngine_GeneratedPrintf.p$26=function($1)
  {
-  return"PlgDef "+Utils.prettyPrint($1.$0);
+  return $1.$==4?"RPlg":$1.$==3?"RAct":$1.$==2?"RViw":$1.$==1?"RVar":"RDoc";
  };
  LayoutEngine_GeneratedPrintf.p$3=function($1)
  {
   return $1.$==6?"EnPlgRef "+("("+Utils.prettyPrint($1.$0[0])+", "+LayoutEngine_GeneratedPrintf.p$26($1.$0[1])+")"):$1.$==5?"EnPlgDef "+LayoutEngine_GeneratedPrintf.p$25($1.$0):$1.$==4?"EnVJSDef "+LayoutEngine_GeneratedPrintf.p$24($1.$0):$1.$==3?"EnViwDef "+LayoutEngine_GeneratedPrintf.p$23($1.$0):$1.$==2?"EnVarDef "+LayoutEngine_GeneratedPrintf.p$22($1.$0):$1.$==1?"EnActDef "+LayoutEngine_GeneratedPrintf.p$21($1.$0):"EnDocDef "+LayoutEngine_GeneratedPrintf.p$4($1.$0);
  };
- LayoutEngine_GeneratedPrintf.p$26=function($1)
+ LayoutEngine_GeneratedPrintf.p$25=function($1)
  {
-  return $1.$==4?"RPlg":$1.$==3?"RAct":$1.$==2?"RViw":$1.$==1?"RVar":"RDoc";
+  return"PlgDef "+Utils.prettyPrint($1.$0);
  };
  LayoutEngine_GeneratedPrintf.p$24=function($1)
  {
