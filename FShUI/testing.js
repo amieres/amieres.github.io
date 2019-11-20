@@ -362,7 +362,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
 (function()
 {
  "use strict";
- var Global,FsRoot,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,TestingJS,SnippetTemplates,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,WebSharper,Obj,Unchecked,Collections,Dictionary,SC$1,Operators,Option$1,Seq$1,Arrays,List,T,Utils,Strings,System,Guid,Set,FSharpSet,FSharpMap,UI,View,Var$1,Var,Numeric,Slice,ListModel,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,FsRootDll,LibraryJS,AppFramework,ListModelData,Handler,testing_Templates,Doc,EventTarget,FileReader,JavaScript,Pervasives,LibraryJS$1,Serializer$1,JS,LayoutEngine,StartAppFramework,Library$1,Monads$1,Depend,AppFrameworkTemplate,Object,ViewBuilder,LM,PlugInBuilder,LayoutEngineModule,PlugInName,NewLY,Node,MonacoPlugIn,Enumerator,T$1,BalancedTree,MapUtil,Tree,AttrModule,Snap,FromView,DictionaryUtil,List$1,HashSet,Client,Array,Abbrev,Fresh,SC$2,DateUtil,Storage,ConcreteVar,ListModel$1,Async,PlgElemName,PlugIn,Syntax,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,Lazy,WindowOrWorkerGlobalScope,SC$3,Pair,Attrs,DomUtility,AttrProxy,CheckedInput,View$1,Client$1,Templates,State,CEBuilder,Result,Builder,DependBuilder,String,ParseO$1,WebComponent,WcTabStrip,WcTabStripT,LayoutEngine_Templates,LayoutEngine_GeneratedPrintf,GeneratedPrintf,Val,Extract0,Operators$1,AAttr,HtmlModule,attr,WcSplitter,AppFrameworkTemplate$1,P,ArrayStorage,Result$1,RefType,LazyExtensionsProxy,LazyRecord,Result$2,Builder$1,BuilderP,ResultM,Builder$2,AsyncResultM,AsyncResultMBuilder,Monaco,Editor,GenEditor,GenEditor$1,DynamicAttrNode,Docs,Elt,DocElemNode,CharacterData,SC$4,WcSplitterT,Fun,P$1,Layout,Concurrency,GenEditorHook,MonacoGenAdapter,Updates,Attrs$1,Dyn,SC$5,Hoverable,Hoverable$1,CancellationTokenSource,SC$6,Event,UIEvent,ResizeObserver,HashSetUtil,Error,FormatException,Measures,AsyncBody,Position,Queue,SC$7,Prepare,KeyCollection,AggregateException,MatchFailureException,CT,Scheduler,MonacoRT,String$1,An,Settings,Mailbox,SC$8,OperationCanceledException,MarkerData,Position$1,ResizeObserver$1,HoverProvider,DefinitionProvider,CompletionItemProvider,Char,Docs$1,RunState,NodeSet,Anims,SC$9,SC$10,AppendList,Easing,HashSet$1,DomNodes,SC$11,IntelliFactory,Runtime$1,Date,console,Math,$,JSON,Reflect;
+ var Global,FsRoot,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,TestingJS,SnippetTemplates,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,WebSharper,Obj,Unchecked,Collections,Dictionary,SC$1,Operators,Option$1,Seq$1,Arrays,List,T,Utils,Strings,System,Guid,Set,FSharpSet,FSharpMap,UI,View,Var$1,Var,Numeric,Slice,ListModel,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,FsRootDll,LibraryJS,AppFramework,ListModelData,Handler,testing_Templates,Doc,EventTarget,FileReader,JavaScript,Pervasives,LibraryJS$1,Serializer$1,JS,LayoutEngine,LayoutEngineModule,PlugInName,StartAppFramework,Library$1,Monads$1,Depend,AppFrameworkTemplate,Object,ViewBuilder,LM,PlugInBuilder,NewLY,Node,MonacoPlugIn,Enumerator,T$1,BalancedTree,MapUtil,Tree,AttrModule,Snap,FromView,DictionaryUtil,List$1,HashSet,Client,Array,Abbrev,Fresh,PlgElemName,SC$2,DateUtil,Storage,ConcreteVar,ListModel$1,Async,PlugIn,Syntax,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,Lazy,WindowOrWorkerGlobalScope,SC$3,Pair,Attrs,DomUtility,AttrProxy,CheckedInput,View$1,Client$1,Templates,State,CEBuilder,Result,Builder,DependBuilder,String,ParseO$1,WebComponent,WcTabStrip,WcTabStripT,LayoutEngine_Templates,LayoutEngine_GeneratedPrintf,GeneratedPrintf,Val,Extract0,Operators$1,AAttr,HtmlModule,attr,WcSplitter,AppFrameworkTemplate$1,P,ArrayStorage,Result$1,RefType,LazyExtensionsProxy,LazyRecord,Result$2,Builder$1,BuilderP,ResultM,Builder$2,AsyncResultM,AsyncResultMBuilder,Monaco,Editor,GenEditor,GenEditor$1,DynamicAttrNode,Docs,Elt,DocElemNode,CharacterData,SC$4,WcSplitterT,Fun,P$1,Layout,Concurrency,GenEditorHook,MonacoGenAdapter,Updates,Attrs$1,Dyn,SC$5,Measures,Hoverable,Hoverable$1,CancellationTokenSource,SC$6,Event,UIEvent,ResizeObserver,HashSetUtil,Error,FormatException,AsyncBody,Position,Queue,SC$7,Prepare,KeyCollection,MatchFailureException,AggregateException,CT,Scheduler,MonacoRT,String$1,An,Settings,Mailbox,SC$8,OperationCanceledException,MarkerData,Position$1,ResizeObserver$1,HoverProvider,DefinitionProvider,CompletionItemProvider,Char,Docs$1,RunState,NodeSet,Anims,SC$9,SC$10,AppendList,Easing,HashSet$1,DomNodes,SC$11,IntelliFactory,Runtime$1,Date,console,Math,$,JSON,Reflect;
  Global=self;
  FsRoot=Global.FsRoot=Global.FsRoot||{};
  Library=FsRoot.Library=FsRoot.Library||{};
@@ -433,6 +433,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Serializer$1=LibraryJS$1.Serializer=LibraryJS$1.Serializer||{};
  JS=JavaScript.JS=JavaScript.JS||{};
  LayoutEngine=LibraryJS.LayoutEngine=LibraryJS.LayoutEngine||{};
+ LayoutEngineModule=LibraryJS.LayoutEngineModule=LibraryJS.LayoutEngineModule||{};
+ PlugInName=AppFramework.PlugInName=AppFramework.PlugInName||{};
  StartAppFramework=LibraryJS.StartAppFramework=LibraryJS.StartAppFramework||{};
  Library$1=FsRootDll.Library=FsRootDll.Library||{};
  Monads$1=Library$1.Monads=Library$1.Monads||{};
@@ -442,8 +444,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  ViewBuilder=UI.ViewBuilder=UI.ViewBuilder||{};
  LM=LibraryJS.LM=LibraryJS.LM||{};
  PlugInBuilder=AppFramework.PlugInBuilder=AppFramework.PlugInBuilder||{};
- LayoutEngineModule=LibraryJS.LayoutEngineModule=LibraryJS.LayoutEngineModule||{};
- PlugInName=AppFramework.PlugInName=AppFramework.PlugInName||{};
  NewLY=LibraryJS.NewLY=LibraryJS.NewLY||{};
  Node=Global.Node;
  MonacoPlugIn=LibraryJS$1.MonacoPlugIn=LibraryJS$1.MonacoPlugIn||{};
@@ -462,13 +462,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Array=UI.Array=UI.Array||{};
  Abbrev=UI.Abbrev=UI.Abbrev||{};
  Fresh=Abbrev.Fresh=Abbrev.Fresh||{};
+ PlgElemName=AppFramework.PlgElemName=AppFramework.PlgElemName||{};
  SC$2=Global.StartupCode$LayoutEngine$LayoutEngine=Global.StartupCode$LayoutEngine$LayoutEngine||{};
  DateUtil=WebSharper.DateUtil=WebSharper.DateUtil||{};
  Storage=UI.Storage=UI.Storage||{};
  ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
  ListModel$1=LibraryJS.ListModel=LibraryJS.ListModel||{};
  Async=Abbrev.Async=Abbrev.Async||{};
- PlgElemName=AppFramework.PlgElemName=AppFramework.PlgElemName||{};
  PlugIn=AppFramework.PlugIn=AppFramework.PlugIn||{};
  Syntax=LayoutEngineModule.Syntax=LayoutEngineModule.Syntax||{};
  PlugInVar=AppFramework.PlugInVar=AppFramework.PlugInVar||{};
@@ -542,6 +542,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Attrs$1=Client$1.Attrs=Client$1.Attrs||{};
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
  SC$5=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
+ Measures=LayoutEngineModule.Measures=LayoutEngineModule.Measures||{};
  Hoverable=LibraryJS.Hoverable=LibraryJS.Hoverable||{};
  Hoverable$1=Hoverable.Hoverable=Hoverable.Hoverable||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
@@ -552,15 +553,14 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  Error=Global.Error;
  FormatException=WebSharper.FormatException=WebSharper.FormatException||{};
- Measures=LayoutEngineModule.Measures=LayoutEngineModule.Measures||{};
  AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
  Position=GenEditor.Position=GenEditor.Position||{};
  Queue=WebSharper.Queue=WebSharper.Queue||{};
  SC$7=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  Prepare=Templates.Prepare=Templates.Prepare||{};
  KeyCollection=Collections.KeyCollection=Collections.KeyCollection||{};
- AggregateException=WebSharper.AggregateException=WebSharper.AggregateException||{};
  MatchFailureException=WebSharper.MatchFailureException=WebSharper.MatchFailureException||{};
+ AggregateException=WebSharper.AggregateException=WebSharper.AggregateException||{};
  CT=Concurrency.CT=Concurrency.CT||{};
  Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
  MonacoRT=MonacoGenAdapter.MonacoRT=MonacoGenAdapter.MonacoRT||{};
@@ -2469,10 +2469,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    o.Set(a);
   }),x);
  };
- SnippetsUI.xxx=function()
+ SnippetsUI.addLayout=function(name,content)
  {
-  SC$1.$cctor();
-  return SC$1.xxx;
+  LayoutEngineModule.addLayout(LayoutEngineModule.newLyt(new PlugInName({
+   $:0,
+   $0:name
+  }),content));
  };
  SnippetsUI.main=function()
  {
@@ -3506,19 +3508,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    SnippetsUI.parseNewLY();
   })));
-  SC$1.xxx=MonacoPlugIn.createMonacoEditor();
-  LayoutEngineModule.addLayout(LayoutEngineModule.newLyt(new PlugInName({
-   $:0,
-   $0:"lytTarget"
-  }),"\r\n            main horizontal 10-50-70 part1 part2\r\n            \r\n            part1 div \"\" \r\n            : h1 \"\" \"Demo123 \" message\r\n            :: div \"\" \"Message:\"\r\n            :: textarea message \"height:200px;width:500px\"\r\n            \r\n            part2 div \"\" lytTarget.Layout\r\n            \r\n            message Var \"Hello\"     \r\n                "));
-  LayoutEngineModule.addLayout(LayoutEngineModule.newLyt(new PlugInName({
-   $:0,
-   $0:"SnippetsLyt"
-  }),"\r\n                    split horizontal 0-50-100 AppFramework.AppFwkClient main\r\n                    main vertical 0-25-100 list snippet\r\n                    SearchFor   Doc InputLabel \"\" \"Search\" Snippets.searchFor\r\n                    File        Doc InputFile  \"id=LoadSnippets\" \"Open File\" Snippets.LoadSnippets \"\"\r\n                    list div \"display: flex;flex-direction: column\" File\r\n                    : button \"click=@{Snippets.AddSnippet}\"    \"Add New Snippet\"\r\n                    : button \"click=@{Snippets.DeleteSnippet}\" \"Delete Snippet\"\r\n                    : button \"click=@{Snippets.IndentIn}\"      \"Indent in\"\r\n                    : button \"click=@{Snippets.IndentOut}\"     \"Indent out\"\r\n                    : div    \"\" SearchFor \r\n                    : div \"overflow:auto;width:100%;max-width:100%\" Snippets.snippets_list\r\n                    snippet div \"display: flex;flex-direction: column\"\r\n                    : div    \"\" Snippets.snippets_sel\r\n                    : Doc    InputLabel \"\" \"Name:\" Snippets.curSnp_name\r\n                    : div \"height:100%;class=relative\" Snippets.editor                \r\n                "));
-  NewLY.addLayout(LayoutEngineModule.newLyt(new PlugInName({
-   $:0,
-   $0:"lytDemo"
-  }),"\r\n            marked    View \"https://cdn.jsdelivr.net/npm/marked/marked.min.js\"\r\n            requireMk ViewJS \"require(['@{marked}'], mk => marked = mk ),'';\"\r\n            \r\n            lytTarget2 PlugIn\r\n            : Var ParseMsgs\r\n            : Doc main \r\n            \r\n            editorDataSel Var \"\"\r\n            \r\n            target    ViewJS \"n => n.includes('main ')?n:'main Docs \"\" \"\"'\" Snippets.curSnp_content\r\n            \r\n            goPrev    Action AF.SetVar     \"Snippets.snippets_sel\"        Snippets.prevSel\r\n            goNext    Action AF.SetVar     \"Snippets.snippets_sel\"        Snippets.nextSel\r\n            \r\n            SetTarget Action AF.SetVar     \"lytTarget2.Layout\"        target\r\n            SetMain2  Action AF.SetVar     \"AppFramework.mainDocV\"    \"lytDemo.main2\"\r\n            SetMain   Action AF.SetVar     \"AppFramework.mainDocV\"    \"lytDemo.main\"\r\n            \r\n            Trigger   Doc    AF.TrigAction Snippets.snippets_sel \"lytDemo.SetTarget\"\r\n            \r\n            gotoMain  button \"click=@{SetMain};width:16px\" \"<<\"\r\n            gotoMain2 button \"click=@{SetMain2};width:16px\" \">>\"\r\n            \r\n            SearchFor   Doc AF.InputLabel \"\" \"Search\" Snippets.searchFor\r\n            \r\n            buttons ul \"\"\r\n            : div \"margin:3px\"\r\n            :: button \"click=@{Snippets.IndentOut};title=indent out\"     \"<--\"\r\n            :: button \"click=@{Snippets.IndentIn};title=indent in\"       \"--> \"\r\n            \r\n            File span \"class=input-group;margin:5px;id=LoadSnippets\"\r\n            : div \"class=input-group-btn\"\r\n            :: label \"class=btn btn-info\" \"Load File\"\r\n            ::: div \"\"\r\n            :::: input \"class=form-control;type=file;display: none;change=@{Snippets.LoadSnippets}\" \r\n            :: label \"class=btn btn-primary;click=@{Snippets.SaveSnippets}\" \"Save File\"\r\n            \r\n            list div \"display: flex;flex-direction: column\" gotoMain File\r\n            : div    \"margin:5px\" SearchFor \r\n            : Docs buttons\r\n            : div \"overflow:auto;width:100%;max-width:calc(100% - 10px)\" Snippets.snippets_list\r\n            : ul \"margin:3px\"\r\n            :: button \"click=@{Snippets.AddSnippet}   ;title=Add New Snippet\" \"+\"\r\n            :: button \"margin-left:20px;click=@{Snippets.DeleteSnippet};title=Delete  Snippet\" \"x\"\r\n            \r\n            editor   Doc    Monaco.editor Snippets.curSnp_content     \"fsharp\"   \"vs-dark\" \"\"\r\n            editor2  Doc    Monaco.editor Snippets.curSnp_explanation \"markdown\" \"vs-dark\" \"\"\r\n            MarkDown1 ViewJS \"t => marked(t.split('\\\\\\-\\\\\\-')[0])\"      Snippets.curSnp_explanation\r\n            MarkDown2 ViewJS \"t => marked(t.split('\\\\\\-\\\\\\-')[1])\"      Snippets.curSnp_explanation\r\n            \r\n            content div \"display: flex;flex-direction: column;flex:1;margin:10px\" Trigger requireMk\r\n            :  h2        \"\"              Snippets.curSnp_name\r\n            :  Doc       AF.HtmlDoc MarkDown1\r\n            :  div       \"height:100%;class=relative;flex:2\" editor\r\n            :  span      \"width:100%\"\r\n            :: button    \"click=@{SetTarget}\"  \"Apply >>\"\r\n            :  Doc       AF.HtmlDoc MarkDown2\r\n            :  Doc       AF.TextArea \"color:red;font-weight:800;flex:1;border:none\"  Snippets.parseOut\r\n            :  span      \"width:100%\"\r\n            :: button    \"click=@{goPrev};title=@{Snippets.prevTxt}\"  \"Prev.\"\r\n            :: button    \"click=@{goNext};title=@{Snippets.nextTxt}\"  \"Next\"\r\n            \r\n            snippet div \"display: flex;flex-direction: column;flex:1;margin:10px\" Trigger\r\n            :  Docs      content\r\n            \r\n            Right div \"display: flex; flex-direction:column\" lytTarget2.main\r\n            \r\n            Right0 horizontal 0-60-100 Right\r\n            :   div       \"display:flex;flex-direction:column\"\r\n            ::  Doc       AF.InputLabel \"\" \"Name:\" Snippets.curSnp_name\r\n            ::  div       \"height:100%;class=relative;flex:2\" editor2\r\n            \r\n            Left2 vertical 0-25-100 list snippet\r\n            main2 vertical 0-60-100 Left2 Right0\r\n                \r\n            Left div \"display:flex;flex-direction:column\" gotoMain2 snippet\r\n            main vertical 0-60-100 Left Right0\r\n            \r\n            main0 vertical 0-60-100 \r\n            : div \"display:flex;flex-direction:column\" content \r\n            : Docs Right\r\n            \r\n                "));
+  MonacoPlugIn.plugInAdded();
   AppFramework.mainDocV().Set("lytDemo.main2");
  };
  Operators.range=function(min,max)
@@ -3945,20 +3935,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     e.Dispose();
   }
  };
- Seq$1.pairwise=function(s)
- {
-  return Seq$1.map(function(x)
-  {
-   return[Arrays.get(x,0),Arrays.get(x,1)];
-  },Seq$1.windowed(2,s));
- };
- Seq$1.forall2=function(p,s1,s2)
- {
-  return!Seq$1.exists2(function($1,$2)
-  {
-   return!p($1,$2);
-  },s1,s2);
- };
  Seq$1.cache=function(s)
  {
   var cache,o;
@@ -3981,6 +3957,20 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return Arrays.groupBy(f,Arrays.ofSeq(s));
   });
+ };
+ Seq$1.pairwise=function(s)
+ {
+  return Seq$1.map(function(x)
+  {
+   return[Arrays.get(x,0),Arrays.get(x,1)];
+  },Seq$1.windowed(2,s));
+ };
+ Seq$1.forall2=function(p,s1,s2)
+ {
+  return!Seq$1.exists2(function($1,$2)
+  {
+   return!p($1,$2);
+  },s1,s2);
  };
  Seq$1.tryPick=function(f,s)
  {
@@ -6180,6 +6170,1345 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    lytDefinition:lytDefinition
   };
  };
+ LayoutEngineModule.newLyt=function(name,lyt)
+ {
+  return LayoutEngine.New(name,Var$1.Create$1(lyt));
+ };
+ LayoutEngineModule.addLayout=function(lyt)
+ {
+  View.Sink(function(txt)
+  {
+   var x;
+   LayoutEngineModule.set_currentViewTriggger(View.Map2(function($1,$2)
+   {
+    return $1+$2;
+   },lyt.lytDefinition.get_View(),AppFramework.mainDocV().get_View()));
+   LayoutEngineModule.refreshEntries(lyt.lytName,(x=(LayoutEngineModule.createEntries(lyt.lytName))(txt),Seq$1.append(List.ofArray([{
+    $:0,
+    $0:AppFramework.newVar(new PlgElemName({
+     $:0,
+     $0:"Layout"
+    }),lyt.lytDefinition)
+   }]),x)));
+  },lyt.lytDefinition.get_View());
+ };
+ LayoutEngineModule.parseEntries=function(lytNm,txt)
+ {
+  return LayoutEngineModule.processText(Syntax.createEntryO2(lytNm,new Dictionary.New$5()),txt);
+ };
+ LayoutEngineModule.set_currentViewTriggger=function($1)
+ {
+  SC$2.$cctor();
+  SC$2.currentViewTriggger=$1;
+ };
+ LayoutEngineModule.createEntries=function(lytNm)
+ {
+  function f(l)
+  {
+   return LayoutEngineModule.createEntryO(lytNm,l);
+  }
+  return function(t)
+  {
+   return LayoutEngineModule.processText(f,t);
+  };
+ };
+ LayoutEngineModule.refreshEntries=function(lytN,entries)
+ {
+  var plg,m,plg$1,i;
+  plg=(m=AppFramework.tryGetPlugIn(lytN),m==null?(plg$1=(i=AppFramework.defaultPlugIn(),PlugIn.New(lytN,i.plgVars,i.plgViews,i.plgDocs,i.plgActions,i.plgQueries)),(AppFramework.addPlugIn(plg$1),plg$1)):m.$0);
+  ListModel$1.refreshLM(plg.plgVars,Arrays.ofSeq(Seq$1.delay(function()
+  {
+   return LayoutEngineModule.getVarEntries(entries);
+  })));
+  ListModel$1.refreshLM(plg.plgViews,Arrays.ofSeq(Seq$1.delay(function()
+  {
+   return LayoutEngineModule.getViewEntries(entries);
+  })));
+  ListModel$1.refreshLM(plg.plgActions,Arrays.ofSeq(Seq$1.delay(function()
+  {
+   return LayoutEngineModule.getActionEntries(entries);
+  })));
+  ListModel$1.refreshLM(plg.plgQueries,Arrays.ofSeq(Seq$1.delay(function()
+  {
+   return LayoutEngineModule.getQueryEntries(entries);
+  })));
+  ListModel$1.refreshLM(plg.plgDocs,Arrays.ofSeq(Seq$1.delay(function()
+  {
+   return Seq$1.append(LayoutEngineModule.getDocEntries(entries),Seq$1.delay(function()
+   {
+    return Seq$1.append([AppFramework.newDocF(new PlgElemName({
+     $:0,
+     $0:"InputFile"
+    }),{
+     $:4,
+     $0:Runtime$1.Curried(LayoutEngineModule.inputFile,4,[lytN]),
+     $1:"attrs",
+     $2:"Label",
+     $3:"Action",
+     $4:"[Doc]"
+    })],Seq$1.delay(function()
+    {
+     return Seq$1.append([AppFramework.newDocF(new PlgElemName({
+      $:0,
+      $0:"InputLabel"
+     }),{
+      $:3,
+      $0:Runtime$1.Curried(LayoutEngineModule.inputLabel,3,[lytN]),
+      $1:"attrs",
+      $2:"Label",
+      $3:"Var"
+     })],Seq$1.delay(function()
+     {
+      return[AppFramework.newDocF(new PlgElemName({
+       $:0,
+       $0:"none"
+      }),{
+       $:1,
+       $0:LayoutEngineModule.none,
+       $1:"x"
+      })];
+     }));
+    }));
+   }));
+  })));
+ };
+ LayoutEngineModule.processText=function(f,txt)
+ {
+  return LayoutEngineModule.processLines(f,Strings.SplitChars(txt,["\n","\r"],1));
+ };
+ LayoutEngineModule.createEntryO=function(lytNm,line)
+ {
+  var m,$1,a,a$1,name,$2,a$2,a$3,name$1,$3,a$4,a$5,name$2,$4,a$6,a$7,name$3,$5,a$8,a$9,name$4,$6,a$10,name$5,$7,a$11,name$6,$8,a$12,name$7,$9,a$13,name$8,$10,a$14,name$9,$11,a$15,a$16,name$10,$12,a$17,a$18,name$11;
+  try
+  {
+   m=LayoutEngineModule.splitTokens(line);
+   return m.$==1&&(a=LayoutEngineModule.Identifier(m.$0),a!=null&&a.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==0&&(m.$1.$1.$==1&&(a$1=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$1!=null&&a$1.$==1&&($1=[m.$1.$1.$1,a$1.$0,a.$0],true))))))?(name=$1[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name
+   }),(LayoutEngineModule.createSplitterM())([lytNm,name,true,$1[1],$1[0]]))):m.$==1&&(a$2=LayoutEngineModule.Identifier(m.$0),a$2!=null&&a$2.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$3=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$3!=null&&a$3.$==1&&($2=[m.$1.$1.$1,a$3.$0,a$2.$0],true))))))?(name$1=$2[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$1
+   }),(LayoutEngineModule.createSplitterM())([lytNm,name$1,false,$2[1],$2[0]]))):m.$==1&&(a$4=LayoutEngineModule.Identifier(m.$0),a$4!=null&&a$4.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$5=LayoutEngineModule.Identifier(m.$1.$1.$0),a$5!=null&&a$5.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$1.$==0&&($3=[a$5.$0,m.$1.$1.$1.$0,a$4.$0,m.$1.$1.$1.$1.$0],true)))))))))?(name$2=$3[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$2
+   }),(LayoutEngineModule.createButtonM())([lytNm,name$2,$3[0],$3[1],$3[3]]))):m.$==1&&(a$6=LayoutEngineModule.Identifier(m.$0),a$6!=null&&a$6.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==2&&(m.$1.$1.$==1&&(a$7=LayoutEngineModule.Identifier(m.$1.$1.$0),a$7!=null&&a$7.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($4=[m.$1.$1.$1.$0,a$6.$0,a$7.$0],true))))))))?(name$3=$4[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$3
+   }),(LayoutEngineModule.createInputM())([lytNm,name$3,$4[2],$4[0]]))):m.$==1&&(a$8=LayoutEngineModule.Identifier(m.$0),a$8!=null&&a$8.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==3&&(m.$1.$1.$==1&&(a$9=LayoutEngineModule.Identifier(m.$1.$1.$0),a$9!=null&&a$9.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($5=[m.$1.$1.$1.$0,a$8.$0,a$9.$0],true))))))))?(name$4=$5[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$4
+   }),(LayoutEngineModule.createTextAreaM())([lytNm,name$4,$5[2],$5[0]]))):m.$==1&&(a$10=LayoutEngineModule.Identifier(m.$0),a$10!=null&&a$10.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==0&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==0&&($6=[a$10.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$5=$6[0],LayoutEngineModule.entryVar(new PlgElemName({
+    $:0,
+    $0:name$5
+   }),(LayoutEngineModule.createVarM())([lytNm,name$5,$6[1]]))):m.$==1&&(a$11=LayoutEngineModule.Identifier(m.$0),a$11!=null&&a$11.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==1&&(m.$1.$1.$==1&&($7=[LayoutEngineModule.S(m.$1.$1.$0),a$11.$0,m.$1.$1.$1],true)))))?(name$6=$7[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$6
+   }),(LayoutEngineModule.createDocM())([lytNm,name$6,$7[0],$7[2]]))):m.$==1&&(a$12=LayoutEngineModule.Identifier(m.$0),a$12!=null&&a$12.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==2&&($8=[a$12.$0,m.$1.$1],true))))?(name$7=$8[0],LayoutEngineModule.entryView(new PlgElemName({
+    $:0,
+    $0:name$7
+   }),(LayoutEngineModule.createViewM())([lytNm,name$7,$8[1]]))):m.$==1&&(a$13=LayoutEngineModule.Identifier(m.$0),a$13!=null&&a$13.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==4&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==1&&($9=[m.$1.$1.$1.$0,m.$1.$1.$1.$1,a$13.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$8=$9[2],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$8
+   }),(LayoutEngineModule.createTemplateM())([lytNm,name$8,$9[3],$9[0],$9[1]]))):m.$==1&&(a$14=LayoutEngineModule.Identifier(m.$0),a$14!=null&&a$14.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==4&&($10=[m.$1.$1,a$14.$0],true))))?(name$9=$10[1],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$9
+   }),(LayoutEngineModule.createConcatM())([lytNm,name$9,$10[0]]))):m.$==1&&(a$15=LayoutEngineModule.Identifier(m.$0),a$15!=null&&a$15.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==5&&(m.$1.$1.$==1&&(a$16=LayoutEngineModule.Identifier(m.$1.$1.$0),a$16!=null&&a$16.$==1&&($11=[a$16.$0,a$15.$0,m.$1.$1.$1],true))))))?(name$10=$11[1],LayoutEngineModule.entryAct(new PlgElemName({
+    $:0,
+    $0:name$10
+   }),(LayoutEngineModule.createActionM())([lytNm,name$10,$11[0],$11[2]]))):m.$==1&&(a$17=LayoutEngineModule.Identifier(m.$0),a$17!=null&&a$17.$==1&&(m.$1.$==1&&(a$18=LayoutEngineModule.Vertical(m.$1.$0),a$18.$==5&&(m.$1.$1.$==1&&($12=[m.$1.$1.$0,m.$1.$1.$1,a$18.$0,a$17.$0],true)))))?(name$11=$12[3],LayoutEngineModule.entryDoc(new PlgElemName({
+    $:0,
+    $0:name$11
+   }),(LayoutEngineModule.createElementM())([lytNm,name$11,$12[2],$12[0],$12[1]]))):null;
+  }
+  catch(e)
+  {
+   return null;
+  }
+ };
+ LayoutEngineModule.getVarEntries=function(entries)
+ {
+  function f(t)
+  {
+   return t[1];
+  }
+  return Seq$1.map(function(x)
+  {
+   return Seq$1.last(f(x));
+  },Seq$1.groupBy(function(v)
+  {
+   return v.varName;
+  },Seq$1.choose(function(a)
+  {
+   return a.$==0?{
+    $:1,
+    $0:a.$0
+   }:null;
+  },entries)));
+ };
+ LayoutEngineModule.getViewEntries=function(entries)
+ {
+  function f(t)
+  {
+   return t[1];
+  }
+  return Seq$1.map(function(x)
+  {
+   return Seq$1.last(f(x));
+  },Seq$1.groupBy(function(v)
+  {
+   return v.viwName;
+  },Seq$1.choose(function(a)
+  {
+   return a.$==1?{
+    $:1,
+    $0:a.$0
+   }:null;
+  },entries)));
+ };
+ LayoutEngineModule.getActionEntries=function(entries)
+ {
+  function f(t)
+  {
+   return t[1];
+  }
+  return Seq$1.map(function(x)
+  {
+   return Seq$1.last(f(x));
+  },Seq$1.groupBy(function(v)
+  {
+   return v.actName;
+  },Seq$1.choose(function(a)
+  {
+   return a.$==3?{
+    $:1,
+    $0:a.$0
+   }:null;
+  },entries)));
+ };
+ LayoutEngineModule.getQueryEntries=function(entries)
+ {
+  function f(t)
+  {
+   return t[1];
+  }
+  return Seq$1.map(function(x)
+  {
+   return Seq$1.last(f(x));
+  },Seq$1.groupBy(function(v)
+  {
+   return v.qryName;
+  },Seq$1.choose(function(a)
+  {
+   return a.$==4?{
+    $:1,
+    $0:a.$0
+   }:null;
+  },entries)));
+ };
+ LayoutEngineModule.getDocEntries=function(entries)
+ {
+  function f(t)
+  {
+   return t[1];
+  }
+  return Seq$1.map(function(x)
+  {
+   return Seq$1.last(f(x));
+  },Seq$1.groupBy(function(d)
+  {
+   return d.docName;
+  },Seq$1.choose(function(a)
+  {
+   return a.$==2?{
+    $:1,
+    $0:a.$0
+   }:null;
+  },entries)));
+ };
+ LayoutEngineModule.inputFile=function(lytNm,attrs,labelName,actName,doc)
+ {
+  var o,o$1,t,act;
+  o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(actName),AppFramework.tryGetAct(t[0],t[1])),o$1==null?null:{
+   $:1,
+   $0:(act=o$1.$0,Doc.Element("div",LayoutEngineModule.getAttrs(lytNm,{
+    $:0,
+    $0:attrs
+   }),[Doc.Element("div",[AttrProxy.Create("class","input-group")],[Doc.Element("span",[AttrProxy.Create("class","input-group-btn")],[Doc.Element("label",[AttrProxy.Create("class","btn")],[LayoutEngineModule.getText(lytNm,{
+    $:0,
+    $0:labelName
+   }),Doc.Element("input",[AttrProxy.Create("class","form-control"),AttrProxy.Create("type","file"),AttrModule.Style("display","none"),AttrProxy.HandlerImpl("click",function(el)
+   {
+    return function()
+    {
+     el.value="";
+    };
+   }),AttrProxy.HandlerImpl("change",function(el)
+   {
+    return function()
+    {
+     return AppFramework.callFunction(el,null,act.actFunction);
+    };
+   })],[])])]),doc!==""?LayoutEngineModule.singleDoc(lytNm,List.ofArray([{
+    $:1,
+    $0:doc
+   }])):Doc.get_Empty()])]))
+  });
+  return o==null?AppFramework.errDoc((function($1)
+  {
+   return function($2)
+   {
+    return $1("Action not found "+Utils.toSafe($2));
+   };
+  }(Global.id))(actName)):o.$0;
+ };
+ LayoutEngineModule.inputLabel=function(lytNm,attrs,labelName,varName)
+ {
+  var o,o$1,t;
+  o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(varName),AppFramework.tryGetVar(t[0],t[1])),o$1==null?null:{
+   $:1,
+   $0:Doc.Element("div",LayoutEngineModule.getAttrs(lytNm,{
+    $:0,
+    $0:attrs
+   }),[Doc.Element("div",[AttrProxy.Create("class","input-group")],[Doc.Element("span",[AttrProxy.Create("class","input-group-addon")],[LayoutEngineModule.getText(lytNm,{
+    $:0,
+    $0:labelName
+   })]),Doc.Input([AttrProxy.Create("class","form-control")],o$1.$0.varVar)])])
+  });
+  return o==null?AppFramework.errDoc((function($1)
+  {
+   return function($2)
+   {
+    return $1("Var not found "+Utils.toSafe($2));
+   };
+  }(Global.id))(varName)):o.$0;
+ };
+ LayoutEngineModule.none=function(x)
+ {
+  return Doc.Element("span",[],[]);
+ };
+ LayoutEngineModule.createSplitter=function(lytNm,name,vertical,measures,docs)
+ {
+  var p;
+  p=LayoutEngineModule.pairOfDocs(lytNm,docs);
+  return measures.$==1?LayoutEngineModule.variableSplitter(vertical,measures.$0,measures.$1,measures.$2,p[0],p[1]):LayoutEngineModule.fixedSplitter(vertical,measures.$0,measures.$1,p[0],p[1]);
+ };
+ LayoutEngineModule.createButton=function(lytNm,name,actName,attrs,a)
+ {
+  var text;
+  text=LayoutEngineModule.S(a);
+  return LayoutEngineModule.turnToView(function()
+  {
+   var x,o,o$1,t,$1;
+   function m(act,u)
+   {
+    return AppFramework.callFunction(null,null,act.actFunction);
+   }
+   x=(o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(actName),AppFramework.tryGetAct(t[0],t[1])),o$1==null?null:{
+    $:1,
+    $0:($1=o$1.$0,function($2)
+    {
+     return m($1,$2);
+    })
+   }),o==null?Global.ignore:o.$0);
+   return Doc.Button(text,LayoutEngineModule.getAttrs(lytNm,attrs),x);
+  });
+ };
+ LayoutEngineModule.createInput=function(lytNm,name,varName,attrs)
+ {
+  return LayoutEngineModule.turnToView(function()
+  {
+   var t;
+   return Doc.BindView(function(a)
+   {
+    return a==null?AppFramework.errDoc((function($1)
+    {
+     return function($2)
+     {
+      return $1("Missing var: "+Utils.toSafe($2));
+     };
+    }(Global.id))(varName)):Doc.Input(LayoutEngineModule.getAttrs(lytNm,attrs),a.$0);
+   },(t=((LayoutEngineModule.splitName())(lytNm))(varName),AppFramework.tryGetVoVW(t[0],t[1])));
+  });
+ };
+ LayoutEngineModule.createTextArea=function(lytNm,name,varName,attrs)
+ {
+  return LayoutEngineModule.turnToView(function()
+  {
+   var t;
+   return Doc.BindView(function(a)
+   {
+    return a==null?AppFramework.errDoc((function($1)
+    {
+     return function($2)
+     {
+      return $1("Missing var: "+Utils.toSafe($2));
+     };
+    }(Global.id))(varName)):Doc.InputArea(LayoutEngineModule.getAttrs(lytNm,attrs),a.$0);
+   },(t=((LayoutEngineModule.splitName())(lytNm))(varName),AppFramework.tryGetVoVW(t[0],t[1])));
+  });
+ };
+ LayoutEngineModule.createElement=function(lytNm,name,element,attrs,docs)
+ {
+  return LayoutEngineModule.turnToView(function()
+  {
+   var x;
+   x=[Doc.Concat(LayoutEngineModule.getAllDocs(lytNm,docs))];
+   return Doc.Element(element,LayoutEngineModule.getAttrs(lytNm,attrs),x);
+  });
+ };
+ LayoutEngineModule.createDoc=function(lytNm,name,docName,parms)
+ {
+  return LayoutEngineModule.turnToView(function()
+  {
+   var o,o$1,t;
+   o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(docName),AppFramework.tryGetDoc(t[0],t[1])),o$1==null?null:{
+    $:1,
+    $0:LayoutEngineModule.getDocFinal(parms,o$1.$0)
+   });
+   return o==null?AppFramework.errDoc((function($1)
+   {
+    return function($2)
+    {
+     return $1("Missing doc: "+Utils.toSafe($2));
+    };
+   }(Global.id))(docName)):o.$0;
+  });
+ };
+ LayoutEngineModule.createTemplate=function(lytNm,name,tempName,attrs,holes)
+ {
+  return LayoutEngineModule.turnToView(function()
+  {
+   var $1,o,attrs$1,x,x$1,s;
+   attrs$1=LayoutEngineModule.getAttrs(lytNm,attrs);
+   Templates.LoadLocalTemplates("local");
+   function m($2,$3)
+   {
+    var a,a$1,id,o$1,o$2,o$3,t,o$4,t$1,a$2,txt;
+    a=LayoutEngineModule.S($2);
+    a$1=LayoutEngineModule.Identifier($3);
+    return a$1!=null&&a$1.$==1?(id=a$1.$0,o$1=(o$2=(o$3=(t=((LayoutEngineModule.splitName())(lytNm))(id),AppFramework.tryGetDoc(t[0],t[1])),o$3==null?null:{
+     $:1,
+     $0:{
+      $:0,
+      $0:a.toLowerCase(),
+      $1:(LayoutEngineModule.getDocF(T.Empty,o$3.$0))[0]
+     }
+    }),o$2==null?(o$4=(t$1=((LayoutEngineModule.splitName())(lytNm))(id),AppFramework.tryGetVar(t$1[0],t$1[1])),o$4==null?null:{
+     $:1,
+     $0:{
+      $:8,
+      $0:a.toLowerCase(),
+      $1:o$4.$0.varVar
+     }
+    }):o$2),o$1==null?{
+     $:0,
+     $0:a.toLowerCase(),
+     $1:AppFramework.errDoc((function($4)
+     {
+      return function($5)
+      {
+       return $4("Missing element: "+Utils.toSafe($5));
+      };
+     }(Global.id))(id))
+    }:o$1.$0):(a$2=LayoutEngineModule.S($2),txt=LayoutEngineModule.S($3),{
+     $:0,
+     $0:a$2.toLowerCase(),
+     $1:AppFramework.errDoc((function($4)
+     {
+      return function($5)
+      {
+       return $4("Not implemented: "+Utils.toSafe($5));
+      };
+     }(Global.id))(txt))
+    });
+   }
+   function p(i,a)
+   {
+    return i%2===0;
+   }
+   try
+   {
+    o={
+     $:1,
+     $0:(x=(x$1=Seq$1.map(function($2)
+     {
+      return m($2[0],$2[1]);
+     },Seq$1.map(function(t)
+     {
+      return t[1];
+     },Seq$1.filter(function($2)
+     {
+      return p($2[0],$2[1]);
+     },Seq$1.indexed(Seq$1.pairwise(holes))))),(Seq$1.isEmpty(attrs$1)?Global.id:(s=[{
+      $:3,
+      $0:"attrs",
+      $1:AttrProxy.Concat(attrs$1)
+     }],function(s$1)
+     {
+      return Seq$1.append(s,s$1);
+     }))(x$1)),Templates.NamedTemplate("local",{
+      $:1,
+      $0:tempName.toLowerCase()
+     },x))
+    };
+   }
+   catch(m$1)
+   {
+    o=null;
+   }
+   return o==null?AppFramework.errDoc((function($2)
+   {
+    return function($3)
+    {
+     return $2("Missing template: "+Utils.toSafe($3));
+    };
+   }(Global.id))(tempName)):o.$0;
+  });
+ };
+ LayoutEngineModule.createConcat=function(lytNm,name,docs)
+ {
+  return LayoutEngineModule.turnToView(function()
+  {
+   return Doc.Concat(LayoutEngineModule.getAllDocs(lytNm,docs));
+  });
+ };
+ LayoutEngineModule.createVar=function(lytNm,varName,v)
+ {
+  return Var$1.Create$1(v);
+ };
+ LayoutEngineModule.createView=function(lytNm,viwName,parms)
+ {
+  return View.Bind(function()
+  {
+   var f;
+   function m(a)
+   {
+    return a.$==1?(function($1)
+    {
+     return function($2)
+     {
+      return $1(GeneratedPrintf.p$1($2));
+     };
+    }(Global.id))(a.$0):a.$0;
+   }
+   try
+   {
+    return View.Map(function(ar)
+    {
+     try
+     {
+      return!Unchecked.Equals(ar,null)&&ar.length===0?"No JS function specified":!Unchecked.Equals(ar,null)&&ar.length===1?Global.String(Global["eval"](Arrays.get(ar,0))):Global.String(Global["eval"](Arrays.get(ar,0)).apply(null,Slice.array(ar,{
+       $:1,
+       $0:1
+      },null)));
+     }
+     catch(e)
+     {
+      return e.message;
+     }
+    },View.Map((f=function(s)
+    {
+     return Seq$1.map(m,s);
+    },function(x)
+    {
+     return Arrays.ofSeq(f(x));
+    }),View$1.traverseSeq(function(t)
+    {
+     return LayoutEngineModule.getTextToken(lytNm,t);
+    },parms)));
+   }
+   catch(e)
+   {
+    return View.Const(e.message);
+   }
+  },LayoutEngineModule.currentViewTriggger());
+ };
+ LayoutEngineModule.createAction=function(lytNm,name,actName,parms)
+ {
+  var o,t,$1,$2,o$1,act,$3,f,t1,f$1,t1$1,t2,f$2,t1$2;
+  o$1=(t=((LayoutEngineModule.splitName())(lytNm))(actName),AppFramework.tryGetAct(t[0],t[1]));
+  if(o$1==null)
+   o=null;
+  else
+   {
+    act=o$1.$0;
+    if(parms.$===0)
+     $1=act.actFunction;
+    else
+     {
+      $3=act.actFunction;
+      switch($3.$==1?parms.$==1?parms.$1.$==0?($2=[$3.$0,parms.$0],0):3:3:$3.$==2?parms.$==1?parms.$1.$==0?($2=[$3.$0,$3.$2,parms.$0],2):parms.$1.$1.$==0?($2=[$3.$0,parms.$0,parms.$1.$0],1):3:3:3)
+      {
+       case 0:
+        $1=(f=$2[0],(t1=$2[1],{
+         $:0,
+         $0:function()
+         {
+          LayoutEngineModule.getParamText(lytNm,t1,f);
+         }
+        }));
+        break;
+       case 1:
+        $1=(f$1=$2[0],(t1$1=$2[1],(t2=$2[2],{
+         $:0,
+         $0:function()
+         {
+          LayoutEngineModule.getParamText(lytNm,t1$1,function(p1)
+          {
+           LayoutEngineModule.getParamText(lytNm,t2,f$1(p1));
+          });
+         }
+        })));
+        break;
+       case 2:
+        $1=(f$2=$2[0],(t1$2=$2[2],{
+         $:1,
+         $0:function(p2)
+         {
+          LayoutEngineModule.getParamText(lytNm,t1$2,function(p1)
+          {
+           (f$2(p1))(p2);
+          });
+         },
+         $1:$2[1]
+        }));
+        break;
+       case 3:
+        $1={
+         $:0,
+         $0:function()
+         {
+          ((((Runtime$1.Curried(function($4,$5,$6,$7)
+          {
+           return $4("Parameters do not coincide for Action "+Utils.toSafe($5)+" "+Utils.printList(function($8)
+           {
+            return LayoutEngine_GeneratedPrintf.p$27($8);
+           },$6)+" "+GeneratedPrintf.p$1($7));
+          },4))(function(s)
+          {
+           console.log(s);
+          }))(actName))(parms))(act);
+         }
+        };
+        break;
+      }
+     }
+    o={
+     $:1,
+     $0:$1
+    };
+   }
+  return o==null?{
+   $:0,
+   $0:function()
+   {
+    ((function($4)
+    {
+     return function($5)
+     {
+      return $4("Action Not Found "+Utils.toSafe($5));
+     };
+    }(function(s)
+    {
+     console.log(s);
+    }))(actName));
+   }
+  }:o.$0;
+ };
+ LayoutEngineModule.addNewLayout=function(name,layout)
+ {
+  var x,x$1;
+  LayoutEngineModule.addLayout((x=(x$1=!Unchecked.Equals(layout,null)?layout:"\r\n            split horizontal 0-50-100 AppFramework.AppFwkClient Hello\r\n            Hello h1 \"color:blue; class=btn-primary\" \"How are you today?\" Ask\r\n            Ask Doc InputLabel \"placeholder=Type you answer here...\" \"Answer:\" AppFramework.mainDocV  \r\n            ",(String.unindentStr())(x$1)),LayoutEngineModule.newLyt(!Unchecked.Equals(layout,null)?name:new PlugInName({
+   $:0,
+   $0:"Lyt_"+Strings.Replace(Global.String(Guid.NewGuid()),"-","")
+  }),x)));
+ };
+ LayoutEngineModule.variableSplitter=function(vertical,min,value,max,doc1,doc2)
+ {
+  return Doc.Element("wcomp-splitter",List.ofSeq(Seq$1.delay(function()
+  {
+   return Seq$1.append(vertical?[AttrProxy.Create("vertical","")]:[],Seq$1.delay(function()
+   {
+    return Seq$1.append([AttrProxy.Create("min",Global.String(min))],Seq$1.delay(function()
+    {
+     return Seq$1.append([AttrProxy.Create("value",Global.String(value))],Seq$1.delay(function()
+     {
+      return[AttrProxy.Create("max",Global.String(max))];
+     }));
+    }));
+   }));
+  })),List.ofArray([doc1,doc2]));
+ };
+ LayoutEngineModule.processLines=function(f,ls)
+ {
+  function processLinesR(ls$1)
+  {
+   var m,l,m$1,$1,a,p,p$1,rest,docs,p$2,names,ls$2;
+   m=Seq$1.tryHead(ls$1);
+   return m!=null&&m.$==1?(l=m.$0,(m$1=LayoutEngineModule.splitTokens(l),m$1.$==1&&(a=LayoutEngineModule.Identifier(m$1.$0),a!=null&&a.$==1&&(m$1.$1.$==1&&(LayoutEngineModule.Vertical(m$1.$1.$0).$==2&&(m$1.$1.$1.$==0&&($1=a.$0,true)))))?(p=LayoutEngineModule.getExtraLines(function(l$1)
+   {
+    return Strings.StartsWith(Strings.Trim(l$1),"|");
+   },ls$1),processLinesR((Layout.createLayoutDefinitions($1,Layout.extractNodes(p[0])))[1].concat(p[1]))):m$1.$==0?processLinesR(Slice.array(ls$1,{
+    $:1,
+    $0:1
+   },null)):(p$1=LayoutEngineModule.getExtraLines(function(l$1)
+   {
+    return Strings.StartsWith(Strings.Trim(l$1),":");
+   },ls$1),(rest=p$1[1],(docs=p$1[0],Arrays.length(docs)>0?(p$2=LayoutEngineModule.createLines(Seq$1.nth(0,Strings.SplitChars(l,[" "],1)),1,[],[],1,docs),(names=p$2[0],(ls$2=p$2[1],processLinesR(Arrays.ofSeq(Seq$1.delay(function()
+   {
+    return Seq$1.append(ls$2,Seq$1.delay(function()
+    {
+     return Seq$1.append([l+" "+Strings.concat(" ",names)],Seq$1.delay(function()
+     {
+      return rest;
+     }));
+    }));
+   })))))):Arrays.ofSeq(Seq$1.delay(function()
+   {
+    var m$2;
+    return Seq$1.append((m$2=f(l),m$2!=null&&m$2.$==1?[m$2.$0]:[]),Seq$1.delay(function()
+    {
+     return processLinesR(rest);
+    }));
+   }))))))):[];
+  }
+  return processLinesR(ls);
+ };
+ LayoutEngineModule.splitTokens=function(line)
+ {
+  return LayoutEngineModule.doubleQuote(List.ofSeq(Seq$1.collect(Global.id,Seq$1.mapi(function(i,s)
+  {
+   var t;
+   return i%2===1?[{
+    $:0,
+    $0:s
+   }]:s===""?[{
+    $:0,
+    $0:"\""
+   }]:(t=Strings.Trim(s),t===""?[]:Arrays.map(function(a)
+   {
+    return{
+     $:1,
+     $0:a
+    };
+   },Strings.SplitChars(t,[" "],1)));
+  },String.splitByChar("\"",line)))));
+ };
+ LayoutEngineModule.Identifier=function(a)
+ {
+  var $1,a$1,t;
+  return a.$==1&&(a$1=LibraryJS.REGEX$1("^[$a-zA-Z_][0-9a-zA-Z_\\.\\-$]*$","",a.$0),a$1!=null&&a$1.$==1&&((t=a$1.$0,!Unchecked.Equals(t,null)&&t.length===1)&&($1=Arrays.get(a$1.$0,0),true)))?{
+   $:1,
+   $0:$1
+  }:null;
+ };
+ LayoutEngineModule.Measures$1=function(a)
+ {
+  var a$1,$1,a$2,$2,a$3,$3,a$4,a$5,a$6;
+  return a.$==1?(a$1=String.splitByChar("-",a.$0),!Unchecked.Equals(a$1,null)&&a$1.length===1&&(a$2=(ParseO$1.Double())(Arrays.get(a$1,0)),a$2!=null&&a$2.$==1&&($1=a$2.$0,true))?{
+   $:1,
+   $0:new Measures({
+    $:0,
+    $0:$1,
+    $1:true
+   })
+  }:!Unchecked.Equals(a$1,null)&&a$1.length===2&&(Arrays.get(a$1,0)===""&&(a$3=(ParseO$1.Double())(Arrays.get(a$1,1)),a$3!=null&&a$3.$==1&&($2=a$3.$0,true)))?{
+   $:1,
+   $0:new Measures({
+    $:0,
+    $0:$2,
+    $1:false
+   })
+  }:!Unchecked.Equals(a$1,null)&&a$1.length===3&&(a$4=(ParseO$1.Double())(Arrays.get(a$1,0)),a$4!=null&&a$4.$==1&&(a$5=(ParseO$1.Double())(Arrays.get(a$1,1)),a$5!=null&&a$5.$==1&&(a$6=(ParseO$1.Double())(Arrays.get(a$1,2)),a$6!=null&&a$6.$==1&&($3=[a$6.$0,a$4.$0,a$5.$0],true))))?{
+   $:1,
+   $0:new Measures({
+    $:1,
+    $0:$3[1],
+    $1:$3[2],
+    $2:$3[0]
+   })
+  }:null):null;
+ };
+ LayoutEngineModule.Vertical=function(a)
+ {
+  var $1,$2,$3,$4,$5,a$1;
+  return a.$==1&&(a.$0==="vertical"&&($1=a.$0,true))?{
+   $:0,
+   $0:null
+  }:a.$==1&&(a.$0==="horizontal"&&($2=a.$0,true))?{
+   $:1,
+   $0:null
+  }:a.$==1&&(a.$0==="layout"&&($3=a.$0,true))?{
+   $:2,
+   $0:null
+  }:a.$==1&&(a.$0==="grid"&&($4=a.$0,true))?{
+   $:3,
+   $0:null
+  }:a.$==1&&(a.$0==="template"&&($5=a.$0,true))?{
+   $:4,
+   $0:null
+  }:(a$1=LayoutEngineModule.Identifier(a),a$1!=null&&a$1.$==1?{
+   $:5,
+   $0:a$1.$0
+  }:{
+   $:6,
+   $0:null
+  });
+ };
+ LayoutEngineModule.entryDoc=function(n,doc)
+ {
+  return{
+   $:1,
+   $0:{
+    $:2,
+    $0:AppFramework.newDoc(n,Lazy.Create(function()
+    {
+     return doc;
+    }))
+   }
+  };
+ };
+ LayoutEngineModule.createSplitterM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createSplitterM;
+ };
+ LayoutEngineModule.PlugIn=function(a)
+ {
+  var $1,$2,$3,$4,$5;
+  return a.$==1&&(a.$0==="PlugIn"&&($1=a.$0,true))?{
+   $:0,
+   $0:null
+  }:a.$==1&&(a.$0==="Button"&&($2=a.$0,true))?{
+   $:1,
+   $0:null
+  }:a.$==1&&(a.$0==="input"&&($3=a.$0,true))?{
+   $:2,
+   $0:null
+  }:a.$==1&&(a.$0==="textarea"&&($4=a.$0,true))?{
+   $:3,
+   $0:null
+  }:a.$==1&&(a.$0==="select"&&($5=a.$0,true))?{
+   $:4,
+   $0:null
+  }:{
+   $:5,
+   $0:null
+  };
+ };
+ LayoutEngineModule.createButtonM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createButtonM;
+ };
+ LayoutEngineModule.createInputM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createInputM;
+ };
+ LayoutEngineModule.createTextAreaM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createTextAreaM;
+ };
+ LayoutEngineModule.S=function(a)
+ {
+  return a.$==1?a.$0:a.$0;
+ };
+ LayoutEngineModule.Var=function(a)
+ {
+  var $1,$2,$3,$4,$5,$6;
+  return a.$==1&&(a.$0==="Var"&&($1=a.$0,true))?{
+   $:0,
+   $0:null
+  }:a.$==1&&(a.$0==="Doc"&&($2=a.$0,true))?{
+   $:1,
+   $0:null
+  }:a.$==1&&(a.$0==="View"&&($3=a.$0,true))?{
+   $:2,
+   $0:null
+  }:a.$==1&&(a.$0==="ViewJS"&&($4=a.$0,true))?{
+   $:3,
+   $0:null
+  }:a.$==1&&(a.$0==="Docs"&&($5=a.$0,true))?{
+   $:4,
+   $0:null
+  }:a.$==1&&(a.$0==="Action"&&($6=a.$0,true))?{
+   $:5,
+   $0:null
+  }:{
+   $:6,
+   $0:null
+  };
+ };
+ LayoutEngineModule.entryVar=function(n,v)
+ {
+  return{
+   $:1,
+   $0:{
+    $:0,
+    $0:AppFramework.newVar(n,v)
+   }
+  };
+ };
+ LayoutEngineModule.createVarM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createVarM;
+ };
+ LayoutEngineModule.createDocM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createDocM;
+ };
+ LayoutEngineModule.entryView=function(n,w)
+ {
+  return{
+   $:1,
+   $0:{
+    $:1,
+    $0:AppFramework.newViw(n,w)
+   }
+  };
+ };
+ LayoutEngineModule.createViewM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createViewM;
+ };
+ LayoutEngineModule.createTemplateM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createTemplateM;
+ };
+ LayoutEngineModule.createConcatM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createConcatM;
+ };
+ LayoutEngineModule.entryAct=function(n,a)
+ {
+  return{
+   $:1,
+   $0:{
+    $:3,
+    $0:AppFramework.newActF(n,a)
+   }
+  };
+ };
+ LayoutEngineModule.createActionM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createActionM;
+ };
+ LayoutEngineModule.createElementM=function()
+ {
+  SC$2.$cctor();
+  return SC$2.createElementM;
+ };
+ LayoutEngineModule.splitName=function()
+ {
+  SC$2.$cctor();
+  return SC$2.splitName;
+ };
+ LayoutEngineModule.getAttrs=function(lytNm,a)
+ {
+  var attrs;
+  attrs=LayoutEngineModule.S(a);
+  return List.ofSeq(Seq$1.delay(function()
+  {
+   return Seq$1.append(Seq$1.choose(function(a$1)
+   {
+    var $1,value,value$1,name;
+    function s(el,a$2)
+    {
+     var act;
+     return a$2.$==1?(act=a$2.$0,el.addEventListener(Strings.Trim(name),function(ev)
+     {
+      return AppFramework.callFunction(el,ev,act.actFunction);
+     },false)):el.setAttribute(Strings.Trim(name),Strings.Trim(a$2.$0));
+    }
+    return!Unchecked.Equals(a$1,null)&&a$1.length===2&&(value=Arrays.get(a$1,1),Strings.Trim(Arrays.get(a$1,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a$1,1),(name=Arrays.get(a$1,0),{
+     $:1,
+     $0:AttrModule.DynamicCustom(function($2)
+     {
+      return function($3)
+      {
+       return s($2,$3);
+      };
+     },LayoutEngineModule.getTextData(lytNm,Strings.Trim(value$1)))
+    })):null;
+   },Seq$1.map(function(s)
+   {
+    return String.splitByChar("=",s);
+   },String.splitByChar(";",attrs))),Seq$1.delay(function()
+   {
+    return Seq$1.choose(function(a$1)
+    {
+     var $1,value,value$1,name,x;
+     return!Unchecked.Equals(a$1,null)&&a$1.length===2&&(value=Arrays.get(a$1,1),Strings.Trim(Arrays.get(a$1,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a$1,1),(name=Arrays.get(a$1,0),{
+      $:1,
+      $0:(x=View.Map(function(a$2)
+      {
+       return a$2.$==1?(function($2)
+       {
+        return function($3)
+        {
+         return $2("@{"+Utils.toSafe($3)+"}");
+        };
+       }(Global.id))(a$2.$0.actName.get_Id()):Strings.Trim(a$2.$0);
+      },LayoutEngineModule.getTextData(lytNm,Strings.Trim(value$1))),AttrModule.DynamicStyle(Strings.Trim(name),x))
+     })):null;
+    },Seq$1.map(function(s)
+    {
+     return String.splitByChar(":",s);
+    },String.splitByChar(";",attrs)));
+   }));
+  }));
+ };
+ LayoutEngineModule.getText=function(lytNm,txtName)
+ {
+  var a,id,p,plg,nm,o,o$1,o$2,o$3;
+  a=LayoutEngineModule.Identifier(txtName);
+  return a!=null&&a.$==1?(id=a.$0,(p=((LayoutEngineModule.splitName())(lytNm))(id),(plg=p[0],(nm=p[1],(o=(o$1=AppFramework.tryGetViw(plg,nm),o$1==null?null:{
+   $:1,
+   $0:Doc.TextView(o$1.$0.viwView)
+  }),o==null?(o$2=(o$3=AppFramework.tryGetVar(plg,nm),o$3==null?null:{
+   $:1,
+   $0:Doc.TextView(o$3.$0.varVar.get_View())
+  }),o$2==null?Doc.TextNode(id):o$2.$0):o.$0))))):Doc.TextNode(LayoutEngineModule.S(txtName));
+ };
+ LayoutEngineModule.singleDoc=function(lytNm,docs)
+ {
+  return Doc.EmbedView(View.Map(function(a)
+  {
+   var $1;
+   return a.$==1&&(a.$1.$==0&&($1=a.$0,true))?$1:AppFramework.errDoc((function($2)
+   {
+    return function($3)
+    {
+     return $2("expected exactly 1 element "+Utils.printList(function($4)
+     {
+      return LayoutEngine_GeneratedPrintf.p$27($4);
+     },$3));
+    };
+   }(Global.id))(docs));
+  },View.Map(function()
+  {
+   return LayoutEngineModule.getAllDocs(lytNm,docs);
+  },LayoutEngineModule.currentViewTriggger())));
+ };
+ LayoutEngineModule.pairOfDocs=function(lytNm,docs)
+ {
+  var dsW;
+  dsW=View.Map(function(a)
+  {
+   var $1;
+   return a.$==1&&(a.$1.$==1&&(a.$1.$1.$==0&&($1=[a.$0,a.$1.$0],true)))?[$1[0],$1[1]]:[AppFramework.errDoc((function($2)
+   {
+    return function($3)
+    {
+     return $2("splitter expects exactly 2 elements "+Utils.printList(function($4)
+     {
+      return LayoutEngine_GeneratedPrintf.p$27($4);
+     },$3));
+    };
+   }(Global.id))(docs)),AppFramework.errDoc("part 2")];
+  },View.Map(function()
+  {
+   return LayoutEngineModule.getAllDocs(lytNm,docs);
+  },LayoutEngineModule.currentViewTriggger()));
+  return[Doc.EmbedView(View.Map(function(t)
+  {
+   return t[0];
+  },dsW)),Doc.EmbedView(View.Map(function(t)
+  {
+   return t[1];
+  },dsW))];
+ };
+ LayoutEngineModule.fixedSplitter=function(vertical,pixel,first,doc1,doc2)
+ {
+  var sizes,b,p,i,b$1,p$1,i$1;
+  sizes=(((first?Runtime$1.Curried3(function($1,$2,$3)
+  {
+   return $1($2.toFixed(6)+"px calc(100% - "+$3.toFixed(6)+"px)");
+  }):Runtime$1.Curried3(function($1,$2,$3)
+  {
+   return $1("calc(100% - "+$2.toFixed(6)+"px) "+$3.toFixed(6)+"px");
+  }))(Global.id))(pixel))(pixel);
+  return vertical?(b=ProviderBuilder.Make().WithHole({
+   $:1,
+   $0:"partsizes",
+   $1:sizes
+  }).WithHole({
+   $:0,
+   $0:"first",
+   $1:doc1
+  }).WithHole({
+   $:0,
+   $0:"second",
+   $1:doc2
+  }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.fixedsplitterver(p[0])),(b.i=i,i)))).get_Doc():(b$1=ProviderBuilder.Make().WithHole({
+   $:1,
+   $0:"partsizes",
+   $1:sizes
+  }).WithHole({
+   $:0,
+   $0:"first",
+   $1:doc1
+  }).WithHole({
+   $:0,
+   $0:"second",
+   $1:doc2
+  }),(p$1=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i$1=new TemplateInstance.New(p$1[1],LayoutEngine_Templates.fixedsplitterhor(p$1[0])),(b$1.i=i$1,i$1)))).get_Doc();
+ };
+ LayoutEngineModule.turnToView=function(f)
+ {
+  return Doc.EmbedView(View.Map(f,LayoutEngineModule.currentViewTriggger()));
+ };
+ LayoutEngineModule.getAllDocs=function(lytNm,tokens)
+ {
+  return tokens.$==1?new T({
+   $:1,
+   $0:LayoutEngineModule.getADoc(lytNm,tokens.$0),
+   $1:LayoutEngineModule.getAllDocs(lytNm,tokens.$1)
+  }):T.Empty;
+ };
+ LayoutEngineModule.getDocFinal=function(parms,doc)
+ {
+  var m;
+  m=LayoutEngineModule.getDocF(parms,doc);
+  return m[1].$==0?m[0]:AppFramework.errDoc((((Runtime$1.Curried3(function($1,$2,$3)
+  {
+   return $1("Too many parameters "+GeneratedPrintf.p($2)+" "+Utils.printList(function($4)
+   {
+    return LayoutEngine_GeneratedPrintf.p$27($4);
+   },$3));
+  }))(Global.id))(doc))(parms));
+ };
+ LayoutEngineModule.getDocF=function(parms,doc)
+ {
+  var $1,$2,a,a$1,a$2,a$3,a$4,a$5,a$6,a$7,a$8,a$9;
+  $2=doc.docDoc;
+  switch($2.$==1?parms.$==1?($1=[$2.$0,LayoutEngineModule.S(parms.$0),parms.$1],1):6:$2.$==2?parms.$==1?(a=LayoutEngineModule.S(parms.$0),parms.$1.$==1?($1=[$2.$0,a,LayoutEngineModule.S(parms.$1.$0),parms.$1.$1],2):6):6:$2.$==3?parms.$==1?(a$1=LayoutEngineModule.S(parms.$0),parms.$1.$==1?(a$2=LayoutEngineModule.S(parms.$1.$0),parms.$1.$1.$==1?($1=[$2.$0,a$1,a$2,LayoutEngineModule.S(parms.$1.$1.$0),parms.$1.$1.$1],3):6):6):6:$2.$==4?parms.$==1?(a$3=LayoutEngineModule.S(parms.$0),parms.$1.$==1?(a$4=LayoutEngineModule.S(parms.$1.$0),parms.$1.$1.$==1?(a$5=LayoutEngineModule.S(parms.$1.$1.$0),parms.$1.$1.$1.$==1?($1=[$2.$0,a$3,a$4,a$5,LayoutEngineModule.S(parms.$1.$1.$1.$0),parms.$1.$1.$1.$1],4):6):6):6):6:$2.$==5?parms.$==1?(a$6=LayoutEngineModule.S(parms.$0),parms.$1.$==1?(a$7=LayoutEngineModule.S(parms.$1.$0),parms.$1.$1.$==1?(a$8=LayoutEngineModule.S(parms.$1.$1.$0),parms.$1.$1.$1.$==1?(a$9=LayoutEngineModule.S(parms.$1.$1.$1.$0),parms.$1.$1.$1.$1.$==1?($1=[$2.$0,a$6,a$7,a$8,a$9,LayoutEngineModule.S(parms.$1.$1.$1.$1.$0),parms.$1.$1.$1.$1.$1],5):6):6):6):6):6:($1=[$2.$0,parms],0))
+  {
+   case 0:
+    return[$1[0].f(),$1[1]];
+   case 1:
+    return[$1[0]($1[1]),$1[2]];
+   case 2:
+    return[($1[0]($1[1]))($1[2]),$1[3]];
+   case 3:
+    return[(($1[0]($1[1]))($1[2]))($1[3]),$1[4]];
+   case 4:
+    return[((($1[0]($1[1]))($1[2]))($1[3]))($1[4]),$1[5]];
+   case 5:
+    return[(((($1[0]($1[1]))($1[2]))($1[3]))($1[4]))($1[5]),$1[6]];
+   case 6:
+    return[Doc.Element("div",[],[Doc.TextNode((((Runtime$1.Curried3(function($3,$4,$5)
+    {
+     return $3("Parameters do not coincide with definition "+GeneratedPrintf.p($4)+" - "+Utils.printList(function($6)
+     {
+      return LayoutEngine_GeneratedPrintf.p$27($6);
+     },$5));
+    }))(Global.id))(doc))(parms))]),T.Empty];
+  }
+ };
+ LayoutEngineModule.currentViewTriggger=function()
+ {
+  SC$2.$cctor();
+  return SC$2.currentViewTriggger;
+ };
+ LayoutEngineModule.getTextToken=function(lytNm,token)
+ {
+  return token.$==0?LayoutEngineModule.getTextData(lytNm,token.$0):LayoutEngineModule.getOneTextData(lytNm,token.$0,"","");
+ };
+ LayoutEngineModule.getParamText=function(lytNm,token,f)
+ {
+  View.Get(function(a)
+  {
+   if(a.$==1)
+    f(a.$0);
+   else
+    f(a.$0);
+  },LayoutEngineModule.getTextToken(lytNm,token));
+ };
+ LayoutEngineModule.getExtraLines=function(pred,ls)
+ {
+  var i,x,o,v;
+  i=(x=(o=Seq$1.tryFindIndex(function(l)
+  {
+   return Strings.Trim(l)!==""&&!pred(l);
+  },Seq$1.skip(1,ls)),o==null?null:{
+   $:1,
+   $0:1+o.$0
+  }),(v=Arrays.length(ls),x==null?v:x.$0));
+  return[Slice.array(ls,{
+   $:1,
+   $0:1
+  },{
+   $:1,
+   $0:i-1
+  }),Slice.array(ls,{
+   $:1,
+   $0:i
+  },null)];
+ };
+ LayoutEngineModule.createLines=function(baseName,n,names,lines,i,ls)
+ {
+  var prefix,prefix2,m,a,l,p,name,p$1,childrenLines,childNames;
+  prefix=Strings.replicate(n,":");
+  prefix2=":"+prefix;
+  m=Seq$1.tryHead(ls);
+  return m!=null&&m.$==1?(a=String.StartsWith(prefix,Strings.Trim(m.$0)),a!=null&&a.$==1?(l=a.$0,(p=LayoutEngineModule.getExtraLines(function(l$1)
+  {
+   return Strings.StartsWith(Strings.Trim(l$1),prefix2);
+  },ls),(name=(((Runtime$1.Curried3(function($1,$2,$3)
+  {
+   return $1("_"+Utils.toSafe($2)+"_"+Global.String($3));
+  }))(Global.id))(baseName))(i),(p$1=LayoutEngineModule.createLines(name,n+1,[],[],1,p[0]),(childrenLines=p$1[1],(childNames=p$1[0],LayoutEngineModule.createLines(baseName,n,Arrays.ofSeq(Seq$1.delay(function()
+  {
+   return Seq$1.append(names,Seq$1.delay(function()
+   {
+    return[name];
+   }));
+  })),Arrays.ofSeq(Seq$1.delay(function()
+  {
+   return Seq$1.append(lines,Seq$1.delay(function()
+   {
+    return Seq$1.append(childrenLines,Seq$1.delay(function()
+    {
+     return[name+" "+l+" "+Strings.concat(" ",childNames)];
+    }));
+   }));
+  })),i+1,p[1]))))))):[names,lines]):[names,lines];
+ };
+ LayoutEngineModule.doubleQuote=function(a)
+ {
+  var $1,$2,$3;
+  switch(a.$==1?a.$0.$==1?Strings.StartsWith(a.$0.$0,"//")?($1=a.$0.$0,1):2:2:0)
+  {
+   case 0:
+    return T.Empty;
+   case 1:
+    return T.Empty;
+   case 2:
+    switch(a.$==1?a.$0.$==0?a.$1.$==1?a.$1.$0.$==0?a.$1.$0.$0==="\""?a.$1.$1.$==0?($3=a.$0.$0,1):a.$1.$1.$0.$==0?($3=[a.$1.$1.$1,a.$0.$0,a.$1.$1.$0.$0],0):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):3)
+    {
+     case 0:
+      $2=LayoutEngineModule.doubleQuote(new T({
+       $:1,
+       $0:{
+        $:0,
+        $0:$3[1]+"\""+$3[2]
+       },
+       $1:$3[0]
+      }));
+      break;
+     case 1:
+      $2=List.ofArray([{
+       $:0,
+       $0:$3
+      }]);
+      break;
+     case 2:
+      $2=new T({
+       $:1,
+       $0:$3[0],
+       $1:LayoutEngineModule.doubleQuote($3[1])
+      });
+      break;
+     case 3:
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2600,38);
+    }
+    return $2;
+  }
+ };
+ LayoutEngineModule.getTextData=function(lytNm,txt)
+ {
+  var o,o$1,$1,bef;
+  o=(o$1=String.delimitedO("@{","}",txt),o$1==null?null:{
+   $:1,
+   $0:($1=o$1.$0,(bef=$1[0],LayoutEngineModule.getOneTextData(lytNm,$1[1],bef,$1[2])))
+  });
+  return o==null?View.Const({
+   $:0,
+   $0:txt
+  }):o.$0;
+ };
+ LayoutEngineModule.getADoc=function(lytNm,token)
+ {
+  var a,di,p,plg,nm;
+  a=LayoutEngineModule.Identifier(token);
+  return a!=null&&a.$==1?(di=a.$0,(p=((LayoutEngineModule.splitName())(lytNm))(di),(plg=p[0],(nm=p[1],Doc.BindView(function(a$1)
+  {
+   return a$1==null?Doc.BindView(function(a$2)
+   {
+    var v;
+    return a$2==null?AppFramework.errDoc((v=(function($1)
+    {
+     return function($2)
+     {
+      return $1("Missing doc: "+Utils.toSafe($2));
+     };
+    }(Global.id))(di),(Library$1.print(v),v))):Doc.TextNode(a$2.$0);
+   },AppFramework.tryGetWoWW(plg,nm)):(LayoutEngineModule.getDocF(T.Empty,a$1.$0))[0];
+  },AppFramework.tryGetDocW(plg,nm)))))):Doc.TextView(View.Map(function(a$1)
+  {
+   return a$1.$==1?(function($1)
+   {
+    return function($2)
+    {
+     return $1("Unexpected action: "+Utils.toSafe($2));
+    };
+   }(Global.id))(a$1.$0.actName.get_Id()):a$1.$0;
+  },LayoutEngineModule.getTextData(lytNm,LayoutEngineModule.S(token))));
+ };
+ LayoutEngineModule.getOneTextData=function(lytNm,name,bef,aft)
+ {
+  var p,plg,n;
+  p=((LayoutEngineModule.splitName())(lytNm))(name);
+  plg=p[0];
+  n=p[1];
+  return View.Bind(function(a)
+  {
+   return a==null?View.Bind(function(a$1)
+   {
+    var txt;
+    return a$1==null?View.Const({
+     $:0,
+     $0:((((Runtime$1.Curried(function($1,$2,$3,$4)
+     {
+      return $1(Utils.toSafe($2)+" @{Missing "+Utils.toSafe($3)+"}"+Utils.toSafe($4));
+     },4))(Global.id))(bef))(name))(aft)
+    }):(txt=a$1.$0,View.Bind(function(a$2)
+    {
+     return a$2.$==1?View.Const({
+      $:0,
+      $0:(function($1)
+      {
+       return function($2)
+       {
+        return $1("Unexpected Action @{"+Utils.toSafe($2)+"}");
+       };
+      }(Global.id))(a$2.$0.actName.get_Id())
+     }):View.Const({
+      $:0,
+      $0:bef+txt+a$2.$0
+     });
+    },LayoutEngineModule.getTextData(lytNm,aft)));
+   },AppFramework.tryGetWoWW(plg,n)):View.Const({
+    $:1,
+    $0:a.$0
+   });
+  },AppFramework.tryGetActW(plg,n));
+ };
+ PlugInName=AppFramework.PlugInName=Runtime$1.Class({
+  get_Id:function()
+  {
+   return this.$0;
+  }
+ },null,PlugInName);
  StartAppFramework.startWithHtmlD=function()
  {
   SC$2.$cctor();
@@ -6393,10 +7722,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$2.$cctor();
   return SC$2.plugIns;
  };
- AppFramework.selectionPlugInO=function()
+ AppFramework.tryGetPlugIn=function(plgName)
  {
-  SC$2.$cctor();
-  return SC$2.selectionPlugInO;
+  return AppFramework.plugIns().TryFindByKey(plgName);
  };
  AppFramework.defaultPlugIn=function()
  {
@@ -6419,6 +7747,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return qry.qryName;
   }));
+ };
+ AppFramework.newDocF=function(name,docF)
+ {
+  return PlugInDoc.New(name,docF);
+ };
+ AppFramework.selectionPlugInO=function()
+ {
+  SC$2.$cctor();
+  return SC$2.selectionPlugInO;
  };
  AppFramework.currentPlugInW=function()
  {
@@ -7010,10 +8347,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$2.$cctor();
   return SC$2.getMainDoc;
  };
- AppFramework.tryGetPlugIn=function(plgName)
- {
-  return AppFramework.plugIns().TryFindByKey(plgName);
- };
  AppFramework.defPlugInName=function()
  {
   SC$2.$cctor();
@@ -7069,16 +8402,16 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   o=AppFramework.tryGetPlugIn(plgName);
   return o==null?null:o.$0.plgViews.TryFindByKey(viwName);
  };
- AppFramework.newDocF=function(name,docF)
- {
-  return PlugInDoc.New(name,docF);
- };
  AppFramework.newDoc=function(name,doc)
  {
   return PlugInDoc.New(name,{
    $:0,
    $0:doc
   });
+ };
+ AppFramework.errDoc=function(txt)
+ {
+  return Doc.Element("div",[],[Doc.TextNode(txt)]);
  };
  AppFramework.tryGetPlugInW=function(plgName)
  {
@@ -7113,10 +8446,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:a.$0.varVar
    });
   },AppFramework.tryGetVarW(plgName,varName));
- };
- AppFramework.errDoc=function(txt)
- {
-  return Doc.Element("div",[],[Doc.TextNode(txt)]);
  };
  AppFramework.newQry=function(name,qry)
  {
@@ -7472,1345 +8801,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   Obj.New.call(this);
  },PlugInBuilder);
- LayoutEngineModule.parseEntries=function(lytNm,txt)
- {
-  return LayoutEngineModule.processText(Syntax.createEntryO2(lytNm,new Dictionary.New$5()),txt);
- };
- LayoutEngineModule.newLyt=function(name,lyt)
- {
-  return LayoutEngine.New(name,Var$1.Create$1(lyt));
- };
- LayoutEngineModule.addLayout=function(lyt)
- {
-  View.Sink(function(txt)
-  {
-   var x;
-   LayoutEngineModule.set_currentViewTriggger(View.Map2(function($1,$2)
-   {
-    return $1+$2;
-   },lyt.lytDefinition.get_View(),AppFramework.mainDocV().get_View()));
-   LayoutEngineModule.refreshEntries(lyt.lytName,(x=(LayoutEngineModule.createEntries(lyt.lytName))(txt),Seq$1.append(List.ofArray([{
-    $:0,
-    $0:AppFramework.newVar(new PlgElemName({
-     $:0,
-     $0:"Layout"
-    }),lyt.lytDefinition)
-   }]),x)));
-  },lyt.lytDefinition.get_View());
- };
- LayoutEngineModule.processText=function(f,txt)
- {
-  return LayoutEngineModule.processLines(f,Strings.SplitChars(txt,["\n","\r"],1));
- };
- LayoutEngineModule.refreshEntries=function(lytN,entries)
- {
-  var plg,m,plg$1,i;
-  plg=(m=AppFramework.tryGetPlugIn(lytN),m==null?(plg$1=(i=AppFramework.defaultPlugIn(),PlugIn.New(lytN,i.plgVars,i.plgViews,i.plgDocs,i.plgActions,i.plgQueries)),(AppFramework.addPlugIn(plg$1),plg$1)):m.$0);
-  ListModel$1.refreshLM(plg.plgVars,Arrays.ofSeq(Seq$1.delay(function()
-  {
-   return LayoutEngineModule.getVarEntries(entries);
-  })));
-  ListModel$1.refreshLM(plg.plgViews,Arrays.ofSeq(Seq$1.delay(function()
-  {
-   return LayoutEngineModule.getViewEntries(entries);
-  })));
-  ListModel$1.refreshLM(plg.plgActions,Arrays.ofSeq(Seq$1.delay(function()
-  {
-   return LayoutEngineModule.getActionEntries(entries);
-  })));
-  ListModel$1.refreshLM(plg.plgQueries,Arrays.ofSeq(Seq$1.delay(function()
-  {
-   return LayoutEngineModule.getQueryEntries(entries);
-  })));
-  ListModel$1.refreshLM(plg.plgDocs,Arrays.ofSeq(Seq$1.delay(function()
-  {
-   return Seq$1.append(LayoutEngineModule.getDocEntries(entries),Seq$1.delay(function()
-   {
-    return Seq$1.append([AppFramework.newDocF(new PlgElemName({
-     $:0,
-     $0:"InputFile"
-    }),{
-     $:4,
-     $0:Runtime$1.Curried(LayoutEngineModule.inputFile,4,[lytN]),
-     $1:"attrs",
-     $2:"Label",
-     $3:"Action",
-     $4:"[Doc]"
-    })],Seq$1.delay(function()
-    {
-     return Seq$1.append([AppFramework.newDocF(new PlgElemName({
-      $:0,
-      $0:"InputLabel"
-     }),{
-      $:3,
-      $0:Runtime$1.Curried(LayoutEngineModule.inputLabel,3,[lytN]),
-      $1:"attrs",
-      $2:"Label",
-      $3:"Var"
-     })],Seq$1.delay(function()
-     {
-      return[AppFramework.newDocF(new PlgElemName({
-       $:0,
-       $0:"none"
-      }),{
-       $:1,
-       $0:LayoutEngineModule.none,
-       $1:"x"
-      })];
-     }));
-    }));
-   }));
-  })));
- };
- LayoutEngineModule.set_currentViewTriggger=function($1)
- {
-  SC$2.$cctor();
-  SC$2.currentViewTriggger=$1;
- };
- LayoutEngineModule.createEntries=function(lytNm)
- {
-  function f(l)
-  {
-   return LayoutEngineModule.createEntryO(lytNm,l);
-  }
-  return function(t)
-  {
-   return LayoutEngineModule.processText(f,t);
-  };
- };
- LayoutEngineModule.createSplitter=function(lytNm,name,vertical,measures,docs)
- {
-  var p;
-  p=LayoutEngineModule.pairOfDocs(lytNm,docs);
-  return measures.$==1?LayoutEngineModule.variableSplitter(vertical,measures.$0,measures.$1,measures.$2,p[0],p[1]):LayoutEngineModule.fixedSplitter(vertical,measures.$0,measures.$1,p[0],p[1]);
- };
- LayoutEngineModule.createButton=function(lytNm,name,actName,attrs,a)
- {
-  var text;
-  text=LayoutEngineModule.S(a);
-  return LayoutEngineModule.turnToView(function()
-  {
-   var x,o,o$1,t,$1;
-   function m(act,u)
-   {
-    return AppFramework.callFunction(null,null,act.actFunction);
-   }
-   x=(o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(actName),AppFramework.tryGetAct(t[0],t[1])),o$1==null?null:{
-    $:1,
-    $0:($1=o$1.$0,function($2)
-    {
-     return m($1,$2);
-    })
-   }),o==null?Global.ignore:o.$0);
-   return Doc.Button(text,LayoutEngineModule.getAttrs(lytNm,attrs),x);
-  });
- };
- LayoutEngineModule.createInput=function(lytNm,name,varName,attrs)
- {
-  return LayoutEngineModule.turnToView(function()
-  {
-   var t;
-   return Doc.BindView(function(a)
-   {
-    return a==null?AppFramework.errDoc((function($1)
-    {
-     return function($2)
-     {
-      return $1("Missing var: "+Utils.toSafe($2));
-     };
-    }(Global.id))(varName)):Doc.Input(LayoutEngineModule.getAttrs(lytNm,attrs),a.$0);
-   },(t=((LayoutEngineModule.splitName())(lytNm))(varName),AppFramework.tryGetVoVW(t[0],t[1])));
-  });
- };
- LayoutEngineModule.createTextArea=function(lytNm,name,varName,attrs)
- {
-  return LayoutEngineModule.turnToView(function()
-  {
-   var t;
-   return Doc.BindView(function(a)
-   {
-    return a==null?AppFramework.errDoc((function($1)
-    {
-     return function($2)
-     {
-      return $1("Missing var: "+Utils.toSafe($2));
-     };
-    }(Global.id))(varName)):Doc.InputArea(LayoutEngineModule.getAttrs(lytNm,attrs),a.$0);
-   },(t=((LayoutEngineModule.splitName())(lytNm))(varName),AppFramework.tryGetVoVW(t[0],t[1])));
-  });
- };
- LayoutEngineModule.createElement=function(lytNm,name,element,attrs,docs)
- {
-  return LayoutEngineModule.turnToView(function()
-  {
-   var x;
-   x=[Doc.Concat(LayoutEngineModule.getAllDocs(lytNm,docs))];
-   return Doc.Element(element,LayoutEngineModule.getAttrs(lytNm,attrs),x);
-  });
- };
- LayoutEngineModule.createDoc=function(lytNm,name,docName,parms)
- {
-  return LayoutEngineModule.turnToView(function()
-  {
-   var o,o$1,t;
-   o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(docName),AppFramework.tryGetDoc(t[0],t[1])),o$1==null?null:{
-    $:1,
-    $0:LayoutEngineModule.getDocFinal(parms,o$1.$0)
-   });
-   return o==null?AppFramework.errDoc((function($1)
-   {
-    return function($2)
-    {
-     return $1("Missing doc: "+Utils.toSafe($2));
-    };
-   }(Global.id))(docName)):o.$0;
-  });
- };
- LayoutEngineModule.createTemplate=function(lytNm,name,tempName,attrs,holes)
- {
-  return LayoutEngineModule.turnToView(function()
-  {
-   var $1,o,attrs$1,x,x$1,s;
-   attrs$1=LayoutEngineModule.getAttrs(lytNm,attrs);
-   Templates.LoadLocalTemplates("local");
-   function m($2,$3)
-   {
-    var a,a$1,id,o$1,o$2,o$3,t,o$4,t$1,a$2,txt;
-    a=LayoutEngineModule.S($2);
-    a$1=LayoutEngineModule.Identifier($3);
-    return a$1!=null&&a$1.$==1?(id=a$1.$0,o$1=(o$2=(o$3=(t=((LayoutEngineModule.splitName())(lytNm))(id),AppFramework.tryGetDoc(t[0],t[1])),o$3==null?null:{
-     $:1,
-     $0:{
-      $:0,
-      $0:a.toLowerCase(),
-      $1:(LayoutEngineModule.getDocF(T.Empty,o$3.$0))[0]
-     }
-    }),o$2==null?(o$4=(t$1=((LayoutEngineModule.splitName())(lytNm))(id),AppFramework.tryGetVar(t$1[0],t$1[1])),o$4==null?null:{
-     $:1,
-     $0:{
-      $:8,
-      $0:a.toLowerCase(),
-      $1:o$4.$0.varVar
-     }
-    }):o$2),o$1==null?{
-     $:0,
-     $0:a.toLowerCase(),
-     $1:AppFramework.errDoc((function($4)
-     {
-      return function($5)
-      {
-       return $4("Missing element: "+Utils.toSafe($5));
-      };
-     }(Global.id))(id))
-    }:o$1.$0):(a$2=LayoutEngineModule.S($2),txt=LayoutEngineModule.S($3),{
-     $:0,
-     $0:a$2.toLowerCase(),
-     $1:AppFramework.errDoc((function($4)
-     {
-      return function($5)
-      {
-       return $4("Not implemented: "+Utils.toSafe($5));
-      };
-     }(Global.id))(txt))
-    });
-   }
-   function p(i,a)
-   {
-    return i%2===0;
-   }
-   try
-   {
-    o={
-     $:1,
-     $0:(x=(x$1=Seq$1.map(function($2)
-     {
-      return m($2[0],$2[1]);
-     },Seq$1.map(function(t)
-     {
-      return t[1];
-     },Seq$1.filter(function($2)
-     {
-      return p($2[0],$2[1]);
-     },Seq$1.indexed(Seq$1.pairwise(holes))))),(Seq$1.isEmpty(attrs$1)?Global.id:(s=[{
-      $:3,
-      $0:"attrs",
-      $1:AttrProxy.Concat(attrs$1)
-     }],function(s$1)
-     {
-      return Seq$1.append(s,s$1);
-     }))(x$1)),Templates.NamedTemplate("local",{
-      $:1,
-      $0:tempName.toLowerCase()
-     },x))
-    };
-   }
-   catch(m$1)
-   {
-    o=null;
-   }
-   return o==null?AppFramework.errDoc((function($2)
-   {
-    return function($3)
-    {
-     return $2("Missing template: "+Utils.toSafe($3));
-    };
-   }(Global.id))(tempName)):o.$0;
-  });
- };
- LayoutEngineModule.createConcat=function(lytNm,name,docs)
- {
-  return LayoutEngineModule.turnToView(function()
-  {
-   return Doc.Concat(LayoutEngineModule.getAllDocs(lytNm,docs));
-  });
- };
- LayoutEngineModule.createVar=function(lytNm,varName,v)
- {
-  return Var$1.Create$1(v);
- };
- LayoutEngineModule.createView=function(lytNm,viwName,parms)
- {
-  return View.Bind(function()
-  {
-   var f;
-   function m(a)
-   {
-    return a.$==1?(function($1)
-    {
-     return function($2)
-     {
-      return $1(GeneratedPrintf.p$1($2));
-     };
-    }(Global.id))(a.$0):a.$0;
-   }
-   try
-   {
-    return View.Map(function(ar)
-    {
-     try
-     {
-      return!Unchecked.Equals(ar,null)&&ar.length===0?"No JS function specified":!Unchecked.Equals(ar,null)&&ar.length===1?Global.String(Global["eval"](Arrays.get(ar,0))):Global.String(Global["eval"](Arrays.get(ar,0)).apply(null,Slice.array(ar,{
-       $:1,
-       $0:1
-      },null)));
-     }
-     catch(e)
-     {
-      return e.message;
-     }
-    },View.Map((f=function(s)
-    {
-     return Seq$1.map(m,s);
-    },function(x)
-    {
-     return Arrays.ofSeq(f(x));
-    }),View$1.traverseSeq(function(t)
-    {
-     return LayoutEngineModule.getTextToken(lytNm,t);
-    },parms)));
-   }
-   catch(e)
-   {
-    return View.Const(e.message);
-   }
-  },LayoutEngineModule.currentViewTriggger());
- };
- LayoutEngineModule.createAction=function(lytNm,name,actName,parms)
- {
-  var o,t,$1,$2,o$1,act,$3,f,t1,f$1,t1$1,t2,f$2,t1$2;
-  o$1=(t=((LayoutEngineModule.splitName())(lytNm))(actName),AppFramework.tryGetAct(t[0],t[1]));
-  if(o$1==null)
-   o=null;
-  else
-   {
-    act=o$1.$0;
-    if(parms.$===0)
-     $1=act.actFunction;
-    else
-     {
-      $3=act.actFunction;
-      switch($3.$==1?parms.$==1?parms.$1.$==0?($2=[$3.$0,parms.$0],0):3:3:$3.$==2?parms.$==1?parms.$1.$==0?($2=[$3.$0,$3.$2,parms.$0],2):parms.$1.$1.$==0?($2=[$3.$0,parms.$0,parms.$1.$0],1):3:3:3)
-      {
-       case 0:
-        $1=(f=$2[0],(t1=$2[1],{
-         $:0,
-         $0:function()
-         {
-          LayoutEngineModule.getParamText(lytNm,t1,f);
-         }
-        }));
-        break;
-       case 1:
-        $1=(f$1=$2[0],(t1$1=$2[1],(t2=$2[2],{
-         $:0,
-         $0:function()
-         {
-          LayoutEngineModule.getParamText(lytNm,t1$1,function(p1)
-          {
-           LayoutEngineModule.getParamText(lytNm,t2,f$1(p1));
-          });
-         }
-        })));
-        break;
-       case 2:
-        $1=(f$2=$2[0],(t1$2=$2[2],{
-         $:1,
-         $0:function(p2)
-         {
-          LayoutEngineModule.getParamText(lytNm,t1$2,function(p1)
-          {
-           (f$2(p1))(p2);
-          });
-         },
-         $1:$2[1]
-        }));
-        break;
-       case 3:
-        $1={
-         $:0,
-         $0:function()
-         {
-          ((((Runtime$1.Curried(function($4,$5,$6,$7)
-          {
-           return $4("Parameters do not coincide for Action "+Utils.toSafe($5)+" "+Utils.printList(function($8)
-           {
-            return LayoutEngine_GeneratedPrintf.p$27($8);
-           },$6)+" "+GeneratedPrintf.p$1($7));
-          },4))(function(s)
-          {
-           console.log(s);
-          }))(actName))(parms))(act);
-         }
-        };
-        break;
-      }
-     }
-    o={
-     $:1,
-     $0:$1
-    };
-   }
-  return o==null?{
-   $:0,
-   $0:function()
-   {
-    ((function($4)
-    {
-     return function($5)
-     {
-      return $4("Action Not Found "+Utils.toSafe($5));
-     };
-    }(function(s)
-    {
-     console.log(s);
-    }))(actName));
-   }
-  }:o.$0;
- };
- LayoutEngineModule.addNewLayout=function(name,layout)
- {
-  var x,x$1;
-  LayoutEngineModule.addLayout((x=(x$1=!Unchecked.Equals(layout,null)?layout:"\r\n            split horizontal 0-50-100 AppFramework.AppFwkClient Hello\r\n            Hello h1 \"color:blue; class=btn-primary\" \"How are you today?\" Ask\r\n            Ask Doc InputLabel \"placeholder=Type you answer here...\" \"Answer:\" AppFramework.mainDocV  \r\n            ",(String.unindentStr())(x$1)),LayoutEngineModule.newLyt(!Unchecked.Equals(layout,null)?name:new PlugInName({
-   $:0,
-   $0:"Lyt_"+Strings.Replace(Global.String(Guid.NewGuid()),"-","")
-  }),x)));
- };
- LayoutEngineModule.variableSplitter=function(vertical,min,value,max,doc1,doc2)
- {
-  return Doc.Element("wcomp-splitter",List.ofSeq(Seq$1.delay(function()
-  {
-   return Seq$1.append(vertical?[AttrProxy.Create("vertical","")]:[],Seq$1.delay(function()
-   {
-    return Seq$1.append([AttrProxy.Create("min",Global.String(min))],Seq$1.delay(function()
-    {
-     return Seq$1.append([AttrProxy.Create("value",Global.String(value))],Seq$1.delay(function()
-     {
-      return[AttrProxy.Create("max",Global.String(max))];
-     }));
-    }));
-   }));
-  })),List.ofArray([doc1,doc2]));
- };
- LayoutEngineModule.processLines=function(f,ls)
- {
-  function processLinesR(ls$1)
-  {
-   var m,l,m$1,$1,a,p,p$1,rest,docs,p$2,names,ls$2;
-   m=Seq$1.tryHead(ls$1);
-   return m!=null&&m.$==1?(l=m.$0,(m$1=LayoutEngineModule.splitTokens(l),m$1.$==1&&(a=LayoutEngineModule.Identifier(m$1.$0),a!=null&&a.$==1&&(m$1.$1.$==1&&(LayoutEngineModule.Vertical(m$1.$1.$0).$==2&&(m$1.$1.$1.$==0&&($1=a.$0,true)))))?(p=LayoutEngineModule.getExtraLines(function(l$1)
-   {
-    return Strings.StartsWith(Strings.Trim(l$1),"|");
-   },ls$1),processLinesR((Layout.createLayoutDefinitions($1,Layout.extractNodes(p[0])))[1].concat(p[1]))):m$1.$==0?processLinesR(Slice.array(ls$1,{
-    $:1,
-    $0:1
-   },null)):(p$1=LayoutEngineModule.getExtraLines(function(l$1)
-   {
-    return Strings.StartsWith(Strings.Trim(l$1),":");
-   },ls$1),(rest=p$1[1],(docs=p$1[0],Arrays.length(docs)>0?(p$2=LayoutEngineModule.createLines(Seq$1.nth(0,Strings.SplitChars(l,[" "],1)),1,[],[],1,docs),(names=p$2[0],(ls$2=p$2[1],processLinesR(Arrays.ofSeq(Seq$1.delay(function()
-   {
-    return Seq$1.append(ls$2,Seq$1.delay(function()
-    {
-     return Seq$1.append([l+" "+Strings.concat(" ",names)],Seq$1.delay(function()
-     {
-      return rest;
-     }));
-    }));
-   })))))):Arrays.ofSeq(Seq$1.delay(function()
-   {
-    var m$2;
-    return Seq$1.append((m$2=f(l),m$2!=null&&m$2.$==1?[m$2.$0]:[]),Seq$1.delay(function()
-    {
-     return processLinesR(rest);
-    }));
-   }))))))):[];
-  }
-  return processLinesR(ls);
- };
- LayoutEngineModule.getVarEntries=function(entries)
- {
-  function f(t)
-  {
-   return t[1];
-  }
-  return Seq$1.map(function(x)
-  {
-   return Seq$1.last(f(x));
-  },Seq$1.groupBy(function(v)
-  {
-   return v.varName;
-  },Seq$1.choose(function(a)
-  {
-   return a.$==0?{
-    $:1,
-    $0:a.$0
-   }:null;
-  },entries)));
- };
- LayoutEngineModule.getViewEntries=function(entries)
- {
-  function f(t)
-  {
-   return t[1];
-  }
-  return Seq$1.map(function(x)
-  {
-   return Seq$1.last(f(x));
-  },Seq$1.groupBy(function(v)
-  {
-   return v.viwName;
-  },Seq$1.choose(function(a)
-  {
-   return a.$==1?{
-    $:1,
-    $0:a.$0
-   }:null;
-  },entries)));
- };
- LayoutEngineModule.getActionEntries=function(entries)
- {
-  function f(t)
-  {
-   return t[1];
-  }
-  return Seq$1.map(function(x)
-  {
-   return Seq$1.last(f(x));
-  },Seq$1.groupBy(function(v)
-  {
-   return v.actName;
-  },Seq$1.choose(function(a)
-  {
-   return a.$==3?{
-    $:1,
-    $0:a.$0
-   }:null;
-  },entries)));
- };
- LayoutEngineModule.getQueryEntries=function(entries)
- {
-  function f(t)
-  {
-   return t[1];
-  }
-  return Seq$1.map(function(x)
-  {
-   return Seq$1.last(f(x));
-  },Seq$1.groupBy(function(v)
-  {
-   return v.qryName;
-  },Seq$1.choose(function(a)
-  {
-   return a.$==4?{
-    $:1,
-    $0:a.$0
-   }:null;
-  },entries)));
- };
- LayoutEngineModule.getDocEntries=function(entries)
- {
-  function f(t)
-  {
-   return t[1];
-  }
-  return Seq$1.map(function(x)
-  {
-   return Seq$1.last(f(x));
-  },Seq$1.groupBy(function(d)
-  {
-   return d.docName;
-  },Seq$1.choose(function(a)
-  {
-   return a.$==2?{
-    $:1,
-    $0:a.$0
-   }:null;
-  },entries)));
- };
- LayoutEngineModule.inputFile=function(lytNm,attrs,labelName,actName,doc)
- {
-  var o,o$1,t,act;
-  o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(actName),AppFramework.tryGetAct(t[0],t[1])),o$1==null?null:{
-   $:1,
-   $0:(act=o$1.$0,Doc.Element("div",LayoutEngineModule.getAttrs(lytNm,{
-    $:0,
-    $0:attrs
-   }),[Doc.Element("div",[AttrProxy.Create("class","input-group")],[Doc.Element("span",[AttrProxy.Create("class","input-group-btn")],[Doc.Element("label",[AttrProxy.Create("class","btn")],[LayoutEngineModule.getText(lytNm,{
-    $:0,
-    $0:labelName
-   }),Doc.Element("input",[AttrProxy.Create("class","form-control"),AttrProxy.Create("type","file"),AttrModule.Style("display","none"),AttrProxy.HandlerImpl("click",function(el)
-   {
-    return function()
-    {
-     el.value="";
-    };
-   }),AttrProxy.HandlerImpl("change",function(el)
-   {
-    return function()
-    {
-     return AppFramework.callFunction(el,null,act.actFunction);
-    };
-   })],[])])]),doc!==""?LayoutEngineModule.singleDoc(lytNm,List.ofArray([{
-    $:1,
-    $0:doc
-   }])):Doc.get_Empty()])]))
-  });
-  return o==null?AppFramework.errDoc((function($1)
-  {
-   return function($2)
-   {
-    return $1("Action not found "+Utils.toSafe($2));
-   };
-  }(Global.id))(actName)):o.$0;
- };
- LayoutEngineModule.inputLabel=function(lytNm,attrs,labelName,varName)
- {
-  var o,o$1,t;
-  o=(o$1=(t=((LayoutEngineModule.splitName())(lytNm))(varName),AppFramework.tryGetVar(t[0],t[1])),o$1==null?null:{
-   $:1,
-   $0:Doc.Element("div",LayoutEngineModule.getAttrs(lytNm,{
-    $:0,
-    $0:attrs
-   }),[Doc.Element("div",[AttrProxy.Create("class","input-group")],[Doc.Element("span",[AttrProxy.Create("class","input-group-addon")],[LayoutEngineModule.getText(lytNm,{
-    $:0,
-    $0:labelName
-   })]),Doc.Input([AttrProxy.Create("class","form-control")],o$1.$0.varVar)])])
-  });
-  return o==null?AppFramework.errDoc((function($1)
-  {
-   return function($2)
-   {
-    return $1("Var not found "+Utils.toSafe($2));
-   };
-  }(Global.id))(varName)):o.$0;
- };
- LayoutEngineModule.none=function(x)
- {
-  return Doc.Element("span",[],[]);
- };
- LayoutEngineModule.createEntryO=function(lytNm,line)
- {
-  var m,$1,a,a$1,name,$2,a$2,a$3,name$1,$3,a$4,a$5,name$2,$4,a$6,a$7,name$3,$5,a$8,a$9,name$4,$6,a$10,name$5,$7,a$11,name$6,$8,a$12,name$7,$9,a$13,name$8,$10,a$14,name$9,$11,a$15,a$16,name$10,$12,a$17,a$18,name$11;
-  try
-  {
-   m=LayoutEngineModule.splitTokens(line);
-   return m.$==1&&(a=LayoutEngineModule.Identifier(m.$0),a!=null&&a.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==0&&(m.$1.$1.$==1&&(a$1=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$1!=null&&a$1.$==1&&($1=[m.$1.$1.$1,a$1.$0,a.$0],true))))))?(name=$1[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name
-   }),(LayoutEngineModule.createSplitterM())([lytNm,name,true,$1[1],$1[0]]))):m.$==1&&(a$2=LayoutEngineModule.Identifier(m.$0),a$2!=null&&a$2.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$3=LayoutEngineModule.Measures$1(m.$1.$1.$0),a$3!=null&&a$3.$==1&&($2=[m.$1.$1.$1,a$3.$0,a$2.$0],true))))))?(name$1=$2[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$1
-   }),(LayoutEngineModule.createSplitterM())([lytNm,name$1,false,$2[1],$2[0]]))):m.$==1&&(a$4=LayoutEngineModule.Identifier(m.$0),a$4!=null&&a$4.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==1&&(m.$1.$1.$==1&&(a$5=LayoutEngineModule.Identifier(m.$1.$1.$0),a$5!=null&&a$5.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$1.$==0&&($3=[a$5.$0,m.$1.$1.$1.$0,a$4.$0,m.$1.$1.$1.$1.$0],true)))))))))?(name$2=$3[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$2
-   }),(LayoutEngineModule.createButtonM())([lytNm,name$2,$3[0],$3[1],$3[3]]))):m.$==1&&(a$6=LayoutEngineModule.Identifier(m.$0),a$6!=null&&a$6.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==2&&(m.$1.$1.$==1&&(a$7=LayoutEngineModule.Identifier(m.$1.$1.$0),a$7!=null&&a$7.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($4=[m.$1.$1.$1.$0,a$6.$0,a$7.$0],true))))))))?(name$3=$4[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$3
-   }),(LayoutEngineModule.createInputM())([lytNm,name$3,$4[2],$4[0]]))):m.$==1&&(a$8=LayoutEngineModule.Identifier(m.$0),a$8!=null&&a$8.$==1&&(m.$1.$==1&&(LayoutEngineModule.PlugIn(m.$1.$0).$==3&&(m.$1.$1.$==1&&(a$9=LayoutEngineModule.Identifier(m.$1.$1.$0),a$9!=null&&a$9.$==1&&(m.$1.$1.$1.$==1&&(m.$1.$1.$1.$1.$==0&&($5=[m.$1.$1.$1.$0,a$8.$0,a$9.$0],true))))))))?(name$4=$5[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$4
-   }),(LayoutEngineModule.createTextAreaM())([lytNm,name$4,$5[2],$5[0]]))):m.$==1&&(a$10=LayoutEngineModule.Identifier(m.$0),a$10!=null&&a$10.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==0&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==0&&($6=[a$10.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$5=$6[0],LayoutEngineModule.entryVar(new PlgElemName({
-    $:0,
-    $0:name$5
-   }),(LayoutEngineModule.createVarM())([lytNm,name$5,$6[1]]))):m.$==1&&(a$11=LayoutEngineModule.Identifier(m.$0),a$11!=null&&a$11.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==1&&(m.$1.$1.$==1&&($7=[LayoutEngineModule.S(m.$1.$1.$0),a$11.$0,m.$1.$1.$1],true)))))?(name$6=$7[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$6
-   }),(LayoutEngineModule.createDocM())([lytNm,name$6,$7[0],$7[2]]))):m.$==1&&(a$12=LayoutEngineModule.Identifier(m.$0),a$12!=null&&a$12.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==2&&($8=[a$12.$0,m.$1.$1],true))))?(name$7=$8[0],LayoutEngineModule.entryView(new PlgElemName({
-    $:0,
-    $0:name$7
-   }),(LayoutEngineModule.createViewM())([lytNm,name$7,$8[1]]))):m.$==1&&(a$13=LayoutEngineModule.Identifier(m.$0),a$13!=null&&a$13.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==4&&(m.$1.$1.$==1&&(m.$1.$1.$1.$==1&&($9=[m.$1.$1.$1.$0,m.$1.$1.$1.$1,a$13.$0,LayoutEngineModule.S(m.$1.$1.$0)],true))))))?(name$8=$9[2],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$8
-   }),(LayoutEngineModule.createTemplateM())([lytNm,name$8,$9[3],$9[0],$9[1]]))):m.$==1&&(a$14=LayoutEngineModule.Identifier(m.$0),a$14!=null&&a$14.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==4&&($10=[m.$1.$1,a$14.$0],true))))?(name$9=$10[1],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$9
-   }),(LayoutEngineModule.createConcatM())([lytNm,name$9,$10[0]]))):m.$==1&&(a$15=LayoutEngineModule.Identifier(m.$0),a$15!=null&&a$15.$==1&&(m.$1.$==1&&(LayoutEngineModule.Var(m.$1.$0).$==5&&(m.$1.$1.$==1&&(a$16=LayoutEngineModule.Identifier(m.$1.$1.$0),a$16!=null&&a$16.$==1&&($11=[a$16.$0,a$15.$0,m.$1.$1.$1],true))))))?(name$10=$11[1],LayoutEngineModule.entryAct(new PlgElemName({
-    $:0,
-    $0:name$10
-   }),(LayoutEngineModule.createActionM())([lytNm,name$10,$11[0],$11[2]]))):m.$==1&&(a$17=LayoutEngineModule.Identifier(m.$0),a$17!=null&&a$17.$==1&&(m.$1.$==1&&(a$18=LayoutEngineModule.Vertical(m.$1.$0),a$18.$==5&&(m.$1.$1.$==1&&($12=[m.$1.$1.$0,m.$1.$1.$1,a$18.$0,a$17.$0],true)))))?(name$11=$12[3],LayoutEngineModule.entryDoc(new PlgElemName({
-    $:0,
-    $0:name$11
-   }),(LayoutEngineModule.createElementM())([lytNm,name$11,$12[2],$12[0],$12[1]]))):null;
-  }
-  catch(e)
-  {
-   return null;
-  }
- };
- LayoutEngineModule.pairOfDocs=function(lytNm,docs)
- {
-  var dsW;
-  dsW=View.Map(function(a)
-  {
-   var $1;
-   return a.$==1&&(a.$1.$==1&&(a.$1.$1.$==0&&($1=[a.$0,a.$1.$0],true)))?[$1[0],$1[1]]:[AppFramework.errDoc((function($2)
-   {
-    return function($3)
-    {
-     return $2("splitter expects exactly 2 elements "+Utils.printList(function($4)
-     {
-      return LayoutEngine_GeneratedPrintf.p$27($4);
-     },$3));
-    };
-   }(Global.id))(docs)),AppFramework.errDoc("part 2")];
-  },View.Map(function()
-  {
-   return LayoutEngineModule.getAllDocs(lytNm,docs);
-  },LayoutEngineModule.currentViewTriggger()));
-  return[Doc.EmbedView(View.Map(function(t)
-  {
-   return t[0];
-  },dsW)),Doc.EmbedView(View.Map(function(t)
-  {
-   return t[1];
-  },dsW))];
- };
- LayoutEngineModule.fixedSplitter=function(vertical,pixel,first,doc1,doc2)
- {
-  var sizes,b,p,i,b$1,p$1,i$1;
-  sizes=(((first?Runtime$1.Curried3(function($1,$2,$3)
-  {
-   return $1($2.toFixed(6)+"px calc(100% - "+$3.toFixed(6)+"px)");
-  }):Runtime$1.Curried3(function($1,$2,$3)
-  {
-   return $1("calc(100% - "+$2.toFixed(6)+"px) "+$3.toFixed(6)+"px");
-  }))(Global.id))(pixel))(pixel);
-  return vertical?(b=ProviderBuilder.Make().WithHole({
-   $:1,
-   $0:"partsizes",
-   $1:sizes
-  }).WithHole({
-   $:0,
-   $0:"first",
-   $1:doc1
-  }).WithHole({
-   $:0,
-   $0:"second",
-   $1:doc2
-  }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.fixedsplitterver(p[0])),(b.i=i,i)))).get_Doc():(b$1=ProviderBuilder.Make().WithHole({
-   $:1,
-   $0:"partsizes",
-   $1:sizes
-  }).WithHole({
-   $:0,
-   $0:"first",
-   $1:doc1
-  }).WithHole({
-   $:0,
-   $0:"second",
-   $1:doc2
-  }),(p$1=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i$1=new TemplateInstance.New(p$1[1],LayoutEngine_Templates.fixedsplitterhor(p$1[0])),(b$1.i=i$1,i$1)))).get_Doc();
- };
- LayoutEngineModule.turnToView=function(f)
- {
-  return Doc.EmbedView(View.Map(f,LayoutEngineModule.currentViewTriggger()));
- };
- LayoutEngineModule.splitName=function()
- {
-  SC$2.$cctor();
-  return SC$2.splitName;
- };
- LayoutEngineModule.getAttrs=function(lytNm,a)
- {
-  var attrs;
-  attrs=LayoutEngineModule.S(a);
-  return List.ofSeq(Seq$1.delay(function()
-  {
-   return Seq$1.append(Seq$1.choose(function(a$1)
-   {
-    var $1,value,value$1,name;
-    function s(el,a$2)
-    {
-     var act;
-     return a$2.$==1?(act=a$2.$0,el.addEventListener(Strings.Trim(name),function(ev)
-     {
-      return AppFramework.callFunction(el,ev,act.actFunction);
-     },false)):el.setAttribute(Strings.Trim(name),Strings.Trim(a$2.$0));
-    }
-    return!Unchecked.Equals(a$1,null)&&a$1.length===2&&(value=Arrays.get(a$1,1),Strings.Trim(Arrays.get(a$1,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a$1,1),(name=Arrays.get(a$1,0),{
-     $:1,
-     $0:AttrModule.DynamicCustom(function($2)
-     {
-      return function($3)
-      {
-       return s($2,$3);
-      };
-     },LayoutEngineModule.getTextData(lytNm,Strings.Trim(value$1)))
-    })):null;
-   },Seq$1.map(function(s)
-   {
-    return String.splitByChar("=",s);
-   },String.splitByChar(";",attrs))),Seq$1.delay(function()
-   {
-    return Seq$1.choose(function(a$1)
-    {
-     var $1,value,value$1,name,x;
-     return!Unchecked.Equals(a$1,null)&&a$1.length===2&&(value=Arrays.get(a$1,1),Strings.Trim(Arrays.get(a$1,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a$1,1),(name=Arrays.get(a$1,0),{
-      $:1,
-      $0:(x=View.Map(function(a$2)
-      {
-       return a$2.$==1?(function($2)
-       {
-        return function($3)
-        {
-         return $2("@{"+Utils.toSafe($3)+"}");
-        };
-       }(Global.id))(a$2.$0.actName.get_Id()):Strings.Trim(a$2.$0);
-      },LayoutEngineModule.getTextData(lytNm,Strings.Trim(value$1))),AttrModule.DynamicStyle(Strings.Trim(name),x))
-     })):null;
-    },Seq$1.map(function(s)
-    {
-     return String.splitByChar(":",s);
-    },String.splitByChar(";",attrs)));
-   }));
-  }));
- };
- LayoutEngineModule.S=function(a)
- {
-  return a.$==1?a.$0:a.$0;
- };
- LayoutEngineModule.getAllDocs=function(lytNm,tokens)
- {
-  return tokens.$==1?new T({
-   $:1,
-   $0:LayoutEngineModule.getADoc(lytNm,tokens.$0),
-   $1:LayoutEngineModule.getAllDocs(lytNm,tokens.$1)
-  }):T.Empty;
- };
- LayoutEngineModule.getDocFinal=function(parms,doc)
- {
-  var m;
-  m=LayoutEngineModule.getDocF(parms,doc);
-  return m[1].$==0?m[0]:AppFramework.errDoc((((Runtime$1.Curried3(function($1,$2,$3)
-  {
-   return $1("Too many parameters "+GeneratedPrintf.p($2)+" "+Utils.printList(function($4)
-   {
-    return LayoutEngine_GeneratedPrintf.p$27($4);
-   },$3));
-  }))(Global.id))(doc))(parms));
- };
- LayoutEngineModule.Identifier=function(a)
- {
-  var $1,a$1,t;
-  return a.$==1&&(a$1=LibraryJS.REGEX$1("^[$a-zA-Z_][0-9a-zA-Z_\\.\\-$]*$","",a.$0),a$1!=null&&a$1.$==1&&((t=a$1.$0,!Unchecked.Equals(t,null)&&t.length===1)&&($1=Arrays.get(a$1.$0,0),true)))?{
-   $:1,
-   $0:$1
-  }:null;
- };
- LayoutEngineModule.getDocF=function(parms,doc)
- {
-  var $1,$2,a,a$1,a$2,a$3,a$4,a$5,a$6,a$7,a$8,a$9;
-  $2=doc.docDoc;
-  switch($2.$==1?parms.$==1?($1=[$2.$0,LayoutEngineModule.S(parms.$0),parms.$1],1):6:$2.$==2?parms.$==1?(a=LayoutEngineModule.S(parms.$0),parms.$1.$==1?($1=[$2.$0,a,LayoutEngineModule.S(parms.$1.$0),parms.$1.$1],2):6):6:$2.$==3?parms.$==1?(a$1=LayoutEngineModule.S(parms.$0),parms.$1.$==1?(a$2=LayoutEngineModule.S(parms.$1.$0),parms.$1.$1.$==1?($1=[$2.$0,a$1,a$2,LayoutEngineModule.S(parms.$1.$1.$0),parms.$1.$1.$1],3):6):6):6:$2.$==4?parms.$==1?(a$3=LayoutEngineModule.S(parms.$0),parms.$1.$==1?(a$4=LayoutEngineModule.S(parms.$1.$0),parms.$1.$1.$==1?(a$5=LayoutEngineModule.S(parms.$1.$1.$0),parms.$1.$1.$1.$==1?($1=[$2.$0,a$3,a$4,a$5,LayoutEngineModule.S(parms.$1.$1.$1.$0),parms.$1.$1.$1.$1],4):6):6):6):6:$2.$==5?parms.$==1?(a$6=LayoutEngineModule.S(parms.$0),parms.$1.$==1?(a$7=LayoutEngineModule.S(parms.$1.$0),parms.$1.$1.$==1?(a$8=LayoutEngineModule.S(parms.$1.$1.$0),parms.$1.$1.$1.$==1?(a$9=LayoutEngineModule.S(parms.$1.$1.$1.$0),parms.$1.$1.$1.$1.$==1?($1=[$2.$0,a$6,a$7,a$8,a$9,LayoutEngineModule.S(parms.$1.$1.$1.$1.$0),parms.$1.$1.$1.$1.$1],5):6):6):6):6):6:($1=[$2.$0,parms],0))
-  {
-   case 0:
-    return[$1[0].f(),$1[1]];
-   case 1:
-    return[$1[0]($1[1]),$1[2]];
-   case 2:
-    return[($1[0]($1[1]))($1[2]),$1[3]];
-   case 3:
-    return[(($1[0]($1[1]))($1[2]))($1[3]),$1[4]];
-   case 4:
-    return[((($1[0]($1[1]))($1[2]))($1[3]))($1[4]),$1[5]];
-   case 5:
-    return[(((($1[0]($1[1]))($1[2]))($1[3]))($1[4]))($1[5]),$1[6]];
-   case 6:
-    return[Doc.Element("div",[],[Doc.TextNode((((Runtime$1.Curried3(function($3,$4,$5)
-    {
-     return $3("Parameters do not coincide with definition "+GeneratedPrintf.p($4)+" - "+Utils.printList(function($6)
-     {
-      return LayoutEngine_GeneratedPrintf.p$27($6);
-     },$5));
-    }))(Global.id))(doc))(parms))]),T.Empty];
-  }
- };
- LayoutEngineModule.currentViewTriggger=function()
- {
-  SC$2.$cctor();
-  return SC$2.currentViewTriggger;
- };
- LayoutEngineModule.getTextToken=function(lytNm,token)
- {
-  return token.$==0?LayoutEngineModule.getTextData(lytNm,token.$0):LayoutEngineModule.getOneTextData(lytNm,token.$0,"","");
- };
- LayoutEngineModule.getParamText=function(lytNm,token,f)
- {
-  View.Get(function(a)
-  {
-   if(a.$==1)
-    f(a.$0);
-   else
-    f(a.$0);
-  },LayoutEngineModule.getTextToken(lytNm,token));
- };
- LayoutEngineModule.splitTokens=function(line)
- {
-  return LayoutEngineModule.doubleQuote(List.ofSeq(Seq$1.collect(Global.id,Seq$1.mapi(function(i,s)
-  {
-   var t;
-   return i%2===1?[{
-    $:0,
-    $0:s
-   }]:s===""?[{
-    $:0,
-    $0:"\""
-   }]:(t=Strings.Trim(s),t===""?[]:Arrays.map(function(a)
-   {
-    return{
-     $:1,
-     $0:a
-    };
-   },Strings.SplitChars(t,[" "],1)));
-  },String.splitByChar("\"",line)))));
- };
- LayoutEngineModule.Vertical=function(a)
- {
-  var $1,$2,$3,$4,$5,a$1;
-  return a.$==1&&(a.$0==="vertical"&&($1=a.$0,true))?{
-   $:0,
-   $0:null
-  }:a.$==1&&(a.$0==="horizontal"&&($2=a.$0,true))?{
-   $:1,
-   $0:null
-  }:a.$==1&&(a.$0==="layout"&&($3=a.$0,true))?{
-   $:2,
-   $0:null
-  }:a.$==1&&(a.$0==="grid"&&($4=a.$0,true))?{
-   $:3,
-   $0:null
-  }:a.$==1&&(a.$0==="template"&&($5=a.$0,true))?{
-   $:4,
-   $0:null
-  }:(a$1=LayoutEngineModule.Identifier(a),a$1!=null&&a$1.$==1?{
-   $:5,
-   $0:a$1.$0
-  }:{
-   $:6,
-   $0:null
-  });
- };
- LayoutEngineModule.getExtraLines=function(pred,ls)
- {
-  var i,x,o,v;
-  i=(x=(o=Seq$1.tryFindIndex(function(l)
-  {
-   return Strings.Trim(l)!==""&&!pred(l);
-  },Seq$1.skip(1,ls)),o==null?null:{
-   $:1,
-   $0:1+o.$0
-  }),(v=Arrays.length(ls),x==null?v:x.$0));
-  return[Slice.array(ls,{
-   $:1,
-   $0:1
-  },{
-   $:1,
-   $0:i-1
-  }),Slice.array(ls,{
-   $:1,
-   $0:i
-  },null)];
- };
- LayoutEngineModule.createLines=function(baseName,n,names,lines,i,ls)
- {
-  var prefix,prefix2,m,a,l,p,name,p$1,childrenLines,childNames;
-  prefix=Strings.replicate(n,":");
-  prefix2=":"+prefix;
-  m=Seq$1.tryHead(ls);
-  return m!=null&&m.$==1?(a=String.StartsWith(prefix,Strings.Trim(m.$0)),a!=null&&a.$==1?(l=a.$0,(p=LayoutEngineModule.getExtraLines(function(l$1)
-  {
-   return Strings.StartsWith(Strings.Trim(l$1),prefix2);
-  },ls),(name=(((Runtime$1.Curried3(function($1,$2,$3)
-  {
-   return $1("_"+Utils.toSafe($2)+"_"+Global.String($3));
-  }))(Global.id))(baseName))(i),(p$1=LayoutEngineModule.createLines(name,n+1,[],[],1,p[0]),(childrenLines=p$1[1],(childNames=p$1[0],LayoutEngineModule.createLines(baseName,n,Arrays.ofSeq(Seq$1.delay(function()
-  {
-   return Seq$1.append(names,Seq$1.delay(function()
-   {
-    return[name];
-   }));
-  })),Arrays.ofSeq(Seq$1.delay(function()
-  {
-   return Seq$1.append(lines,Seq$1.delay(function()
-   {
-    return Seq$1.append(childrenLines,Seq$1.delay(function()
-    {
-     return[name+" "+l+" "+Strings.concat(" ",childNames)];
-    }));
-   }));
-  })),i+1,p[1]))))))):[names,lines]):[names,lines];
- };
- LayoutEngineModule.PlugIn=function(a)
- {
-  var $1,$2,$3,$4,$5;
-  return a.$==1&&(a.$0==="PlugIn"&&($1=a.$0,true))?{
-   $:0,
-   $0:null
-  }:a.$==1&&(a.$0==="Button"&&($2=a.$0,true))?{
-   $:1,
-   $0:null
-  }:a.$==1&&(a.$0==="input"&&($3=a.$0,true))?{
-   $:2,
-   $0:null
-  }:a.$==1&&(a.$0==="textarea"&&($4=a.$0,true))?{
-   $:3,
-   $0:null
-  }:a.$==1&&(a.$0==="select"&&($5=a.$0,true))?{
-   $:4,
-   $0:null
-  }:{
-   $:5,
-   $0:null
-  };
- };
- LayoutEngineModule.Var=function(a)
- {
-  var $1,$2,$3,$4,$5,$6;
-  return a.$==1&&(a.$0==="Var"&&($1=a.$0,true))?{
-   $:0,
-   $0:null
-  }:a.$==1&&(a.$0==="Doc"&&($2=a.$0,true))?{
-   $:1,
-   $0:null
-  }:a.$==1&&(a.$0==="View"&&($3=a.$0,true))?{
-   $:2,
-   $0:null
-  }:a.$==1&&(a.$0==="ViewJS"&&($4=a.$0,true))?{
-   $:3,
-   $0:null
-  }:a.$==1&&(a.$0==="Docs"&&($5=a.$0,true))?{
-   $:4,
-   $0:null
-  }:a.$==1&&(a.$0==="Action"&&($6=a.$0,true))?{
-   $:5,
-   $0:null
-  }:{
-   $:6,
-   $0:null
-  };
- };
- LayoutEngineModule.Measures$1=function(a)
- {
-  var a$1,$1,a$2,$2,a$3,$3,a$4,a$5,a$6;
-  return a.$==1?(a$1=String.splitByChar("-",a.$0),!Unchecked.Equals(a$1,null)&&a$1.length===1&&(a$2=(ParseO$1.Double())(Arrays.get(a$1,0)),a$2!=null&&a$2.$==1&&($1=a$2.$0,true))?{
-   $:1,
-   $0:new Measures({
-    $:0,
-    $0:$1,
-    $1:true
-   })
-  }:!Unchecked.Equals(a$1,null)&&a$1.length===2&&(Arrays.get(a$1,0)===""&&(a$3=(ParseO$1.Double())(Arrays.get(a$1,1)),a$3!=null&&a$3.$==1&&($2=a$3.$0,true)))?{
-   $:1,
-   $0:new Measures({
-    $:0,
-    $0:$2,
-    $1:false
-   })
-  }:!Unchecked.Equals(a$1,null)&&a$1.length===3&&(a$4=(ParseO$1.Double())(Arrays.get(a$1,0)),a$4!=null&&a$4.$==1&&(a$5=(ParseO$1.Double())(Arrays.get(a$1,1)),a$5!=null&&a$5.$==1&&(a$6=(ParseO$1.Double())(Arrays.get(a$1,2)),a$6!=null&&a$6.$==1&&($3=[a$6.$0,a$4.$0,a$5.$0],true))))?{
-   $:1,
-   $0:new Measures({
-    $:1,
-    $0:$3[1],
-    $1:$3[2],
-    $2:$3[0]
-   })
-  }:null):null;
- };
- LayoutEngineModule.getText=function(lytNm,txtName)
- {
-  var a,id,p,plg,nm,o,o$1,o$2,o$3;
-  a=LayoutEngineModule.Identifier(txtName);
-  return a!=null&&a.$==1?(id=a.$0,(p=((LayoutEngineModule.splitName())(lytNm))(id),(plg=p[0],(nm=p[1],(o=(o$1=AppFramework.tryGetViw(plg,nm),o$1==null?null:{
-   $:1,
-   $0:Doc.TextView(o$1.$0.viwView)
-  }),o==null?(o$2=(o$3=AppFramework.tryGetVar(plg,nm),o$3==null?null:{
-   $:1,
-   $0:Doc.TextView(o$3.$0.varVar.get_View())
-  }),o$2==null?Doc.TextNode(id):o$2.$0):o.$0))))):Doc.TextNode(LayoutEngineModule.S(txtName));
- };
- LayoutEngineModule.singleDoc=function(lytNm,docs)
- {
-  return Doc.EmbedView(View.Map(function(a)
-  {
-   var $1;
-   return a.$==1&&(a.$1.$==0&&($1=a.$0,true))?$1:AppFramework.errDoc((function($2)
-   {
-    return function($3)
-    {
-     return $2("expected exactly 1 element "+Utils.printList(function($4)
-     {
-      return LayoutEngine_GeneratedPrintf.p$27($4);
-     },$3));
-    };
-   }(Global.id))(docs));
-  },View.Map(function()
-  {
-   return LayoutEngineModule.getAllDocs(lytNm,docs);
-  },LayoutEngineModule.currentViewTriggger())));
- };
- LayoutEngineModule.entryDoc=function(n,doc)
- {
-  return{
-   $:1,
-   $0:{
-    $:2,
-    $0:AppFramework.newDoc(n,Lazy.Create(function()
-    {
-     return doc;
-    }))
-   }
-  };
- };
- LayoutEngineModule.createSplitterM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createSplitterM;
- };
- LayoutEngineModule.createButtonM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createButtonM;
- };
- LayoutEngineModule.createInputM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createInputM;
- };
- LayoutEngineModule.createTextAreaM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createTextAreaM;
- };
- LayoutEngineModule.entryVar=function(n,v)
- {
-  return{
-   $:1,
-   $0:{
-    $:0,
-    $0:AppFramework.newVar(n,v)
-   }
-  };
- };
- LayoutEngineModule.createVarM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createVarM;
- };
- LayoutEngineModule.createDocM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createDocM;
- };
- LayoutEngineModule.entryView=function(n,w)
- {
-  return{
-   $:1,
-   $0:{
-    $:1,
-    $0:AppFramework.newViw(n,w)
-   }
-  };
- };
- LayoutEngineModule.createViewM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createViewM;
- };
- LayoutEngineModule.createTemplateM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createTemplateM;
- };
- LayoutEngineModule.createConcatM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createConcatM;
- };
- LayoutEngineModule.entryAct=function(n,a)
- {
-  return{
-   $:1,
-   $0:{
-    $:3,
-    $0:AppFramework.newActF(n,a)
-   }
-  };
- };
- LayoutEngineModule.createActionM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createActionM;
- };
- LayoutEngineModule.createElementM=function()
- {
-  SC$2.$cctor();
-  return SC$2.createElementM;
- };
- LayoutEngineModule.getTextData=function(lytNm,txt)
- {
-  var o,o$1,$1,bef;
-  o=(o$1=String.delimitedO("@{","}",txt),o$1==null?null:{
-   $:1,
-   $0:($1=o$1.$0,(bef=$1[0],LayoutEngineModule.getOneTextData(lytNm,$1[1],bef,$1[2])))
-  });
-  return o==null?View.Const({
-   $:0,
-   $0:txt
-  }):o.$0;
- };
- LayoutEngineModule.getADoc=function(lytNm,token)
- {
-  var a,di,p,plg,nm;
-  a=LayoutEngineModule.Identifier(token);
-  return a!=null&&a.$==1?(di=a.$0,(p=((LayoutEngineModule.splitName())(lytNm))(di),(plg=p[0],(nm=p[1],Doc.BindView(function(a$1)
-  {
-   return a$1==null?Doc.BindView(function(a$2)
-   {
-    var v;
-    return a$2==null?AppFramework.errDoc((v=(function($1)
-    {
-     return function($2)
-     {
-      return $1("Missing doc: "+Utils.toSafe($2));
-     };
-    }(Global.id))(di),(Library$1.print(v),v))):Doc.TextNode(a$2.$0);
-   },AppFramework.tryGetWoWW(plg,nm)):(LayoutEngineModule.getDocF(T.Empty,a$1.$0))[0];
-  },AppFramework.tryGetDocW(plg,nm)))))):Doc.TextView(View.Map(function(a$1)
-  {
-   return a$1.$==1?(function($1)
-   {
-    return function($2)
-    {
-     return $1("Unexpected action: "+Utils.toSafe($2));
-    };
-   }(Global.id))(a$1.$0.actName.get_Id()):a$1.$0;
-  },LayoutEngineModule.getTextData(lytNm,LayoutEngineModule.S(token))));
- };
- LayoutEngineModule.getOneTextData=function(lytNm,name,bef,aft)
- {
-  var p,plg,n;
-  p=((LayoutEngineModule.splitName())(lytNm))(name);
-  plg=p[0];
-  n=p[1];
-  return View.Bind(function(a)
-  {
-   return a==null?View.Bind(function(a$1)
-   {
-    var txt;
-    return a$1==null?View.Const({
-     $:0,
-     $0:((((Runtime$1.Curried(function($1,$2,$3,$4)
-     {
-      return $1(Utils.toSafe($2)+" @{Missing "+Utils.toSafe($3)+"}"+Utils.toSafe($4));
-     },4))(Global.id))(bef))(name))(aft)
-    }):(txt=a$1.$0,View.Bind(function(a$2)
-    {
-     return a$2.$==1?View.Const({
-      $:0,
-      $0:(function($1)
-      {
-       return function($2)
-       {
-        return $1("Unexpected Action @{"+Utils.toSafe($2)+"}");
-       };
-      }(Global.id))(a$2.$0.actName.get_Id())
-     }):View.Const({
-      $:0,
-      $0:bef+txt+a$2.$0
-     });
-    },LayoutEngineModule.getTextData(lytNm,aft)));
-   },AppFramework.tryGetWoWW(plg,n)):View.Const({
-    $:1,
-    $0:a.$0
-   });
-  },AppFramework.tryGetActW(plg,n));
- };
- LayoutEngineModule.doubleQuote=function(a)
- {
-  var $1,$2,$3;
-  switch(a.$==1?a.$0.$==1?Strings.StartsWith(a.$0.$0,"//")?($1=a.$0.$0,1):2:2:0)
-  {
-   case 0:
-    return T.Empty;
-   case 1:
-    return T.Empty;
-   case 2:
-    switch(a.$==1?a.$0.$==0?a.$1.$==1?a.$1.$0.$==0?a.$1.$0.$0==="\""?a.$1.$1.$==0?($3=a.$0.$0,1):a.$1.$1.$0.$==0?($3=[a.$1.$1.$1,a.$0.$0,a.$1.$1.$0.$0],0):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):($3=[a.$0,a.$1],2):3)
-    {
-     case 0:
-      $2=LayoutEngineModule.doubleQuote(new T({
-       $:1,
-       $0:{
-        $:0,
-        $0:$3[1]+"\""+$3[2]
-       },
-       $1:$3[0]
-      }));
-      break;
-     case 1:
-      $2=List.ofArray([{
-       $:0,
-       $0:$3
-      }]);
-      break;
-     case 2:
-      $2=new T({
-       $:1,
-       $0:$3[0],
-       $1:LayoutEngineModule.doubleQuote($3[1])
-      });
-      break;
-     case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2600,38);
-    }
-    return $2;
-  }
- };
- PlugInName=AppFramework.PlugInName=Runtime$1.Class({
-  get_Id:function()
-  {
-   return this.$0;
-  }
- },null,PlugInName);
  NewLY.addLayout=function(lyt)
  {
   var parseW,l,errorsW,f,defsW,f$1,g,entries,g$1,l$1;
@@ -9566,10 +9556,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$2.$cctor();
   return SC$2.initVal;
  };
- MonacoPlugIn.createMonacoEditor=function()
+ MonacoPlugIn.plugInAdded=function()
  {
   SC$3.$cctor();
-  return SC$3.createMonacoEditor;
+  return SC$3.plugInAdded;
  };
  MonacoPlugIn.monacoNew=function(_var,langW,themeW)
  {
@@ -9594,6 +9584,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return{};
   },_var));
+ };
+ MonacoPlugIn.createMonacoEditor=function()
+ {
+  SC$3.$cctor();
+  return SC$3.createMonacoEditor;
  };
  Enumerator.Get=function(x)
  {
@@ -9854,23 +9849,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   var i,$1;
   for(i=0,$1=arr.length-1;i<=$1;i++)arr[i]=f(arr[i]);
  };
- Seq$1.tryHead=function(s)
- {
-  var e;
-  e=Enumerator.Get(s);
-  try
-  {
-   return e.MoveNext()?{
-    $:1,
-    $0:e.Current()
-   }:null;
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
  Arrays.groupBy=function(f,a)
  {
   var d,keys,i,$1,c,k;
@@ -9909,6 +9887,23 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     e.Dispose();
   }
  };
+ Seq$1.tryHead=function(s)
+ {
+  var e;
+  e=Enumerator.Get(s);
+  try
+  {
+   return e.MoveNext()?{
+    $:1,
+    $0:e.Current()
+   }:null;
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
  AttrModule.DynamicPred=function(name,predView,valView)
  {
   function viewFn(el,t)
@@ -9930,6 +9925,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Attrs.Dynamic(view,set);
  };
+ AttrModule.Style=function(name,value)
+ {
+  return Attrs.Static(function(el)
+  {
+   DomUtility.SetStyle(el,name,value);
+  });
+ };
  AttrModule.Dynamic=function(name,view)
  {
   return Attrs.Dynamic(view,function(el)
@@ -9948,13 +9950,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    {
     return DomUtility.SetStyle(el,name,v);
    };
-  });
- };
- AttrModule.Style=function(name,value)
- {
-  return Attrs.Static(function(el)
-  {
-   DomUtility.SetStyle(el,name,value);
   });
  };
  AttrModule.Value=function(_var)
@@ -10779,6 +10774,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$4.$cctor();
   return SC$4.counter;
  };
+ PlgElemName=AppFramework.PlgElemName=Runtime$1.Class({
+  get_Id:function()
+  {
+   return this.$0;
+  }
+ },null,PlgElemName);
  SC$2.$cctor=function()
  {
   var f,g,x,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,a,b$8,a$1,b$9,b$10,p,cache,getOrAdd,p$1,cache$1,getOrAdd$1,p$2,cache$2,getOrAdd$2,p$3,cache$3,getOrAdd$3,p$4,cache$4,getOrAdd$4,p$5,cache$5,getOrAdd$5,p$6,cache$6,getOrAdd$6,p$7,cache$7,getOrAdd$7,p$8,cache$8,getOrAdd$8,p$9,cache$9,getOrAdd$9,p$10,cache$10,getOrAdd$10,o,pf,p$11,pf$1,p$12,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$13,p$14,pc$1,vf$3,p$15,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$16,b$11,b$12,b$13,b$14,b$15,b$16,p$17,cache$11,getOrAdd$11,p$18,cache$12,getOrAdd$12,p$19,cache$13,getOrAdd$13,p$20,cache$14,getOrAdd$14,p$21,cache$15,getOrAdd$15,p$22,cache$16,getOrAdd$16,p$23,cache$17,getOrAdd$17,p$24,cache$18,getOrAdd$18,p$25,cache$19,getOrAdd$19,p$26,cache$20,getOrAdd$20,p$27,cache$21,getOrAdd$21;
@@ -13472,12 +13473,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return console.log("WebSharper UI: Uncaught asynchronous exception",e);
  };
- PlgElemName=AppFramework.PlgElemName=Runtime$1.Class({
-  get_Id:function()
-  {
-   return this.$0;
-  }
- },null,PlgElemName);
  PlugIn.New=function(plgName,plgVars,plgViews,plgDocs,plgActions,plgQueries)
  {
   return{
@@ -14242,7 +14237,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     },varP);
    },4);
   });
-  AppFramework.addPlugIn((b$1=AppFramework.plugin(),b$1.AddDoc4(b$1.Name(b$1.Yield(),"Monaco"),"editor",MonacoPlugIn.createMonacoEditor(),"var","Language","theme","Annotations")));
+  SC$3.plugInAdded=AppFramework.addPlugIn((b$1=AppFramework.plugin(),b$1.AddDoc4(b$1.Name(b$1.Yield(),"Monaco"),"editor",MonacoPlugIn.createMonacoEditor(),"var","Language","theme","Annotations")));
  };
  Pair=Collections.Pair=Runtime$1.Class({
   Equals:function(other)
@@ -17483,6 +17478,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$5.LocalTemplatesLoaded=false;
   SC$5.TextHoleRE="\\${([^}]+)}";
  };
+ Measures=LayoutEngineModule.Measures=Runtime$1.Class({
+  toString:function()
+  {
+   return this.$==1?((((Runtime$1.Curried(function($1,$2,$3,$4)
+   {
+    return $1(Global.String($2)+"-"+Global.String($3)+"-"+Global.String($4));
+   },4))(Global.id))(Operators.toInt(this.$0)))(Operators.toInt(this.$1)))(Operators.toInt(this.$2)):Global.String(Operators.toInt(this.$1?this.$0:-this.$0));
+  }
+ },null,Measures);
  Hoverable$1=Hoverable.Hoverable=Runtime$1.Class({
   Content:function(e)
   {
@@ -17624,15 +17628,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.message=message;
   Object.setPrototypeOf(this,FormatException.prototype);
  },FormatException);
- Measures=LayoutEngineModule.Measures=Runtime$1.Class({
-  toString:function()
-  {
-   return this.$==1?((((Runtime$1.Curried(function($1,$2,$3,$4)
-   {
-    return $1(Global.String($2)+"-"+Global.String($3)+"-"+Global.String($4));
-   },4))(Global.id))(Operators.toInt(this.$0)))(Operators.toInt(this.$1)))(Operators.toInt(this.$2)):Global.String(Operators.toInt(this.$1?this.$0:-this.$0));
-  }
- },null,Measures);
  AsyncBody.New=function(k,ct)
  {
   return{
@@ -17887,6 +17882,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   Obj.New.call(this);
   this.d=d;
  },KeyCollection);
+ MatchFailureException=WebSharper.MatchFailureException=Runtime$1.Class({},Error,MatchFailureException);
+ MatchFailureException.New=Runtime$1.Ctor(function(message,line,column)
+ {
+  this.message=message+" at "+Global.String(line)+":"+Global.String(column);
+  Object.setPrototypeOf(this,MatchFailureException.prototype);
+ },MatchFailureException);
  AggregateException=WebSharper.AggregateException=Runtime$1.Class({},Error,AggregateException);
  AggregateException.New$3=Runtime$1.Ctor(function(innerExceptions)
  {
@@ -17967,12 +17968,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }
   };
  };
- MatchFailureException=WebSharper.MatchFailureException=Runtime$1.Class({},Error,MatchFailureException);
- MatchFailureException.New=Runtime$1.Ctor(function(message,line,column)
- {
-  this.message=message+" at "+Global.String(line)+":"+Global.String(column);
-  Object.setPrototypeOf(this,MatchFailureException.prototype);
- },MatchFailureException);
  CT.New=function(IsCancellationRequested,Registrations)
  {
   return{
