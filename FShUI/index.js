@@ -27,9 +27,9 @@ requirejs([
     ], function() {
         IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
         IntelliFactory.Runtime.Start();
-        fetch("FShUI/demoLayout.txt", demoLayout =>
-        fetch("FShUI/templates.html", templates  =>
-        startPage(demoLayout, templates)
+        fetch("FShUI/demoLayout.txt").then(demoLayout =>
+        fetch("FShUI/templates.html").then(templates  =>
+            startPage(demoLayout.text(), templates.text())
         ));
     });
 });
