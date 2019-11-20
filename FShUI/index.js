@@ -2,9 +2,11 @@ requirejs([
       "https://code.jquery.com/jquery-3.1.1.min.js"
     , "/EPFileX/FileSaver/FileSaver.js"
     , "https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-    , "testing"
+    , "LayoutEngine.js"
+    , "MonacoPlugIn.js"
+    , "testing.js"
 ],
-function   (jquery, fileSaver, markedJS, FShUI) {
+function   (jquery, fileSaver, markedJS) {
     marked = markedJS;
     FsRoot.TestingJS.SnippetsUI.addLayout("lytDemo", `
 

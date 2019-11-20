@@ -362,7 +362,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
 (function()
 {
  "use strict";
- var Global,FsRoot,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,TestingJS,SnippetTemplates,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,WebSharper,Obj,Unchecked,Collections,Dictionary,SC$1,Operators,Option$1,Seq$1,Arrays,List,T,Utils,Strings,System,Guid,Set,FSharpSet,FSharpMap,UI,View,Var$1,Var,Numeric,Slice,ListModel,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,FsRootDll,LibraryJS,AppFramework,ListModelData,Handler,testing_Templates,Doc,EventTarget,FileReader,JavaScript,Pervasives,LibraryJS$1,Serializer$1,JS,LayoutEngine,LayoutEngineModule,PlugInName,NewLY,StartAppFramework,Library$1,Monads$1,Depend,AppFrameworkTemplate,Object,ViewBuilder,LM,PlugInBuilder,Node,MonacoPlugIn,Enumerator,T$1,BalancedTree,MapUtil,Tree,AttrModule,Snap,FromView,DictionaryUtil,List$1,HashSet,Client,Array,Abbrev,Fresh,PlgElemName,SC$2,DateUtil,Storage,ConcreteVar,ListModel$1,Async,PlugIn,Syntax,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,Lazy,WindowOrWorkerGlobalScope,SC$3,Pair,Attrs,DomUtility,AttrProxy,CheckedInput,View$1,Client$1,Templates,State,CEBuilder,Result,Builder,DependBuilder,String,ParseO$1,WebComponent,WcTabStrip,WcTabStripT,LayoutEngine_Templates,LayoutEngine_GeneratedPrintf,GeneratedPrintf,Val,Extract0,Operators$1,AAttr,HtmlModule,attr,WcSplitter,AppFrameworkTemplate$1,P,ArrayStorage,Result$1,RefType,LazyExtensionsProxy,LazyRecord,Result$2,Builder$1,BuilderP,ResultM,Builder$2,AsyncResultM,AsyncResultMBuilder,Monaco,Editor,GenEditor,GenEditor$1,DynamicAttrNode,Docs,Elt,DocElemNode,CharacterData,SC$4,WcSplitterT,Fun,P$1,Layout,Concurrency,GenEditorHook,MonacoGenAdapter,Updates,Attrs$1,Dyn,SC$5,Hoverable,Hoverable$1,CancellationTokenSource,SC$6,Event,UIEvent,ResizeObserver,HashSetUtil,Error,FormatException,Measures,AsyncBody,Position,Queue,SC$7,Prepare,KeyCollection,AggregateException,MatchFailureException,CT,Scheduler,MonacoRT,String$1,An,Settings,Mailbox,SC$8,OperationCanceledException,MarkerData,Position$1,ResizeObserver$1,HoverProvider,DefinitionProvider,CompletionItemProvider,Char,Docs$1,RunState,NodeSet,Anims,SC$9,SC$10,AppendList,Easing,HashSet$1,DomNodes,SC$11,IntelliFactory,Runtime$1,Date,console,Math,$,JSON,Reflect;
+ var Global,FsRoot,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,TestingJS,SnippetTemplates,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,WebSharper,Obj,Unchecked,Collections,Dictionary,SC$1,Operators,Option$1,Seq$1,Arrays,List,T,Utils,Strings,System,Guid,Set,FSharpSet,FSharpMap,UI,View,Var$1,Var,Numeric,Slice,ListModel,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,FsRootDll,LibraryJS,AppFramework,ListModelData,Handler,testing_Templates,Doc,EventTarget,FileReader,JavaScript,Pervasives,LibraryJS$1,Serializer$1,JS,LayoutEngine,LayoutEngineModule,PlugInName,NewLY,StartAppFramework,Library$1,Monads$1,Depend,AppFrameworkTemplate,Object,ViewBuilder,LM,PlugInBuilder,Node,Enumerator,T$1,BalancedTree,MapUtil,Tree,AttrModule,Snap,FromView,DictionaryUtil,List$1,HashSet,Client,Array,Abbrev,Fresh,PlgElemName,SC$2,DateUtil,Storage,ConcreteVar,ListModel$1,PlugIn,Syntax,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,Lazy,WindowOrWorkerGlobalScope,Pair,Attrs,DomUtility,AttrProxy,CheckedInput,View$1,Client$1,Templates,State,CEBuilder,Result,Builder,DependBuilder,String,ParseO$1,WebComponent,WcTabStrip,WcTabStripT,LayoutEngine_Templates,LayoutEngine_GeneratedPrintf,GeneratedPrintf,Val,Extract0,Operators$1,AAttr,HtmlModule,attr,WcSplitter,AppFrameworkTemplate$1,P,ArrayStorage,Result$1,RefType,LazyExtensionsProxy,LazyRecord,DynamicAttrNode,Docs,Elt,DocElemNode,CharacterData,SC$3,WcSplitterT,Fun,P$1,Layout,Updates,Attrs$1,Dyn,SC$4,Hoverable,Hoverable$1,CancellationTokenSource,SC$5,Event,UIEvent,ResizeObserver,HashSetUtil,Error,FormatException,Measures,Queue,SC$6,Prepare,KeyCollection,AggregateException,Concurrency,MatchFailureException,String$1,An,Settings,Mailbox,CT,AsyncBody,SC$7,Char,Docs$1,RunState,NodeSet,Anims,SC$8,Scheduler,OperationCanceledException,SC$9,AppendList,Easing,HashSet$1,DomNodes,SC$10,IntelliFactory,Runtime$1,Date,console,Math,$,JSON,Reflect;
  Global=self;
  FsRoot=Global.FsRoot=Global.FsRoot||{};
  Library=FsRoot.Library=FsRoot.Library||{};
@@ -446,7 +446,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  LM=LibraryJS.LM=LibraryJS.LM||{};
  PlugInBuilder=AppFramework.PlugInBuilder=AppFramework.PlugInBuilder||{};
  Node=Global.Node;
- MonacoPlugIn=LibraryJS$1.MonacoPlugIn=LibraryJS$1.MonacoPlugIn||{};
  Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
  T$1=Enumerator.T=Enumerator.T||{};
  BalancedTree=Collections.BalancedTree=Collections.BalancedTree||{};
@@ -468,7 +467,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Storage=UI.Storage=UI.Storage||{};
  ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
  ListModel$1=LibraryJS.ListModel=LibraryJS.ListModel||{};
- Async=Abbrev.Async=Abbrev.Async||{};
  PlugIn=AppFramework.PlugIn=AppFramework.PlugIn||{};
  Syntax=LayoutEngineModule.Syntax=LayoutEngineModule.Syntax||{};
  PlugInVar=AppFramework.PlugInVar=AppFramework.PlugInVar||{};
@@ -478,7 +476,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  PlugInQuery=AppFramework.PlugInQuery=AppFramework.PlugInQuery||{};
  Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
  WindowOrWorkerGlobalScope=Global.WindowOrWorkerGlobalScope;
- SC$3=Global.StartupCode$MonacoPlugIn$MonacoPlugIn=Global.StartupCode$MonacoPlugIn$MonacoPlugIn||{};
  Pair=Collections.Pair=Collections.Pair||{};
  Attrs=UI.Attrs=UI.Attrs||{};
  DomUtility=UI.DomUtility=UI.DomUtility||{};
@@ -514,38 +511,24 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  RefType=Syntax.RefType=Syntax.RefType||{};
  LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
  LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
- Result$2=Monads.Result=Monads.Result||{};
- Builder$1=Result$2.Builder=Result$2.Builder||{};
- BuilderP=Result$2.BuilderP=Result$2.BuilderP||{};
- ResultM=Monads.ResultM=Monads.ResultM||{};
- Builder$2=ResultM.Builder=ResultM.Builder||{};
- AsyncResultM=Monads.AsyncResultM=Monads.AsyncResultM||{};
- AsyncResultMBuilder=AsyncResultM.AsyncResultMBuilder=AsyncResultM.AsyncResultMBuilder||{};
- Monaco=LibraryJS$1.Monaco=LibraryJS$1.Monaco||{};
- Editor=Monaco.Editor=Monaco.Editor||{};
- GenEditor=LibraryJS$1.GenEditor=LibraryJS$1.GenEditor||{};
- GenEditor$1=GenEditor.GenEditor=GenEditor.GenEditor||{};
  DynamicAttrNode=UI.DynamicAttrNode=UI.DynamicAttrNode||{};
  Docs=UI.Docs=UI.Docs||{};
  Elt=UI.Elt=UI.Elt||{};
  DocElemNode=UI.DocElemNode=UI.DocElemNode||{};
  CharacterData=Global.CharacterData;
- SC$4=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
+ SC$3=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
  WcSplitterT=WcSplitter.WcSplitterT=WcSplitter.WcSplitterT||{};
  Fun=AppFramework.Fun=AppFramework.Fun||{};
  P$1=NewLY.P=NewLY.P||{};
  Layout=LayoutEngineModule.Layout=LayoutEngineModule.Layout||{};
- Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
- GenEditorHook=GenEditor.GenEditorHook=GenEditor.GenEditorHook||{};
- MonacoGenAdapter=LibraryJS$1.MonacoGenAdapter=LibraryJS$1.MonacoGenAdapter||{};
  Updates=UI.Updates=UI.Updates||{};
  Attrs$1=Client$1.Attrs=Client$1.Attrs||{};
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
- SC$5=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
+ SC$4=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
  Hoverable=LibraryJS.Hoverable=LibraryJS.Hoverable||{};
  Hoverable$1=Hoverable.Hoverable=Hoverable.Hoverable||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
- SC$6=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
+ SC$5=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
  Event=Global.Event;
  UIEvent=Global.UIEvent;
  ResizeObserver=LibraryJS.ResizeObserver=LibraryJS.ResizeObserver||{};
@@ -553,41 +536,34 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Error=Global.Error;
  FormatException=WebSharper.FormatException=WebSharper.FormatException||{};
  Measures=LayoutEngineModule.Measures=LayoutEngineModule.Measures||{};
- AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
- Position=GenEditor.Position=GenEditor.Position||{};
  Queue=WebSharper.Queue=WebSharper.Queue||{};
- SC$7=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
+ SC$6=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  Prepare=Templates.Prepare=Templates.Prepare||{};
  KeyCollection=Collections.KeyCollection=Collections.KeyCollection||{};
  AggregateException=WebSharper.AggregateException=WebSharper.AggregateException||{};
+ Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
  MatchFailureException=WebSharper.MatchFailureException=WebSharper.MatchFailureException||{};
- CT=Concurrency.CT=Concurrency.CT||{};
- Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
- MonacoRT=MonacoGenAdapter.MonacoRT=MonacoGenAdapter.MonacoRT||{};
  String$1=UI.String=UI.String||{};
  An=UI.An=UI.An||{};
  Settings=Client$1.Settings=Client$1.Settings||{};
  Mailbox=Abbrev.Mailbox=Abbrev.Mailbox||{};
- SC$8=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
- OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
- MarkerData=Monaco.MarkerData=Monaco.MarkerData||{};
- Position$1=Monaco.Position=Monaco.Position||{};
- ResizeObserver$1=LibraryJS$1.ResizeObserver=LibraryJS$1.ResizeObserver||{};
- HoverProvider=MonacoGenAdapter.HoverProvider=MonacoGenAdapter.HoverProvider||{};
- DefinitionProvider=MonacoGenAdapter.DefinitionProvider=MonacoGenAdapter.DefinitionProvider||{};
- CompletionItemProvider=MonacoGenAdapter.CompletionItemProvider=MonacoGenAdapter.CompletionItemProvider||{};
+ CT=Concurrency.CT=Concurrency.CT||{};
+ AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
+ SC$7=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
  Char=WebSharper.Char=WebSharper.Char||{};
  Docs$1=Client$1.Docs=Client$1.Docs||{};
  RunState=Docs$1.RunState=Docs$1.RunState||{};
  NodeSet=Docs$1.NodeSet=Docs$1.NodeSet||{};
  Anims=UI.Anims=UI.Anims||{};
- SC$9=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
- SC$10=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
+ SC$8=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
+ Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
+ OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
+ SC$9=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
  AppendList=UI.AppendList=UI.AppendList||{};
  Easing=UI.Easing=UI.Easing||{};
  HashSet$1=Abbrev.HashSet=Abbrev.HashSet||{};
  DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
- SC$11=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
+ SC$10=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
  IntelliFactory=Global.IntelliFactory;
  Runtime$1=IntelliFactory&&IntelliFactory.Runtime;
  Date=Global.Date;
@@ -3508,7 +3484,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    SnippetsUI.parseNewLY();
   })));
-  MonacoPlugIn.plugInAdded();
  };
  Operators.range=function(min,max)
  {
@@ -5192,13 +5167,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    },views));
   });
  };
- View.MapAsync=function(fn,a)
- {
-  return View.CreateLazy(function()
-  {
-   return Snap.MapAsync(fn,a());
-  });
- };
  Var$1=UI.Var$1=Runtime$1.Class({},Obj,Var$1);
  Var$1.Lens=function(_var,get,update)
  {
@@ -5989,10 +5957,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    Docs.PerformSyncUpdate(false,st,doc.docNode);
   },doc.updates);
- };
- Doc.Async=function(a)
- {
-  return Doc.EmbedView(View.MapAsync(Global.id,View.Const(a)));
  };
  Doc.New=Runtime$1.Ctor(function(docNode,updates)
  {
@@ -9555,40 +9519,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   Obj.New.call(this);
  },PlugInBuilder);
- MonacoPlugIn.plugInAdded=function()
- {
-  SC$3.$cctor();
-  return SC$3.plugInAdded;
- };
- MonacoPlugIn.monacoNew=function(_var,langW,themeW)
- {
-  return GenEditor.onRender(function(ged)
-  {
-   var o,ed;
-   o=ged.editorO;
-   o==null?void 0:(ed=o.$0,View.Sink(function(lang)
-   {
-    var _m;
-    _m=ed.getModel();
-    self.monaco.editor.setModelLanguage(_m,lang);
-   },langW));
-   View.Sink(function(a)
-   {
-    self.monaco.editor.setTheme(a);
-   },themeW);
-  },MonacoGenAdapter.newVar(function()
-  {
-   return{};
-  },function()
-  {
-   return{};
-  },_var));
- };
- MonacoPlugIn.createMonacoEditor=function()
- {
-  SC$3.$cctor();
-  return SC$3.createMonacoEditor;
- };
  Enumerator.Get=function(x)
  {
   return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):x.GetEnumerator();
@@ -10488,23 +10418,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    return fn($1,$2,z);
   },sn1,sn2);
  };
- Snap.MapAsync=function(fn,snap)
- {
-  var res;
-  res=Snap.New({
-   $:3,
-   $0:[],
-   $1:[]
-  });
-  Snap.When(snap,function(v)
-  {
-   Async.StartTo(fn(v),function(v$1)
-   {
-    Snap.MarkDone(res,snap,v$1);
-   });
-  },res);
-  return res;
- };
  FromView=UI.FromView=Runtime$1.Class({
   Set:function(x)
   {
@@ -10765,13 +10678,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Fresh.set_counter=function($1)
  {
-  SC$4.$cctor();
-  SC$4.counter=$1;
+  SC$3.$cctor();
+  SC$3.counter=$1;
  };
  Fresh.counter=function()
  {
-  SC$4.$cctor();
-  return SC$4.counter;
+  SC$3.$cctor();
+  return SC$3.counter;
  };
  PlgElemName=AppFramework.PlgElemName=Runtime$1.Class({
   get_Id:function()
@@ -13461,17 +13374,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     lm.RemoveByKey(lm.key(e));
   },Seq$1.cache(lm));
  };
- Async.StartTo=function(comp,k)
- {
-  Concurrency.StartWithContinuations(comp,k,function(e)
-  {
-   Async.OnError(e);
-  },Global.ignore,null);
- };
- Async.OnError=function(e)
- {
-  return console.log("WebSharper UI: Uncaught asynchronous exception",e);
- };
  PlugIn.New=function(plgName,plgVars,plgViews,plgDocs,plgActions,plgQueries)
  {
   return{
@@ -14196,48 +14098,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return this.v;
  };
- SC$3.$cctor=function()
- {
-  var b,b$1;
-  SC$3.$cctor=Global.ignore;
-  SC$3.rtn=function(v)
-  {
-   return[v];
-  };
-  SC$3.result=new Builder$1.New();
-  SC$3.result$1=Result$2.result();
-  SC$3.resultP=new BuilderP.New();
-  SC$3.resultM=new Builder$2.New();
-  SC$3.asyncResultM=new AsyncResultMBuilder.New();
-  SC$3.observers=T.Empty;
-  SC$3.loader=(b=null,Concurrency.Delay(function()
-  {
-   self.require.config({
-    paths:{
-     vs:"/EPFileX/monaco/package/min/vs"
-    }
-   });
-   return Concurrency.Bind(Concurrency.FromContinuations(function(success,failed)
-   {
-    return self.require(["vs/editor/editor.main"],success,failed);
-   }),function()
-   {
-    return Concurrency.Return(null);
-   });
-  }));
-  SC$3.createMonacoEditor=AppFramework.depWithExtracts(function($1,$2,extractText)
-  {
-   return Runtime$1.Curried(function(varP,lang,theme,$3)
-   {
-    return AppFramework.docWithVar(function(_var)
-    {
-     var i;
-     return Doc.Element("div",[],[GenEditor.generateDoc((i=MonacoPlugIn.monacoNew(_var,extractText(lang),extractText(theme)),GenEditor$1.New(i["var"],i.disabled,View.Const([]),i.onChange,i.onRender,null,null,null,i.editorO,i.editorHook)))]);
-    },varP);
-   },4);
-  });
-  SC$3.plugInAdded=AppFramework.addPlugIn((b$1=AppFramework.plugin(),b$1.AddDoc4(b$1.Name(b$1.Yield(),"Monaco"),"editor",MonacoPlugIn.createMonacoEditor(),"var","Language","theme","Annotations")));
- };
  Pair=Collections.Pair=Runtime$1.Class({
   Equals:function(other)
   {
@@ -14268,8 +14128,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Attrs.EmptyAttr=function()
  {
-  SC$6.$cctor();
-  return SC$6.EmptyAttr;
+  SC$5.$cctor();
+  return SC$5.EmptyAttr;
  };
  Attrs.Updates=function(dyn)
  {
@@ -14413,8 +14273,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  DomUtility.Doc=function()
  {
-  SC$7.$cctor();
-  return SC$7.Doc;
+  SC$6.$cctor();
+  return SC$6.Doc;
  };
  DomUtility.ChildrenArray=function(element)
  {
@@ -14533,13 +14393,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return AttrProxy.HandlerImpl(event,q);
  };
- AttrProxy.OnAfterRenderImpl=function(q)
- {
-  return new AttrProxy({
-   $:4,
-   $0:q
-  });
- };
  View=UI.View=Runtime$1.Class({},null,View);
  CheckedInput=UI.CheckedInput=Runtime$1.Class({
   get_Input:function()
@@ -14612,13 +14465,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.LocalTemplatesLoaded=function()
  {
-  SC$5.$cctor();
-  return SC$5.LocalTemplatesLoaded;
+  SC$4.$cctor();
+  return SC$4.LocalTemplatesLoaded;
  };
  Templates.set_LocalTemplatesLoaded=function($1)
  {
-  SC$5.$cctor();
-  SC$5.LocalTemplatesLoaded=$1;
+  SC$4.$cctor();
+  SC$4.LocalTemplatesLoaded=$1;
  };
  Templates.LoadNestedTemplates=function(root,baseName)
  {
@@ -14672,8 +14525,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.LoadedTemplates=function()
  {
-  SC$5.$cctor();
-  return SC$5.LoadedTemplates;
+  SC$4.$cctor();
+  return SC$4.LoadedTemplates;
  };
  Templates.LoadedTemplateFile=function(name)
  {
@@ -15250,8 +15103,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.TextHoleRE=function()
  {
-  SC$5.$cctor();
-  return SC$5.TextHoleRE;
+  SC$4.$cctor();
+  return SC$4.TextHoleRE;
  };
  CEBuilder=State.CEBuilder=Runtime$1.Class({},Obj,CEBuilder);
  CEBuilder.New=Runtime$1.Ctor(function()
@@ -16202,94 +16055,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    f:force
   };
  };
- Builder$1=Result$2.Builder=Runtime$1.Class({},Obj,Builder$1);
- Builder$1.New=Runtime$1.Ctor(function()
- {
-  Obj.New.call(this);
- },Builder$1);
- Result$2.result=function()
- {
-  SC$3.$cctor();
-  return SC$3.result;
- };
- BuilderP=Result$2.BuilderP=Runtime$1.Class({},Obj,BuilderP);
- BuilderP.New=Runtime$1.Ctor(function()
- {
-  Obj.New.call(this);
- },BuilderP);
- Builder$2=ResultM.Builder=Runtime$1.Class({},Obj,Builder$2);
- Builder$2.New=Runtime$1.Ctor(function()
- {
-  Obj.New.call(this);
- },Builder$2);
- AsyncResultMBuilder=AsyncResultM.AsyncResultMBuilder=Runtime$1.Class({},Obj,AsyncResultMBuilder);
- AsyncResultMBuilder.New=Runtime$1.Ctor(function()
- {
-  Obj.New.call(this);
- },AsyncResultMBuilder);
- Editor=Monaco.Editor=Runtime$1.Class({},Obj,Editor);
- GenEditor.generateDoc=function(genE)
- {
-  var onChange,o,o$1;
-  onChange=(o=(o$1=genE.onChange,o$1==null?null:{
-   $:1,
-   $0:o$1.$0(genE)
-  }),o==null?Global.ignore:o.$0);
-  return(genE.editorHook.generateDoc(genE))(function(ed)
-  {
-   genE.editorO={
-    $:1,
-    $0:ed
-   };
-   GenEditor.bindVarEditor(genE.editorHook.hookOnChange,genE.editorHook.getValue,genE.editorHook.setValue,onChange,genE["var"]);
-   View.Sink(genE.editorHook.showAnnotations,genE.annotations);
-   View.Sink(genE.editorHook.setDisabled,genE.disabled);
-   genE.onRender(genE);
-  });
- };
- GenEditor.bindVarEditor=function(setEvent,getVal,setVal,onChange,_var)
- {
-  var editorChanged,varChanged;
-  editorChanged=[0];
-  varChanged=[0];
-  setEvent(function()
-  {
-   var v;
-   v=getVal();
-   !Unchecked.Equals(_var.Get(),v)?(editorChanged[0]=editorChanged[0]+1,_var.Set(v),onChange(v)):void 0;
-  });
-  View.Sink(function()
-  {
-   if(editorChanged[0]>varChanged[0])
-    varChanged[0]=editorChanged[0];
-   else
-    if(!Unchecked.Equals(getVal(),_var.Get()))
-     setVal(_var.Get());
-  },_var.get_View());
- };
- GenEditor.onRender=function(f,genE)
- {
-  return GenEditor$1.New(genE["var"],genE.disabled,genE.annotations,genE.onChange,f,genE.autoCompletion,genE.toolTip,genE.declaration,genE.editorO,genE.editorHook);
- };
- GenEditor.newVar=function(edh,_var)
- {
-  return GenEditor$1.New(_var,View.Const(false),View.Const([]),null,Global.ignore,null,null,null,null,edh);
- };
- GenEditor$1.New=function(_var,disabled,annotations,onChange,onRender,autoCompletion,toolTip,declaration,editorO,editorHook)
- {
-  return{
-   "var":_var,
-   disabled:disabled,
-   annotations:annotations,
-   onChange:onChange,
-   onRender:onRender,
-   autoCompletion:autoCompletion,
-   toolTip:toolTip,
-   declaration:declaration,
-   editorO:editorO,
-   editorHook:editorHook
-  };
- };
  DynamicAttrNode=UI.DynamicAttrNode=Runtime$1.Class({
   NChanged:function()
   {
@@ -16641,10 +16406,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    ElKey:ElKey
   },(Runtime$1.SetOptional($1,"Delimiters",Delimiters),Runtime$1.SetOptional($1,"Render",Render),$1)));
  };
- SC$4.$cctor=function()
+ SC$3.$cctor=function()
  {
-  SC$4.$cctor=Global.ignore;
-  SC$4.counter=0;
+  SC$3.$cctor=Global.ignore;
+  SC$3.counter=0;
  };
  WcSplitterT=WcSplitter.WcSplitterT=Runtime$1.Class({
   connectedCallback:function()
@@ -16992,449 +16757,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    },Operators.range(0,max-1));
   }));
  };
- Concurrency.Delay=function(mk)
- {
-  return function(c)
-  {
-   try
-   {
-    (mk(null))(c);
-   }
-   catch(e)
-   {
-    c.k({
-     $:1,
-     $0:e
-    });
-   }
-  };
- };
- Concurrency.Bind=function(r,f)
- {
-  return Concurrency.checkCancel(function(c)
-  {
-   r(AsyncBody.New(function(a)
-   {
-    var x;
-    if(a.$==0)
-     {
-      x=a.$0;
-      Concurrency.scheduler().Fork(function()
-      {
-       try
-       {
-        (f(x))(c);
-       }
-       catch(e)
-       {
-        c.k({
-         $:1,
-         $0:e
-        });
-       }
-      });
-     }
-    else
-     Concurrency.scheduler().Fork(function()
-     {
-      c.k(a);
-     });
-   },c.ct));
-  });
- };
- Concurrency.FromContinuations=function(subscribe)
- {
-  return function(c)
-  {
-   var continued;
-   function once(cont)
-   {
-    if(continued[0])
-     Operators.FailWith("A continuation provided by Async.FromContinuations was invoked multiple times");
-    else
-     {
-      continued[0]=true;
-      Concurrency.scheduler().Fork(cont);
-     }
-   }
-   continued=[false];
-   subscribe(function(a)
-   {
-    once(function()
-    {
-     c.k({
-      $:0,
-      $0:a
-     });
-    });
-   },function(e)
-   {
-    once(function()
-    {
-     c.k({
-      $:1,
-      $0:e
-     });
-    });
-   },function(e)
-   {
-    once(function()
-    {
-     c.k({
-      $:2,
-      $0:e
-     });
-    });
-   });
-  };
- };
- Concurrency.Return=function(x)
- {
-  return function(c)
-  {
-   c.k({
-    $:0,
-    $0:x
-   });
-  };
- };
- Concurrency.checkCancel=function(r)
- {
-  return function(c)
-  {
-   if(c.ct.c)
-    Concurrency.cancel(c);
-   else
-    r(c);
-  };
- };
- Concurrency.Start=function(c,ctOpt)
- {
-  var ct,d;
-  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
-  Concurrency.scheduler().Fork(function()
-  {
-   if(!ct.c)
-    c(AsyncBody.New(function(a)
-    {
-     if(a.$==1)
-      Concurrency.UncaughtAsyncError(a.$0);
-    },ct));
-  });
- };
- Concurrency.Sleep=function(ms)
- {
-  return function(c)
-  {
-   var pending,creg;
-   pending=void 0;
-   creg=void 0;
-   pending=Global.setTimeout(function()
-   {
-    creg.Dispose();
-    Concurrency.scheduler().Fork(function()
-    {
-     c.k({
-      $:0,
-      $0:null
-     });
-    });
-   },ms);
-   creg=Concurrency.Register(c.ct,function()
-   {
-    Global.clearTimeout(pending);
-    Concurrency.scheduler().Fork(function()
-    {
-     Concurrency.cancel(c);
-    });
-   });
-  };
- };
- Concurrency.Zero=function()
- {
-  SC$8.$cctor();
-  return SC$8.Zero;
- };
- Concurrency.cancel=function(c)
- {
-  c.k({
-   $:2,
-   $0:new OperationCanceledException.New(c.ct)
-  });
- };
- Concurrency.scheduler=function()
- {
-  SC$8.$cctor();
-  return SC$8.scheduler;
- };
- Concurrency.defCTS=function()
- {
-  SC$8.$cctor();
-  return SC$8.defCTS;
- };
- Concurrency.UncaughtAsyncError=function(e)
- {
-  console.log("WebSharper: Uncaught asynchronous exception",e);
- };
- Concurrency.Register=function(ct,callback)
- {
-  var i;
-  return ct===Concurrency.noneCT()?{
-   Dispose:function()
-   {
-    return null;
-   }
-  }:(i=ct.r.push(callback)-1,{
-   Dispose:function()
-   {
-    return Arrays.set(ct.r,i,Global.ignore);
-   }
-  });
- };
- Concurrency.While=function(g,c)
- {
-  return g()?Concurrency.Bind(c,function()
-  {
-   return Concurrency.While(g,c);
-  }):Concurrency.Return();
- };
- Concurrency.noneCT=function()
- {
-  SC$8.$cctor();
-  return SC$8.noneCT;
- };
- Concurrency.StartWithContinuations=function(c,s,f,cc,ctOpt)
- {
-  var ct,d;
-  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
-  !ct.c?c(AsyncBody.New(function(a)
-  {
-   if(a.$==1)
-    f(a.$0);
-   else
-    if(a.$==2)
-     cc(a.$0);
-    else
-     s(a.$0);
-  },ct)):void 0;
- };
- GenEditorHook.New=function(generateDoc,getValue,setValue,setDisabled,showAnnotations,posFromIndex,indexFromPos,getWordAt,getSelectionText,getUri,setUri,hookOnChange)
- {
-  return{
-   generateDoc:generateDoc,
-   getValue:getValue,
-   setValue:setValue,
-   setDisabled:setDisabled,
-   showAnnotations:showAnnotations,
-   posFromIndex:posFromIndex,
-   indexFromPos:indexFromPos,
-   getWordAt:getWordAt,
-   getSelectionText:getSelectionText,
-   getUri:getUri,
-   setUri:setUri,
-   hookOnChange:hookOnChange
-  };
- };
- MonacoGenAdapter.newVar=function(options,overrides,v)
- {
-  return GenEditor.newVar(MonacoGenAdapter.newHook(MonacoGenAdapter.newRT(options,overrides)),v);
- };
- MonacoGenAdapter.newRT=function(options,overrides)
- {
-  return MonacoRT.New(null,Global.ignore,options,overrides);
- };
- MonacoGenAdapter.newHook=function(monRT)
- {
-  function g(g$1,o)
-  {
-   return MonacoGenAdapter.generateDoc(monRT,g$1,o);
-  }
-  return GenEditorHook.New(function($1)
-  {
-   return function($2)
-   {
-    return g($1,$2);
-   };
-  },function()
-  {
-   return MonacoGenAdapter.getValue(monRT);
-  },function(t)
-  {
-   MonacoGenAdapter.setValue(monRT,t);
-  },Global.ignore,function(a)
-  {
-   MonacoGenAdapter.showAnnotations(monRT,a);
-  },function(i)
-  {
-   return MonacoGenAdapter.posFromIndex(monRT,i);
-  },function(p)
-  {
-   return MonacoGenAdapter.indexFromPos(monRT,p);
-  },function(p)
-  {
-   return MonacoGenAdapter.getWordAt(monRT,p);
-  },function()
-  {
-   return MonacoGenAdapter.getSelect(monRT);
-  },function()
-  {
-   return MonacoGenAdapter.getUri(monRT);
-  },function(u)
-  {
-   MonacoGenAdapter.setUri(monRT,u);
-  },function(f)
-  {
-   monRT.onChange=f;
-  });
- };
- MonacoGenAdapter.getSelect=function(monRT)
- {
-  var o;
-  o=MonacoGenAdapter.mapEditor(monRT,function(ed)
-  {
-   var x;
-   x=ed.getSelection();
-   return ed.getModel().getValueInRange(x);
-  });
-  return o==null?"":o.$0;
- };
- MonacoGenAdapter.setUri=function(monRT,uri)
- {
-  MonacoGenAdapter.iterEditor(monRT,function(ed)
-  {
-   ed.getModel().uri=self.monaco.Uri.parse(uri);
-  });
- };
- MonacoGenAdapter.getUri=function(monRT)
- {
-  var o;
-  o=MonacoGenAdapter.mapEditor(monRT,function(ed)
-  {
-   return Global.String(ed.getModel().uri);
-  });
-  return o==null?"":o.$0;
- };
- MonacoGenAdapter.indexFromPos=function(monRT,p)
- {
-  var o;
-  o=MonacoGenAdapter.mapEditor(monRT,function(ed)
-  {
-   return ed.getModel().getOffsetAt(MonacoGenAdapter.posGen2Ed(p));
-  });
-  return o==null?-1:o.$0;
- };
- MonacoGenAdapter.posFromIndex=function(monRT,i)
- {
-  var o;
-  o=MonacoGenAdapter.mapEditor(monRT,function(ed)
-  {
-   return MonacoGenAdapter.posEd2Gen(ed.getModel().getPositionAt(i));
-  });
-  return o==null?Position.New(1,1):o.$0;
- };
- MonacoGenAdapter.showAnnotations=function(monRT,ans)
- {
-  MonacoGenAdapter.iterEditor(monRT,function(ed)
-  {
-   var ms,_m;
-   ms=Arrays.ofSeq(Seq$1.map(function(an)
-   {
-    var m;
-    return MarkerData.New(an.startP.col,an.endP.col,an.startP.line,an.endP.line,(m=an.severity,m.$==0?8:m.$==1?4:m.$==3?1:2),an.message);
-   },ans));
-   _m=ed.getModel();
-   self.monaco.editor.setModelMarkers(_m,"annotations",ms);
-  });
- };
- MonacoGenAdapter.getWordAt=function(monRT,pos)
- {
-  return MonacoGenAdapter.bindEditor(monRT,function(ed)
-  {
-   var word;
-   word=ed.getModel().getWordAtPosition(Position$1.New(pos.col,pos.line));
-   return!word?null:{
-    $:1,
-    $0:[word.word,Position.New(pos.line,word.startColumn)]
-   };
-  });
- };
- MonacoGenAdapter.setValue=function(monRT,txt)
- {
-  MonacoGenAdapter.iterEditor(monRT,function(ed)
-  {
-   ed.setValue(txt);
-  });
- };
- MonacoGenAdapter.getValue=function(monRT)
- {
-  var o;
-  o=MonacoGenAdapter.mapEditor(monRT,function(ed)
-  {
-   return ed.getValue();
-  });
-  return o==null?"":o.$0;
- };
- MonacoGenAdapter.generateDoc=function(monRT,genE,onRender)
- {
-  var b;
-  return Doc.Async((b=null,Concurrency.Delay(function()
-  {
-   return Concurrency.Bind(Monaco.loader(),function()
-   {
-    return Concurrency.Return(Doc.Element("div",[AttrProxy.OnAfterRenderImpl(function(elchild)
-    {
-     var editor,_elt,o,_p,o$1,_p$1,o$2,_p$2;
-     editor=(_elt=elchild.parentElement,self.monaco.editor.create(_elt,monRT.options,monRT.overrides));
-     ResizeObserver$1.addResizeObserver(function()
-     {
-      editor.layout();
-     },elchild.parentElement);
-     elchild.parentNode.removeChild(elchild);
-     monRT.editorO={
-      $:1,
-      $0:editor
-     };
-     onRender(editor);
-     editor.onDidChangeModelContent(monRT.onChange);
-     o=genE.toolTip;
-     o==null?void 0:(_p=new HoverProvider.New(o.$0(genE)),self.monaco.languages.registerHoverProvider("fsharp",_p));
-     o$1=genE.declaration;
-     o$1==null?void 0:(_p$1=new DefinitionProvider.New(o$1.$0(genE)),self.monaco.languages.registerDefinitionProvider("fsharp",_p$1));
-     o$2=genE.autoCompletion;
-     o$2==null?void 0:(_p$2=new CompletionItemProvider.New(o$2.$0(genE)),self.monaco.languages.registerCompletionItemProvider("fsharp",_p$2));
-    })],[]));
-   });
-  })));
- };
- MonacoGenAdapter.mapEditor=function(monRT,f)
- {
-  var m;
-  m=monRT.editorO;
-  return m!=null&&m.$==1?{
-   $:1,
-   $0:f(m.$0)
-  }:null;
- };
- MonacoGenAdapter.iterEditor=function(monRT,f)
- {
-  var m;
-  m=monRT.editorO;
-  m!=null&&m.$==1?f(m.$0):void 0;
- };
- MonacoGenAdapter.posGen2Ed=function(p)
- {
-  return Position$1.New(p.col,p.line);
- };
- MonacoGenAdapter.posEd2Gen=function(p)
- {
-  return Position.New(p.lineNumber,p.column);
- };
- MonacoGenAdapter.bindEditor=function(monRT,f)
- {
-  var m;
-  m=monRT.editorO;
-  return m!=null&&m.$==1?f(m.$0):null;
- };
  Updates=UI.Updates=Runtime$1.Class({},null,Updates);
  Updates.Create=function(v)
  {
@@ -17470,12 +16792,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   Runtime$1.SetOptional($1,"OnAfterRender",OnAfterRender);
   return $1;
  };
- SC$5.$cctor=function()
+ SC$4.$cctor=function()
  {
-  SC$5.$cctor=Global.ignore;
-  SC$5.LoadedTemplates=new Dictionary.New$5();
-  SC$5.LocalTemplatesLoaded=false;
-  SC$5.TextHoleRE="\\${([^}]+)}";
+  SC$4.$cctor=Global.ignore;
+  SC$4.LoadedTemplates=new Dictionary.New$5();
+  SC$4.LocalTemplatesLoaded=false;
+  SC$4.TextHoleRE="\\${([^}]+)}";
  };
  Hoverable$1=Hoverable.Hoverable=Runtime$1.Class({
   Content:function(e)
@@ -17536,10 +16858,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.r=[];
   this.init=1;
  },CancellationTokenSource);
- SC$6.$cctor=function()
+ SC$5.$cctor=function()
  {
-  SC$6.$cctor=Global.ignore;
-  SC$6.EmptyAttr=null;
+  SC$5.$cctor=Global.ignore;
+  SC$5.EmptyAttr=null;
  };
  ResizeObserver.addResizeObserver=function(f,el)
  {
@@ -17627,28 +16949,14 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    },4))(Global.id))(Operators.toInt(this.$0)))(Operators.toInt(this.$1)))(Operators.toInt(this.$2)):Global.String(Operators.toInt(this.$1?this.$0:-this.$0));
   }
  },null,Measures);
- AsyncBody.New=function(k,ct)
- {
-  return{
-   k:k,
-   ct:ct
-  };
- };
- Position.New=function(line,col)
- {
-  return{
-   line:line,
-   col:col
-  };
- };
  Queue.Clear=function(a)
  {
   a.splice(0,Arrays.length(a));
  };
- SC$7.$cctor=function()
+ SC$6.$cctor=function()
  {
-  SC$7.$cctor=Global.ignore;
-  SC$7.Doc=self.document;
+  SC$6.$cctor=Global.ignore;
+  SC$6.Doc=self.document;
  };
  Prepare.convertTextNode=function(n)
  {
@@ -17892,6 +17200,217 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   Object.setPrototypeOf(this,AggregateException.prototype);
   this.innerExceptions=innerExceptions;
  },AggregateException);
+ Concurrency.Start=function(c,ctOpt)
+ {
+  var ct,d;
+  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
+  Concurrency.scheduler().Fork(function()
+  {
+   if(!ct.c)
+    c(AsyncBody.New(function(a)
+    {
+     if(a.$==1)
+      Concurrency.UncaughtAsyncError(a.$0);
+    },ct));
+  });
+ };
+ Concurrency.Delay=function(mk)
+ {
+  return function(c)
+  {
+   try
+   {
+    (mk(null))(c);
+   }
+   catch(e)
+   {
+    c.k({
+     $:1,
+     $0:e
+    });
+   }
+  };
+ };
+ Concurrency.Bind=function(r,f)
+ {
+  return Concurrency.checkCancel(function(c)
+  {
+   r(AsyncBody.New(function(a)
+   {
+    var x;
+    if(a.$==0)
+     {
+      x=a.$0;
+      Concurrency.scheduler().Fork(function()
+      {
+       try
+       {
+        (f(x))(c);
+       }
+       catch(e)
+       {
+        c.k({
+         $:1,
+         $0:e
+        });
+       }
+      });
+     }
+    else
+     Concurrency.scheduler().Fork(function()
+     {
+      c.k(a);
+     });
+   },c.ct));
+  });
+ };
+ Concurrency.Sleep=function(ms)
+ {
+  return function(c)
+  {
+   var pending,creg;
+   pending=void 0;
+   creg=void 0;
+   pending=Global.setTimeout(function()
+   {
+    creg.Dispose();
+    Concurrency.scheduler().Fork(function()
+    {
+     c.k({
+      $:0,
+      $0:null
+     });
+    });
+   },ms);
+   creg=Concurrency.Register(c.ct,function()
+   {
+    Global.clearTimeout(pending);
+    Concurrency.scheduler().Fork(function()
+    {
+     Concurrency.cancel(c);
+    });
+   });
+  };
+ };
+ Concurrency.Zero=function()
+ {
+  SC$7.$cctor();
+  return SC$7.Zero;
+ };
+ Concurrency.defCTS=function()
+ {
+  SC$7.$cctor();
+  return SC$7.defCTS;
+ };
+ Concurrency.UncaughtAsyncError=function(e)
+ {
+  console.log("WebSharper: Uncaught asynchronous exception",e);
+ };
+ Concurrency.checkCancel=function(r)
+ {
+  return function(c)
+  {
+   if(c.ct.c)
+    Concurrency.cancel(c);
+   else
+    r(c);
+  };
+ };
+ Concurrency.Register=function(ct,callback)
+ {
+  var i;
+  return ct===Concurrency.noneCT()?{
+   Dispose:function()
+   {
+    return null;
+   }
+  }:(i=ct.r.push(callback)-1,{
+   Dispose:function()
+   {
+    return Arrays.set(ct.r,i,Global.ignore);
+   }
+  });
+ };
+ Concurrency.cancel=function(c)
+ {
+  c.k({
+   $:2,
+   $0:new OperationCanceledException.New(c.ct)
+  });
+ };
+ Concurrency.While=function(g,c)
+ {
+  return g()?Concurrency.Bind(c,function()
+  {
+   return Concurrency.While(g,c);
+  }):Concurrency.Return();
+ };
+ Concurrency.scheduler=function()
+ {
+  SC$7.$cctor();
+  return SC$7.scheduler;
+ };
+ Concurrency.noneCT=function()
+ {
+  SC$7.$cctor();
+  return SC$7.noneCT;
+ };
+ Concurrency.Return=function(x)
+ {
+  return function(c)
+  {
+   c.k({
+    $:0,
+    $0:x
+   });
+  };
+ };
+ Concurrency.FromContinuations=function(subscribe)
+ {
+  return function(c)
+  {
+   var continued;
+   function once(cont)
+   {
+    if(continued[0])
+     Operators.FailWith("A continuation provided by Async.FromContinuations was invoked multiple times");
+    else
+     {
+      continued[0]=true;
+      Concurrency.scheduler().Fork(cont);
+     }
+   }
+   continued=[false];
+   subscribe(function(a)
+   {
+    once(function()
+    {
+     c.k({
+      $:0,
+      $0:a
+     });
+    });
+   },function(e)
+   {
+    once(function()
+    {
+     c.k({
+      $:1,
+      $0:e
+     });
+    });
+   },function(e)
+   {
+    once(function()
+    {
+     c.k({
+      $:2,
+      $0:e
+     });
+    });
+   });
+  };
+ };
  Seq$1.enumUsing=function(x,f)
  {
   return{
@@ -17967,61 +17486,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.message=message+" at "+Global.String(line)+":"+Global.String(column);
   Object.setPrototypeOf(this,MatchFailureException.prototype);
  },MatchFailureException);
- CT.New=function(IsCancellationRequested,Registrations)
- {
-  return{
-   c:IsCancellationRequested,
-   r:Registrations
-  };
- };
- Scheduler=Concurrency.Scheduler=Runtime$1.Class({
-  Fork:function(action)
-  {
-   var $this;
-   $this=this;
-   this.robin.push(action);
-   this.idle?(this.idle=false,Global.setTimeout(function()
-   {
-    $this.tick();
-   },0)):void 0;
-  },
-  tick:function()
-  {
-   var loop,$this,t;
-   $this=this;
-   t=Date.now();
-   loop=true;
-   while(loop)
-    if(this.robin.length===0)
-     {
-      this.idle=true;
-      loop=false;
-     }
-    else
-     {
-      (this.robin.shift())();
-      Date.now()-t>40?(Global.setTimeout(function()
-      {
-       $this.tick();
-      },0),loop=false):void 0;
-     }
-  }
- },Obj,Scheduler);
- Scheduler.New=Runtime$1.Ctor(function()
- {
-  Obj.New.call(this);
-  this.idle=true;
-  this.robin=[];
- },Scheduler);
- MonacoRT.New=function(editorO,onChange,options,overrides)
- {
-  return{
-   editorO:editorO,
-   onChange:onChange,
-   options:options,
-   overrides:overrides
-  };
- };
  String$1.isBlank=function(s)
  {
   return Strings.forall(Char.IsWhiteSpace,s);
@@ -18093,8 +17557,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Settings.BatchUpdatesEnabled=function()
  {
-  SC$9.$cctor();
-  return SC$9.BatchUpdatesEnabled;
+  SC$8.$cctor();
+  return SC$8.BatchUpdatesEnabled;
  };
  Mailbox.StartProcessor=function(procAsync)
  {
@@ -18121,14 +17585,28 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    m===0?(st[0]=1,Concurrency.Start(work(),null)):m===1?st[0]=2:void 0;
   };
  };
- SC$8.$cctor=function()
+ CT.New=function(IsCancellationRequested,Registrations)
  {
-  SC$8.$cctor=Global.ignore;
-  SC$8.noneCT=CT.New(false,[]);
-  SC$8.scheduler=new Scheduler.New();
-  SC$8.defCTS=[new CancellationTokenSource.New()];
-  SC$8.Zero=Concurrency.Return();
-  SC$8.GetCT=function(c)
+  return{
+   c:IsCancellationRequested,
+   r:Registrations
+  };
+ };
+ AsyncBody.New=function(k,ct)
+ {
+  return{
+   k:k,
+   ct:ct
+  };
+ };
+ SC$7.$cctor=function()
+ {
+  SC$7.$cctor=Global.ignore;
+  SC$7.noneCT=CT.New(false,[]);
+  SC$7.scheduler=new Scheduler.New();
+  SC$7.defCTS=[new CancellationTokenSource.New()];
+  SC$7.Zero=Concurrency.Return();
+  SC$7.GetCT=function(c)
   {
    c.k({
     $:0,
@@ -18136,123 +17614,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    });
   };
  };
- OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},Error,OperationCanceledException);
- OperationCanceledException.New=Runtime$1.Ctor(function(ct)
- {
-  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
- },OperationCanceledException);
- OperationCanceledException.New$1=Runtime$1.Ctor(function(message,inner,ct)
- {
-  this.message=message;
-  this.inner=inner;
-  Object.setPrototypeOf(this,OperationCanceledException.prototype);
-  this.ct=ct;
- },OperationCanceledException);
- MarkerData.New=function(startColumn,endColumn,startLineNumber,endLineNumber,severity,message)
- {
-  return{
-   startColumn:startColumn,
-   endColumn:endColumn,
-   startLineNumber:startLineNumber,
-   endLineNumber:endLineNumber,
-   severity:severity,
-   message:message
-  };
- };
- Position$1.New=function(column,lineNumber)
- {
-  return{
-   column:column,
-   lineNumber:lineNumber
-  };
- };
- Monaco.loader=function()
- {
-  SC$3.$cctor();
-  return SC$3.loader;
- };
- ResizeObserver$1.addResizeObserver=function(f,el)
- {
-  var r,ro,changed,b;
-  try
-  {
-   r=!(!Global.ResizeObserver);
-  }
-  catch(e)
-  {
-   r=false;
-  }
-  if(r)
-   {
-    ro=new Global.ResizeObserver(f);
-    ResizeObserver$1.set_observers(new T({
-     $:1,
-     $0:ro,
-     $1:ResizeObserver$1.observers()
-    }));
-    ro.observe(el);
-   }
-  else
-   {
-    changed=ResizeObserver$1.dimsChanged(el);
-    Concurrency.Start((b=null,Concurrency.Delay(function()
-    {
-     return Concurrency.While(function()
-     {
-      return el.isConnected;
-     },Concurrency.Delay(function()
-     {
-      return Concurrency.Bind(Concurrency.Sleep(110),function()
-      {
-       return changed()?(f(),Concurrency.Zero()):Concurrency.Zero();
-      });
-     }));
-    })),null);
-   }
- };
- ResizeObserver$1.set_observers=function($1)
- {
-  SC$3.$cctor();
-  SC$3.observers=$1;
- };
- ResizeObserver$1.observers=function()
- {
-  SC$3.$cctor();
-  return SC$3.observers;
- };
- ResizeObserver$1.dimsChanged=function(el)
- {
-  var dims;
-  dims=[el.getBoundingClientRect()];
-  return function()
-  {
-   var ndims;
-   ndims=el.getBoundingClientRect();
-   return Unchecked.Equals(ResizeObserver$1.domRect2Tuple(dims[0]),ResizeObserver$1.domRect2Tuple(ndims))?false:(dims[0]=ndims,true);
-  };
- };
- ResizeObserver$1.domRect2Tuple=function(r)
- {
-  return[r.top,r.left,r.width,r.height];
- };
- HoverProvider=MonacoGenAdapter.HoverProvider=Runtime$1.Class({},Obj,HoverProvider);
- HoverProvider.New=Runtime$1.Ctor(function(toolTip)
- {
-  Obj.New.call(this);
-  this.toolTip=toolTip;
- },HoverProvider);
- DefinitionProvider=MonacoGenAdapter.DefinitionProvider=Runtime$1.Class({},Obj,DefinitionProvider);
- DefinitionProvider.New=Runtime$1.Ctor(function(declaration)
- {
-  Obj.New.call(this);
-  this.declaration=declaration;
- },DefinitionProvider);
- CompletionItemProvider=MonacoGenAdapter.CompletionItemProvider=Runtime$1.Class({},Obj,CompletionItemProvider);
- CompletionItemProvider.New=Runtime$1.Ctor(function(autoComplete)
- {
-  Obj.New.call(this);
-  this.autoComplete=autoComplete;
- },CompletionItemProvider);
  Char.IsWhiteSpace=function(c)
  {
   return c.match(new Global.RegExp("\\s"))!==null;
@@ -18330,8 +17691,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Anims.UseAnimations=function()
  {
-  SC$10.$cctor();
-  return SC$10.UseAnimations;
+  SC$9.$cctor();
+  return SC$9.UseAnimations;
  };
  Anims.Actions=function(a)
  {
@@ -18405,21 +17766,72 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    Duration:nextDuration
   };
  };
+ SC$8.$cctor=function()
+ {
+  SC$8.$cctor=Global.ignore;
+  SC$8.BatchUpdatesEnabled=true;
+ };
+ Scheduler=Concurrency.Scheduler=Runtime$1.Class({
+  Fork:function(action)
+  {
+   var $this;
+   $this=this;
+   this.robin.push(action);
+   this.idle?(this.idle=false,Global.setTimeout(function()
+   {
+    $this.tick();
+   },0)):void 0;
+  },
+  tick:function()
+  {
+   var loop,$this,t;
+   $this=this;
+   t=Date.now();
+   loop=true;
+   while(loop)
+    if(this.robin.length===0)
+     {
+      this.idle=true;
+      loop=false;
+     }
+    else
+     {
+      (this.robin.shift())();
+      Date.now()-t>40?(Global.setTimeout(function()
+      {
+       $this.tick();
+      },0),loop=false):void 0;
+     }
+  }
+ },Obj,Scheduler);
+ Scheduler.New=Runtime$1.Ctor(function()
+ {
+  Obj.New.call(this);
+  this.idle=true;
+  this.robin=[];
+ },Scheduler);
+ OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},Error,OperationCanceledException);
+ OperationCanceledException.New=Runtime$1.Ctor(function(ct)
+ {
+  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
+ },OperationCanceledException);
+ OperationCanceledException.New$1=Runtime$1.Ctor(function(message,inner,ct)
+ {
+  this.message=message;
+  this.inner=inner;
+  Object.setPrototypeOf(this,OperationCanceledException.prototype);
+  this.ct=ct;
+ },OperationCanceledException);
  SC$9.$cctor=function()
  {
   SC$9.$cctor=Global.ignore;
-  SC$9.BatchUpdatesEnabled=true;
- };
- SC$10.$cctor=function()
- {
-  SC$10.$cctor=Global.ignore;
-  SC$10.CubicInOut=Easing.Custom(function(t)
+  SC$9.CubicInOut=Easing.Custom(function(t)
   {
    var t2;
    t2=t*t;
    return 3*t2-2*(t2*t);
   });
-  SC$10.UseAnimations=true;
+  SC$9.UseAnimations=true;
  };
  AppendList.Append=function(x,y)
  {
@@ -18461,8 +17873,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  AppendList.Empty=function()
  {
-  SC$11.$cctor();
-  return SC$11.Empty;
+  SC$10.$cctor();
+  return SC$10.Empty;
  };
  Easing=UI.Easing=Runtime$1.Class({},Obj,Easing);
  Easing.Custom=function(f)
@@ -18585,10 +17997,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    $0:Array.ofSeqNonCopying(q)
   };
  };
- SC$11.$cctor=function()
+ SC$10.$cctor=function()
  {
-  SC$11.$cctor=Global.ignore;
-  SC$11.Empty={
+  SC$10.$cctor=Global.ignore;
+  SC$10.Empty={
    $:0
   };
  };
