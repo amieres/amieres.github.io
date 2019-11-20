@@ -8,11 +8,9 @@ function requireSync(files, f) {
 requirejs([
      "https://code.jquery.com/jquery-3.1.1.min.js"
     ,"https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-    ,"FShUI/demoLayout.txt"
-    ,"FShUI/templates.html"
     ,"/EPFileX/FileSaver/FileSaver.js"
     ,"FShUI/WebSharper/WebSharper.Core.JavaScript/Runtime.min.js"
-], function( jquery  , markedJS, demoLayout, templates) {
+], function( jquery  , markedJS) {
     $      = jquery  ;
     marked = markedJS;
     requireSync([
@@ -29,7 +27,10 @@ requirejs([
     ], function() {
         IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
         IntelliFactory.Runtime.Start();
-        startPage(demoLayout, templates);
+        fetch("FShUI/demoLayout.txt", demoLayout =>
+        fetch("FShUI/templates.html", templates  =>
+        startPage(demoLayout, templates)
+        ));
     });
 });
 
