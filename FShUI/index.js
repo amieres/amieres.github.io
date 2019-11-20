@@ -22,6 +22,8 @@ requirejs([
         ,"FShUI/WebSharper/WebSharper.UI.js?h=-1840229558"
         ,"FShUI/WebSharper/WebSharper.UI.Templating.Runtime.js?h=-177383966"      
         ,"FShUI/LayoutEngine.js"
+        ,"FShUI/MonacoPlugIn.js"
+        ,"FShUI/SnippetsUI.js"
     ], startPage);
 });
 
@@ -30,10 +32,8 @@ function startPage() {
         IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
         IntelliFactory.Runtime.Start();
     }
-    require(["FShUI/MonacoPlugIn.js", "FShUI/SnippetsUI.js"], function () {
-        FsRoot.LibraryJS.MonacoPlugIn.plugInAdded();
-        FsRoot.LibraryJS.SnippetsUI  .plugInAdded();
-    });
+    FsRoot.LibraryJS.MonacoPlugIn.plugInAdded();
+    FsRoot.LibraryJS.SnippetsUI  .plugInAdded();
     FsRootDll.LibraryJS.NewLY.addLayout("lytTarget2", "");
     FsRootDll.LibraryJS.NewLY.addLayout("lytDemo"   , `
 lytTarget2 PlugIn
