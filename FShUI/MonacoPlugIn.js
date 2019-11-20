@@ -1,10 +1,10 @@
 (function()
 {
  "use strict";
- var Global,FsRoot,Library,ResultMessage,ResultMessageHelpers,Monads,Seq,Async,WebSharper,Obj,Result,Builder,Operators,BuilderP,ResultM,Builder$1,Operators$1,ResultMAutoOpen,AsyncResultM,AsyncResultMBuilder,Operators$2,AsyncResultMAutoOpen,LibraryJS,Promise,PromiseM,GenEditor,Position,AnnotationType,Annotation,Completion,GenEditorHook,GenEditor$1,ResizeObserver,Monaco,Position$1,Range,Uri,Location,FindMatch,WordAtPosition,Model,MarkDownString,MarkerData,CompletionItem,Hover,Editor,MonacoConfig,MonacoGenAdapter,MonacoRT,CompletionItemProvider,HoverProvider,DefinitionProvider,MonacoPlugIn,SC$1,IntelliFactory,Runtime,Utils,Strings,Seq$1,List,Arrays,Concurrency,Enumerator,Result$1,Operators$3,console,UI,View,Unchecked,Var$1,Doc,AttrProxy,FsRootDll,LibraryJS$1,AppFramework;
+ var Global,FsRootDll,Library,ResultMessage,ResultMessageHelpers,Monads,Seq,Async,WebSharper,Obj,Result,Builder,Operators,BuilderP,ResultM,Builder$1,Operators$1,ResultMAutoOpen,AsyncResultM,AsyncResultMBuilder,Operators$2,AsyncResultMAutoOpen,LibraryJS,Promise,PromiseM,GenEditor,Position,AnnotationType,Annotation,Completion,GenEditorHook,GenEditor$1,ResizeObserver,Monaco,Position$1,Range,Uri,Location,FindMatch,WordAtPosition,Model,MarkDownString,MarkerData,CompletionItem,Hover,Editor,MonacoConfig,MonacoGenAdapter,MonacoRT,CompletionItemProvider,HoverProvider,DefinitionProvider,MonacoPlugIn,SC$1,IntelliFactory,Runtime,Utils,Strings,Seq$1,List,Arrays,Concurrency,Enumerator,Result$1,Operators$3,console,UI,View,Unchecked,Var$1,Doc,AttrProxy,AppFramework;
  Global=self;
- FsRoot=Global.FsRoot=Global.FsRoot||{};
- Library=FsRoot.Library=FsRoot.Library||{};
+ FsRootDll=Global.FsRootDll=Global.FsRootDll||{};
+ Library=FsRootDll.Library=FsRootDll.Library||{};
  ResultMessage=Library.ResultMessage=Library.ResultMessage||{};
  ResultMessageHelpers=Library.ResultMessageHelpers=Library.ResultMessageHelpers||{};
  Monads=Library.Monads=Library.Monads||{};
@@ -24,7 +24,7 @@
  AsyncResultMBuilder=AsyncResultM.AsyncResultMBuilder=AsyncResultM.AsyncResultMBuilder||{};
  Operators$2=AsyncResultM.Operators=AsyncResultM.Operators||{};
  AsyncResultMAutoOpen=Monads.AsyncResultMAutoOpen=Monads.AsyncResultMAutoOpen||{};
- LibraryJS=FsRoot.LibraryJS=FsRoot.LibraryJS||{};
+ LibraryJS=FsRootDll.LibraryJS=FsRootDll.LibraryJS||{};
  Promise=LibraryJS.Promise=LibraryJS.Promise||{};
  PromiseM=LibraryJS.PromiseM=LibraryJS.PromiseM||{};
  GenEditor=LibraryJS.GenEditor=LibraryJS.GenEditor||{};
@@ -74,9 +74,7 @@
  Var$1=UI&&UI.Var$1;
  Doc=UI&&UI.Doc;
  AttrProxy=UI&&UI.AttrProxy;
- FsRootDll=Global.FsRootDll;
- LibraryJS$1=FsRootDll&&FsRootDll.LibraryJS;
- AppFramework=LibraryJS$1&&LibraryJS$1.AppFramework;
+ AppFramework=LibraryJS&&LibraryJS.AppFramework;
  ResultMessage=Library.ResultMessage=Runtime.Class({
   toString:function()
   {
@@ -454,7 +452,7 @@
     $:0,
     $0:a
    };
-  },vSR.$0):(Seq.rtn())(Library.Error(vSR.$0));
+  },vSR.$0):(Seq.rtn())(Library.Error$1(vSR.$0));
  };
  Seq.insertO=function(vSO)
  {
@@ -492,7 +490,7 @@
   return vAR.$==0?Concurrency.Bind(vAR.$0,function(x)
   {
    return g(f(x));
-  }):Concurrency.Return(Library.Error(vAR.$0));
+  }):Concurrency.Return(Library.Error$1(vAR.$0));
  };
  Async.insertO=function(vAO)
  {
@@ -605,7 +603,7 @@
     return guard$1()?Result$1.Bind(function()
     {
      return whileLoop(guard$1,body$1);
-    },body$1()):Result.rtn();
+    },body$1()):Result.rtn$1();
    }
    return whileLoop(guard,body);
   },
@@ -656,7 +654,7 @@
   Delay:Global.id,
   Zero:function()
   {
-   return Result.rtn();
+   return Result.rtn$1();
   },
   Bind:function(w,r)
   {
@@ -665,35 +663,35 @@
   ReturnFrom:Global.id,
   Return:function(x)
   {
-   return Result.rtn(x);
+   return Result.rtn$1(x);
   }
  },Obj,Builder);
- Builder.New=Runtime.Ctor(function()
+ Builder.New$1=Runtime.Ctor(function()
  {
   Obj.New.call(this);
  },Builder);
- Operators.result=function()
+ Operators.result$1=function()
  {
   SC$1.$cctor();
   return SC$1.result$1;
  };
- Operators.rtn=function(v)
+ Operators.rtn$1=function(v)
  {
-  return Result.rtn(v);
+  return Result.rtn$1(v);
  };
- Operators.op_GreaterEqualsGreater=function(f,g,v)
+ Operators.op_GreaterEqualsGreater$1=function(f,g,v)
  {
-  return Operators.op_GreaterGreaterEquals(f(v),g);
+  return Operators.op_GreaterGreaterEquals$1(f(v),g);
  };
- Operators.op_RightShift=function(f,g,v)
+ Operators.op_RightShift$1=function(f,g,v)
  {
-  return Operators.op_BarGreaterGreater(f(v),g);
+  return Operators.op_BarGreaterGreater$1(f(v),g);
  };
- Operators.op_GreaterGreaterEquals=function(v,f)
+ Operators.op_GreaterGreaterEquals$1=function(v,f)
  {
   return Result$1.Bind(f,v);
  };
- Operators.op_BarGreaterGreater=function(v,f)
+ Operators.op_BarGreaterGreater$1=function(v,f)
  {
   return Result$1.Map(f,v);
  };
@@ -720,7 +718,7 @@
     return guard$1()?Result$1.Bind(function()
     {
      return whileLoop(guard$1,body$1);
-    },body$1()):Result.rtn();
+    },body$1()):Result.rtn$1();
    }
    return whileLoop(guard,body);
   },
@@ -771,7 +769,7 @@
   Delay:Global.id,
   Zero:function()
   {
-   return Result.rtn();
+   return Result.rtn$1();
   },
   Bind:function(w,r)
   {
@@ -780,7 +778,7 @@
   ReturnFrom:Global.id,
   Return:function(x)
   {
-   return Result.rtn(x);
+   return Result.rtn$1(x);
   }
  },Obj,BuilderP);
  BuilderP.New=Runtime.Ctor(function()
@@ -794,19 +792,19 @@
  };
  Result.iterP=function(fE,f,r)
  {
-  Result.defaultWith(fE,Result.mapP(f,r));
+  Result.defaultWith$1(fE,Result.mapP(f,r));
  };
  Result.mapP=function(f,m)
  {
   return Result.bindP(function(x)
   {
-   return Result.rtn(f(x));
+   return Result.rtn$1(f(x));
   },m);
  };
  Result.bindP=function(f,r)
  {
   if(r.$==1)
-   return Library.Error(r.$0);
+   return Library.Error$1(r.$0);
   else
    try
    {
@@ -814,7 +812,7 @@
    }
    catch(e)
    {
-    return Library.Error(new ResultMessage({
+    return Library.Error$1(new ResultMessage({
      $:5,
      $0:e.message,
      $1:e.stack
@@ -823,49 +821,49 @@
  };
  Result.freeMessage=function(r)
  {
-  return r.$==1?Library.Error(ResultMessage.freeMessage(r.$0)):{
+  return r.$==1?Library.Error$1(ResultMessage.freeMessage(r.$0)):{
    $:0,
    $0:r.$0
   };
  };
- Result.result=function()
+ Result.result$1=function()
  {
   SC$1.$cctor();
   return SC$1.result;
  };
- Result.sequenceSeq=function(sq)
+ Result.sequenceSeq$1=function(sq)
  {
-  return Result.traverseSeq(Global.id,sq);
+  return Result.traverseSeq$1(Global.id,sq);
  };
- Result.traverseSeq=function(f,sq)
+ Result.traverseSeq$1=function(f,sq)
  {
   return Result$1.Map(Global.id,Arrays.foldBack(function(head,tail)
   {
-   return Result.op_GreaterGreaterEquals(f(head),function(h)
+   return Result.op_GreaterGreaterEquals$1(f(head),function(h)
    {
-    return Result.op_GreaterGreaterEquals(tail,function(t)
+    return Result.op_GreaterGreaterEquals$1(tail,function(t)
     {
-     return Result.rtn(new List.T({
+     return Result.rtn$1(new List.T({
       $:1,
       $0:h,
       $1:t
      }));
     });
    });
-  },Arrays.ofSeq(sq),Result.rtn(List.T.Empty)));
+  },Arrays.ofSeq(sq),Result.rtn$1(List.T.Empty)));
  };
- Result.op_GreaterGreaterEquals=function(r,f)
+ Result.op_GreaterGreaterEquals$1=function(r,f)
  {
   return Result$1.Bind(f,r);
  };
- Result.absorbO=function(f,vOR)
+ Result.absorbO$1=function(f,vOR)
  {
   return Result$1.Bind(function(v)
   {
-   return Result.ofOption(f,v);
+   return Result.ofOption$1(f,v);
   },vOR);
  };
- Result.insertO=function(vRO)
+ Result.insertO$1=function(vRO)
  {
   var o;
   o=vRO==null?null:{
@@ -883,7 +881,7 @@
    $0:null
   }:o.$0;
  };
- Result.ofOption=function(f,vO)
+ Result.ofOption$1=function(f,vO)
  {
   var o;
   o=vO==null?null:{
@@ -895,67 +893,67 @@
   };
   return o==null?function(x)
   {
-   return Library.Error(f(x));
+   return Library.Error$1(f(x));
   }():o.$0;
  };
- Result.get=function(r)
+ Result.get$1=function(r)
  {
-  return Result.defaultWith(function(x)
+  return Result.defaultWith$1(function(x)
   {
    return Operators$3.FailWith(Global.String(x));
   },r);
  };
- Result.iter=function(fE,f,r)
+ Result.iter$1=function(fE,f,r)
  {
-  Result.defaultWith(fE,Result$1.Map(f,r));
+  Result.defaultWith$1(fE,Result$1.Map(f,r));
  };
- Result.failIfFalse=function(m,v)
+ Result.failIfFalse$1=function(m,v)
  {
-  return!v?Library.Error(m):{
+  return!v?Library.Error$1(m):{
    $:0,
    $0:null
   };
  };
- Result.failIfTrue=function(m,v)
+ Result.failIfTrue$1=function(m,v)
  {
-  return v?Library.Error(m):{
+  return v?Library.Error$1(m):{
    $:0,
    $0:null
   };
  };
- Result.defaultValue=function(d,r)
+ Result.defaultValue$1=function(d,r)
  {
   return r.$==1?d:r.$0;
  };
- Result.defaultWith=function(f,r)
+ Result.defaultWith$1=function(f,r)
  {
   return r.$==1?f(r.$0):r.$0;
  };
- Result.toOption=function(r)
+ Result.toOption$1=function(r)
  {
   return r.$==0?{
    $:1,
    $0:r.$0
   }:null;
  };
- Result.flatten=function(r)
+ Result.flatten$1=function(r)
  {
   return Result$1.Bind(Global.id,r);
  };
- Result.join=function(r)
+ Result.join$1=function(r)
  {
   return Result$1.Bind(Global.id,r);
  };
- Result.rtn=function(a)
+ Result.rtn$1=function(a)
  {
   return{
    $:0,
    $0:a
   };
  };
- Result.errorf=function(fmt)
+ Result.errorf$1=function(fmt)
  {
-  return fmt(Library.Error);
+  return fmt(Library.Error$1);
  };
  Builder$1=ResultM.Builder=Runtime.Class({
   For:function(sequence,body)
@@ -1253,11 +1251,11 @@
  };
  ResultM.defaultValue=function(d,r)
  {
-  return Result.defaultValue(d,ResultM.toResult(r));
+  return Result.defaultValue$1(d,ResultM.toResult(r));
  };
  ResultM.defaultWith=function(f,r)
  {
-  return Result.defaultWith(f,ResultM.toResult(r));
+  return Result.defaultWith$1(f,ResultM.toResult(r));
  };
  ResultM.toOption=function(r)
  {
@@ -1265,28 +1263,28 @@
  };
  ResultM.toResultD=function(r)
  {
-  return r.$0==null?Library.Error(r.$1):{
+  return r.$0==null?Library.Error$1(r.$1):{
    $:0,
    $0:[r.$0.$0,r.$1]
   };
  };
  ResultM.toResult=function(r)
  {
-  return r.$0==null?Library.Error(r.$1):{
+  return r.$0==null?Library.Error$1(r.$1):{
    $:0,
    $0:r.$0.$0
   };
  };
  ResultM.freeMessage=function(r)
  {
-  return r.$==1?Library.Error(ResultMessage.freeMessage(r.$0)):{
+  return r.$==1?Library.Error$1(ResultMessage.freeMessage(r.$0)):{
    $:0,
    $0:r.$0
   };
  };
  ResultM.rtnr=function(vR)
  {
-  return Result.defaultWith(Monads.ErrorM,Result$1.Map(Monads.OkM$1,vR));
+  return Result.defaultWith$1(Monads.ErrorM,Result$1.Map(Monads.OkM$1,vR));
  };
  ResultM.rtnM=function(m)
  {
@@ -1507,7 +1505,7 @@
     $:0,
     $0:a
    };
-  },vRAR.$0):AsyncResultM.rtn(Library.Error(vRAR.$0));
+  },vRAR.$0):AsyncResultM.rtn(Library.Error$1(vRAR.$0));
  };
  AsyncResultM.insertO=function(vRAO)
  {
@@ -1618,7 +1616,7 @@
  {
   function g(v)
   {
-   Library.print(v);
+   Library.print$1(v);
   }
   AsyncResultM.iterA(function(x)
   {
@@ -1629,7 +1627,7 @@
  {
   function g(v)
   {
-   Library.print(v);
+   Library.print$1(v);
   }
   AsyncResultM.iterS(function(x)
   {
@@ -1808,7 +1806,7 @@
    $1:ResultMessage.NoMsg
   };
  };
- Library.print=function(v)
+ Library.print$1=function(v)
  {
   if(typeof v=="string")
    ((function($1)
@@ -1833,7 +1831,7 @@
     console.log(s);
    }))(v));
  };
- Library.Error=function(a)
+ Library.Error$1=function(a)
  {
   return{
    $:1,
@@ -2037,7 +2035,7 @@
  {
   return GenEditor$1.New(v,genE.disabled,genE.annotations,genE.onChange,genE.onRender,genE.autoCompletion,genE.toolTip,genE.declaration,genE.editorO,genE.editorHook);
  };
- ResizeObserver.addResizeObserver=function(f,el)
+ ResizeObserver.addResizeObserver$1=function(f,el)
  {
   var r,ro,changed,b;
   try
@@ -2051,16 +2049,16 @@
   if(r)
    {
     ro=new Global.ResizeObserver(f);
-    ResizeObserver.set_observers(new List.T({
+    ResizeObserver.set_observers$1(new List.T({
      $:1,
      $0:ro,
-     $1:ResizeObserver.observers()
+     $1:ResizeObserver.observers$1()
     }));
     ro.observe(el);
    }
   else
    {
-    changed=ResizeObserver.dimsChanged(el);
+    changed=ResizeObserver.dimsChanged$1(el);
     Concurrency.Start((b=null,Concurrency.Delay(function()
     {
      return Concurrency.While(function()
@@ -2076,7 +2074,7 @@
     })),null);
    }
  };
- ResizeObserver.dimsChanged=function(el)
+ ResizeObserver.dimsChanged$1=function(el)
  {
   var dims;
   dims=[el.getBoundingClientRect()];
@@ -2084,19 +2082,19 @@
   {
    var ndims;
    ndims=el.getBoundingClientRect();
-   return Unchecked.Equals(ResizeObserver.domRect2Tuple(dims[0]),ResizeObserver.domRect2Tuple(ndims))?false:(dims[0]=ndims,true);
+   return Unchecked.Equals(ResizeObserver.domRect2Tuple$1(dims[0]),ResizeObserver.domRect2Tuple$1(ndims))?false:(dims[0]=ndims,true);
   };
  };
- ResizeObserver.domRect2Tuple=function(r)
+ ResizeObserver.domRect2Tuple$1=function(r)
  {
   return[r.top,r.left,r.width,r.height];
  };
- ResizeObserver.observers=function()
+ ResizeObserver.observers$1=function()
  {
   SC$1.$cctor();
   return SC$1.observers;
  };
- ResizeObserver.set_observers=function($1)
+ ResizeObserver.set_observers$1=function($1)
  {
   SC$1.$cctor();
   SC$1.observers=$1;
@@ -2257,7 +2255,7 @@
   {
    var editor,_elt,o;
    editor=(_elt=elchild.parentElement,self.monaco.editor.create(_elt,monc.options,monc.overrides));
-   ResizeObserver.addResizeObserver(function()
+   ResizeObserver.addResizeObserver$1(function()
    {
     editor.layout();
    },elchild.parentElement);
@@ -2291,7 +2289,7 @@
     {
      var editor,_elt,o;
      editor=(_elt=elchild.parentElement,self.monaco.editor.create(_elt,monc.options,monc.overrides));
-     ResizeObserver.addResizeObserver(function()
+     ResizeObserver.addResizeObserver$1(function()
      {
       editor.layout();
      },elchild.parentElement);
@@ -2526,7 +2524,7 @@
   {
    var editor,_elt,o,_p,o$1,_p$1,o$2,_p$2;
    editor=(_elt=elchild.parentElement,self.monaco.editor.create(_elt,monRT.options,monRT.overrides));
-   ResizeObserver.addResizeObserver(function()
+   ResizeObserver.addResizeObserver$1(function()
    {
     editor.layout();
    },elchild.parentElement);
@@ -2556,7 +2554,7 @@
     {
      var editor,_elt,o,_p,o$1,_p$1,o$2,_p$2;
      editor=(_elt=elchild.parentElement,self.monaco.editor.create(_elt,monRT.options,monRT.overrides));
-     ResizeObserver.addResizeObserver(function()
+     ResizeObserver.addResizeObserver$1(function()
      {
       editor.layout();
      },elchild.parentElement);
@@ -2670,8 +2668,8 @@
   {
    return[v];
   };
-  SC$1.result=new Builder.New();
-  SC$1.result$1=Result.result();
+  SC$1.result=new Builder.New$1();
+  SC$1.result$1=Result.result$1();
   SC$1.resultP=new BuilderP.New();
   SC$1.resultM=new Builder$1.New();
   SC$1.asyncResultM=new AsyncResultMBuilder.New();

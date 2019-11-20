@@ -1,11 +1,11 @@
 <div ws-template="Snippet" >
-    <div draggable="true" class="code-editor-list-tile \${Predecessor} \${Selected}" 
+    <div draggable="true" class="code-editor-list-tile ${Predecessor} ${Selected}" 
          ws-ondrag="Drag"
          ws-ondragover="DragOver"
          ws-ondrop="Drop"
         >
-        <span class="node \${Parent} \${ErrorMsg}" title="expand" ws-onclick="ToggleCollapse"></span>
-        <div  class="code-editor-list-text" style="text-indent:\${Indent}em; white-space: pre" ws-onclick="Select" ws-onafterrender="AfterRender" >\${Name}</div>
+        <span class="node ${Parent} ${ErrorMsg}" title="expand" ws-onclick="ToggleCollapse"></span>
+        <div  class="code-editor-list-text" style="text-indent:${Indent}em; white-space: pre" ws-onclick="Select" ws-onafterrender="AfterRender" >${Name}</div>
         <span class="predecessor" title="toggle predecessor" ws-onclick="TogglePred">X</span>
     </div>
 </div>

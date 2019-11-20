@@ -1,10 +1,10 @@
 (function()
 {
  "use strict";
- var Global,FsRoot,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,LibraryJS,View,Serializer$1,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,SC$1,SnippetsUI_Templates,WebSharper,Seq$1,Arrays,List,Unchecked,Collections,FSharpMap,IntelliFactory,Runtime,Utils,FSharpSet,BalancedTree,Strings,Operators,Option$1,System,Guid,Date,UI,View$1,JSON,Var$1,Doc,FromView,AttrModule,console,Slice,Templating,Runtime$1,Server,ProviderBuilder,Handler,TemplateInstance,Dictionary,Enumerator,FsRootDll,LibraryJS$1,LayoutEngineModule,DateUtil,Numeric,ListModel,LM,AppFramework,Client,Templates;
+ var Global,FsRootDll,Library,UoM,Unsafe,Dict,Monads,Seq,Option,ParseO,Serializer,JsonIntermediate,Snippet,SnippetModule,SnippetSerialize,Model,LibraryJS,View,Serializer$1,Util,DragDrop,DragInfo,SnippetsUI,SnippetHierData,SaveLoad,SC$1,SnippetsUI_Templates,WebSharper,Seq$1,Arrays,List,Unchecked,Collections,FSharpMap,IntelliFactory,Runtime,Utils,FSharpSet,BalancedTree,Strings,Operators,Option$1,System,Guid,Date,UI,View$1,JSON,Var$1,Doc,FromView,AttrModule,console,Slice,Templating,Runtime$1,Server,ProviderBuilder,Handler,TemplateInstance,Dictionary,Enumerator,LayoutEngineModule,DateUtil,Numeric,ListModel,LM,AppFramework,Client,Templates;
  Global=self;
- FsRoot=Global.FsRoot=Global.FsRoot||{};
- Library=FsRoot.Library=FsRoot.Library||{};
+ FsRootDll=Global.FsRootDll=Global.FsRootDll||{};
+ Library=FsRootDll.Library=FsRootDll.Library||{};
  UoM=Library.UoM=Library.UoM||{};
  Unsafe=UoM.Unsafe=UoM.Unsafe||{};
  Dict=Library.Dict=Library.Dict||{};
@@ -18,7 +18,7 @@
  SnippetModule=Library.SnippetModule=Library.SnippetModule||{};
  SnippetSerialize=Library.SnippetSerialize=Library.SnippetSerialize||{};
  Model=SnippetSerialize.Model=SnippetSerialize.Model||{};
- LibraryJS=FsRoot.LibraryJS=FsRoot.LibraryJS||{};
+ LibraryJS=FsRootDll.LibraryJS=FsRootDll.LibraryJS||{};
  View=LibraryJS.View=LibraryJS.View||{};
  Serializer$1=LibraryJS.Serializer=LibraryJS.Serializer||{};
  Util=LibraryJS.Util=LibraryJS.Util||{};
@@ -64,18 +64,16 @@
  TemplateInstance=Server&&Server.TemplateInstance;
  Dictionary=Collections&&Collections.Dictionary;
  Enumerator=WebSharper&&WebSharper.Enumerator;
- FsRootDll=Global.FsRootDll;
- LibraryJS$1=FsRootDll&&FsRootDll.LibraryJS;
- LayoutEngineModule=LibraryJS$1&&LibraryJS$1.LayoutEngineModule;
+ LayoutEngineModule=LibraryJS&&LibraryJS.LayoutEngineModule;
  DateUtil=WebSharper&&WebSharper.DateUtil;
  Numeric=WebSharper&&WebSharper.Numeric;
  ListModel=UI&&UI.ListModel;
- LM=LibraryJS$1&&LibraryJS$1.LM;
- AppFramework=LibraryJS$1&&LibraryJS$1.AppFramework;
+ LM=LibraryJS&&LibraryJS.LM;
+ AppFramework=LibraryJS&&LibraryJS.AppFramework;
  Client=UI&&UI.Client;
  Templates=Client&&Client.Templates;
  Unsafe.cast=Global.id;
- Dict.add=function(key,v,dict)
+ Dict.add$1=function(key,v,dict)
  {
   if(dict.ContainsKey(key))
    dict.set_Item(key,v);
@@ -108,7 +106,7 @@
     $:0,
     $0:a
    };
-  },vSR.$0):(Seq.rtn())(Library.Error(vSR.$0));
+  },vSR.$0):(Seq.rtn())(Library.Error$1(vSR.$0));
  };
  Seq.insertO=function(vSO)
  {
@@ -147,7 +145,7 @@
     $:0,
     $0:x.$0
    }
-  }):Option.rtn(Library.Error(vOR.$0));
+  }):Option.rtn(Library.Error$1(vOR.$0));
  };
  Option.sequenceSeq=function(sq)
  {
@@ -228,72 +226,72 @@
    $0:a
   };
  };
- ParseO.Guid=function()
+ ParseO.Guid$1=function()
  {
   SC$1.$cctor();
   return SC$1["|Guid|_|"];
  };
- ParseO.Double=function()
+ ParseO.Double$1=function()
  {
   SC$1.$cctor();
   return SC$1["|Double|_|"];
  };
- ParseO.Single=function()
+ ParseO.Single$1=function()
  {
   SC$1.$cctor();
   return SC$1["|Single|_|"];
  };
- ParseO.Int64=function()
+ ParseO.Int64$1=function()
  {
   SC$1.$cctor();
   return SC$1["|Int64|_|"];
  };
- ParseO.Int=function()
+ ParseO.Int$1=function()
  {
   SC$1.$cctor();
   return SC$1["|Int|_|"];
  };
- ParseO.Date=function()
+ ParseO.Date$1=function()
  {
   SC$1.$cctor();
   return SC$1["|Date|_|"];
  };
- ParseO.parseGuidO=function()
+ ParseO.parseGuidO$1=function()
  {
   SC$1.$cctor();
   return SC$1.parseGuidO;
  };
- ParseO.parseDoubleO=function()
+ ParseO.parseDoubleO$1=function()
  {
   SC$1.$cctor();
   return SC$1.parseDoubleO;
  };
- ParseO.parseSingleO=function()
+ ParseO.parseSingleO$1=function()
  {
   SC$1.$cctor();
   return SC$1.parseSingleO;
  };
- ParseO.parseInt64O=function()
+ ParseO.parseInt64O$1=function()
  {
   SC$1.$cctor();
   return SC$1.parseInt64O;
  };
- ParseO.parseIntO=function()
+ ParseO.parseIntO$1=function()
  {
   SC$1.$cctor();
   return SC$1.parseIntO;
  };
- ParseO.parseDateO=function()
+ ParseO.parseDateO$1=function()
  {
   SC$1.$cctor();
   return SC$1.parseDateO;
  };
- ParseO.parseDateO2=function()
+ ParseO.parseDateO2$1=function()
  {
   SC$1.$cctor();
   return SC$1.parseDateO2;
  };
- ParseO.tryParseWith=function(tryParseFunc)
+ ParseO.tryParseWith$1=function(tryParseFunc)
  {
   function g($1,$2)
   {
@@ -888,18 +886,18 @@
   SC$1.$cctor();
   return SC$1.serSnippetId;
  };
- Library.Error=function(a)
+ Library.Error$1=function(a)
  {
   return{
    $:1,
    $0:a
   };
  };
- View.sequenceListApp=function(list)
+ View.sequenceListApp$1=function(list)
  {
-  return View.traverseListApp(Global.id,list);
+  return View.traverseListApp$1(Global.id,list);
  };
- View.traverseListApp=function(f,list)
+ View.traverseListApp$1=function(f,list)
  {
   function cons(head,tail)
   {
@@ -911,57 +909,57 @@
   }
   return List.foldBack(function(head,tail)
   {
-   return View.op_LessMultiplyGreater(View.op_LessMultiplyGreater(View.rtn(function($1)
+   return View.op_LessMultiplyGreater$1(View.op_LessMultiplyGreater$1(View.rtn$1(function($1)
    {
     return function($2)
     {
      return cons($1,$2);
     };
    }),f(head)),tail);
-  },list,View.rtn(List.T.Empty));
+  },list,View.rtn$1(List.T.Empty));
  };
- View.op_LessMultiplyGreater=function(a,a$1)
+ View.op_LessMultiplyGreater$1=function(a,a$1)
  {
   return View$1.Apply(a,a$1);
  };
- View.sequenceSeq=function(sq)
+ View.sequenceSeq$1=function(sq)
  {
-  return View.traverseSeq(Global.id,sq);
+  return View.traverseSeq$1(Global.id,sq);
  };
- View.traverseSeq=function(f,sq)
+ View.traverseSeq$1=function(f,sq)
  {
-  return View.map(Global.id,Arrays.foldBack(function(head,tail)
+  return View.map$1(Global.id,Arrays.foldBack(function(head,tail)
   {
-   return View.op_GreaterGreaterEquals(f(head),function(h)
+   return View.op_GreaterGreaterEquals$1(f(head),function(h)
    {
-    return View.op_GreaterGreaterEquals(tail,function(t)
+    return View.op_GreaterGreaterEquals$1(tail,function(t)
     {
-     return View.rtn(new List.T({
+     return View.rtn$1(new List.T({
       $:1,
       $0:h,
       $1:t
      }));
     });
    });
-  },Arrays.ofSeq(sq),View.rtn(List.T.Empty)));
+  },Arrays.ofSeq(sq),View.rtn$1(List.T.Empty)));
  };
- View.op_GreaterGreaterEquals=function(v,f)
+ View.op_GreaterGreaterEquals$1=function(v,f)
  {
-  return View.bind(f,v);
+  return View.bind$1(f,v);
  };
- View.rtn=function(a)
+ View.rtn$1=function(a)
  {
   return View$1.Const(a);
  };
- View.map=function(a,a$1)
+ View.map$1=function(a,a$1)
  {
   return View$1.Map(a,a$1);
  };
- View.bind=function(a,a$1)
+ View.bind$1=function(a,a$1)
  {
   return View$1.Bind(a,a$1);
  };
- View.insertWO=function(a)
+ View.insertWO$1=function(a)
  {
   return a==null?View$1.Const(null):View$1.Map(function(a$1)
   {
@@ -1219,11 +1217,11 @@
  };
  Util.selectorLensGuid=function(sel)
  {
-  return(Util.selectorLens(Global.String,ParseO.parseGuidO()))(sel);
+  return(Util.selectorLens(Global.String,ParseO.parseGuidO$1()))(sel);
  };
  Util.selectorLensInt=function(sel)
  {
-  return(Util.selectorLens(Global.String,ParseO.parseIntO()))(sel);
+  return(Util.selectorLens(Global.String,ParseO.parseIntO$1()))(sel);
  };
  Util.selectorLens=function(toStr,ofStrO)
  {
@@ -1308,7 +1306,7 @@
      return $2(Utils.prettyPrint($3));
     };
    }(Global.id))($1);
-  },v.get_View()),(f=ParseO.parseDoubleO(),function(x)
+  },v.get_View()),(f=ParseO.parseDoubleO$1(),function(x)
   {
    return g(f(x));
   }));
@@ -1751,7 +1749,7 @@
  SnippetsUI.selectorLensGuidId=function(sel)
  {
   var f,g;
-  return(Util.selectorLens(Global.String,(f=ParseO.parseGuidO(),(g=function(o)
+  return(Util.selectorLens(Global.String,(f=ParseO.parseGuidO$1(),(g=function(o)
   {
    return o==null?null:{
     $:1,
@@ -2401,7 +2399,7 @@
   {
    return[v$1];
   };
-  SC$1.parseDateO2=(g=ParseO.tryParseWith(function(a)
+  SC$1.parseDateO2=(g=ParseO.tryParseWith$1(function(a)
   {
    var o,m;
    o=0;
@@ -2410,13 +2408,13 @@
   {
    return g(f$1(x$2));
   });
-  SC$1.parseDateO=ParseO.tryParseWith(function(a)
+  SC$1.parseDateO=ParseO.tryParseWith$1(function(a)
   {
    var o,m;
    o=0;
    return[(m=DateUtil.TryParse(a),m!=null&&m.$==1&&(o=m.$0,true)),o];
   });
-  SC$1.parseIntO=ParseO.tryParseWith(function(a)
+  SC$1.parseIntO=ParseO.tryParseWith$1(function(a)
   {
    var o;
    o=0;
@@ -2431,7 +2429,7 @@
     }
    }),o];
   });
-  SC$1.parseInt64O=ParseO.tryParseWith(function(a)
+  SC$1.parseInt64O=ParseO.tryParseWith$1(function(a)
   {
    var o;
    o=0;
@@ -2446,19 +2444,19 @@
     }
    }),o];
   });
-  SC$1.parseSingleO=ParseO.tryParseWith(function(a)
+  SC$1.parseSingleO=ParseO.tryParseWith$1(function(a)
   {
    var o,$1;
    o=0;
    return[($1=Global.Number(a),Global.isNaN($1)?false:(o=$1,true)),o];
   });
-  SC$1.parseDoubleO=ParseO.tryParseWith(function(a)
+  SC$1.parseDoubleO=ParseO.tryParseWith$1(function(a)
   {
    var o,$1;
    o=0;
    return[($1=Global.Number(a),Global.isNaN($1)?false:(o=$1,true)),o];
   });
-  SC$1.parseGuidO=ParseO.tryParseWith(function(a)
+  SC$1.parseGuidO=ParseO.tryParseWith$1(function(a)
   {
    var o;
    o=null;
@@ -2473,12 +2471,12 @@
     }
    }),o];
   });
-  SC$1["|Date|_|"]=ParseO.parseDateO();
-  SC$1["|Int|_|"]=ParseO.parseIntO();
-  SC$1["|Int64|_|"]=ParseO.parseInt64O();
-  SC$1["|Single|_|"]=ParseO.parseSingleO();
-  SC$1["|Double|_|"]=ParseO.parseDoubleO();
-  SC$1["|Guid|_|"]=ParseO.parseGuidO();
+  SC$1["|Date|_|"]=ParseO.parseDateO$1();
+  SC$1["|Int|_|"]=ParseO.parseIntO$1();
+  SC$1["|Int64|_|"]=ParseO.parseInt64O$1();
+  SC$1["|Single|_|"]=ParseO.parseSingleO$1();
+  SC$1["|Double|_|"]=ParseO.parseDoubleO$1();
+  SC$1["|Guid|_|"]=ParseO.parseGuidO$1();
   SC$1.serString=[Serializer.toJsonString,function(j)
   {
    return j.tryString();
@@ -2544,7 +2542,7 @@
    };
   }];
   SC$1.serTypedRegisters=new Dictionary.New$5();
-  SC$1.serGuid=(t=Serializer.serString(),Serializer.mapO(Global.String,ParseO.parseGuidO(),t[0],t[1]));
+  SC$1.serGuid=(t=Serializer.serString(),Serializer.mapO(Global.String,ParseO.parseGuidO$1(),t[0],t[1]));
   SC$1.defaultSnippet=Snippet.New("00000000-0000-0000-0000-000000000000","","",null,new FSharpSet.New$1(null),[],(new Date(0)).getTime());
   SC$1.serSnippetId=(s="SnippetId",[function(gid)
   {
@@ -2557,7 +2555,7 @@
   },function(j)
   {
    var o,o$1,o$2,f$3;
-   o=(o$1=(o$2=j.tryField(s),o$2==null?null:o$2.$0.tryString()),(f$3=ParseO.parseGuidO(),o$1==null?null:f$3(o$1.$0)));
+   o=(o$1=(o$2=j.tryField(s),o$2==null?null:o$2.$0.tryString()),(f$3=ParseO.parseGuidO$1(),o$1==null?null:f$3(o$1.$0)));
    return o==null?null:{
     $:1,
     $0:o.$0
