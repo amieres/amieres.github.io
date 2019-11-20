@@ -6,11 +6,11 @@ function requireSync(files, f) {
 }
 
 requirejs([
-      "https://code.jquery.com/jquery-3.1.1.min.js"
+     "https://code.jquery.com/jquery-3.1.1.min.js"
     ,"https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-//      ,"/EPFileX/FileSaver/FileSaver.js"
+    ,"/EPFileX/FileSaver/FileSaver.js"
     ,"FShUI/WebSharper/WebSharper.Core.JavaScript/Runtime.min.js"
-] , function (jquery  , markedJS) {
+], function (jquery  , markedJS) {
     $      =  jquery  ;
     marked =  markedJS;
     requireSync([
@@ -22,8 +22,6 @@ requirejs([
         ,"FShUI/WebSharper/WebSharper.UI.js?h=-1840229558"
         ,"FShUI/WebSharper/WebSharper.UI.Templating.Runtime.js?h=-177383966"      
         ,"FShUI/LayoutEngine.js"
-        ,"FShUI/MonacoPlugIn.js"
-        ,"FShUI/SnippetsUI.js"
     ], startPage);
 });
 
@@ -32,8 +30,10 @@ function startPage() {
         IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
         IntelliFactory.Runtime.Start();
     }
-    FsRoot.LibraryJS.MonacoPlugIn.plugInAdded();
-    FsRoot.LibraryJS.SnippetsUI  .plugInAdded();
+    require(["FShUI/MonacoPlugIn.js", "FShUI/SnippetsUI.js"], function () {
+        FsRoot.LibraryJS.MonacoPlugIn.plugInAdded();
+        FsRoot.LibraryJS.SnippetsUI  .plugInAdded();
+    });
     FsRootDll.LibraryJS.NewLY.addLayout("lytTarget2", "");
     FsRootDll.LibraryJS.NewLY.addLayout("lytDemo", `
 
