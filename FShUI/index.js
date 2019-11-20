@@ -35,11 +35,10 @@ function startPage() {
         FsRoot.LibraryJS.SnippetsUI  .plugInAdded();
     });
     FsRootDll.LibraryJS.NewLY.addLayout("lytTarget2", "");
-    FsRootDll.LibraryJS.NewLY.addLayout("lytDemo", `
-
+    FsRootDll.LibraryJS.NewLY.addLayout("lytDemo"   , `
 lytTarget2 PlugIn
-: Var ParseMsgs
-: Doc main 
+: View ParseMsgs
+: Doc  main 
 
 editorDataSel Var ""
 
