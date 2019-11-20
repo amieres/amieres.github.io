@@ -90,5 +90,5 @@ main0 vertical 0-60-100
 : Docs Right
     
     `);
-    FsRootDll.LibraryJS.AppFramework.mainDocV.Set("lytDemo.main2");
+    FsRootDll.LibraryJS.AppFramework.mainDocV().Set("lytDemo.main2");
 });
