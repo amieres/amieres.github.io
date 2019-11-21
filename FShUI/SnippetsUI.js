@@ -1371,31 +1371,35 @@
   files=element.files;
   files.length>0?(reader=new Global.FileReader(),reader.onload=function(e)
   {
-   var x,x$1;
-   try
-   {
-    x=(x$1=e.target.result,(Serializer$1.deserializeWithDefs((SnippetSerialize.serModel())[0],(SnippetSerialize.serModel())[1]))(x$1));
-    return(Option.iter(function(m)
-    {
-     SnippetsUI.snippetsLM().Set(m.snippets);
-     SnippetsUI.collapsedV().Set(m.collapsed);
-    }))(x);
-   }
-   catch(e$1)
-   {
-    Global.alert(Global.String(e$1));
-    return(function($1)
-    {
-     return function($2)
-     {
-      return $1(Utils.prettyPrint($2));
-     };
-    }(function(s)
-    {
-     console.log(s);
-    }))(e$1);
-   }
+   return SaveLoad.updateSnippets(e.target.result);
   },reader.readAsText(files.item(0))):void 0;
+ };
+ SaveLoad.updateSnippets=function(snps)
+ {
+  var x;
+  try
+  {
+   x=(Serializer$1.deserializeWithDefs((SnippetSerialize.serModel())[0],(SnippetSerialize.serModel())[1]))(snps);
+   (Option.iter(function(m)
+   {
+    SnippetsUI.snippetsLM().Set(m.snippets);
+    SnippetsUI.collapsedV().Set(m.collapsed);
+   }))(x);
+  }
+  catch(e)
+  {
+   Global.alert(Global.String(e));
+   ((function($1)
+   {
+    return function($2)
+    {
+     return $1(Utils.prettyPrint($2));
+    };
+   }(function(s)
+   {
+    console.log(s);
+   }))(e));
+  }
  };
  SnippetsUI.plugInAdded=function()
  {

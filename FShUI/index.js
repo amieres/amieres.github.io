@@ -28,17 +28,19 @@ requirejs([
         IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
         IntelliFactory.Runtime.Start();
         fetch("FShUI/demoLayout.txt").then(resp => resp.text()).then(demoLayout =>
-        fetch("FShUI/templates.html").then(resp => resp.text()).then(templates  =>
-            startPage(demoLayout, templates)
-        ));
+            fetch("FShUI/templates.html").then(resp => resp.text()).then(templates  =>
+                fetch("FShUI/tutorial.snippets").then(resp => resp.text()).then(snippets  =>
+                    startPage(demoLayout, templatesc)
+        )));
     });
 });
 
-function startPage(demoLayout, templates) {
-    FsRootDll.LibraryJS.MonacoPlugIn.plugInAdded();
-    FsRootDll.LibraryJS.SnippetsUI  .plugInAdded();
-    FsRootDll.LibraryJS.NewLY.addLayout("lytTarget2", "");
-    FsRootDll.LibraryJS.NewLY.addLayout("lytDemo"   , demoLayout);
-    FsRootDll.LibraryJS.AppFramework.mainDocV().Set("lytDemo.main2");
-    FsRootDll.LibraryJS.StartAppFramework.startWith(templates);
+function startPage(demoLayout, templates, snippets) {
+    FsRootDll.LibraryJS.MonacoPlugIn        .plugInAdded();
+    FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
+    FsRootDll.LibraryJS.NewLY               .addLayout(     "lytTarget2", "");
+    FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
+    FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main2");
+    FsRootDll.LibraryJS.StartAppFramework   .startWith(     templates);
+    FsRootDll.LibraryJS.SnippetsUI.SaveLoad .updateSnippets(snippets);
 }
