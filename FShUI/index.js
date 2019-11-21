@@ -30,7 +30,7 @@ requirejs([
         fetch("FShUI/demoLayout.txt").then(resp => resp.text()).then(demoLayout =>
             fetch("FShUI/templates.html").then(resp => resp.text()).then(templates  =>
                 fetch("FShUI/tutorial.snippets").then(resp => resp.text()).then(snippets  =>
-                    startPage(demoLayout, templatesc)
+                    startPage(demoLayout, templates, snippets)
         )));
     });
 });
