@@ -68,11 +68,13 @@ Right0 horizontal 0-60-100 Right
 ::  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 ::  div       "height:100%;class=relative;flex:2" editor2
 
-Left2 vertical 0-25-100 list snippet
-main2 vertical 0-60-100 Left2 Right0
+listEdit div "display:flex;flex-direction:column" list Right0
+
+Left2 vertical 0-25-100 listEdit snippet
+main2 vertical 0-60-100 Left2 Right
     
 Left div "display:flex;flex-direction:column" gotoMain2 snippet
-main vertical 0-60-100 Left Right0
+main vertical 0-60-100 Left Right
 
 main0 vertical 0-60-100 
 : div "display:flex;flex-direction:column" content 
