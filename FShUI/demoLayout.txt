@@ -16,7 +16,7 @@ SetMain   Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main"
 
 Trigger   Doc    AF.TrigAction Snippets.snippets_sel "lytDemo.SetTarget"
 
-gotoMain  button "click=@{SetMain};width:16px" "<<"
+gotoMain  button "click=@{SetMain} ;width:16px" "<<"
 gotoMain2 button "click=@{SetMain2};width:16px" ">>"
 
 SearchFor   Doc AF.InputLabel "" "Search" Snippets.searchFor
@@ -68,14 +68,14 @@ Right0 horizontal 0-60-100 Right
 ::  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 ::  div       "height:100%;class=relative;flex:2" editor2
 
-editorCombo div "display:flex;flex-direction:column"
+editorCombo div "display:flex;flex-direction:column;flex:1"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 :  div       "height:100%;class=relative;flex:2" editor2
 
 listEdit div "display:flex;flex-direction:column" list editorCombo
 
 Left2 vertical 0-25-100 listEdit snippet
-main2 vertical 0-60-100 Left2 Right
+main2 vertical 0-60-100 Left2 Right 
     
 Left div "display:flex;flex-direction:column" gotoMain2 snippet
 main vertical 0-60-100 Left Right
@@ -83,3 +83,7 @@ main vertical 0-60-100 Left Right
 main0 vertical 0-60-100 
 : div "display:flex;flex-direction:column" content 
 : Docs Right
+
+split vertical 0-60-100
+: Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
+: Docs lytDemo.listEdit
