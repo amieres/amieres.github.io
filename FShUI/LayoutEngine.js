@@ -4667,14 +4667,6 @@
    })
   }:null;
  };
- LayoutEngineModule.addNewLayout=function(name,layout)
- {
-  var x,x$1;
-  LayoutEngineModule.addLayout((x=(x$1=!Unchecked.Equals(layout,null)?layout:"\r\n            split horizontal 0-50-100 AppFramework.AppFwkClient Hello\r\n            Hello h1 \"color:blue; class=btn-primary\" \"How are you today?\" Ask\r\n            Ask Doc InputLabel \"placeholder=Type you answer here...\" \"Answer:\" AppFramework.mainDocV  \r\n            ",(String.unindentStr())(x$1)),LayoutEngineModule.newLyt(!Unchecked.Equals(layout,null)?name:new PlugInName({
-   $:0,
-   $0:"Lyt_"+Strings.Replace(Global.String(Guid.NewGuid()),"-","")
-  }),x)));
- };
  LayoutEngineModule.newLyt=function(name,lyt)
  {
   return LayoutEngine.New(name,Var$2.Create$1(lyt));
@@ -6070,6 +6062,14 @@
  {
   return AppFramework.run(pin,p.r);
  };
+ NewLY.addNewLayoutAct=function(name,layout)
+ {
+  var x,x$1;
+  NewLY.addNewLayout((x=(x$1=!Unchecked.Equals(layout,null)?layout:"\r\n            split horizontal 0-50-100 AppFramework.AppFwkClient Hello\r\n            Hello h1 \"color:blue; class=btn-primary\" \"How are you today?\" Ask\r\n            Ask Doc InputLabel \"placeholder=Type you answer here...\" \"Answer:\" AppFramework.mainDocV  \r\n            ",(String.unindentStr())(x$1)),LayoutEngineModule.newLyt(!Unchecked.Equals(layout,null)?name:new PlugInName({
+   $:0,
+   $0:"Lyt_"+Strings.Replace(Global.String(Guid.NewGuid()),"-","")
+  }),x)));
+ };
  NewLY.addLayout=function(name,content)
  {
   NewLY.addNewLayout(LayoutEngineModule.newLyt(new PlugInName({
@@ -6904,7 +6904,7 @@
  };
  SC$1.$cctor=function()
  {
-  var f,g,x,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,a,b$8,a$1,b$9,b$10,p,cache,getOrAdd,p$1,cache$1,getOrAdd$1,p$2,cache$2,getOrAdd$2,p$3,cache$3,getOrAdd$3,p$4,cache$4,getOrAdd$4,p$5,cache$5,getOrAdd$5,p$6,cache$6,getOrAdd$6,p$7,cache$7,getOrAdd$7,p$8,cache$8,getOrAdd$8,p$9,cache$9,getOrAdd$9,p$10,cache$10,getOrAdd$10,o,pf,p$11,pf$1,p$12,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$13,p$14,pc$1,vf$3,p$15,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$16,b$11,b$12,b$13,b$14,b$15,p$17,cache$11,getOrAdd$11,p$18,cache$12,getOrAdd$12,p$19,cache$13,getOrAdd$13,p$20,cache$14,getOrAdd$14,p$21,cache$15,getOrAdd$15,p$22,cache$16,getOrAdd$16,p$23,cache$17,getOrAdd$17,p$24,cache$18,getOrAdd$18,p$25,cache$19,getOrAdd$19,p$26,cache$20,getOrAdd$20,p$27,cache$21,getOrAdd$21;
+  var f,g,x,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,a,b$8,a$1,b$9,b$10,p,cache,getOrAdd,p$1,cache$1,getOrAdd$1,p$2,cache$2,getOrAdd$2,p$3,cache$3,getOrAdd$3,p$4,cache$4,getOrAdd$4,p$5,cache$5,getOrAdd$5,p$6,cache$6,getOrAdd$6,p$7,cache$7,getOrAdd$7,p$8,cache$8,getOrAdd$8,p$9,cache$9,getOrAdd$9,p$10,cache$10,getOrAdd$10,pf,p$11,pf$1,p$12,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$13,p$14,pc$1,vf$3,p$15,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$16,b$11,b$12,b$13,b$14,b$15,p$17,cache$11,getOrAdd$11,p$18,cache$12,getOrAdd$12,p$19,cache$13,getOrAdd$13,p$20,cache$14,getOrAdd$14,p$21,cache$15,getOrAdd$15,p$22,cache$16,getOrAdd$16,p$23,cache$17,getOrAdd$17,p$24,cache$18,getOrAdd$18,p$25,cache$19,getOrAdd$19,p$26,cache$20,getOrAdd$20,p$27,cache$21,getOrAdd$21,o;
   SC$1.$cctor=Global.ignore;
   function g$1(s)
   {
@@ -8526,22 +8526,6 @@
     return LayoutEngineModule.createAction($1[0],$1[1],$1[2],$1[3]);
    });
   },p$10[1]]))[0];
-  o=AppFramework.tryGetPlugIn(AppFramework.defPlugInName());
-  o==null?void 0:o.$0.plgActions.Append(AppFramework.newActF(new PlgElemName({
-   $:0,
-   $0:"AddLayout"
-  }),{
-   $:2,
-   $0:function(n)
-   {
-    return function(l)
-    {
-     return LayoutEngineModule.addNewLayout(n,l);
-    };
-   },
-   $1:"[Name]",
-   $2:"[Layout]"
-  }));
   SC$1.aV=Var$2.Create$1(4);
   SC$1.pa=NewLY.aV().get_View();
   SC$1.pb=6.2;
@@ -9454,6 +9438,22 @@
     return NewLY.defSplitter($1[0],$1[1],$1[2],$1[3],$1[4],$1[5]);
    });
   },p$27[1]]))[0];
+  o=AppFramework.tryGetPlugIn(AppFramework.defPlugInName());
+  o==null?void 0:o.$0.plgActions.Append(AppFramework.newActF(new PlgElemName({
+   $:0,
+   $0:"AddLayout"
+  }),{
+   $:2,
+   $0:function(n)
+   {
+    return function(l)
+    {
+     return NewLY.addNewLayoutAct(n,l);
+    };
+   },
+   $1:"[Name]",
+   $2:"[Layout]"
+  }));
  };
  LayoutEngine_GeneratedPrintf.p=function($1)
  {
