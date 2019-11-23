@@ -64,11 +64,6 @@ snippet div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger co
 
 Right div "display: flex; flex-direction:column" lytTarget2.main
 
-Right0 horizontal 0-60-100 Right
-:   div       "display:flex;flex-direction:column"
-::  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
-::  div       "height:100%;class=relative;flex:2" editor2
-
 editorCombo div "display:flex;flex-direction:column; height:100%"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 :  div       "class=relative;flex:1"      editor2
@@ -94,4 +89,4 @@ main horizontal 40 topBar main0
 
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
-: Docs lytDemo.listEdit:100%
+: Docs lytDemo.listEdit
