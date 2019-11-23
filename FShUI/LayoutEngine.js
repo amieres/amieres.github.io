@@ -6492,7 +6492,14 @@
      {
       return b.Return(AppFramework.makeAViewDocL(function()
       {
-       return Doc.Element(elem,a$1(a$2(attrs)),Seq.map(a,docs));
+       try
+       {
+        return Doc.Element(elem,a$1(a$2(attrs)),Seq.map(a,docs));
+       }
+       catch(e)
+       {
+        return Doc.TextNode(e.message);
+       }
       }));
      });
     });
