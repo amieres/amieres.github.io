@@ -40,7 +40,7 @@ function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytTarget2", "");
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
-    FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main2");
+    FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main");
     FsRootDll.LibraryJS.StartAppFramework   .startWith(     templates);
     FsRootDll.LibraryJS.SnippetsUI.SaveLoad .updateSnippets(snippets);
 }
