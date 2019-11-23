@@ -2535,11 +2535,11 @@
   SC$1.$cctor();
   return SC$1.inputLabel;
  };
- AppFramework.inputFile$2181$67=Runtime.Curried3(function(act,el,$1)
+ AppFramework.inputFile$2184$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- AppFramework.inputFile$2180$67=Runtime.Curried3(function($1,el,$2)
+ AppFramework.inputFile$2183$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -4774,11 +4774,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3459$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3462$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3458$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3461$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5878,7 +5878,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2606,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2609,38);
     }
     return $2;
   }
@@ -6065,7 +6065,7 @@
  NewLY.addNewLayoutAct=function(name,layout)
  {
   var x,x$1;
-  NewLY.addNewLayout((x=(x$1=!Unchecked.Equals(layout,null)?layout:"\r\n            split horizontal 0-50-100 AppFramework.AppFwkClient Hello\r\n            Hello h1 \"color:blue; class=btn-primary\" \"How are you today?\" Ask\r\n            Ask Doc InputLabel \"placeholder=Type you answer here...\" \"Answer:\" AppFramework.mainDocV  \r\n            ",(String.unindentStr())(x$1)),LayoutEngineModule.newLyt(!Unchecked.Equals(layout,null)?name:new PlugInName({
+  NewLY.addNewLayout((x=(x$1=!Unchecked.Equals(layout,null)?layout:"\r\n            Ask Doc AF.InputLabel \"placeholder=Type you answer here...\" \"Answer:\" AppFramework.mainDocV  \r\n            Hello h1 \"color:blue; class=btn-primary\" \"How are you today?\" Ask\r\n            split horizontal 0-50-100 AppFramework.AppFwkClient Hello\r\n            ",(String.unindentStr())(x$1)),LayoutEngineModule.newLyt(!Unchecked.Equals(layout,null)?name:new PlugInName({
    $:0,
    $0:"Lyt_"+Strings.Replace(Global.String(Guid.NewGuid()),"-","")
   }),x)));
@@ -7945,12 +7945,37 @@
       }
       function setCustomAttr(atn,el,a$7)
       {
-       var act;
+       var act,p$28,same,i,$1;
        function listener(ev)
        {
         AppFramework.callFunction(el,ev,act.actFunction);
        }
-       return a$7.$==1?(act=a$7.$0,(el.addEventListener(atn,listener,false),void(el.addedListeners=addedListeners(el).concat([[atn,listener]])))):el.setAttribute(atn,Strings.Trim(a$7.$0));
+       function f$6(t)
+       {
+        return t[0];
+       }
+       function g$5(y)
+       {
+        return atn===y;
+       }
+       if(a$7.$==1)
+        {
+         act=a$7.$0;
+         p$28=Arrays.partition(function(x$1)
+         {
+          return g$5(f$6(x$1));
+         },addedListeners(el));
+         same=p$28[0];
+         for(i=0,$1=same.length-1;i<=$1;i++)(function()
+         {
+          return el.removeEventListener(atn,(Arrays.get(same,i))[1]);
+         }());
+         el.addEventListener(atn,listener,false);
+         el.addedListeners=p$28[1].concat([[atn,listener]]);
+         return;
+        }
+       else
+        return el.setAttribute(atn,Strings.Trim(a$7.$0));
       }
       function viewAttr(atn)
       {
