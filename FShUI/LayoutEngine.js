@@ -1516,15 +1516,15 @@
  {
   return Hoverable$1.New$1().Content(Doc.Element("div",[AttrProxy.Create("style","flex-flow: column;")],[Doc.TextNode("Hover over me!")]));
  };
- Hoverable$1.Content$752$81=Runtime.Curried3(function(e,$1,$2)
+ Hoverable$1.Content$753$81=Runtime.Curried3(function(e,$1,$2)
  {
   return DomUtility.RemoveClass(e.elt,"hovering");
  });
- Hoverable$1.get_Attributes$748$69=Runtime.Curried3(function(_this,$1,$2)
+ Hoverable$1.get_Attributes$749$69=Runtime.Curried3(function(_this,$1,$2)
  {
   return _this.hover.Set(false);
  });
- Hoverable$1.get_Attributes$747$69=Runtime.Curried3(function(_this,$1,$2)
+ Hoverable$1.get_Attributes$748$69=Runtime.Curried3(function(_this,$1,$2)
  {
   return _this.hover.Set(true);
  });
@@ -1666,7 +1666,7 @@
   SC$1.$cctor();
   return SC$1.init;
  };
- WcTabStrip.tabStrip$896$64=function(i,selected)
+ WcTabStrip.tabStrip$897$64=function(i,selected)
  {
   return function()
   {
@@ -2535,11 +2535,11 @@
   SC$1.$cctor();
   return SC$1.inputLabel;
  };
- AppFramework.inputFile$2184$67=Runtime.Curried3(function(act,el,$1)
+ AppFramework.inputFile$2185$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- AppFramework.inputFile$2183$67=Runtime.Curried3(function($1,el,$2)
+ AppFramework.inputFile$2184$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -2987,17 +2987,33 @@
  };
  AppFramework.tryGetViwW=function(plgName,viwName)
  {
-  return View$1.Bind(function(a)
+  var v,prior;
+  v=View$1.Bind(function(a)
   {
    return a!=null&&a.$==1?a.$0.plgViews.TryFindByKeyAsView(viwName):View$1.Const(null);
   },AppFramework.tryGetPlugInW(plgName));
+  prior=[Var$2.Create$1(null)];
+  View$1.Sink(function(v$1)
+  {
+   if(!Unchecked.Equals(prior[0].Get(),v$1))
+    prior[0].Set(v$1);
+  },v);
+  return prior[0].get_View();
  };
  AppFramework.tryGetVarW=function(plgName,varName)
  {
-  return View$1.Bind(function(a)
+  var v,prior;
+  v=View$1.Bind(function(a)
   {
    return a!=null&&a.$==1?a.$0.plgVars.TryFindByKeyAsView(varName):View$1.Const(null);
   },AppFramework.tryGetPlugInW(plgName));
+  prior=[Var$2.Create$1(null)];
+  View$1.Sink(function(v$1)
+  {
+   if(!Unchecked.Equals(prior[0].Get(),v$1))
+    prior[0].Set(v$1);
+  },v);
+  return prior[0].get_View();
  };
  AppFramework.tryGetPlugInW=function(plgName)
  {
@@ -3042,15 +3058,15 @@
  {
   return PlugInVar.New(name,_var);
  };
- AppFramework.vertical$1681$39=function(mouseDown)
+ AppFramework.vertical$1682$39=function(mouseDown)
  {
   return function(te)
   {
    mouseDown(te.Event);
   };
  };
+ AppFramework.vertical$1681$39=Global.id;
  AppFramework.vertical$1680$39=Global.id;
- AppFramework.vertical$1679$39=Global.id;
  AppFramework.vertical=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
  {
   var b,t,p,i;
@@ -3078,15 +3094,15 @@
    $1:gap
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterver(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFramework.horizontal$1673$39=function(mouseDown)
+ AppFramework.horizontal$1674$39=function(mouseDown)
  {
   return function(te)
   {
    mouseDown(te.Event);
   };
  };
+ AppFramework.horizontal$1673$39=Global.id;
  AppFramework.horizontal$1672$39=Global.id;
- AppFramework.horizontal$1671$39=Global.id;
  AppFramework.horizontal=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
  {
   var b,t,p,i;
@@ -3114,7 +3130,7 @@
    $1:gap
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterhor(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFramework.mainDoc$1662$42=function()
+ AppFramework.mainDoc$1663$42=function()
  {
   return function()
   {
@@ -3179,7 +3195,7 @@
   SC$1.$cctor();
   return SC$1.AppFwkClient;
  };
- AppFramework.renderQueries$1626$39=function(qry)
+ AppFramework.renderQueries$1627$39=function(qry)
  {
   return function()
   {
@@ -3221,14 +3237,14 @@
    },plg.plgQueries);
   },AppFramework.currentPlugInW()));
  };
- AppFramework.renderActions$1615$51=function(act)
+ AppFramework.renderActions$1616$51=function(act)
  {
   return function(ev)
   {
    AppFramework.callFunction(ev,null,act.actFunction);
   };
  };
- AppFramework.renderActions$1611$51=function(act)
+ AppFramework.renderActions$1612$51=function(act)
  {
   return function(ev)
   {
@@ -3307,7 +3323,7 @@
    else
     actF.$0();
  };
- AppFramework.renderDocs$1589$39=function(doc)
+ AppFramework.renderDocs$1590$39=function(doc)
  {
   return function()
   {
@@ -3456,7 +3472,7 @@
    },plg.plgVars);
   },AppFramework.currentPlugInW()));
  };
- AppFramework.renderPlugIns$1551$35=function(name)
+ AppFramework.renderPlugIns$1552$35=function(name)
  {
   return function()
   {
@@ -4774,11 +4790,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3462$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3463$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3461$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3462$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5878,7 +5894,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2609,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2610,38);
     }
     return $2;
   }
