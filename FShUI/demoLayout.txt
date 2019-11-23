@@ -60,8 +60,7 @@ content div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
 :: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
 :: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
 
-snippet div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
-:  Docs      content
+snippet div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger content
 
 Right div "display: flex; flex-direction:column" lytTarget2.main
 
@@ -82,11 +81,16 @@ Right2 vertical 0-60-100 snippet Right
 main2 vertical 0-25-100 listEdit Right2
     
 Left div "display:flex;flex-direction:column" gotoMain2 snippet
-main vertical 0-60-100 Left Right
+Right0 vertical 0-60-100 Left Right
 
-main0 vertical 0-60-100 
-: div "display:flex;flex-direction:column" content 
-: Docs Right
+main0  vertical 0-15-100
+: div "display:block;overflow:auto;width:100%" Snippets.snippets_list
+: vertical 0-60-100 snippet Right
+
+topBar div ""
+: h3 "margin:10px" "FShUI"
+
+main horizontal 40 topBar main0
 
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
