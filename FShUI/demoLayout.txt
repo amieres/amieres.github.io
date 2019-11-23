@@ -53,7 +53,7 @@ content div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
 :  Doc       AF.HtmlDoc MarkDown1
 :  div       "height:100%;class=relative;flex:2" editor
 :  span      "width:100%"
-:: button    "click=@{SetTarget};class=@{applyColor}"  "Apply >>"
+:: button    "click=@{SetTarget};class=@{applyColor}"  "Try me! >>"
 :  Doc       AF.HtmlDoc MarkDown2
 :  Doc       AF.TextArea "color:red;font-weight:800;flex:1;border:none"  Snippets.parseOut
 :  span      "width:100%"
@@ -87,11 +87,11 @@ main0  vertical 0-15-100
 : div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 : vertical 0-60-100 snippet Right
 
-topBar div ""
+topBar div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
 : h3 "margin:10px" "FShUI"
 
 main horizontal 40 topBar main0
 
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
-: Docs lytDemo.listEdit
+: Docs lytDemo.listEdit:100%
