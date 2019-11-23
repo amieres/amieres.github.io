@@ -26,17 +26,17 @@ buttons ul ""
 :: button "click=@{Snippets.IndentOut};title=indent out"     "<--"
 :: button "click=@{Snippets.IndentIn};title=indent in"       "--> "
 
-File span "class=input-group;margin:5px;id=LoadSnippets"
+File span "class=input-group;margin:5px;id=LoadSnippets" 
 : div "class=input-group-btn"
 :: label "class=btn btn-info" "Load File"
 ::: div ""
 :::: input "class=form-control;type=file;display: none;change=@{Snippets.LoadSnippets}" 
 :: label "class=btn btn-primary;click=@{Snippets.SaveSnippets}" "Save File"
 
-list div "display: flex;flex-direction: column" gotoMain File
+list div "display: flex;flex-direction: column;height:100%;" gotoMain File
 : div    "margin:5px" SearchFor 
 : Docs buttons
-: div "overflow:auto;width:100%;max-width:calc(100% - 10px)" Snippets.snippets_list
+: div "overflow:auto;width:100%" Snippets.snippets_list
 : ul "margin:3px"
 :: button "click=@{Snippets.AddSnippet}   ;title=Add New Snippet" "+"
 :: button "margin-left:20px;click=@{Snippets.DeleteSnippet};title=Delete  Snippet" "x"
@@ -68,14 +68,16 @@ Right0 horizontal 0-60-100 Right
 ::  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 ::  div       "height:100%;class=relative;flex:2" editor2
 
-editorCombo div "display:flex;flex-direction:column;flex:1"
+editorCombo div "display:flex;flex-direction:column; height:100%"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
-:  div       "height:100%;class=relative;flex:2" editor2
+:  div       "class=relative;flex:1"      editor2
 
-listEdit div "display:flex;flex-direction:column" list editorCombo
+listEdit div "display:flex;flex-direction:column" 
+: div "max-height:50%" list 
+: Docs editorCombo
 
-Left2 vertical 0-25-100 listEdit snippet
-main2 vertical 0-60-100 Left2 Right 
+Right2 vertical 0-60-100 snippet Right 
+main2 vertical 0-25-100 listEdit Right2
     
 Left div "display:flex;flex-direction:column" gotoMain2 snippet
 main vertical 0-60-100 Left Right
