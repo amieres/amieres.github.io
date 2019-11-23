@@ -14,6 +14,8 @@ SetTarget Action AF.SetVar     "lytTarget2.Layout"        target
 SetMain2  Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main2"
 SetMain   Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main"
 
+applyColor ViewJS "(a,b) => a == b ? '' : 'blue' " lytTarget2.Layout target
+
 Trigger   Doc    AF.TrigAction Snippets.snippets_sel "lytDemo.SetTarget"
 
 gotoMain  button "click=@{SetMain} ;width:16px" "<<"
@@ -51,7 +53,7 @@ content div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
 :  Doc       AF.HtmlDoc MarkDown1
 :  div       "height:100%;class=relative;flex:2" editor
 :  span      "width:100%"
-:: button    "click=@{SetTarget}"  "Apply >>"
+:: button    "click=@{SetTarget};background:@{applyColor}"  "Apply >>"
 :  Doc       AF.HtmlDoc MarkDown2
 :  Doc       AF.TextArea "color:red;font-weight:800;flex:1;border:none"  Snippets.parseOut
 :  span      "width:100%"
