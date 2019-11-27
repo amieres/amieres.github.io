@@ -2509,10 +2509,26 @@
   SC$1.$cctor();
   return SC$1.trigAct;
  };
- AppFramework.setVar=function()
+ AppFramework.setVar=function(varN,value)
  {
-  SC$1.$cctor();
-  return SC$1.setVar;
+  AppFramework.depWithExtracts(function($1,$2,extractText)
+  {
+   var t;
+   function a(_var)
+   {
+    View$1.Get(function(a$1)
+    {
+     _var.Set(a$1);
+    },extractText(value));
+   }
+   View$1.Get(function(o)
+   {
+    if(o==null)
+     ;
+    else
+     a(o.$0);
+   },(t=AppFramework.getParmRef(varN),AppFramework.tryGetVoVW(t[0],t[1])));
+  });
  };
  AppFramework.docReference=function()
  {
@@ -8319,30 +8335,6 @@
     return f$6($4,$5);
    };
   });
-  SC$1.setVar=AppFramework.depWithExtracts(function($1,$2,extractText)
-  {
-   return function(varN)
-   {
-    return function(value)
-    {
-     var t;
-     function a$4(_var)
-     {
-      View$1.Get(function(a$5)
-      {
-       _var.Set(a$5);
-      },extractText(value));
-     }
-     return View$1.Get(function(o$1)
-     {
-      if(o$1==null)
-       ;
-      else
-       a$4(o$1.$0);
-     },(t=AppFramework.getParmRef(varN),AppFramework.tryGetVoVW(t[0],t[1])));
-    };
-   };
-  });
   SC$1.trigAct=AppFramework.depWithExtracts(function($1,$2,extractText)
   {
    return function(trigger)
@@ -8409,7 +8401,13 @@
    self.alert("Hello!");
   }));
   AppFramework.plugIns().Append(a);
-  a$1=(b$9=AppFramework.plugin(),b$9.AddQry(b$9.AddAct(b$9.AddAct2(b$9.AddDoc3(b$9.AddDoc3(b$9.AddDoc4(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc1(b$9.AddDoc1(b$9.Name(b$9.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SetVar",AppFramework.setVar(),"Var","Value"),"Hello",function()
+  a$1=(b$9=AppFramework.plugin(),b$9.AddQry(b$9.AddAct(b$9.AddAct2(b$9.AddDoc3(b$9.AddDoc3(b$9.AddDoc4(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc1(b$9.AddDoc1(b$9.Name(b$9.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SetVar",function(v)
+  {
+   return function(v$1)
+   {
+    return AppFramework.setVar(v,v$1);
+   };
+  },"Var","Value"),"Hello",function()
   {
    self.alert("Hello!");
   }),"getDocNames",function()
