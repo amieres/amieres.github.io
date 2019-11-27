@@ -2543,11 +2543,11 @@
   SC$1.$cctor();
   return SC$1.inputLabel;
  };
- AppFramework.inputFile$2185$67=Runtime.Curried3(function(act,el,$1)
+ AppFramework.inputFile$2186$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- AppFramework.inputFile$2184$67=Runtime.Curried3(function($1,el,$2)
+ AppFramework.inputFile$2185$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -4836,11 +4836,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3487$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3488$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3486$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3487$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5940,7 +5940,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2634,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2635,38);
     }
     return $2;
   }
@@ -8044,7 +8044,23 @@
          return;
         }
        else
-        return el.setAttribute(atn,Strings.Trim(a$7.$0));
+        try
+        {
+         return el.setAttribute(atn,Strings.Trim(a$7.$0));
+        }
+        catch(e)
+        {
+         return(function($2)
+         {
+          return function($3)
+          {
+           return $2(Utils.prettyPrint($3));
+          };
+         }(function(s$1)
+         {
+          console.log(s$1);
+         }))(e);
+        }
       }
       function viewAttr(atn)
       {
@@ -8123,7 +8139,23 @@
         while(e.MoveNext())
          {
           nm=e.Current();
-          el.attributes.removeNamedItem(nm);
+          try
+          {
+           el.attributes.removeNamedItem(nm);
+          }
+          catch(e$3)
+          {
+           ((function($2)
+           {
+            return function($3)
+            {
+             return $2(Utils.prettyPrint($3));
+            };
+           }(function(s$1)
+           {
+            console.log(s$1);
+           }))(e$3));
+          }
          }
        }
        finally
@@ -8138,7 +8170,23 @@
         while(e$1.MoveNext())
          {
           f$7=e$1.Current();
-          el.setAttribute(f$7[0],f$7[1]);
+          try
+          {
+           el.setAttribute(f$7[0],f$7[1]);
+          }
+          catch(e$4)
+          {
+           ((function($2)
+           {
+            return function($3)
+            {
+             return $2(Utils.prettyPrint($3));
+            };
+           }(function(s$1)
+           {
+            console.log(s$1);
+           }))(e$4));
+          }
          }
        }
        finally
@@ -8149,7 +8197,23 @@
        a$7=addedListeners(el);
        for(i$2=0,$1=a$7.length-1;i$2<=$1;i$2++){
         f$8=Arrays.get(a$7,i$2);
-        el.removeEventListener(f$8[0],f$8[1]);
+        try
+        {
+         el.removeEventListener(f$8[0],f$8[1]);
+        }
+        catch(e$5)
+        {
+         ((function($2)
+         {
+          return function($3)
+          {
+           return $2(Utils.prettyPrint($3));
+          };
+         }(function(s$1)
+         {
+          console.log(s$1);
+         }))(e$5));
+        }
        }
        i$3=Seq.choose(function(a$8)
        {
