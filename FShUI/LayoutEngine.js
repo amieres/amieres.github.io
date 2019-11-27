@@ -2776,10 +2776,48 @@
     function s(el,a$1)
     {
      var act;
-     return a$1.$==1?(act=a$1.$0,el.addEventListener(Strings.Trim(name),function(ev)
-     {
-      return AppFramework.callFunction(el,ev,act.actFunction);
-     },false)):el.setAttribute(Strings.Trim(name),Strings.Trim(a$1.$0));
+     if(a$1.$==1)
+      {
+       act=a$1.$0;
+       try
+       {
+        return el.addEventListener(Strings.Trim(name),function(ev)
+        {
+         return AppFramework.callFunction(el,ev,act.actFunction);
+        },false);
+       }
+       catch(e)
+       {
+        return(function($2)
+        {
+         return function($3)
+         {
+          return $2(Utils.prettyPrint($3));
+         };
+        }(function(s$1)
+        {
+         console.log(s$1);
+        }))(e);
+       }
+      }
+     else
+      try
+      {
+       return el.setAttribute(Strings.Trim(name),Strings.Trim(a$1.$0));
+      }
+      catch(e$1)
+      {
+       return(function($2)
+       {
+        return function($3)
+        {
+         return $2(Utils.prettyPrint($3));
+        };
+       }(function(s$1)
+       {
+        console.log(s$1);
+       }))(e$1);
+      }
     }
     return!Unchecked.Equals(a,null)&&a.length===2&&(value=Arrays.get(a,1),Strings.Trim(Arrays.get(a,0))!==""&&Strings.Trim(value)!=="")?(value$1=Arrays.get(a,1),(name=Arrays.get(a,0),{
      $:1,
