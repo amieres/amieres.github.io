@@ -2511,23 +2511,14 @@
  };
  AppFramework.setVar=function(varN,value)
  {
-  AppFramework.depWithExtracts(function($1,$2,extractText)
+  AppFramework.depWithExtracts(function($1,$2,$3)
   {
-   var t;
-   function a(_var)
+   var o,t,_var;
+   o=(t=AppFramework.getParmRef(varN),AppFramework.tryGetVoV(t[0],t[1]));
+   o==null?void 0:(_var=o.$0,View$1.Get(function(a)
    {
-    View$1.Get(function(a$1)
-    {
-     _var.Set(a$1);
-    },extractText(value));
-   }
-   View$1.Get(function(o)
-   {
-    if(o==null)
-     ;
-    else
-     a(o.$0);
-   },(t=AppFramework.getParmRef(varN),AppFramework.tryGetVoVW(t[0],t[1])));
+    _var.Set(a);
+   },$3(value)));
   });
  };
  AppFramework.docReference=function()
