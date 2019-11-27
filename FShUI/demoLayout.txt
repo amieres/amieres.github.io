@@ -14,8 +14,8 @@ SetMain2  Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main2"
 SetMain   Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main"
 
 editMode    Var "0"
-editModeNot ViewJS "n => !n" editMode
-ToggleMode Action AF.SetVar "editMode" editModeNot
+editModeNot ViewJS "n => 1 - n" editMode
+ToggleMode Action AF.SetVar "lytDemo.editMode" editModeNot
 
 applyColor ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget2.Layout target
 
