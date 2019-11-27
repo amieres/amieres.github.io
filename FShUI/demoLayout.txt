@@ -13,6 +13,10 @@ SetTarget Action AF.SetVar     "lytTarget2.Layout"        target
 SetMain2  Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main2"
 SetMain   Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main"
 
+editMode    Var "0"
+editModeNot ViewJS "n => !n" editMode
+ToggleMode Action AF.SetVar editMode editModeNot
+
 applyColor ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget2.Layout target
 
 Trigger   Doc    AF.TrigAction Snippets.snippets_sel "lytDemo.SetTarget"
@@ -84,21 +88,21 @@ editorCombo div "display:flex;flex-direction:column; height:100%"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 :  div       "class=relative;flex:1"      editor2
 
-main2Lower vertical 0-35-100
+mainLower1 vertical 0-35-100
 :  div "display:flex;flex-direction:column" 
 :: div "max-height:50%" list 
 :: Docs editorCombo
 :          vertical 0-60-100 snippet  Right 
     
-main0Lower vertical 0-15-100
+mainLower0 vertical 0-15-100
 : div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 : vertical 0-60-100 snippet Right
 
-topBar div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
-: h3 "margin:10px" "FShUI"
 
-main2 horizontal 40 topBar main2Lower
-main  horizontal 40 topBar main0Lower
+main  horizontal 40 topBar
+:  div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
+:: h3  "margin:10px;click=   @{ToggleMode}" "FShUI"
+:  AF.DocReference "mainLower@{editMode}"
 
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
