@@ -99,7 +99,7 @@ mainLower0 vertical 0-15-100
 : vertical 0-60-100 snippet Right
 
 
-main  horizontal 40 topBar
+main  horizontal 40
 :  div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
 :: h3  "margin:10px;click=   @{ToggleMode}" "FShUI"
 :  AF.DocReference "mainLower@{editMode}"
