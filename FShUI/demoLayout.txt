@@ -10,8 +10,6 @@ goPrev    Action AF.SetVar     "Snippets.snippets_sel"        Snippets.prevSel
 goNext    Action AF.SetVar     "Snippets.snippets_sel"        Snippets.nextSel
 
 SetTarget Action AF.SetVar     "lytTarget2.Layout"        target
-SetMain2  Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main2"
-SetMain   Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main"
 
 editMode    Var "0"
 editModeNot ViewJS "n => 1 - n" editMode
@@ -21,9 +19,6 @@ editNotText ViewJS "n => n?'Edit':'View'" editMode
 applyColor ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget2.Layout target
 
 Trigger   Doc    AF.TrigAction Snippets.snippets_sel "lytDemo.SetTarget"
-
-gotoMain  button "click=@{SetMain} ;width:16px" "<<"
-gotoMain2 button "click=@{SetMain2};width:16px" ">>"
 
 SearchFor   Doc AF.InputLabel "" "Search" Snippets.searchFor
 
@@ -39,7 +34,7 @@ File span "class=input-group;margin:5px;id=LoadSnippets"
 :::: input "class=form-control;type=file;display: none;change=@{Snippets.LoadSnippets}" 
 :: label "class=btn btn-primary;click=@{Snippets.SaveSnippets}" "Save File"
 
-list div "display: flex;flex-direction: column;height:100%;" gotoMain File
+list div "display: flex;flex-direction: column;height:100%;" File
 : div    "margin:5px" SearchFor 
 : Docs buttons
 : div "overflow:auto;width:100%" Snippets.snippets_list
@@ -72,6 +67,8 @@ content div "margin:10px" Trigger
 :: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
 :: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
 
+snippet div "" Trigger content
+
 RightX div "display: flex; flex-direction:column" lytTarget2.main
 
 Right horizontal 0-35-100
@@ -91,11 +88,11 @@ mainLower1 vertical 0-35-100
 :  div "display:flex;flex-direction:column" 
 :: div "max-height:50%" list 
 :: Docs editorCombo
-:          vertical 0-60-100 content  Right 
+:          vertical 0-60-100 snippet  Right 
     
 mainLower0 vertical 0-15-100
 : div "display:block;overflow:auto;width:100%" Snippets.snippets_list
-: vertical 0-60-100 content Right
+: vertical 0-60-100 snippet Right
 
 navBar  div "class=container"
 :       div "class=navbar-header"
