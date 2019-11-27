@@ -2511,15 +2511,12 @@
  };
  AppFramework.setVar=function(varN,value)
  {
-  AppFramework.depWithExtracts(function($1,$2,$3)
-  {
-   var o,t,_var;
-   o=(t=AppFramework.getParmRef(varN),AppFramework.tryGetVoV(t[0],t[1]));
-   o==null?void 0:(_var=o.$0,View$1.Get(function(a)
-   {
-    _var.Set(a);
-   },$3(value)));
-  });
+  (AppFramework.setVar0())([varN,value]);
+ };
+ AppFramework.setVar0=function()
+ {
+  SC$1.$cctor();
+  return SC$1.setVar0;
  };
  AppFramework.docReference=function()
  {
@@ -4801,11 +4798,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3485$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3487$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3484$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3486$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5905,7 +5902,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2632,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2634,38);
     }
     return $2;
   }
@@ -8321,6 +8318,18 @@
     {
      return AppFramework.tryGetDocW($3[0],$3[1]);
     },(x$1=extractText(docName),View$1.Map(AppFramework.splitName(AppFramework.defPlugInName()),x$1))));
+   };
+  });
+  SC$1.setVar0=AppFramework.depWithExtracts(function($1,$2,extractText)
+  {
+   return function(t)
+   {
+    var o$1,t$1,_var;
+    o$1=(t$1=AppFramework.getParmRef(t[0]),AppFramework.tryGetVoV(t$1[0],t$1[1]));
+    o$1==null?void 0:(_var=o$1.$0,View$1.Get(function(a$4)
+    {
+     _var.Set(a$4);
+    },extractText(t[1])));
    };
   });
   SC$1.trigAct=AppFramework.depWithExtracts(function($1,$2,extractText)
