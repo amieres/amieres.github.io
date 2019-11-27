@@ -100,7 +100,7 @@ mainLower0 vertical 0-15-100
 
 main  horizontal 40
 :  div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
-:: h3  "margin:10px;click=   @{ToggleMode}" "FShUI" editModeNot
+:: h3  "margin:10px;click=   @{ToggleMode};not=@{editModeNot}" "FShUI"
 :  Doc  AF.DocReference "lytDemo.mainLower@{editMode}"
 
 split vertical 0-60-100
