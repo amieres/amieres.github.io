@@ -65,14 +65,12 @@ contentX div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
 :: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
 :: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
 
-content div "margin:10px;max-width:Calc(100% - 20px)" Trigger
+content div "margin:10px" Trigger
 :  h2        "margin-top:0px"              Snippets.curSnp_name
 :  Doc       AF.HtmlDoc MarkDown0
 :  span      "width:100%"
 :: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
 :: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
-
-snippet div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger content
 
 RightX div "display: flex; flex-direction:column" lytTarget2.main
 
@@ -93,11 +91,11 @@ mainLower1 vertical 0-35-100
 :  div "display:flex;flex-direction:column" 
 :: div "max-height:50%" list 
 :: Docs editorCombo
-:          vertical 0-60-100 snippet  Right 
+:          vertical 0-60-100 content  Right 
     
 mainLower0 vertical 0-15-100
 : div "display:block;overflow:auto;width:100%" Snippets.snippets_list
-: vertical 0-60-100 snippet Right
+: vertical 0-60-100 content Right
 
 navBar  div "class=container"
 :       div "class=navbar-header"
