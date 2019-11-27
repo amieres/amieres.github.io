@@ -65,7 +65,7 @@ contentX div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
 :: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
 :: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
 
-content div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
+content div "margin:10px;max-width:Calc(100% - 20px)" Trigger
 :  h2        ""              Snippets.curSnp_name
 :  Doc       AF.HtmlDoc MarkDown0
 :  span      "width:100%"
@@ -131,18 +131,18 @@ navBar  div "class=container"
 ::::::  a    "href=#" "Separated link"
 :::::   li   ""
 ::::::  a    "href=#" "One more separated link"
-::::    ul   "class=nav navbar-nav navbar-right"
-:::::   li   ""
-::::::  a    "href=../navbar/" "Default"
-:::::   li   ""
-::::::  a    "href=../navbar-static-top/" "Static top"
-:::::   li   "class=active"
-::::::  a    "href=./" "Fixed top"
-::::::: span "class=sr-only" "(current)"
+::      ul   "class=nav navbar-nav navbar-right"
+:::     li   ""
+::::    a    "href=../navbar/" "Default"
+:::     li   ""
+::::    a    "href=../navbar-static-top/" "Static top"
+:::     li   "class=active"
+::::    a    "href=./" "Fixed top"
+:::::   span "class=sr-only" "(current)"
 
 nav nav "class=navbar navbar-default navbar-fixed-top" navBar
 
-main  horizontal 40 nav
+main  horizontal 51 nav
 //:  div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
 //:: h3  "margin:10px;click=   @{ToggleMode};not=@{editModeNot}" "FShUI"
 :  Doc  AF.DocReference "lytDemo.mainLower@{editMode}"
