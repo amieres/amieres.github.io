@@ -66,7 +66,7 @@ contentX div "display: flex;flex-direction: column;flex:1;margin:10px" Trigger
 :: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
 
 content div "margin:10px;max-width:Calc(100% - 20px)" Trigger
-:  h2        ""              Snippets.curSnp_name
+:  h2        "margin-top:0px"              Snippets.curSnp_name
 :  Doc       AF.HtmlDoc MarkDown0
 :  span      "width:100%"
 :: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
