@@ -15,7 +15,8 @@ SetMain   Action AF.SetVar     "AppFramework.mainDocV"    "lytDemo.main"
 
 editMode    Var "0"
 editModeNot ViewJS "n => 1 - n" editMode
-ToggleMode Action AF.SetVar "lytDemo.editMode" editModeNot
+ToggleMode  Action AF.SetVar "lytDemo.editMode" editModeNot
+editNotText ViewJS "n => n?'Edit':'View'" editMode
 
 applyColor ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget2.Layout target
 
@@ -98,6 +99,47 @@ mainLower0 vertical 0-15-100
 : div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 : vertical 0-60-100 snippet Right
 
+navBar  div "class=container"
+:       div "class=navbar-header"
+::      button "type=button;class=navbar-toggle collapsed;data-toggle=collapse;data-target=#navbar;aria-expanded=false;aria-controls=navbar"
+:::     span "class=sr-only" "Toggle navigation"
+:::     span "class=icon-bar"
+:::     span "class=icon-bar"
+:::     span "class=icon-bar"
+::      a    "class=navbar-brand;href="#" "FShUI"
+:       div  "id=navbar;class=navbar-collapse collapse"
+::      ul   "class=nav navbar-nav"
+:::     li   "class=active"
+::::    a    "href=#" "Home"
+:::     li   ""
+::::    a    "href=#" "About"
+:::     li   ""
+::::    a    "href=#" "Contact"
+:::     li   "class=dropdown"
+::::    a    "href=#;class=dropdown-toggle;data-toggle=dropdown;role=button;aria-haspopup=true;aria-expanded=false" "Dropdown"
+:::::   span "class=caret"
+::::    ul   "class=dropdown-menu"
+:::::   li
+::::::  a    "href=#"  "Action"
+:::::   li
+::::::  a    "href=#"  "Another action"
+:::::   li
+::::::  a    "href=#"  "Something else here"
+:::::   li   "role=separator;class=divider"
+:::::   li   "class=dropdown-header" "Nav header"
+:::::   li   ""
+::::::  a    "href=#" "Separated link"
+:::::   li   ""
+::::::  a    "href=#" "One more separated link"
+::::    ul class="nav navbar-nav navbar-right"
+:::::   li   ""
+::::::  a    "href=../navbar/" "Default"
+:::::   li   ""
+::::::  a    "href=../navbar-static-top/" "Static top"
+:::::   li   "class=active"
+::::::  a    "href=./" "Fixed top"
+::::::: span "class=sr-only" "(current)"
+
 main  horizontal 40
 :  div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
 :: h3  "margin:10px;click=   @{ToggleMode};not=@{editModeNot}" "FShUI"
@@ -106,3 +148,4 @@ main  horizontal 40
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
 : Docs lytDemo.mainLower1
+
