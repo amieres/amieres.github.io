@@ -2509,11 +2509,10 @@
   SC$1.$cctor();
   return SC$1.trigAct;
  };
- AppFramework.setVar=function(varN,value)
+ AppFramework.setVar=function()
  {
-  var o,t;
-  o=(t=(AppFramework.splitName(AppFramework.defPlugInName()))(varN),AppFramework.tryGetVar(t[0],t[1]));
-  o==null?void 0:o.$0.varVar.Set(value);
+  SC$1.$cctor();
+  return SC$1.setVar;
  };
  AppFramework.docReference=function()
  {
@@ -4795,11 +4794,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3474$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3484$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3473$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3483$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5899,7 +5898,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2621,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2631,38);
     }
     return $2;
   }
@@ -8320,6 +8319,30 @@
     return f$6($4,$5);
    };
   });
+  SC$1.setVar=AppFramework.depWithExtracts(function($1,$2,extractText)
+  {
+   return function(varN)
+   {
+    return function(value)
+    {
+     var t;
+     function a$4(_var)
+     {
+      View$1.Get(function(a$5)
+      {
+       _var.Set(a$5);
+      },extractText(value));
+     }
+     return View$1.Get(function(o$1)
+     {
+      if(o$1==null)
+       ;
+      else
+       a$4(o$1.$0);
+     },(t=AppFramework.getParmRef(varN),AppFramework.tryGetVoVW(t[0],t[1])));
+    };
+   };
+  });
   SC$1.trigAct=AppFramework.depWithExtracts(function($1,$2,extractText)
   {
    return function(trigger)
@@ -8386,13 +8409,7 @@
    self.alert("Hello!");
   }));
   AppFramework.plugIns().Append(a);
-  a$1=(b$9=AppFramework.plugin(),b$9.AddQry(b$9.AddAct(b$9.AddAct2(b$9.AddDoc3(b$9.AddDoc3(b$9.AddDoc4(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc1(b$9.AddDoc1(b$9.Name(b$9.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SetVar",function(v)
-  {
-   return function(v$1)
-   {
-    return AppFramework.setVar(v,v$1);
-   };
-  },"Var","Value"),"Hello",function()
+  a$1=(b$9=AppFramework.plugin(),b$9.AddQry(b$9.AddAct(b$9.AddAct2(b$9.AddDoc3(b$9.AddDoc3(b$9.AddDoc4(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc1(b$9.AddDoc1(b$9.Name(b$9.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SetVar",AppFramework.setVar(),"Var","Value"),"Hello",function()
   {
    self.alert("Hello!");
   }),"getDocNames",function()

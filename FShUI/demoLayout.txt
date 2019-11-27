@@ -98,7 +98,6 @@ mainLower0 vertical 0-15-100
 : div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 : vertical 0-60-100 snippet Right
 
-
 main  horizontal 40
 :  div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
 :: h3  "margin:10px;click=   @{ToggleMode}" "FShUI"
@@ -106,4 +105,4 @@ main  horizontal 40
 
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
-: Docs lytDemo.listEdit
+: Docs lytDemo.mainLower1
