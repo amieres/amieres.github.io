@@ -94,7 +94,7 @@ mainLower0 vertical 0-15-100
 : div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 : vertical 0-60-100 snippet Right
 
-navBar  div "class=container"
+navBar  div "class=xcontainer"
 :       div "class=navbar-header"
 ::      button "type=button;class=navbar-toggle collapsed;data-toggle=collapse;data-target=#navbar;aria-expanded=false;aria-controls=navbar"
 :::     span "class=sr-only" "Toggle navigation"
