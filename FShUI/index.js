@@ -44,5 +44,5 @@ function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.StartAppFramework   .startWith(     templates               );
     FsRootDll.LibraryJS.SnippetsUI.SaveLoad .updateSnippets(snippets                );
     
-    setTimeout(function(){ FsRootDll.LibraryJS.AppFramework        .callAction(    'lytDemo.goPrev'        ); }, 3000);
+    setTimeout(function(){ FsRootDll.LibraryJS.AppFramework        .callAction(    'lytDemo.goPrev'        ); }, 300);
 }
