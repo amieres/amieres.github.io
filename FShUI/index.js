@@ -43,4 +43,5 @@ function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );
     FsRootDll.LibraryJS.StartAppFramework   .startWith(     templates               );
     FsRootDll.LibraryJS.SnippetsUI.SaveLoad .updateSnippets(snippets                );
+    FsRootDll.LibraryJS.AppFramework        .callAction(    'lytDemo.goPrev'        );
 }
