@@ -2509,14 +2509,14 @@
   SC$1.$cctor();
   return SC$1.trigAct;
  };
- AppFramework.setVarFromVar=function(varN,value)
+ AppFramework.setVarDirect=function(varN,value)
  {
-  (AppFramework.setVarFromVar0())([varN,value]);
+  (AppFramework.setVarDirect0())([varN,value]);
  };
- AppFramework.setVarFromVar0=function()
+ AppFramework.setVarDirect0=function()
  {
   SC$1.$cctor();
-  return SC$1.setVarFromVar0;
+  return SC$1.setVarDirect0;
  };
  AppFramework.setVar=function(varN,value)
  {
@@ -4845,11 +4845,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3503$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3501$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3502$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3500$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5949,7 +5949,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2650,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2648,38);
     }
     return $2;
   }
@@ -7074,12 +7074,9 @@
   }
   function f$6(t,t$1)
   {
-   var o$1,t$2,_var,o$2,t$3;
+   var o$1,t$2;
    o$1=(t$2=AppFramework.getParmRef(t$1[0]),AppFramework.tryGetVoV(t$2[0],t$2[1]));
-   o$1==null?void 0:(_var=o$1.$0,o$2=(t$3=AppFramework.getParmRef(t$1[1]),AppFramework.tryGetWoW(t$3[0],t$3[1])),o$2==null?void 0:View$1.Get(function(a$4)
-   {
-    _var.Set(a$4);
-   },o$2.$0));
+   o$1==null?void 0:o$1.$0.Set(t$1[1]);
   }
   function checkO(v)
   {
@@ -8452,7 +8449,7 @@
     },extractText(t[1])));
    };
   });
-  SC$1.setVarFromVar0=AppFramework.depWithExtracts(function($1,$2,$3)
+  SC$1.setVarDirect0=AppFramework.depWithExtracts(function($1,$2,$3)
   {
    var $4;
    $4=[$1,$2,$3];
@@ -8533,11 +8530,11 @@
    {
     return AppFramework.setVar(v,v$1);
    };
-  },"Var","Value"),"SetVarFromVar",function(v)
+  },"Var","Value"),"SetVarDirect",function(v)
   {
    return function(v$1)
    {
-    return AppFramework.setVarFromVar(v,v$1);
+    return AppFramework.setVarDirect(v,v$1);
    };
   },"Var","from"),"Hello",function()
   {
