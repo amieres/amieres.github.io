@@ -9,7 +9,7 @@ target    ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_
 goPrev    Action AF.SetVar     "Snippets.snippets_sel"        Snippets.prevSel
 goNext    Action AF.SetVar     "Snippets.snippets_sel"        Snippets.nextSel
 
-SetTarget Action AF.SetVar     "lytTarget2.Layout"        target
+SetTarget Action AF.SetVarFromVar "lytTarget2.Layout"        target
 
 editMode    Var "0"
 editModeNot ViewJS "n => 1 - n"            editMode
@@ -119,11 +119,11 @@ navBar  div "class=xcontainer"
 ::::    a    "href=#;class=dropdown-toggle;data-toggle=dropdown;role=button;aria-haspopup=true;aria-expanded=false" "Dropdown"
 :::::   span "class=caret"
 ::::    ul   "class=dropdown-menu"
-:::::   li
+:::::   li   ""
 ::::::  a    "href=#"  "Action"
-:::::   li
+:::::   li   ""
 ::::::  a    "href=#"  "Another action"
-:::::   li
+:::::   li   ""
 ::::::  a    "href=#"  "Something else here"
 :::::   li   "role=separator;class=divider"
 :::::   li   "class=dropdown-header" "Nav header"
