@@ -12,9 +12,10 @@ goNext    Action AF.SetVar     "Snippets.snippets_sel"        Snippets.nextSel
 SetTarget Action AF.SetVar     "lytTarget2.Layout"        target
 
 editMode    Var "0"
-editModeNot ViewJS "n => 1 - n" editMode
-ToggleMode  Action AF.SetVar "lytDemo.editMode" editModeNot
-editNotText ViewJS "n => n?'Edit':'View'" editMode
+editModeNot ViewJS "n => 1 - n"         editMode
+ToggleMode  Action AF.SetVar   "lytDemo.editMode" editModeNot
+activeView  ViewJS "n => n?'':'active'" editMode
+activeEdit  ViewJS "n => n?'active':''" editMode
 
 applyColor ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget2.Layout target
 
@@ -104,8 +105,10 @@ navBar  div "class=xcontainer"
 ::      a    "class=navbar-brand;href=#" "FShUI"
 :       div  "id=navbar;class=navbar-collapse collapse"
 ::      ul   "class=nav navbar-nav"
-:::     li   "class=active"
-::::    a    "href=#" "Home"
+:::     li   "class=@{activeView}"
+::::    a    "href=#" "View"
+:::     li   "class=@{activeEdit}"
+::::    a    "href=#" "Edit"
 :::     li   ""
 ::::    a    "href=#" "About"
 :::     li   ""
