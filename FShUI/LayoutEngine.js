@@ -4845,11 +4845,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3501$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3504$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3500$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3503$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5086,24 +5086,33 @@
  };
  LayoutEngineModule.getExtraLines=function(pred,ls)
  {
-  var i,x,o,v;
+  var i,x,o,v,a;
   i=(x=(o=Seq.tryFindIndex(function(l)
   {
-   return Strings.Trim(l)!==""&&!Strings.StartsWith(Strings.Trim(l),"//")&&!pred(l);
+   return(LayoutEngineModule.notEmpty())(l)&&!pred(l);
   },Seq.skip(1,ls)),o==null?null:{
    $:1,
    $0:1+o.$0
   }),(v=Arrays.length(ls),x==null?v:x.$0));
-  return[Slice.array(ls,{
+  return[(a=Slice.array(ls,{
    $:1,
    $0:1
   },{
    $:1,
    $0:i-1
-  }),Slice.array(ls,{
+  }),Arrays.filter(LayoutEngineModule.notEmpty(),a)),Slice.array(ls,{
    $:1,
    $0:i
   },null)];
+ };
+ LayoutEngineModule.notEmpty=function()
+ {
+  SC$1.$cctor();
+  return SC$1.notEmpty;
+ };
+ LayoutEngineModule.emptyLine=function(l)
+ {
+  return Strings.Trim(l)!==""&&!Strings.StartsWith(Strings.Trim(l),"//");
  };
  LayoutEngineModule.createEntryO=function(lytNm,line)
  {
@@ -7018,7 +7027,7 @@
    {
     return AppFramework.plugIns().TryFindByKey(a$5);
    }
-   function g$4(o$1)
+   function g$5(o$1)
    {
     return o$1==null?AppFramework.defaultPlugIn():o$1.$0;
    }
@@ -7028,7 +7037,7 @@
    };
    return function(x$1)
    {
-    return g$4(f$7(x$1));
+    return g$5(f$7(x$1));
    };
   }
   function f$3(extractAts,extractDoc)
@@ -7396,6 +7405,10 @@
    var o$1;
    o$1=checkO$10(p$28);
    return o$1==null?store$10(p$28,f$7(p$28)):o$1.$0;
+  }
+  function g$4(v)
+  {
+   return!v;
   }
   function checkO$11(v)
   {
@@ -7943,7 +7956,7 @@
   {
    return b$2.Bind(Extract0.getTextActViewFromReferenceD(),function(a$4)
    {
-    var f$7,g$4,f$8;
+    var f$7,g$5,f$8;
     function f$9(a$5)
     {
      var r;
@@ -7967,7 +7980,7 @@
     return b$2.Return((f$7=function(l)
     {
      return Val.traverseListApp(f$9,l);
-    },(g$4=(f$8={
+    },(g$5=(f$8={
      $:1,
      $0:function(s)
      {
@@ -7978,7 +7991,7 @@
      return Val.apply(f$8,v);
     }),function(x$1)
     {
-     return g$4(f$7(x$1));
+     return g$5(f$7(x$1));
     })));
    });
   }));
@@ -8038,7 +8051,7 @@
        {
         return t[0];
        }
-       function g$5(y)
+       function g$6(y)
        {
         return atn===y;
        }
@@ -8047,7 +8060,7 @@
          act=a$7.$0;
          p$28=Arrays.partition(function(x$1)
          {
-          return g$5(f$7(x$1));
+          return g$6(f$7(x$1));
          },addedListeners(el));
          same=p$28[0];
          for(i=0,$1=same.length-1;i<=$1;i++)(function()
@@ -8106,7 +8119,7 @@
        {
         return t[0];
        }
-       function g$5(a$8)
+       function g$6(a$8)
        {
         return new FSharpSet.New(a$8);
        }
@@ -8145,7 +8158,7 @@
         return Seq.map(m$1,s$1);
        },function(x$1)
        {
-        return g$5(f$7(x$1));
+        return g$6(f$7(x$1));
        });
        i=FSharpSet.op_Subtraction(names(attsNow),names(atts));
        e=Enumerator.Get(i);
@@ -8258,7 +8271,7 @@
          e$2.Dispose();
        }
       }
-      function g$4(s$1)
+      function g$5(s$1)
       {
        return Seq.map(parseAttr,s$1);
       }
@@ -8271,7 +8284,7 @@
        };
       },View$1.Map(function(x$1)
       {
-       return g$4(splitAttrs(x$1));
+       return g$5(splitAttrs(x$1));
       },m.$0)):constAttr(parseAttr(m.$0)))]:Seq.map(function(x$1)
       {
        return constAttr(parseAttr(x$1));
@@ -8752,6 +8765,10 @@
     return LayoutEngineModule.createAction($1[0],$1[1],$1[2],$1[3]);
    });
   },p$10[1]]))[0];
+  SC$1.notEmpty=function(x$1)
+  {
+   return g$4(LayoutEngineModule.emptyLine(x$1));
+  };
   SC$1.aV=Var$2.Create$1(4);
   SC$1.pa=NewLY.aV().get_View();
   SC$1.pb=6.2;
@@ -9293,7 +9310,7 @@
     {
      return b$13.Return(function(p$28)
      {
-      var refToSplit,g$4,r,f$7,m,g$5,t,r$1,f$8,m$1,g$6,g$7,t$1,r$2,f$9,m$2,g$8,g$9,t$2,r$3,f$10,m$3,g$10,t$3;
+      var refToSplit,g$5,r,f$7,m,g$6,t,r$1,f$8,m$1,g$7,g$8,t$1,r$2,f$9,m$2,g$9,g$10,t$2,r$3,f$10,m$3,g$11,t$3;
       function f$11(d$4)
       {
        return d$4.docDoc;
@@ -9350,9 +9367,9 @@
         };
        }(Global.id))(r$3);
       }
-      refToSplit=(g$4=AppFramework.splitName(a$4),function(x$1)
+      refToSplit=(g$5=AppFramework.splitName(a$4),function(x$1)
       {
-       return g$4(NewLY.itemRefToString(x$1));
+       return g$5(NewLY.itemRefToString(x$1));
       });
       return p$28.$==1?(r=p$28.$0.$0,View$1.Map((f$7=(m=function(x$1)
       {
@@ -9365,48 +9382,48 @@
         $:1,
         $0:m(o$1.$0)
        };
-      }),(g$5=function(o$1)
+      }),(g$6=function(o$1)
       {
        return o$1==null?d():o$1.$0;
       },function(x$1)
       {
-       return g$5(f$7(x$1));
-      })),(t=refToSplit(r),AppFramework.tryGetDocW(t[0],t[1])))):p$28.$==2?(r$1=p$28.$0.$0,View$1.Bind((f$8=(m$1=(g$6=function(a$6)
+       return g$6(f$7(x$1));
+      })),(t=refToSplit(r),AppFramework.tryGetDocW(t[0],t[1])))):p$28.$==2?(r$1=p$28.$0.$0,View$1.Bind((f$8=(m$1=(g$7=function(a$6)
       {
        return View$1.Map(Global.id,a$6);
       },function(x$1)
       {
-       return g$6(f$12(x$1));
+       return g$7(f$12(x$1));
       }),function(o$1)
       {
        return o$1==null?null:{
         $:1,
         $0:m$1(o$1.$0)
        };
-      }),(g$7=function(o$1)
+      }),(g$8=function(o$1)
       {
        return o$1==null?d$1():o$1.$0;
       },function(x$1)
       {
-       return g$7(f$8(x$1));
-      })),(t$1=refToSplit(r$1),AppFramework.tryGetVarW(t$1[0],t$1[1])))):p$28.$==3?(r$2=p$28.$0.$0,View$1.Bind((f$9=(m$2=(g$8=function(a$6)
+       return g$8(f$8(x$1));
+      })),(t$1=refToSplit(r$1),AppFramework.tryGetVarW(t$1[0],t$1[1])))):p$28.$==3?(r$2=p$28.$0.$0,View$1.Bind((f$9=(m$2=(g$9=function(a$6)
       {
        return View$1.Map(Global.id,a$6);
       },function(x$1)
       {
-       return g$8(f$13(x$1));
+       return g$9(f$13(x$1));
       }),function(o$1)
       {
        return o$1==null?null:{
         $:1,
         $0:m$2(o$1.$0)
        };
-      }),(g$9=function(o$1)
+      }),(g$10=function(o$1)
       {
        return o$1==null?d$2():o$1.$0;
       },function(x$1)
       {
-       return g$9(f$9(x$1));
+       return g$10(f$9(x$1));
       })),(t$2=refToSplit(r$2),AppFramework.tryGetViwW(t$2[0],t$2[1])))):p$28.$==4?(r$3=p$28.$0.$0,View$1.Map((f$10=(m$3=function(x$1)
       {
        var v;
@@ -9418,12 +9435,12 @@
         $:1,
         $0:m$3(o$1.$0)
        };
-      }),(g$10=function(o$1)
+      }),(g$11=function(o$1)
       {
        return o$1==null?d$3():o$1.$0;
       },function(x$1)
       {
-       return g$10(f$10(x$1));
+       return g$11(f$10(x$1));
       })),(t$3=refToSplit(r$3),AppFramework.tryGetActW(t$3[0],t$3[1])))):View$1.Map(Global.id,Val.toView(a$5(List.map(NewLY.textValToTextType,p$28.$0))));
      });
     });
@@ -9437,8 +9454,8 @@
     {
      return b$14.Return(function(p$28)
      {
-      var toAbs,f$7,g$4,$1;
-      toAbs=(f$7=NewLY.itemRefToAbsolute(a$4.get_Id()),(g$4=function($2)
+      var toAbs,f$7,g$5,$1;
+      toAbs=(f$7=NewLY.itemRefToAbsolute(a$4.get_Id()),(g$5=function($2)
       {
        return function($3)
        {
@@ -9446,7 +9463,7 @@
        };
       }(Global.id),function(x$1)
       {
-       return g$4(f$7(x$1));
+       return g$5(f$7(x$1));
       }));
       return(p$28.$==3?($1=p$28.$0.$0,false):p$28.$==1?($1=p$28.$0.$0,false):p$28.$==2?($1=p$28.$0.$0,false):p$28.$==4?($1=p$28.$0.$0,false):true)?Strings.concat("",Seq.map(function(a$5)
       {
@@ -9467,10 +9484,10 @@
      {
       return function(f$7)
       {
-       var refToSplit,g$4,o$1,t,o$2,t$1,o$3,t$2,o$4,t$3;
-       refToSplit=(g$4=AppFramework.splitName(a$4),function(x$1)
+       var refToSplit,g$5,o$1,t,o$2,t$1,o$3,t$2,o$4,t$3;
+       refToSplit=(g$5=AppFramework.splitName(a$4),function(x$1)
        {
-        return g$4(NewLY.itemRefToString(x$1));
+        return g$5(NewLY.itemRefToString(x$1));
        });
        return p$28.$==1?(o$1=(t=refToSplit(p$28.$0.$0),AppFramework.tryGetDoc(t[0],t[1])),o$1==null?null:f$7(o$1.$0.docDoc)):p$28.$==2?(o$2=(t$1=refToSplit(p$28.$0.$0),AppFramework.tryGetVar(t$1[0],t$1[1])),o$2==null?null:View$1.Get(function(x$1)
        {
