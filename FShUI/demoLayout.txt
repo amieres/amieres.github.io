@@ -9,7 +9,7 @@ target    ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_
 goPrev    Action AF.SetVar     "Snippets.snippets_sel"        Snippets.prevSel
 goNext    Action AF.SetVar     "Snippets.snippets_sel"        Snippets.nextSel
 
-SetTarget Action AF.SetVarFromVar "lytTarget2.Layout"        target
+SetTarget Action AF.SetVarDirect "lytTarget2.Layout"        target
 
 editMode    Var "0"
 editModeNot ViewJS "n => 1 - n"            editMode
