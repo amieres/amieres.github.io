@@ -146,9 +146,6 @@ nav nav "class=navbar navbar-default navbar-fixed-top" navBar
 main  horizontal 51 nav
 :  Doc  AF.DocReference "lytDemo.mainLower@{editMode}"
 
-//:  div "border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: lightgrey;max-height:100%"
-//:: h3  "margin:10px;click=   @{ToggleMode};not=@{editModeNot}" "FShUI"
-
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
 : Docs lytDemo.mainLower1

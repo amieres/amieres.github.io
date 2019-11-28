@@ -5089,7 +5089,7 @@
   var i,x,o,v;
   i=(x=(o=Seq.tryFindIndex(function(l)
   {
-   return Strings.Trim(l)!==""&&!pred(l);
+   return Strings.Trim(l)!==""&&!Strings.StartsWith(Strings.Trim(l),"//")&&!pred(l);
   },Seq.skip(1,ls)),o==null?null:{
    $:1,
    $0:1+o.$0
