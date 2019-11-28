@@ -4845,11 +4845,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3504$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3506$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3503$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3505$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -5112,7 +5112,9 @@
  };
  LayoutEngineModule.emptyLine=function(l)
  {
-  return Strings.Trim(l)!==""&&!Strings.StartsWith(Strings.Trim(l),"//");
+  var lt;
+  lt=Strings.Trim(l);
+  return lt===""||Strings.StartsWith(lt,"//");
  };
  LayoutEngineModule.createEntryO=function(lytNm,line)
  {
