@@ -78,7 +78,7 @@ snippetList1 div "display:flex;flex-direction:column"
     
 snippetList0  div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 
-navBar  div "class=xcontainer"
+navBar  div "class=xcontainer;margin-right:10px"
 :       div "class=navbar-header"
 ::      button "type=button;class=navbar-toggle collapsed;data-toggle=collapse;data-target=#navbar;aria-expanded=false;aria-controls=navbar"
 :::     span "class=sr-only" "Toggle navigation"
