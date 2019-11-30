@@ -3465,12 +3465,16 @@
   },function($1)
   {
    return a$1($1[0],$1[1]);
-  },View$1.Map(function(plg)
+  },View$1.Bind(function(plg)
   {
-   return Seq.map(function(v)
+   function m(v)
    {
     return[plg,v];
-   },plg.plgDocs);
+   }
+   return View$1.Map(function(s)
+   {
+    return Seq.map(m,s);
+   },plg.plgDocs.v);
   },AppFramework.currentPlugInW()));
  };
  AppFramework.renderViews=function()
