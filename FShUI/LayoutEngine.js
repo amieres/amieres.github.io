@@ -3702,14 +3702,13 @@
  };
  LM.getDoc=function(keyF,def,newF,predWO,elUI)
  {
-  var e;
-  e=View$1.Const(ListModel$1.Create(keyF,List.T.Empty));
-  return function(e$1)
-  {
-   return LM.getDocFor(e,def,newF,predWO,elUI,e$1);
-  };
+  return LM.getDocFor(ListModel$1.Create(keyF,List.T.Empty),def,newF,predWO,elUI);
  };
- LM.getDocFor=function(elementsW,keyF,def,newF,predWO,elUI)
+ LM.getDocFor=function(elements,def,newF,predWO,elUI)
+ {
+  return LM.getDocForW(View$1.Const(elements),elements.key,def,newF,predWO,elUI);
+ };
+ LM.getDocForW=function(elementsW,keyF,def,newF,predWO,elUI)
  {
   var selected0,selectedV,b,result,elUIF;
   function _delete(k,u)
@@ -3813,7 +3812,7 @@
   SC$1.$cctor();
   return SC$1.defDoc;
  };
- AppFrameworkUI.showDoc$2584$35=function(k,lmd)
+ AppFrameworkUI.showDoc$2586$35=function(k,lmd)
  {
   return function()
   {
@@ -3882,7 +3881,7 @@
    }),k);
   }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showPlugIn$2569$35=function(k,lmd)
+ AppFrameworkUI.showPlugIn$2571$35=function(k,lmd)
  {
   return function()
   {
@@ -4943,11 +4942,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3584$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3586$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3583$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3585$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -6058,7 +6057,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2726,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2728,38);
     }
     return $2;
   }
@@ -8717,14 +8716,11 @@
    $:0,
    $0:"_"
   }),Lazy.Create(Doc.get_Empty));
-  SC$1.pluginsList=LM.getDocFor(View$1.Const(AppFramework.plugIns()),function(plg)
-  {
-   return plg.plgName;
-  },AppFramework.defaultPlugIn(),function()
+  SC$1.pluginsList=LM.getDocFor(AppFramework.plugIns(),AppFramework.defaultPlugIn(),function()
   {
    return Operators$3.FailWith("Create plugin not implemented");
   },null,Runtime.Curried3(AppFrameworkUI.showPlugIn));
-  SC$1.plgDocsList=LM.getDocFor(View$1.Map(function($1)
+  SC$1.plgDocsList=LM.getDocForW(View$1.Map(function($1)
   {
    return $1.plgDocs;
   },AppFrameworkUI.pluginsList().get_CurrentW()),function(plgDoc)
