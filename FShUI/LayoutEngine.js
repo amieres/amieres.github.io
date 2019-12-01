@@ -8788,6 +8788,13 @@
    return function(docName)
    {
     var x;
+    function f$13(a$3,a$4)
+    {
+     return function(f$14)
+     {
+      return(f$14(a$3))(a$4);
+     };
+    }
     return Doc.BindView(function(a$3)
     {
      return a$3==null?(AppFramework.errDocf(function($3)
@@ -8796,16 +8803,25 @@
       {
        return $3("Doc not found: "+Utils.toSafe($4));
       };
-     }))(docName):a$3.$0.docDoc.$==0?a$3.$0.docDoc.$0.f():(AppFramework.errDocf(function($3)
+     }))(docName):a$3.$0.docDoc.$==0?(AppFramework.mainDocV().Set(AppFramework.mainDocV().Get()),a$3.$0.docDoc.$0.f()):(AppFramework.errDocf(function($3)
      {
       return function($4)
       {
        return $3("Doc parameters not resolved: "+GeneratedPrintf.p($4));
       };
      }))(a$3.$0);
-    },View$1.Bind(function($3)
+    },View$1.Bind(function(b$17)
     {
-     return AppFramework.tryGetDocW($3[0],$3[1]);
+     return(function($3)
+     {
+      return f$13($3[0],$3[1]);
+     }(b$17))(function($3)
+     {
+      return function($4)
+      {
+       return AppFramework.tryGetDocW($3,$4);
+      };
+     });
     },(x=extractText(docName),View$1.Map(AppFramework.splitName(AppFramework.defPlugInName()),x))));
    };
   });
@@ -10159,6 +10175,10 @@
  {
   return"PlgElemName "+Utils.prettyPrint($1.$0);
  };
+ LayoutEngine_GeneratedPrintf.p$1=function($1)
+ {
+  return $1.$==5?"FunDoc5 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+", "+Utils.prettyPrint($1.$3)+", "+Utils.prettyPrint($1.$4)+", "+Utils.prettyPrint($1.$5)+")":$1.$==4?"FunDoc4 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+", "+Utils.prettyPrint($1.$3)+", "+Utils.prettyPrint($1.$4)+")":$1.$==3?"FunDoc3 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+", "+Utils.prettyPrint($1.$3)+")":$1.$==2?"FunDoc2 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+")":$1.$==1?"FunDoc1 (<fun>, "+Utils.prettyPrint($1.$1)+")":"LazyDoc "+Utils.prettyPrint($1.$0);
+ };
  LayoutEngine_GeneratedPrintf.p$2=function($1)
  {
   return $1.$==1?"FullRef ("+Utils.prettyPrint($1.$0)+", "+Utils.prettyPrint($1.$1)+")":"LocalRef "+Utils.prettyPrint($1.$0);
@@ -10406,10 +10426,6 @@
    $:1,
    $0:"appfwkclient"
   },h):void 0;
- };
- LayoutEngine_GeneratedPrintf.p$1=function($1)
- {
-  return $1.$==5?"FunDoc5 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+", "+Utils.prettyPrint($1.$3)+", "+Utils.prettyPrint($1.$4)+", "+Utils.prettyPrint($1.$5)+")":$1.$==4?"FunDoc4 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+", "+Utils.prettyPrint($1.$3)+", "+Utils.prettyPrint($1.$4)+")":$1.$==3?"FunDoc3 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+", "+Utils.prettyPrint($1.$3)+")":$1.$==2?"FunDoc2 (<fun>, "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+")":$1.$==1?"FunDoc1 (<fun>, "+Utils.prettyPrint($1.$1)+")":"LazyDoc "+Utils.prettyPrint($1.$0);
  };
  GeneratedPrintf.p=function($1)
  {
