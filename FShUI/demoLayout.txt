@@ -1,4 +1,4 @@
-lytTarget2 PlugIn
+lytTarget  PlugIn
 : View ParseMsgs
 : Doc  main 
 
@@ -9,7 +9,7 @@ target      ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSn
 goPrev      Action AF.SetVar       "Snippets.snippets_sel"    Snippets.prevSel
 goNext      Action AF.SetVar       "Snippets.snippets_sel"    Snippets.nextSel
 
-SetTarget   Action AF.SetVarDirect "lytTarget2.Layout"        target
+SetTarget   Action AF.SetVarDirect "lytTarget.Layout"         target
 Trigger     Doc    AF.TrigAction   Snippets.snippets_sel      SetTarget
 
 editMode    Var    "0"
@@ -20,7 +20,7 @@ ToggleMode  Action AF.SetVar      "lytDemo.editMode" editModeNot
 setView     Action AF.SetVar      "lytDemo.editMode" "0"
 setEdit     Action AF.SetVar      "lytDemo.editMode" "1"
 
-applyColor  ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget2.Layout target
+applyColor  ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget.Layout target
 
 SearchFor   Doc    AF.InputLabel "" "Search" Snippets.searchFor
 
@@ -57,7 +57,7 @@ content div "margin:10px" Trigger
 
 snippet div "overflow:auto" content
 
-RightX div "display: flex; flex-direction:column" lytTarget2.main
+RightX div "display: flex; flex-direction:column" lytTarget.main
 
 Right horizontal 0-35-100
 :   div       "height:100%;display:flex;flex-direction: column" 
@@ -66,7 +66,7 @@ Right horizontal 0-35-100
 ::  div       "color:red;font-weight:800;white-space:pre-wrap"  Snippets.parseOut
 ::  span      "width:100%"
 ::: button    "click=@{SetTarget};class=@{applyColor}"  "Try me! >>"
-: div "display: flex; flex-direction:column" lytTarget2.main
+: div "display: flex; flex-direction:column" lytTarget.main
 
 editorCombo div "display:flex;flex-direction:column; height:100%"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
