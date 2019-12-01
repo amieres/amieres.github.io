@@ -36,8 +36,8 @@ requirejs([
 });
 
 function startPage(demoLayout, templates, snippets) {
-    FsRootDll.LibraryJS.MonacoPlugIn        .plugInAdded();
-    FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
+    //FsRootDll.LibraryJS.MonacoPlugIn        .plugInAdded();
+    //FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytTarget2", ""        );
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
     //FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );
