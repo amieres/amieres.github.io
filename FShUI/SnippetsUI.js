@@ -1750,20 +1750,6 @@
    },null)]),SnippetsUI.snippetsLM().Set(a)):void 0;
   },SnippetsUI.processHierW());
  };
- SnippetsUI.selectorLensGuidId=function(sel)
- {
-  var f,g;
-  return(Util.selectorLens(Global.String,(f=ParseO.parseGuidO$1(),(g=function(o)
-  {
-   return o==null?null:{
-    $:1,
-    $0:Global.id(o.$0)
-   };
-  },function(x)
-  {
-   return g(f(x));
-  }))))(sel);
- };
  SnippetsUI.curSnp=function()
  {
   SC$1.$cctor();
@@ -1866,7 +1852,7 @@
   SC$1.$cctor();
   return SC$1.search;
  };
- SnippetsUI.calcUI$869$44=function(k)
+ SnippetsUI.calcUI$870$44=function(k)
  {
   return function(ev)
   {
@@ -1886,7 +1872,7 @@
    },k);
   };
  };
- SnippetsUI.calcUI$868$44=function(k)
+ SnippetsUI.calcUI$869$44=function(k)
  {
   return function(ev)
   {
@@ -1898,7 +1884,7 @@
    },k);
   };
  };
- SnippetsUI.calcUI$867$44=function(k)
+ SnippetsUI.calcUI$868$44=function(k)
  {
   return function(ev)
   {
@@ -1912,7 +1898,7 @@
    },k);
   };
  };
- SnippetsUI.calcUI$858$44=function(snpdW,snp)
+ SnippetsUI.calcUI$859$44=function(snpdW,snp)
  {
   return function()
   {
@@ -1939,7 +1925,7 @@
    },snpdW);
   };
  };
- SnippetsUI.calcUI$852$44=function(k,lmd)
+ SnippetsUI.calcUI$853$44=function(k,lmd)
  {
   return function()
   {
@@ -2370,32 +2356,32 @@
  };
  SC$1.$cctor=function()
  {
-  var g,t,s,x,t$1,t$2,t$3,t$4,t$5,t$6,t$7,t$8,t$9,t$10,t$11,i,x$1,t$12,t$13,t$14,t$15,t$16,t$17,i$1,v,prior,b,b$1,propsV,b$2,f,g$1,b$3;
+  var g,t,s,x,t$1,t$2,t$3,t$4,t$5,t$6,t$7,t$8,t$9,t$10,t$11,i,x$1,t$12,t$13,t$14,t$15,t$16,t$17,i$1,v,prior,b,b$1,propsV,b$2,f,g$1,b$3,a,f$1,g$2;
   SC$1.$cctor=Global.ignore;
-  function f$1(s$1)
+  function f$2(s$1)
   {
    return s$1+"T00:00:00";
   }
-  function t$18(a)
+  function t$18(a$1)
   {
-   return SnippetsUI.snippetsLM().TryFindByKey(a);
+   return SnippetsUI.snippetsLM().TryFindByKey(a$1);
   }
-  function t$19(a)
+  function t$19(a$1)
   {
-   return SnippetsUI.snippetsLM().TryFindByKey(a);
+   return SnippetsUI.snippetsLM().TryFindByKey(a$1);
   }
-  function f$2(t$20)
+  function f$3(t$20)
   {
    return LayoutEngineModule.parseEntries("lytTarget",t$20);
   }
-  function c(a)
+  function c(a$1)
   {
-   return a.$==1?{
+   return a$1.$==1?{
     $:1,
-    $0:a.$0
+    $0:a$1.$0
    }:null;
   }
-  function g$2(s$1)
+  function g$3(s$1)
   {
    return Strings.concat("\n",s$1);
   }
@@ -2403,26 +2389,26 @@
   {
    return[v$1];
   };
-  SC$1.parseDateO2=(g=ParseO.tryParseWith$1(function(a)
+  SC$1.parseDateO2=(g=ParseO.tryParseWith$1(function(a$1)
   {
    var o,m;
    o=0;
-   return[(m=DateUtil.TryParse(a),m!=null&&m.$==1&&(o=m.$0,true)),o];
+   return[(m=DateUtil.TryParse(a$1),m!=null&&m.$==1&&(o=m.$0,true)),o];
   }),function(x$2)
   {
-   return g(f$1(x$2));
+   return g(f$2(x$2));
   });
-  SC$1.parseDateO=ParseO.tryParseWith$1(function(a)
+  SC$1.parseDateO=ParseO.tryParseWith$1(function(a$1)
   {
    var o,m;
    o=0;
-   return[(m=DateUtil.TryParse(a),m!=null&&m.$==1&&(o=m.$0,true)),o];
+   return[(m=DateUtil.TryParse(a$1),m!=null&&m.$==1&&(o=m.$0,true)),o];
   });
-  SC$1.parseIntO=ParseO.tryParseWith$1(function(a)
+  SC$1.parseIntO=ParseO.tryParseWith$1(function(a$1)
   {
    var o;
    o=0;
-   return[Numeric.TryParseInt32(a,{
+   return[Numeric.TryParseInt32(a$1,{
     get:function()
     {
      return o;
@@ -2433,11 +2419,11 @@
     }
    }),o];
   });
-  SC$1.parseInt64O=ParseO.tryParseWith$1(function(a)
+  SC$1.parseInt64O=ParseO.tryParseWith$1(function(a$1)
   {
    var o;
    o=0;
-   return[Numeric.TryParseInt64(a,{
+   return[Numeric.TryParseInt64(a$1,{
     get:function()
     {
      return o;
@@ -2448,23 +2434,23 @@
     }
    }),o];
   });
-  SC$1.parseSingleO=ParseO.tryParseWith$1(function(a)
+  SC$1.parseSingleO=ParseO.tryParseWith$1(function(a$1)
   {
    var o,$1;
    o=0;
-   return[($1=Global.Number(a),Global.isNaN($1)?false:(o=$1,true)),o];
+   return[($1=Global.Number(a$1),Global.isNaN($1)?false:(o=$1,true)),o];
   });
-  SC$1.parseDoubleO=ParseO.tryParseWith$1(function(a)
+  SC$1.parseDoubleO=ParseO.tryParseWith$1(function(a$1)
   {
    var o,$1;
    o=0;
-   return[($1=Global.Number(a),Global.isNaN($1)?false:(o=$1,true)),o];
+   return[($1=Global.Number(a$1),Global.isNaN($1)?false:(o=$1,true)),o];
   });
-  SC$1.parseGuidO=ParseO.tryParseWith$1(function(a)
+  SC$1.parseGuidO=ParseO.tryParseWith$1(function(a$1)
   {
    var o;
    o=null;
-   return[Guid.TryParse(a,{
+   return[Guid.TryParse(a$1,{
     get:function()
     {
      return o;
@@ -2558,8 +2544,8 @@
    }))(Global.id))(s))(x$2);
   },function(j)
   {
-   var o,o$1,o$2,f$3;
-   o=(o$1=(o$2=j.tryField(s),o$2==null?null:o$2.$0.tryString()),(f$3=ParseO.parseGuidO$1(),o$1==null?null:f$3(o$1.$0)));
+   var o,o$1,o$2,f$4;
+   o=(o$1=(o$2=j.tryField(s),o$2==null?null:o$2.$0.tryString()),(f$4=ParseO.parseGuidO$1(),o$1==null?null:f$4(o$1.$0)));
    return o==null?null:{
     $:1,
     $0:o.$0
@@ -2757,14 +2743,14 @@
    if(!Unchecked.Equals(prior[0].Get(),v$1))
     prior[0].Set(v$1);
   },v),prior[0].get_View())));
-  SC$1.processHierW=(b=View$1.get_Do(),View$1.Bind(function(a)
+  SC$1.processHierW=(b=View$1.get_Do(),View$1.Bind(function(a$1)
   {
-   return View$1.Bind(function(a$1)
+   return View$1.Bind(function(a$2)
    {
-    return View$1.Const(SnippetsUI.processHier(a,a$1));
+    return View$1.Const(SnippetsUI.processHier(a$1,a$2));
    },SnippetsUI.collapsedV().get_View());
   },SnippetsUI.snpIdParentsW()));
-  SC$1.search=(b$1=View$1.get_Do(),View$1.Bind(function(a)
+  SC$1.search=(b$1=View$1.get_Do(),View$1.Bind(function(a$1)
   {
    function visibleF(snp)
    {
@@ -2786,27 +2772,27 @@
       $:1,
       $0:res
      }:null;
-    }(a)),o$1==null?null:{
+    }(a$1)),o$1==null?null:{
      $:1,
      $0:o$1.$0.visible
     });
     return o==null||o.$0;
    }
-   return View$1.Bind(function(a$1)
+   return View$1.Bind(function(a$2)
    {
-    return a$1===""?View$1.Const(visibleF):View$1.Bind(function(a$2)
+    return a$2===""?View$1.Const(visibleF):View$1.Bind(function(a$3)
     {
-     return View$1.Bind(function(a$3)
+     return View$1.Bind(function(a$4)
      {
-      return a$1==="."?View$1.Const(function(snp)
+      return a$2==="."?View$1.Const(function(snp)
       {
-       return(Unchecked.Equals(a$3,{
+       return(Unchecked.Equals(a$4,{
         $:1,
         $0:snp.snpId
-       })||Seq$1.contains(snp.snpId,a$2))&&visibleF(snp);
+       })||Seq$1.contains(snp.snpId,a$3))&&visibleF(snp);
       }):View$1.Const(function(snp)
       {
-       return snp.snpName.indexOf(a$1)!=-1||snp.snpContent.indexOf(a$1)!=-1;
+       return snp.snpName.indexOf(a$2)!=-1||snp.snpContent.indexOf(a$2)!=-1;
       });
      },SnippetsUI.codeSnippetIdV().get_View());
     },SnippetsUI.allCodePredIdsW());
@@ -2822,12 +2808,12 @@
   {
    return SnippetsUI.calcUI(SnippetsUI.wrapNothing,true,l);
   });
-  View$1.Sink(function(a)
+  View$1.Sink(function(a$1)
   {
    var sid;
-   if(a!=null&&a.$==1)
+   if(a$1!=null&&a$1.$==1)
     {
-     sid=a.$0;
+     sid=a$1.$0;
      View$1.Get(function(allCodePredIds)
      {
       if(!Unchecked.Equals(SnippetsUI.codeSnippetIdV().Get(),{
@@ -2842,7 +2828,7 @@
      },SnippetsUI.allCodePredIdsW());
     }
   },SnippetsUI.snippetList().selV.get_View());
-  SC$1.currentSnippetV=Var$1.Lens(SnippetsUI.snippetList().get_CurrentV(),Global.id,function(a,x$2)
+  SC$1.currentSnippetV=Var$1.Lens(SnippetsUI.snippetList().get_CurrentV(),Global.id,function(a$1,x$2)
   {
    return x$2;
   });
@@ -2876,19 +2862,19 @@
   {
    return function($3)
    {
-    var cid,a,o,o$1;
+    var cid,a$1,o,o$1;
     function p(i$2,snp)
     {
      return Unchecked.Equals(snp.snpId,cid);
     }
     cid=$1.snpId;
-    return Seq$1.tryItem((a=(o=(o$1=Seq$1.tryFind(function($4)
+    return Seq$1.tryItem((a$1=(o=(o$1=Seq$1.tryFind(function($4)
     {
      return p($4[0],$4[1]);
     },Seq$1.indexed($2)),o$1==null?null:{
      $:1,
      $0:o$1.$0[0]
-    }),o==null?0:o.$0),a===0?0:a-1),$3);
+    }),o==null?0:o.$0),a$1===0?0:a$1-1),$3);
    };
   },SnippetsUI.currentSnippetV().get_View(),SnippetsUI.snippetsLM().v),SnippetsUI.snippetsLM().v);
   SC$1.nextSnpW=View$1.Apply(View$1.Apply(View$1.Map2(function($1,$2)
@@ -2897,19 +2883,19 @@
    {
     return function($4)
     {
-     var cid,a,o,o$1;
+     var cid,a$1,o,o$1;
      function p(i$2,snp)
      {
       return Unchecked.Equals(snp.snpId,cid);
      }
      cid=$1.snpId;
-     return Seq$1.tryItem((a=(o=(o$1=Seq$1.tryFind(function($5)
+     return Seq$1.tryItem((a$1=(o=(o$1=Seq$1.tryFind(function($5)
      {
       return p($5[0],$5[1]);
      },Seq$1.indexed($2)),o$1==null?null:{
       $:1,
       $0:o$1.$0[0]
-     }),o==null?0:o.$0),a+1>=Seq$1.length($3)?a:a+1),$4);
+     }),o==null?0:o.$0),a$1+1>=Seq$1.length($3)?a$1:a$1+1),$4);
     };
    };
   },SnippetsUI.currentSnippetV().get_View(),SnippetsUI.snippetsLM().v),SnippetsUI.snippetsLM().v),SnippetsUI.snippetsLM().v);
@@ -2954,12 +2940,21 @@
    return Seq$1.choose(c,s$1);
   },function(x$2)
   {
-   return g$1(f$2(x$2));
+   return g$1(f$3(x$2));
   }),function(x$2)
   {
-   return g$2(f(x$2));
+   return g$3(f(x$2));
   }),SnippetsUI.currentSnippetContentV().get_View());
-  SC$1.plugInAdded=AppFramework.addPlugIn((b$3=AppFramework.plugin(),b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.Merge(b$3.Merge(b$3.AddViw(b$3.AddViw(b$3.AddViw(b$3.AddViw(b$3.AddViw(b$3.AddVar(b$3.Name(b$3.Yield(),"Snippets"),"searchFor",SnippetsUI.searchFor()),"parseOut",SnippetsUI.parseW()),"prevSel",SnippetsUI.prevSelW()),"nextSel",SnippetsUI.nextSelW()),"prevTxt",SnippetsUI.prevTxtW()),"nextTxt",SnippetsUI.nextTxtW()),"snippets_",SnippetsUI.snippetList().PlugIn(SnippetsUI.selectorLensGuidId)),"curSnp_",SnippetsUI.curSnp()),"LoadSnippets",function()
+  SC$1.plugInAdded=AppFramework.addPlugIn((b$3=AppFramework.plugin(),b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.AddAct(b$3.Merge(b$3.Merge(b$3.AddViw(b$3.AddViw(b$3.AddViw(b$3.AddViw(b$3.AddViw(b$3.AddVar(b$3.Name(b$3.Yield(),"Snippets"),"searchFor",SnippetsUI.searchFor()),"parseOut",SnippetsUI.parseW()),"prevSel",SnippetsUI.prevSelW()),"nextSel",SnippetsUI.nextSelW()),"prevTxt",SnippetsUI.prevTxtW()),"nextTxt",SnippetsUI.nextTxtW()),"snippets_",(a=(f$1=ParseO.parseGuidO$1(),(g$2=function(o)
+  {
+   return o==null?null:{
+    $:1,
+    $0:Global.id(o.$0)
+   };
+  },function(x$2)
+  {
+   return g$2(f$1(x$2));
+  })),SnippetsUI.snippetList().PlugIn(a,Global.String))),"curSnp_",SnippetsUI.curSnp()),"LoadSnippets",function()
   {
    SaveLoad.loadTextFile(self.document.getElementById("LoadSnippets").firstElementChild.firstElementChild.firstElementChild.firstElementChild);
   }),"SaveSnippets",function()

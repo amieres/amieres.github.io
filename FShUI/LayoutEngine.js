@@ -3879,7 +3879,14 @@
    {
     o.Set(a);
    }),k);
-  }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
+  }))).WithHole({
+   $:2,
+   $0:"selected",
+   $1:View$1.Map2(function($1,$2)
+   {
+    return Unchecked.Equals($1,$2)?"selected":"";
+   },lmd.selV.get_View(),k)
+  }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
  AppFrameworkUI.showPlugIn$2571$35=function(k,lmd)
  {
@@ -4942,11 +4949,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3586$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3587$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3585$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3586$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -6057,7 +6064,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2728,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2729,38);
     }
     return $2;
   }
