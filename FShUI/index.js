@@ -40,9 +40,9 @@ function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytTarget2", ""        );
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
-    FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );
+    //FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );
     FsRootDll.LibraryJS.StartAppFramework   .startWith(     templates               );
     FsRootDll.LibraryJS.SnippetsUI.SaveLoad .updateSnippets(snippets                );
     
-    setTimeout(function(){ FsRootDll.LibraryJS.AppFramework        .callAction(    'lytDemo.goPrev'        ); }, 300);
+    //setTimeout(function(){ FsRootDll.LibraryJS.AppFramework        .callAction(    'lytDemo.goPrev'        ); }, 300);
 }
