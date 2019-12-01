@@ -8796,7 +8796,7 @@
       {
        return $3("Doc not found: "+Utils.toSafe($4));
       };
-     }))(docName):a$3.$0.docDoc.$==0?(AppFramework.mainDocV().Set(AppFramework.mainDocV().Get()),a$3.$0.docDoc.$0.f()):(AppFramework.errDocf(function($3)
+     }))(docName):a$3.$0.docDoc.$==0?a$3.$0.docDoc.$0.f():(AppFramework.errDocf(function($3)
      {
       return function($4)
       {
