@@ -7365,7 +7365,7 @@
   }
   function refresh()
   {
-   if(Date.now()-lastRun<1)
+   if(Date.now()-lastRun>1000)
     {
      AppFramework.mainDocV().Set(AppFramework.mainDocV().Get());
      lastRun=Date.now();
