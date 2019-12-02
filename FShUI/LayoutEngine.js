@@ -1,7 +1,7 @@
 (function()
 {
  "use strict";
- var Global,FsRootDll,Library,StringId,GuidId,Dict,WebSharper,Obj,Monads,State,CEBuilder,Operators,Result,Builder,Operators$1,Depend,DependBuilder,Operators$2,String,ParseO,LibraryJS,View,Var,ListModel,REGEX,Hoverable,Hoverable$1,ResizeObserver,WebComponent,WcTabStrip,WcTabStripT,WcSplitter,WcSplitterT,AppFrameworkTemplate,AppFramework,PlgElemName,PlugInName,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,PlugIn,PlugInBuilder,Fun,P,Val,AAttr,Extract0,ListModelData,LM,StartAppFramework,AppFrameworkUI,LayoutEngine,LayoutEngineModule,Measures,Syntax,RefType,Layout,NewLY,P$1,SC$1,LayoutEngine_GeneratedPrintf,LayoutEngine_Templates,GeneratedPrintf,IntelliFactory,Runtime,Enumerator,Result$1,Arrays,List,Operators$3,Strings,Seq,Utils,Slice,Char,Unchecked,CancellationTokenSource,Concurrency,console,UI,View$1,Var$1,Collections,FSharpSet,FromView,Doc,DomUtility,AttrModule,AttrProxy,Var$2,Node,Client,Templates,Reflect,Object,Lazy,Templating,Runtime$1,Server,ProviderBuilder,Handler,TemplateInstance,ListModel$1,FSharpMap,Math,Dictionary,MatchFailureException,System,Guid,Date,DateUtil,Numeric,Attrs;
+ var Global,FsRootDll,Library,StringId,GuidId,Dict,WebSharper,Obj,Monads,State,CEBuilder,Operators,Result,Builder,Operators$1,Depend,DependBuilder,Operators$2,String,ParseO,LibraryJS,View,Var,ListModel,REGEX,Hoverable,Hoverable$1,ResizeObserver,WebComponent,WcTabStrip,WcTabStripT,WcSplitter,WcSplitterT,AppFrameworkTemplate,AppFramework,PlgElemName,PlugInName,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,PlugIn,PlugInBuilder,Fun,P,Val,AAttr,Extract0,ListModelData,LM,StartAppFramework,AppFrameworkUI,LayoutEngine,LayoutEngineModule,Measures,Syntax,RefType,Layout,NewLY,P$1,SC$1,LayoutEngine_GeneratedPrintf,LayoutEngine_Templates,GeneratedPrintf,IntelliFactory,Runtime,Enumerator,Result$1,Arrays,List,Operators$3,Strings,Seq,Utils,Slice,Char,Unchecked,CancellationTokenSource,Concurrency,console,UI,View$1,Var$1,Collections,FSharpSet,FromView,Doc,DomUtility,AttrModule,AttrProxy,Var$2,Node,Client,Templates,Reflect,Object,Lazy,Templating,Runtime$1,Server,ProviderBuilder,Handler,TemplateInstance,ListModel$1,FSharpMap,Math,Dictionary,MatchFailureException,System,Guid,Date,DateUtil,Numeric,Attrs,Docs;
  Global=self;
  FsRootDll=Global.FsRootDll=Global.FsRootDll||{};
  Library=FsRootDll.Library=FsRootDll.Library||{};
@@ -117,6 +117,7 @@
  DateUtil=WebSharper&&WebSharper.DateUtil;
  Numeric=WebSharper&&WebSharper.Numeric;
  Attrs=UI&&UI.Attrs;
+ Docs=UI&&UI.Docs;
  StringId=Library.StringId=Runtime.Class({
   get_Id:function()
   {
@@ -3862,7 +3863,7 @@
   SC$1.$cctor();
   return SC$1.defPlg;
  };
- AppFrameworkUI.showDoc$2639$35=function(k,lmd)
+ AppFrameworkUI.showDoc$2641$35=function(k,lmd)
  {
   return function()
   {
@@ -3938,7 +3939,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showAct$2624$35=function(k,lmd)
+ AppFrameworkUI.showAct$2626$35=function(k,lmd)
  {
   return function()
   {
@@ -3996,7 +3997,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showView$2612$35=function(k,lmd)
+ AppFrameworkUI.showView$2614$35=function(k,lmd)
  {
   return function()
   {
@@ -4040,7 +4041,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showVar$2600$35=function(k,lmd)
+ AppFrameworkUI.showVar$2602$35=function(k,lmd)
  {
   return function()
   {
@@ -4084,7 +4085,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showPlugIn$2588$35=function(k,lmd)
+ AppFrameworkUI.showPlugIn$2590$35=function(k,lmd)
  {
   return function()
   {
@@ -5145,11 +5146,11 @@
    };
   }(Global.id))(varName)):o.$0;
  };
- LayoutEngineModule.inputFile$3647$67=Runtime.Curried3(function(act,el,$1)
+ LayoutEngineModule.inputFile$3649$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- LayoutEngineModule.inputFile$3646$67=Runtime.Curried3(function($1,el,$2)
+ LayoutEngineModule.inputFile$3648$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -6260,7 +6261,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2789,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2791,38);
     }
     return $2;
   }
@@ -8852,13 +8853,14 @@
     }
     return Doc.BindView(function(a$3)
     {
+     var d;
      return a$3==null?(AppFramework.errDocf(function($3)
      {
       return function($4)
       {
        return $3("Doc not found: "+Utils.toSafe($4));
       };
-     }))(docName):a$3.$0.docDoc.$==0?a$3.$0.docDoc.$0.f():(AppFramework.errDocf(function($3)
+     }))(docName):a$3.$0.docDoc.$==0?(d=a$3.$0.docDoc.$0,(Docs.Sync(d.f()),d.f())):(AppFramework.errDocf(function($3)
      {
       return function($4)
       {
