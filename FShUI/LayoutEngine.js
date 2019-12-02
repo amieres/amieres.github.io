@@ -2787,10 +2787,7 @@
    };
   }(Global.id))(a.$0):a.$0;
  };
- AppFramework.makeAViewDoc0=function(f,u)
- {
-  return AppFramework.makeAViewDoc(f);
- };
+ AppFramework.makeAViewDoc0=Global.id;
  AppFramework.makeAViewDocL=function(f)
  {
   return Lazy.Create(function()
@@ -6744,17 +6741,13 @@
  };
  NewLY.defButton=function(lytN,n,ac,attrs,tx)
  {
-  function f()
+  return AppFramework.makeAViewDoc0(function()
   {
    return AppFramework.errDocf(function($1)
    {
     return $1("Button deprecated use button \"click=@{Action}\"");
    });
-  }
-  return function()
-  {
-   return AppFramework.makeAViewDoc0(f,void 0);
-  };
+  });
  };
  NewLY.defDocF=function(lytN,n,a,ds)
  {
@@ -6833,14 +6826,10 @@
   {
    return b.Bind(NewLY.nodeRefToDocD(),function(a)
    {
-    function f()
+    return b.Return(AppFramework.makeAViewDoc0(function()
     {
      return Doc.Concat(Seq.map(a,docs));
-    }
-    return b.Return(function()
-    {
-     return AppFramework.makeAViewDoc0(f,void 0);
-    });
+    }));
    });
   })));
  };
@@ -6855,7 +6844,7 @@
     {
      return b.Bind(NewLY.getParam2D(),function(a$2)
      {
-      function f()
+      return b.Return(AppFramework.makeAViewDoc0(function()
       {
        try
        {
@@ -6865,11 +6854,7 @@
        {
         return Doc.TextNode(e.message);
        }
-      }
-      return b.Return(function()
-      {
-       return AppFramework.makeAViewDoc0(f,void 0);
-      });
+      }));
      });
     });
    });
@@ -6877,31 +6862,23 @@
  };
  NewLY.defTextArea=function(lytN,n,v,attrs)
  {
-  function f()
+  return AppFramework.makeAViewDoc0(function()
   {
    return AppFramework.errDocf(function($1)
    {
     return $1("TextArea deprecated use AF.TextArea");
    });
-  }
-  return function()
-  {
-   return AppFramework.makeAViewDoc0(f,void 0);
-  };
+  });
  };
  NewLY.defInput=function(lytN,n,v,attrs)
  {
-  function f()
+  return AppFramework.makeAViewDoc0(function()
   {
    return AppFramework.errDocf(function($1)
    {
     return $1("input deprecated use AF.Input");
    });
-  }
-  return function()
-  {
-   return AppFramework.makeAViewDoc0(f,void 0);
-  };
+  });
  };
  NewLY.defViewJS=function(lytN,n,ps)
  {
