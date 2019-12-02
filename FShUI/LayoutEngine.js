@@ -8860,7 +8860,7 @@
       {
        return $3("Doc not found: "+Utils.toSafe($4));
       };
-     }))(docName):a$3.$0.docDoc.$==0?(d=a$3.$0.docDoc.$0,(Docs.DoSyncElement(d.f().docNode.$0.Current),d.f())):(AppFramework.errDocf(function($3)
+     }))(docName):a$3.$0.docDoc.$==0?(d=a$3.$0.docDoc.$0,dd=d.f().docNode.$0.Current,(dd==null?0:Docs.DoSyncElement(d.f().docNode.$0.Current),d.f())):(AppFramework.errDocf(function($3)
      {
       return function($4)
       {
