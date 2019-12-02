@@ -118,7 +118,7 @@ navBar  div "class=xcontainer;margin-right:10px"
 //:::     li   ""
 //::::    a    "href=../navbar-static-top/" "Static top"
 :::     li   "class=active"
-::::    a    "href=./" "About"
+::::    a    "href=https://github.com/amieres/amieres.github.io" "About"
 :::::   span "class=sr-only" "(current)"
 
 nav nav "class=navbar navbar-default navbar-fixed-top" navBar
