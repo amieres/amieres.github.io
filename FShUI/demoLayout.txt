@@ -53,6 +53,7 @@ content div "margin:10px" Trigger
 :  Doc       AF.HtmlDoc MarkDown0
 :  span      "width:100%"
 :: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
+:: Docs      " "
 :: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
 
 snippet div "overflow:auto" content
