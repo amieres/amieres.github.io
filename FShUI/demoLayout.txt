@@ -73,10 +73,6 @@ editorCombo div "display:flex;flex-direction:column; height:100%"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 :  div       "class=relative;flex:1"      editor2
 
-RightView   Docs Right
-RightEdit   Docs Right
-RightFSharp Docs editorCombo
-
 snippetListEdit   div "display:flex;flex-direction:column" 
 : div "max-height:50%" list 
 : Docs editorCombo
@@ -111,11 +107,14 @@ nav nav "class=navbar navbar-default navbar-fixed-top" navBar
 : style  "" ".rightArrow { float:right; border: solid blue; border-width: 0 6px 6px 0; display: inline-block; padding: 3px; color: red; background: white;  transform: rotate(-45deg);  -webkit-transform: rotate(-45deg); } "
 : script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('Snippets.curSnp_content', el.parentElement.innerText); }"
 
+AxxxView   vertical 0-60-100 snippet Right
+AxxxEdit   Docs AxxxView
+AxxxFSharp Docs editorCombo
+
 main  horizontal 51 nav
 :   vertical 0-15-100
 ::  Doc  AF.DocReference "lytDemo.snippetList@{mode}"
-::  vertical 0-60-100 snippet 
-::: Doc  AF.DocReference "Right@{mode}"
+::  Doc  AF.DocReference "lytDemo.Axxx@{mode}"
 
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
