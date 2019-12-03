@@ -1,5 +1,3 @@
-
-
 lytTarget  PlugIn
 : View ParseMsgs
 : Doc  main 
@@ -82,7 +80,8 @@ snippetListEdit   div "display:flex;flex-direction:column"
     
 snippetListView   div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 
-snippetListFSharp div "display:flex;flex-direction:column" 
+snippetListFSharp div "display:flex;flex-direction:column"
+: button "onclick=fetch('FShUI/basic18.snippets').then(resp => resp.text()).then(snippets => FsRootDll.LibraryJS.SnippetsUI.SaveLoad .updateSnippets(snippets) )" "Load FSharp Snippets"
 : div "max-height:100%" list 
 
 navBar  div "class=xcontainer;margin-right:10px"
