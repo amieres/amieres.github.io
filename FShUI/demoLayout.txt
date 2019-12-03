@@ -12,13 +12,13 @@ goNext      Action AF.SetVar       "Snippets.snippets_sel"    Snippets.nextSel
 SetTarget   Action AF.SetVarDirect "lytTarget.Layout"         target
 Trigger     Doc    AF.TrigAction   Snippets.snippets_sel      SetTarget
 
-editMode    Var    "0"
-editModeNot ViewJS "n => 1 - n"            editMode
-activeView  ViewJS "n => n==0?'active':''" editMode
-activeEdit  ViewJS "n => n==1?'active':''" editMode
-ToggleMode  Action AF.SetVar      "lytDemo.editMode" editModeNot
-setView     Action AF.SetVar      "lytDemo.editMode" "0"
-setEdit     Action AF.SetVar      "lytDemo.editMode" "1"
+mode         Var    "View"
+activeView   ViewJS "n => n=='View'   ?'active':''" mode
+activeEdit   ViewJS "n => n=='Edit'   ?'active':''" mode
+activeFSharp ViewJS "n => n=='FSharp' ?'active':''" mode
+setView      Action AF.SetVar      "lytDemo.mode" "View"
+setEdit      Action AF.SetVar      "lytDemo.mode" "Edit"
+setFSharp    Action AF.SetVar      "lytDemo.mode" "FSharp"
 
 applyColor  ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget.Layout target
 
@@ -73,11 +73,18 @@ editorCombo div "display:flex;flex-direction:column; height:100%"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 :  div       "class=relative;flex:1"      editor2
 
-snippetList1 div "display:flex;flex-direction:column" 
+RightView   Docs Right
+RightEdit   Docs Right
+RightFSharp Docs editorCombo
+
+snippetListEdit   div "display:flex;flex-direction:column" 
 : div "max-height:50%" list 
 : Docs editorCombo
     
-snippetList0  div "display:block;overflow:auto;width:100%" Snippets.snippets_list
+snippetListView   div "display:block;overflow:auto;width:100%" Snippets.snippets_list
+
+snippetListFSharp div "display:flex;flex-direction:column" 
+: div "max-height:100%" list 
 
 navBar  div "class=xcontainer;margin-right:10px"
 :       div "class=navbar-header"
@@ -93,31 +100,9 @@ navBar  div "class=xcontainer;margin-right:10px"
 ::::    a    "href=#;click=@{setView}" "View"
 :::     li   "class=@{activeEdit}"
 ::::    a    "href=#;click=@{setEdit}" "Edit"
-//:::     li   ""
-//::::    a    "href=#" "About"
-//:::     li   ""
-//::::    a    "href=#" "Contact"
-//:::     li   "class=dropdown"
-//::::    a    "href=#;class=dropdown-toggle;data-toggle=dropdown;role=button;aria-haspopup=true;aria-expanded=false" "Dropdown"
-//:::::   span "class=caret"
-//::::    ul   "class=dropdown-menu"
-//:::::   li   ""
-//::::::  a    "href=#"  "Action"
-//:::::   li   ""
-//::::::  a    "href=#"  "Another action"
-//:::::   li   ""
-//::::::  a    "href=#"  "Something else here"
-//:::::   li   "role=separator;class=divider"
-//:::::   li   "class=dropdown-header" "Nav header"
-//:::::   li   ""
-//::::::  a    "href=#" "Separated link"
-//:::::   li   ""
-//::::::  a    "href=#" "One more separated link"
+:::     li   "class=@{activeFSharp}"
+::::    a    "href=#;click=@{setFSharp}" "F#"
 ::      ul   "class=nav navbar-nav navbar-right"
-//:::     li   ""
-//::::    a    "href=../navbar/" "Default"
-//:::     li   ""
-//::::    a    "href=../navbar-static-top/" "Static top"
 :::     li   "class=active"
 ::::    a    "href=//github.com/amieres/amieres.github.io" "About"
 :::::   span "class=sr-only" "(current)"
@@ -127,9 +112,10 @@ nav nav "class=navbar navbar-default navbar-fixed-top" navBar
 : script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('Snippets.curSnp_content', el.parentElement.innerText); }"
 
 main  horizontal 51 nav
-:  vertical 0-15-100
-:: Doc  AF.DocReference "lytDemo.snippetList@{editMode}"
-:: vertical 0-60-100 snippet Right
+:   vertical 0-15-100
+::  Doc  AF.DocReference "lytDemo.snippetList@{mode}"
+::  vertical 0-60-100 snippet 
+::: Doc  AF.DocReference "Right@{mode}"
 
 split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
