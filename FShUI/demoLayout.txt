@@ -107,8 +107,9 @@ nav nav "class=navbar navbar-default navbar-fixed-top" navBar
 : style  "" ".rightArrow { float:right; border: solid blue; border-width: 0 6px 6px 0; display: inline-block; padding: 3px; color: red; background: white;  transform: rotate(-45deg);  -webkit-transform: rotate(-45deg); } "
 : script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('Snippets.curSnp_content', el.parentElement.innerText); }"
 
-AxxxView   vertical 0-60-100 snippet Right
-AxxxEdit   Docs AxxxView
+Axxx       vertical 0-60-100 snippet Right
+AxxxView   Doc  Axxx ""
+AxxxEdit   Doc  Axxx ""
 AxxxFSharp Docs editorCombo
 
 main  horizontal 51 nav
