@@ -110,7 +110,7 @@ nav nav "class=navbar navbar-default navbar-fixed-top" navBar
 : script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('Snippets.curSnp_content', el.parentElement.innerText); }"
 
 Center       vertical 0-60-100 snippet Right
-Center_      Doc  Center ""
+Center_      Doc  lytDemo.Center ""
 
 CenterView   Docs Center_
 CenterEdit   Docs Center_
