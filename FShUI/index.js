@@ -39,7 +39,6 @@ function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.MonacoPlugIn        .plugInAdded();
     FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytTarget" , ""        );
-    FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , "Center div \"\" ");
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
     FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );
     FsRootDll.LibraryJS.StartAppFramework   .startWith(     templates               );
