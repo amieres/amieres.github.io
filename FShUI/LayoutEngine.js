@@ -2614,11 +2614,11 @@
   SC$1.$cctor();
   return SC$1.inputLabel;
  };
- AppFramework.inputFile$2195$67=Runtime.Curried3(function(act,el,$1)
+ AppFramework.inputFile$2209$67=Runtime.Curried3(function(act,el,$1)
  {
   return AppFramework.callFunction(el,null,act.actFunction);
  });
- AppFramework.inputFile$2194$67=Runtime.Curried3(function($1,el,$2)
+ AppFramework.inputFile$2208$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -2737,11 +2737,14 @@
   var x,b;
   x=(b=Operators$2.depend(),b.Delay(function()
   {
-   return b.Bind(AppFramework.getDocD(),function(a)
+   return b.Bind(AppFramework.getDocwD(),function(a)
    {
     return b.Bind(AppFramework.getTextActViewD(),function(a$1)
     {
-     return b.Return(Depend.resolver(List.ofArray([["getDocFromReference",a],["getTextActViewFromReference",a$1],["currentPlugInName",pin]]),d));
+     return b.Bind(AppFramework.currentPlugInNameD(),function(a$2)
+     {
+      return b.Return(Depend.resolver(List.ofArray([["getDocFromReference",a],["getTextActViewFromReference",a$1],["currentPlugInName",a$2]]),d));
+     });
     });
    });
   }));
@@ -2764,6 +2767,11 @@
  {
   SC$1.$cctor();
   return SC$1.getDocD;
+ };
+ AppFramework.getDocwD=function()
+ {
+  SC$1.$cctor();
+  return SC$1.getDocwD;
  };
  AppFramework.currentPlugInNameD=function()
  {
@@ -3886,7 +3894,7 @@
   SC$1.$cctor();
   return SC$1.defPlg;
  };
- AppFrameworkUI.showDoc$2646$35=function(k,lmd)
+ AppFrameworkUI.showDoc$2660$35=function(k,lmd)
  {
   return function()
   {
@@ -3926,7 +3934,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showAct$2639$35=function(k,lmd)
+ AppFrameworkUI.showAct$2653$35=function(k,lmd)
  {
   return function()
   {
@@ -3984,7 +3992,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showView$2627$35=function(k,lmd)
+ AppFrameworkUI.showView$2641$35=function(k,lmd)
  {
   return function()
   {
@@ -4028,7 +4036,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showVar$2615$35=function(k,lmd)
+ AppFrameworkUI.showVar$2629$35=function(k,lmd)
  {
   return function()
   {
@@ -4072,7 +4080,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showPlugIn$2603$35=function(k,lmd)
+ AppFrameworkUI.showPlugIn$2617$35=function(k,lmd)
  {
   return function()
   {
@@ -5303,7 +5311,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2796,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2810,38);
     }
     return $2;
   }
@@ -6317,7 +6325,7 @@
  };
  SC$1.$cctor=function()
  {
-  var f,g,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,a,b$8,a$1,b$9,b$10,b$11,pf,p,pf$1,p$1,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$2,p$3,pc$1,vf$3,p$4,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$5,b$12,b$13,b$14,b$15,b$16,p$6,cache,getOrAdd,p$7,cache$1,getOrAdd$1,p$8,cache$2,getOrAdd$2,p$9,cache$3,getOrAdd$3,p$10,cache$4,getOrAdd$4,p$11,cache$5,getOrAdd$5,p$12,cache$6,getOrAdd$6,p$13,cache$7,getOrAdd$7,p$14,cache$8,getOrAdd$8,p$15,cache$9,getOrAdd$9,p$16,cache$10,getOrAdd$10,o;
+  var f,g,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,b$8,a,b$9,a$1,b$10,b$11,b$12,pf,p,pf$1,p$1,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$2,p$3,pc$1,vf$3,p$4,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$5,b$13,b$14,b$15,b$16,b$17,p$6,cache,getOrAdd,p$7,cache$1,getOrAdd$1,p$8,cache$2,getOrAdd$2,p$9,cache$3,getOrAdd$3,p$10,cache$4,getOrAdd$4,p$11,cache$5,getOrAdd$5,p$12,cache$6,getOrAdd$6,p$13,cache$7,getOrAdd$7,p$14,cache$8,getOrAdd$8,p$15,cache$9,getOrAdd$9,p$16,cache$10,getOrAdd$10,o;
   SC$1.$cctor=Global.ignore;
   function g$1(s)
   {
@@ -6329,13 +6337,13 @@
   }
   function g$2(s)
   {
-   var a$3,b$17;
+   var a$3,b$18;
    return Slice.array(s,{
     $:1,
     $0:0
    },{
     $:1,
-    $0:(a$3=0,(b$17=Arrays.length(s)-2,Unchecked.Compare(a$3,b$17)===1?a$3:b$17))
+    $0:(a$3=0,(b$18=Arrays.length(s)-2,Unchecked.Compare(a$3,b$18)===1?a$3:b$18))
    });
   }
   function g$3(s)
@@ -6936,8 +6944,8 @@
   });
   SC$1.AppFwkClient=Lazy.Create(function()
   {
-   var b$17,Q,A,D,V,V$1,P$2,p$17,i;
-   return(b$17=(Q=AppFramework.renderQueries(),(A=AppFramework.renderActions(),(D=AppFramework.renderDocs(),(V=AppFramework.renderViews(),(V$1=AppFramework.renderVars(),(P$2=AppFramework.renderPlugIns(),ProviderBuilder.Make().WithHole({
+   var b$18,Q,A,D,V,V$1,P$2,p$17,i;
+   return(b$18=(Q=AppFramework.renderQueries(),(A=AppFramework.renderActions(),(D=AppFramework.renderDocs(),(V=AppFramework.renderViews(),(V$1=AppFramework.renderVars(),(P$2=AppFramework.renderPlugIns(),ProviderBuilder.Make().WithHole({
     $:0,
     $0:"plugins",
     $1:P$2
@@ -6968,7 +6976,7 @@
     $:0,
     $0:"queries",
     $1:Q
-   })),(p$17=Handler.CompleteHoles(b$17.k,b$17.h,[]),(i=new TemplateInstance.New(p$17[1],LayoutEngine_Templates.appfwkclient(p$17[0])),(b$17.i=i,i)))).get_Doc();
+   })),(p$17=Handler.CompleteHoles(b$18.k,b$18.h,[]),(i=new TemplateInstance.New(p$17[1],LayoutEngine_Templates.appfwkclient(p$17[0])),(b$18.i=i,i)))).get_Doc();
   });
   SC$1.plugin=new PlugInBuilder.New();
   SC$1.a11V=Var$2.Create$1(11);
@@ -7377,7 +7385,7 @@
    $0:"NewLYx"
   });
   SC$1.currentPlugInNameD=Depend.dependByName("currentPlugInName",AppFramework.currentPlugInNameDef(),Global.id);
-  SC$1.getDocD=(b$5=Depend.depend(),b$5.Delay(function()
+  SC$1.getDocwD=(b$5=Depend.depend(),b$5.Delay(function()
   {
    return b$5.Bind(AppFramework.currentPlugInNameD(),function(a$3)
    {
@@ -7412,11 +7420,35 @@
     });
    });
   }));
-  SC$1.getTextActViewD=(b$6=Depend.depend(),b$6.Delay(function()
+  SC$1.getDocD=(b$6=Depend.depend(),b$6.Delay(function()
   {
    return b$6.Bind(AppFramework.currentPlugInNameD(),function(a$3)
    {
     return b$6.Return(function(r)
+    {
+     var p$17,pName,oName,o$1,o$2,o$3;
+     p$17=(AppFramework.splitName(a$3))(r);
+     pName=p$17[0];
+     oName=p$17[1];
+     o$1=(o$2=AppFramework.tryGetDoc(pName,oName),o$2==null?null:{
+      $:1,
+      $0:AppFramework.getActualDoc(o$2.$0)
+     });
+     return o$1==null?Doc.TextView((o$3=AppFramework.tryGetWoW(pName,oName),o$3==null?View$1.Const((function($1)
+     {
+      return function($2)
+      {
+       return $1("Reference not found @{"+Utils.toSafe($2)+"}");
+      };
+     }(Global.id))(r)):o$3.$0)):o$1.$0;
+    });
+   });
+  }));
+  SC$1.getTextActViewD=(b$7=Depend.depend(),b$7.Delay(function()
+  {
+   return b$7.Bind(AppFramework.currentPlugInNameD(),function(a$3)
+   {
+    return b$7.Return(function(r)
     {
      var p$17,pName,oName;
      p$17=(AppFramework.splitName(a$3))(r);
@@ -7454,11 +7486,11 @@
   SC$1.extractTextD$1=Extract0.extractTextD();
   SC$1.extractDocD$1=Extract0.extractDocD();
   SC$1.extractAtsD$1=Extract0.extractAtsD();
-  SC$1.extractAttD=(b$7=Operators$2.depend(),b$7.Delay(function()
+  SC$1.extractAttD=(b$8=Operators$2.depend(),b$8.Delay(function()
   {
-   return b$7.Bind(AppFramework.extractAtsD(),function(a$3)
+   return b$8.Bind(AppFramework.extractAtsD(),function(a$3)
    {
-    return b$7.Return(function(p$17)
+    return b$8.Return(function(p$17)
     {
      return AttrProxy.Concat(a$3(p$17));
     });
@@ -7521,12 +7553,12 @@
        return $3("Doc parameters not resolved: "+GeneratedPrintf.p($4));
       };
      }))(a$3.$0));
-    },View$1.Bind(function(b$17)
+    },View$1.Bind(function(b$18)
     {
      return(function($3)
      {
       return f$13($3[0],$3[1]);
-     }(b$17))(function($3)
+     }(b$18))(function($3)
      {
       return function($4)
       {
@@ -7624,12 +7656,12 @@
     };
    });
   });
-  a=(b$8=AppFramework.plugin(),b$8.AddAct(b$8.AddDoc(b$8.AddVar(b$8.Name(b$8.Yield(),"AppFramework"),"mainDocV",AppFramework.mainDocV()),"AppFwkClient",AppFramework.AppFwkClient()),"Hello",function()
+  a=(b$9=AppFramework.plugin(),b$9.AddAct(b$9.AddDoc(b$9.AddVar(b$9.Name(b$9.Yield(),"AppFramework"),"mainDocV",AppFramework.mainDocV()),"AppFwkClient",AppFramework.AppFwkClient()),"Hello",function()
   {
    self.alert("Hello!");
   }));
   AppFramework.plugIns().Append(a);
-  a$1=(b$9=AppFramework.plugin(),b$9.AddQry(b$9.AddAct(b$9.AddAct2(b$9.AddAct2(b$9.AddDoc3(b$9.AddDoc3(b$9.AddDoc4(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc2(b$9.AddDoc1(b$9.AddDoc1(b$9.Name(b$9.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SetVar",function(v)
+  a$1=(b$10=AppFramework.plugin(),b$10.AddQry(b$10.AddAct(b$10.AddAct2(b$10.AddAct2(b$10.AddDoc3(b$10.AddDoc3(b$10.AddDoc4(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc1(b$10.AddDoc1(b$10.Name(b$10.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SetVar",function(v)
   {
    return function(v$1)
    {
@@ -7662,11 +7694,11 @@
    return AppFramework.mainDoc();
   });
   SC$1.htmlD=Depend.dependByName("AppFrameworkTemplate.html",AppFrameworkTemplate.html(),Global.id);
-  SC$1.startWithHtmlD=(b$10=Depend.depend(),b$10.Delay(function()
+  SC$1.startWithHtmlD=(b$11=Depend.depend(),b$11.Delay(function()
   {
-   return b$10.Bind(StartAppFramework.htmlD(),function(a$3)
+   return b$11.Bind(StartAppFramework.htmlD(),function(a$3)
    {
-    return b$10.Return(function()
+    return b$11.Return(function()
     {
      var d,x,a$4;
      d=self.document.createElement("div");
@@ -7740,7 +7772,7 @@
   {
    return AppFrameworkUI.failCreate("Doc",void 0);
   },null,Runtime.Curried3(AppFrameworkUI.showDoc));
-  SC$1.plugInAdded=AppFramework.addPlugIn((b$11=AppFramework.plugin(),b$11.Merge(b$11.Merge(b$11.Merge(b$11.Merge(b$11.Merge(b$11.Name(b$11.Yield(),"AppFrmkUI"),"plugIns_",AppFrameworkUI.pluginsList().PlugIn(function(x)
+  SC$1.plugInAdded=AppFramework.addPlugIn((b$12=AppFramework.plugin(),b$12.Merge(b$12.Merge(b$12.Merge(b$12.Merge(b$12.Merge(b$12.Name(b$12.Yield(),"AppFrmkUI"),"plugIns_",AppFrameworkUI.pluginsList().PlugIn(function(x)
   {
    return g$4(f$8(x));
   },function(n)
@@ -7901,9 +7933,9 @@
   });
   SC$1.main0=(pc=(pf$2=AppFramework.op_Dereference(function(a$3)
   {
-   return function(b$17)
+   return function(b$18)
    {
-    return NewLY.concat(a$3,b$17);
+    return NewLY.concat(a$3,b$18);
    };
   }),(p$2={
    $:0,
@@ -8271,26 +8303,26 @@
     $0:c$13.f.$0(c$13.p.$0)
    },p$5);
   }))));
-  SC$1.nodeRefToDocD=(b$12=Depend.depend(),b$12.Delay(function()
+  SC$1.nodeRefToDocD=(b$13=Depend.depend(),b$13.Delay(function()
   {
-   return b$12.Bind(Extract0.getDocFromTextTypesD(),function(a$3)
+   return b$13.Bind(Extract0.getDocFromTextTypesD(),function(a$3)
    {
     function f$13(a$4)
     {
      var $1;
      return(a$4.$==1?($1=a$4.$0.$0,false):a$4.$==2?($1=a$4.$0.$0,false):a$4.$==3?($1=a$4.$0.$0,false):true)?List.map(NewLY.textValToTextType,a$4.$0):List.ofArray([NewLY.itemRefToTextType($1)]);
     }
-    return b$12.Return(function(x)
+    return b$13.Return(function(x)
     {
      return a$3(f$13(x));
     });
    });
   }));
-  SC$1.varRefToVarD=(b$13=Depend.depend(),b$13.Delay(function()
+  SC$1.varRefToVarD=(b$14=Depend.depend(),b$14.Delay(function()
   {
-   return b$13.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$14.Bind(NewLY.currentPlugInNameD(),function(a$3)
    {
-    return b$13.Return(function(a$4)
+    return b$14.Return(function(a$4)
     {
      var r,o$1,o$2,t;
      r=NewLY.itemRefToString(a$4.$0);
@@ -8308,13 +8340,13 @@
     });
    });
   }));
-  SC$1.getParamD=(b$14=Depend.depend(),b$14.Delay(function()
+  SC$1.getParamD=(b$15=Depend.depend(),b$15.Delay(function()
   {
-   return b$14.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$15.Bind(NewLY.currentPlugInNameD(),function(a$3)
    {
-    return b$14.Bind(Extract0.getTextValFromSeqD(),function(a$4)
+    return b$15.Bind(Extract0.getTextValFromSeqD(),function(a$4)
     {
-     return b$14.Return(function(p$17)
+     return b$15.Return(function(p$17)
      {
       var refToSplit,g$10,r,f$13,m,g$11,t,r$1,f$14,m$1,g$12,g$13,t$1,r$2,f$15,m$2,g$14,g$15,t$2,r$3,f$16,m$3,g$16,t$3;
       function f$17(d$4)
@@ -8452,13 +8484,13 @@
     });
    });
   }));
-  SC$1.getParam2D=(b$15=Depend.depend(),b$15.Delay(function()
+  SC$1.getParam2D=(b$16=Depend.depend(),b$16.Delay(function()
   {
-   return b$15.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$16.Bind(NewLY.currentPlugInNameD(),function(a$3)
    {
-    return b$15.Bind(Extract0.getTextValFromSeqD(),function()
+    return b$16.Bind(Extract0.getTextValFromSeqD(),function()
     {
-     return b$15.Return(function(p$17)
+     return b$16.Return(function(p$17)
      {
       var toAbs,f$13,g$10,$1;
       toAbs=(f$13=NewLY.itemRefToAbsolute(a$3.get_Id()),(g$10=function($2)
@@ -8480,13 +8512,13 @@
     });
    });
   }));
-  SC$1.getParamTextD=(b$16=Depend.depend(),b$16.Delay(function()
+  SC$1.getParamTextD=(b$17=Depend.depend(),b$17.Delay(function()
   {
-   return b$16.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$17.Bind(NewLY.currentPlugInNameD(),function(a$3)
    {
-    return b$16.Bind(Extract0.getTextValFromSeqD(),function(a$4)
+    return b$17.Bind(Extract0.getTextValFromSeqD(),function(a$4)
     {
-     return b$16.Return(function(p$17)
+     return b$17.Return(function(p$17)
      {
       return function(f$13)
       {
