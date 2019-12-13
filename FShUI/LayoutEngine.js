@@ -3113,33 +3113,17 @@
  };
  AppFramework.tryGetViwW=function(plgName,viwName)
  {
-  var v,prior;
-  v=View$1.Bind(function(a)
+  return View$1.Bind(function(a)
   {
    return a!=null&&a.$==1?a.$0.plgViews.TryFindByKeyAsView(viwName):View$1.Const(null);
   },AppFramework.tryGetPlugInW(plgName));
-  prior=[Var$2.Create$1(null)];
-  View$1.Sink(function(v$1)
-  {
-   if(!Unchecked.Equals(prior[0].Get(),v$1))
-    prior[0].Set(v$1);
-  },v);
-  return prior[0].get_View();
  };
  AppFramework.tryGetVarW=function(plgName,varName)
  {
-  var v,prior;
-  v=View$1.Bind(function(a)
+  return View$1.Bind(function(a)
   {
    return a!=null&&a.$==1?a.$0.plgVars.TryFindByKeyAsView(varName):View$1.Const(null);
   },AppFramework.tryGetPlugInW(plgName));
-  prior=[Var$2.Create$1(null)];
-  View$1.Sink(function(v$1)
-  {
-   if(!Unchecked.Equals(prior[0].Get(),v$1))
-    prior[0].Set(v$1);
-  },v);
-  return prior[0].get_View();
  };
  AppFramework.tryGetPlugInW=function(plgName)
  {
@@ -8348,7 +8332,7 @@
     {
      return b$15.Return(function(p$17)
      {
-      var refToSplit,g$10,r,f$13,m,g$11,t,r$1,f$14,m$1,g$12,g$13,t$1,r$2,f$15,m$2,g$14,g$15,t$2,r$3,f$16,m$3,g$16,t$3;
+      var refToSplit,g$10,v,r,f$13,m,g$11,t,r$1,f$14,m$1,g$12,g$13,t$1,r$2,f$15,m$2,g$14,g$15,t$2,r$3,f$16,m$3,g$16,t$3;
       function f$17(d$4)
       {
        return d$4.docDoc;
@@ -8363,9 +8347,9 @@
         };
        }(Global.id))(r);
       }
-      function f$18(v)
+      function f$18(v$1)
       {
-       return v.varVar.get_View();
+       return v$1.varVar.get_View();
       }
       function d$1()
       {
@@ -8377,9 +8361,9 @@
         };
        }(Global.id))(r$1));
       }
-      function f$19(v)
+      function f$19(v$1)
       {
-       return v.viwView;
+       return v$1.viwView;
       }
       function d$2()
       {
@@ -8391,9 +8375,9 @@
         };
        }(Global.id))(r$2));
       }
-      function f$20(v)
+      function f$20(v$1)
       {
-       return v.actFunction;
+       return v$1.actFunction;
       }
       function d$3()
       {
@@ -8409,11 +8393,11 @@
       {
        return g$10(NewLY.itemRefToString(x));
       });
-      return p$17.$==1?(r=p$17.$0.$0,View$1.Map((f$13=(m=function(x)
+      v=p$17.$==1?(r=p$17.$0.$0,View$1.Map((f$13=(m=function(x)
       {
-       var v;
-       v=f$17(x);
-       return v;
+       var v$1;
+       v$1=f$17(x);
+       return v$1;
       },function(o$1)
       {
        return o$1==null?null:{
@@ -8464,9 +8448,9 @@
        return g$15(f$15(x));
       })),(t$2=refToSplit(r$2),AppFramework.tryGetViwW(t$2[0],t$2[1])))):p$17.$==4?(r$3=p$17.$0.$0,View$1.Map((f$16=(m$3=function(x)
       {
-       var v;
-       v=f$20(x);
-       return v;
+       var v$1;
+       v$1=f$20(x);
+       return v$1;
       },function(o$1)
       {
        return o$1==null?null:{
@@ -8480,6 +8464,17 @@
       {
        return g$16(f$16(x));
       })),(t$3=refToSplit(r$3),AppFramework.tryGetActW(t$3[0],t$3[1])))):View$1.Map(Global.id,Val.toView(a$4(List.map(NewLY.textValToTextType,p$17.$0))));
+      View$1.Sink(function($1)
+      {
+       return function($2)
+       {
+        return $1(Utils.prettyPrint($2));
+       };
+      }(function(s)
+      {
+       console.log(s);
+      }),v);
+      return v;
      });
     });
    });
@@ -8740,13 +8735,13 @@
  {
   return"PlgElemName "+Utils.prettyPrint($1.$0);
  };
- GeneratedPrintf.p=function($1)
- {
-  return"{"+("docName = "+LayoutEngine_GeneratedPrintf.p($1.docName))+"; "+("docDoc = "+Utils.prettyPrint($1.docDoc))+"}";
- };
  LayoutEngine_GeneratedPrintf.p$1=function($1)
  {
   return $1.$==1?"FullRef ("+Utils.prettyPrint($1.$0)+", "+Utils.prettyPrint($1.$1)+")":"LocalRef "+Utils.prettyPrint($1.$0);
+ };
+ GeneratedPrintf.p=function($1)
+ {
+  return"{"+("docName = "+LayoutEngine_GeneratedPrintf.p($1.docName))+"; "+("docDoc = "+Utils.prettyPrint($1.docDoc))+"}";
  };
  LayoutEngine_Templates.wcompsplitterver=function(h)
  {
