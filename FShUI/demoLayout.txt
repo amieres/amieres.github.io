@@ -10,7 +10,14 @@ goPrev      Action AF.SetVar       "Snippets.snippets_sel"    Snippets.prevSel
 goNext      Action AF.SetVar       "Snippets.snippets_sel"    Snippets.nextSel
 
 SetTarget   Action AF.SetVarDirect "lytTarget.Layout"         target
+
+textToCopy  Var ""
+
 Trigger     Doc    AF.TrigAction   Snippets.snippets_sel      SetTarget
+TriggerCopy Doc    AF.TrigAction   textToCopy
+:  Actions
+:: Action  AF.SetVarDirect "Snippets.curSnp_content" textToCopy
+:: Actions SetTarget
 
 mode         Var    "View"
 activeView   ViewJS "n => n=='View'   ?'active':''" mode
@@ -49,7 +56,7 @@ editor2   Doc    Monaco.editor Snippets.curSnp_explanation "markdown" "vs-dark" 
 editor3   Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
 MarkDown0 ViewJS "t => marked(t).replace(/<\/pre>/g,'<i onclick=""copyToEditor(this)"" title=""Copy to Editor"" class=""rightArrow"" ></i> </pre>')" Snippets.curSnp_explanation
 
-content div "margin:10px" Trigger
+content div "margin:10px" Trigger TriggerCopy
 :  h2        "margin-top:0px"              Snippets.curSnp_name
 :  Doc       AF.HtmlDoc MarkDown0
 :  span      "width:100%"
@@ -109,7 +116,7 @@ navBar  div "class=xcontainer;margin-right:10px"
 
 nav nav "class=navbar navbar-default navbar-fixed-top" navBar
 : style  "" ".rightArrow { float:right; border: solid blue; border-width: 0 6px 6px 0; display: inline-block; padding: 3px; color: red; background: white;  transform: rotate(-45deg);  -webkit-transform: rotate(-45deg); } "
-: script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('Snippets.curSnp_content', el.parentElement.innerText); }"
+: script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('lytDemo.textToCopy', el.parentElement.innerText); }"
 
 Center       vertical 0-60-100 snippet Right
 Center_      Doc Center ""
