@@ -13,7 +13,7 @@ SetTarget   Action AF.SetVarDirect "lytTarget.Layout"         target
 
 textToCopy  Var ""
 
-Trigger     Doc    AF.TrigAction   Snippets.snippets_sel      SetTarget
+Trigger     Doc    AF.TrigChange   Snippets.snippets_sel      SetTarget
 TriggerCopy Doc    AF.TrigAction   textToCopy
 :  Actions
 :: Action  AF.SetVarDirect "Snippets.curSnp_content" textToCopy
