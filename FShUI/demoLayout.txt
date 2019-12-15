@@ -87,7 +87,7 @@ snippetListEdit   div "display:flex;flex-direction:column"
     
 snippetListView   div "display:block;overflow:auto;width:100%" Snippets.snippets_list
 
-snippetListFSharp div "display:flex;flex-direction:column" defineLoadSnippets
+snippetListFSharp div "display:flex;flex-direction:column"
 : button "onclick=FsRootDll.LibraryJS.SnippetsUI.SaveLoad.loadURL('//raw.githubusercontent.com/amieres/FSharpStation/master/basic18.snippets')" "Load FSharp Snippets"
 : button "onclick=FsRootDll.LibraryJS.SnippetsUI.SaveLoad.loadURL('/FShUI/tutorial.snippets'                                                 )" "Load Tutorial Snippets"
 : div "max-height:100%" list 
