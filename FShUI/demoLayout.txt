@@ -19,9 +19,9 @@ Trigger Doc
 
 TriggerCopy Doc
 : Doc    AF.TrigAction   textToCopy
-:  Actions
-:: Action  AF.SetVarDirect "Snippets.curSnp_content" textToCopy
-:: Actions SetTarget
+::  Actions
+::: Action  AF.SetVarDirect "Snippets.curSnp_content" textToCopy
+::: Actions SetTarget
 : Docs ""
 
 mode         Var    "View"
@@ -95,7 +95,7 @@ Right horizontal 0-35-100
 ::  Docs      fshuiEditor tryMe
 : div "display: flex; flex-direction:column" lytTarget.main
 
-editorCombo div "display:flex;flex-direction:column; height:100%"
+editorCombo div "display:flex;flex-direction:column; height:100%; flex:1"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
 :  div       "class=relative;flex:1"      editor2
 
@@ -153,4 +153,13 @@ split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
 : Docs lytDemo.mainLower1
 
-LegoPieces div "class=container" snippet lytTarget.main
+setMainView  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.main"
+setFullView1 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView1"
+setFullView2 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView2"
+
+toMainView   button "click=@{setMainView} ;Title=Back to normal view" "normal view"
+toFullView1  button "click=@{setFullView1};Title=to full view"        "full view"
+toFullView2  button "click=@{setFullView2};Title=to full view"        "full view"
+
+FullView1 div "class=container" snippet toMainView lytTarget.main
+FullView2 div "class=container"         toMainView lytTarget.main
