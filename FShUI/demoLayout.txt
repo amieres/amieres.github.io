@@ -13,11 +13,14 @@ SetTarget   Action AF.SetVarDirect "lytTarget.Layout"         target
 
 textToCopy  Var ""
 
-Trigger     Doc    AF.TrigChange   Snippets.snippets_sel      SetTarget
-TriggerCopy Doc    AF.TrigAction   textToCopy
+Trigger_     Doc    AF.TrigChange   Snippets.snippets_sel      SetTarget
+TriggerCopy_ Doc    AF.TrigAction   textToCopy
 :  Actions
 :: Action  AF.SetVarDirect "Snippets.curSnp_content" textToCopy
 :: Actions SetTarget
+
+Trigger     Doc    Trigger_      ""
+TriggerCopy Doc    TriggerCopy_  ""
 
 mode         Var    "View"
 activeView   ViewJS "n => n=='View'   ?'active':''" mode
@@ -31,7 +34,7 @@ applyColor  ViewJS "(a,b) => a == b ? '' : 'btn btn-primary' " lytTarget.Layout 
 
 SearchFor   Doc    AF.InputLabel "" "Search" Snippets.searchFor
 
-buttons ul ""
+indentUnindent ul "width:100%"
 : div "margin:3px"
 :: button "click=@{Snippets.IndentOut};title=indent out"     "<--"
 :: button "click=@{Snippets.IndentIn};title=indent in"       "--> "
@@ -43,38 +46,51 @@ File span "class=input-group;margin:5px;id=LoadSnippets"
 :::: input "class=form-control;type=file;display: none;change=@{Snippets.LoadSnippets}" 
 :: label "class=btn btn-primary;click=@{Snippets.SaveSnippets}" "Save File"
 
+addRemove ul "margin:3px;width:100%"
+: button "click=@{Snippets.AddSnippet}   ;title=Add New Snippet" "+"
+: button "margin-left:20px;click=@{Snippets.DeleteSnippet};title=Delete  Snippet" "x"
+
 list div "display: flex;flex-direction: column;height:100%;" File
 : div    "margin:5px" SearchFor 
-: Docs buttons
+: Docs indentUnindent
 : div "overflow:auto;width:100%" Snippets.snippets_list
-: ul "margin:3px"
-:: button "click=@{Snippets.AddSnippet}   ;title=Add New Snippet" "+"
-:: button "margin-left:20px;click=@{Snippets.DeleteSnippet};title=Delete  Snippet" "x"
+: Docs addRemove
 
 editor    Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
 editor2   Doc    Monaco.editor Snippets.curSnp_explanation "markdown" "vs-dark" ""
 editor3   Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
 MarkDown0 ViewJS "t => marked(t).replace(/<\/pre>/g,'<i onclick=""copyToEditor(this)"" title=""Copy to Editor"" class=""rightArrow"" ></i> </pre>')" Snippets.curSnp_explanation
 
-content div "margin:10px" Trigger TriggerCopy
+copyToEditor Docs
+: style  "" ".rightArrow { float:right; border: solid blue; border-width: 0 6px 6px 0; display: inline-block; padding: 3px; color: red; background: white;  transform: rotate(-45deg);  -webkit-transform: rotate(-45deg); } "
+: script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('lytDemo.textToCopy', el.parentElement.innerText); }"
+
+markdownHtml div "" copyToEditor
 :  h2        "margin-top:0px"              Snippets.curSnp_name
 :  Doc       AF.HtmlDoc MarkDown0
-:  span      "width:100%"
-:: button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."
-:: Docs      " "
-:: button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
+
+prev button    "click=@{goPrev};title=@{Snippets.prevTxt}"  "Prev."     
+next button    "click=@{goNext};title=@{Snippets.nextTxt}"  "Next"
+
+content div "margin:10px" Trigger TriggerCopy
+:  span      "width:100%; margin-bottom:20px" prev  " " next
+:  Docs                             markdownHtml
 
 snippet div "overflow:auto" content
 
 RightX div "display: flex; flex-direction:column" lytTarget.main
 
+fshuiEditor div "width:100%;display:flex;flex-direction: column;flex:1"
+:  h4        "background:blue;color:white;margin:0px" "FShUI Editor:"
+:  div       "class=relative;flex:2" editor
+:  div       "color:red;font-weight:800;white-space:pre-wrap"  Snippets.parseOut
+
+tryMe span "width:100%"
+: button    "click=@{SetTarget};class=@{applyColor}"  "Try me! >>"
+
 Right horizontal 0-35-100
 :   div       "height:100%;display:flex;flex-direction: column" 
-::  h4        "background:blue;color:white;margin:0px" "FShUI Editor:"
-::  div       "class=relative;flex:2" editor
-::  div       "color:red;font-weight:800;white-space:pre-wrap"  Snippets.parseOut
-::  span      "width:100%"
-::: button    "click=@{SetTarget};class=@{applyColor}"  "Try me! >>"
+::  Docs      fshuiEditor tryMe
 : div "display: flex; flex-direction:column" lytTarget.main
 
 editorCombo div "display:flex;flex-direction:column; height:100%"
@@ -116,8 +132,6 @@ navBar  div "class=xcontainer;margin-right:10px"
 :::::   span "class=sr-only" "(current)"
 
 nav nav "class=navbar navbar-default navbar-fixed-top" navBar
-: style  "" ".rightArrow { float:right; border: solid blue; border-width: 0 6px 6px 0; display: inline-block; padding: 3px; color: red; background: white;  transform: rotate(-45deg);  -webkit-transform: rotate(-45deg); } "
-: script "" "copyToEditor = function(el) { FsRootDll.LibraryJS.AppFramework.setVarDirect('lytDemo.textToCopy', el.parentElement.innerText); }"
 
 Center       vertical 0-60-100 snippet Right
 Center_      Doc Center ""
@@ -137,3 +151,4 @@ split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
 : Docs lytDemo.mainLower1
 
+LegoPieces div "class=container" snippet lytTarget.main
