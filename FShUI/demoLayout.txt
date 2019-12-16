@@ -162,7 +162,7 @@ split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
 : Docs lytDemo.mainLower1
 
-FullView1 div "class=container" snippet toMainView toFullView2
+FullView1 div "class=container" snippet toMainView " " toFullView2
 : div "class=well" lytTarget.main
 
-FullView2 div ""                        toMainView toFullView1 lytTarget.main
+FullView2 div ""                        toMainView " " toFullView1 lytTarget.main
