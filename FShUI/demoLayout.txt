@@ -13,14 +13,16 @@ SetTarget   Action AF.SetVarDirect "lytTarget.Layout"         target
 
 textToCopy  Var ""
 
-Trigger_     Doc    AF.TrigChange   Snippets.snippets_sel      SetTarget
-TriggerCopy_ Doc    AF.TrigAction   textToCopy
+Trigger Doc
+: Doc    AF.TrigChange   Snippets.snippets_sel      SetTarget
+: Docs ""
+
+TriggerCopy Doc
+: Doc    AF.TrigAction   textToCopy
 :  Actions
 :: Action  AF.SetVarDirect "Snippets.curSnp_content" textToCopy
 :: Actions SetTarget
-
-Trigger     Doc    Trigger_      ""
-TriggerCopy Doc    TriggerCopy_  ""
+: Docs ""
 
 mode         Var    "View"
 activeView   ViewJS "n => n=='View'   ?'active':''" mode
