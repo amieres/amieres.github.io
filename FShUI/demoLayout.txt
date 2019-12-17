@@ -7,10 +7,12 @@ editorDataSel Var ""
 setMainView  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.main"
 setFullView1 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView1"
 setFullView2 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView2"
+setFullView3 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView3"
 
 toMainView   button "click=@{setMainView} ;Title=Back to normal view" "normal view"
 toFullView1  button "click=@{setFullView1};Title=to full view"        "container view"
 toFullView2  button "click=@{setFullView2};Title=to full view"        "full view"
+toFullView3  button "click=@{setFullView3};Title=to full view"        "split view"
 
 target      ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_content
 
@@ -101,7 +103,7 @@ tryMe span "width:100%"
 Right horizontal 0-35-100
 :   div       "height:100%;display:flex;flex-direction: column" 
 ::  Docs      fshuiEditor 
-::  spam     "" tryMe " " toFullView2 " " toFullView1
+::  spam     "" tryMe " " toFullView2 " " toFullView1 " " toFullView3
 : div "display: flex; flex-direction:column" lytTarget.main
 
 editorCombo div "display:flex;flex-direction:column; height:100%; flex:1"
@@ -162,7 +164,12 @@ split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
 : Docs lytDemo.mainLower1
 
-FullView1 div "class=container" snippet toMainView " " toFullView2
+FullView1 div "class=container" snippet toMainView " " toFullView2 " " toFullView3
 : div "class=well; background:white" lytTarget.main
 
-FullView2 div ""                        toMainView " " toFullView1 lytTarget.main
+FullView2 div ""                        toMainView " " toFullView1 " " toFullView3 lytTarget.main
+
+FullView3 div "display:flex;flex-direction:column" 
+:    div "" tryMe " " toMainView " " toFullView1 " " toFullView2
+:    div "class=relative;flex:1"
+::   vertical 0-50-100 fshuiEditor lytTarget.main
