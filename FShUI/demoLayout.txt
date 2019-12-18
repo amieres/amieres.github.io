@@ -25,14 +25,12 @@ textToCopy  Var ""
 
 Trigger Doc
 : Doc    AF.TrigChange   Snippets.snippets_sel      SetTarget
-: Docs ""
 
 TriggerCopy Doc
 : Doc    AF.TrigAction   textToCopy
 ::  Actions
 ::: Action  AF.SetVarDirect "Snippets.curSnp_content" textToCopy
 ::: Actions SetTarget
-: Docs ""
 
 mode         Var    "View"
 activeView   ViewJS "n => n=='View'   ?'active':''" mode
@@ -164,10 +162,12 @@ split vertical 0-60-100
 : Doc  Monaco.editor lytDemo.Layout     "fsharp"   "vs-dark" ""
 : Docs lytDemo.mainLower1
 
-FullView1 div "class=container" snippet toMainView " " toFullView2 " " toFullView3
-: div "class=well; background:white" lytTarget.main
+FullView1 div "class=container" toMainView " " toFullView2 " " toFullView3 snippet 
+: div "class=well; background:white;display:flex;flex-direction:column;min-height:300px" lytTarget.main
 
-FullView2 div ""                        toMainView " " toFullView1 " " toFullView3 lytTarget.main
+FullView2 div "display:flex;flex-direction:column"
+: div "" toMainView " " toFullView1 " " toFullView3 
+: Docs lytTarget.main
 
 FullView3 div "display:flex;flex-direction:column" 
 :    div "" tryMe " " toMainView " " toFullView1 " " toFullView2
