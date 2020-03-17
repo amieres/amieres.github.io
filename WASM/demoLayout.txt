@@ -6,7 +6,7 @@ editorDataSel Var ""
 
 wasmOutput    Var "No output yet"
 wasmStatus    Var "NotLoaded"
-compilerOpts  Var ""
+compilerOpts  ViewJS "'--simpleresolution\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/WebAssembly.Net.Http.dll\n-r:/tmp/WebAssembly.Bindings.dll\n-r:/tmp/WebAssembly.Net.WebSockets.dll\n-r:/tmp/System.Numerics.dll\n/tmp/source.fsx'"
 
 setMainView  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.main"
 setFullView1 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView1"
@@ -20,8 +20,14 @@ toFullView3  button "click=@{setFullView3};Title=to full view"        "split vie
 
 target      ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_content
 
+lastCompile Var ""
 viwCompile  ViewJS "App.compile" Snippets.curSnp_content compilerOpts
-actCompile  Action AF.SetVarDirect "lytDemo.msgAdd" viwCompile
+actCompile  Actions
+: Action AF.SetVarDirect "lytDemo.wasmOutput"  "Compiling..."
+: Action AF.SetVarDirect "lytDemo.lastCompile"  viwCompile
+
+viwRun  ViewJS "(function(n) { var r = App.runAsm(n); return r == undefined? '' : r })" lastCompile
+actRun  Action AF.SetVarDirect "lytDemo.msgAdd" viwRun
 
 viwListdir  ViewJS "n => App.listdir('/')" Snippets.curSnp_content
 actListDir  Action AF.SetVarDirect "lytDemo.msgAdd" viwListdir
@@ -123,10 +129,12 @@ wasmOutputDoc div "display: flex;flex-direction: column;flex: 1;"
 RightX div "display: flex; flex-direction:column" wasmOutputDoc
 
 tryMe span "width:100%"
-: button    "click=@{actCompile};class=@{applyColor}"  "Try me! >>"
-: Doc " "
+: button    "click=@{actCompile};class=@{applyColor}"  "Compile"
+: Docs " "
+: button    "click=@{actRun}    ;class=@{applyColor}"  "Run"
+: Docs " "
 : button    "click=@{actClearMsg}"                     "Clear"
-: Doc " "
+: Docs " "
 : button    "click=@{actListDir}"                      "Dir"
 
 RightLoadedtrue div "display: flex; flex-direction:column"
