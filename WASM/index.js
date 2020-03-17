@@ -24,6 +24,7 @@ requirejs([
         ,"FShUI/LayoutEngine.js"
         ,"FShUI/MonacoPlugIn.js"
         ,"FShUI/SnippetsUI.js"
+        ,"FShUI/RequireOnePlugIn.js"
     ], function() {
         IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
         IntelliFactory.Runtime.Start();
@@ -37,6 +38,7 @@ requirejs([
 
 function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.MonacoPlugIn        .plugInAdded();
+    FsRootDll.LibraryJS.RequireOnePlugIn    .plugInAdded("Wasm", "WASM/wasmInterp/loader.js");
     FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
     FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );

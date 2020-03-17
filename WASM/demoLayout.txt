@@ -5,6 +5,8 @@
 editorDataSel Var ""
 
 wasmOutput    Var "No output yet"
+wasmStatus    Var "NotLoaded"
+compilerOpts  Var ""
 
 setMainView  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.main"
 setFullView1 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView1"
@@ -17,6 +19,23 @@ toFullView2  button "click=@{setFullView2};Title=to full view"        "full view
 toFullView3  button "click=@{setFullView3};Title=to full view"        "split view"
 
 target      ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_content
+
+viwCompile  ViewJS "App.compile" Snippets.curSnp_content compilerOpts
+actCompile  Action AF.SetVarDirect "lytDemo.msgAdd" viwCompile
+
+viwListdir  ViewJS "n => App.listdir('/')" Snippets.curSnp_content
+actListDir  Action AF.SetVarDirect "lytDemo.msgAdd" viwListdir
+
+msgAdd      Var ""
+viwAddMsg   ViewJS "(a,b) => b == '' ? a : a == '' ? b : a + '\n' + b " wasmOutput msgAdd
+actAddMsg   Actions
+: Action AF.SetVarDirect "lytDemo.wasmOutput" viwAddMsg
+: Action AF.SetVarDirect "lytDemo.msgAdd"     ""
+
+TriggerMsgAdd Doc
+: Doc    AF.TrigChange   msgAdd      actAddMsg
+
+actClearMsg Action AF.SetVarDirect "lytDemo.wasmOutput" ""
 
 goPrev      Action AF.SetVar       "Snippets.snippets_sel"    Snippets.prevSel
 goNext      Action AF.SetVar       "Snippets.snippets_sel"    Snippets.nextSel
@@ -104,12 +123,27 @@ wasmOutputDoc div "display: flex;flex-direction: column;flex: 1;"
 RightX div "display: flex; flex-direction:column" wasmOutputDoc
 
 tryMe span "width:100%"
-: button    "click=SetTarget;class=@{applyColor}"  "Try me! >>"
+: button    "click=@{actCompile};class=@{applyColor}"  "Try me! >>"
+: Doc " "
+: button    "click=@{actClearMsg}"                     "Clear"
+: Doc " "
+: button    "click=@{actListDir}"                      "Dir"
 
-Right div "display: flex; flex-direction:column"
+RightLoadedtrue div "display: flex; flex-direction:column"
 :   div       "display:flex;flex-direction: column" 
 ::  spam     "" tryMe " " toFullView2 " " toFullView1 " " toFullView3
 : div "display: flex;flex-direction: column;flex: 1;" wasmOutputDoc
+
+RightNotLoadedfalse div "display: flex; flex-direction:column" 
+: h1 "" "Start by loading WASM" 
+: Docs RequireOneWasm.LoadPath
+: button   "click=@{RequireOneWasm.Load}" "Load WASM instance" 
+
+RightNotLoadedtrue div "display: flex; flex-direction:column" 
+:  div "" "WASM Loading ..."
+:: img "src=//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif"
+
+Right Doc AF.DocReference "lytDemo.Right@{wasmStatus}@{RequireOneWasm.loaded}"
 
 editorCombo div "display:flex;flex-direction:column; height:100%; flex:1"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
@@ -123,7 +157,7 @@ snippetListView   div "display:block;overflow:auto;width:100%" Snippets.snippets
 
 snippetListFSharp div "display:flex;flex-direction:column"
 : button "onclick=FsRootDll.LibraryJS.SnippetsUI.SaveLoad.loadURL('//raw.githubusercontent.com/amieres/FSharpStation/master/basic18.snippets')" "Load FSharp Snippets"
-: button "onclick=FsRootDll.LibraryJS.SnippetsUI.SaveLoad.loadURL('/WASM/tutorial.snippets'                                                 )" "Load Tutorial Snippets"
+: button "onclick=FsRootDll.LibraryJS.SnippetsUI.SaveLoad.loadURL('/WASM/tutorial.snippets'                                                  )" "Load Tutorial Snippets"
 : div "max-height:100%" list 
 
 navBar  div "class=xcontainer;margin-right:10px"
@@ -149,7 +183,7 @@ navBar  div "class=xcontainer;margin-right:10px"
 ::::    a    "href=//github.com/amieres/amieres.github.io" "About"
 :::::   span "class=sr-only" "(current)"
 
-nav nav "class=navbar navbar-default navbar-fixed-top" navBar
+nav nav "class=navbar navbar-default navbar-fixed-top" navBar TriggerMsgAdd
 
 Center       vertical 0-60-100 snippet Right
 Center_      Doc Center ""
