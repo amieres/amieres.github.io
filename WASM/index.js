@@ -27,9 +27,9 @@ requirejs([
     ], function() {
         IntelliFactory.Runtime.ScriptBasePath = 'FShUI/WebSharper/';
         IntelliFactory.Runtime.Start();
-        fetch(          "FShUI/demoLayout.txt"   ).then(resp => resp.text()).then(demoLayout =>
-            fetch(      "FShUI/templates.html"   ).then(resp => resp.text()).then(templates  =>
-                fetch(  "FShUI/tutorial.snippets").then(resp => resp.text()).then(snippets   =>
+        fetch(          "WASM/demoLayout.txt"   ).then(resp => resp.text()).then(demoLayout =>
+            fetch(      "FShUI/templates.html"  ).then(resp => resp.text()).then(templates  =>
+                fetch(  "WASM/tutorial.snippets").then(resp => resp.text()).then(snippets   =>
                     startPage(demoLayout, templates, snippets)
         )));
     });
@@ -38,7 +38,6 @@ requirejs([
 function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.MonacoPlugIn        .plugInAdded();
     FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
-    FsRootDll.LibraryJS.NewLY               .addLayout(     "lytTarget" , ""        );
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
     FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );
     FsRootDll.LibraryJS.StartAppFramework   .startWith(     templates               );
@@ -48,4 +47,5 @@ function startPage(demoLayout, templates, snippets) {
         FsRootDll.LibraryJS.AppFramework        .callAction(    'lytDemo.goPrev'        ); 
         document.getElementById("main-loading").hidden = true;
     }, 1000);
+    
 }
