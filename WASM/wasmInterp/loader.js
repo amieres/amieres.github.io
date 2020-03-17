@@ -94,9 +94,17 @@ function preloadFiles() {
 	loadFiles(rootPath + "dlls"           , App.preloaded, App.morefiles);
 }
 
+function appendMsg(v) { 
+	console.log(v);
+	let p = FsRootDll.LibraryJS.AppFramework.getValDirect()("lytDemo.wasmOutput");
+	FsRootDll.LibraryJS.AppFramework.setVarDirect("lytDemo.wasmOutput", (p === undefined || p === null || p === '')? v : p + "\n" + v);
+}
+
 requirejs([rootPath + "mono-config.js", rootPath + "runtime.js"], function() {
 	Module.preRun = [];
 	Module.preRun.push(preloadFiles);
 	Module.preRun.push(function() { ENV.MONO_TRACE = "none" });
+	Module.print    = appendMsg;
+	Module.printErr = appendMsg;
 	requirejs([rootPath + "dotnet.js"]);
 })

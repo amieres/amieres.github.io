@@ -1,7 +1,7 @@
 (function()
 {
  "use strict";
- var Global,FsRootDll,Library,StringId,GuidId,Dict,WebSharper,Obj,Monads,State,CEBuilder,Operators,Result,Builder,Operators$1,Depend,DependBuilder,Operators$2,String,ParseO,LibraryJS,View,Var,ListModel,REGEX,Hoverable,Hoverable$1,ResizeObserver,WebComponent,WcTabStrip,WcTabStripT,WcSplitter,WcSplitterT,AppFrameworkTemplate,AppFramework,PlgElemName,PlugInName,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,PlugIn,PlugInBuilder,Fun,P,Val,AAttr,Extract0,ListModelData,LM,StartAppFramework,AppFrameworkUI,LayoutEngine,LayoutEngineModule,Measures,Syntax,RefType,Layout,NewLY,P$1,SC$1,LayoutEngine_GeneratedPrintf,GeneratedPrintf,LayoutEngine_Templates,IntelliFactory,Runtime,Enumerator,Result$1,Arrays,List,Operators$3,Strings,Seq,Utils,Slice,Char,Unchecked,CancellationTokenSource,Concurrency,console,UI,View$1,Var$1,Collections,FSharpSet,FromView,Doc,DomUtility,AttrModule,AttrProxy,Var$2,Node,Client,Templates,Reflect,Object,Lazy,Templating,Runtime$1,Server,ProviderBuilder,Handler,TemplateInstance,ListModel$1,FSharpMap,Math,Dictionary,MatchFailureException,System,Guid,DateUtil,Numeric,Attrs,Input,Mouse,Keyboard,Date;
+ var Global,FsRootDll,Library,StringId,GuidId,Dict,WebSharper,Obj,Monads,State,CEBuilder,Operators,Result,Builder,Operators$1,Depend,DependBuilder,Operators$2,String,ParseO,LibraryJS,View,Var,ListModel,REGEX,Hoverable,Hoverable$1,ResizeObserver,WebComponent,WcTabStrip,WcTabStripT,WcSplitter,WcSplitterT,AppFrameworkTemplate,AppFramework,PlgElemName,PlugInName,PlugInVar,PlugInView,PlugInDoc,PlugInAction,PlugInQuery,PlugIn,PlugInBuilder,Fun,P,Val,AAttr,Extract0,ListModelData,LM,StartAppFramework,AppFrameworkUI,LayoutEngine,LayoutEngineModule,Measures,Syntax,RefType,TemplateDef,Layout,NewLY,P$1,SC$1,LayoutEngine_GeneratedPrintf,GeneratedPrintf,LayoutEngine_Templates,IntelliFactory,Runtime,Enumerator,Result$1,Arrays,List,Operators$3,Strings,Seq,Utils,Slice,Char,Unchecked,Concurrency,CancellationTokenSource,console,UI,View$1,Var$1,Collections,FSharpSet,FromView,Doc,DomUtility,AttrModule,AttrProxy,Var$2,Node,Client,Templates,Reflect,Object,Lazy,Templating,Runtime$1,Server,ProviderBuilder,Handler,TemplateInstance,ListModel$1,FSharpMap,Math,Dictionary,MatchFailureException,System,Guid,DateUtil,Numeric,Attrs,Input,Mouse,Keyboard,Date;
  Global=self;
  FsRootDll=Global.FsRootDll=Global.FsRootDll||{};
  Library=FsRootDll.Library=FsRootDll.Library||{};
@@ -60,6 +60,7 @@
  Measures=LayoutEngineModule.Measures=LayoutEngineModule.Measures||{};
  Syntax=LayoutEngineModule.Syntax=LayoutEngineModule.Syntax||{};
  RefType=Syntax.RefType=Syntax.RefType||{};
+ TemplateDef=Syntax.TemplateDef=Syntax.TemplateDef||{};
  Layout=LayoutEngineModule.Layout=LayoutEngineModule.Layout||{};
  NewLY=LibraryJS.NewLY=LibraryJS.NewLY||{};
  P$1=NewLY.P=NewLY.P||{};
@@ -80,8 +81,8 @@
  Slice=WebSharper&&WebSharper.Slice;
  Char=WebSharper&&WebSharper.Char;
  Unchecked=WebSharper&&WebSharper.Unchecked;
- CancellationTokenSource=WebSharper&&WebSharper.CancellationTokenSource;
  Concurrency=WebSharper&&WebSharper.Concurrency;
+ CancellationTokenSource=WebSharper&&WebSharper.CancellationTokenSource;
  console=Global.console;
  UI=WebSharper&&WebSharper.UI;
  View$1=UI&&UI.View;
@@ -869,6 +870,14 @@
  {
   return a+b;
  };
+ String.right=function(n,s)
+ {
+  return Library["String.Right"](s,n);
+ };
+ String.left=function(n,s)
+ {
+  return Library["String.Left"](s,n);
+ };
  String.trim=function(s)
  {
   return Strings.Trim(s);
@@ -1017,14 +1026,24 @@
  };
  Library.delayed=function(delay,doF)
  {
-  var cancellationTokenSourceO;
-  cancellationTokenSourceO=[null];
+  function g()
+  {
+   return Concurrency.Return(null);
+  }
+  return Library.delayedA(delay,function(x)
+  {
+   return g(doF(x));
+  });
+ };
+ Library.delayedA=function(delay,doF)
+ {
+  var cancelTokenO;
+  cancelTokenO=null;
   return function(parm)
   {
-   var o,b;
-   o=cancellationTokenSourceO[0];
-   o==null?void 0:o.$0.Cancel$1();
-   cancellationTokenSourceO[0]={
+   var b;
+   cancelTokenO==null?void 0:cancelTokenO.$0.Cancel$1();
+   cancelTokenO={
     $:1,
     $0:new CancellationTokenSource.New()
    };
@@ -1032,12 +1051,14 @@
    {
     return Concurrency.Bind(Concurrency.Sleep(delay),function()
     {
-     doF(parm);
-     return Concurrency.Zero();
+     return Concurrency.Bind(doF(parm),function()
+     {
+      return Concurrency.Return(null);
+     });
     });
    })),{
     $:1,
-    $0:cancellationTokenSourceO[0].$0
+    $0:cancelTokenO.$0
    });
   };
  };
@@ -1519,15 +1540,15 @@
  {
   return Hoverable$1.New$1().Content(Doc.Element("div",[AttrProxy.Create("style","flex-flow: column;")],[Doc.TextNode("Hover over me!")]));
  };
- Hoverable$1.Content$753$81=Runtime.Curried3(function(e,$1,$2)
+ Hoverable$1.Content$758$81=Runtime.Curried3(function(e,$1,$2)
  {
   return DomUtility.RemoveClass(e.elt,"hovering");
  });
- Hoverable$1.get_Attributes$749$69=Runtime.Curried3(function(_this,$1,$2)
+ Hoverable$1.get_Attributes$754$69=Runtime.Curried3(function(_this,$1,$2)
  {
   return _this.hover.Set(false);
  });
- Hoverable$1.get_Attributes$748$69=Runtime.Curried3(function(_this,$1,$2)
+ Hoverable$1.get_Attributes$753$69=Runtime.Curried3(function(_this,$1,$2)
  {
   return _this.hover.Set(true);
  });
@@ -1669,7 +1690,7 @@
   SC$1.$cctor();
   return SC$1.init;
  };
- WcTabStrip.tabStrip$897$64=function(i,selected)
+ WcTabStrip.tabStrip$902$64=function(i,selected)
  {
   return function()
   {
@@ -2220,10 +2241,11 @@
    r:r
   };
  };
- Val.textAtt=function()
+ Val.textAtt=function(a)
  {
-  SC$1.$cctor();
-  return SC$1.textAtt;
+  var $1;
+  $1=Operators$3.FailWith;
+  return $1("textAtt not implemented");
  };
  Val.textDoc=function(a)
  {
@@ -2535,14 +2557,23 @@
    $0:v
   }));
  };
- AppFramework.addPlugIn=function(p)
- {
-  AppFramework.plugIns().Append(p);
- };
  AppFramework.getMainDoc=function()
  {
   SC$1.$cctor();
   return SC$1.getMainDoc;
+ };
+ AppFramework.splitterPerc=function()
+ {
+  SC$1.$cctor();
+  return SC$1.splitterPerc;
+ };
+ AppFramework.addPlugIn=function(p)
+ {
+  p.plgViews.Append(AppFramework.newViw(new PlgElemName({
+   $:0,
+   $0:"PlugInName"
+  }),View$1.Const(p.plgName.get_Id())));
+  AppFramework.plugIns().Append(p);
  };
  AppFramework.select=function()
  {
@@ -2570,6 +2601,59 @@
  {
   SC$1.$cctor();
   return SC$1.trigAct;
+ };
+ AppFramework.dragSplitter=function(varN,eventD)
+ {
+  (AppFramework.dragSplitter0())([varN,eventD]);
+ };
+ AppFramework.dragSplitter0=function()
+ {
+  SC$1.$cctor();
+  return SC$1.dragSplitter0;
+ };
+ AppFramework.draggingEvent=function(first,value,ev)
+ {
+  var el,vertical,startP,o,x,start,gap,size;
+  function getSize(el$1)
+  {
+   return vertical?first?el$1.getBoundingClientRect().width:-el$1.getBoundingClientRect().width:first?el$1.getBoundingClientRect().height:-el$1.getBoundingClientRect().height;
+  }
+  function mouseCoord(ev$1)
+  {
+   return vertical?ev$1.clientX:ev$1.clientY;
+  }
+  function drag(ev$1)
+  {
+   var v,e,e$1,a,a$1;
+   v=String.left(5,Global.String((e=(e$1=(mouseCoord(ev$1)-start)*100/(size-gap)+startP,(a=0,Unchecked.Compare(a,e$1)===1?a:e$1)),(a$1=100,Unchecked.Compare(a$1,e)===-1?a$1:e))));
+   value.Get()!==v?value.Set(v):void 0;
+  }
+  function finishDragging()
+  {
+   self.removeEventListener("mousemove",drag,false);
+   self.removeEventListener("mouseup",finishDragging,false);
+  }
+  el=ev.toElement;
+  vertical=el.parentElement.hasAttribute("vertical");
+  startP=(o=(x=value.Get(),(ParseO.parseDoubleO())(x)),o==null?0:o.$0);
+  start=mouseCoord(ev);
+  gap=getSize(el);
+  size=getSize(el.parentElement);
+  self.addEventListener("mousemove",drag,false);
+  self.addEventListener("mouseup",finishDragging,false);
+  ev.preventDefault();
+ };
+ AppFramework.getValDirect=function()
+ {
+  SC$1.$cctor();
+  return SC$1.getValDirect;
+ };
+ AppFramework.setVarDirectD=function(varN,value)
+ {
+  (Library.delayed(100,function(v)
+  {
+   AppFramework.setVarDirect(varN,v);
+  }))(value);
  };
  AppFramework.setVarDirect=function(varN,value)
  {
@@ -2618,11 +2702,11 @@
   SC$1.$cctor();
   return SC$1.inputLabel;
  };
- AppFramework.inputFile$2209$67=Runtime.Curried3(function(act,el,$1)
+ AppFramework.inputFile$2231$67=Runtime.Curried3(function(act,el,ev)
  {
-  return AppFramework.callFunction(el,null,act.actFunction);
+  return AppFramework.callFunction(el,ev,act.actFunction);
  });
- AppFramework.inputFile$2208$67=Runtime.Curried3(function($1,el,$2)
+ AppFramework.inputFile$2230$67=Runtime.Curried3(function($1,el,$2)
  {
   el.value="";
  });
@@ -2639,9 +2723,9 @@
     };
    }),AttrProxy.HandlerImpl("change",function(el)
    {
-    return function()
+    return function(ev)
     {
-     return AppFramework.callFunction(el,null,act.actFunction);
+     return AppFramework.callFunction(el,ev,act.actFunction);
     };
    })],[])])])])]))
   });
@@ -3192,15 +3276,15 @@
  {
   return PlugInVar.New(name,_var);
  };
- AppFramework.vertical$1687$39=function(mouseDown)
+ AppFramework.vertical$1709$39=function(mouseDown)
  {
   return function(te)
   {
    mouseDown(te.Event);
   };
  };
- AppFramework.vertical$1686$39=Global.id;
- AppFramework.vertical$1685$39=Global.id;
+ AppFramework.vertical$1708$39=Global.id;
+ AppFramework.vertical$1707$39=Global.id;
  AppFramework.vertical=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
  {
   var b,t,p,i;
@@ -3228,15 +3312,15 @@
    $1:gap
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterver(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFramework.horizontal$1679$39=function(mouseDown)
+ AppFramework.horizontal$1701$39=function(mouseDown)
  {
   return function(te)
   {
    mouseDown(te.Event);
   };
  };
- AppFramework.horizontal$1678$39=Global.id;
- AppFramework.horizontal$1677$39=Global.id;
+ AppFramework.horizontal$1700$39=Global.id;
+ AppFramework.horizontal$1699$39=Global.id;
  AppFramework.horizontal=function(partSizes,afterRender,afterRenderSp,mouseDown,gap)
  {
   var b,t,p,i;
@@ -3264,7 +3348,7 @@
    $1:gap
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.wcompsplitterhor(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFramework.mainDoc$1668$42=function()
+ AppFramework.mainDoc$1690$42=function()
  {
   return function()
   {
@@ -3329,7 +3413,7 @@
   SC$1.$cctor();
   return SC$1.AppFwkClient;
  };
- AppFramework.renderQueries$1631$39=function(qry)
+ AppFramework.renderQueries$1653$39=function(qry)
  {
   return function()
   {
@@ -3371,11 +3455,11 @@
    },plg.plgQueries);
   },AppFramework.currentPlugInW()));
  };
- AppFramework.renderActions$1620$39=function(act)
+ AppFramework.renderActions$1642$39=function(act)
  {
   return function(ev)
   {
-   AppFramework.callFunction(ev,null,act.actFunction);
+   AppFramework.callFunction(null,ev,act.actFunction);
   };
  };
  AppFramework.renderActions=function()
@@ -3412,7 +3496,7 @@
     return t.i;
    },function(ev)
    {
-    AppFramework.callFunction(ev,null,act.actFunction);
+    AppFramework.callFunction(null,ev,act.actFunction);
    }))).WithHole({
     $:3,
     $0:"attrs",
@@ -3436,14 +3520,14 @@
  AppFramework.callFunction=function(p1,p2,actF)
  {
   if(actF.$==1)
-   actF.$0(p1);
+   actF.$0(p2);
   else
    if(actF.$==2)
     (actF.$0(p1))(p2);
    else
     actF.$0();
  };
- AppFramework.renderDocs$1600$39=function(doc)
+ AppFramework.renderDocs$1622$39=function(doc)
  {
   return function()
   {
@@ -3601,7 +3685,7 @@
    },plg.plgVars);
   },AppFramework.currentPlugInW()));
  };
- AppFramework.renderPlugIns$1559$35=function(name)
+ AppFramework.renderPlugIns$1581$35=function(name)
  {
   return function()
   {
@@ -3886,7 +3970,7 @@
   SC$1.$cctor();
   return SC$1.defPlg;
  };
- AppFrameworkUI.showDoc$2681$35=function(k,lmd)
+ AppFrameworkUI.showDoc$2765$35=function(k,lmd)
  {
   return function()
   {
@@ -3926,7 +4010,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showAct$2674$35=function(k,lmd)
+ AppFrameworkUI.showAct$2758$35=function(k,lmd)
  {
   return function()
   {
@@ -3984,7 +4068,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showView$2662$35=function(k,lmd)
+ AppFrameworkUI.showView$2746$35=function(k,lmd)
  {
   return function()
   {
@@ -4028,7 +4112,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showVar$2650$35=function(k,lmd)
+ AppFrameworkUI.showVar$2734$35=function(k,lmd)
  {
   return function()
   {
@@ -4072,7 +4156,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showPlugIn$2638$35=function(k,lmd)
+ AppFrameworkUI.showPlugIn$2722$35=function(k,lmd)
  {
   return function()
   {
@@ -4142,6 +4226,17 @@
  };
  RefType.RDoc={
   $:0
+ };
+ TemplateDef.New=function(tmpName,vars,views,docs,actions,attrs)
+ {
+  return{
+   tmpName:tmpName,
+   vars:vars,
+   views:views,
+   docs:docs,
+   actions:actions,
+   attrs:attrs
+  };
  };
  Syntax.createEntryO2=function(lytNm,refs)
  {
@@ -4296,105 +4391,105 @@
  };
  Syntax.createEntryO=function(getType,lytNm,line)
  {
-  var m,$1,a,a$1,$2,a$2,a$3,$3,a$4,a$5,$4,a$6,a$7,$5,a$8,a$9,$6,a$10,a$11,a$12,a$13,$7,a$14,a$15,a$16,a$17,$8,a$18,a$19,a$20,a$21,$9,a$22,a$23,a$24,$10,a$25,a$26,a$27,$11,a$28,a$29,$12,a$30,$13,a$31,a$32,a$33,$14,a$34,a$35,$15,a$36,a$37,$16,a$38,a$39,$17,a$40,a$41,$18,a$42,a$43,a$44,$19,a$45,a$46,a$47,a$48;
-  function Rt(a$49)
+  var m,$1,a,a$1,$2,a$2,a$3,$3,a$4,a$5,$4,a$6,a$7,$5,a$8,a$9,$6,a$10,a$11,a$12,a$13,$7,a$14,a$15,a$16,a$17,$8,a$18,a$19,a$20,a$21,$9,a$22,a$23,a$24,$10,a$25,a$26,a$27,$11,a$28,a$29,$12,a$30,$13,a$31,a$32,a$33,$14,a$34,a$35,$15,a$36,a$37,$16,a$38,a$39,$17,a$40,a$41,$18,a$42,a$43,a$44,$19,a$45,a$46,a$47,a$48,a$49,a$50,a$51,a$52,a$53,a$54,a$55,$20,a$56,a$57,a$58,a$59;
+  function Rt(a$60)
   {
-   var a$50,itr;
-   a$50=Syntax.R(a$49);
-   return a$50!=null&&a$50.$==1?(itr=a$50.$0,{
+   var a$61,itr;
+   a$61=Syntax.R(a$60);
+   return a$61!=null&&a$61.$==1?(itr=a$61.$0,{
     $:1,
     $0:[getType(itr),itr]
    }):null;
   }
-  function DocRf(a$49)
+  function DocRf(a$60)
   {
-   var $20,a$50;
-   return(a$50=Rt(a$49),a$50!=null&&a$50.$==1&&(a$50.$0[0][0].$==0&&($20=a$50.$0[1],true)))?{
+   var $21,a$61;
+   return(a$61=Rt(a$60),a$61!=null&&a$61.$==1&&(a$61.$0[0][0].$==0&&($21=a$61.$0[1],true)))?{
     $:1,
     $0:{
      $:0,
-     $0:$20
+     $0:$21
     }
    }:null;
   }
-  function VarRf(a$49)
+  function VarRf(a$60)
   {
-   var $20,a$50;
-   return(a$50=Rt(a$49),a$50!=null&&a$50.$==1&&(a$50.$0[0][0].$==1&&($20=a$50.$0[1],true)))?{
+   var $21,a$61;
+   return(a$61=Rt(a$60),a$61!=null&&a$61.$==1&&(a$61.$0[0][0].$==1&&($21=a$61.$0[1],true)))?{
     $:1,
     $0:{
      $:0,
-     $0:$20
+     $0:$21
     }
    }:null;
   }
-  function ViwRf(a$49)
+  function ViwRf(a$60)
   {
-   var $20,a$50;
-   return(a$50=Rt(a$49),a$50!=null&&a$50.$==1&&(a$50.$0[0][0].$==2&&($20=a$50.$0[1],true)))?{
+   var $21,a$61;
+   return(a$61=Rt(a$60),a$61!=null&&a$61.$==1&&(a$61.$0[0][0].$==2&&($21=a$61.$0[1],true)))?{
     $:1,
     $0:{
      $:0,
-     $0:$20
+     $0:$21
     }
    }:null;
   }
-  function ActRf(a$49)
+  function ActRf(a$60)
   {
-   var $20,a$50;
-   return(a$50=Rt(a$49),a$50!=null&&a$50.$==1&&(a$50.$0[0][0].$==3&&($20=a$50.$0[1],true)))?{
+   var $21,a$61;
+   return(a$61=Rt(a$60),a$61!=null&&a$61.$==1&&(a$61.$0[0][0].$==3&&($21=a$61.$0[1],true)))?{
     $:1,
     $0:{
      $:0,
-     $0:$20
+     $0:$21
     }
    }:null;
   }
-  function PlgRf(a$49)
+  function PlgRf(a$60)
   {
-   var $20,a$50,$21;
-   return(a$50=Rt(a$49),a$50!=null&&a$50.$==1&&(a$50.$0[0][0].$==4&&(($21=a$50.$0[0][1],$21!=null&&$21.$==1)&&(a$50.$0[0][1].$0.$==7&&($20=[a$50.$0[0][1].$0.$0,a$50.$0[1]],true)))))?{
+   var $21,a$61,$22;
+   return(a$61=Rt(a$60),a$61!=null&&a$61.$==1&&(a$61.$0[0][0].$==4&&(($22=a$61.$0[0][1],$22!=null&&$22.$==1)&&(a$61.$0[0][1].$0.$==7&&($21=[a$61.$0[0][1].$0.$0,a$61.$0[1]],true)))))?{
     $:1,
-    $0:$20[0]
+    $0:$21[0]
    }:null;
   }
-  function Name(a$49)
+  function Name(a$60)
   {
-   var $20,a$50;
-   return(a$50=Syntax.R(a$49),a$50!=null&&a$50.$==1&&(a$50.$0.$==0&&($20=a$50.$0.$0,true)))?{
+   var $21,a$61;
+   return(a$61=Syntax.R(a$60),a$61!=null&&a$61.$==1&&(a$61.$0.$==0&&($21=a$61.$0.$0,true)))?{
     $:1,
-    $0:$20
+    $0:$21
    }:null;
   }
-  function NamU(a$49)
+  function NamU(a$60)
   {
-   var $20,a$50;
-   return(a$50=Name(a$49),a$50!=null&&a$50.$==1&&(Strings.StartsWith(a$50.$0,"_")&&($20=a$50.$0,true)))?{
+   var $21,a$61;
+   return(a$61=Name(a$60),a$61!=null&&a$61.$==1&&(Strings.StartsWith(a$61.$0,"_")&&($21=a$61.$0,true)))?{
     $:1,
-    $0:$20
+    $0:$21
    }:null;
   }
-  function Tr(a$49)
+  function Tr(a$60)
   {
-   var a$50,a$51,a$52;
-   a$50=VarRf(a$49);
-   return a$50!=null&&a$50.$==1?{
+   var a$61,a$62,a$63;
+   a$61=VarRf(a$60);
+   return a$61!=null&&a$61.$==1?{
     $:1,
     $0:{
      $:1,
-     $0:a$50.$0
+     $0:a$61.$0
     }
-   }:(a$51=ViwRf(a$49),a$51!=null&&a$51.$==1?{
+   }:(a$62=ViwRf(a$60),a$62!=null&&a$62.$==1?{
     $:1,
     $0:{
      $:2,
-     $0:a$51.$0
+     $0:a$62.$0
     }
-   }:(a$52=ActRf(a$49),a$52!=null&&a$52.$==1?{
+   }:(a$63=ActRf(a$60),a$63!=null&&a$63.$==1?{
     $:1,
     $0:{
      $:3,
-     $0:a$52.$0
+     $0:a$63.$0
     }
    }:null));
   }
@@ -4412,17 +4507,17 @@
   }
   function Tx(txt)
   {
-   var $20,a$49,a$50,aft,bef,tl,a$51,$21;
-   return(a$49=Indi(txt),a$49!=null&&a$49.$==1&&(a$50=Tr(a$49.$0[1]),a$50!=null&&a$50.$==1&&($20=[a$49.$0[2],a$49.$0[0],a$50.$0],true)))?(aft=$20[0],(bef=$20[1],(tl=bef===""?List.ofArray([$20[2]]):List.ofArray([{
+   var $21,a$60,a$61,aft,bef,tl,a$62,$22;
+   return(a$60=Indi(txt),a$60!=null&&a$60.$==1&&(a$61=Tr(a$60.$0[1]),a$61!=null&&a$61.$==1&&($21=[a$60.$0[2],a$60.$0[0],a$61.$0],true)))?(aft=$21[0],(bef=$21[1],(tl=bef===""?List.ofArray([$21[2]]):List.ofArray([{
     $:0,
     $0:bef
-   },$20[2]]),aft===""?{
+   },$21[2]]),aft===""?{
     $:1,
     $0:tl
-   }:(a$51=Tx(aft),a$51!=null&&a$51.$==1?{
+   }:(a$62=Tx(aft),a$62!=null&&a$62.$==1?{
     $:1,
-    $0:List.append(tl,a$51.$0)
-   }:null)))):($21=Indi(txt),$21!=null&&$21.$==1)?null:{
+    $0:List.append(tl,a$62.$0)
+   }:null)))):($22=Indi(txt),$22!=null&&$22.$==1)?null:{
     $:1,
     $0:List.ofArray([{
      $:0,
@@ -4432,102 +4527,99 @@
   }
   function ActI(txt)
   {
-   var $20,a$49,a$50;
-   return(a$49=Indi(txt),a$49!=null&&a$49.$==1&&(a$50=ActRf(a$49.$0[1]),a$50!=null&&a$50.$==1&&(Strings.Trim(a$49.$0[0])===""&&Strings.Trim(a$49.$0[2])===""&&($20=[a$49.$0[2],a$50.$0,a$49.$0[0]],true))))?{
+   var $21,a$60,a$61;
+   return(a$60=Indi(txt),a$60!=null&&a$60.$==1&&(a$61=ActRf(a$60.$0[1]),a$61!=null&&a$61.$==1&&(Strings.Trim(a$60.$0[0])===""&&Strings.Trim(a$60.$0[2])===""&&($21=[a$60.$0[2],a$61.$0,a$60.$0[0]],true))))?{
     $:1,
-    $0:$20[1]
+    $0:$21[1]
    }:null;
   }
-  function QTx(a$49)
+  function QTx(a$60)
   {
-   var $20,a$50;
-   return a$49.$==0&&(a$50=Tx(a$49.$0),a$50!=null&&a$50.$==1&&($20=a$50.$0,true))?{
+   var $21,a$61;
+   return a$60.$==0&&(a$61=Tx(a$60.$0),a$61!=null&&a$61.$==1&&($21=a$61.$0,true))?{
     $:1,
-    $0:$20
+    $0:$21
    }:null;
   }
-  function At(a$49)
+  function At(a$60)
   {
-   return a$49.$==0?{
+   return a$60.$==0?{
     $:1,
-    $0:Arrays.ofSeq(Seq.choose(function(a$50)
+    $0:Arrays.ofSeq(Seq.choose(function(a$61)
     {
-     var m$1,$20,a$51,$21,a$52,m$2,$22,a$53;
-     m$1=Strings.SplitChars(Strings.Trim(a$50),["="],0);
-     return!Unchecked.Equals(m$1,null)&&m$1.length===2&&(a$51=ActI(Arrays.get(m$1,1)),a$51!=null&&a$51.$==1&&($20=[a$51.$0,Arrays.get(m$1,0)],true))?{
+     var m$1,$21,a$62,$22,a$63,m$2,$23,a$64;
+     m$1=(LayoutEngineModule.splitInTwo("="))(a$61);
+     return!Unchecked.Equals(m$1,null)&&m$1.length===2&&(a$62=ActI(Arrays.get(m$1,1)),a$62!=null&&a$62.$==1&&($21=[a$62.$0,Arrays.get(m$1,0)],true))?{
       $:1,
       $0:{
        $:2,
-       $0:Strings.Trim($20[1]),
-       $1:$20[0]
+       $0:Strings.Trim($21[1]),
+       $1:$21[0]
       }
-     }:!Unchecked.Equals(m$1,null)&&m$1.length===2&&(a$52=Tx(Arrays.get(m$1,1)),a$52!=null&&a$52.$==1&&($21=[Arrays.get(m$1,0),a$52.$0],true))?{
+     }:!Unchecked.Equals(m$1,null)&&m$1.length===2&&(a$63=Tx(Arrays.get(m$1,1)),a$63!=null&&a$63.$==1&&($22=[Arrays.get(m$1,0),a$63.$0],true))?{
       $:1,
       $0:{
        $:1,
-       $0:Strings.Trim($21[0]),
-       $1:$21[1]
-      }
-     }:(m$2=Strings.SplitChars(Strings.Trim(a$50),[":"],0),!Unchecked.Equals(m$2,null)&&m$2.length===2&&(a$53=Tx(Arrays.get(m$2,1)),a$53!=null&&a$53.$==1&&($22=[Arrays.get(m$2,0),a$53.$0],true))?{
-      $:1,
-      $0:{
-       $:0,
        $0:Strings.Trim($22[0]),
        $1:$22[1]
       }
-     }:(function($23)
+     }:(m$2=(LayoutEngineModule.splitInTwo(":"))(a$61),!Unchecked.Equals(m$2,null)&&m$2.length===2&&(a$64=Tx(Arrays.get(m$2,1)),a$64!=null&&a$64.$==1&&($23=[Arrays.get(m$2,0),a$64.$0],true))?{
+      $:1,
+      $0:{
+       $:0,
+       $0:Strings.Trim($23[0]),
+       $1:$23[1]
+      }
+     }:(function($24)
      {
-      return function($24)
+      return function($25)
       {
-       return $23("Attributes should be like: \"name=val\" or \"name:val\" and separated by ';' : "+Utils.toSafe($24));
+       return $24("Attributes should be like: \"name=val\" or \"name:val\" and separated by ';' : "+Utils.toSafe($25));
       };
-     }(Operators$3.FailWith))(a$50));
-    },Seq.filter(function(v)
-    {
-     return Strings.Trim(v)!=="";
-    },Strings.SplitChars(Strings.Trim(a$49.$0),[";"],0))))
+     }(Operators$3.FailWith))(a$61));
+    },(LayoutEngineModule.splitSemiColon())(a$60.$0)))
    }:null;
   }
-  function Pr(a$49)
+  function Pr(a$60)
   {
-   var a$50,a$51,a$52,a$53,a$54;
-   a$50=QTx(a$49);
-   return a$50!=null&&a$50.$==1?{
+   var a$61,a$62,a$63,a$64,a$65;
+   a$61=QTx(a$60);
+   return a$61!=null&&a$61.$==1?{
     $:1,
     $0:{
      $:0,
-     $0:a$50.$0
+     $0:a$61.$0
     }
-   }:(a$51=DocRf(a$49),a$51!=null&&a$51.$==1?{
+   }:(a$62=DocRf(a$60),a$62!=null&&a$62.$==1?{
     $:1,
     $0:{
      $:1,
-     $0:a$51.$0
+     $0:a$62.$0
     }
-   }:(a$52=VarRf(a$49),a$52!=null&&a$52.$==1?{
+   }:(a$63=VarRf(a$60),a$63!=null&&a$63.$==1?{
     $:1,
     $0:{
      $:2,
-     $0:a$52.$0
+     $0:a$63.$0
     }
-   }:(a$53=ViwRf(a$49),a$53!=null&&a$53.$==1?{
+   }:(a$64=ViwRf(a$60),a$64!=null&&a$64.$==1?{
     $:1,
     $0:{
      $:3,
-     $0:a$53.$0
+     $0:a$64.$0
     }
-   }:(a$54=ActRf(a$49),a$54!=null&&a$54.$==1?{
+   }:(a$65=ActRf(a$60),a$65!=null&&a$65.$==1?{
     $:1,
     $0:{
      $:4,
-     $0:a$54.$0
+     $0:a$65.$0
     }
    }:null))));
   }
-  function Prs(a$49)
+  function Prs(a$60)
   {
-   var $20,a$50,a$51;
-   switch(a$49.$==1?(a$50=Pr(a$49.$0),a$50!=null&&a$50.$==1?(a$51=Prs(a$49.$1),a$51!=null&&a$51.$==1?($20=[a$50.$0,a$51.$0],1):2):2):0)
+   var $21,a$61,a$62;
+   switch(a$60.$==1?(a$61=Pr(a$60.$0),a$61!=null&&a$61.$==1?(a$62=Prs(a$60.$1),a$62!=null&&a$62.$==1?($21=[a$61.$0,a$62.$0],1):2):2):0)
    {
     case 0:
      return{
@@ -4539,18 +4631,18 @@
       $:1,
       $0:new List.T({
        $:1,
-       $0:$20[0],
-       $1:$20[1]
+       $0:$21[0],
+       $1:$21[1]
       })
      };
     case 2:
      return null;
    }
   }
-  function ActRfs(a$49)
+  function ActRfs(a$60)
   {
-   var $20,a$50,a$51;
-   switch(a$49.$==1?(a$50=ActRf(a$49.$0),a$50!=null&&a$50.$==1?(a$51=ActRfs(a$49.$1),a$51!=null&&a$51.$==1?($20=[a$50.$0,a$51.$0],1):2):2):0)
+   var $21,a$61,a$62;
+   switch(a$60.$==1?(a$61=ActRf(a$60.$0),a$61!=null&&a$61.$==1?(a$62=ActRfs(a$60.$1),a$62!=null&&a$62.$==1?($21=[a$61.$0,a$62.$0],1):2):2):0)
    {
     case 0:
      return{
@@ -4562,48 +4654,48 @@
       $:1,
       $0:new List.T({
        $:1,
-       $0:$20[0],
-       $1:$20[1]
+       $0:$21[0],
+       $1:$21[1]
       })
      };
     case 2:
      return null;
    }
   }
-  function Nd(a$49)
+  function Nd(a$60)
   {
-   var a$50,a$51,a$52,a$53;
-   a$50=QTx(a$49);
-   return a$50!=null&&a$50.$==1?{
+   var a$61,a$62,a$63,a$64;
+   a$61=QTx(a$60);
+   return a$61!=null&&a$61.$==1?{
     $:1,
     $0:{
      $:0,
-     $0:a$50.$0
+     $0:a$61.$0
     }
-   }:(a$51=DocRf(a$49),a$51!=null&&a$51.$==1?{
+   }:(a$62=DocRf(a$60),a$62!=null&&a$62.$==1?{
     $:1,
     $0:{
      $:1,
-     $0:a$51.$0
+     $0:a$62.$0
     }
-   }:(a$52=VarRf(a$49),a$52!=null&&a$52.$==1?{
+   }:(a$63=VarRf(a$60),a$63!=null&&a$63.$==1?{
     $:1,
     $0:{
      $:2,
-     $0:a$52.$0
+     $0:a$63.$0
     }
-   }:(a$53=ViwRf(a$49),a$53!=null&&a$53.$==1?{
+   }:(a$64=ViwRf(a$60),a$64!=null&&a$64.$==1?{
     $:1,
     $0:{
      $:3,
-     $0:a$53.$0
+     $0:a$64.$0
     }
    }:null)));
   }
-  function Nds(a$49)
+  function Nds(a$60)
   {
-   var $20,a$50,a$51;
-   switch(a$49.$==1?(a$50=Nd(a$49.$0),a$50!=null&&a$50.$==1?(a$51=Nds(a$49.$1),a$51!=null&&a$51.$==1?($20=[a$50.$0,a$51.$0],1):2):2):0)
+   var $21,a$61,a$62;
+   switch(a$60.$==1?(a$61=Nd(a$60.$0),a$61!=null&&a$61.$==1?(a$62=Nds(a$60.$1),a$62!=null&&a$62.$==1?($21=[a$61.$0,a$62.$0],1):2):2):0)
    {
     case 0:
      return{
@@ -4615,18 +4707,18 @@
       $:1,
       $0:new List.T({
        $:1,
-       $0:$20[0],
-       $1:$20[1]
+       $0:$21[0],
+       $1:$21[1]
       })
      };
     case 2:
      return null;
    }
   }
-  function Pgs(a$49)
+  function Pgs(a$60)
   {
-   var $20,a$50,a$51;
-   switch(a$49.$==1?(a$50=PlgRf(a$49.$0),a$50!=null&&a$50.$==1?(a$51=Pgs(a$49.$1),a$51!=null&&a$51.$==1?($20=[a$50.$0,a$51.$0],1):2):2):0)
+   var $21,a$61,a$62;
+   switch(a$60.$==1?(a$61=PlgRf(a$60.$0),a$61!=null&&a$61.$==1?(a$62=Pgs(a$60.$1),a$62!=null&&a$62.$==1?($21=[a$61.$0,a$62.$0],1):2):2):0)
    {
     case 0:
      return{
@@ -4638,8 +4730,8 @@
       $:1,
       $0:new List.T({
        $:1,
-       $0:$20[0],
-       $1:$20[1]
+       $0:$21[0],
+       $1:$21[1]
       })
      };
     case 2:
@@ -4722,13 +4814,96 @@
    $:0,
    $0:$18[0],
    $1:$18[2]
-  }):m.$==1&&(a$45=Name(m.$0),a$45!=null&&a$45.$==1&&(m.$1.$==1&&(a$46=LayoutEngineModule.Vertical(m.$1.$0),a$46.$==5&&(m.$1.$1.$==1&&(a$47=Pr(m.$1.$1.$0),a$47!=null&&a$47.$==1&&(a$48=Nds(m.$1.$1.$1),a$48!=null&&a$48.$==1&&($19=[a$47.$0,a$46.$0,a$45.$0,a$48.$0],true)))))))?Syntax.entryDoc($19[2],{
+  }):m.$==1&&(a$45=Name(m.$0),a$45!=null&&a$45.$==1&&(m.$1.$==1&&(LayoutEngineModule.Vertical(m.$1.$0).$==4&&(m.$1.$1.$==1&&(a$46=Name(m.$1.$1.$0),a$46!=null&&a$46.$==1&&(m.$1.$1.$1.$==1&&(a$47=Pr(m.$1.$1.$1.$0),a$47!=null&&a$47.$==1&&(m.$1.$1.$1.$1.$==1&&(a$48=(a$49=m.$1.$1.$1.$1.$0,a$49.$==0?{
+   $:1,
+   $0:Arrays.ofSeq(Seq.choose(function(a$60)
+   {
+    var m$1,$21,a$61,a$62;
+    m$1=Arrays.map(LayoutEngineModule.splitTokens,(LayoutEngineModule.splitInTwo(":"))(a$60));
+    return!Unchecked.Equals(m$1,null)&&m$1.length===2&&(Arrays.get(m$1,0).$==1&&(a$61=Name(Arrays.get(m$1,0).$0),a$61!=null&&a$61.$==1&&(Arrays.get(m$1,0).$1.$==0&&(Arrays.get(m$1,1).$==1&&(a$62=Pr(Arrays.get(m$1,1).$0),a$62!=null&&a$62.$==1&&(Arrays.get(m$1,1).$1.$==0&&($21=[a$61.$0,a$62.$0],true)))))))?{
+     $:1,
+     $0:[$21[0],$21[1]]
+    }:(function($22)
+    {
+     return function($23)
+     {
+      return $22("Expecting Views \"name:view\" separated by ';' : "+Utils.toSafe($23));
+     };
+    }(Operators$3.FailWith))(a$60);
+   },(LayoutEngineModule.splitSemiColon())(a$49.$0)))
+  }:null),a$48!=null&&a$48.$==1&&(m.$1.$1.$1.$1.$1.$==1&&(a$50=(a$51=m.$1.$1.$1.$1.$1.$0,a$51.$==0?{
+   $:1,
+   $0:Arrays.ofSeq(Seq.choose(function(a$60)
+   {
+    var m$1,$21,a$61,a$62;
+    m$1=Arrays.map(function(a$63)
+    {
+     return{
+      $:1,
+      $0:a$63
+     };
+    },(LayoutEngineModule.splitInTwo(":"))(a$60));
+    return!Unchecked.Equals(m$1,null)&&m$1.length===2&&(a$61=Name(Arrays.get(m$1,0)),a$61!=null&&a$61.$==1&&(a$62=DocRf(Arrays.get(m$1,1)),a$62!=null&&a$62.$==1&&($21=[a$61.$0,a$62.$0],true)))?{
+     $:1,
+     $0:[$21[0],$21[1]]
+    }:(function($22)
+    {
+     return function($23)
+     {
+      return $22("Expecting Docs \"name:doc\" separated by ';' : "+Utils.toSafe($23));
+     };
+    }(Operators$3.FailWith))(a$60);
+   },(LayoutEngineModule.splitSemiColon())(a$51.$0)))
+  }:null),a$50!=null&&a$50.$==1&&(m.$1.$1.$1.$1.$1.$1.$==1&&(a$52=(a$53=m.$1.$1.$1.$1.$1.$1.$0,a$53.$==0?{
+   $:1,
+   $0:Arrays.ofSeq(Seq.choose(function(a$60)
+   {
+    var m$1,$21,a$61,a$62;
+    m$1=Arrays.map(function(a$63)
+    {
+     return{
+      $:1,
+      $0:a$63
+     };
+    },(LayoutEngineModule.splitInTwo(":"))(a$60));
+    return!Unchecked.Equals(m$1,null)&&m$1.length===2&&(a$61=Name(Arrays.get(m$1,0)),a$61!=null&&a$61.$==1&&(a$62=VarRf(Arrays.get(m$1,1)),a$62!=null&&a$62.$==1&&($21=[a$61.$0,a$62.$0],true)))?{
+     $:1,
+     $0:[$21[0],$21[1]]
+    }:(function($22)
+    {
+     return function($23)
+     {
+      return $22("Expecting Vars \"name:var\" separated by ';' : "+Utils.toSafe($23));
+     };
+    }(Operators$3.FailWith))(a$60);
+   },(LayoutEngineModule.splitSemiColon())(a$53.$0)))
+  }:null),a$52!=null&&a$52.$==1&&(m.$1.$1.$1.$1.$1.$1.$1.$==1&&(a$54=(a$55=m.$1.$1.$1.$1.$1.$1.$1.$0,a$55.$==0?{
+   $:1,
+   $0:Arrays.ofSeq(Seq.choose(function(a$60)
+   {
+    var m$1,$21,a$61,a$62;
+    m$1=Arrays.map(LayoutEngineModule.splitTokens,(LayoutEngineModule.splitInTwo(":"))(a$60));
+    return!Unchecked.Equals(m$1,null)&&m$1.length===2&&(Arrays.get(m$1,0).$==1&&(a$61=Name(Arrays.get(m$1,0).$0),a$61!=null&&a$61.$==1&&(Arrays.get(m$1,0).$1.$==0&&(Arrays.get(m$1,1).$==1&&(a$62=ActRf(Arrays.get(m$1,1).$0),a$62!=null&&a$62.$==1&&(Arrays.get(m$1,1).$1.$==0&&($21=[a$61.$0,a$62.$0],true)))))))?{
+     $:1,
+     $0:[$21[0],$21[1]]
+    }:(function($22)
+    {
+     return function($23)
+     {
+      return $22("Expecting Actions \"name:action\" separated by ';' : "+Utils.toSafe($23));
+     };
+    }(Operators$3.FailWith))(a$60);
+   },(LayoutEngineModule.splitSemiColon())(a$55.$0)))
+  }:null),a$54!=null&&a$54.$==1&&(m.$1.$1.$1.$1.$1.$1.$1.$1.$==0&&($19=[a$54.$0,a$47.$0,a$50.$0,a$45.$0,a$46.$0,a$52.$0,a$48.$0],true)))))))))))))))))?Syntax.entryDoc($19[3],{
+   $:7,
+   $0:Syntax.templateDef($19[4],$19[1],$19[5],$19[6],$19[2],$19[0])
+  }):m.$==1&&(a$56=Name(m.$0),a$56!=null&&a$56.$==1&&(m.$1.$==1&&(a$57=LayoutEngineModule.Vertical(m.$1.$0),a$57.$==5&&(m.$1.$1.$==1&&(a$58=Pr(m.$1.$1.$0),a$58!=null&&a$58.$==1&&(a$59=Nds(m.$1.$1.$1),a$59!=null&&a$59.$==1&&($20=[a$58.$0,a$57.$0,a$56.$0,a$59.$0],true)))))))?Syntax.entryDoc($20[2],{
    $:6,
    $0:{
     $:0,
-    $0:$19[1],
-    $1:$19[0],
-    $2:$19[3]
+    $0:$20[1],
+    $1:$20[0],
+    $2:$20[3]
    }
   }):null;
  };
@@ -4838,6 +5013,10 @@
    $0:n,
    $1:e
   };
+ };
+ Syntax.templateDef=function(nm,ats,vs,ws,ds,acs)
+ {
+  return TemplateDef.New(nm,vs,ws,ds,acs,ats);
  };
  Layout.createLayoutDefinitions=function(nameBase,node)
  {
@@ -5181,7 +5360,13 @@
  };
  LayoutEngineModule.parseEntries=function(lytNm,txt)
  {
-  return LayoutEngineModule.processText(Syntax.createEntryO2(lytNm,new Dictionary.New$5()),txt);
+  var localRefs,x;
+  localRefs=new Dictionary.New$5();
+  x=(((Runtime.Curried3(function($1,$2,$3)
+  {
+   return $1("PlugInName View \""+Utils.toSafe($2)+"\"\n"+Utils.toSafe($3));
+  }))(Global.id))(lytNm.get_Id()))(txt);
+  return LayoutEngineModule.processText(Syntax.createEntryO2(lytNm,localRefs),x);
  };
  LayoutEngineModule.processText=function(f,txt)
  {
@@ -5301,7 +5486,10 @@
      $0:a
     };
    },Strings.SplitChars(t,[" "],1)));
-  },String.splitByChar("\"",line)))));
+  },String.splitByChar("\"",Unchecked.Equals(Seq.tryHead(line),{
+   $:1,
+   $0:"\""
+  })?" "+line:line)))));
  };
  LayoutEngineModule.doubleQuote=function(a)
  {
@@ -5339,7 +5527,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2832,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2919,38);
     }
     return $2;
   }
@@ -5422,6 +5610,35 @@
     $2:$3[0]
    })
   }:null):null;
+ };
+ LayoutEngineModule.splitInTwo=function(ch)
+ {
+  var f;
+  f=LayoutEngineModule.splitChar(ch);
+  return function(x)
+  {
+   return Arrays.ofSeq(f(x));
+  };
+ };
+ LayoutEngineModule.splitSemiColon=function()
+ {
+  SC$1.$cctor();
+  return SC$1.splitSemiColon;
+ };
+ LayoutEngineModule.splitChar=function(ch)
+ {
+  function f(s)
+  {
+   return String.splitByChar(ch,s);
+  }
+  function g(s)
+  {
+   return Seq.map(String.trim,s);
+  }
+  return function(x)
+  {
+   return g(f(x));
+  };
  };
  LayoutEngineModule.Var=function(a)
  {
@@ -5528,11 +5745,8 @@
  };
  NewLY.addNewLayoutAct=function(name,layout)
  {
-  var x,x$1;
-  NewLY.addNewLayout((x=(x$1=!Unchecked.Equals(layout,null)?layout:"\r\n            Ask Doc AF.InputLabel \"placeholder=Type you answer here...\" \"Answer:\" AppFramework.mainDocV  \r\n            Hello h1 \"color:blue; class=btn-primary\" \"How are you today?\" Ask\r\n            split horizontal 0-50-100 AppFramework.AppFwkClient Hello\r\n            ",(String.unindentStr())(x$1)),LayoutEngineModule.newLyt(!Unchecked.Equals(layout,null)?name:new PlugInName({
-   $:0,
-   $0:"Lyt_"+Strings.Replace(Global.String(Guid.NewGuid()),"-","")
-  }),x)));
+  var x;
+  NewLY.addLayout(!Unchecked.Equals(name,null)?name:"Lyt_"+Strings.Replace(Global.String(Guid.NewGuid()),"-",""),(x=!Unchecked.Equals(layout,null)&&!Unchecked.Equals(name,null)?layout:"\r\n                                        perc  Var \"50\"\r\n                                        perc2 Var \"50\"\r\n                                        gap  Var \"5px\"\r\n            \r\n                                        Ask1 div \"background:lightblue; height:100%\"\r\n                                        : Doc AF.InputLabel \"placeholder=Type percentage here...\" \"Percentage (%):\" perc\r\n            \r\n                                        Ask2a div \"background:pink; height:100%\"\r\n                                        : Doc AF.InputLabel \"placeholder=Type percentage here...\" \"Percentage (%):\" perc2\r\n            \r\n                                        Ask2b div \"background:lightgreen; height:100%\"\r\n                                        : Doc AF.InputLabel \"placeholder=Type gap here...\" \"Gap:\" gap\r\n            \r\n                                        dragSplitter  Action AF.DragSplitter \"@{PlugInName}.perc\"\r\n                                        dragSplitter2 Action AF.DragSplitter \"@{PlugInName}.perc2\"\r\n            \r\n                                        Ask2 template HSplitter1 \"height:100%\" \"gap:gap\" \"doc1: Ask2a; doc2:Ask2b\" \"perc:perc2\" \"MouseDown:dragSplitter2\"\r\n            \r\n                                        main div \"\"\r\n                                        :    template VSplitter1  \"height:100%\" \"gap:gap\" \"doc1: Ask1 ; doc2:Ask2 \" \"perc:perc \" \"MouseDown:dragSplitter \"\r\n            \r\n                                        split horizontal 0-50-100 AppFramework.AppFwkClient main\r\n                                    ",(String.unindentStr())(x)));
  };
  NewLY.addLayout=function(name,content)
  {
@@ -5609,7 +5823,7 @@
  {
   function c($1,$2)
   {
-   var x,x$1,x$2,x$3,x$4,x$5,x$6,x$7,x$8,x$9,x$10,x$11;
+   var x,x$1,x$2,x$3,x$4,x$5,x$6,x$7,x$8,x$9,x$10,x$11,x$12;
    return $2.$==0?$2.$0.$==1?{
     $:1,
     $0:{
@@ -5664,59 +5878,68 @@
       $0:$1
      }),x$5))
     }
+   }:$2.$0.$==7?{
+    $:1,
+    $0:{
+     $:2,
+     $0:(x$6=(NewLY.defTemplateM())([lytN,$1,$2.$0.$0]),AppFramework.newDoc0(new PlgElemName({
+      $:0,
+      $0:$1
+     }),x$6))
+    }
    }:{
     $:1,
     $0:{
      $:2,
-     $0:(x$6=(NewLY.defSplitterM())([lytN,$1,$2.$0.$0.$0,$2.$0.$0.$1,$2.$0.$0.$2,$2.$0.$0.$3]),AppFramework.newDoc0(new PlgElemName({
+     $0:(x$7=(NewLY.defSplitterM())([lytN,$1,$2.$0.$0.$0,$2.$0.$0.$1,$2.$0.$0.$2,$2.$0.$0.$3]),AppFramework.newDoc0(new PlgElemName({
       $:0,
       $0:$1
-     }),x$6))
+     }),x$7))
     }
    }:$2.$==1?{
     $:1,
     $0:{
      $:3,
-     $0:(x$7=(NewLY.defActionM())([lytN,$1,$2.$0.$0,$2.$0.$1]),AppFramework.newActF(new PlgElemName({
+     $0:(x$8=(NewLY.defActionM())([lytN,$1,$2.$0.$0,$2.$0.$1]),AppFramework.newActF(new PlgElemName({
       $:0,
       $0:$1
-     }),x$7))
+     }),x$8))
     }
    }:$2.$==2?{
     $:1,
     $0:{
      $:3,
-     $0:(x$8=(NewLY.defActionsM())([lytN,$1,$2.$0.$0]),AppFramework.newActF(new PlgElemName({
+     $0:(x$9=(NewLY.defActionsM())([lytN,$1,$2.$0.$0]),AppFramework.newActF(new PlgElemName({
       $:0,
       $0:$1
-     }),x$8))
+     }),x$9))
     }
    }:$2.$==4?{
     $:1,
     $0:{
      $:1,
-     $0:(x$9=(NewLY.defViewM())([lytN,$1,$2.$0.$0]),AppFramework.newViw(new PlgElemName({
+     $0:(x$10=(NewLY.defViewM())([lytN,$1,$2.$0.$0]),AppFramework.newViw(new PlgElemName({
       $:0,
       $0:$1
-     }),x$9))
+     }),x$10))
     }
    }:$2.$==5?{
     $:1,
     $0:{
      $:1,
-     $0:(x$10=(NewLY.defViewJSM())([lytN,$1,$2.$0.$0]),AppFramework.newViw(new PlgElemName({
+     $0:(x$11=(NewLY.defViewJSM())([lytN,$1,$2.$0.$0]),AppFramework.newViw(new PlgElemName({
       $:0,
       $0:$1
-     }),x$10))
+     }),x$11))
     }
    }:$2.$==7?null:$2.$==6?null:{
     $:1,
     $0:{
      $:0,
-     $0:(x$11=NewLY.defVarM(lytN,$1,$2.$0.$0),AppFramework.newVar(new PlgElemName({
+     $0:(x$12=NewLY.defVarM(lytN,$1,$2.$0.$0),AppFramework.newVar(new PlgElemName({
       $:0,
       $0:$1
-     }),x$11))
+     }),x$12))
     }
    };
   }
@@ -5727,6 +5950,11 @@
     return c($1[0],$1[1]);
    },s);
   };
+ };
+ NewLY.defTemplateM=function()
+ {
+  SC$1.$cctor();
+  return SC$1.defTemplateM;
  };
  NewLY.defSplitterM=function()
  {
@@ -5799,6 +6027,120 @@
  {
   SC$1.$cctor();
   return SC$1.initVal;
+ };
+ NewLY.defTemplate=function(lytN,n,tmpDef)
+ {
+  var b;
+  return AppFramework.run(lytN,(b=Depend.depend(),b.Delay(function()
+  {
+   return b.Bind(NewLY.nodeRefToDocD(),function(a)
+   {
+    return b.Bind(NewLY.varRefToVarD(),function(a$1)
+    {
+     return b.Bind(AppFramework.extractTextD(),function(a$2)
+     {
+      return b.Bind(AppFramework.extractAtsD(),function(a$3)
+      {
+       return b.Bind(NewLY.actRefToActD(),function(a$4)
+       {
+        return b.Bind(NewLY.getParam2D(),function(a$5)
+        {
+         return b.Return(AppFramework.makeAViewDoc0(function()
+         {
+          var attrs,x,s;
+          function eventAct(act,el,ev)
+          {
+           return AppFramework.callFunction(el,ev,act.actFunction);
+          }
+          try
+          {
+           attrs=a$3(a$5(tmpDef.attrs));
+           Templates.LoadLocalTemplates("local");
+           x=(Seq.isEmpty(attrs)?Global.id:(s=[{
+            $:3,
+            $0:"attrs",
+            $1:AttrProxy.Concat(attrs)
+           }],function(s$1)
+           {
+            return Seq.append(s,s$1);
+           }))(Seq.delay(function()
+           {
+            function m(nm,vr)
+            {
+             return{
+              $:8,
+              $0:nm.toLowerCase(),
+              $1:a$1(vr)
+             };
+            }
+            return Seq.append(Seq.map(function($1)
+            {
+             return m($1[0],$1[1]);
+            },tmpDef.vars),Seq.delay(function()
+            {
+             function m$1(nm,wr)
+             {
+              return{
+               $:2,
+               $0:nm.toLowerCase(),
+               $1:a$2(a$5(wr))
+              };
+             }
+             return Seq.append(Seq.map(function($1)
+             {
+              return m$1($1[0],$1[1]);
+             },tmpDef.views),Seq.delay(function()
+             {
+              function m$2(nm,nr)
+              {
+               return{
+                $:0,
+                $0:nm.toLowerCase(),
+                $1:a({
+                 $:1,
+                 $0:nr
+                })
+               };
+              }
+              return Seq.append(Seq.map(function($1)
+              {
+               return m$2($1[0],$1[1]);
+              },tmpDef.docs),Seq.delay(function()
+              {
+               function m$3(nm,ar)
+               {
+                var $1;
+                return{
+                 $:4,
+                 $0:nm.toLowerCase(),
+                 $1:($1=a$4(ar),(Runtime.Curried3(eventAct))($1))
+                };
+               }
+               return Seq.map(function($1)
+               {
+                return m$3($1[0],$1[1]);
+               },tmpDef.actions);
+              }));
+             }));
+            }));
+           }));
+           return Templates.NamedTemplate("local",{
+            $:1,
+            $0:tmpDef.tmpName.toLowerCase()
+           },x);
+          }
+          catch(e)
+          {
+           return Doc.TextNode(e.message);
+          }
+         }));
+        });
+       });
+      });
+     });
+    });
+   });
+  })));
  };
  NewLY.defSplitter=function(lytN,n,v,m,a,a$1)
  {
@@ -6148,7 +6490,7 @@
               return $4("Parameters do not coincide for Action "+Utils.toSafe($5)+" "+Utils.printList(function($8)
               {
                return LayoutEngine_GeneratedPrintf.p$16($8);
-              },$6)+" "+GeneratedPrintf.p$1($7));
+              },$6)+" "+GeneratedPrintf.p$2($7));
              },4))(function(s)
              {
               console.log(s);
@@ -6219,6 +6561,11 @@
  {
   SC$1.$cctor();
   return SC$1.getParamD;
+ };
+ NewLY.actRefToActD=function()
+ {
+  SC$1.$cctor();
+  return SC$1.actRefToActD;
  };
  NewLY.varRefToVarD=function()
  {
@@ -6413,167 +6760,194 @@
  };
  SC$1.$cctor=function()
  {
-  var f,g,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,b$8,a,b$9,a$1,b$10,b$11,b$12,pf,p,pf$1,p$1,sayHello_0,c,vf,a$2,vf$1,c$1,vf$2,pc,pf$2,p$2,p$3,pc$1,vf$3,p$4,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$5,b$13,b$14,b$15,b$16,b$17,p$6,cache,getOrAdd,p$7,cache$1,getOrAdd$1,p$8,cache$2,getOrAdd$2,p$9,cache$3,getOrAdd$3,p$10,cache$4,getOrAdd$4,p$11,cache$5,getOrAdd$5,p$12,cache$6,getOrAdd$6,p$13,cache$7,getOrAdd$7,p$14,cache$8,getOrAdd$8,p$15,cache$9,getOrAdd$9,p$16,cache$10,getOrAdd$10,p$17,cache$11,getOrAdd$11,o;
+  var f,g,b,b$1,b$2,b$3,b$4,b$5,b$6,b$7,b$8,b$9,b$10,b$11,b$12,f$1,g$1,pf,p,pf$1,p$1,sayHello_0,c,vf,a,vf$1,c$1,vf$2,pc,pf$2,p$2,p$3,pc$1,vf$3,p$4,c$2,c$3,c$4,c$5,c$6,c$7,c$8,c$9,c$10,vf$4,c$11,vf$5,c$12,vf$6,pc$2,vf$7,p$5,b$13,b$14,b$15,b$16,b$17,b$18,p$6,cache,getOrAdd,p$7,cache$1,getOrAdd$1,p$8,cache$2,getOrAdd$2,p$9,cache$3,getOrAdd$3,p$10,cache$4,getOrAdd$4,p$11,cache$5,getOrAdd$5,p$12,cache$6,getOrAdd$6,p$13,cache$7,getOrAdd$7,p$14,cache$8,getOrAdd$8,p$15,cache$9,getOrAdd$9,p$16,cache$10,getOrAdd$10,p$17,cache$11,getOrAdd$11,p$18,cache$12,getOrAdd$12,o;
   SC$1.$cctor=Global.ignore;
-  function g$1(s)
-  {
-   return Strings.concat("\n",s);
-  }
-  function f$1(s)
-  {
-   return String.splitByChar("\n",s);
-  }
   function g$2(s)
-  {
-   var a$3,b$18;
-   return Slice.array(s,{
-    $:1,
-    $0:0
-   },{
-    $:1,
-    $0:(a$3=0,(b$18=Arrays.length(s)-2,Unchecked.Compare(a$3,b$18)===1?a$3:b$18))
-   });
-  }
-  function g$3(s)
   {
    return Strings.concat("\n",s);
   }
   function f$2(s)
   {
+   return String.splitByChar("\n",s);
+  }
+  function g$3(s)
+  {
+   var a$1,b$19;
+   return Slice.array(s,{
+    $:1,
+    $0:0
+   },{
+    $:1,
+    $0:(a$1=0,(b$19=Arrays.length(s)-2,Unchecked.Compare(a$1,b$19)===1?a$1:b$19))
+   });
+  }
+  function g$4(s)
+  {
+   return Strings.concat("\n",s);
+  }
+  function f$3(s)
+  {
    return s+"T00:00:00";
   }
-  function f$3(extractAts,extractDoc)
+  function f$4(extractAts,extractDoc)
   {
    return function(attrs)
    {
     return function(labelName)
     {
-     function f$15(_var)
+     function f$19(_var)
      {
       return Doc.Element("div",extractAts(attrs),[Doc.Element("div",[AttrProxy.Create("class","input-group")],[Doc.Element("span",[AttrProxy.Create("class","input-group-addon")],[extractDoc(labelName)]),Doc.Input([AttrProxy.Create("class","form-control")],_var)])]);
      }
      return function(v)
      {
-      return AppFramework.docWithVar(f$15,v);
+      return AppFramework.docWithVar(f$19,v);
      };
     };
    };
   }
-  function f$4(extractAts,attrs)
-  {
-   var f$15,a$3;
-   f$15=(a$3=extractAts(attrs),function(a$4)
-   {
-    return Doc.Input(a$3,a$4);
-   });
-   return function(v)
-   {
-    return AppFramework.docWithVar(f$15,v);
-   };
-  }
   function f$5(extractAts,attrs)
   {
-   var f$15,a$3;
-   f$15=(a$3=extractAts(attrs),function(a$4)
+   var f$19,a$1;
+   f$19=(a$1=extractAts(attrs),function(a$2)
    {
-    return Doc.InputArea(a$3,a$4);
+    return Doc.Input(a$1,a$2);
    });
    return function(v)
    {
-    return AppFramework.docWithVar(f$15,v);
+    return AppFramework.docWithVar(f$19,v);
    };
   }
-  function f$6(t,t$1)
+  function f$6(extractAts,attrs)
+  {
+   var f$19,a$1;
+   f$19=(a$1=extractAts(attrs),function(a$2)
+   {
+    return Doc.InputArea(a$1,a$2);
+   });
+   return function(v)
+   {
+    return AppFramework.docWithVar(f$19,v);
+   };
+  }
+  function f$7(t,t$1)
   {
    var o$1,t$2;
    o$1=(t$2=AppFramework.getParmRef(t$1[0]),AppFramework.tryGetVoV(t$2[0],t$2[1]));
    o$1==null?void 0:o$1.$0.Set(t$1[1]);
   }
-  function f$7(t,actN,p1,p2)
+  function f$8(t,varN)
+  {
+   var o$1,o$2,t$1;
+   o$1=(o$2=(t$1=AppFramework.getParmRef(varN),AppFramework.tryGetWoW(t$1[0],t$1[1])),o$2==null?null:View$1.TryGet(o$2.$0));
+   return o$1==null?null:o$1.$0;
+  }
+  function f$9(t,t$1)
+  {
+   var o$1,t$2;
+   o$1=(t$2=AppFramework.getParmRef(t$1[0]),AppFramework.tryGetVoV(t$2[0],t$2[1]));
+   o$1==null?void 0:AppFramework.draggingEvent(true,o$1.$0,t$1[1]);
+  }
+  function f$10(t,actN,p1,p2)
   {
    var o$1,t$1;
    o$1=(t$1=AppFramework.getParmRef(actN),AppFramework.tryGetAct(t$1[0],t$1[1]));
    return o$1==null?null:AppFramework.callFunction(p1,p2,o$1.$0.actFunction);
   }
-  function f$8(t)
+  function f$11(extractAts,template,attrs,doc1,doc2)
+  {
+   function f$19(_var)
+   {
+    return Doc.Element("div",extractAts(attrs),[(AppFramework.docReference())(doc1),(AppFramework.docReference())(doc2)]);
+   }
+   return function(v)
+   {
+    return AppFramework.docWithVar(f$19,v);
+   };
+  }
+  function f$12(t)
   {
    return t[0];
   }
-  function f$9(t)
+  function f$13(t)
   {
    return t[1];
   }
-  function f$10(a$3)
+  function f$14(a$1)
   {
    return new PlugInName({
     $:0,
-    $0:a$3
+    $0:a$1
    });
   }
-  function g$4(a$3)
+  function g$5(a$1)
   {
    return{
     $:1,
-    $0:a$3
+    $0:a$1
    };
   }
-  function f$11(a$3)
+  function f$15(a$1)
   {
    return new PlgElemName({
     $:0,
-    $0:a$3
+    $0:a$1
    });
   }
-  function g$5(a$3)
+  function g$6(a$1)
   {
    return{
     $:1,
-    $0:a$3
+    $0:a$1
    };
   }
-  function f$12(a$3)
+  function f$16(a$1)
   {
    return new PlgElemName({
     $:0,
-    $0:a$3
+    $0:a$1
    });
   }
-  function g$6(a$3)
+  function g$7(a$1)
   {
    return{
     $:1,
-    $0:a$3
+    $0:a$1
    };
   }
-  function f$13(a$3)
+  function f$17(a$1)
   {
    return new PlgElemName({
     $:0,
-    $0:a$3
+    $0:a$1
    });
   }
-  function g$7(a$3)
+  function g$8(a$1)
   {
    return{
     $:1,
-    $0:a$3
+    $0:a$1
    };
   }
-  function f$14(a$3)
+  function f$18(a$1)
   {
    return new PlgElemName({
     $:0,
-    $0:a$3
+    $0:a$1
    });
   }
-  function g$8(a$3)
+  function g$9(a$1)
   {
    return{
     $:1,
-    $0:a$3
+    $0:a$1
    };
   }
-  function g$9(v)
+  function p$19(y)
+  {
+   return""!==y;
+  }
+  function g$10(v)
   {
    return!v;
   }
@@ -6600,11 +6974,11 @@
    cache.set_Item(v,res);
    return res;
   }
-  function getOrAdd$12(p$18,f$15)
+  function getOrAdd$13(p$20,f$19)
   {
    var o$1;
-   o$1=checkO(p$18);
-   return o$1==null?store(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO(p$20);
+   return o$1==null?store(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$1(v)
   {
@@ -6629,11 +7003,11 @@
    cache$1.set_Item(v,res);
    return res;
   }
-  function getOrAdd$13(p$18,f$15)
+  function getOrAdd$14(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$1(p$18);
-   return o$1==null?store$1(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$1(p$20);
+   return o$1==null?store$1(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$2(v)
   {
@@ -6658,11 +7032,11 @@
    cache$2.set_Item(v,res);
    return res;
   }
-  function getOrAdd$14(p$18,f$15)
+  function getOrAdd$15(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$2(p$18);
-   return o$1==null?store$2(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$2(p$20);
+   return o$1==null?store$2(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$3(v)
   {
@@ -6687,11 +7061,11 @@
    cache$3.set_Item(v,res);
    return res;
   }
-  function getOrAdd$15(p$18,f$15)
+  function getOrAdd$16(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$3(p$18);
-   return o$1==null?store$3(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$3(p$20);
+   return o$1==null?store$3(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$4(v)
   {
@@ -6716,11 +7090,11 @@
    cache$4.set_Item(v,res);
    return res;
   }
-  function getOrAdd$16(p$18,f$15)
+  function getOrAdd$17(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$4(p$18);
-   return o$1==null?store$4(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$4(p$20);
+   return o$1==null?store$4(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$5(v)
   {
@@ -6745,11 +7119,11 @@
    cache$5.set_Item(v,res);
    return res;
   }
-  function getOrAdd$17(p$18,f$15)
+  function getOrAdd$18(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$5(p$18);
-   return o$1==null?store$5(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$5(p$20);
+   return o$1==null?store$5(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$6(v)
   {
@@ -6774,11 +7148,11 @@
    cache$6.set_Item(v,res);
    return res;
   }
-  function getOrAdd$18(p$18,f$15)
+  function getOrAdd$19(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$6(p$18);
-   return o$1==null?store$6(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$6(p$20);
+   return o$1==null?store$6(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$7(v)
   {
@@ -6803,11 +7177,11 @@
    cache$7.set_Item(v,res);
    return res;
   }
-  function getOrAdd$19(p$18,f$15)
+  function getOrAdd$20(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$7(p$18);
-   return o$1==null?store$7(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$7(p$20);
+   return o$1==null?store$7(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$8(v)
   {
@@ -6832,11 +7206,11 @@
    cache$8.set_Item(v,res);
    return res;
   }
-  function getOrAdd$20(p$18,f$15)
+  function getOrAdd$21(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$8(p$18);
-   return o$1==null?store$8(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$8(p$20);
+   return o$1==null?store$8(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$9(v)
   {
@@ -6861,11 +7235,11 @@
    cache$9.set_Item(v,res);
    return res;
   }
-  function getOrAdd$21(p$18,f$15)
+  function getOrAdd$22(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$9(p$18);
-   return o$1==null?store$9(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$9(p$20);
+   return o$1==null?store$9(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$10(v)
   {
@@ -6890,11 +7264,11 @@
    cache$10.set_Item(v,res);
    return res;
   }
-  function getOrAdd$22(p$18,f$15)
+  function getOrAdd$23(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$10(p$18);
-   return o$1==null?store$10(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$10(p$20);
+   return o$1==null?store$10(p$20,f$19(p$20)):o$1.$0;
   }
   function checkO$11(v)
   {
@@ -6919,11 +7293,40 @@
    cache$11.set_Item(v,res);
    return res;
   }
-  function getOrAdd$23(p$18,f$15)
+  function getOrAdd$24(p$20,f$19)
   {
    var o$1;
-   o$1=checkO$11(p$18);
-   return o$1==null?store$11(p$18,f$15(p$18)):o$1.$0;
+   o$1=checkO$11(p$20);
+   return o$1==null?store$11(p$20,f$19(p$20)):o$1.$0;
+  }
+  function checkO$12(v)
+  {
+   var res;
+   res=null;
+   return cache$12.TryGetValue(v,{
+    get:function()
+    {
+     return res;
+    },
+    set:function(v$1)
+    {
+     res=v$1;
+    }
+   })?{
+    $:1,
+    $0:res
+   }:null;
+  }
+  function store$12(v,res)
+  {
+   cache$12.set_Item(v,res);
+   return res;
+  }
+  function getOrAdd$25(p$20,f$19)
+  {
+   var o$1;
+   o$1=checkO$12(p$20);
+   return o$1==null?store$12(p$20,f$19(p$20)):o$1.$0;
   }
   SC$1.state=new CEBuilder.New();
   SC$1.result=new Builder.New();
@@ -6933,35 +7336,35 @@
   SC$1.depend$1=Depend.depend();
   SC$1.unindentStr=function(x)
   {
-   return g$1(String.unindent(x));
+   return g$2(String.unindent(x));
   };
   SC$1.skipLastLine=(f=function(x)
   {
-   return g$2(f$1(x));
+   return g$3(f$2(x));
   },function(x)
   {
-   return g$3(f(x));
+   return g$4(f(x));
   });
-  SC$1.parseDateO2=(g=ParseO.tryParseWith(function(a$3)
+  SC$1.parseDateO2=(g=ParseO.tryParseWith(function(a$1)
   {
    var o$1,m;
    o$1=0;
-   return[(m=DateUtil.TryParse(a$3),m!=null&&m.$==1&&(o$1=m.$0,true)),o$1];
+   return[(m=DateUtil.TryParse(a$1),m!=null&&m.$==1&&(o$1=m.$0,true)),o$1];
   }),function(x)
   {
-   return g(f$2(x));
+   return g(f$3(x));
   });
-  SC$1.parseDateO=ParseO.tryParseWith(function(a$3)
+  SC$1.parseDateO=ParseO.tryParseWith(function(a$1)
   {
    var o$1,m;
    o$1=0;
-   return[(m=DateUtil.TryParse(a$3),m!=null&&m.$==1&&(o$1=m.$0,true)),o$1];
+   return[(m=DateUtil.TryParse(a$1),m!=null&&m.$==1&&(o$1=m.$0,true)),o$1];
   });
-  SC$1.parseIntO=ParseO.tryParseWith(function(a$3)
+  SC$1.parseIntO=ParseO.tryParseWith(function(a$1)
   {
    var o$1;
    o$1=0;
-   return[Numeric.TryParseInt32(a$3,{
+   return[Numeric.TryParseInt32(a$1,{
     get:function()
     {
      return o$1;
@@ -6972,11 +7375,11 @@
     }
    }),o$1];
   });
-  SC$1.parseInt64O=ParseO.tryParseWith(function(a$3)
+  SC$1.parseInt64O=ParseO.tryParseWith(function(a$1)
   {
    var o$1;
    o$1=0;
-   return[Numeric.TryParseInt64(a$3,{
+   return[Numeric.TryParseInt64(a$1,{
     get:function()
     {
      return o$1;
@@ -6987,23 +7390,23 @@
     }
    }),o$1];
   });
-  SC$1.parseSingleO=ParseO.tryParseWith(function(a$3)
+  SC$1.parseSingleO=ParseO.tryParseWith(function(a$1)
   {
    var o$1,$1;
    o$1=0;
-   return[($1=Global.Number(a$3),Global.isNaN($1)?false:(o$1=$1,true)),o$1];
+   return[($1=Global.Number(a$1),Global.isNaN($1)?false:(o$1=$1,true)),o$1];
   });
-  SC$1.parseDoubleO=ParseO.tryParseWith(function(a$3)
+  SC$1.parseDoubleO=ParseO.tryParseWith(function(a$1)
   {
    var o$1,$1;
    o$1=0;
-   return[($1=Global.Number(a$3),Global.isNaN($1)?false:(o$1=$1,true)),o$1];
+   return[($1=Global.Number(a$1),Global.isNaN($1)?false:(o$1=$1,true)),o$1];
   });
-  SC$1.parseGuidO=ParseO.tryParseWith(function(a$3)
+  SC$1.parseGuidO=ParseO.tryParseWith(function(a$1)
   {
    var o$1;
    o$1=null;
-   return[Guid.TryParse(a$3,{
+   return[Guid.TryParse(a$1,{
     get:function()
     {
      return o$1;
@@ -7039,7 +7442,7 @@
   {
    return Doc.get_Empty();
   },5);
-  SC$1.html="\r\n            <div style=\"display:none\" >\r\n                <div links>\r\n                    <link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" type=\"text/css\" rel=\"stylesheet\">\r\n                    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"  type=\"text/javascript\"></script>\r\n                </div>\r\n                <div ws-template=\"AppFramework\" style=\"height: calc(100vh - 4px); width: calc(100vw - 4px) \" class=\"relative\" >\r\n                    <div ws-hole=\"MainClient\"></div>\r\n                    <div class=\"AppFrameworkGo\"><button ws-onclick=\"GoClient\">${MainDoc}</button></div>\r\n                </div>\r\n                <style>\r\n                    .AppFrameworkGo {\r\n                        max-width: 2px;\r\n                        max-height: 2px;\r\n                        z-index: 4000;\r\n                        overflow: hidden;\r\n                        position: fixed;\r\n                        top: 0px;\r\n                        left: 0px;\r\n                    }\r\n                </style>\r\n                <div ws-template=\"FixedSplitterVer\" \r\n                    style=\"display: grid; \r\n                           grid-gap: 0px; \r\n                           box-sizing: border-box; \r\n                           height: 100%;\r\n                           width : 100%;\r\n                           grid-template-areas: 'one two'; \r\n                           grid-template-rows   :100%; \r\n                           overflow: hidden; \r\n                           grid-template-columns: ${PartSizes}\"  >\r\n                   <div ws-hole=\"First\"  style=\"grid-area: one; \" class=\"relative\" ></div>\r\n                   <div ws-hole=\"Second\" style=\"grid-area: two; \" class=\"relative\" ></div>\r\n                </div>               \r\n                <div ws-template=\"FixedSplitterHor\" \r\n               style=\"display: grid; \r\n                      grid-gap: 0px; \r\n                      box-sizing: border-box; \r\n                      height: 100%;\r\n                      width : 100%;\r\n                      grid-template-areas: 'one' 'two'; \r\n                      grid-template-columns:100%; \r\n                      overflow: hidden; \r\n                      grid-template-rows   : ${PartSizes}\"  >\r\n              <div ws-hole=\"First\"  style=\"grid-area: one; \" class=\"relative\" ></div>\r\n              <div ws-hole=\"Second\" style=\"grid-area: two; \" class=\"relative\" ></div>\r\n                </div>               \r\n                <div ws-template=\"WCompSplitterHor\" \r\n                     ws-onafterrender=\"AfterRender\"\r\n                     style=\"display: grid;\r\n                            grid-gap: 5px; \r\n                            box-sizing: border-box; \r\n                            grid-template-areas: 'one' 'two'; \r\n                            grid-template-columns:100%; \r\n                            overflow: hidden; \r\n                            grid-template-rows   : ${PartSizes}\" \r\n                     >\r\n                     <slot></slot>\r\n                    <slot name=\"splitter\">  <div style=\"grid-row:2; grid-column:1 / 1 ; cursor: row-resize; z-index: 3; background-color: #eef ; height: ${Gap}; margin-top :-${Gap}\" ws-onmousedown=\"MouseDown\" ws-onafterrender=\"AfterRenderSp\" ></div> </slot>\r\n                    <style>\r\n                        ::slotted(*) {\r\n                            display: grid;\r\n                            height : 100%;\r\n                            width  : 100%;\r\n                            overflow: hidden;\r\n                        }\r\n                        ::slotted(*:nth-child(2)) {\r\n                            grid-area: two;\r\n                        }\r\n                        ::slotted(*[slot=\"splitter\"]) {\r\n                            grid-row:2; grid-column:1 / 1 ; \r\n                            cursor: row-resize; \r\n                            z-index: 3; \r\n                            background-color: #eef ; \r\n                            height: ${Gap}; \r\n                            margin-top :-${Gap}\r\n                        }\r\n                    </style>\r\n                </div>        \r\n                <div ws-template=\"WCompSplitterVer\" \r\n                     ws-onafterrender=\"AfterRender\"\r\n                     style=\"display: grid; \r\n                            grid-gap: 5px; \r\n                            box-sizing: border-box; \r\n                            grid-template-areas: 'one two'; \r\n                            grid-template-rows   :100%; \r\n                            overflow: hidden; \r\n                            grid-template-columns: ${PartSizes}\"  >\r\n                    <slot></slot>\r\n                    <slot name=\"splitter\"> <div style=\"grid-column:2; grid-row:1 / 1 ; cursor: col-resize; z-index: 3; background-color: #eef ; width: ${Gap}; margin-left :-${Gap}\" ws-onmousedown=\"MouseDown\" ws-onafterrender=\"AfterRenderSp\" ></div> </slot>\r\n                    <style>\r\n                        ::slotted(*) {\r\n                            display: grid;\r\n                            height : 100%;\r\n                            width  : 100%;\r\n                            overflow: hidden;\r\n                        }\r\n                        ::slotted(*:nth-child(2)) {\r\n                            grid-area: two;\r\n                        }\r\n                        ::slotted(*[slot=\"splitter\"]) {\r\n                            grid-column:2; grid-row:1 / 1\r\n                            cursor: column-resize; \r\n                            z-index: 3; \r\n                            background-color: #eef ; \r\n                            width: ${Gap}; \r\n                            margin-left:-${Gap}\r\n                        }\r\n                    </style>\r\n                </div>\r\n                <div ws-template=\"AppFwkClient\" >\r\n                    <ws-FixedSplitterHor>\r\n                        <PartSizes>55px calc(100% - 55px)</PartSizes>\r\n                        <First>\r\n                            <span style=\"display: grid;\r\n                                  grid-template-columns: 30% 20% 20% 10%;\r\n                                  grid-gap: 25px;\r\n                                \">\r\n                                <div class=\"mainTitle\">AppFramework</div>\r\n                            </span>\r\n                        </First>\r\n                        <Second>\r\n                                <ws-FixedSplitterVer>\r\n                                    <PartSizes>calc(100% - 2px) 2px</PartSizes>\r\n                                    <First>\r\n                                        <wcomp-splitter vertical value=\"18\" max=\"100\">\r\n                                            <div><div ws-hole=\"PlugIns\" style=\"overflow:auto\" >\r\n                                                <div ws-template=\"Tile\">\r\n                                                    <div draggable=\"true\" class=\"code-editor-list-tile ${Predecessor} ${Selected}\" \r\n                                                    ws-ondrag=\"Drag\"\r\n                                                    ws-ondragover=\"DragOver\"\r\n                                                    ws-ondrop=\"Drop\"\r\n                                                   >\r\n                                                   <span class=\"node ${Parent} ${ErrorMsg}\" title=\"expand\" ws-onclick=\"ToggleCollapse\"></span>\r\n                                                   <div  class=\"code-editor-list-text\" style=\"text-indent:${Indent}em; white-space: pre\" ws-onclick=\"Select\" ws-onafterrender=\"AfterRender\" >${Name}</div>\r\n                                                   <span class=\"predecessor\" title=\"toggle predecessor\" ws-onclick=\"TogglePred\">X</span>\r\n                                               </div>\r\n                                       \r\n                                                </div>\r\n                                            </div></div>\r\n                                            <wcomp-splitter vertical value=\"80\" min=\"30\" max=\"100\">\r\n                                                <ws-FixedSplitterHor>\r\n                                                    <PartSizes>32px calc(100% - 32px)</PartSizes>\r\n                                                    <First>\r\n                                                        <div>\r\n                                                            <div class=\"input-group\">\r\n                                                                <span class=\"input-group-addon\">name:</span>\r\n                                                                <span class=\"input-group-addon\">${PlugInName}</span>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </First>\r\n                                                    <Second>\r\n                                                        <div style=\"overflow:auto\">\r\n                                                            <div>\r\n                                                                <h3>Vars:</h3>\r\n                                                                <table style=\"overflow:auto;width:100%\" class=\"table table-condensed table-striped\">\r\n                                                                    <thead>\r\n                                                                        <th style=\"width: 10%  \">Name</th>\r\n                                                                        <th style=\"width: 90% \">Value</th>\r\n                                                                    </thead>\r\n                                                                    <tbody ws-hole=\"Vars\">\r\n                                                                    <tr ws-template=\"NameValueInput\" >\r\n                                                                        <td >${Name}:</td>\r\n                                                                        <td>\r\n                                                                        <textarea placeholder=\"Value...\" ws-var=\"Value\" style=\"resize:vertical; width:100%\" spellcheck=\"false\"></textarea>\r\n                                                                        </td>\r\n                                                                    </tr>\r\n                                                                    </tbody>\r\n                                                                </table>\r\n                                                            </div>\r\n                                                            <div>\r\n                                                                <h3>Views:</h3>\r\n                                                                <table style=\"overflow:auto\" class=\"table table-condensed table-striped\" >\r\n                                                                    <thead>\r\n                                                                        <th style=\"width: 10%  \">Name</th>\r\n                                                                        <th style=\"width: 90% \">Value</th>\r\n                                                                    </thead>\r\n                                                                    <tbody ws-hole=\"Views\" >\r\n                                                                    <tr ws-template=\"NameValue\" class=\"\">\r\n                                                                        <td>${Name}:</td>\r\n                                                                        <td>${Value}</td>\r\n                                                                    </tr>\r\n                                                                    </tbody>\r\n                                                                </table>\r\n                                                            </div>\r\n                                                            <div>\r\n                                                                <h3>Docs:</h3>\r\n                                                                <div ws-hole=\"Docs\" style=\"overflow:auto\" ></div>\r\n                                                            </div>\r\n                                                            <div>\r\n                                                                <h3>Queries:</h3>\r\n                                                                <table style=\"overflow:auto\" >\r\n                                                                    <tbody ws-hole=\"Queries\" >\r\n                                                                    </tbody>\r\n                                                                </table>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </Second>\r\n                                                </ws-FixedSplitterHor>\r\n                                        <div style=\"font-size:small; overflow: hidden; display: flex; flex-direction: column;\"  class=\"absolute\" ws-hole=\"Actions\" >\r\n                                            <button ws-template=\"Action\" style=\"font-size:small\" ws-onclick=\"Click\" class=\"btn\" type=\"button\" id=\"\" ws-attr=\"Attrs\" >${Name}</button>\r\n                                        </div>\r\n                                            </wcomp-splitter>\r\n                                        </wcomp-splitter>\r\n                                    </First>\r\n                                    <Second>\r\n                                                <wcomp-tabstrip >\r\n                                                    <div tabname=\"Properties\">\r\n                                                        <div>\r\n                                                            <table style=\"border-spacing:0px\">\r\n                                                                <thead>\r\n                                                                    <th style=\"width: 30%  \">Name</th>\r\n                                                                    <th style=\"width: 70% \">Value</th>\r\n                                                                </thead>\r\n                                                                <tbody ws-hole=\"Properties\" ws-children-template=\"Property\">\r\n                                                                    <tr ws-onclick=\"Select\" style=\"margin-bottom: 2px\" class=\"level  \">\r\n                                                                        <td class=\"level-item\">\r\n                                                                            <div>\r\n                                                                                <input ws-var=\"Name\" type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Property...\">\r\n                                                                            </div>\r\n                                                                        </td>\r\n                                                                        <td class=\"level-item\">\r\n                                                                            <div>\r\n                                                                                <textarea ws-var=\"Value\" class=\"form-control\" id=\"\" placeholder=\"Value...\"></textarea>\r\n                                                                            </div>\r\n                                                                        </td>\r\n                                                                        <td class=\"level-item\">\r\n                                                                            <div style=\" cursor: pointer \" title=\"remove\">\r\n                                                                                <button ws-onclick=\"Remove\" class=\"delete is-small\">x</button>\r\n                                                                            </div>\r\n                                                                        </td>\r\n                                                                    </tr>\r\n                                                                </tbody>\r\n                                                            </table>\r\n                                                            <button ws-onclick=\"AddProperty\" class=\"add is-small\">add ...</button>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </wcomp-tabstrip>\r\n                                    </Second>\r\n                                </ws-FixedSplitterVer>\r\n                        </Second>\r\n                    </ws-FixedSplitterHor>\r\n                </div>\r\n                <style style=\"display: none\">\r\n                        .Hidden     { display   : none         }\r\n                        table th,table td { padding:0 5px 0 5px; text-overflow: ellipsis }\r\n                        td input.form-control { \r\n                            padding    : 0px; \r\n                            font-family: monospace;\r\n                            font-size  :   small;\r\n                            margin-top :   0px;\r\n                            margin-left: -2px;\r\n                            width      : 100%\r\n                        }\r\n                        td select {\r\n                            font-size : smaller;\r\n                            max-width : 8ch;\r\n                        }\r\n                        textarea {\r\n                           resize : vertical;\r\n                        }\r\n                        .tab-content {\r\n                            overflow: hidden\r\n                        }\r\n                        .tab-children {\r\n                            position:relative;\r\n                        }\r\n                        .tab-children>div>* {\r\n                            position:absolute;\r\n                            height: 100%;\r\n                            width:  100%;\r\n                            display: grid;\r\n                        }\r\n                        .relative {\r\n                            position:relative;\r\n                        }\r\n                        .relative>* {\r\n                            position:absolute;\r\n                            height: 100%;\r\n                            width:  100%;\r\n                            display: grid;\r\n                        }\r\n                        table.table-striped    tbody tr:nth-child(even) { background: #EEE  }\r\n                        table.table-striped    tbody tr:nth-child(odd ) { background: #FFF  }\r\n                        table.table-striped    tbody input              { background: transparent; border: none}\r\n                        table.table-striped    tbody select             { background: transparent; border: none}\r\n                        table.table-nonstriped tbody tr:nth-child(even) { background: inherit }\r\n                        table.table-nonstriped tbody tr:nth-child(odd ) { background: inherit }\r\n                        table.table            tbody tr.hover           { border    : solid thin transparent; } \r\n                        table.table            tbody tr.hover:hover     { border    : solid thin blue     ; } \r\n                        table.table            tbody th:hover           { background: gray; cursor: pointer }\r\n                        table.table            tbody tr.hover:hover>td  { border-top: solid thin blue     ; \r\n                                                                   border-bottom: solid thin blue     ; } \r\n                        table.table            tbody tr.selected { background   : #b9eeff             ; }\r\n                        table.table            tbody tr.formula.selected { background: #20f7f7             ; }\r\n                        thead { color: gray }\r\n                        h3 { \r\n                            color: gray;\r\n                            line-height: 1em;\r\n                        }\r\n                        button       { border: solid thin transparent ; border-radius: 3px; }\r\n                        button:hover { border: solid thin blue }\r\n                        .indenter { position  : absolute; \r\n                                    top:0px; bottom:0px; left:0px; \r\n                                    background: white; color:white;\r\n                                    border-right: gray thin dotted;\r\n                                    }\r\n                        body {\r\n                            color      : #333;\r\n                            font-size  : small;\r\n                            font-family: monospace;\r\n                            line-height: 1.2;\r\n                        }\r\n                        .mainTitle {  \r\n                            font-size: 48px;\r\n                            font-weight: 500;\r\n                            color: gray;\r\n                            margin-top: -12px;\r\n                        }\r\n                        .CodeMirror {\r\n                            height: 100%;\r\n                        }\r\n                        \r\n                      \r\n                        body { margin: 0px }     \r\n                             \r\n                        div textarea {\r\n                            font-family     : monospace;\r\n                        }\r\n                        .code-editor-list-tile {\r\n                            white-space     : nowrap; \r\n                            border-style    : solid none none;\r\n                            border-color    : white;\r\n                            border-width    : 1px;\r\n                            background-color: #D8D8D8;\r\n                            display         : flex;\r\n                        }\r\n                        .code-editor-list-text{\r\n                            padding         : 1px 10px 1px 5px;\r\n                            overflow        : hidden;\r\n                            text-overflow   : ellipsis;\r\n                            white-space     : nowrap;\r\n                            flex            : 1;\r\n                        }\r\n                        \r\n                        .code-editor-list-tile span.node.ErrorMsg {\r\n                            background-color: red\r\n                        }\r\n                        .code-editor-list-tile span.node.expanded::before {\r\n                            content: \"-\"\r\n                        }\r\n                        .code-editor-list-tile span.node.collapsed::before {\r\n                            content: \"+\"\r\n                        }\r\n                        .code-editor-list-tile.direct-predecessor {\r\n                            font-weight     : bold;\r\n                            color           : blue;\r\n                        }\r\n                        .code-editor-list-tile.indirect-predecessor {\r\n                            color           : blue;\r\n                        }\r\n                        .code-editor-list-tile.included-predecessor {\r\n                            color           : chocolate;\r\n                        }\r\n                        .code-editor-list-tile.selected {\r\n                            background-color: #77F;\r\n                            color           : white;\r\n                        }\r\n                        .code-editor-list-tile.codeSnippet {\r\n                            text-decoration: underline\r\n                        }\r\n                        .code-editor-list-tile:hover {\r\n                            background      : lightgray;\r\n                        }\r\n                        .code-editor-list-tile.selected:hover {\r\n                            background      : blue;\r\n                        }\r\n                        .code-editor-list-tile>.predecessor {\r\n                            font-weight     : bold;\r\n                            border-style    : inset;\r\n                            border-width    : 1px;\r\n                            text-align      : center;\r\n                            color           : transparent;\r\n                        }\r\n                        .code-editor-list-tile.direct-predecessor>.predecessor {\r\n                            color           : blue;\r\n                        }\r\n                        \r\n                        .CodeMirror { height: 100%; }\r\n                        \r\n                        .node {\r\n                            background-color: white; \r\n                            width           : 2ch; \r\n                            color           : #A03; \r\n                            font-weight     : bold; \r\n                            text-align      : center;\r\n                            font-family     : arial;\r\n                        }\r\n                        .Warning { text-decoration: underline lightblue } \r\n                        .Error   { text-decoration: underline red       } \r\n                        \r\n                    </style>\r\n            </div>\r\n            ";
+  SC$1.html="\r\n            <div style=\"display:none\" >\r\n                <div links>\r\n                    <link  href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" type=\"text/css\" rel=\"stylesheet\">\r\n                    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"   type=\"text/javascript\"></script>\r\n                </div>\r\n                <div ws-template=\"AppFramework\" style=\"height: calc(100vh - 4px); width: calc(100vw - 4px) \" class=\"relative\" >\r\n                    <div ws-hole=\"MainClient\"></div>\r\n                    <div class=\"AppFrameworkGo\"><button ws-onclick=\"GoClient\">${MainDoc}</button></div>\r\n                </div>\r\n                <div ws-template=\"VSplitter1\" class=\"versplitter\" ws-attr=\"Attrs\" vertical>\r\n                    <div style=\"min-width :Calc((100% - ${gap}) *        ${perc}  / 100);max-width :Calc((100% - ${gap}) *        ${perc}  / 100)\">${doc1}</div>\r\n                    <div style=\"min-width :             ${gap}\" ws-onmousedown=\"MouseDown\" ></div>\r\n                    <div style=\"min-width :Calc((100% - ${gap}) * (100 - ${perc}) / 100);max-width :Calc((100% - ${gap}) * (100 - ${perc}) / 100)\">${doc2}</div>\r\n                </div>\r\n                <div ws-template=\"HSplitter1\" class=\"horsplitter\" ws-attr=\"Attrs\">\r\n                    <div style=\"min-height:Calc((100% - ${gap}) *        ${perc}  / 100);max-height:Calc((100% - ${gap}) *        ${perc}  / 100)\">${doc1}</div>\r\n                    <div style=\"min-height:             ${gap}\" ws-onmousedown=\"MouseDown\" ></div>\r\n                    <div style=\"min-height:Calc((100% - ${gap}) * (100 - ${perc}) / 100);max-height:Calc((100% - ${gap}) * (100 - ${perc}) / 100)\">${doc2}</div>\r\n                </div>\r\n                <style>\r\n                    .horsplitter                    { display: flex; flex-direction:column              } \r\n                    .horsplitter > div:nth-child(2) { background: #eef; cursor: row-resize; z-index:400 }\r\n                    .horsplitter > div              { overflow: hidden                                  }\r\n                    .versplitter                    { display: flex; flex-direction:row                 } \r\n                    .versplitter > div:nth-child(2) { background: #eef; cursor: col-resize; z-index:400 }\r\n                    .versplitter > div              { overflow: hidden                                  }\r\n                </style>\r\n                <style>\r\n                    .AppFrameworkGo {\r\n                        max-width: 2px;\r\n                        max-height: 2px;\r\n                        z-index: 4000;\r\n                        overflow: hidden;\r\n                        position: fixed;\r\n                        top: 0px;\r\n                        left: 0px;\r\n                    }\r\n                </style>\r\n                <div ws-template=\"FixedSplitterVer\" \r\n                    style=\"display: grid; \r\n                           grid-gap: 0px; \r\n                           box-sizing: border-box; \r\n                           height: 100%;\r\n                           width : 100%;\r\n                           grid-template-areas: 'one two'; \r\n                           grid-template-rows   :100%; \r\n                           overflow: hidden; \r\n                           grid-template-columns: ${PartSizes}\"  >\r\n                   <div ws-hole=\"First\"  style=\"grid-area: one; \" class=\"relative\" ></div>\r\n                   <div ws-hole=\"Second\" style=\"grid-area: two; \" class=\"relative\" ></div>\r\n                </div>               \r\n                <div ws-template=\"FixedSplitterHor\" \r\n               style=\"display: grid; \r\n                      grid-gap: 0px; \r\n                      box-sizing: border-box; \r\n                      height: 100%;\r\n                      width : 100%;\r\n                      grid-template-areas: 'one' 'two'; \r\n                      grid-template-columns:100%; \r\n                      overflow: hidden; \r\n                      grid-template-rows   : ${PartSizes}\"  >\r\n              <div ws-hole=\"First\"  style=\"grid-area: one; \" class=\"relative\" ></div>\r\n              <div ws-hole=\"Second\" style=\"grid-area: two; \" class=\"relative\" ></div>\r\n                </div>               \r\n                <div ws-template=\"WCompSplitterHor\" \r\n                     ws-onafterrender=\"AfterRender\"\r\n                     style=\"display: grid;\r\n                            grid-gap: 5px; \r\n                            box-sizing: border-box; \r\n                            grid-template-areas: 'one' 'two'; \r\n                            grid-template-columns:100%; \r\n                            overflow: hidden; \r\n                            grid-template-rows   : ${PartSizes}\" \r\n                     >\r\n                     <slot></slot>\r\n                    <slot name=\"splitter\">  <div style=\"grid-row:2; grid-column:1 / 1 ; cursor: row-resize; z-index: 3; background-color: #eef ; height: ${Gap}; margin-top :-${Gap}\" ws-onmousedown=\"MouseDown\" ws-onafterrender=\"AfterRenderSp\" ></div> </slot>\r\n                    <style>\r\n                        ::slotted(*) {\r\n                            display: grid;\r\n                            height : 100%;\r\n                            width  : 100%;\r\n                            overflow: hidden;\r\n                        }\r\n                        ::slotted(*:nth-child(2)) {\r\n                            grid-area: two;\r\n                        }\r\n                        ::slotted(*[slot=\"splitter\"]) {\r\n                            grid-row:2; grid-column:1 / 1 ; \r\n                            cursor: row-resize; \r\n                            z-index: 3; \r\n                            background-color: #eef ; \r\n                            height: ${Gap}; \r\n                            margin-top :-${Gap}\r\n                        }\r\n                    </style>\r\n                </div>        \r\n                <div ws-template=\"WCompSplitterVer\" \r\n                     ws-onafterrender=\"AfterRender\"\r\n                     style=\"display: grid; \r\n                            grid-gap: 5px; \r\n                            box-sizing: border-box; \r\n                            grid-template-areas: 'one two'; \r\n                            grid-template-rows   :100%; \r\n                            overflow: hidden; \r\n                            grid-template-columns: ${PartSizes}\"  >\r\n                    <slot></slot>\r\n                    <slot name=\"splitter\"> <div style=\"grid-column:2; grid-row:1 / 1 ; cursor: col-resize; z-index: 3; background-color: #eef ; width: ${Gap}; margin-left :-${Gap}\" ws-onmousedown=\"MouseDown\" ws-onafterrender=\"AfterRenderSp\" ></div> </slot>\r\n                    <style>\r\n                        ::slotted(*) {\r\n                            display: grid;\r\n                            height : 100%;\r\n                            width  : 100%;\r\n                            overflow: hidden;\r\n                        }\r\n                        ::slotted(*:nth-child(2)) {\r\n                            grid-area: two;\r\n                        }\r\n                        ::slotted(*[slot=\"splitter\"]) {\r\n                            grid-column:2; grid-row:1 / 1\r\n                            cursor: column-resize; \r\n                            z-index: 3; \r\n                            background-color: #eef ; \r\n                            width: ${Gap}; \r\n                            margin-left:-${Gap}\r\n                        }\r\n                    </style>\r\n                </div>\r\n                <div ws-template=\"AppFwkClient\" >\r\n                    <ws-FixedSplitterHor>\r\n                        <PartSizes>55px calc(100% - 55px)</PartSizes>\r\n                        <First>\r\n                            <span style=\"display: grid;\r\n                                  grid-template-columns: 30% 20% 20% 10%;\r\n                                  grid-gap: 25px;\r\n                                \">\r\n                                <div class=\"mainTitle\">AppFramework</div>\r\n                            </span>\r\n                        </First>\r\n                        <Second>\r\n                                <ws-FixedSplitterVer>\r\n                                    <PartSizes>calc(100% - 2px) 2px</PartSizes>\r\n                                    <First>\r\n                                        <wcomp-splitter vertical value=\"18\" max=\"100\">\r\n                                            <div><div ws-hole=\"PlugIns\" style=\"overflow:auto\" >\r\n                                                <div ws-template=\"Tile\">\r\n                                                    <div draggable=\"true\" class=\"code-editor-list-tile ${Predecessor} ${Selected}\" \r\n                                                    ws-ondrag=\"Drag\"\r\n                                                    ws-ondragover=\"DragOver\"\r\n                                                    ws-ondrop=\"Drop\"\r\n                                                   >\r\n                                                   <span class=\"node ${Parent} ${ErrorMsg}\" title=\"expand\" ws-onclick=\"ToggleCollapse\"></span>\r\n                                                   <div  class=\"code-editor-list-text\" style=\"text-indent:${Indent}em; white-space: pre\" ws-onclick=\"Select\" ws-onafterrender=\"AfterRender\" >${Name}</div>\r\n                                                   <span class=\"predecessor\" title=\"toggle predecessor\" ws-onclick=\"TogglePred\">X</span>\r\n                                               </div>\r\n                                       \r\n                                                </div>\r\n                                            </div></div>\r\n                                            <wcomp-splitter vertical value=\"80\" min=\"30\" max=\"100\">\r\n                                                <ws-FixedSplitterHor>\r\n                                                    <PartSizes>32px calc(100% - 32px)</PartSizes>\r\n                                                    <First>\r\n                                                        <div>\r\n                                                            <div class=\"input-group\">\r\n                                                                <span class=\"input-group-addon\">${PlugInName}</span>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </First>\r\n                                                    <Second>\r\n                                                        <div style=\"overflow:auto; display:flex; flex-direction:column\">\r\n                                                            <div>\r\n                                                                <h3>Vars:</h3>\r\n                                                                <table style=\"overflow:auto;width:100%\" class=\"table table-condensed table-striped\">\r\n                                                                    <thead>\r\n                                                                        <th style=\"width: 10%  \">Name</th>\r\n                                                                        <th style=\"width: 90% \">Value</th>\r\n                                                                    </thead>\r\n                                                                    <tbody ws-hole=\"Vars\">\r\n                                                                    <tr ws-template=\"NameValueInput\" >\r\n                                                                        <td >${Name}:</td>\r\n                                                                        <td>\r\n                                                                        <textarea placeholder=\"Value...\" ws-var=\"Value\" style=\"resize:vertical; width:100%\" spellcheck=\"false\"></textarea>\r\n                                                                        </td>\r\n                                                                    </tr>\r\n                                                                    </tbody>\r\n                                                                </table>\r\n                                                            </div>\r\n                                                            <div>\r\n                                                                <h3>Views:</h3>\r\n                                                                <table style=\"overflow:auto\" class=\"table table-condensed table-striped\" >\r\n                                                                    <thead>\r\n                                                                        <th style=\"width: 10%  \">Name</th>\r\n                                                                        <th style=\"width: 90% \">Value</th>\r\n                                                                    </thead>\r\n                                                                    <tbody ws-hole=\"Views\" >\r\n                                                                    <tr ws-template=\"NameValue\" class=\"\">\r\n                                                                        <td>${Name}:</td>\r\n                                                                        <td>${Value}</td>\r\n                                                                    </tr>\r\n                                                                    </tbody>\r\n                                                                </table>\r\n                                                            </div>\r\n                                                            <div>\r\n                                                                <h3>Docs:</h3>\r\n                                                                <div ws-hole=\"Docs\" style=\"overflow:auto\" ></div>\r\n                                                            </div>\r\n                                                            <div>\r\n                                                                <h3>Queries:</h3>\r\n                                                                <table style=\"overflow:auto\" >\r\n                                                                    <tbody ws-hole=\"Queries\" >\r\n                                                                    </tbody>\r\n                                                                </table>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </Second>\r\n                                                </ws-FixedSplitterHor>\r\n                                        <div style=\"font-size:small; overflow: hidden; display: flex; flex-direction: column;\"  class=\"absolute\" ws-hole=\"Actions\" >\r\n                                            <button ws-template=\"Action\" style=\"font-size:small\" ws-onclick=\"Click\" class=\"btn\" type=\"button\" id=\"\" ws-attr=\"Attrs\" >${Name}</button>\r\n                                        </div>\r\n                                            </wcomp-splitter>\r\n                                        </wcomp-splitter>\r\n                                    </First>\r\n                                    <Second>\r\n                                                <wcomp-tabstrip >\r\n                                                    <div tabname=\"Properties\">\r\n                                                        <div>\r\n                                                            <table style=\"border-spacing:0px\">\r\n                                                                <thead>\r\n                                                                    <th style=\"width: 30%  \">Name</th>\r\n                                                                    <th style=\"width: 70% \">Value</th>\r\n                                                                </thead>\r\n                                                                <tbody ws-hole=\"Properties\" ws-children-template=\"Property\">\r\n                                                                    <tr ws-onclick=\"Select\" style=\"margin-bottom: 2px\" class=\"level  \">\r\n                                                                        <td class=\"level-item\">\r\n                                                                            <div>\r\n                                                                                <input ws-var=\"Name\" type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Property...\">\r\n                                                                            </div>\r\n                                                                        </td>\r\n                                                                        <td class=\"level-item\">\r\n                                                                            <div>\r\n                                                                                <textarea ws-var=\"Value\" class=\"form-control\" id=\"\" placeholder=\"Value...\"></textarea>\r\n                                                                            </div>\r\n                                                                        </td>\r\n                                                                        <td class=\"level-item\">\r\n                                                                            <div style=\" cursor: pointer \" title=\"remove\">\r\n                                                                                <button ws-onclick=\"Remove\" class=\"delete is-small\">x</button>\r\n                                                                            </div>\r\n                                                                        </td>\r\n                                                                    </tr>\r\n                                                                </tbody>\r\n                                                            </table>\r\n                                                            <button ws-onclick=\"AddProperty\" class=\"add is-small\">add ...</button>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </wcomp-tabstrip>\r\n                                    </Second>\r\n                                </ws-FixedSplitterVer>\r\n                        </Second>\r\n                    </ws-FixedSplitterHor>\r\n                </div>\r\n                <style style=\"display: none\">\r\n                        .Hidden     { display   : none         }\r\n                        table th,table td { padding:0 5px 0 5px; text-overflow: ellipsis }\r\n                        td input.form-control { \r\n                            padding    : 0px; \r\n                            font-family: monospace;\r\n                            font-size  :   small;\r\n                            margin-top :   0px;\r\n                            margin-left: -2px;\r\n                            width      : 100%\r\n                        }\r\n                        td select {\r\n                            font-size : smaller;\r\n                            max-width : 8ch;\r\n                        }\r\n                        textarea {\r\n                           resize : vertical;\r\n                        }\r\n                        .tab-content {\r\n                            overflow: hidden\r\n                        }\r\n                        .tab-children {\r\n                            position:relative;\r\n                        }\r\n                        .tab-children>div>* {\r\n                            position:absolute;\r\n                            height: 100%;\r\n                            width:  100%;\r\n                            display: grid;\r\n                        }\r\n                        .relative {\r\n                            position:relative;\r\n                        }\r\n                        .relative>* {\r\n                            position:absolute;\r\n                            height: 100%;\r\n                            width:  100%;\r\n                            display: grid;\r\n                        }\r\n                        table.table-striped    tbody tr:nth-child(even) { background: #EEE  }\r\n                        table.table-striped    tbody tr:nth-child(odd ) { background: #FFF  }\r\n                        table.table-striped    tbody input              { background: transparent; border: none}\r\n                        table.table-striped    tbody select             { background: transparent; border: none}\r\n                        table.table-nonstriped tbody tr:nth-child(even) { background: inherit }\r\n                        table.table-nonstriped tbody tr:nth-child(odd ) { background: inherit }\r\n                        table.table            tbody tr.hover           { border    : solid thin transparent; } \r\n                        table.table            tbody tr.hover:hover     { border    : solid thin blue     ; } \r\n                        table.table            tbody th:hover           { background: gray; cursor: pointer }\r\n                        table.table            tbody tr.hover:hover>td  { border-top: solid thin blue     ; \r\n                                                                   border-bottom: solid thin blue     ; } \r\n                        table.table            tbody tr.selected { background   : #b9eeff             ; }\r\n                        table.table            tbody tr.formula.selected { background: #20f7f7             ; }\r\n                        thead { color: gray }\r\n                        h3 { \r\n                            color: gray;\r\n                            line-height: 1em;\r\n                        }\r\n                        button       { border: solid thin transparent ; border-radius: 3px; }\r\n                        button:hover { border: solid thin blue }\r\n                        .indenter { position  : absolute; \r\n                                    top:0px; bottom:0px; left:0px; \r\n                                    background: white; color:white;\r\n                                    border-right: gray thin dotted;\r\n                                    }\r\n                        body {\r\n                            color      : #333;\r\n                            font-size  : small;\r\n                            font-family: monospace;\r\n                            line-height: 1.2;\r\n                        }\r\n                        .mainTitle {  \r\n                            font-size: 48px;\r\n                            font-weight: 500;\r\n                            color: gray;\r\n                            margin-top: -12px;\r\n                        }\r\n                        .CodeMirror {\r\n                            height: 100%;\r\n                        }\r\n                        \r\n                      \r\n                        body { margin: 0px }     \r\n                             \r\n                        div textarea {\r\n                            font-family     : monospace;\r\n                        }\r\n                        .code-editor-list-tile {\r\n                            white-space     : nowrap; \r\n                            border-style    : solid none none;\r\n                            border-color    : white;\r\n                            border-width    : 1px;\r\n                            background-color: #D8D8D8;\r\n                            display         : flex;\r\n                        }\r\n                        .code-editor-list-text{\r\n                            padding         : 1px 10px 1px 5px;\r\n                            overflow        : hidden;\r\n                            text-overflow   : ellipsis;\r\n                            white-space     : nowrap;\r\n                            flex            : 1;\r\n                        }\r\n                        \r\n                        .code-editor-list-tile span.node.ErrorMsg {\r\n                            background-color: red\r\n                        }\r\n                        .code-editor-list-tile span.node.expanded::before {\r\n                            content: \"-\"\r\n                        }\r\n                        .code-editor-list-tile span.node.collapsed::before {\r\n                            content: \"+\"\r\n                        }\r\n                        .code-editor-list-tile.direct-predecessor {\r\n                            font-weight     : bold;\r\n                            color           : blue;\r\n                        }\r\n                        .code-editor-list-tile.indirect-predecessor {\r\n                            color           : blue;\r\n                        }\r\n                        .code-editor-list-tile.included-predecessor {\r\n                            color           : chocolate;\r\n                        }\r\n                        .code-editor-list-tile.selected {\r\n                            background-color: #77F;\r\n                            color           : white;\r\n                        }\r\n                        .code-editor-list-tile.codeSnippet {\r\n                            text-decoration: underline\r\n                        }\r\n                        .code-editor-list-tile:hover {\r\n                            background      : lightgray;\r\n                        }\r\n                        .code-editor-list-tile.selected:hover {\r\n                            background      : blue;\r\n                        }\r\n                        .code-editor-list-tile>.predecessor {\r\n                            font-weight     : bold;\r\n                            border-style    : inset;\r\n                            border-width    : 1px;\r\n                            text-align      : center;\r\n                            color           : transparent;\r\n                        }\r\n                        .code-editor-list-tile.direct-predecessor>.predecessor {\r\n                            color           : blue;\r\n                        }\r\n                        \r\n                        .CodeMirror { height: 100%; }\r\n                        \r\n                        .node {\r\n                            background-color: white; \r\n                            width           : 2ch; \r\n                            color           : #A03; \r\n                            font-weight     : bold; \r\n                            text-align      : center;\r\n                            font-family     : arial;\r\n                        }\r\n                        .Warning { text-decoration: underline lightblue } \r\n                        .Error   { text-decoration: underline red       } \r\n                        \r\n                    </style>\r\n            </div>\r\n            ";
   SC$1.plugIns=new ListModel$1.New$1(function(plg)
   {
    return plg.plgName;
@@ -7056,21 +7459,21 @@
   SC$1.currentPlugInW=View$1.Map(function(o$1)
   {
    return o$1==null?AppFramework.defaultPlugIn():o$1.$0;
-  },View$1.Bind(function(a$3)
+  },View$1.Bind(function(a$1)
   {
-   return a$3==null?View$1.Const({
+   return a$1==null?View$1.Const({
     $:1,
     $0:AppFramework.defaultPlugIn()
-   }):AppFramework.plugIns().TryFindByKeyAsView(a$3.$0);
+   }):AppFramework.plugIns().TryFindByKeyAsView(a$1.$0);
   },AppFramework.selectionPlugInO().get_View()));
-  SC$1.currentPlugInV=new FromView.New(AppFramework.currentPlugInW(),function(a$3)
+  SC$1.currentPlugInV=new FromView.New(AppFramework.currentPlugInW(),function(a$1)
   {
-   AppFramework.plugIns().Append(a$3);
+   AppFramework.plugIns().Append(a$1);
   });
   SC$1.AppFwkClient=Lazy.Create(function()
   {
-   var b$18,Q,A,D,V,V$1,P$2,p$18,i;
-   return(b$18=(Q=AppFramework.renderQueries(),(A=AppFramework.renderActions(),(D=AppFramework.renderDocs(),(V=AppFramework.renderViews(),(V$1=AppFramework.renderVars(),(P$2=AppFramework.renderPlugIns(),ProviderBuilder.Make().WithHole({
+   var b$19,Q,A,D,V,V$1,P$2,p$20,i;
+   return(b$19=(Q=AppFramework.renderQueries(),(A=AppFramework.renderActions(),(D=AppFramework.renderDocs(),(V=AppFramework.renderViews(),(V$1=AppFramework.renderVars(),(P$2=AppFramework.renderPlugIns(),ProviderBuilder.Make().WithHole({
     $:0,
     $0:"plugins",
     $1:P$2
@@ -7101,7 +7504,7 @@
     $:0,
     $0:"queries",
     $1:Q
-   })),(p$18=Handler.CompleteHoles(b$18.k,b$18.h,[]),(i=new TemplateInstance.New(p$18[1],LayoutEngine_Templates.appfwkclient(p$18[0])),(b$18.i=i,i)))).get_Doc();
+   })),(p$20=Handler.CompleteHoles(b$19.k,b$19.h,[]),(i=new TemplateInstance.New(p$20[1],LayoutEngine_Templates.appfwkclient(p$20[0])),(b$19.i=i,i)))).get_Doc();
   });
   SC$1.plugin=new PlugInBuilder.New();
   SC$1.a11V=Var$2.Create$1(11);
@@ -7110,79 +7513,72 @@
    $0:AppFramework.a11V().get_View()
   };
   SC$1.baseView=AppFramework.mainDocV().get_View();
-  SC$1.op_LessMultiplyGreater=function(f$15)
+  SC$1.op_LessMultiplyGreater=function(f$19)
   {
    return function(v)
    {
-    return Val.apply(f$15,v);
+    return Val.apply(f$19,v);
    };
   };
-  SC$1.textAtt=function($1)
-  {
-   return function()
-   {
-    return $1("textAtt not implemented");
-   };
-  }(Operators$3.FailWith);
   SC$1.getDocFromReferenceD=Depend.dependByName("getDocFromReference",Extract0.getDocFromReference,Global.id);
   SC$1.getTextActViewFromReferenceD=Depend.dependByName("getTextActViewFromReference",Extract0.getTextActViewFromReference,Global.id);
   SC$1.getDocFromTextTypesD=(b=Depend.depend(),b.Delay(function()
   {
-   return b.Bind(Extract0.getDocFromReferenceD(),function(a$3)
+   return b.Bind(Extract0.getDocFromReferenceD(),function(a$1)
    {
-    var f$15;
-    function m(a$4)
+    var f$19;
+    function m(a$2)
     {
-     return a$4.$==1?a$3(a$4.$0):Doc.TextNode(a$4.$0);
+     return a$2.$==1?a$1(a$2.$0):Doc.TextNode(a$2.$0);
     }
-    return b.Return((f$15=function(l)
+    return b.Return((f$19=function(l)
     {
      return List.map(m,l);
     },function(x)
     {
-     return Doc.Concat(f$15(x));
+     return Doc.Concat(f$19(x));
     }));
    });
   }));
   SC$1.extractDocD=(b$1=Depend.depend(),b$1.Delay(function()
   {
-   return b$1.Bind(Extract0.getDocFromTextTypesD(),function(a$3)
+   return b$1.Bind(Extract0.getDocFromTextTypesD(),function(a$1)
    {
     return b$1.Return(function(x)
     {
-     return a$3(Extract0.getTextData(x));
+     return a$1(Extract0.getTextData(x));
     });
    });
   }));
   SC$1.getTextValFromSeqD=(b$2=Depend.depend(),b$2.Delay(function()
   {
-   return b$2.Bind(Extract0.getTextActViewFromReferenceD(),function(a$3)
+   return b$2.Bind(Extract0.getTextActViewFromReferenceD(),function(a$1)
    {
-    var f$15,g$10,f$16;
-    function f$17(a$4)
+    var f$19,g$11,f$20;
+    function f$21(a$2)
     {
      var r;
-     return a$4.$==1?(r=a$4.$0,{
+     return a$2.$==1?(r=a$2.$0,{
       $:0,
-      $0:View$1.Map(function(a$5)
+      $0:View$1.Map(function(a$3)
       {
-       return a$5.$==1?(function($1)
+       return a$3.$==1?(function($1)
        {
         return function($2)
         {
          return $1("@{"+Utils.toSafe($2)+"}");
         };
-       }(Global.id))(r):a$5.$0;
-      },a$3(r))
+       }(Global.id))(r):a$3.$0;
+      },a$1(r))
      }):{
       $:1,
-      $0:a$4.$0
+      $0:a$2.$0
      };
     }
-    return b$2.Return((f$15=function(l)
+    return b$2.Return((f$19=function(l)
     {
-     return Val.traverseListApp(f$17,l);
-    },(g$10=(f$16={
+     return Val.traverseListApp(f$21,l);
+    },(g$11=(f$20={
      $:1,
      $0:function(s)
      {
@@ -7190,23 +7586,23 @@
      }
     },function(v)
     {
-     return Val.apply(f$16,v);
+     return Val.apply(f$20,v);
     }),function(x)
     {
-     return g$10(f$15(x));
+     return g$11(f$19(x));
     })));
    });
   }));
   SC$1.getTextValD=Operators$2.op_GreaterMultiplyGreater(Extract0.getTextData,Extract0.getTextValFromSeqD());
   SC$1.extractAtsD=(b$3=Depend.depend(),b$3.Delay(function()
   {
-   return b$3.Bind(Extract0.getTextValD(),function(a$3)
+   return b$3.Bind(Extract0.getTextValD(),function(a$1)
    {
-    return b$3.Bind(Extract0.getTextActViewFromReferenceD(),function(a$4)
+    return b$3.Bind(Extract0.getTextActViewFromReferenceD(),function(a$2)
     {
      return b$3.Return(function(txt)
      {
-      var a$5,m;
+      var a$3,m;
       function parseAttr(t)
       {
        var m$1,sty,m$2,atv,atn,m$3,$1;
@@ -7242,41 +7638,41 @@
        v=el.addedListeners;
        return!v?[]:v;
       }
-      function setCustomAttr(atn,el,a$6)
+      function setCustomAttr(atn,el,a$4)
       {
-       var act,p$18,same,i,$1;
+       var act,p$20,same,i,$1;
        function listener(ev)
        {
         AppFramework.callFunction(el,ev,act.actFunction);
        }
-       function f$15(t)
+       function f$19(t)
        {
         return t[0];
        }
-       function g$11(y)
+       function g$12(y)
        {
         return atn===y;
        }
-       if(a$6.$==1)
+       if(a$4.$==1)
         {
-         act=a$6.$0;
-         p$18=Arrays.partition(function(x)
+         act=a$4.$0;
+         p$20=Arrays.partition(function(x)
          {
-          return g$11(f$15(x));
+          return g$12(f$19(x));
          },addedListeners(el));
-         same=p$18[0];
+         same=p$20[0];
          for(i=0,$1=same.length-1;i<=$1;i++)(function()
          {
           return el.removeEventListener(atn,(Arrays.get(same,i))[1]);
          }());
          el.addEventListener(atn,listener,false);
-         el.addedListeners=p$18[1].concat([[atn,listener]]);
+         el.addedListeners=p$20[1].concat([[atn,listener]]);
          return;
         }
        else
         try
         {
-         return el.setAttribute(atn,Strings.Trim(a$6.$0));
+         return el.setAttribute(atn,Strings.Trim(a$4.$0));
         }
         catch(e)
         {
@@ -7309,42 +7705,42 @@
         },v);
        };
       }
-      function constAttr(a$6)
+      function constAttr(a$4)
       {
        var x;
-       return a$6.$==1?AppFramework.valToAttr(a$6.$0,a$3(a$6.$1)):a$6.$==2?(x=a$4(a$6.$1),(viewAttr(a$6.$0))(x)):a$6.$==3?Attrs.EmptyAttr():AppFramework.valToStyle(a$6.$0,a$3(a$6.$1));
+       return a$4.$==1?AppFramework.valToAttr(a$4.$0,a$1(a$4.$1)):a$4.$==2?(x=a$2(a$4.$1),(viewAttr(a$4.$0))(x)):a$4.$==3?Attrs.EmptyAttr():AppFramework.valToStyle(a$4.$0,a$1(a$4.$1));
       }
       function s(el,sq)
       {
-       var f$15,styles,atts,attsNow,names,i,e,nm,i$1,e$1,f$16,a$6,i$2,$1,f$17,i$3,e$2;
+       var f$19,styles,atts,attsNow,names,i,e,nm,i$1,e$1,f$20,a$4,i$2,$1,f$21,i$3,e$2;
        function m$1(t)
        {
         return t[0];
        }
-       function g$11(a$7)
+       function g$12(a$5)
        {
-        return new FSharpSet.New(a$7);
+        return new FSharpSet.New(a$5);
        }
-       styles=Seq.choose(function(a$7)
+       styles=Seq.choose(function(a$5)
        {
-        return a$7.$==0?{
+        return a$5.$==0?{
          $:1,
-         $0:a$7.$0+":"+a$7.$1
+         $0:a$5.$0+":"+a$5.$1
         }:null;
        },sq);
        atts=Arrays.ofSeq(Seq.delay(function()
        {
         return Seq.append(!Seq.isEmpty(styles)?[["style",Strings.concat(";",styles)]]:[],Seq.delay(function()
         {
-         return Seq.choose(function(a$7)
+         return Seq.choose(function(a$5)
          {
-          return a$7.$==1?{
+          return a$5.$==1?{
            $:1,
-           $0:[a$7.$0,a$7.$1]
-          }:a$7.$==2?{
+           $0:[a$5.$0,a$5.$1]
+          }:a$5.$==2?{
            $:1,
-           $0:[a$7.$0,a$7.$1]
-          }:a$7.$==3?null:null;
+           $0:[a$5.$0,a$5.$1]
+          }:a$5.$==3?null:null;
          },sq);
         }));
        }));
@@ -7355,12 +7751,12 @@
          return[el.attributes.item(i$4).name,el.attributes.item(i$4).value];
         },List.ofSeq(Operators$3.range(0,el.attributes.length-1)));
        }));
-       names=(f$15=function(s$1)
+       names=(f$19=function(s$1)
        {
         return Seq.map(m$1,s$1);
        },function(x)
        {
-        return g$11(f$15(x));
+        return g$12(f$19(x));
        });
        i=FSharpSet.op_Subtraction(names(attsNow),names(atts));
        e=Enumerator.Get(i);
@@ -7399,10 +7795,10 @@
        {
         while(e$1.MoveNext())
          {
-          f$16=e$1.Current();
+          f$20=e$1.Current();
           try
           {
-           el.setAttribute(f$16[0],f$16[1]);
+           el.setAttribute(f$20[0],f$20[1]);
           }
           catch(e$4)
           {
@@ -7424,12 +7820,12 @@
         if(typeof e$1=="object"&&"Dispose"in e$1)
          e$1.Dispose();
        }
-       a$6=addedListeners(el);
-       for(i$2=0,$1=a$6.length-1;i$2<=$1;i$2++){
-        f$17=Arrays.get(a$6,i$2);
+       a$4=addedListeners(el);
+       for(i$2=0,$1=a$4.length-1;i$2<=$1;i$2++){
+        f$21=Arrays.get(a$4,i$2);
         try
         {
-         el.removeEventListener(f$17[0],f$17[1]);
+         el.removeEventListener(f$21[0],f$21[1]);
         }
         catch(e$5)
         {
@@ -7445,11 +7841,11 @@
          }))(e$5));
         }
        }
-       i$3=Seq.choose(function(a$7)
+       i$3=Seq.choose(function(a$5)
        {
-        return a$7.$==2?{
+        return a$5.$==2?{
          $:1,
-         $0:[a$7.$0,a$7.$1]
+         $0:[a$5.$0,a$5.$1]
         }:null;
        },sq);
        e$2=Enumerator.Get(i$3);
@@ -7458,12 +7854,12 @@
         while(e$2.MoveNext())
          (function()
          {
-          var f$18,$2;
-          f$18=e$2.Current();
-          return View$1.Get(($2=f$18[0],function($3)
+          var f$22,$2;
+          f$22=e$2.Current();
+          return View$1.Get(($2=f$22[0],function($3)
           {
            return setCustomAttr($2,el,$3);
-          }),a$4(f$18[1]));
+          }),a$2(f$22[1]));
          }());
         return;
        }
@@ -7473,12 +7869,12 @@
          e$2.Dispose();
        }
       }
-      function g$10(s$1)
+      function g$11(s$1)
       {
        return Seq.map(parseAttr,s$1);
       }
-      a$5=Arrays.ofSeq(splitAttrs(txt));
-      return!Unchecked.Equals(a$5,null)&&a$5.length===1?[(m=a$3(Arrays.get(a$5,0)),m.$==0?AttrModule.DynamicCustom(function($1)
+      a$3=Arrays.ofSeq(splitAttrs(txt));
+      return!Unchecked.Equals(a$3,null)&&a$3.length===1?[(m=a$1(Arrays.get(a$3,0)),m.$==0?AttrModule.DynamicCustom(function($1)
       {
        return function($2)
        {
@@ -7486,22 +7882,22 @@
        };
       },View$1.Map(function(x)
       {
-       return g$10(splitAttrs(x));
+       return g$11(splitAttrs(x));
       },m.$0)):constAttr(parseAttr(m.$0)))]:Seq.map(function(x)
       {
        return constAttr(parseAttr(x));
-      },a$5);
+      },a$3);
      });
     });
    });
   }));
   SC$1.extractTextD=(b$4=Depend.depend(),b$4.Delay(function()
   {
-   return b$4.Bind(Extract0.getTextValD(),function(a$3)
+   return b$4.Bind(Extract0.getTextValD(),function(a$1)
    {
     return b$4.Return(function(x)
     {
-     return Val.toView(a$3(x));
+     return Val.toView(a$1(x));
     });
    });
   }));
@@ -7512,14 +7908,14 @@
   SC$1.currentPlugInNameD=Depend.dependByName("currentPlugInName",AppFramework.currentPlugInNameDef(),Global.id);
   SC$1.getDocwD=(b$5=Depend.depend(),b$5.Delay(function()
   {
-   return b$5.Bind(AppFramework.currentPlugInNameD(),function(a$3)
+   return b$5.Bind(AppFramework.currentPlugInNameD(),function(a$1)
    {
     return b$5.Return(function(r)
     {
-     var p$18,pName,oName;
-     p$18=(AppFramework.splitName(a$3))(r);
-     pName=p$18[0];
-     oName=p$18[1];
+     var p$20,pName,oName;
+     p$20=(AppFramework.splitName(a$1))(r);
+     pName=p$20[0];
+     oName=p$20[1];
      return Doc.BindView(function(docO)
      {
       var o$1;
@@ -7547,14 +7943,14 @@
   }));
   SC$1.getDocD=(b$6=Depend.depend(),b$6.Delay(function()
   {
-   return b$6.Bind(AppFramework.currentPlugInNameD(),function(a$3)
+   return b$6.Bind(AppFramework.currentPlugInNameD(),function(a$1)
    {
     return b$6.Return(function(r)
     {
-     var p$18,pName,oName,o$1,o$2,o$3;
-     p$18=(AppFramework.splitName(a$3))(r);
-     pName=p$18[0];
-     oName=p$18[1];
+     var p$20,pName,oName,o$1,o$2,o$3;
+     p$20=(AppFramework.splitName(a$1))(r);
+     pName=p$20[0];
+     oName=p$20[1];
      o$1=(o$2=AppFramework.tryGetDoc(pName,oName),o$2==null?null:{
       $:1,
       $0:AppFramework.getActualDoc(o$2.$0)
@@ -7571,15 +7967,15 @@
   }));
   SC$1.getTextActViewD=(b$7=Depend.depend(),b$7.Delay(function()
   {
-   return b$7.Bind(AppFramework.currentPlugInNameD(),function(a$3)
+   return b$7.Bind(AppFramework.currentPlugInNameD(),function(a$1)
    {
     return b$7.Return(function(r)
     {
-     var p$18,pName,oName;
-     p$18=(AppFramework.splitName(a$3))(r);
-     pName=p$18[0];
-     oName=p$18[1];
-     return View$1.Bind(function(a$4)
+     var p$20,pName,oName;
+     p$20=(AppFramework.splitName(a$1))(r);
+     pName=p$20[0];
+     oName=p$20[1];
+     return View$1.Bind(function(a$2)
      {
       function d()
       {
@@ -7591,18 +7987,18 @@
         };
        }(Global.id))(r);
       }
-      return a$4==null?View$1.Map(function(a$5)
+      return a$2==null?View$1.Map(function(a$3)
       {
        return{
         $:0,
-        $0:a$5
+        $0:a$3
        };
       },View$1.Map(function(o$1)
       {
        return o$1==null?d():o$1.$0;
       },AppFramework.tryGetWoWW(pName,oName))):View$1.Const({
        $:1,
-       $0:a$4.$0
+       $0:a$2.$0
       });
      },AppFramework.tryGetActW(pName,oName));
     });
@@ -7613,11 +8009,11 @@
   SC$1.extractAtsD$1=Extract0.extractAtsD();
   SC$1.extractAttD=(b$8=Operators$2.depend(),b$8.Delay(function()
   {
-   return b$8.Bind(AppFramework.extractAtsD(),function(a$3)
+   return b$8.Bind(AppFramework.extractAtsD(),function(a$1)
    {
-    return b$8.Return(function(p$18)
+    return b$8.Return(function(p$20)
     {
-     return AttrProxy.Concat(a$3(p$18));
+     return AttrProxy.Concat(a$1(p$20));
     });
    });
   }));
@@ -7627,20 +8023,20 @@
   });
   SC$1.inputLabel=AppFramework.depWithExtracts(function($1,$2,$3)
   {
-   return f$3.apply(null,[$1,$2,$3]);
+   return f$4.apply(null,[$1,$2,$3]);
   });
   SC$1.input=AppFramework.depWithExtracts(function($1)
   {
    return function($2)
    {
-    return f$4($1,$2);
+    return f$5($1,$2);
    };
   });
   SC$1.textArea=AppFramework.depWithExtracts(function($1)
   {
    return function($2)
    {
-    return f$5($1,$2);
+    return f$6($1,$2);
    };
   });
   SC$1.htmlDoc=AppFramework.depWithExtracts(function($1,$2,extractText)
@@ -7655,35 +8051,35 @@
    return function(docName)
    {
     var x;
-    function f$15(a$3,a$4)
+    function f$19(a$1,a$2)
     {
-     return function(f$16)
+     return function(f$20)
      {
-      return(f$16(a$3))(a$4);
+      return(f$20(a$1))(a$2);
      };
     }
-    return Doc.BindView(function(a$3)
+    return Doc.BindView(function(a$1)
     {
-     var a$4;
-     return a$3==null?(AppFramework.errDocf(function($3)
+     var a$2;
+     return a$1==null?(AppFramework.errDocf(function($3)
      {
       return function($4)
       {
        return $3("Doc not found: "+Utils.toSafe($4));
       };
-     }))(docName):(a$4=AppFramework.Lazy(a$3.$0.docDoc),a$4.$==0?a$4.$0:a$4.$==1?a$4.$0():(AppFramework.errDocf(function($3)
+     }))(docName):(a$2=AppFramework.Lazy(a$1.$0.docDoc),a$2.$==0?a$2.$0:a$2.$==1?a$2.$0():(AppFramework.errDocf(function($3)
      {
       return function($4)
       {
        return $3("Doc parameters not resolved: "+GeneratedPrintf.p($4));
       };
-     }))(a$3.$0));
-    },View$1.Bind(function(b$18)
+     }))(a$1.$0));
+    },View$1.Bind(function(b$19)
     {
      return(function($3)
      {
-      return f$15($3[0],$3[1]);
-     }(b$18))(function($3)
+      return f$19($3[0],$3[1]);
+     }(b$19))(function($3)
      {
       return function($4)
       {
@@ -7699,9 +8095,9 @@
    {
     var o$1,t$1,_var;
     o$1=(t$1=AppFramework.getParmRef(t[0]),AppFramework.tryGetVoV(t$1[0],t$1[1]));
-    o$1==null?void 0:(_var=o$1.$0,View$1.Get(function(a$3)
+    o$1==null?void 0:(_var=o$1.$0,View$1.Get(function(a$1)
     {
-     _var.Set(a$3);
+     _var.Set(a$1);
     },extractText(t[1])));
    };
   });
@@ -7711,7 +8107,25 @@
    $4=[$1,$2,$3];
    return function($5)
    {
-    return f$6($4,$5);
+    return f$7($4,$5);
+   };
+  });
+  SC$1.getValDirect=AppFramework.depWithExtracts(function($1,$2,$3)
+  {
+   var $4;
+   $4=[$1,$2,$3];
+   return function($5)
+   {
+    return f$8($4,$5);
+   };
+  });
+  SC$1.dragSplitter0=AppFramework.depWithExtracts(function($1,$2,$3)
+  {
+   var $4;
+   $4=[$1,$2,$3];
+   return function($5)
+   {
+    return f$9($4,$5);
    };
   });
   SC$1.trigAct=AppFramework.depWithExtracts(function($1,$2,extractText)
@@ -7720,10 +8134,10 @@
    {
     return function(actN)
     {
-     function f$15(a$3)
+     function f$19(a$1)
      {
       var o$1,t;
-      if(a$3===null)
+      if(a$1===null)
        ;
       else
        {
@@ -7731,13 +8145,13 @@
         o$1==null?void 0:AppFramework.callFunction(null,null,o$1.$0.actFunction);
        }
      }
-     function g$10()
+     function g$11()
      {
       return Doc.Element("div",[],[]);
      }
      return Doc.BindView(function(x)
      {
-      return g$10(f$15(x));
+      return g$11(f$19(x));
      },extractText(trigger));
     };
    };
@@ -7749,10 +8163,10 @@
     return function(actN)
     {
      var v,prior;
-     function f$15(a$3)
+     function f$19(a$1)
      {
       var o$1,t;
-      if(a$3===null)
+      if(a$1===null)
        ;
       else
        {
@@ -7760,13 +8174,13 @@
         o$1==null?void 0:AppFramework.callFunction(null,null,o$1.$0.actFunction);
        }
      }
-     function g$10()
+     function g$11()
      {
       return"";
      }
      return Doc.TextView(View$1.Map(function(x)
      {
-      return g$10(f$15(x));
+      return g$11(f$19(x));
      },(v=extractText(trigger),(prior=[Var$2.Create$1(null)],(View$1.Sink(function(v$1)
      {
       if(!Unchecked.Equals(prior[0].Get(),v$1))
@@ -7779,13 +8193,13 @@
   {
    var $4;
    $4=[$1,$2,$3];
-   return Runtime.Curried(f$7,3,[$4]);
+   return Runtime.Curried(f$10,3,[$4]);
   });
   SC$1.select=AppFramework.depWithExtracts(function(extractAts,$1,extractText)
   {
    return Runtime.Curried3(function(attrs,none,vals)
    {
-    function f$15(_var)
+    function f$19(_var)
     {
      var valsW,varO;
      valsW=View$1.Map(function($2)
@@ -7798,12 +8212,12 @@
        $:1,
        $0:Strings.Trim($2)
       }:null;
-     },_var.get_View(),valsW),function(a$3)
+     },_var.get_View(),valsW),function(a$1)
      {
       var s;
-      if(a$3!=null&&a$3.$==1)
+      if(a$1!=null&&a$1.$==1)
        {
-        s=a$3.$0;
+        s=a$1.$0;
         View$1.Get(function(vs)
         {
          if(Seq.contains(s,vs))
@@ -7817,16 +8231,16 @@
     }
     return function(v)
     {
-     return AppFramework.docWithVar(f$15,v);
+     return AppFramework.docWithVar(f$19,v);
     };
    });
   });
-  a=(b$9=AppFramework.plugin(),b$9.AddAct(b$9.AddDoc(b$9.AddVar(b$9.Name(b$9.Yield(),"AppFramework"),"mainDocV",AppFramework.mainDocV()),"AppFwkClient",AppFramework.AppFwkClient()),"Hello",function()
+  SC$1.splitterPerc=AppFramework.depWithExtracts(Runtime.Curried(f$11,5));
+  AppFramework.addPlugIn((b$9=AppFramework.plugin(),b$9.AddAct(b$9.AddDoc(b$9.AddVar(b$9.Name(b$9.Yield(),"AppFramework"),"mainDocV",AppFramework.mainDocV()),"AppFwkClient",AppFramework.AppFwkClient()),"Hello",function()
   {
    self.alert("Hello!");
-  }));
-  AppFramework.plugIns().Append(a);
-  a$1=(b$10=AppFramework.plugin(),b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddQry(b$10.AddAct(b$10.AddAct2(b$10.AddAct2(b$10.AddDoc3(b$10.AddDoc3(b$10.AddDoc4(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc1(b$10.AddDoc1(b$10.Name(b$10.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"TrigChange",AppFramework.trigActChange(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SetVar",function(v)
+  })));
+  AppFramework.addPlugIn((b$10=AppFramework.plugin(),b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddQry(b$10.AddAct2(b$10.AddAct(b$10.AddAct2(b$10.AddAct2(b$10.AddAct2(b$10.AddDoc5(b$10.AddDoc3(b$10.AddDoc3(b$10.AddDoc4(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc1(b$10.AddDoc1(b$10.Name(b$10.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"TrigChange",AppFramework.trigActChange(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SplitterPerc",AppFramework.splitterPerc(),"Template","Attrs","doc1","doc2","Var"),"SetVar",function(v)
   {
    return function(v$1)
    {
@@ -7838,10 +8252,22 @@
    {
     return AppFramework.setVarDirect(v,v$1);
    };
+  },"Var","from"),"SetVarDirectD",function(v)
+  {
+   return function(v$1)
+   {
+    return AppFramework.setVarDirectD(v,v$1);
+   };
   },"Var","from"),"Hello",function()
   {
    self.alert("Hello!");
-  }),"getDocNames",function()
+  }),"DragSplitter",function(v)
+  {
+   return function(e)
+   {
+    return AppFramework.dragSplitter(v,e);
+   };
+  },"Var","dragEvent"),"getDocNames",function()
   {
    return Arrays.ofSeq(Seq.collect(function(plg)
    {
@@ -7852,21 +8278,26 @@
    },(AppFramework.plugIns())["var"].Get()));
   }),"MouseX",View$1.Map(function(x)
   {
-   return Global.String(f$8(x));
+   return Global.String(f$12(x));
   },Mouse.get_Position())),"MouseY",View$1.Map(function(x)
   {
-   return Global.String(f$9(x));
-  },Mouse.get_Position())),"MouseLeft",View$1.Map(function(a$3)
+   return Global.String(f$13(x));
+  },Mouse.get_Position())),"MouseLeft",View$1.Map(function(a$1)
   {
-   return a$3?"1":"0";
-  },Mouse.get_LeftPressed())),"MouseRight",View$1.Map(function(a$3)
+   return a$1?"1":"0";
+  },Mouse.get_LeftPressed())),"MouseRight",View$1.Map(function(a$1)
   {
-   return a$3?"1":"0";
-  },Mouse.get_LeftPressed())),"MouseMiddle",View$1.Map(function(a$3)
+   return a$1?"1":"0";
+  },Mouse.get_RightPressed())),"MouseMiddle",View$1.Map(function(a$1)
   {
-   return a$3?"1":"0";
-  },Mouse.get_LeftPressed())),"Keyboard",View$1.Map(Global.String,Keyboard.get_KeysPressed())));
-  AppFramework.plugIns().Append(a$1);
+   return a$1?"1":"0";
+  },Mouse.get_MiddlePressed())),"Keyboard",View$1.Map(function($1)
+  {
+   return function($2)
+   {
+    return $1(Utils.printList(Utils.prettyPrint,$2));
+   };
+  }(Global.id),Keyboard.get_KeysPressed()))));
   SC$1.getMainDoc=Lazy.Create(function()
   {
    WcSplitter.init(Runtime.Curried(AppFramework.horizontal,5),Runtime.Curried(AppFramework.vertical,5));
@@ -7876,18 +8307,18 @@
   SC$1.htmlD=Depend.dependByName("AppFrameworkTemplate.html",AppFrameworkTemplate.html(),Global.id);
   SC$1.startWithHtmlD=(b$11=Depend.depend(),b$11.Delay(function()
   {
-   return b$11.Bind(StartAppFramework.htmlD(),function(a$3)
+   return b$11.Bind(StartAppFramework.htmlD(),function(a$1)
    {
     return b$11.Return(function()
     {
-     var d,x,a$4;
+     var d,x,a$2;
      d=self.document.createElement("div");
      self.document.body.appendChild(d);
-     d.outerHTML=a$3;
+     d.outerHTML=a$1;
      x=AppFramework.getMainDoc().f();
-     a$4=self.document.body;
+     a$2=self.document.body;
      Templates.LoadLocalTemplates("");
-     Doc.RunAppend(a$4,x);
+     Doc.RunAppend(a$2,x);
     });
    });
   }));
@@ -7954,38 +8385,45 @@
   },null,Runtime.Curried3(AppFrameworkUI.showDoc));
   SC$1.plugInAdded=AppFramework.addPlugIn((b$12=AppFramework.plugin(),b$12.Merge(b$12.Merge(b$12.Merge(b$12.Merge(b$12.Merge(b$12.Name(b$12.Yield(),"AppFrmkUI"),"plugIns_",AppFrameworkUI.pluginsList().PlugIn(function(x)
   {
-   return g$4(f$10(x));
+   return g$5(f$14(x));
   },function(n)
   {
    return n.get_Id();
   })),"plgVars_",AppFrameworkUI.plgVarsList().PlugIn(function(x)
   {
-   return g$5(f$11(x));
+   return g$6(f$15(x));
   },function(n)
   {
    return n.get_Id();
   })),"plgViews_",AppFrameworkUI.plgViewsList().PlugIn(function(x)
   {
-   return g$6(f$12(x));
+   return g$7(f$16(x));
   },function(n)
   {
    return n.get_Id();
   })),"plgActs_",AppFrameworkUI.plgActsList().PlugIn(function(x)
   {
-   return g$7(f$13(x));
+   return g$8(f$17(x));
   },function(n)
   {
    return n.get_Id();
   })),"plgDocs_",AppFrameworkUI.plgDocsList().PlugIn(function(x)
   {
-   return g$8(f$14(x));
+   return g$9(f$18(x));
   },function(n)
   {
    return n.get_Id();
   }))));
+  SC$1.splitSemiColon=(f$1=LayoutEngineModule.splitChar(";"),(g$1=function(s)
+  {
+   return Seq.filter(p$19,s);
+  },function(x)
+  {
+   return g$1(f$1(x));
+  }));
   SC$1.notEmpty=function(x)
   {
-   return g$9(LayoutEngineModule.emptyLine(x));
+   return g$10(LayoutEngineModule.emptyLine(x));
   };
   SC$1.aV=Var$2.Create$1(4);
   SC$1.pa=NewLY.aV().get_View();
@@ -7999,9 +8437,9 @@
   SC$1.enterName=(pf=AppFramework.op_Dereference(NewLY.checkName),(p={
    $:0,
    $0:NewLY.name().get_View()
-  },P.New(Operators$2.op_BarGreaterGreater(pf.r,function(f$15)
+  },P.New(Operators$2.op_BarGreaterGreater(pf.r,function(f$19)
   {
-   return Fun.New(f$15,p);
+   return Fun.New(f$19,p);
   }))));
   SC$1.now=(pf$1=AppFramework.op_Dereference(function()
   {
@@ -8011,20 +8449,20 @@
   }),(p$1={
    $:0,
    $0:NewLY.name().get_View()
-  },P.New(Operators$2.op_BarGreaterGreater(pf$1.r,function(f$15)
+  },P.New(Operators$2.op_BarGreaterGreater(pf$1.r,function(f$19)
   {
-   return Fun.New(f$15,p$1);
+   return Fun.New(f$19,p$1);
   }))));
   SC$1.sayHello=(sayHello_0=(c=(vf=AppFramework.op_Dereference(Doc.Concat),AppFramework.bindWrap(function(extractDoc)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:[extractDoc("Hello @{name}!")]
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },AppFramework.extractDocD())),AppFramework.bindWrap(function(aF)
   {
@@ -8044,21 +8482,21 @@
      $0:aF.f.$0(aF.p.$0)
     }),c$13.p));
    },c);
-  },NewLY.enterName().r)),(a$2=(vf$1=AppFramework.op_Dereference(Doc.Concat),AppFramework.bindWrap(function(extractDoc)
+  },NewLY.enterName().r)),(a=(vf$1=AppFramework.op_Dereference(Doc.Concat),AppFramework.bindWrap(function(extractDoc)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:[extractDoc("How are you?")]
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf$1.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf$1.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },AppFramework.extractDocD())),(c$1=(vf$2=AppFramework.op_Dereference(Doc.Concat),AppFramework.bindWrap(function(aF)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:[AppFramework.makeAViewDoc(function()
     {
@@ -8079,9 +8517,9 @@
      return m.$==0?Doc.BindView(Global.id,m.$0):m.$0;
     })]
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf$2.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf$2.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },sayHello_0.r)),AppFramework.bindWrap(function(aF)
   {
@@ -8106,23 +8544,23 @@
      return m.$==0?Doc.BindView(Global.id,m.$0):m.$0;
     }),c$13.p));
    },c$1);
-  },a$2.r))));
-  SC$1.aString=Var$2.Lens(NewLY.aV(),Global.String,function(a$3,v)
+  },a.r))));
+  SC$1.aString=Var$2.Lens(NewLY.aV(),Global.String,function(a$1,v)
   {
    return Operators$3.toInt(Global.Number(v));
   });
-  SC$1.main0=(pc=(pf$2=AppFramework.op_Dereference(function(a$3)
+  SC$1.main0=(pc=(pf$2=AppFramework.op_Dereference(function(a$1)
   {
-   return function(b$18)
+   return function(b$19)
    {
-    return NewLY.concat(a$3,b$18);
+    return NewLY.concat(a$1,b$19);
    };
   }),(p$2={
    $:0,
    $0:NewLY.aV().get_View()
-  },P.New(Operators$2.op_BarGreaterGreater(pf$2.r,function(f$15)
+  },P.New(Operators$2.op_BarGreaterGreater(pf$2.r,function(f$19)
   {
-   return Fun.New(f$15,p$2);
+   return Fun.New(f$19,p$2);
   })))),(p$3={
    $:1,
    $0:3.2
@@ -8147,8 +8585,8 @@
    return $1("result = "+Utils.toSafe($2)+" "+Utils.toSafe($3));
   }))(Global.id)),AppFramework.bindWrap(function(aF)
   {
-   var p$18;
-   p$18=aF.f.$==0?aF.p.$==1?{
+   var p$20;
+   p$20=aF.f.$==0?aF.p.$==1?{
     $:0,
     $0:View$1.Apply(aF.f.$0,View$1.Const(aF.p.$0))
    }:{
@@ -8161,9 +8599,9 @@
     $:1,
     $0:aF.f.$0(aF.p.$0)
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf$3.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf$3.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },NewLY.main0().r)),(p$4={
    $:1,
@@ -8186,19 +8624,19 @@
   }))));
   SC$1.main=(c$2=(c$3=(c$4=(c$5=(c$6=(c$7=(c$8=(c$9=(c$10=(vf$4=AppFramework.op_Dereference((Runtime.Curried3(Doc.Element))("h3")),AppFramework.bindWrap(function(extractAts)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:extractAts("color:@{name}; background:red; click=@{AppFramework.Hello}")
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf$4.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf$4.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },AppFramework.extractAtsD())),AppFramework.bindWrap(function(extractDoc)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:[extractDoc("MAIN:")]
    };
@@ -8216,7 +8654,7 @@
     }:{
      $:1,
      $0:c$13.f.$0(c$13.p.$0)
-    },p$18);
+    },p$20);
    }));
   },AppFramework.extractDocD())),AppFramework.bindWrap(function(aF)
   {
@@ -8334,19 +8772,19 @@
   });
   SC$1.appFwk=(c$11=(vf$5=AppFramework.op_Dereference((Runtime.Curried3(Doc.Element))("div")),AppFramework.bindWrap(function(extractAts)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:extractAts("color:@{name}")
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf$5.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf$5.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },AppFramework.extractAtsD())),AppFramework.bindWrap(function(extractDoc)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:[extractDoc("@{AppFramework.AppFwkClient}")]
    };
@@ -8364,13 +8802,13 @@
     }:{
      $:1,
      $0:c$13.f.$0(c$13.p.$0)
-    },p$18);
+    },p$20);
    }));
   },AppFramework.extractDocD()));
   SC$1.split=(c$12=(vf$6=AppFramework.op_Dereference(Runtime.Curried(LayoutEngineModule.variableSplitter,2,[false,0,50,100])),AppFramework.bindWrap(function(aF)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:AppFramework.makeAViewDoc(function()
     {
@@ -8391,14 +8829,14 @@
      return m.$==0?Doc.BindView(Global.id,m.$0):m.$0;
     })
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf$6.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf$6.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },NewLY.appFwk().r)),AppFramework.bindWrap(function(aF)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:AppFramework.makeAViewDoc(function()
     {
@@ -8433,13 +8871,13 @@
     }:{
      $:1,
      $0:c$13.f.$0(c$13.p.$0)
-    },p$18);
+    },p$20);
    }));
   },NewLY.main().r));
   SC$1.split2=(pc$2=(vf$7=AppFramework.op_Dereference(Runtime.Curried(LayoutEngineModule.variableSplitter,2,[false,0,50,100])),AppFramework.bindWrap(function(aF)
   {
-   var p$18;
-   p$18={
+   var p$20;
+   p$20={
     $:1,
     $0:AppFramework.makeAViewDoc(function()
     {
@@ -8460,9 +8898,9 @@
      return m.$==0?Doc.BindView(Global.id,m.$0):m.$0;
     })
    };
-   return P.New(Operators$2.op_BarGreaterGreater(vf$7.r,function(f$15)
+   return P.New(Operators$2.op_BarGreaterGreater(vf$7.r,function(f$19)
    {
-    return Fun.New(f$15,p$18);
+    return Fun.New(f$19,p$20);
    }));
   },NewLY.appFwk().r)),(p$5={
    $:1,
@@ -8485,28 +8923,28 @@
   }))));
   SC$1.nodeRefToDocD=(b$13=Depend.depend(),b$13.Delay(function()
   {
-   return b$13.Bind(Extract0.getDocFromTextTypesD(),function(a$3)
+   return b$13.Bind(Extract0.getDocFromTextTypesD(),function(a$1)
    {
-    function f$15(a$4)
+    function f$19(a$2)
     {
      var $1;
-     return(a$4.$==1?($1=a$4.$0.$0,false):a$4.$==2?($1=a$4.$0.$0,false):a$4.$==3?($1=a$4.$0.$0,false):true)?List.map(NewLY.textValToTextType,a$4.$0):List.ofArray([NewLY.itemRefToTextType($1)]);
+     return(a$2.$==1?($1=a$2.$0.$0,false):a$2.$==2?($1=a$2.$0.$0,false):a$2.$==3?($1=a$2.$0.$0,false):true)?List.map(NewLY.textValToTextType,a$2.$0):List.ofArray([NewLY.itemRefToTextType($1)]);
     }
     return b$13.Return(function(x)
     {
-     return a$3(f$15(x));
+     return a$1(f$19(x));
     });
    });
   }));
   SC$1.varRefToVarD=(b$14=Depend.depend(),b$14.Delay(function()
   {
-   return b$14.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$14.Bind(NewLY.currentPlugInNameD(),function(a$1)
    {
-    return b$14.Return(function(a$4)
+    return b$14.Return(function(a$2)
     {
      var r,o$1,o$2,t;
-     r=NewLY.itemRefToString(a$4.$0);
-     o$1=(o$2=(t=(AppFramework.splitName(a$3))(r),AppFramework.tryGetVar(t[0],t[1])),o$2==null?null:{
+     r=NewLY.itemRefToString(a$2.$0);
+     o$1=(o$2=(t=(AppFramework.splitName(a$1))(r),AppFramework.tryGetVar(t[0],t[1])),o$2==null?null:{
       $:1,
       $0:o$2.$0.varVar
      });
@@ -8520,16 +8958,44 @@
     });
    });
   }));
-  SC$1.getParamD=(b$15=Depend.depend(),b$15.Delay(function()
+  SC$1.actRefToActD=(b$15=Depend.depend(),b$15.Delay(function()
   {
-   return b$15.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$15.Bind(NewLY.currentPlugInNameD(),function(a$1)
    {
-    return b$15.Bind(Extract0.getTextValFromSeqD(),function(a$4)
+    return b$15.Return(function(a$2)
     {
-     return b$15.Return(function(p$18)
+     var r,o$1,t;
+     r=NewLY.itemRefToString(a$2.$0);
+     o$1=(t=(AppFramework.splitName(a$1))(r),AppFramework.tryGetAct(t[0],t[1]));
+     return o$1==null?AppFramework.newAct(new PlgElemName({
+      $:0,
+      $0:r
+     }),function()
      {
-      var refToSplit,g$10,r,f$15,m,g$11,t,r$1,f$16,m$1,g$12,g$13,t$1,r$2,f$17,m$2,g$14,g$15,t$2,r$3,f$18,m$3,g$16,t$3;
-      function f$19(d$4)
+      ((function($1)
+      {
+       return function($2)
+       {
+        return $1("Could not find action "+Utils.toSafe($2));
+       };
+      }(function(s)
+      {
+       console.log(s);
+      }))(r));
+     }):o$1.$0;
+    });
+   });
+  }));
+  SC$1.getParamD=(b$16=Depend.depend(),b$16.Delay(function()
+  {
+   return b$16.Bind(NewLY.currentPlugInNameD(),function(a$1)
+   {
+    return b$16.Bind(Extract0.getTextValFromSeqD(),function(a$2)
+    {
+     return b$16.Return(function(p$20)
+     {
+      var refToSplit,g$11,r,f$19,m,g$12,t,r$1,f$20,m$1,g$13,g$14,t$1,r$2,f$21,m$2,g$15,g$16,t$2,r$3,f$22,m$3,g$17,t$3;
+      function f$23(d$4)
       {
        return d$4.docDoc;
       }
@@ -8543,7 +9009,7 @@
         };
        }(Global.id))(r);
       }
-      function f$20(v)
+      function f$24(v)
       {
        return v.varVar.get_View();
       }
@@ -8557,7 +9023,7 @@
         };
        }(Global.id))(r$1));
       }
-      function f$21(v)
+      function f$25(v)
       {
        return v.viwView;
       }
@@ -8571,7 +9037,7 @@
         };
        }(Global.id))(r$2));
       }
-      function f$22(v)
+      function f$26(v)
       {
        return v.actFunction;
       }
@@ -8585,14 +9051,14 @@
         };
        }(Global.id))(r$3);
       }
-      refToSplit=(g$10=AppFramework.splitName(a$3),function(x)
+      refToSplit=(g$11=AppFramework.splitName(a$1),function(x)
       {
-       return g$10(NewLY.itemRefToString(x));
+       return g$11(NewLY.itemRefToString(x));
       });
-      return p$18.$==1?(r=p$18.$0.$0,View$1.Map((f$15=(m=function(x)
+      return p$20.$==1?(r=p$20.$0.$0,View$1.Map((f$19=(m=function(x)
       {
        var v;
-       v=f$19(x);
+       v=f$23(x);
        return v;
       },function(o$1)
       {
@@ -8600,52 +9066,52 @@
         $:1,
         $0:m(o$1.$0)
        };
-      }),(g$11=function(o$1)
+      }),(g$12=function(o$1)
       {
        return o$1==null?d():o$1.$0;
       },function(x)
       {
-       return g$11(f$15(x));
-      })),(t=refToSplit(r),AppFramework.tryGetDocW(t[0],t[1])))):p$18.$==2?(r$1=p$18.$0.$0,View$1.Bind((f$16=(m$1=(g$12=function(a$5)
+       return g$12(f$19(x));
+      })),(t=refToSplit(r),AppFramework.tryGetDocW(t[0],t[1])))):p$20.$==2?(r$1=p$20.$0.$0,View$1.Bind((f$20=(m$1=(g$13=function(a$3)
       {
-       return View$1.Map(Global.id,a$5);
+       return View$1.Map(Global.id,a$3);
       },function(x)
       {
-       return g$12(f$20(x));
+       return g$13(f$24(x));
       }),function(o$1)
       {
        return o$1==null?null:{
         $:1,
         $0:m$1(o$1.$0)
        };
-      }),(g$13=function(o$1)
+      }),(g$14=function(o$1)
       {
        return o$1==null?d$1():o$1.$0;
       },function(x)
       {
-       return g$13(f$16(x));
-      })),(t$1=refToSplit(r$1),AppFramework.tryGetVarW(t$1[0],t$1[1])))):p$18.$==3?(r$2=p$18.$0.$0,View$1.Bind((f$17=(m$2=(g$14=function(a$5)
+       return g$14(f$20(x));
+      })),(t$1=refToSplit(r$1),AppFramework.tryGetVarW(t$1[0],t$1[1])))):p$20.$==3?(r$2=p$20.$0.$0,View$1.Bind((f$21=(m$2=(g$15=function(a$3)
       {
-       return View$1.Map(Global.id,a$5);
+       return View$1.Map(Global.id,a$3);
       },function(x)
       {
-       return g$14(f$21(x));
+       return g$15(f$25(x));
       }),function(o$1)
       {
        return o$1==null?null:{
         $:1,
         $0:m$2(o$1.$0)
        };
-      }),(g$15=function(o$1)
+      }),(g$16=function(o$1)
       {
        return o$1==null?d$2():o$1.$0;
       },function(x)
       {
-       return g$15(f$17(x));
-      })),(t$2=refToSplit(r$2),AppFramework.tryGetViwW(t$2[0],t$2[1])))):p$18.$==4?(r$3=p$18.$0.$0,View$1.Map((f$18=(m$3=function(x)
+       return g$16(f$21(x));
+      })),(t$2=refToSplit(r$2),AppFramework.tryGetViwW(t$2[0],t$2[1])))):p$20.$==4?(r$3=p$20.$0.$0,View$1.Map((f$22=(m$3=function(x)
       {
        var v;
-       v=f$22(x);
+       v=f$26(x);
        return v;
       },function(o$1)
       {
@@ -8653,27 +9119,27 @@
         $:1,
         $0:m$3(o$1.$0)
        };
-      }),(g$16=function(o$1)
+      }),(g$17=function(o$1)
       {
        return o$1==null?d$3():o$1.$0;
       },function(x)
       {
-       return g$16(f$18(x));
-      })),(t$3=refToSplit(r$3),AppFramework.tryGetActW(t$3[0],t$3[1])))):View$1.Map(Global.id,Val.toView(a$4(List.map(NewLY.textValToTextType,p$18.$0))));
+       return g$17(f$22(x));
+      })),(t$3=refToSplit(r$3),AppFramework.tryGetActW(t$3[0],t$3[1])))):View$1.Map(Global.id,Val.toView(a$2(List.map(NewLY.textValToTextType,p$20.$0))));
      });
     });
    });
   }));
-  SC$1.getParam2D=(b$16=Depend.depend(),b$16.Delay(function()
+  SC$1.getParam2D=(b$17=Depend.depend(),b$17.Delay(function()
   {
-   return b$16.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$17.Bind(NewLY.currentPlugInNameD(),function(a$1)
    {
-    return b$16.Bind(Extract0.getTextValFromSeqD(),function()
+    return b$17.Bind(Extract0.getTextValFromSeqD(),function()
     {
-     return b$16.Return(function(p$18)
+     return b$17.Return(function(p$20)
      {
-      var toAbs,f$15,g$10,$1;
-      toAbs=(f$15=NewLY.itemRefToAbsolute(a$3.get_Id()),(g$10=function($2)
+      var toAbs,f$19,g$11,$1;
+      toAbs=(f$19=NewLY.itemRefToAbsolute(a$1.get_Id()),(g$11=function($2)
       {
        return function($3)
        {
@@ -8681,42 +9147,42 @@
        };
       }(Global.id),function(x)
       {
-       return g$10(f$15(x));
+       return g$11(f$19(x));
       }));
-      return(p$18.$==3?($1=p$18.$0.$0,false):p$18.$==1?($1=p$18.$0.$0,false):p$18.$==2?($1=p$18.$0.$0,false):p$18.$==4?($1=p$18.$0.$0,false):true)?Strings.concat("",Seq.map(function(a$4)
+      return(p$20.$==3?($1=p$20.$0.$0,false):p$20.$==1?($1=p$20.$0.$0,false):p$20.$==2?($1=p$20.$0.$0,false):p$20.$==4?($1=p$20.$0.$0,false):true)?Strings.concat("",Seq.map(function(a$2)
       {
        var $2;
-       return(a$4.$==1?($2=a$4.$0.$0,false):a$4.$==3?($2=a$4.$0.$0,false):a$4.$==4?($2=a$4.$0.$0,false):a$4.$==2?($2=a$4.$0.$0,false):true)?a$4.$0:toAbs($2);
-      },p$18.$0)):toAbs($1);
+       return(a$2.$==1?($2=a$2.$0.$0,false):a$2.$==3?($2=a$2.$0.$0,false):a$2.$==4?($2=a$2.$0.$0,false):a$2.$==2?($2=a$2.$0.$0,false):true)?a$2.$0:toAbs($2);
+      },p$20.$0)):toAbs($1);
      });
     });
    });
   }));
-  SC$1.getParamTextD=(b$17=Depend.depend(),b$17.Delay(function()
+  SC$1.getParamTextD=(b$18=Depend.depend(),b$18.Delay(function()
   {
-   return b$17.Bind(NewLY.currentPlugInNameD(),function(a$3)
+   return b$18.Bind(NewLY.currentPlugInNameD(),function(a$1)
    {
-    return b$17.Bind(Extract0.getTextValFromSeqD(),function(a$4)
+    return b$18.Bind(Extract0.getTextValFromSeqD(),function(a$2)
     {
-     return b$17.Return(function(p$18)
+     return b$18.Return(function(p$20)
      {
-      return function(f$15)
+      return function(f$19)
       {
-       var refToSplit,g$10,o$1,t,o$2,t$1,o$3,t$2,o$4,t$3;
-       refToSplit=(g$10=AppFramework.splitName(a$3),function(x)
+       var refToSplit,g$11,o$1,t,o$2,t$1,o$3,t$2,o$4,t$3;
+       refToSplit=(g$11=AppFramework.splitName(a$1),function(x)
        {
-        return g$10(NewLY.itemRefToString(x));
+        return g$11(NewLY.itemRefToString(x));
        });
-       return p$18.$==1?(o$1=(t=refToSplit(p$18.$0.$0),AppFramework.tryGetDoc(t[0],t[1])),o$1==null?null:f$15(o$1.$0.docDoc)):p$18.$==2?(o$2=(t$1=refToSplit(p$18.$0.$0),AppFramework.tryGetVar(t$1[0],t$1[1])),o$2==null?null:View$1.Get(function(x)
+       return p$20.$==1?(o$1=(t=refToSplit(p$20.$0.$0),AppFramework.tryGetDoc(t[0],t[1])),o$1==null?null:f$19(o$1.$0.docDoc)):p$20.$==2?(o$2=(t$1=refToSplit(p$20.$0.$0),AppFramework.tryGetVar(t$1[0],t$1[1])),o$2==null?null:View$1.Get(function(x)
        {
-        return f$15(Global.id(x));
-       },o$2.$0.varVar.get_View())):p$18.$==3?(o$3=(t$2=refToSplit(p$18.$0.$0),AppFramework.tryGetViw(t$2[0],t$2[1])),o$3==null?null:View$1.Get(function(x)
+        return f$19(Global.id(x));
+       },o$2.$0.varVar.get_View())):p$20.$==3?(o$3=(t$2=refToSplit(p$20.$0.$0),AppFramework.tryGetViw(t$2[0],t$2[1])),o$3==null?null:View$1.Get(function(x)
        {
-        return f$15(Global.id(x));
-       },o$3.$0.viwView)):p$18.$==4?(o$4=(t$3=refToSplit(p$18.$0.$0),AppFramework.tryGetAct(t$3[0],t$3[1])),o$4==null?null:f$15(o$4.$0.actFunction)):View$1.Get(function(x)
+        return f$19(Global.id(x));
+       },o$3.$0.viwView)):p$20.$==4?(o$4=(t$3=refToSplit(p$20.$0.$0),AppFramework.tryGetAct(t$3[0],t$3[1])),o$4==null?null:f$19(o$4.$0.actFunction)):View$1.Get(function(x)
        {
-        return f$15(Global.id(x));
-       },Val.toView(a$4(List.map(NewLY.textValToTextType,p$18.$0))));
+        return f$19(Global.id(x));
+       },Val.toView(a$2(List.map(NewLY.textValToTextType,p$20.$0))));
       };
      });
     });
@@ -8727,14 +9193,14 @@
   {
    return function($2)
    {
-    return getOrAdd$12($1,$2);
+    return getOrAdd$13($1,$2);
    };
   }],function()
   {
    cache.Clear();
-  }]),(getOrAdd=p$6[0][1],[function(p$18)
+  }]),(getOrAdd=p$6[0][1],[function(p$20)
   {
-   return(getOrAdd(p$18))(function($1)
+   return(getOrAdd(p$20))(function($1)
    {
     return NewLY.defVar($1[0],$1[1],$1[2]);
    });
@@ -8743,14 +9209,14 @@
   {
    return function($2)
    {
-    return getOrAdd$13($1,$2);
+    return getOrAdd$14($1,$2);
    };
   }],function()
   {
    cache$1.Clear();
-  }]),(getOrAdd$1=p$7[0][1],[function(p$18)
+  }]),(getOrAdd$1=p$7[0][1],[function(p$20)
   {
-   return(getOrAdd$1(p$18))(function($1)
+   return(getOrAdd$1(p$20))(function($1)
    {
     return NewLY.defDocF($1[0],$1[1],$1[2],$1[3]);
    });
@@ -8759,14 +9225,14 @@
   {
    return function($2)
    {
-    return getOrAdd$14($1,$2);
+    return getOrAdd$15($1,$2);
    };
   }],function()
   {
    cache$2.Clear();
-  }]),(getOrAdd$2=p$8[0][1],[function(p$18)
+  }]),(getOrAdd$2=p$8[0][1],[function(p$20)
   {
-   return(getOrAdd$2(p$18))(function($1)
+   return(getOrAdd$2(p$20))(function($1)
    {
     return NewLY.defAction($1[0],$1[1],$1[2],$1[3]);
    });
@@ -8775,14 +9241,14 @@
   {
    return function($2)
    {
-    return getOrAdd$15($1,$2);
+    return getOrAdd$16($1,$2);
    };
   }],function()
   {
    cache$3.Clear();
-  }]),(getOrAdd$3=p$9[0][1],[function(p$18)
+  }]),(getOrAdd$3=p$9[0][1],[function(p$20)
   {
-   return(getOrAdd$3(p$18))(function($1)
+   return(getOrAdd$3(p$20))(function($1)
    {
     return NewLY.defActions($1[0],$1[1],$1[2]);
    });
@@ -8791,14 +9257,14 @@
   {
    return function($2)
    {
-    return getOrAdd$16($1,$2);
+    return getOrAdd$17($1,$2);
    };
   }],function()
   {
    cache$4.Clear();
-  }]),(getOrAdd$4=p$10[0][1],[function(p$18)
+  }]),(getOrAdd$4=p$10[0][1],[function(p$20)
   {
-   return(getOrAdd$4(p$18))(function($1)
+   return(getOrAdd$4(p$20))(function($1)
    {
     return NewLY.defButton($1[0],$1[1],$1[2],$1[3],$1[4]);
    });
@@ -8807,14 +9273,14 @@
   {
    return function($2)
    {
-    return getOrAdd$17($1,$2);
+    return getOrAdd$18($1,$2);
    };
   }],function()
   {
    cache$5.Clear();
-  }]),(getOrAdd$5=p$11[0][1],[function(p$18)
+  }]),(getOrAdd$5=p$11[0][1],[function(p$20)
   {
-   return(getOrAdd$5(p$18))(function($1)
+   return(getOrAdd$5(p$20))(function($1)
    {
     return NewLY.defInput($1[0],$1[1],$1[2],$1[3]);
    });
@@ -8823,14 +9289,14 @@
   {
    return function($2)
    {
-    return getOrAdd$18($1,$2);
+    return getOrAdd$19($1,$2);
    };
   }],function()
   {
    cache$6.Clear();
-  }]),(getOrAdd$6=p$12[0][1],[function(p$18)
+  }]),(getOrAdd$6=p$12[0][1],[function(p$20)
   {
-   return(getOrAdd$6(p$18))(function($1)
+   return(getOrAdd$6(p$20))(function($1)
    {
     return NewLY.defTextArea($1[0],$1[1],$1[2],$1[3]);
    });
@@ -8839,14 +9305,14 @@
   {
    return function($2)
    {
-    return getOrAdd$19($1,$2);
+    return getOrAdd$20($1,$2);
    };
   }],function()
   {
    cache$7.Clear();
-  }]),(getOrAdd$7=p$13[0][1],[function(p$18)
+  }]),(getOrAdd$7=p$13[0][1],[function(p$20)
   {
-   return(getOrAdd$7(p$18))(function($1)
+   return(getOrAdd$7(p$20))(function($1)
    {
     return NewLY.defElement($1[0],$1[1],$1[2],$1[3],$1[4]);
    });
@@ -8855,14 +9321,14 @@
   {
    return function($2)
    {
-    return getOrAdd$20($1,$2);
+    return getOrAdd$21($1,$2);
    };
   }],function()
   {
    cache$8.Clear();
-  }]),(getOrAdd$8=p$14[0][1],[function(p$18)
+  }]),(getOrAdd$8=p$14[0][1],[function(p$20)
   {
-   return(getOrAdd$8(p$18))(function($1)
+   return(getOrAdd$8(p$20))(function($1)
    {
     return NewLY.defConcat($1[0],$1[1],$1[2]);
    });
@@ -8871,14 +9337,14 @@
   {
    return function($2)
    {
-    return getOrAdd$21($1,$2);
+    return getOrAdd$22($1,$2);
    };
   }],function()
   {
    cache$9.Clear();
-  }]),(getOrAdd$9=p$15[0][1],[function(p$18)
+  }]),(getOrAdd$9=p$15[0][1],[function(p$20)
   {
-   return(getOrAdd$9(p$18))(function($1)
+   return(getOrAdd$9(p$20))(function($1)
    {
     return NewLY.defView($1[0],$1[1],$1[2]);
    });
@@ -8887,14 +9353,14 @@
   {
    return function($2)
    {
-    return getOrAdd$22($1,$2);
+    return getOrAdd$23($1,$2);
    };
   }],function()
   {
    cache$10.Clear();
-  }]),(getOrAdd$10=p$16[0][1],[function(p$18)
+  }]),(getOrAdd$10=p$16[0][1],[function(p$20)
   {
-   return(getOrAdd$10(p$18))(function($1)
+   return(getOrAdd$10(p$20))(function($1)
    {
     return NewLY.defViewJS($1[0],$1[1],$1[2]);
    });
@@ -8903,18 +9369,34 @@
   {
    return function($2)
    {
-    return getOrAdd$23($1,$2);
+    return getOrAdd$24($1,$2);
    };
   }],function()
   {
    cache$11.Clear();
-  }]),(getOrAdd$11=p$17[0][1],[function(p$18)
+  }]),(getOrAdd$11=p$17[0][1],[function(p$20)
   {
-   return(getOrAdd$11(p$18))(function($1)
+   return(getOrAdd$11(p$20))(function($1)
    {
     return NewLY.defSplitter($1[0],$1[1],$1[2],$1[3],$1[4],$1[5]);
    });
   },p$17[1]]))[0];
+  SC$1.defTemplateM=(p$18=(cache$12=new Dictionary.New$5(),[[checkO$12,function($1)
+  {
+   return function($2)
+   {
+    return getOrAdd$25($1,$2);
+   };
+  }],function()
+  {
+   cache$12.Clear();
+  }]),(getOrAdd$12=p$18[0][1],[function(p$20)
+  {
+   return(getOrAdd$12(p$20))(function($1)
+   {
+    return NewLY.defTemplate($1[0],$1[1],$1[2]);
+   });
+  },p$18[1]]))[0];
   o=AppFramework.tryGetPlugIn(AppFramework.defPlugInName());
   o==null?void 0:o.$0.plgActions.Append(AppFramework.newActF(new PlgElemName({
    $:0,
@@ -9046,7 +9528,23 @@
  };
  LayoutEngine_GeneratedPrintf.p$3=function($1)
  {
-  return $1.$==6?"DcElement "+LayoutEngine_GeneratedPrintf.p$19($1.$0):$1.$==5?"DcConcat "+LayoutEngine_GeneratedPrintf.p$17($1.$0):$1.$==4?"DcDocF "+LayoutEngine_GeneratedPrintf.p$15($1.$0):$1.$==3?"DcTextArea "+LayoutEngine_GeneratedPrintf.p$14($1.$0):$1.$==2?"DcInput "+LayoutEngine_GeneratedPrintf.p$13($1.$0):$1.$==1?"DcButton "+LayoutEngine_GeneratedPrintf.p$7($1.$0):"DcSplitter "+LayoutEngine_GeneratedPrintf.p$4($1.$0);
+  return $1.$==7?"DcTemplate "+GeneratedPrintf.p$1($1.$0):$1.$==6?"DcElement "+LayoutEngine_GeneratedPrintf.p$19($1.$0):$1.$==5?"DcConcat "+LayoutEngine_GeneratedPrintf.p$17($1.$0):$1.$==4?"DcDocF "+LayoutEngine_GeneratedPrintf.p$15($1.$0):$1.$==3?"DcTextArea "+LayoutEngine_GeneratedPrintf.p$14($1.$0):$1.$==2?"DcInput "+LayoutEngine_GeneratedPrintf.p$13($1.$0):$1.$==1?"DcButton "+LayoutEngine_GeneratedPrintf.p$7($1.$0):"DcSplitter "+LayoutEngine_GeneratedPrintf.p$4($1.$0);
+ };
+ GeneratedPrintf.p$1=function($1)
+ {
+  return"{"+("tmpName = "+Utils.prettyPrint($1.tmpName))+"; "+("vars = "+Utils.printArray(function($2)
+  {
+   return"("+Utils.prettyPrint($2[0])+", "+LayoutEngine_GeneratedPrintf.p$11($2[1])+")";
+  },$1.vars))+"; "+("views = "+Utils.printArray(function($2)
+  {
+   return"("+Utils.prettyPrint($2[0])+", "+LayoutEngine_GeneratedPrintf.p$16($2[1])+")";
+  },$1.views))+"; "+("docs = "+Utils.printArray(function($2)
+  {
+   return"("+Utils.prettyPrint($2[0])+", "+LayoutEngine_GeneratedPrintf.p$6($2[1])+")";
+  },$1.docs))+"; "+("actions = "+Utils.printArray(function($2)
+  {
+   return"("+Utils.prettyPrint($2[0])+", "+LayoutEngine_GeneratedPrintf.p$8($2[1])+")";
+  },$1.actions))+"; "+("attrs = "+LayoutEngine_GeneratedPrintf.p$16($1.attrs))+"}";
  };
  LayoutEngine_GeneratedPrintf.p$19=function($1)
  {
@@ -9145,7 +9643,7 @@
  {
   return $1.$==1?"Variable ("+Utils.prettyPrint($1.$0)+", "+Utils.prettyPrint($1.$1)+", "+Utils.prettyPrint($1.$2)+")":"Fixed ("+Utils.prettyPrint($1.$0)+", "+Utils.prettyPrint($1.$1)+")";
  };
- GeneratedPrintf.p$1=function($1)
+ GeneratedPrintf.p$2=function($1)
  {
   return"{"+("actName = "+LayoutEngine_GeneratedPrintf.p($1.actName))+"; "+("actFunction = "+LayoutEngine_GeneratedPrintf.p$27($1.actFunction))+"; "+("actEnabled = "+LayoutEngine_GeneratedPrintf.p$28($1.actEnabled))+"}";
  };
