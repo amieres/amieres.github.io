@@ -117,7 +117,7 @@ list div "display: flex;flex-direction: column;height:100%;" File
 
 editor    Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
 editor2   Doc    Monaco.editor Snippets.curSnp_explanation "markdown" "vs-dark" ""
-editor3   Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
+//editor3   Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
 MarkDown0 ViewJS "t => marked(t).replace(/<\/pre>/g,'<i onclick=""copyToEditor(this)"" title=""Copy to Editor"" class=""rightArrow"" ></i> </pre>')" Snippets.curSnp_explanation
 
 copyToEditor Docs
@@ -221,7 +221,7 @@ CenterView   Docs Center_
 CenterEdit   Docs Center_
 CenterFSharp div "display:flex;flex-direction:column; height:100%"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name
-:  div       "class=relative;flex:1"      editor3
+:  div       "class=relative;flex:1"      editor
 
 main  horizontal 51 nav
 :   vertical 0-15-100
