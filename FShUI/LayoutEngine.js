@@ -2580,6 +2580,11 @@
   SC$1.$cctor();
   return SC$1.select;
  };
+ AppFramework.delayAction=function()
+ {
+  SC$1.$cctor();
+  return SC$1.delayAction;
+ };
  AppFramework.callAction=function(actN,p1,p2)
  {
   (((function(a)
@@ -3970,7 +3975,7 @@
   SC$1.$cctor();
   return SC$1.defPlg;
  };
- AppFrameworkUI.showDoc$2765$35=function(k,lmd)
+ AppFrameworkUI.showDoc$2778$35=function(k,lmd)
  {
   return function()
   {
@@ -4010,7 +4015,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showAct$2758$35=function(k,lmd)
+ AppFrameworkUI.showAct$2771$35=function(k,lmd)
  {
   return function()
   {
@@ -4068,7 +4073,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showView$2746$35=function(k,lmd)
+ AppFrameworkUI.showView$2759$35=function(k,lmd)
  {
   return function()
   {
@@ -4112,7 +4117,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showVar$2734$35=function(k,lmd)
+ AppFrameworkUI.showVar$2747$35=function(k,lmd)
  {
   return function()
   {
@@ -4156,7 +4161,7 @@
    },lmd.selV.get_View(),k)
   }),(p=Handler.CompleteHoles(b$1.k,b$1.h,[]),(i=new TemplateInstance.New(p[1],LayoutEngine_Templates.tile(p[0])),(b$1.i=i,i)))).get_Doc();
  };
- AppFrameworkUI.showPlugIn$2722$35=function(k,lmd)
+ AppFrameworkUI.showPlugIn$2735$35=function(k,lmd)
  {
   return function()
   {
@@ -5527,7 +5532,7 @@
       });
       break;
      case 3:
-      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2919,38);
+      throw new MatchFailureException.New("D:\\Abe\\CIPHERWorkspace\\FSharpStation\\projects\\LayoutEngine\\src\\LayoutEngine.fs",2932,38);
     }
     return $2;
   }
@@ -8195,6 +8200,29 @@
    $4=[$1,$2,$3];
    return Runtime.Curried(f$10,3,[$4]);
   });
+  SC$1.delayAction=AppFramework.depWithExtracts(function($1,$2,extractText)
+  {
+   return function(delay)
+   {
+    return function(actN)
+    {
+     var o$1,t,a$1,b$19;
+     o$1=(t=AppFramework.getParmRef(actN),AppFramework.tryGetAct(t[0],t[1]));
+     return o$1==null?null:(a$1=o$1.$0,Concurrency.Start((b$19=null,Concurrency.Delay(function()
+     {
+      return Concurrency.Bind(View$1.GetAsync(extractText(delay)),function(a$2)
+      {
+       var o$2;
+       return Concurrency.Bind(Concurrency.Sleep((o$2=(ParseO.parseIntO())(a$2),o$2==null?100:o$2.$0)),function()
+       {
+        AppFramework.callFunction(null,null,a$1.actFunction);
+        return Concurrency.Zero();
+       });
+      });
+     })),null));
+    };
+   };
+  });
   SC$1.select=AppFramework.depWithExtracts(function(extractAts,$1,extractText)
   {
    return Runtime.Curried3(function(attrs,none,vals)
@@ -8240,7 +8268,7 @@
   {
    self.alert("Hello!");
   })));
-  AppFramework.addPlugIn((b$10=AppFramework.plugin(),b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddQry(b$10.AddAct2(b$10.AddAct(b$10.AddAct2(b$10.AddAct2(b$10.AddAct2(b$10.AddDoc5(b$10.AddDoc3(b$10.AddDoc3(b$10.AddDoc4(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc1(b$10.AddDoc1(b$10.Name(b$10.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"TrigChange",AppFramework.trigActChange(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SplitterPerc",AppFramework.splitterPerc(),"Template","Attrs","doc1","doc2","Var"),"SetVar",function(v)
+  AppFramework.addPlugIn((b$10=AppFramework.plugin(),b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddViw(b$10.AddQry(b$10.AddAct2(b$10.AddAct(b$10.AddAct2(b$10.AddAct2(b$10.AddAct2(b$10.AddAct2(b$10.AddDoc5(b$10.AddDoc3(b$10.AddDoc3(b$10.AddDoc4(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc2(b$10.AddDoc1(b$10.AddDoc1(b$10.Name(b$10.Yield(),"AF"),"DocReference",AppFramework.docReference(),"DocName"),"HtmlDoc",AppFramework.htmlDoc(),"Html"),"TrigAction",AppFramework.trigAct(),"Trigger","Action"),"TrigChange",AppFramework.trigActChange(),"Trigger","Action"),"Input",AppFramework.input(),"Attrs","Var"),"TextArea",AppFramework.textArea(),"Attrs","Var"),"Select",AppFramework.select(),"Attrs","None","Vals","Var"),"InputFile",Runtime.Curried3(AppFramework.inputFile),"Attrs","Label","Action"),"InputLabel",AppFramework.inputLabel(),"Attrs","Label","Var"),"SplitterPerc",AppFramework.splitterPerc(),"Template","Attrs","doc1","doc2","Var"),"SetVar",function(v)
   {
    return function(v$1)
    {
@@ -8258,7 +8286,7 @@
    {
     return AppFramework.setVarDirectD(v,v$1);
    };
-  },"Var","from"),"Hello",function()
+  },"Var","from"),"DelayAction",AppFramework.delayAction(),"delay","Äction"),"Hello",function()
   {
    self.alert("Hello!");
   }),"DragSplitter",function(v)

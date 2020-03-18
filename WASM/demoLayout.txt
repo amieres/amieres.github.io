@@ -9,35 +9,43 @@ viwCounter    ViewJS "n => n + 1" varCounter
 actCounter    Action AF.SetVarDirectD "lytDemo.varCounter" viwCounter
 
 wasmOutput    Var "No output yet"
-wasmStatus    Var "NotLoaded"
 compilerOpts  ViewJS "'--simpleresolution\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/WebAssembly.Net.Http.dll\n-r:/tmp/WebAssembly.Bindings.dll\n-r:/tmp/WebAssembly.Net.WebSockets.dll\n-r:/tmp/System.Numerics.dll\n/tmp/source.fsx'"
 
-setMainView  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.main"
-setFullView1 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView1"
-setFullView2 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView2"
-setFullView3 Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView3"
+wasmStatus    Var ""
+viwStatus     ViewJS "n => n == '' ? 'display:None' : '' " wasmStatus
 
-toMainView   button "click=@{setMainView} ;Title=Back to normal view" "normal view"
-toFullView1  button "click=@{setFullView1};Title=to full view"        "container view"
-toFullView2  button "click=@{setFullView2};Title=to full view"        "full view"
-toFullView3  button "click=@{setFullView3};Title=to full view"        "split view"
+setMainView   Action AF.SetVar "AppFramework.mainDocV" "lytDemo.main"
+setFullView1  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView1"
+setFullView2  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView2"
+setFullView3  Action AF.SetVar "AppFramework.mainDocV" "lytDemo.FullView3"
 
-target      ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_content
+toMainView    button "click=@{setMainView} ;Title=Back to normal view" "normal view"
+toFullView1   button "click=@{setFullView1};Title=to full view"        "container view"
+toFullView2   button "click=@{setFullView2};Title=to full view"        "full view"
+toFullView3   button "click=@{setFullView3};Title=to full view"        "split view"
+
+target        ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_content
 
 lastCompile Var ""
 viwCompile  ViewJS "App.compile" Snippets.curSnp_content compilerOpts  varCounter
-actCompile  Actions
-: Action AF.SetVarDirect "lytDemo.wasmOutput"  "Compiling..."
-: Actions actCounter
+actCompile2 Actions actCounter
 : Action AF.SetVarDirect "lytDemo.lastCompile"  viwCompile
-: Action AF.SetVarDirect "lytDemo.msgAdd"      "Compiled!"
+: Action AF.SetVarDirect "lytDemo.wasmStatus"   ""
+actCompile  Actions
+: Action  AF.SetVarDirect "lytDemo.wasmStatus"  "Compiling..."
+: Action  AF.DelayAction  "100" "lytDemo.actCompile2"
 
+viwRun  ViewJS "(function(n) { var r = App.runAsm(n); return r == undefined ? '' : r })" lastCompile varCounter
+actRun2  Actions actCounter
+: Action AF.SetVarDirect "lytDemo.msgAdd"      viwRun
+: Action AF.SetVarDirect "lytDemo.wasmStatus"  ""
+actRun   Actions actCounter
+: Action AF.SetVarDirect "lytDemo.wasmStatus"  "Running..."
+: Action AF.DelayAction  "100" "lytDemo.actRun2"
 
-viwRun  ViewJS "(function(n) { var r = App.runAsm(n); return r == undefined? '' : r })" lastCompile varCounter
-actRun  Actions actCounter
-: Action AF.SetVarDirect "lytDemo.msgAdd"  "Running..."
-: Action AF.SetVarDirect "lytDemo.msgAdd" viwRun
-: Action AF.SetVarDirect "lytDemo.msgAdd"  "Done!"
+actLoadWASM Actions
+: Action  AF.SetVarDirect "lytDemo.wasmStatus"  "Loading WASM..."
+: Actions RequireOneWasm.Load
 
 viwListdir  ViewJS "n => App.listdir('/')" Snippets.curSnp_content
 actListDir  Action AF.SetVarDirect "lytDemo.msgAdd" viwListdir
@@ -147,21 +155,20 @@ tryMe span "width:100%"
 : Docs " "
 : button    "click=@{actListDir}"                      "Dir"
 
-RightLoadedtrue div "display: flex; flex-direction:column"
+Righttrue div "display: flex; flex-direction:column"
 :   div       "display:flex;flex-direction: column" 
 ::  spam     "" tryMe " " toFullView2 " " toFullView1 " " toFullView3
+:  div "@{viwStatus}" wasmStatus
+:: img "src=//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif"
+
 : div "display: flex;flex-direction: column;flex: 1;" wasmOutputDoc
 
-RightNotLoadedfalse div "display: flex; flex-direction:column" 
+Rightfalse div "display: flex; flex-direction:column" 
 : h1 "" "Start by loading WASM" 
 : Docs RequireOneWasm.LoadPath
 : button   "click=@{RequireOneWasm.Load}" "Load WASM instance" 
 
-RightNotLoadedtrue div "display: flex; flex-direction:column" 
-:  div "" "WASM Loading ..."
-:: img "src=//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif"
-
-Right Doc AF.DocReference "lytDemo.Right@{wasmStatus}@{RequireOneWasm.loaded}"
+Right Doc AF.DocReference "lytDemo.Right@{RequireOneWasm.loaded}"
 
 editorCombo div "display:flex;flex-direction:column; height:100%; flex:1"
 :  Doc       AF.InputLabel "" "Name:" Snippets.curSnp_name

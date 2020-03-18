@@ -74,7 +74,7 @@ var App = {
 		this.translate       = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:translate"  );
 		this.wait            = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:wait"       );
 		AppInitiated = true;
-		FsRootDll.LibraryJS.AppFramework.setVarDirect("lytDemo.wasmStatus", "Loaded");
+		FsRootDll.LibraryJS.AppFramework.setVarDirect("lytDemo.wasmStatus", "");
 	},
 	morefiles: []
 };
