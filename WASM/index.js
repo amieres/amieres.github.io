@@ -38,7 +38,7 @@ requirejs([
 
 function startPage(demoLayout, templates, snippets) {
     FsRootDll.LibraryJS.MonacoPlugIn        .plugInAdded();
-    FsRootDll.LibraryJS.RequireOnePlugIn    .plugInAdded("Wasm", "WASM/wasmInterp/loader.js");
+    FsRootDll.LibraryJS.RequireOnePlugIn    .plugInAdded("Wasm", "");
     FsRootDll.LibraryJS.SnippetsUI          .plugInAdded();
     FsRootDll.LibraryJS.NewLY               .addLayout(     "lytDemo"   , demoLayout);
     FsRootDll.LibraryJS.AppFramework        .mainDocV().Set("lytDemo.main"          );

@@ -6,7 +6,7 @@ editorDataSel Var ""
 
 varCounter    Var "0"
 viwCounter    ViewJS "n => n + 1" varCounter
-actCounter    Action AF.SetVarDirectD "lytDemo.varCounter" viwCounter
+actCounter    Action AF.SetVarDirect "lytDemo.varCounter" viwCounter
 
 wasmOutput    Var "No output yet"
 compilerOpts  ViewJS "'--simpleresolution\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/WebAssembly.Net.Http.dll\n-r:/tmp/WebAssembly.Bindings.dll\n-r:/tmp/WebAssembly.Net.WebSockets.dll\n-r:/tmp/System.Numerics.dll\n/tmp/source.fsx'"
@@ -33,6 +33,7 @@ actCompile2 Actions actCounter
 : Action AF.SetVarDirect "lytDemo.wasmStatus"   ""
 actCompile  Actions
 : Action  AF.SetVarDirect "lytDemo.wasmStatus"  "Compiling..."
+: Action  AF.SetVarDirect "lytDemo.wasmOutput"  ""
 : Action  AF.DelayAction  "100" "lytDemo.actCompile2"
 
 viwRun  ViewJS "(function(n) { var r = App.runAsm(n); return r == undefined ? '' : r })" lastCompile varCounter
@@ -43,9 +44,12 @@ actRun   Actions actCounter
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  "Running..."
 : Action AF.DelayAction  "100" "lytDemo.actRun2"
 
+wasmInstance Var ""
+viwInstance ViewJS "n => n == '' ? 'none' : '' " wasmInstance
 actLoadWASM Actions
-: Action  AF.SetVarDirect "lytDemo.wasmStatus"  "Loading WASM..."
-: Actions RequireOneWasm.Load
+: Action  AF.SetVarDirect "RequireOneWasm.LoadPath" "WASM/@{wasmInstance}/loader.js"
+: Action  AF.SetVarDirect "lytDemo.wasmStatus"      "Loading @{RequireOneWasm.LoadPath}..."
+: Action  AF.DelayAction  "100" "RequireOneWasm.Load"
 
 viwListdir  ViewJS "n => App.listdir('/')" Snippets.curSnp_content
 actListDir  Action AF.SetVarDirect "lytDemo.msgAdd" viwListdir
@@ -164,9 +168,9 @@ Righttrue div "display: flex; flex-direction:column"
 : div "display: flex;flex-direction: column;flex: 1;" wasmOutputDoc
 
 Rightfalse div "display: flex; flex-direction:column" 
-: h1 "" "Start by loading WASM" 
-: Docs RequireOneWasm.LoadPath
-: button   "click=@{RequireOneWasm.Load}" "Load WASM instance" 
+: h1 "" "Start by loading WASM"
+: Doc    AF.Select "" "SELECT WASM INSTANCE" "Interpreted FCS 25.0 modified;Interpreted FCS 33.0;Interpreted FCS 34.1;Interpreted FCS 34.1 fmwk" wasmInstance
+: button "click=@{actLoadWASM};display:@{viwInstance};class=btn btn-primary" "Load @{wasmInstance}" 
 
 Right Doc AF.DocReference "lytDemo.Right@{RequireOneWasm.loaded}"
 

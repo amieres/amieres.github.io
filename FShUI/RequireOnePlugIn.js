@@ -36,6 +36,7 @@
     }));
    else
     {
+     self.RequireOnePlugInLoadPath=loadPath.Get();
      Global.requirejs([loadPath.Get()],function(v)
      {
       f1();
