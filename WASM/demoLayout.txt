@@ -64,6 +64,16 @@ actPrintJS Actions
 : Action AF.SetVarDirect "lytDemo.msgAdd"      viwPrintJS
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  ""
 
+varJS Var ""
+viwRunJS  ViewJS "(function(code) { var r; if ('@{App}' == 'App') r = eval(code.replace(/console\.log\(/g, 'appendMsg(')); return r == undefined ? '' : r })" varJS wasmStatus
+actRunJS2 Actions
+: Action AF.SetVarDirect "lytDemo.varJS"       viwPrintJS
+: Action AF.SetVarDirect "lytDemo.msgAdd"      viwRunJS
+: Action AF.SetVarDirect "lytDemo.wasmStatus"  ""
+actRunJS Actions
+: Action AF.SetVarDirect "lytDemo.wasmStatus"  "Running JS..."
+: Action AF.DelayAction  "100" "lytDemo.actRunJS2"
+
 wasmInstance Var ""
 viwInstance ViewJS "n => n == '' ? 'none' : '' " wasmInstance
 actLoadWASM Actions
@@ -181,6 +191,8 @@ tryMe span "width:100%"
 : button    "click=@{actTranslate};class=@{applyColor}"  "Translate to JS"
 : Docs " "
 : button    "click=@{actPrintJS}  ;class=@{applyColor}"  "Print JS"
+: Docs " "
+: button    "click=@{actRunJS}    ;class=@{applyColor}"  "Run JS"
 : Docs " "
 : button    "click=@{actClearMsg}"                     "Clear"
 : Docs " "
