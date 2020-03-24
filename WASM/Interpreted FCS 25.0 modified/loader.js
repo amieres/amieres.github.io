@@ -57,7 +57,8 @@ var App = {
 	init: function () {
 		var asm =  rootPath.includes("25") ? "[WasmTest2] " : "[WasmTest3] ";
 		this.wasm_setenv     = Module.cwrap ('mono_wasm_setenv', 'void', ['string', 'string']);
-		this.wasm_setenv ("MONO_LOG_LEVEL", "debug");
+		this.wasm_setenv("MONO_LOG_LEVEL", "debug");
+		this.wasm_setenv("MONO_LOG_MASK" , "all");
 		this.listdir         = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:listdir"    );
 		this.printFile       = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:printFile"  );
 		this.writeFile       = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:writeFile"  );
