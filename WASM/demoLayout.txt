@@ -1,6 +1,8 @@
-//lytTarget  PlugIn
-//: View ParseMsgs
-//: Doc  main 
+wasmInstances View   "Interpreted FCS 25.0 modified;Interpreted FCS 33.0;Interpreted FCS 34.1;Interpreted FCS 34.1 fmwk;AOT_FCS_25.0_modified;AOT_Interp_FCS_25.0_modified"
+sourceFsx     View   "/tmp/source.fsx"
+executable    View   "/tmp/@{Snippets.snippets_sel}.exe"
+compilerOpts  ViewJS "(s, o) => 'fcs.exe\n' + s + '\n-o:' + o + '\n--simpleresolution\n--nowarn:3186\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/WebAssembly.Net.Http.dll\n-r:/tmp/WebAssembly.Bindings.dll\n-r:/tmp/WebAssembly.Net.WebSockets.dll\n-r:/tmp/System.Numerics.dll'" sourceFsx executable
+translateOpts ViewJS "'\n-d:WEBSHARPER\n-r:/tmp/WebSharper.Core.dll\n-r:/tmp/WebSharper.Core.JavaScript.dll\n-r:/tmp/WebSharper.Collections.dll\n-r:/tmp/WebSharper.InterfaceGenerator.dll\n-r:/tmp/WebSharper.Main.dll\n-r:/tmp/WebSharper.JQuery.dll\n-r:/tmp/WebSharper.JavaScript.dll\n-r:/tmp/WebSharper.Web.dll\n-r:/tmp/WebSharper.Sitelets.dll\n-r:/tmp/WebSharper.Control.dll\n--ws:BundleOnly\n--wsoutput:/tmp/website\n--project:/tmp/trs\n--jsmap\n--jsoutput:/tmp/tr0.js'"
 
 editorDataSel Var ""
 
@@ -10,8 +12,6 @@ viwCounter    ViewJS "n => n + 1" varCounter
 actCounter    Action AF.SetVarDirect "lytDemo.varCounter" viwCounter
 
 wasmOutput    Var "No output yet"
-compilerOpts  ViewJS "'--simpleresolution\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/WebAssembly.Net.Http.dll\n-r:/tmp/WebAssembly.Bindings.dll\n-r:/tmp/WebAssembly.Net.WebSockets.dll\n-r:/tmp/System.Numerics.dll\n/tmp/source.fsx\n-r:/tmp/WebSharper.Core.dll'"
-translateOpts ViewJS "'\n-d:WEBSHARPER\n-r:/tmp/WebSharper.Core.JavaScript.dll\n-r:/tmp/WebSharper.Collections.dll\n-r:/tmp/WebSharper.InterfaceGenerator.dll\n-r:/tmp/WebSharper.Main.dll\n-r:/tmp/WebSharper.JQuery.dll\n-r:/tmp/WebSharper.JavaScript.dll\n-r:/tmp/WebSharper.Web.dll\n-r:/tmp/WebSharper.Sitelets.dll\n-r:/tmp/WebSharper.Control.dll\n--ws:Bundle\n--wsoutput:/tmp/website\n--project:/tmp/trs\n--jsmap\n--jsoutput:/tmp/tr0.js'"
 
 wasmStatus    Var ""
 viwStatus     ViewJS "n => n == '' ? 'display:None' : '' " wasmStatus
@@ -29,35 +29,41 @@ toFullView3   button "click=@{setFullView3};Title=to full view"        "split vi
 
 target        ViewJS "n => n.includes('main ')?n:'main Docs "" ""'" Snippets.curSnp_content
 
-lastTranslate  Var ""
-viwTranslate   ViewJS "@{App}.translate" "/tmp/@{Snippets.snippets_sel}.exe" Snippets.curSnp_content "@{compilerOpts}@{translateOpts}"  wasmStatus
-actTranslate2  Actions 
-: Action AF.SetVarDirect "lytDemo.lastTranslate"  viwTranslate
-: Action AF.SetVarDirect "lytDemo.wasmStatus"     ""
+varTmp          Var ""
+viwSaveFsxFile  ViewJS "(fn, content,_st) => @{App}.writeFile(fn, content)" sourceFsx Snippets.curSnp_content wasmStatus
+actSaveFsxFile  Action AF.SetVarDirect "lytDemo.varTmp"      viwSaveFsxFile
+
+viwSetFSHARPBIN ViewJS "(vn, vl    , _st) => @{App}.wasm_setenv(vn, vl) )" "FSHARP_COMPILER_BIN" "/tmp" wasmStatus
+actSetFSHARPBIN Action AF.SetVarDirect "lytDemo.varTmp"      viwSaveFsxFile
+
+viwTranslate   ViewJS "(ops,_st) => @{App}.translate(ops)" "@{compilerOpts}@{translateOpts}"  wasmStatus
+actTranslate2  Actions actSetFSHARPBIN actSaveFsxFile
+: Action  AF.SetVarDirect "lytDemo.msgAdd"      viwTranslate
+: Action  AF.SetVarDirect "lytDemo.wasmStatus"  ""
 actTranslate   Actions
 : Action  AF.SetVarDirect "lytDemo.wasmStatus"  "Translating..."
 : Action  AF.SetVarDirect "lytDemo.wasmOutput"  ""
 : Action  AF.DelayAction  "100" "lytDemo.actTranslate2"
 
-lastCompile Var ""
-viwCompile  ViewJS "@{App}.compile" "/tmp/@{Snippets.snippets_sel}.exe" Snippets.curSnp_content compilerOpts  wasmStatus
-actCompile2 Actions
-: Action AF.SetVarDirect "lytDemo.lastCompile"  viwCompile
-: Action AF.SetVarDirect "lytDemo.wasmStatus"   ""
+viwCompile  ViewJS "(ops,_st) => @{App}.compile(ops)" compilerOpts  wasmStatus
+actCompile2 Actions actSetFSHARPBIN actSaveFsxFile
+: Action  AF.SetVarDirect "lytDemo.msgAdd"      viwCompile
+: Action  AF.SetVarDirect "lytDemo.wasmStatus"  ""
 actCompile  Actions
 : Action  AF.SetVarDirect "lytDemo.wasmStatus"  "Compiling..."
 : Action  AF.SetVarDirect "lytDemo.wasmOutput"  ""
 : Action  AF.DelayAction  "100" "lytDemo.actCompile2"
 
-viwRun  ViewJS "(function(n) { var r = @{App}.runAsm(n); return r == undefined ? '' : r })" "/tmp/@{Snippets.snippets_sel}.exe" wasmStatus
+viwRun   ViewJS "(function(n,_st) { var r = @{App}.runAsm(n); return r == undefined ? '' : r })" executable wasmStatus
 actRun2  Actions
 : Action AF.SetVarDirect "lytDemo.msgAdd"      viwRun
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  ""
 actRun   Actions
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  "Running..."
+: Action AF.SetVarDirect "lytDemo.wasmOutput"  ""
 : Action AF.DelayAction  "100" "lytDemo.actRun2"
 
-viwPrintJS  ViewJS "@{App}.printFile" "/tmp/website/@{Snippets.snippets_sel}.js" wasmStatus
+viwPrintJS  ViewJS "(f,_st) => @{App}.printFile(f)" "/tmp/website/@{Snippets.snippets_sel}.js" wasmStatus
 actPrintJS Actions
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  "Printing JS..."
 : Action AF.SetVarDirect "lytDemo.wasmOutput"  ""
@@ -65,14 +71,23 @@ actPrintJS Actions
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  ""
 
 varJS Var ""
-viwRunJS  ViewJS "(function(code) { var r; if ('@{App}' == 'App') r = eval(code.replace(/console\.log\(/g, 'appendMsg(')); return r == undefined ? '' : r })" varJS wasmStatus
+viwRunJS  ViewJS "(function(code,_st) { var r; if ('@{App}' == 'App') r = eval(code.replace(/console\.log\(/g, 'appendMsg(')); return r == undefined ? '' : r })" varJS wasmStatus
 actRunJS2 Actions
 : Action AF.SetVarDirect "lytDemo.varJS"       viwPrintJS
 : Action AF.SetVarDirect "lytDemo.msgAdd"      viwRunJS
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  ""
 actRunJS Actions
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  "Running JS..."
+: Action AF.SetVarDirect "lytDemo.wasmOutput"  ""
 : Action AF.DelayAction  "100" "lytDemo.actRunJS2"
+
+viwFibo  ViewJS "(p,_st) => @{App}.fibo(p)" "data 1 10 20 30 40" wasmStatus
+actFibo2 Actions
+: Action AF.SetVarDirect "lytDemo.varJS"       viwFibo
+: Action AF.SetVarDirect "lytDemo.wasmStatus"  ""
+actFibo Actions
+: Action AF.SetVarDirect "lytDemo.wasmStatus"  "fibonacci..."
+: Action AF.DelayAction  "100" "lytDemo.actFibo2"
 
 wasmInstance Var ""
 viwInstance ViewJS "n => n == '' ? 'none' : '' " wasmInstance
@@ -81,7 +96,7 @@ actLoadWASM Actions
 : Action  AF.SetVarDirect "lytDemo.wasmStatus"      "Loading @{RequireOneWasm.LoadPath}..."
 : Action  AF.DelayAction  "100" "RequireOneWasm.Load"
 
-viwListdir  ViewJS "n => @{App}.listdir('/')" Snippets.curSnp_content wasmStatus
+viwListdir  ViewJS "(_n,_st) => @{App}.listdir('/')" Snippets.curSnp_content wasmStatus
 actListDir  Actions
 : Action AF.SetVarDirect "lytDemo.wasmStatus"  "listdir..."
 : Action AF.SetVarDirect "lytDemo.msgAdd"      viwListdir
@@ -197,6 +212,8 @@ tryMe span "width:100%"
 : button    "click=@{actClearMsg}"                     "Clear"
 : Docs " "
 : button    "click=@{actListDir}"                      "Dir"
+: Docs " "
+: button    "click=@{actFibo}"                         "fibo"
 
 Righttrue div "display: flex; flex-direction:column"
 :   div       "display:flex;flex-direction: column" 
@@ -209,7 +226,7 @@ Righttrue div "display: flex; flex-direction:column"
 
 Rightfalse div "display: flex; flex-direction:column" 
 : h1 "" "Start by loading WASM"
-: Doc    AF.Select "" "SELECT WASM INSTANCE" "Interpreted FCS 25.0 modified;Interpreted FCS 33.0;Interpreted FCS 34.1;Interpreted FCS 34.1 fmwk" wasmInstance
+: Doc    AF.Select "" "SELECT WASM INSTANCE" wasmInstances wasmInstance
 : button "click=@{actLoadWASM};display:@{viwInstance};class=btn btn-primary" "Load @{wasmInstance}" 
 
 Right Doc AF.DocReference "lytDemo.Right@{RequireOneWasm.loaded}"

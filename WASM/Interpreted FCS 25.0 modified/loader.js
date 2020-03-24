@@ -17,18 +17,6 @@ var replyMessage = function(data) {
 	else returnMessage(data);
 }
 
-var makeCall = function(msg, p1, p2) {
-	if      (msg === "compile"  ) replyMessage({ msg: msg, res: App.compile  (p1, p2) } );
-	else if (msg === "translate") replyMessage({ msg: msg, res: App.translate(p1, p2) } );
-	else if (msg === "runAsm"   ) replyMessage({ msg: msg, res: App.runAsm   (p1    ) } );
-	else if (msg === "fsiEval"  ) replyMessage({ msg: msg, res: App.fsiEval  (p1, p2) } );
-	else if (msg === "listdir"  ) replyMessage({ msg: msg, res: App.listdir  (p1    ) } );
-	else if (msg === "printFile") replyMessage({ msg: msg, res: App.printFile(p1    ) } );
-	else if (msg === "writeFile") replyMessage({ msg: msg, res: App.writeFile(p1    ) } );
-	else if (msg === "wait"     ) replyMessage({ msg: msg, res: App.wait     (      ) } );
-	else console.log(msg, p1, p2);
-}
-
 self.onmessage = function (evt) {
 	var data = evt.data;
 	var msg  = data.msg;
@@ -62,24 +50,29 @@ var Browser = {
 	}
 }
 
+let rootPath = RequireOnePlugInLoadPath.replace("loader.js", "");
+
 var App = {
 	preloaded : "/tmp",
 	init: function () {
-		this.listdir         = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:listdir"    );
-		this.printFile       = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:printFile"  );
-		this.writeFile       = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:writeFile"  );
-		this.runAsm          = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:runAssembly");
-		this.fsiEval		 = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:fsiEval"    );
-		this.compile         = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:compile"    );
-		this.translate       = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:translate"  );
-		this.wait            = Module.mono_bind_static_method ("[WasmTest2] FsRoot.WasmTest:wait"       );
-		AppInitiated = true;
+		var asm =  rootPath.includes("25") ? "[WasmTest2] " : "[WasmTest3] ";
+		this.wasm_setenv     = Module.cwrap ('mono_wasm_setenv', 'void', ['string', 'string']);
+		this.wasm_setenv ("MONO_LOG_LEVEL", "debug");
+		this.listdir         = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:listdir"    );
+		this.printFile       = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:printFile"  );
+		this.writeFile       = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:writeFile"  );
+		this.runAsm          = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:runAssembly");
+		this.fsiEval		 = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:fsiEval"    );
+		this.compile         = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:compile"    );
+		this.translate       = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:translate"  );
+		this.wait            = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:wait"       );
+		this.fibo            = Module.mono_bind_static_method (asm + "FsRoot.WasmTest:fiboTime"   );
+		this.writeFile       = FS.writeFile;
+		AppInitiated 		 = true;
 		FsRootDll.LibraryJS.AppFramework.setVarDirect("lytDemo.wasmStatus", "");
 	},
 	morefiles: []
 };
-
-let rootPath = RequireOnePlugInLoadPath.replace("loader.js", "");
 
 function preloadFiles() { 
 	Module.preloadPlugins = [];
