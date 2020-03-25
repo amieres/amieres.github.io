@@ -664,8 +664,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 118103,
-  'maximum': 118103 + 0,
+  'initial': 104974,
+  'maximum': 104974 + 0,
   'element': 'anyfunc'
 });
 
@@ -1273,11 +1273,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 16627056,
+    STACK_BASE = 14754320,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 11384176,
-    DYNAMIC_BASE = 16627056,
-    DYNAMICTOP_PTR = 11384000;
+    STACK_MAX = 9511440,
+    DYNAMIC_BASE = 14754320,
+    DYNAMICTOP_PTR = 9511264;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1803,8 +1803,8 @@ var ASM_CONSTS = {
   1280: function($0, $1) {MONO.string_decoder.decode($0, $0 + $1, true);},  
  1443: function($0, $1, $2) {var str = MONO.string_decoder.decode ($0, $0 + $1); try { var res = eval (str); if (res === null || res == undefined) return 0; res = res.toString (); setValue ($2, 0, "i32"); } catch (e) { res = e.toString (); setValue ($2, 1, "i32"); if (res === null || res === undefined) res = "unknown exception"; } var buff = Module._malloc((res.length + 1) * 2); stringToUTF16 (res, buff, (res.length + 1) * 2); return buff;},  
  2511: function() {var err = new Error(); console.log ("Stacktrace: \n"); console.log (err.stack);},  
- 10075304: function() {return STACK_MAX;},  
- 10075326: function() {return TOTAL_STACK;}
+ 8379768: function() {return STACK_MAX;},  
+ 8379790: function() {return TOTAL_STACK;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1814,7 +1814,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 11383152;
+// STATICTOP = STATIC_BASE + 9510416;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -1996,7 +1996,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
       var pointer = ___cxa_is_pointer_type(throwntype);
       // can_catch receives a **, add indirection
-      var buffer = 11384160;
+      var buffer = 9511424;
       HEAP32[((buffer)>>2)]=thrown;
       thrown = buffer;
       // The different catch blocks are denoted by different types.
@@ -6505,7 +6505,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
   function _emscripten_get_sbrk_ptr() {
-      return 11384000;
+      return 9511264;
     }
 
   function _emscripten_memcpy_big(dest, src, num) {
@@ -7020,7 +7020,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   
-  var ___tm_timezone=(stringToUTF8("GMT", 11384064, 4), 11384064);function _gmtime_r(time, tmPtr) {
+  var ___tm_timezone=(stringToUTF8("GMT", 9511328, 4), 9511328);function _gmtime_r(time, tmPtr) {
       var date = new Date(HEAP32[((time)>>2)]*1000);
       HEAP32[((tmPtr)>>2)]=date.getUTCSeconds();
       HEAP32[(((tmPtr)+(4))>>2)]=date.getUTCMinutes();
@@ -7217,9 +7217,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   		},mono_wasm_start_single_stepping:function (kind) {
   			console.log (">> mono_wasm_start_single_stepping " + kind);
   			if (!this.mono_wasm_setup_single_step)
-  				this.mono_wasm_setup_single_step = Module.cwrap ("mono_wasm_setup_single_step", null, [ 'number']);
+  				this.mono_wasm_setup_single_step = Module.cwrap ("mono_wasm_setup_single_step", 'number', [ 'number']);
   
-  			this.mono_wasm_setup_single_step (kind);
+  			return this.mono_wasm_setup_single_step (kind);
   		},mono_wasm_runtime_ready:function () {
   			this.mono_wasm_runtime_is_ready = true;
   			// DO NOT REMOVE - magic debugger init function
@@ -7258,6 +7258,15 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   				options.send_to = 'WebAssembly.Runtime::DumpAotProfileData';
   			var arg = "aot:write-at-method=" + options.write_at + ",send-to-method=" + options.send_to;
   			Module.ccall ('mono_wasm_load_profiler_aot', null, ['string'], [arg]);
+  		},mono_wasm_init_coverage_profiler:function (options) {
+  			if (options == null)
+  				options = {}
+  			if (!('write_at' in options))
+  				options.write_at = 'WebAssembly.Runtime::StopProfile';
+  			if (!('send_to' in options))
+  				options.send_to = 'WebAssembly.Runtime::DumpCoverageProfileData';
+  			var arg = "coverage:write-at-method=" + options.write_at + ",send-to-method=" + options.send_to;
+  			Module.ccall ('mono_wasm_load_profiler_coverage', null, ['string'], [arg]);
   		},mono_load_runtime_and_bcl:function (vfs_prefix, deploy_prefix, enable_debugging, file_list, loaded_cb, fetch_file_cb) {
   			var pending = file_list.length;
   			var loaded_files = [];
@@ -8024,77 +8033,85 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   			this.bindings_lazy_init ();
   
   			// Allocate memory for error
-  			var out_exc = Module._malloc (4);
-  			// Set arguement memory to null;
-  			var args_mem = null;
   			var has_args = args !== null && typeof args !== "undefined" && args.length > 0;
   			var has_args_marshal = args_marshal !== null && typeof args_marshal !== "undefined" && args_marshal.length > 0;
   
-  			if (has_args_marshal && (!has_args || args.length < args_marshal.leghth))
+  			if (has_args_marshal && (!has_args || args.length > args_marshal.length))
   				throw Error("Parameter count mismatch.");
-  			
+  
+  			var args_start = null;
+  			var buffer = null;
+  			var exception_out = null;
+  
   			// check if the method signature needs argument mashalling
   			if (has_args_marshal && has_args) {
-  				var extra_args_mem = 0;
-  				for (var i = 0; i < args.length; ++i) {
-  					//long/double memory must be 8 bytes aligned and I'm being lazy here
-  					if (args_marshal[i] == 'i' || args_marshal[i] == 'f' || args_marshal[i] == 'l' || args_marshal[i] == 'd' || args_marshal[i] == 'j' || args_marshal[i] == 'k')
-  						extra_args_mem += 8;
+  				var i;
+  
+  				var converters = this.converters;
+  				if (!converters) {
+  					converters = new Map ();
+  					converters.set ('m', { steps: [{ }], size: 0});
+  					converters.set ('s', { steps: [{ convert: this.js_string_to_mono_string.bind (this)}], size: 0});
+  					converters.set ('o', { steps: [{ convert: this.js_to_mono_obj.bind (this)}], size: 0});
+  					converters.set ('u', { steps: [{ convert: this.js_to_mono_uri.bind (this)}], size: 0});
+  					converters.set ('k', { steps: [{ convert: this.js_to_mono_enum.bind (this), indirect: 'i64'}], size: 8});
+  					converters.set ('j', { steps: [{ convert: this.js_to_mono_enum.bind (this), indirect: 'i32'}], size: 8});
+  					converters.set ('i', { steps: [{ indirect: 'i32'}], size: 8});
+  					converters.set ('l', { steps: [{ indirect: 'i64'}], size: 8});
+  					converters.set ('f', { steps: [{ indirect: 'float'}], size: 8});
+  					converters.set ('d', { steps: [{ indirect: 'double'}], size: 8});
+  					this.converters = converters;
   				}
   
-  				var extra_args_mem = extra_args_mem ? Module._malloc (extra_args_mem) : 0;
-  				var extra_arg_idx = 0;
-  				args_mem = Module._malloc (args.length * 4);
+  				var converter = converters.get (args_marshal);
+  				if (!converter) {
+  					var steps = [];
+  					var size = 0;
   
-  				for (var i = 0; i < args.length; ++i) {
-  					if (args_marshal[i] == 's') {
-  						Module.setValue (args_mem + i * 4, this.js_string_to_mono_string (args [i]), "i32");
-  					} else if (args_marshal[i] == 'm') {
-  						Module.setValue (args_mem + i * 4, args [i], "i32");
-  					} else if (args_marshal[i] == 'o') {
-  						Module.setValue (args_mem + i * 4, this.js_to_mono_obj (args [i]), "i32");
-  					} else if (args_marshal[i] == 'u') {
-  						Module.setValue (args_mem + i * 4, this.js_to_mono_uri (args [i]), "i32");
-  					} else if (args_marshal[i] == 'j'  || args_marshal[i] == 'k') {
-  						var enumVal = this.js_to_mono_enum(method, i, args[i]);
-  			
-  						var extra_cell = extra_args_mem + extra_arg_idx;
-  						extra_arg_idx += 8;
+  					for (i = 0; i < args_marshal.length; ++i) {
+  						var conv = this.converters.get (args_marshal[i]);
+  						if (!conv)
+  							throw Error ("Unknown parameter type " + type);
   
-  						if (args_marshal[i] == 'j')
-  							Module.setValue (extra_cell, enumVal, "i32");
-  						else if (args_marshal[i] == 'k')
-  							Module.setValue (extra_cell, enumVal, "i64");
-  
-  						Module.setValue (args_mem + i * 4, extra_cell, "i32");
-  					} else if (args_marshal[i] == 'i' || args_marshal[i] == 'f' || args_marshal[i] == 'l' || args_marshal[i] == 'd') {
-  						var extra_cell = extra_args_mem + extra_arg_idx;
-  						extra_arg_idx += 8;
-  
-  						if (args_marshal[i] == 'i')
-  							Module.setValue (extra_cell, args [i], "i32");
-  						else if (args_marshal[i] == 'l')
-  							Module.setValue (extra_cell, args [i], "i64");
-  						else if (args_marshal[i] == 'f')
-  							Module.setValue (extra_cell, args [i], "float");
-  						else
-  							Module.setValue (extra_cell, args [i], "double");
-  
-  						Module.setValue (args_mem + i * 4, extra_cell, "i32");
+  						steps.push (conv.steps[0]);
+  						size += conv.size;
   					}
+  					converter = { steps: steps, size: size };
+  					converters.set (args_marshal, converter);
   				}
+  
+  				// assume at least 8 byte alignment from malloc
+  				buffer = Module._malloc (converter.size + (args.length * 4) + 4);
+  				var indirect_start = buffer; // buffer + buffer % 8
+  				exception_out = indirect_start + converter.size;
+  				args_start = exception_out + 4;
+  
+  				var slot = args_start;
+  				var indirect_value = indirect_start;
+  				for (i = 0; i < args.length; ++i) {
+  					var handler = converter.steps[i];
+  					var obj = handler.convert ? handler.convert (args[i], method, i) : args[i];
+  
+  					if (handler.indirect) {
+  						Module.setValue (indirect_value, obj, handler.indirect);
+  						obj = indirect_value;
+  						indirect_value += 8;
+  					}
+  
+  					Module.setValue (slot, obj, "*");
+  					slot += 4;
+  				}
+  			} else {
+  				// only marshal the exception
+  				exception_out = buffer = Module._malloc (4);
   			}
-  			Module.setValue (out_exc, 0, "i32");
   
-  			var res = this.invoke_method (method, this_arg, args_mem, out_exc);
+  			Module.setValue (exception_out, 0, "*");
   
-  			var eh_res = Module.getValue (out_exc, "i32");
+  			var res = this.invoke_method (method, this_arg, args_start, exception_out);
+  			var eh_res = Module.getValue (exception_out, "*");
   
-  			if (extra_args_mem)
-  				Module._free (extra_args_mem);
-  			if (args_mem)
-  				Module._free (args_mem);
-  			Module._free (out_exc);
+  			Module._free (buffer);
   
   			if (eh_res != 0) {
   				var msg = this.conv_string (res);
@@ -8212,91 +8229,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   		},get_wasm_type:function(obj) {
   			var coreType = obj[Symbol.for("wasm type")];
   			if (typeof coreType === "undefined") {
-  				switch (obj.constructor.name) {
-  					case "Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "ArrayBuffer":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							ArrayBuffer.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Int8Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Int8Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Uint8Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Uint8Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Uint8ClampedArray":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Uint8ClampedArray.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Int16Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Int16Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Uint16Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Uint16Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Int32Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Int32Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Uint32Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Uint32Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						return coreType;
-  					case "Float32Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Float32Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Float64Array":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Float64Array.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "Function":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							Function.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "SharedArrayBuffer":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							SharedArrayBuffer.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
-  					case "DataView":
-  						coreType = this.wasm_get_core_type(obj);
-  						if (typeof coreType !== "undefined") {
-  							DataView.prototype[Symbol.for("wasm type")] = coreType
-  						}
-  						break;
+  				coreType = this.wasm_get_core_type(obj);
+  				if (typeof coreType !== "undefined") {
+  					obj.constructor.prototype[Symbol.for("wasm type")] = coreType;
   				}
   		  	}
   			return coreType;
@@ -9581,7 +9516,7 @@ function intArrayToString(array) {
 // ASM_LIBRARY EXTERN PRIMITIVES: Int8Array,Int32Array
 
 var asmGlobalArg = {};
-var asmLibraryArg = { "__assert_fail": ___assert_fail, "__clock_gettime": ___clock_gettime, "__cxa_allocate_exception": ___cxa_allocate_exception, "__cxa_begin_catch": ___cxa_begin_catch, "__cxa_end_catch": ___cxa_end_catch, "__cxa_find_matching_catch_3": ___cxa_find_matching_catch_3, "__cxa_throw": ___cxa_throw, "__cxa_uncaught_exceptions": ___cxa_uncaught_exceptions, "__handle_stack_overflow": ___handle_stack_overflow, "__map_file": ___map_file, "__resumeException": ___resumeException, "__syscall10": ___syscall10, "__syscall102": ___syscall102, "__syscall12": ___syscall12, "__syscall122": ___syscall122, "__syscall142": ___syscall142, "__syscall144": ___syscall144, "__syscall15": ___syscall15, "__syscall168": ___syscall168, "__syscall183": ___syscall183, "__syscall192": ___syscall192, "__syscall194": ___syscall194, "__syscall195": ___syscall195, "__syscall196": ___syscall196, "__syscall197": ___syscall197, "__syscall199": ___syscall199, "__syscall20": ___syscall20, "__syscall201": ___syscall201, "__syscall202": ___syscall202, "__syscall209": ___syscall209, "__syscall220": ___syscall220, "__syscall221": ___syscall221, "__syscall268": ___syscall268, "__syscall272": ___syscall272, "__syscall3": ___syscall3, "__syscall320": ___syscall320, "__syscall33": ___syscall33, "__syscall38": ___syscall38, "__syscall39": ___syscall39, "__syscall40": ___syscall40, "__syscall41": ___syscall41, "__syscall42": ___syscall42, "__syscall5": ___syscall5, "__syscall54": ___syscall54, "__syscall63": ___syscall63, "__syscall77": ___syscall77, "__syscall83": ___syscall83, "__syscall85": ___syscall85, "__syscall9": ___syscall9, "__syscall91": ___syscall91, "__syscall94": ___syscall94, "__syscall96": ___syscall96, "__syscall97": ___syscall97, "_exit": __exit, "abort": _abort, "atexit": _atexit, "clock_getres": _clock_getres, "clock_gettime": _clock_gettime, "compile_function": compile_function, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_resize_heap": _emscripten_resize_heap, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "execve": _execve, "exit": _exit, "fd_close": _fd_close, "fd_fdstat_get": _fd_fdstat_get, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_sync": _fd_sync, "fd_write": _fd_write, "fork": _fork, "getTempRet0": _getTempRet0, "getaddrinfo": _getaddrinfo, "getgrgid_r": _getgrgid_r, "getgrnam_r": _getgrnam_r, "getnameinfo": _getnameinfo, "getprotobyname": _getprotobyname, "gettimeofday": _gettimeofday, "gmtime_r": _gmtime_r, "invoke_dii": invoke_dii, "invoke_diiii": invoke_diiii, "invoke_fiiii": invoke_fiiii, "invoke_i": invoke_i, "invoke_ii": invoke_ii, "invoke_iii": invoke_iii, "invoke_iiii": invoke_iiii, "invoke_iiiii": invoke_iiiii, "invoke_iiiiii": invoke_iiiiii, "invoke_iiiiiii": invoke_iiiiiii, "invoke_iiiiiiii": invoke_iiiiiiii, "invoke_iiiiiiiii": invoke_iiiiiiiii, "invoke_iiiiiiiiii": invoke_iiiiiiiiii, "invoke_iiiiiiiiiii": invoke_iiiiiiiiiii, "invoke_iiiiiiiiiiii": invoke_iiiiiiiiiiii, "invoke_iiiiiiiiiiiii": invoke_iiiiiiiiiiiii, "invoke_iiiiiiiiiiiiii": invoke_iiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiiiiiii, "invoke_iiiiiijii": invoke_iiiiiijii, "invoke_iiiijii": invoke_iiiijii, "invoke_iiji": invoke_iiji, "invoke_iijiiii": invoke_iijiiii, "invoke_iji": invoke_iji, "invoke_ijii": invoke_ijii, "invoke_ijiii": invoke_ijiii, "invoke_ijiiiiiii": invoke_ijiiiiiii, "invoke_jii": invoke_jii, "invoke_jiii": invoke_jiii, "invoke_jiiiii": invoke_jiiiii, "invoke_jijii": invoke_jijii, "invoke_jijiii": invoke_jijiii, "invoke_jijji": invoke_jijji, "invoke_v": invoke_v, "invoke_vi": invoke_vi, "invoke_vidi": invoke_vidi, "invoke_vii": invoke_vii, "invoke_viii": invoke_viii, "invoke_viiii": invoke_viiii, "invoke_viiiii": invoke_viiiii, "invoke_viiiiii": invoke_viiiiii, "invoke_viiiiiii": invoke_viiiiiii, "invoke_viiiiiiii": invoke_viiiiiiii, "invoke_viiiiiiiii": invoke_viiiiiiiii, "invoke_viiiiiiiiii": invoke_viiiiiiiiii, "invoke_viiiiiiiiiii": invoke_viiiiiiiiiii, "invoke_viiiiiiiiiiii": invoke_viiiiiiiiiiii, "invoke_viiiiiiiiiiiii": invoke_viiiiiiiiiiiii, "invoke_viiiiiiiiiiiiii": invoke_viiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiji": invoke_viiji, "invoke_viji": invoke_viji, "invoke_vijii": invoke_vijii, "invoke_vijiii": invoke_vijiii, "kill": _kill, "llvm_eh_typeid_for": _llvm_eh_typeid_for, "localtime_r": _localtime_r, "memory": wasmMemory, "mono_set_timeout": _mono_set_timeout, "mono_wasm_add_array_item": _mono_wasm_add_array_item, "mono_wasm_add_array_var": _mono_wasm_add_array_var, "mono_wasm_add_bool_var": _mono_wasm_add_bool_var, "mono_wasm_add_frame": _mono_wasm_add_frame, "mono_wasm_add_func_var": _mono_wasm_add_func_var, "mono_wasm_add_number_var": _mono_wasm_add_number_var, "mono_wasm_add_obj_var": _mono_wasm_add_obj_var, "mono_wasm_add_properties_var": _mono_wasm_add_properties_var, "mono_wasm_add_string_var": _mono_wasm_add_string_var, "mono_wasm_bind_core_object": _mono_wasm_bind_core_object, "mono_wasm_bind_host_object": _mono_wasm_bind_host_object, "mono_wasm_fire_bp": _mono_wasm_fire_bp, "mono_wasm_get_by_index": _mono_wasm_get_by_index, "mono_wasm_get_global_object": _mono_wasm_get_global_object, "mono_wasm_get_object_property": _mono_wasm_get_object_property, "mono_wasm_invoke_js_marshalled": _mono_wasm_invoke_js_marshalled, "mono_wasm_invoke_js_unmarshalled": _mono_wasm_invoke_js_unmarshalled, "mono_wasm_invoke_js_with_args": _mono_wasm_invoke_js_with_args, "mono_wasm_new": _mono_wasm_new, "mono_wasm_new_object": _mono_wasm_new_object, "mono_wasm_release_handle": _mono_wasm_release_handle, "mono_wasm_release_object": _mono_wasm_release_object, "mono_wasm_set_by_index": _mono_wasm_set_by_index, "mono_wasm_set_object_property": _mono_wasm_set_object_property, "mono_wasm_typed_array_copy_from": _mono_wasm_typed_array_copy_from, "mono_wasm_typed_array_copy_to": _mono_wasm_typed_array_copy_to, "mono_wasm_typed_array_from": _mono_wasm_typed_array_from, "mono_wasm_typed_array_to_array": _mono_wasm_typed_array_to_array, "nanosleep": _nanosleep, "pthread_cleanup_pop": _pthread_cleanup_pop, "pthread_cleanup_push": _pthread_cleanup_push, "pthread_setcancelstate": _pthread_setcancelstate, "schedule_background_exec": _schedule_background_exec, "sem_destroy": _sem_destroy, "sem_init": _sem_init, "sem_post": _sem_post, "sem_trywait": _sem_trywait, "sem_wait": _sem_wait, "setTempRet0": _setTempRet0, "sigaction": _sigaction, "sigemptyset": _sigemptyset, "strftime": _strftime, "sysconf": _sysconf, "table": wasmTable, "time": _time, "utime": _utime, "utimes": _utimes, "waitpid": _waitpid };
+var asmLibraryArg = { "__assert_fail": ___assert_fail, "__clock_gettime": ___clock_gettime, "__cxa_allocate_exception": ___cxa_allocate_exception, "__cxa_begin_catch": ___cxa_begin_catch, "__cxa_end_catch": ___cxa_end_catch, "__cxa_find_matching_catch_3": ___cxa_find_matching_catch_3, "__cxa_throw": ___cxa_throw, "__cxa_uncaught_exceptions": ___cxa_uncaught_exceptions, "__handle_stack_overflow": ___handle_stack_overflow, "__map_file": ___map_file, "__resumeException": ___resumeException, "__syscall10": ___syscall10, "__syscall102": ___syscall102, "__syscall12": ___syscall12, "__syscall122": ___syscall122, "__syscall142": ___syscall142, "__syscall144": ___syscall144, "__syscall15": ___syscall15, "__syscall168": ___syscall168, "__syscall183": ___syscall183, "__syscall192": ___syscall192, "__syscall194": ___syscall194, "__syscall195": ___syscall195, "__syscall196": ___syscall196, "__syscall197": ___syscall197, "__syscall199": ___syscall199, "__syscall20": ___syscall20, "__syscall201": ___syscall201, "__syscall202": ___syscall202, "__syscall209": ___syscall209, "__syscall220": ___syscall220, "__syscall221": ___syscall221, "__syscall268": ___syscall268, "__syscall272": ___syscall272, "__syscall3": ___syscall3, "__syscall320": ___syscall320, "__syscall33": ___syscall33, "__syscall38": ___syscall38, "__syscall39": ___syscall39, "__syscall40": ___syscall40, "__syscall41": ___syscall41, "__syscall42": ___syscall42, "__syscall5": ___syscall5, "__syscall54": ___syscall54, "__syscall63": ___syscall63, "__syscall77": ___syscall77, "__syscall83": ___syscall83, "__syscall85": ___syscall85, "__syscall9": ___syscall9, "__syscall91": ___syscall91, "__syscall94": ___syscall94, "__syscall96": ___syscall96, "__syscall97": ___syscall97, "_exit": __exit, "abort": _abort, "atexit": _atexit, "clock_getres": _clock_getres, "clock_gettime": _clock_gettime, "compile_function": compile_function, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_resize_heap": _emscripten_resize_heap, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "execve": _execve, "exit": _exit, "fd_close": _fd_close, "fd_fdstat_get": _fd_fdstat_get, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_sync": _fd_sync, "fd_write": _fd_write, "fork": _fork, "getTempRet0": _getTempRet0, "getaddrinfo": _getaddrinfo, "getgrgid_r": _getgrgid_r, "getgrnam_r": _getgrnam_r, "getnameinfo": _getnameinfo, "getprotobyname": _getprotobyname, "gettimeofday": _gettimeofday, "gmtime_r": _gmtime_r, "invoke_diiii": invoke_diiii, "invoke_fiiii": invoke_fiiii, "invoke_i": invoke_i, "invoke_ii": invoke_ii, "invoke_iii": invoke_iii, "invoke_iiii": invoke_iiii, "invoke_iiiii": invoke_iiiii, "invoke_iiiiii": invoke_iiiiii, "invoke_iiiiiii": invoke_iiiiiii, "invoke_iiiiiiii": invoke_iiiiiiii, "invoke_iiiiiiiii": invoke_iiiiiiiii, "invoke_iiiiiiiiii": invoke_iiiiiiiiii, "invoke_iiiiiiiiiii": invoke_iiiiiiiiiii, "invoke_iiiiiiiiiiii": invoke_iiiiiiiiiiii, "invoke_iiiiiiiiiiiii": invoke_iiiiiiiiiiiii, "invoke_iiiiiiiiiiiiii": invoke_iiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiiiii, "invoke_iiiiiiiiiiiiiiiiiii": invoke_iiiiiiiiiiiiiiiiiii, "invoke_iiiiiijii": invoke_iiiiiijii, "invoke_iiiijii": invoke_iiiijii, "invoke_iiji": invoke_iiji, "invoke_iijiiii": invoke_iijiiii, "invoke_iji": invoke_iji, "invoke_ijii": invoke_ijii, "invoke_ijiii": invoke_ijiii, "invoke_ijiiiiiii": invoke_ijiiiiiii, "invoke_jii": invoke_jii, "invoke_jiii": invoke_jiii, "invoke_jiiiii": invoke_jiiiii, "invoke_jijii": invoke_jijii, "invoke_jijiii": invoke_jijiii, "invoke_jijji": invoke_jijji, "invoke_v": invoke_v, "invoke_vi": invoke_vi, "invoke_vii": invoke_vii, "invoke_viii": invoke_viii, "invoke_viiii": invoke_viiii, "invoke_viiiii": invoke_viiiii, "invoke_viiiiii": invoke_viiiiii, "invoke_viiiiiii": invoke_viiiiiii, "invoke_viiiiiiii": invoke_viiiiiiii, "invoke_viiiiiiiii": invoke_viiiiiiiii, "invoke_viiiiiiiiii": invoke_viiiiiiiiii, "invoke_viiiiiiiiiii": invoke_viiiiiiiiiii, "invoke_viiiiiiiiiiii": invoke_viiiiiiiiiiii, "invoke_viiiiiiiiiiiii": invoke_viiiiiiiiiiiii, "invoke_viiiiiiiiiiiiii": invoke_viiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii": invoke_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii, "invoke_viiji": invoke_viiji, "invoke_viji": invoke_viji, "invoke_vijii": invoke_vijii, "invoke_vijiii": invoke_vijiii, "kill": _kill, "llvm_eh_typeid_for": _llvm_eh_typeid_for, "localtime_r": _localtime_r, "memory": wasmMemory, "mono_set_timeout": _mono_set_timeout, "mono_wasm_add_array_item": _mono_wasm_add_array_item, "mono_wasm_add_array_var": _mono_wasm_add_array_var, "mono_wasm_add_bool_var": _mono_wasm_add_bool_var, "mono_wasm_add_frame": _mono_wasm_add_frame, "mono_wasm_add_func_var": _mono_wasm_add_func_var, "mono_wasm_add_number_var": _mono_wasm_add_number_var, "mono_wasm_add_obj_var": _mono_wasm_add_obj_var, "mono_wasm_add_properties_var": _mono_wasm_add_properties_var, "mono_wasm_add_string_var": _mono_wasm_add_string_var, "mono_wasm_bind_core_object": _mono_wasm_bind_core_object, "mono_wasm_bind_host_object": _mono_wasm_bind_host_object, "mono_wasm_fire_bp": _mono_wasm_fire_bp, "mono_wasm_get_by_index": _mono_wasm_get_by_index, "mono_wasm_get_global_object": _mono_wasm_get_global_object, "mono_wasm_get_object_property": _mono_wasm_get_object_property, "mono_wasm_invoke_js_marshalled": _mono_wasm_invoke_js_marshalled, "mono_wasm_invoke_js_unmarshalled": _mono_wasm_invoke_js_unmarshalled, "mono_wasm_invoke_js_with_args": _mono_wasm_invoke_js_with_args, "mono_wasm_new": _mono_wasm_new, "mono_wasm_new_object": _mono_wasm_new_object, "mono_wasm_release_handle": _mono_wasm_release_handle, "mono_wasm_release_object": _mono_wasm_release_object, "mono_wasm_set_by_index": _mono_wasm_set_by_index, "mono_wasm_set_object_property": _mono_wasm_set_object_property, "mono_wasm_typed_array_copy_from": _mono_wasm_typed_array_copy_from, "mono_wasm_typed_array_copy_to": _mono_wasm_typed_array_copy_to, "mono_wasm_typed_array_from": _mono_wasm_typed_array_from, "mono_wasm_typed_array_to_array": _mono_wasm_typed_array_to_array, "nanosleep": _nanosleep, "pthread_cleanup_pop": _pthread_cleanup_pop, "pthread_cleanup_push": _pthread_cleanup_push, "pthread_setcancelstate": _pthread_setcancelstate, "schedule_background_exec": _schedule_background_exec, "sem_destroy": _sem_destroy, "sem_init": _sem_init, "sem_post": _sem_post, "sem_trywait": _sem_trywait, "sem_wait": _sem_wait, "setTempRet0": _setTempRet0, "sigaction": _sigaction, "sigemptyset": _sigemptyset, "strftime": _strftime, "sysconf": _sysconf, "table": wasmTable, "time": _time, "utime": _utime, "utimes": _utimes, "waitpid": _waitpid };
 var asm = createWasm();
 Module["asm"] = asm;
 /** @type {function(...*):?} */
@@ -10285,62 +10220,6 @@ var _mono_aot_WebSharper_Compiler_FSharp_get_method = Module["_mono_aot_WebSharp
 };
 
 /** @type {function(...*):?} */
-var _mono_aot_WebSharper_Main_get_method = Module["_mono_aot_WebSharper_Main_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_Main_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _mono_aot_WebSharper_JavaScript_get_method = Module["_mono_aot_WebSharper_JavaScript_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_JavaScript_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _mono_aot_WebSharper_Web_get_method = Module["_mono_aot_WebSharper_Web_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_Web_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _mono_aot_WebSharper_Sitelets_get_method = Module["_mono_aot_WebSharper_Sitelets_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_Sitelets_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _mono_aot_WebSharper_JQuery_get_method = Module["_mono_aot_WebSharper_JQuery_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_JQuery_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _mono_aot_WebSharper_Sitelets_Offline_get_method = Module["_mono_aot_WebSharper_Sitelets_Offline_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_Sitelets_Offline_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _mono_aot_WebSharper_Control_get_method = Module["_mono_aot_WebSharper_Control_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_Control_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _mono_aot_WebSharper_Collections_get_method = Module["_mono_aot_WebSharper_Collections_get_method"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["mono_aot_WebSharper_Collections_get_method"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var _mono_aot_aot_instances_get_method = Module["_mono_aot_aot_instances_get_method"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -10866,13 +10745,6 @@ var dynCall_vijiii = Module["dynCall_vijiii"] = function() {
 };
 
 /** @type {function(...*):?} */
-var dynCall_vidi = Module["dynCall_vidi"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_vidi"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var dynCall_i = Module["dynCall_i"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -11104,13 +10976,6 @@ var dynCall_fiiii = Module["dynCall_fiiii"] = function() {
 };
 
 /** @type {function(...*):?} */
-var dynCall_dii = Module["dynCall_dii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_dii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var dynCall_diiii = Module["dynCall_diiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -11244,6 +11109,13 @@ var dynCall_fdi = Module["dynCall_fdi"] = function() {
 };
 
 /** @type {function(...*):?} */
+var dynCall_dii = Module["dynCall_dii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_dii"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
 var dynCall_dfi = Module["dynCall_dfi"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -11255,6 +11127,13 @@ var dynCall_vifi = Module["dynCall_vifi"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_vifi"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
+var dynCall_vidi = Module["dynCall_vidi"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_vidi"].apply(null, arguments)
 };
 
 /** @type {function(...*):?} */
@@ -11755,20 +11634,6 @@ var dynCall_iiffi = Module["dynCall_iiffi"] = function() {
 };
 
 /** @type {function(...*):?} */
-var dynCall_didii = Module["dynCall_didii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_didii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_fifii = Module["dynCall_fifii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_fifii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var dynCall_viiiiiiiiiiiiiiiiji = Module["dynCall_viiiiiiiiiiiiiiiiji"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -12056,13 +11921,6 @@ var dynCall_viijiii = Module["dynCall_viijiii"] = function() {
 };
 
 /** @type {function(...*):?} */
-var dynCall_di = Module["dynCall_di"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_di"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var dynCall_iiijiii = Module["dynCall_iiijiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -12277,6 +12135,13 @@ var dynCall_fif = Module["dynCall_fif"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_fif"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
+var dynCall_di = Module["dynCall_di"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_di"].apply(null, arguments)
 };
 
 /** @type {function(...*):?} */
@@ -12755,28 +12620,6 @@ function invoke_viiiiiiiiiiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12
   var sp = stackSave();
   try {
     dynCall_viiiiiiiiiiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0 && e !== 'longjmp') throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_dii(index,a1,a2) {
-  var sp = stackSave();
-  try {
-    return dynCall_dii(index,a1,a2);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0 && e !== 'longjmp') throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_vidi(index,a1,a2,a3) {
-  var sp = stackSave();
-  try {
-    dynCall_vidi(index,a1,a2,a3);
   } catch(e) {
     stackRestore(sp);
     if (e !== e+0 && e !== 'longjmp') throw e;
