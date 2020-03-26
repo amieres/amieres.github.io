@@ -664,8 +664,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 116920,
-  'maximum': 116920 + 0,
+  'initial': 116994,
+  'maximum': 116994 + 0,
   'element': 'anyfunc'
 });
 
@@ -1273,11 +1273,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 16483152,
+    STACK_BASE = 16419312,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 11240272,
-    DYNAMIC_BASE = 16483152,
-    DYNAMICTOP_PTR = 11240096;
+    STACK_MAX = 11176432,
+    DYNAMIC_BASE = 16419312,
+    DYNAMICTOP_PTR = 11176256;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1802,8 +1802,8 @@ var ASM_CONSTS = {
   1279: function($0, $1) {MONO.string_decoder.decode($0, $0 + $1, true);},  
  1442: function($0, $1, $2) {var str = MONO.string_decoder.decode ($0, $0 + $1); try { var res = eval (str); if (res === null || res == undefined) return 0; res = res.toString (); setValue ($2, 0, "i32"); } catch (e) { res = e.toString (); setValue ($2, 1, "i32"); if (res === null || res === undefined) res = "unknown exception"; } var buff = Module._malloc((res.length + 1) * 2); stringToUTF16 (res, buff, (res.length + 1) * 2); return buff;},  
  2510: function() {var err = new Error(); console.log ("Stacktrace: \n"); console.log (err.stack);},  
- 9939400: function() {return STACK_MAX;},  
- 9939422: function() {return TOTAL_STACK;}
+ 9881000: function() {return STACK_MAX;},  
+ 9881022: function() {return TOTAL_STACK;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1813,7 +1813,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 11239248;
+// STATICTOP = STATIC_BASE + 11175408;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -1885,7 +1885,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
       var pointer = ___cxa_is_pointer_type(throwntype);
       // can_catch receives a **, add indirection
-      var buffer = 11240256;
+      var buffer = 11176416;
       HEAP32[((buffer)>>2)]=thrown;
       thrown = buffer;
       // The different catch blocks are denoted by different types.
@@ -6009,7 +6009,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   function _emscripten_get_sbrk_ptr() {
-      return 11240096;
+      return 11176256;
     }
 
   function _emscripten_memcpy_big(dest, src, num) {
@@ -6226,7 +6226,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   
-  var ___tm_timezone=(stringToUTF8("GMT", 11240160, 4), 11240160);function _gmtime_r(time, tmPtr) {
+  var ___tm_timezone=(stringToUTF8("GMT", 11176320, 4), 11176320);function _gmtime_r(time, tmPtr) {
       var date = new Date(HEAP32[((time)>>2)]*1000);
       HEAP32[((tmPtr)>>2)]=date.getUTCSeconds();
       HEAP32[(((tmPtr)+(4))>>2)]=date.getUTCMinutes();
@@ -11224,13 +11224,6 @@ var dynCall_viiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 };
 
 /** @type {function(...*):?} */
-var dynCall_jjii = Module["dynCall_jjii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_jjii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var dynCall_fiiiifi = Module["dynCall_fiiiifi"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -11242,6 +11235,13 @@ var dynCall_iiddji = Module["dynCall_iiddji"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_iiddji"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
+var dynCall_jjii = Module["dynCall_jjii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_jjii"].apply(null, arguments)
 };
 
 /** @type {function(...*):?} */
