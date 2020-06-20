@@ -337,42 +337,46 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
 (function()
 {
  "use strict";
- var Global,FsRoot,WasmLoader,WebSharper,Operators,Obj,UI,Var,View,EventTarget,WindowOrWorkerGlobalScope,WorkerGlobalScope,WWorker,Remoting,IMessagingO,WasmLoad,Node,JavaScript,JS,SC$1,Snap,Arrays,Event,Utils,Concurrency,Pervasives,testing_GeneratedPrintf,GeneratedPrintf,Remoting$1,AjaxRemotingProvider,HtmlModule,attr,Client,Templates,Doc,Library,String,Strings,Slice,ParseO,Unchecked,Numeric,System,Guid,Var$1,WasmStatus,Collections,Dictionary,List,Lazy,LibraryJS,Pojo,Global$1,CT,AsyncBody,Seq,T,AttrProxy,Docs,DateUtil,ConcreteVar,SC$2,DictionaryUtil,ReturnQueue,Object,LazyExtensionsProxy,LazyRecord,CustomXhrProvider,Require,XMLHttpRequestEventTarget,ArrayBufferView,Task,Task1,Error,OperationCanceledException,SC$3,Scheduler,DomUtility,AttrModule,Attrs,SC$4,HashSet,An,Settings,Abbrev,Mailbox,Enumerator,T$1,Fresh,XhrProvider,TaskCompletionSource,AggregateException,CancellationTokenSource,Elt,Array,Prepare,KeyCollection,DocElemNode,CharacterData,Docs$1,RunState,NodeSet,Anims,SC$5,InvalidOperationException,Json,SC$6,Updates,Attrs$1,Dyn,SC$7,AppendList,FormatException,SC$8,Queue,SC$9,Easing,HashSet$1,HashSetUtil,DomNodes,DynamicAttrNode,SC$10,IntelliFactory,Runtime,console,JSON,$,Date;
+ var Global,FsRoot,WasmLoader,UI,WebSharper,Operators,Obj,UI$1,Var,View,EventTarget,WindowOrWorkerGlobalScope,WorkerGlobalScope,WWorker,WasmLoad,Remoting,IMessagingO,Node,JavaScript,JS,SC$1,Snap,Arrays,Event,Utils,WasmStatus,Pervasives,LibraryJS,Pojo,GlobalModule,testing_GeneratedPrintf,GeneratedPrintf,Remoting$1,AjaxRemotingProvider,HtmlModule,attr,Client,Templates,Doc,Library,String,Strings,Slice,ParseO,Unchecked,Numeric,System,Guid,Var$1,Collections,Dictionary,Seq,Concurrency,CustomXhrProvider,Require,WsTranslator,XMLHttpRequestEventTarget,ArrayBufferView,List,T,AttrProxy,Docs,DateUtil,ConcreteVar,SC$2,DictionaryUtil,ReturnQueue,Enumerator,T$1,AsyncBody,SC$3,SC$4,Object,CT,DomUtility,AttrModule,Array,Attrs,SC$5,HashSet,An,Settings,Abbrev,Mailbox,Fresh,XhrProvider,Scheduler,Error,OperationCanceledException,CancellationTokenSource,Elt,Prepare,KeyCollection,DocElemNode,CharacterData,Docs$1,RunState,NodeSet,Anims,SC$6,Json,SC$7,Updates,Attrs$1,Dyn,SC$8,AppendList,FormatException,SC$9,Queue,SC$10,Easing,HashSet$1,HashSetUtil,DomNodes,DynamicAttrNode,Lazy,SC$11,LazyExtensionsProxy,LazyRecord,IntelliFactory,Runtime,console,JSON,$,Date;
  Global=self;
  FsRoot=Global.FsRoot=Global.FsRoot||{};
  WasmLoader=FsRoot.WasmLoader=FsRoot.WasmLoader||{};
+ UI=WasmLoader.UI=WasmLoader.UI||{};
  WebSharper=Global.WebSharper=Global.WebSharper||{};
  Operators=WebSharper.Operators=WebSharper.Operators||{};
  Obj=WebSharper.Obj=WebSharper.Obj||{};
- UI=WebSharper.UI=WebSharper.UI||{};
- Var=UI.Var=UI.Var||{};
- View=UI.View=UI.View||{};
+ UI$1=WebSharper.UI=WebSharper.UI||{};
+ Var=UI$1.Var=UI$1.Var||{};
+ View=UI$1.View=UI$1.View||{};
  EventTarget=Global.EventTarget;
  WindowOrWorkerGlobalScope=Global.WindowOrWorkerGlobalScope;
  WorkerGlobalScope=Global.WorkerGlobalScope;
  WWorker=WasmLoader.WWorker=WasmLoader.WWorker||{};
+ WasmLoad=WasmLoader.WasmLoad=WasmLoader.WasmLoad||{};
  Remoting=WasmLoader.Remoting=WasmLoader.Remoting||{};
  IMessagingO=Remoting.IMessagingO=Remoting.IMessagingO||{};
- WasmLoad=WasmLoader.WasmLoad=WasmLoader.WasmLoad||{};
  Node=Global.Node;
  JavaScript=WebSharper.JavaScript=WebSharper.JavaScript||{};
  JS=JavaScript.JS=JavaScript.JS||{};
  SC$1=Global.StartupCode$testing$testing=Global.StartupCode$testing$testing||{};
- Snap=UI.Snap=UI.Snap||{};
+ Snap=UI$1.Snap=UI$1.Snap||{};
  Arrays=WebSharper.Arrays=WebSharper.Arrays||{};
  Event=Global.Event;
  Utils=WebSharper.Utils=WebSharper.Utils||{};
- Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
+ WasmStatus=WasmLoader.WasmStatus=WasmLoader.WasmStatus||{};
  Pervasives=JavaScript.Pervasives=JavaScript.Pervasives||{};
+ LibraryJS=FsRoot.LibraryJS=FsRoot.LibraryJS||{};
+ Pojo=LibraryJS.Pojo=LibraryJS.Pojo||{};
+ GlobalModule=WasmLoad.GlobalModule=WasmLoad.GlobalModule||{};
  testing_GeneratedPrintf=Global.testing_GeneratedPrintf=Global.testing_GeneratedPrintf||{};
  GeneratedPrintf=Global.GeneratedPrintf=Global.GeneratedPrintf||{};
  Remoting$1=WebSharper.Remoting=WebSharper.Remoting||{};
  AjaxRemotingProvider=Remoting$1.AjaxRemotingProvider=Remoting$1.AjaxRemotingProvider||{};
- HtmlModule=UI.HtmlModule=UI.HtmlModule||{};
+ HtmlModule=UI$1.HtmlModule=UI$1.HtmlModule||{};
  attr=HtmlModule.attr=HtmlModule.attr||{};
- Client=UI.Client=UI.Client||{};
+ Client=UI$1.Client=UI$1.Client||{};
  Templates=Client.Templates=Client.Templates||{};
- Doc=UI.Doc=UI.Doc||{};
+ Doc=UI$1.Doc=UI$1.Doc||{};
  Library=FsRoot.Library=FsRoot.Library||{};
  String=Library.String=Library.String||{};
  Strings=WebSharper.Strings=WebSharper.Strings||{};
@@ -382,125 +386,95 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  Numeric=WebSharper.Numeric=WebSharper.Numeric||{};
  System=Global.System=Global.System||{};
  Guid=System.Guid=System.Guid||{};
- Var$1=UI.Var$1=UI.Var$1||{};
- WasmStatus=WasmLoader.WasmStatus=WasmLoader.WasmStatus||{};
+ Var$1=UI$1.Var$1=UI$1.Var$1||{};
  Collections=WebSharper.Collections=WebSharper.Collections||{};
  Dictionary=Collections.Dictionary=Collections.Dictionary||{};
- List=WebSharper.List=WebSharper.List||{};
- Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
- LibraryJS=FsRoot.LibraryJS=FsRoot.LibraryJS||{};
- Pojo=LibraryJS.Pojo=LibraryJS.Pojo||{};
- Global$1=WasmLoad.Global=WasmLoad.Global||{};
- CT=Concurrency.CT=Concurrency.CT||{};
- AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
  Seq=WebSharper.Seq=WebSharper.Seq||{};
+ Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
+ CustomXhrProvider=Remoting.CustomXhrProvider=Remoting.CustomXhrProvider||{};
+ Require=WasmLoad.Require=WasmLoad.Require||{};
+ WsTranslator=FsRoot.WsTranslator=FsRoot.WsTranslator||{};
+ XMLHttpRequestEventTarget=Global.XMLHttpRequestEventTarget;
+ ArrayBufferView=Global.ArrayBufferView;
+ List=WebSharper.List=WebSharper.List||{};
  T=List.T=List.T||{};
- AttrProxy=UI.AttrProxy=UI.AttrProxy||{};
- Docs=UI.Docs=UI.Docs||{};
+ AttrProxy=UI$1.AttrProxy=UI$1.AttrProxy||{};
+ Docs=UI$1.Docs=UI$1.Docs||{};
  DateUtil=WebSharper.DateUtil=WebSharper.DateUtil||{};
- ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
+ ConcreteVar=UI$1.ConcreteVar=UI$1.ConcreteVar||{};
  SC$2=Global.StartupCode$WebSharper_Main$Remoting=Global.StartupCode$WebSharper_Main$Remoting||{};
  DictionaryUtil=Collections.DictionaryUtil=Collections.DictionaryUtil||{};
  ReturnQueue=Remoting.ReturnQueue=Remoting.ReturnQueue||{};
- Object=Global.Object;
- LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
- LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
- CustomXhrProvider=Remoting.CustomXhrProvider=Remoting.CustomXhrProvider||{};
- Require=WasmLoad.Require=WasmLoad.Require||{};
- XMLHttpRequestEventTarget=Global.XMLHttpRequestEventTarget;
- ArrayBufferView=Global.ArrayBufferView;
- Task=WebSharper.Task=WebSharper.Task||{};
- Task1=WebSharper.Task1=WebSharper.Task1||{};
- Error=Global.Error;
- OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
- SC$3=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
- Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
- DomUtility=UI.DomUtility=UI.DomUtility||{};
- AttrModule=UI.AttrModule=UI.AttrModule||{};
- Attrs=UI.Attrs=UI.Attrs||{};
- SC$4=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
- HashSet=Collections.HashSet=Collections.HashSet||{};
- An=UI.An=UI.An||{};
- Settings=Client.Settings=Client.Settings||{};
- Abbrev=UI.Abbrev=UI.Abbrev||{};
- Mailbox=Abbrev.Mailbox=Abbrev.Mailbox||{};
  Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
  T$1=Enumerator.T=Enumerator.T||{};
+ AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
+ SC$3=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
+ SC$4=Global.StartupCode$WsTranslator$WsTranslator=Global.StartupCode$WsTranslator$WsTranslator||{};
+ Object=Global.Object;
+ CT=Concurrency.CT=Concurrency.CT||{};
+ DomUtility=UI$1.DomUtility=UI$1.DomUtility||{};
+ AttrModule=UI$1.AttrModule=UI$1.AttrModule||{};
+ Array=UI$1.Array=UI$1.Array||{};
+ Attrs=UI$1.Attrs=UI$1.Attrs||{};
+ SC$5=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
+ HashSet=Collections.HashSet=Collections.HashSet||{};
+ An=UI$1.An=UI$1.An||{};
+ Settings=Client.Settings=Client.Settings||{};
+ Abbrev=UI$1.Abbrev=UI$1.Abbrev||{};
+ Mailbox=Abbrev.Mailbox=Abbrev.Mailbox||{};
  Fresh=Abbrev.Fresh=Abbrev.Fresh||{};
  XhrProvider=Remoting$1.XhrProvider=Remoting$1.XhrProvider||{};
- TaskCompletionSource=WebSharper.TaskCompletionSource=WebSharper.TaskCompletionSource||{};
- AggregateException=WebSharper.AggregateException=WebSharper.AggregateException||{};
+ Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
+ Error=Global.Error;
+ OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
- Elt=UI.Elt=UI.Elt||{};
- Array=UI.Array=UI.Array||{};
+ Elt=UI$1.Elt=UI$1.Elt||{};
  Prepare=Templates.Prepare=Templates.Prepare||{};
  KeyCollection=Collections.KeyCollection=Collections.KeyCollection||{};
- DocElemNode=UI.DocElemNode=UI.DocElemNode||{};
+ DocElemNode=UI$1.DocElemNode=UI$1.DocElemNode||{};
  CharacterData=Global.CharacterData;
  Docs$1=Client.Docs=Client.Docs||{};
  RunState=Docs$1.RunState=Docs$1.RunState||{};
  NodeSet=Docs$1.NodeSet=Docs$1.NodeSet||{};
- Anims=UI.Anims=UI.Anims||{};
- SC$5=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
- InvalidOperationException=WebSharper.InvalidOperationException=WebSharper.InvalidOperationException||{};
+ Anims=UI$1.Anims=UI$1.Anims||{};
+ SC$6=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
  Json=WebSharper.Json=WebSharper.Json||{};
- SC$6=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
- Updates=UI.Updates=UI.Updates||{};
+ SC$7=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
+ Updates=UI$1.Updates=UI$1.Updates||{};
  Attrs$1=Client.Attrs=Client.Attrs||{};
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
- SC$7=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
- AppendList=UI.AppendList=UI.AppendList||{};
+ SC$8=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
+ AppendList=UI$1.AppendList=UI$1.AppendList||{};
  FormatException=WebSharper.FormatException=WebSharper.FormatException||{};
- SC$8=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
+ SC$9=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
  Queue=WebSharper.Queue=WebSharper.Queue||{};
- SC$9=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
- Easing=UI.Easing=UI.Easing||{};
+ SC$10=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
+ Easing=UI$1.Easing=UI$1.Easing||{};
  HashSet$1=Abbrev.HashSet=Abbrev.HashSet||{};
  HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
- DynamicAttrNode=UI.DynamicAttrNode=UI.DynamicAttrNode||{};
- SC$10=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
+ DynamicAttrNode=UI$1.DynamicAttrNode=UI$1.DynamicAttrNode||{};
+ Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
+ SC$11=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
+ LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
+ LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
  IntelliFactory=Global.IntelliFactory;
  Runtime=IntelliFactory&&IntelliFactory.Runtime;
  console=Global.console;
  JSON=Global.JSON;
  $=Global.jQuery;
  Date=Global.Date;
- WasmLoader.main=function()
+ UI.main=function()
  {
   var x,a;
-  x=WasmLoader.mainDoc();
+  x=UI.mainDoc();
   a=self.document.body;
   Templates.LoadLocalTemplates("");
   Doc.Run(a,x);
  };
- WasmLoader.wasmStatusV=function()
+ UI.mainDoc=function()
  {
-  SC$1.$cctor();
-  return SC$1.wasmStatusV;
- };
- WasmLoader.mainDoc=function()
- {
-  function a($1,$2)
-  {
-   return Doc.Element("li",[],[Doc.TextNode((function($3)
-   {
-    return function($4)
-    {
-     return $3("("+testing_GeneratedPrintf.p$1($4[0])+", "+testing_GeneratedPrintf.p$2($4[1])+")");
-    };
-   }(Global.id))([$1,$2]))]);
-  }
-  function a$1($1,$2)
-  {
-   return Doc.Element("li",[],[Doc.TextNode((function($3)
-   {
-    return function($4)
-    {
-     return $3("("+testing_GeneratedPrintf.p$1($4[0])+", "+testing_GeneratedPrintf.p$3($4[1])+")");
-    };
-   }(Global.id))([$1,$2]))]);
-  }
+  var c,c$1;
   return Doc.Element("div",[],[Doc.Element("h1",[],[Doc.TextNode("HELLO WASM!")]),Doc.Element("h2",[],[Doc.TextView(View.Map(function($1)
   {
    return(function($2)
@@ -510,75 +484,83 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
      return $2(testing_GeneratedPrintf.p($3));
     };
    }(Global.id))($1);
-  },WasmLoader.wasmStatusV().get_View()))]),Doc.Element("div",[],[Doc.InputArea([],WasmLoader.codeV()),Doc.InputArea([],WasmLoader.optsV())]),Doc.Element("span",[],[Doc.Button("Check",[],function()
+  },WasmLoader.wasmStatusV().get_View()))]),Doc.Element("span",[],[Doc.Button("Load as Worker",[],function()
   {
-   WasmLoader.callWasmA(function(t)
+   WasmLoad.loadWasmInWorker(UI.optsV().Get());
+  }),Doc.Button("Load in Main thread",[],function()
+  {
+   WasmLoad.loadInThisThread(UI.optsV().Get());
+  }),Doc.Button("Terminate Worker",[],function()
+  {
+   WWorker.terminate();
+  })]),Doc.Element("div",[],[Doc.InputArea([],UI.codeV()),Doc.InputArea([],UI.optsV())]),Doc.Element("span",[],[Doc.Button("Check",[],function()
+  {
+   UI.callWasmA(function(t)
    {
-    return WasmLoader.parseAndCheckProject(t[0],t[1],t[2]);
-   },WasmLoader.getParms());
+    return UI.parseAndCheckProject(t[0],t[1],t[2]);
+   },UI.getParms());
   }),Doc.Button("Translate",[],function()
   {
-   WasmLoader.clean();
+   UI.clean();
    WasmLoader.printfn(function($1)
    {
     return $1("Initiating translation:");
    });
-   WasmLoader.callWasmA(function(t)
+   UI.callWasmA(function(t)
    {
-    return WasmLoader.translateToJs(t[0],t[1],t[2]);
-   },WasmLoader.getParms());
+    return UI.translateToJs(t[0],t[1],t[2]);
+   },UI.getParms());
   }),Doc.Button("Dir",[],function()
   {
-   WasmLoader.callWasmA(function(d)
+   UI.callWasmA(function(d)
    {
     return(new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.dirRpc:-1181784350",[d]);
    },"/");
   }),Doc.Button("Clean",[],function()
   {
-   WasmLoader.clean();
-  }),Doc.Button("Load as Worker",[],function()
+   UI.clean();
+  })]),UI.showMessages("Fsc Messages",function($1)
   {
-   WasmLoad.loadWasmInWorker();
-  }),Doc.Button("Load in Main thread",[],function()
-  {
-   Concurrency.Start(WasmLoad.loadInThisThread(),null);
-  })]),Doc.Element("ol",[],[Doc.Convert(function(x)
-  {
-   return Doc.Element("li",[],[Doc.TextNode((function($1)
+   return function($2)
    {
-    return function($2)
-    {
-     return $1(Utils.prettyPrint($2));
-    };
-   }(Global.id))(x))]);
-  },WasmLoader.fsErrsV().get_View())]),Doc.Element("ol",[],[Doc.Convert(function($1)
+    return $1(Utils.prettyPrint($2));
+   };
+  }(Global.id),UI.fsErrsV().get_View()),UI.showMessages("Ws  Errors",(c=function($1)
   {
-   return a($1[0],$1[1]);
-  },WasmLoader.wsErrsV().get_View())]),Doc.Element("ol",[],[Doc.Convert(function($1)
+   return function($2)
+   {
+    return $1("("+testing_GeneratedPrintf.p$1($2[0])+", "+testing_GeneratedPrintf.p$2($2[1])+")");
+   };
+  }(Global.id),function(t)
   {
-   return a$1($1[0],$1[1]);
-  },WasmLoader.wsWrnsV().get_View())]),Doc.Element("div",[AttrProxy.Create("style","font-family: monospace; white-space:pre")],[Doc.TextView(WasmLoader.detailsV().get_View())])]);
+   return c([t[0],t[1]]);
+  }),UI.wsErrsV().get_View()),UI.showMessages("Ws  Warnings",(c$1=function($1)
+  {
+   return function($2)
+   {
+    return $1("("+testing_GeneratedPrintf.p$1($2[0])+", "+testing_GeneratedPrintf.p$3($2[1])+")");
+   };
+  }(Global.id),function(t)
+  {
+   return c$1([t[0],t[1]]);
+  }),UI.wsWrnsV().get_View()),Doc.Element("div",[AttrProxy.Create("style","font-family: monospace; white-space:pre")],[Doc.TextView(UI.detailsV().get_View())])]);
  };
- WasmLoader.printfn=function(fmt)
- {
-  return fmt(Remoting.messaging().wprintfn);
- };
- WasmLoader.codeV=function()
- {
-  SC$1.$cctor();
-  return SC$1.codeV;
- };
- WasmLoader.optsV=function()
+ UI.optsV=function()
  {
   SC$1.$cctor();
   return SC$1.optsV;
  };
- WasmLoader.callWasmA=function(f,p)
+ UI.codeV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.codeV;
+ };
+ UI.callWasmA=function(f,p)
  {
   var b;
   Concurrency.Start((b=null,Concurrency.Delay(function()
   {
-   return Concurrency.Combine(WasmLoader.wasmStatusV().Get().$===0?(WasmLoad.loadWasmInWorker(),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
+   return Concurrency.Combine(WasmLoader.wasmStatusV().Get().$===0?(WasmLoad.loadWasmInWorker(UI.optsV().Get()),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
    {
     return Concurrency.Bind(Concurrency.Sleep(50),function()
     {
@@ -586,7 +568,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
      {
       var m;
       m=WasmLoader.wasmStatusV().Get();
-      return m.$==2?false:m.$==5?false:m.$==3?Operators.FailWith("Wasm is already finished (Refresh browser to restart it"):true;
+      return m.$==2?false:m.$!=4;
      },Concurrency.Delay(function()
      {
       WasmLoader.printfn(function($1)
@@ -608,7 +590,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    }));
   })),null);
  };
- WasmLoader.parseAndCheckProject=function(projectName,opts,code)
+ UI.parseAndCheckProject=function(projectName,opts,code)
  {
   var b;
   b=null;
@@ -617,9 +599,9 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    return Concurrency.Bind((new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.parseAndCheckProjectRpc:-1474163089",[projectName,opts,code]),function(a)
    {
     var a$1;
-    WasmLoader.fsErrsV().Set(Arrays.ofSeq(a[0]));
-    WasmLoader.wsErrsV().Set([]);
-    WasmLoader.wsWrnsV().Set([]);
+    UI.fsErrsV().Set(Arrays.ofSeq(a[0]));
+    UI.wsErrsV().Set([]);
+    UI.wsWrnsV().Set([]);
     a$1=(function($1)
     {
      return function($2)
@@ -627,20 +609,23 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
       return $1("("+Utils.prettyPrint($2[0])+", "+Utils.printArray(Utils.prettyPrint,$2[1])+")");
      };
     }(Global.id))([a[2],a[1]]);
-    WasmLoader.detailsV().Set(a$1);
+    UI.detailsV().Set(a$1);
     return Concurrency.Zero();
    });
   });
  };
- WasmLoader.getParms=function()
+ UI.getParms=function()
  {
-  return["WasmTest",Strings.SplitChars("fsc.exe\n"+WasmLoader.optsV().Get(),["\n"],0),WasmLoader.codeV().Get()];
+  return["WasmTest",Arrays.filter(function(s)
+  {
+   return Strings.Trim(s)!=="";
+  },Strings.SplitChars("fsc.exe\n"+UI.optsV().Get(),["\n"],0)),UI.codeV().Get()];
  };
- WasmLoader.clean=function()
+ UI.clean=function()
  {
-  WasmLoader.detailsV().Set("");
+  UI.detailsV().Set("");
  };
- WasmLoader.translateToJs=function(projectName,opts,code)
+ UI.translateToJs=function(projectName,opts,code)
  {
   var b;
   b=null;
@@ -650,27 +635,37 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    {
     var wsO;
     wsO=a[1];
-    WasmLoader.fsErrsV().Set(a[0]);
-    return wsO==null?(WasmLoader.clean(),WasmLoader.wsErrsV().Set([]),WasmLoader.wsWrnsV().Set([]),Concurrency.Zero()):(WasmLoader.detailsV().Set(wsO.$0[0]),WasmLoader.wsErrsV().Set(Arrays.ofSeq(wsO.$0[1])),WasmLoader.wsWrnsV().Set(Arrays.ofSeq(wsO.$0[2])),Concurrency.Zero());
+    UI.fsErrsV().Set(a[0]);
+    return wsO==null?(UI.clean(),UI.wsErrsV().Set([]),UI.wsWrnsV().Set([]),Concurrency.Zero()):(UI.detailsV().Set(wsO.$0[0]),UI.wsErrsV().Set(Arrays.ofSeq(wsO.$0[1])),UI.wsWrnsV().Set(Arrays.ofSeq(wsO.$0[2])),Concurrency.Zero());
    });
   });
  };
- WasmLoader.fsErrsV=function()
+ UI.showMessages=function(name,f,msgsW)
+ {
+  return Doc.BindView(function(msgs)
+  {
+   return Arrays.length(msgs)===0?Doc.get_Empty():Doc.Element("div",[],[Doc.TextNode(name),Doc.Element("ol",[],[Doc.Concat(Seq.map(function(x)
+   {
+    return Doc.Element("li",[],[Doc.TextNode(f(x))]);
+   },msgs))])]);
+  },msgsW);
+ };
+ UI.fsErrsV=function()
  {
   SC$1.$cctor();
   return SC$1.fsErrsV;
  };
- WasmLoader.wsErrsV=function()
+ UI.wsErrsV=function()
  {
   SC$1.$cctor();
   return SC$1.wsErrsV;
  };
- WasmLoader.wsWrnsV=function()
+ UI.wsWrnsV=function()
  {
   SC$1.$cctor();
   return SC$1.wsWrnsV;
  };
- WasmLoader.detailsV=function()
+ UI.detailsV=function()
  {
   SC$1.$cctor();
   return SC$1.detailsV;
@@ -678,10 +673,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  Operators.FailWith=function(msg)
  {
   throw new Error(msg);
- };
- Operators.InvalidOp=function(msg)
- {
-  throw new InvalidOperationException.New(msg);
  };
  Operators.KeyValue=function(kvp)
  {
@@ -700,11 +691,20 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  Obj.New=Runtime.Ctor(function()
  {
  },Obj);
- Var=UI.Var=Runtime.Class({},Obj,Var);
+ Var=UI$1.Var=Runtime.Class({},Obj,Var);
  Var.New=Runtime.Ctor(function()
  {
   Obj.New.call(this);
  },Var);
+ WasmLoader.wasmStatusV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.wasmStatusV;
+ };
+ WasmLoader.printfn=function(fmt)
+ {
+  return fmt(Remoting.messaging().wprintfn);
+ };
  View.Sink=function(act,a)
  {
   function loop()
@@ -752,31 +752,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    return o;
   };
  };
- View.MapSeqCached=function(conv,view)
- {
-  return View.MapSeqCachedBy(Global.id,conv,view);
- };
- View.MapSeqCachedBy=function(key,conv,view)
- {
-  var state;
-  state=[new Dictionary.New$5()];
-  return View.Map(function(xs)
-  {
-   var prevState,newState,result;
-   prevState=state[0];
-   newState=new Dictionary.New$5();
-   result=Array.mapInPlace(function(x)
-   {
-    var k,res;
-    k=key(x);
-    res=prevState.ContainsKey(k)?prevState.get_Item(k):conv(x);
-    newState.set_Item(k,res);
-    return res;
-   },Arrays.ofSeq(xs));
-   state[0]=newState;
-   return result;
-  },view);
- };
  View.Map2Unit=function(a,a$1)
  {
   return View.CreateLazy(function()
@@ -795,7 +770,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    return Snap.Join(a());
   });
  };
- WWorker.receiveMessage=function(evt)
+ WWorker.receiveMessage=function(loadInThisThread,evt)
  {
   var m;
   m=evt.data;
@@ -805,7 +780,26 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    {
     return $1(Utils.toSafe($2));
    };
-  }))(m.$0):Remoting.callRunRpc(m.$0,m.$1);
+  }))(m.$0):m.$==2?loadInThisThread(m.$0):Remoting.callRunRpc(m.$0,m.$1);
+ };
+ WWorker.terminate=function()
+ {
+  var $1;
+  if($1=WWorker.workerO(),$1!=null&&$1.$==1)
+   {
+    WWorker.workerO().$0.terminate();
+    WWorker.set_workerO(null);
+    WasmLoader.printfn(function($2)
+    {
+     return $2("Worker terminated!");
+    });
+    WasmLoader.wasmStatusV().Set(WasmStatus.WasmNotLoaded);
+   }
+  else
+   WasmLoader.printfn(function($2)
+   {
+    return $2("Worker is not present");
+   });
  };
  WWorker.fromWorker=function(evt)
  {
@@ -824,77 +818,225 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   SC$1.$cctor();
   SC$1.workerO=$1;
  };
- Remoting.set_messaging=function($1)
+ WWorker.workerO=function()
  {
   SC$1.$cctor();
-  SC$1.messaging=$1;
+  return SC$1.workerO;
  };
- Remoting.returnValue=function(header,data)
+ WasmLoad.loadInThisThread=function(opts)
  {
-  Remoting.messaging().returnValue([header,data]);
+  var $1,$2,$3;
+  $2=!self.document;
+  $3=WasmLoader.wasmStatusV().Get();
+  switch($2?$3.$==3?1:$3.$==1?2:$3.$==2?4:$3.$==0?6:0:$3.$==1?1:$3.$==3?3:$3.$==4?5:$3.$==0?6:0)
+  {
+   case 0:
+    null;
+    break;
+   case 1:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loading");
+    });
+    break;
+   case 2:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loading in the main thread");
+    });
+    break;
+   case 3:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loading in a WebWorker");
+    });
+    break;
+   case 4:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loaded in the main thread");
+    });
+    break;
+   case 5:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loaded in a WebWorker");
+    });
+    break;
+   case 6:
+    Concurrency.Start(Concurrency.FromContinuations(function(ok)
+    {
+     var b;
+     function init()
+     {
+      WasmLoad.bindWasm();
+      WasmLoader.printfn(function($4)
+      {
+       return $4("WASM Initialized!");
+      });
+      WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoaded:WasmStatus.WasmLoaded);
+      ok();
+     }
+     return Concurrency.Start((b=null,Concurrency.Delay(function()
+     {
+      WasmLoader.printfn(function($4)
+      {
+       return $4("Loading WASM. Hold on, this will take a while...");
+      });
+      WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoading:WasmStatus.WasmLoading);
+      return Concurrency.Bind(Concurrency.Sleep(50),function()
+      {
+       return Concurrency.Combine(!(!self.document)?(Remoting.installProvider(),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
+       {
+        self.App=Pojo.newPojo([["init",init]]);
+        return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"mono-config.js"]),function()
+        {
+         return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"runtime.js"]),function()
+         {
+          var a,a$1;
+          a=WasmLoader.printfn(function($4)
+          {
+           return function($5)
+           {
+            return $4(Utils.toSafe($5));
+           };
+          });
+          self.Module.print=a;
+          a$1=WasmLoader.printfn(function($4)
+          {
+           return function($5)
+           {
+            return $4(Utils.toSafe($5));
+           };
+          });
+          self.Module.printErr=a$1;
+          self.Module.preRun=[function()
+          {
+           WasmLoad.preloadFiles(WasmLoad.filesToPreload(opts));
+          }];
+          return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"dotnet.js"]),function()
+          {
+           return Concurrency.Zero();
+          });
+         });
+        });
+       }));
+      });
+     })),null);
+    }),null);
+    break;
+  }
  };
- Remoting.returnExn=function(header,e)
+ WasmLoad.requireJsA=function(fs)
  {
-  Remoting.messaging().returnExn([header,e]);
+  return Concurrency.FromContinuations(function(ok)
+  {
+   return Global.requirejs(Arrays.ofSeq(fs),ok);
+  });
  };
- Remoting.callRunRpc=function(header,data)
- {
-  (Remoting.messaging().runRpc(header))(data);
- };
- Remoting.messaging=function()
+ WasmLoad.rootPath=function()
  {
   SC$1.$cctor();
-  return SC$1.messaging;
+  return SC$1.rootPath;
  };
- Remoting.returnValue0=function(md,v)
+ WasmLoad.filesToPreload=function(opts)
  {
-  var o,$1,ok;
-  o=ReturnQueue.tryGet(md);
-  o==null?void 0:($1=o.$0,ok=$1[0],$1[1],ok(v));
+  return List.ofSeq(Seq.delay(function()
+  {
+   return Seq.append(WsTranslator.dlls(),Seq.delay(function()
+   {
+    return Arrays.choose(function(a)
+    {
+     var a$1;
+     a$1=String.StartsWith("-r:",a);
+     return a$1!=null&&a$1.$==1?{
+      $:1,
+      $0:a$1.$0
+     }:null;
+    },Strings.SplitChars(opts,["\n"],0));
+   }));
+  }));
  };
- Remoting.returnExn0=function(md,e)
+ WasmLoad.preloadFiles=function(files)
  {
-  Remoting.returnExnExn(md,new Error(e));
+  var dirFiles,e,f,file,dir,from;
+  self.Browser=Pojo.newPojo([["init",Global.ignore],["asyncLoad",function(url,onload,onerror)
+  {
+   var xhr;
+   xhr=new self.XMLHttpRequest();
+   xhr.open("GET",url,true);
+   xhr.responseType="arraybuffer";
+   xhr.onload=function()
+   {
+    return xhr.status===200||xhr.status===0&&!Unchecked.Equals(xhr.response,null)?onload(new Global.Uint8Array(xhr.response)):onerror();
+   };
+   xhr.onerror=function()
+   {
+    return onerror();
+   };
+   return xhr.send(null);
+  }]]);
+  self.Module.preloadPlugins=[];
+  dirFiles=Seq.cache(Seq.distinct(Seq.map(function(a)
+  {
+   return[Strings.concat("/",Slice.array(a,null,{
+    $:1,
+    $0:Arrays.length(a)-2
+   })),Seq.last(a)];
+  },Seq.map(function(a)
+  {
+   return Arrays.map(Strings.Trim,a);
+  },Seq.map(function(s)
+  {
+   return Strings.SplitChars(Strings.Replace(s,"\\","/"),["/"],0);
+  },files)))));
+  Seq.iter(function(dir$1)
+  {
+   try
+   {
+    self.FS.mkdir(dir$1);
+   }
+   catch(e$1)
+   {
+    null;
+   }
+  },Seq.distinct(Seq.map(function(t)
+  {
+   return t[0];
+  },dirFiles)));
+  e=Enumerator.Get(dirFiles);
+  try
+  {
+   while(e.MoveNext())
+    {
+     f=e.Current();
+     file=f[1];
+     dir=f[0];
+     from=Strings.Replace(WasmLoad.rootPath()+dir+"/"+file,"//","/");
+     (WasmLoader.printfn(function($1)
+     {
+      return function($2)
+      {
+       return $1("Preloading "+Utils.toSafe($2));
+      };
+     }))(from);
+     self.FS.createPreloadedFile(dir,file,from,1,Global.$op21);
+    }
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
  };
- Remoting.appendMsg=function(txt)
+ WasmLoad.bindWasm=function()
  {
-  var pre;
-  console.log(txt);
-  !(!self.document)?(pre=WasmLoader.detailsV().Get(),WasmLoader.detailsV().Set(pre+(pre===""?"":"\n")+txt)):void 0;
+  Seq.iter(function(t)
+  {
+   WasmLoad.bindStaticMethod(t[0],t[1],t[2]);
+  },List.ofArray([["WsTranslator","FsRoot.WsTranslator","runRpc"]]));
  };
- Remoting.installProvider=function()
- {
-  Remoting$1.set_AjaxProvider(new CustomXhrProvider.New());
- };
- Remoting.returnExnExn=function(md,e)
- {
-  var o,$1;
-  o=ReturnQueue.tryGet(md);
-  o==null?void 0:($1=o.$0,$1[0],$1[1](e));
- };
- Remoting.getHeaderRpc=function(headers)
- {
-  return headers["x-websharper-rpc"];
- };
- IMessagingO.New=function(runRpc,returnValue,returnExn,wprintfn)
- {
-  return{
-   runRpc:runRpc,
-   returnValue:returnValue,
-   returnExn:returnExn,
-   wprintfn:wprintfn
-  };
- };
- WasmLoad.loadInThisThread=function()
- {
-  return Concurrency.AwaitTask1(WasmLoad.loadWasm().f());
- };
- WasmLoad.loadWasm=function()
- {
-  SC$1.$cctor();
-  return SC$1.loadWasm;
- };
- WasmLoad.loadWasmInWorker=function()
+ WasmLoad.loadWasmInWorker=function(opts)
  {
   var w;
   if(!self.document)
@@ -914,7 +1056,15 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    else
     {
      WasmLoader.wasmStatusV().Set(WasmStatus.WasmLoading);
+     WasmLoader.printfn(function($1)
+     {
+      return $1("Initiating WebWorker");
+     });
      w=new Global.Worker(Runtime.ScriptPath("testing","testing.WasmWorker.js"));
+     w.postMessage({
+      $:2,
+      $0:opts
+     });
      w.onmessage=WWorker.fromWorker;
      WWorker.set_workerO({
       $:1,
@@ -936,93 +1086,9 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
      },function(t)
      {
       Remoting.returnExn0(t[0],t[1]);
-     },function(t)
-     {
-      Remoting.appendMsg(t);
-     }));
+     },Remoting.messaging().wprintfn));
      Remoting.installProvider();
     }
- };
- WasmLoad.rootPath=function()
- {
-  SC$1.$cctor();
-  return SC$1.rootPath;
- };
- WasmLoad.requireJsA=function(fs)
- {
-  return Concurrency.FromContinuations(function(ok)
-  {
-   return Global.requirejs(Arrays.ofSeq(fs),ok);
-  });
- };
- WasmLoad.preloadFiles=function()
- {
-  var e,f,pathTo,e$1,file;
-  self.Browser=Pojo.newPojo([["init",Global.ignore],["asyncLoad",function(url,onload,onerror)
-  {
-   var xhr;
-   xhr=new self.XMLHttpRequest();
-   xhr.open("GET",url,true);
-   xhr.responseType="arraybuffer";
-   xhr.onload=function()
-   {
-    return xhr.status===200||xhr.status===0&&!Unchecked.Equals(xhr.response,null)?onload(new Global.Uint8Array(xhr.response)):onerror();
-   };
-   xhr.onerror=function()
-   {
-    return onerror();
-   };
-   return xhr.send(null);
-  }]]);
-  self.Module.preloadPlugins=[];
-  e=Enumerator.Get(WasmLoad.filesToPreload());
-  try
-  {
-   while(e.MoveNext())
-    {
-     f=e.Current();
-     pathTo=f[1];
-     try
-     {
-      self.FS.mkdir(pathTo);
-     }
-     catch(e$2)
-     {
-      null;
-     }
-     e$1=Enumerator.Get(f[2]);
-     try
-     {
-      while(e$1.MoveNext())
-       {
-        file=e$1.Current();
-        self.FS.createPreloadedFile(pathTo,file,f[0]+"/"+file,1,Global.$op21);
-       }
-     }
-     finally
-     {
-      if(typeof e$1=="object"&&"Dispose"in e$1)
-       e$1.Dispose();
-     }
-    }
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
- WasmLoad.bindWasm=function()
- {
-  Seq.iter(function(t)
-  {
-   WasmLoad.bindStaticMethod(t[0],t[1],t[2]);
-  },List.ofArray([["WsTranslator","FsRoot.WsTranslator","runRpc"]]));
- };
- WasmLoad.filesToPreload=function()
- {
-  SC$1.$cctor();
-  return SC$1.filesToPreload;
  };
  WasmLoad.bindStaticMethod=function(assmbly,path,methd)
  {
@@ -1034,6 +1100,61 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   {
    return $1("["+Utils.toSafe($2)+"]"+Utils.toSafe($3)+":"+Utils.toSafe($4));
   },4))(Global.id))(assmbly))(path))(methd),self.Module.mono_bind_static_method(m));
+ };
+ Remoting.set_messaging=function($1)
+ {
+  SC$1.$cctor();
+  SC$1.messaging=$1;
+ };
+ Remoting.returnValue=function(header,data)
+ {
+  Remoting.messaging().returnValue([header,data]);
+ };
+ Remoting.returnExn=function(header,e)
+ {
+  Remoting.messaging().returnExn([header,e]);
+ };
+ Remoting.callRunRpc=function(header,data)
+ {
+  (Remoting.messaging().runRpc(header))(data);
+ };
+ Remoting.installProvider=function()
+ {
+  Remoting$1.set_AjaxProvider(new CustomXhrProvider.New());
+ };
+ Remoting.messaging=function()
+ {
+  SC$1.$cctor();
+  return SC$1.messaging;
+ };
+ Remoting.returnValue0=function(md,v)
+ {
+  var o,$1,ok;
+  o=ReturnQueue.tryGet(md);
+  o==null?void 0:($1=o.$0,ok=$1[0],$1[1],ok(v));
+ };
+ Remoting.returnExn0=function(md,e)
+ {
+  Remoting.returnExnExn(md,new Error(e));
+ };
+ Remoting.returnExnExn=function(md,e)
+ {
+  var o,$1;
+  o=ReturnQueue.tryGet(md);
+  o==null?void 0:($1=o.$0,$1[0],$1[1](e));
+ };
+ Remoting.getHeaderRpc=function(headers)
+ {
+  return headers["x-websharper-rpc"];
+ };
+ IMessagingO.New=function(runRpc,returnValue,returnExn,wprintfn)
+ {
+  return{
+   runRpc:runRpc,
+   returnValue:returnValue,
+   returnExn:returnExn,
+   wprintfn:wprintfn
+  };
  };
  JS.GetFields=function(o)
  {
@@ -1079,23 +1200,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   function f$2(s)
   {
    return s+"T00:00:00";
-  }
-  function f$3($1,$2,$3)
-  {
-   var b;
-   b=null;
-   return Concurrency.Delay(function()
-   {
-    return Concurrency.Bind(WasmLoader.translateToJs($1,$2,$3),function()
-    {
-     WasmLoader.clean();
-     WasmLoader.printfn(function($4)
-     {
-      return $4("System initiated!");
-     });
-     return Concurrency.Zero();
-    });
-   });
   }
   SC$1.unindentStr=function(x)
   {
@@ -1187,12 +1291,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   SC$1["|Double|_|"]=ParseO.parseDoubleO();
   SC$1["|Guid|_|"]=ParseO.parseGuidO();
   SC$1.wasmStatusV=Var$1.Create$1(WasmStatus.WasmNotLoaded);
-  SC$1.detailsV=Var$1.Create$1("");
-  SC$1.fsErrsV=Var$1.Create$1([]);
-  SC$1.wsErrsV=Var$1.Create$1([]);
-  SC$1.wsWrnsV=Var$1.Create$1([]);
-  SC$1.codeV=Var$1.Create$1("printfn \"Hello\"");
-  SC$1.optsV=Var$1.Create$1("/tmp/source.fsx\n-o:source.exe\n--simpleresolution\n--nowarn:3186\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/System.Numerics.dll");
   SC$1.originalProvider=Remoting$1.AjaxProvider();
   SC$1.queues=new Dictionary.New$5();
   SC$1.messaging=IMessagingO.New(function(h)
@@ -1207,93 +1305,31 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   },function(t)
   {
    Remoting.returnExn0(t[0],t[1]);
-  },function(t)
+  },function($1)
   {
-   Remoting.appendMsg(t);
-  });
+   return function($2)
+   {
+    return $1("EARLY PRINTING!: "+Utils.toSafe($2));
+   };
+  }(function(s)
+  {
+   console.log(s);
+  }));
   SC$1.workerO=null;
   SC$1.rootPath="/WASM/publish/";
-  SC$1.filesToPreload=List.ofArray([[WasmLoad.rootPath()+"dlls","/tmp",["WebSharper.Main.dll","WebSharper.Collections.dll","WebSharper.Control.dll","WebSharper.Web.dll","WebSharper.Sitelets.dll","WebSharper.UI.dll","WebSharper.UI.Templating.Runtime.dll","WebSharper.Data.dll"]],[WasmLoad.rootPath()+"managed","/tmp",Arrays.choose(function(a)
+  SC$1.detailsV=Var$1.Create$1("");
+  SC$1.fsErrsV=Var$1.Create$1([]);
+  SC$1.wsErrsV=Var$1.Create$1([]);
+  SC$1.wsWrnsV=Var$1.Create$1([]);
+  SC$1.codeV=Var$1.Create$1("printfn \"Hello\"");
+  SC$1.optsV=Var$1.Create$1(Strings.concat("\n",Seq.map(Strings.Trim,Strings.SplitChars("\r\n                                    /tmp/source.fsx\r\n                                    -o:source.exe\r\n                                    --simpleresolution\r\n                                    --nowarn:3186\r\n                                    --optimize-\r\n                                    --noframework\r\n                                    --fullpaths\r\n                                    --warn:3\r\n                                    --target:exe\r\n                                    -r:/dlls/WebSharper.Core.dll\r\n                                    -r:/dlls/WebSharper.UI.dll\r\n                                    -r:/dlls/WebSharper.Sitelets.dll\r\n                                    -r:/managed/FSharp.Core.dll\r\n                                    -r:/managed/mscorlib.dll\r\n                                    -r:/managed/netstandard.dll\r\n                                    -r:/managed/System.dll\r\n                                    -r:/managed/System.Core.dll\r\n                                    -r:/managed/System.IO.dll\r\n                                    -r:/managed/System.Runtime.dll\r\n                                    -r:/managed/System.Net.Http.dll\r\n                                    -r:/managed/System.Threading.dll\r\n                                    -r:/managed/System.Numerics.dll\r\n                                ",["\n"],0))));
+  !(!self.document)?Remoting.set_messaging(IMessagingO.New(Remoting.messaging().runRpc,Remoting.messaging().returnValue,Remoting.messaging().returnExn,function(txt)
   {
-   var a$1;
-   a$1=String.StartsWith("-r:/tmp/",a);
-   return a$1!=null&&a$1.$==1?{
-    $:1,
-    $0:a$1.$0
-   }:null;
-  },Strings.SplitChars(WasmLoader.optsV().Get(),["\n"],0))]]);
-  SC$1.loadWasm=Lazy.Create(function()
-  {
-   return Concurrency.StartAsTask(Concurrency.FromContinuations(function(ok)
-   {
-    var b;
-    function init()
-    {
-     WasmLoad.bindWasm();
-     WasmLoader.printfn(function($1)
-     {
-      return $1("WASM Initialized!");
-     });
-     WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoaded:WasmStatus.WasmLoaded);
-     ok();
-    }
-    return Concurrency.Start((b=null,Concurrency.Delay(function()
-    {
-     return WasmLoader.wasmStatusV().Get().$!==0?((WasmLoader.printfn(function($1)
-     {
-      return function($2)
-      {
-       return $1("Wasm is already "+testing_GeneratedPrintf.p($2));
-      };
-     }))(WasmLoader.wasmStatusV().Get()),ok(),Concurrency.Zero()):(WasmLoader.printfn(function($1)
-     {
-      return $1("Loading WASM. Hold on, this will take a while...");
-     }),WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoading:WasmStatus.WasmLoading),Concurrency.Bind(Concurrency.Sleep(50),function()
-     {
-      return Concurrency.Combine(!(!self.document)?(Remoting.installProvider(),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
-      {
-       self.App=Pojo.newPojo([["init",init]]);
-       return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"mono-config.js"]),function()
-       {
-        return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"runtime.js"]),function()
-        {
-         self.Module.print=WasmLoader.printfn(function($1)
-         {
-          return function($2)
-          {
-           return $1(Utils.toSafe($2));
-          };
-         });
-         self.Module.printErr=WasmLoader.printfn(function($1)
-         {
-          return function($2)
-          {
-           return $1(Utils.toSafe($2));
-          };
-         });
-         self.Module.preRun=[function()
-         {
-          WasmLoad.preloadFiles();
-         }];
-         return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"dotnet.js"]),function()
-         {
-          return Concurrency.Zero();
-         });
-        });
-       });
-      }));
-     }));
-    })),null);
-   }),null);
-  });
-  WasmLoader.printfn(function($1)
-  {
-   return $1("Initiating system...");
-  });
-  WasmLoader.callWasmA(function($1)
-  {
-   return f$3($1[0],$1[1],$1[2]);
-  },WasmLoader.getParms());
+   var pre;
+   console.log(txt);
+   pre=UI.detailsV().Get();
+   UI.detailsV().Set(pre+(pre===""?"":"\n")+txt);
+  })):void 0;
  };
  Snap.WhenRun=function(snap,avail,obs)
  {
@@ -1393,23 +1429,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   else
    void 0;
  };
- Snap.Copy=function(sn)
- {
-  var m,res,res$1;
-  m=sn.s;
-  return m==null?sn:m!=null&&m.$==2?(res=Snap.New({
-   $:2,
-   $0:m.$0,
-   $1:[]
-  }),(Snap.WhenObsolete(sn,res),res)):m!=null&&m.$==3?(res$1=Snap.New({
-   $:3,
-   $0:[],
-   $1:[]
-  }),(Snap.When(sn,function(v)
-  {
-   Snap.MarkDone(res$1,sn,v);
-  },res$1),res$1)):sn;
- };
  Snap.Map2Unit=function(sn1,sn2)
  {
   var $1,$2,res;
@@ -1434,11 +1453,22 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $1:[]
   }),(Snap.When(sn1,cont,res),Snap.When(sn2,cont,res),res));
  };
- Snap.WhenObsolete=function(snap,obs)
+ Snap.Copy=function(sn)
  {
-  var m;
-  m=snap.s;
-  m==null?Snap.Obsolete(obs):m!=null&&m.$==2?Snap.EnqueueSafe(m.$1,obs):m!=null&&m.$==3?Snap.EnqueueSafe(m.$1,obs):void 0;
+  var m,res,res$1;
+  m=sn.s;
+  return m==null?sn:m!=null&&m.$==2?(res=Snap.New({
+   $:2,
+   $0:m.$0,
+   $1:[]
+  }),(Snap.WhenObsolete(sn,res),res)):m!=null&&m.$==3?(res$1=Snap.New({
+   $:3,
+   $0:[],
+   $1:[]
+  }),(Snap.When(sn,function(v)
+  {
+   Snap.MarkDone(res$1,sn,v);
+  },res$1),res$1)):sn;
  };
  Snap.ValueAndForever=function(snap)
  {
@@ -1451,6 +1481,12 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $:1,
    $0:[m.$0,false]
   }:null;
+ };
+ Snap.WhenObsolete=function(snap,obs)
+ {
+  var m;
+  m=snap.s;
+  m==null?Snap.Obsolete(obs):m!=null&&m.$==2?Snap.EnqueueSafe(m.$1,obs):m!=null&&m.$==3?Snap.EnqueueSafe(m.$1,obs):void 0;
  };
  Snap.Join=function(snap)
  {
@@ -1484,15 +1520,15 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   Arrays.checkBounds(arr,n);
   return arr[n];
  };
- Arrays.checkBounds=function(arr,n)
- {
-  if(n<0||n>=arr.length)
-   Operators.FailWith("Index was outside the bounds of the array.");
- };
  Arrays.set=function(arr,n,x)
  {
   Arrays.checkBounds(arr,n);
   arr[n]=x;
+ };
+ Arrays.checkBounds=function(arr,n)
+ {
+  if(n<0||n>=arr.length)
+   Operators.FailWith("Index was outside the bounds of the array.");
  };
  Utils.toSafe=function(s)
  {
@@ -1518,299 +1554,20 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   return"["+Strings.concat("; ",Seq.map(p,o))+"]";
  };
- Concurrency.Start=function(c,ctOpt)
- {
-  var ct,d;
-  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
-  Concurrency.scheduler().Fork(function()
-  {
-   if(!ct.c)
-    c(AsyncBody.New(function(a)
-    {
-     if(a.$==1)
-      Concurrency.UncaughtAsyncError(a.$0);
-    },ct));
-  });
+ WasmStatus.WasmWorkerLoading={
+  $:3
  };
- Concurrency.AwaitTask1=function(t)
- {
-  return Concurrency.FromContinuations(function(ok,err,cc)
-  {
-   t.get_Status()===0?t.Start():void 0;
-   t.ContinueWith$1(function(t$1)
-   {
-    return t$1.get_IsCanceled()?cc(new OperationCanceledException.New(Concurrency.noneCT())):t$1.get_IsFaulted()?err(t$1.get_Exception()):ok(t$1.get_Result());
-   },Concurrency.noneCT());
-  });
+ WasmStatus.WasmLoading={
+  $:1
  };
- Concurrency.defCTS=function()
- {
-  SC$3.$cctor();
-  return SC$3.defCTS;
+ WasmStatus.WasmWorkerLoaded={
+  $:4
  };
- Concurrency.UncaughtAsyncError=function(e)
- {
-  console.log("WebSharper: Uncaught asynchronous exception",e);
+ WasmStatus.WasmLoaded={
+  $:2
  };
- Concurrency.FromContinuations=function(subscribe)
- {
-  return function(c)
-  {
-   var continued;
-   function once(cont)
-   {
-    if(continued[0])
-     Operators.FailWith("A continuation provided by Async.FromContinuations was invoked multiple times");
-    else
-     {
-      continued[0]=true;
-      Concurrency.scheduler().Fork(cont);
-     }
-   }
-   continued=[false];
-   subscribe(function(a)
-   {
-    once(function()
-    {
-     c.k({
-      $:0,
-      $0:a
-     });
-    });
-   },function(e)
-   {
-    once(function()
-    {
-     c.k({
-      $:1,
-      $0:e
-     });
-    });
-   },function(e)
-   {
-    once(function()
-    {
-     c.k({
-      $:2,
-      $0:e
-     });
-    });
-   });
-  };
- };
- Concurrency.Delay=function(mk)
- {
-  return function(c)
-  {
-   try
-   {
-    (mk(null))(c);
-   }
-   catch(e)
-   {
-    c.k({
-     $:1,
-     $0:e
-    });
-   }
-  };
- };
- Concurrency.Zero=function()
- {
-  SC$3.$cctor();
-  return SC$3.Zero;
- };
- Concurrency.Bind=function(r,f)
- {
-  return Concurrency.checkCancel(function(c)
-  {
-   r(AsyncBody.New(function(a)
-   {
-    var x;
-    if(a.$==0)
-     {
-      x=a.$0;
-      Concurrency.scheduler().Fork(function()
-      {
-       try
-       {
-        (f(x))(c);
-       }
-       catch(e)
-       {
-        c.k({
-         $:1,
-         $0:e
-        });
-       }
-      });
-     }
-    else
-     Concurrency.scheduler().Fork(function()
-     {
-      c.k(a);
-     });
-   },c.ct));
-  });
- };
- Concurrency.Sleep=function(ms)
- {
-  return function(c)
-  {
-   var pending,creg;
-   pending=void 0;
-   creg=void 0;
-   pending=Global.setTimeout(function()
-   {
-    creg.Dispose();
-    Concurrency.scheduler().Fork(function()
-    {
-     c.k({
-      $:0,
-      $0:null
-     });
-    });
-   },ms);
-   creg=Concurrency.Register(c.ct,function()
-   {
-    Global.clearTimeout(pending);
-    Concurrency.scheduler().Fork(function()
-    {
-     Concurrency.cancel(c);
-    });
-   });
-  };
- };
- Concurrency.Combine=function(a,b)
- {
-  return Concurrency.Bind(a,function()
-  {
-   return b;
-  });
- };
- Concurrency.StartAsTask=function(c,ctOpt)
- {
-  var tcs;
-  tcs=new TaskCompletionSource.New();
-  Concurrency.scheduler().Fork(function()
-  {
-   Concurrency.StartWithContinuations(c,function(a)
-   {
-    tcs.SetResult(a);
-   },function(a)
-   {
-    tcs.SetException$1(a);
-   },function()
-   {
-    tcs.SetCanceled();
-   },ctOpt);
-  });
-  return tcs.get_Task();
- };
- Concurrency.scheduler=function()
- {
-  SC$3.$cctor();
-  return SC$3.scheduler;
- };
- Concurrency.While=function(g,c)
- {
-  return g()?Concurrency.Bind(c,function()
-  {
-   return Concurrency.While(g,c);
-  }):Concurrency.Return();
- };
- Concurrency.Return=function(x)
- {
-  return function(c)
-  {
-   c.k({
-    $:0,
-    $0:x
-   });
-  };
- };
- Concurrency.checkCancel=function(r)
- {
-  return function(c)
-  {
-   if(c.ct.c)
-    Concurrency.cancel(c);
-   else
-    r(c);
-  };
- };
- Concurrency.Register=function(ct,callback)
- {
-  var i;
-  return ct===Concurrency.noneCT()?{
-   Dispose:function()
-   {
-    return null;
-   }
-  }:(i=ct.r.push(callback)-1,{
-   Dispose:function()
-   {
-    return Arrays.set(ct.r,i,Global.ignore);
-   }
-  });
- };
- Concurrency.cancel=function(c)
- {
-  c.k({
-   $:2,
-   $0:new OperationCanceledException.New(c.ct)
-  });
- };
- Concurrency.StartWithContinuations=function(c,s,f,cc,ctOpt)
- {
-  var ct,d;
-  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
-  !ct.c?c(AsyncBody.New(function(a)
-  {
-   if(a.$==1)
-    f(a.$0);
-   else
-    if(a.$==2)
-     cc(a.$0);
-    else
-     s(a.$0);
-  },ct)):void 0;
- };
- Concurrency.noneCT=function()
- {
-  SC$3.$cctor();
-  return SC$3.noneCT;
- };
- Concurrency.GetCT=function()
- {
-  SC$3.$cctor();
-  return SC$3.GetCT;
- };
- Concurrency.TryWith=function(r,f)
- {
-  return function(c)
-  {
-   r(AsyncBody.New(function(a)
-   {
-    if(a.$==0)
-     c.k({
-      $:0,
-      $0:a.$0
-     });
-    else
-     if(a.$==1)
-      try
-      {
-       (f(a.$0))(c);
-      }
-      catch(e)
-      {
-       c.k(a);
-      }
-     else
-      c.k(a);
-   },c.ct));
-  };
+ WasmStatus.WasmNotLoaded={
+  $:0
  };
  Pervasives.NewFromSeq=function(fields)
  {
@@ -1832,9 +1589,41 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   }
   return r;
  };
+ Pojo.newPojo=function(props)
+ {
+  var pojo,f;
+  function f$1(a,a$1)
+  {
+   return function(p)
+   {
+    return Pojo.addProp(a,a$1,p);
+   };
+  }
+  function g(v)
+  {
+  }
+  pojo={};
+  Seq.iter((f=function(b)
+  {
+   return(function($1)
+   {
+    return f$1($1[0],$1[1]);
+   }(b))(pojo);
+  },function(x)
+  {
+   return g(f(x));
+  }),props);
+  return pojo;
+ };
+ Pojo.addProp=function(p,p$1,pojo)
+ {
+  pojo[p]=p$1;
+  return pojo;
+ };
+ GlobalModule=WasmLoad.GlobalModule=Runtime.Class({},Obj,GlobalModule);
  testing_GeneratedPrintf.p=function($1)
  {
-  return $1.$==6?"WasmWorkerFinished":$1.$==5?"WasmWorkerLoaded":$1.$==4?"WasmWorkerLoading":$1.$==3?"WasmFinished":$1.$==2?"WasmLoaded":$1.$==1?"WasmLoading":"WasmNotLoaded";
+  return $1.$==4?"WasmWorkerLoaded":$1.$==3?"WasmWorkerLoading":$1.$==2?"WasmLoaded":$1.$==1?"WasmLoading":"WasmNotLoaded";
  };
  testing_GeneratedPrintf.p$1=function($1)
  {
@@ -1920,13 +1709,13 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  Templates.LocalTemplatesLoaded=function()
  {
-  SC$4.$cctor();
-  return SC$4.LocalTemplatesLoaded;
+  SC$5.$cctor();
+  return SC$5.LocalTemplatesLoaded;
  };
  Templates.set_LocalTemplatesLoaded=function($1)
  {
-  SC$4.$cctor();
-  SC$4.LocalTemplatesLoaded=$1;
+  SC$5.$cctor();
+  SC$5.LocalTemplatesLoaded=$1;
  };
  Templates.LoadNestedTemplates=function(root,baseName)
  {
@@ -1980,8 +1769,8 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  Templates.LoadedTemplates=function()
  {
-  SC$4.$cctor();
-  return SC$4.LoadedTemplates;
+  SC$5.$cctor();
+  return SC$5.LoadedTemplates;
  };
  Templates.LoadedTemplateFile=function(name)
  {
@@ -2229,10 +2018,10 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  Templates.TextHoleRE=function()
  {
-  SC$4.$cctor();
-  return SC$4.TextHoleRE;
+  SC$5.$cctor();
+  return SC$5.TextHoleRE;
  };
- Doc=UI.Doc=Runtime.Class({},Obj,Doc);
+ Doc=UI$1.Doc=Runtime.Class({},Obj,Doc);
  Doc.Run=function(parent,doc)
  {
   Docs.LinkElement(parent,doc.docNode);
@@ -2245,6 +2034,12 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $0:DomUtility.CreateText(v)
   },View.Const());
  };
+ Doc.Button=function(caption,attrs,action)
+ {
+  var attrs$1;
+  attrs$1=AttrProxy.Concat(attrs);
+  return Elt.New(Doc.Clickable("button",action),attrs$1,Doc.TextNode(caption));
+ };
  Doc.InputArea=function(attr$1,_var)
  {
   return Doc.InputInternal("textarea",function()
@@ -2252,15 +2047,15 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    return Seq.append(attr$1,[AttrModule.Value(_var)]);
   });
  };
- Doc.Button=function(caption,attrs,action)
+ Doc.get_Empty=function()
  {
-  var attrs$1;
-  attrs$1=AttrProxy.Concat(attrs);
-  return Elt.New(Doc.Clickable("button",action),attrs$1,Doc.TextNode(caption));
+  return Doc.Mk(null,View.Const());
  };
- Doc.Convert=function(render,view)
+ Doc.Concat=function(xs)
  {
-  return Doc.Flatten(View.MapSeqCached(render,view));
+  var x;
+  x=Array.ofSeqNonCopying(xs);
+  return Array.TreeReduce(Doc.get_Empty(),Doc.Append,x);
  };
  Doc.TextView=function(txt)
  {
@@ -2294,12 +2089,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   return new Doc.New(node,updates);
  };
- Doc.InputInternal=function(elemTy,attr$1)
- {
-  var el;
-  el=DomUtility.CreateElement(elemTy);
-  return Elt.New(el,AttrProxy.Concat(attr$1(el)),Doc.get_Empty());
- };
  Doc.Clickable=function(elem,action)
  {
   var el;
@@ -2311,19 +2100,23 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   },false);
   return el;
  };
- Doc.Flatten=function(view)
+ Doc.InputInternal=function(elemTy,attr$1)
  {
-  return Doc.EmbedView(View.Map(Doc.Concat,view));
+  var el;
+  el=DomUtility.CreateElement(elemTy);
+  return Elt.New(el,AttrProxy.Concat(attr$1(el)),Doc.get_Empty());
  };
- Doc.Concat=function(xs)
+ Doc.BindView=function(f,view)
  {
-  var x;
-  x=Array.ofSeqNonCopying(xs);
-  return Array.TreeReduce(Doc.get_Empty(),Doc.Append,x);
+  return Doc.EmbedView(View.Map(f,view));
  };
- Doc.get_Empty=function()
+ Doc.Append=function(a,b)
  {
-  return Doc.Mk(null,View.Const());
+  return Doc.Mk({
+   $:0,
+   $0:a.docNode,
+   $1:b.docNode
+  },View.Map2Unit(a.updates,b.updates));
  };
  Doc.EmbedView=function(view)
  {
@@ -2337,14 +2130,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    Docs.UpdateEmbedNode(node,doc.docNode);
    return doc.updates;
   },view)));
- };
- Doc.Append=function(a,b)
- {
-  return Doc.Mk({
-   $:0,
-   $0:a.docNode,
-   $1:b.docNode
-  },View.Map2Unit(a.updates,b.updates));
  };
  Doc.New=Runtime.Ctor(function(docNode,updates)
  {
@@ -2397,6 +2182,16 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   return s.replace(new Global.RegExp("^\\s+"),"").replace(new Global.RegExp("\\s+$"),"");
  };
+ Strings.Replace=function(subject,search,replace)
+ {
+  function replaceLoop(subj)
+  {
+   var index,replaced,nextStartIndex;
+   index=subj.indexOf(search);
+   return index!==-1?(replaced=Strings.ReplaceOnce(subj,search,replace),(nextStartIndex=index+replace.length,Strings.Substring(replaced,0,index+replace.length)+replaceLoop(replaced.substring(nextStartIndex)))):subj;
+  }
+  return replaceLoop(subject);
+ };
  Strings.StartsWith=function(t,s)
  {
   return t.substring(0,s.length)==s;
@@ -2412,27 +2207,17 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   return s.replace(new Global.RegExp("[-\\/\\\\^$*+?.()|[\\]{}]","g"),"\\$&");
  };
+ Strings.ReplaceOnce=function(string,search,replace)
+ {
+  return string.replace(search,replace);
+ };
  Strings.SplitWith=function(str,pat)
  {
   return str.split(pat);
  };
- Strings.Replace=function(subject,search,replace)
- {
-  function replaceLoop(subj)
-  {
-   var index,replaced,nextStartIndex;
-   index=subj.indexOf(search);
-   return index!==-1?(replaced=Strings.ReplaceOnce(subj,search,replace),(nextStartIndex=index+replace.length,Strings.Substring(replaced,0,index+replace.length)+replaceLoop(replaced.substring(nextStartIndex)))):subj;
-  }
-  return replaceLoop(subject);
- };
  Strings.Substring=function(s,ix,ct)
  {
   return s.substr(ix,ct);
- };
- Strings.ReplaceOnce=function(string,search,replace)
- {
-  return string.replace(search,replace);
  };
  Slice.array=function(source,start,finish)
  {
@@ -2485,6 +2270,52 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   SC$1.$cctor();
   return SC$1.parseGuidO;
+ };
+ Unchecked.Equals=function(a,b)
+ {
+  var m,eqR,k,k$1;
+  if(a===b)
+   return true;
+  else
+   {
+    m=typeof a;
+    if(m=="object")
+    {
+     if(a===null||a===void 0||b===null||b===void 0)
+      return false;
+     else
+      if("Equals"in a)
+       return a.Equals(b);
+      else
+       if(a instanceof Global.Array&&b instanceof Global.Array)
+        return Unchecked.arrayEquals(a,b);
+       else
+        if(a instanceof Global.Date&&b instanceof Global.Date)
+         return Unchecked.dateEquals(a,b);
+        else
+         {
+          eqR=[true];
+          for(var k$2 in a)if(function(k$3)
+          {
+           eqR[0]=!a.hasOwnProperty(k$3)||b.hasOwnProperty(k$3)&&Unchecked.Equals(a[k$3],b[k$3]);
+           return!eqR[0];
+          }(k$2))
+           break;
+          if(eqR[0])
+           {
+            for(var k$3 in b)if(function(k$4)
+            {
+             eqR[0]=!b.hasOwnProperty(k$4)||a.hasOwnProperty(k$4);
+             return!eqR[0];
+            }(k$3))
+             break;
+           }
+          return eqR[0];
+         }
+    }
+    else
+     return m=="function"&&("$Func"in a?a.$Func===b.$Func&&a.$Target===b.$Target:"$Invokes"in a&&"$Invokes"in b&&Unchecked.arrayEquals(a.$Invokes,b.$Invokes));
+   }
  };
  Unchecked.Compare=function(a,b)
  {
@@ -2542,51 +2373,26 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
     }
    }
  };
- Unchecked.Equals=function(a,b)
+ Unchecked.arrayEquals=function(a,b)
  {
-  var m,eqR,k,k$1;
-  if(a===b)
-   return true;
-  else
+  var eq,i;
+  if(Arrays.length(a)===Arrays.length(b))
    {
-    m=typeof a;
-    if(m=="object")
-    {
-     if(a===null||a===void 0||b===null||b===void 0)
-      return false;
-     else
-      if("Equals"in a)
-       return a.Equals(b);
-      else
-       if(a instanceof Global.Array&&b instanceof Global.Array)
-        return Unchecked.arrayEquals(a,b);
-       else
-        if(a instanceof Global.Date&&b instanceof Global.Date)
-         return Unchecked.dateEquals(a,b);
-        else
-         {
-          eqR=[true];
-          for(var k$2 in a)if(function(k$3)
-          {
-           eqR[0]=!a.hasOwnProperty(k$3)||b.hasOwnProperty(k$3)&&Unchecked.Equals(a[k$3],b[k$3]);
-           return!eqR[0];
-          }(k$2))
-           break;
-          if(eqR[0])
-           {
-            for(var k$3 in b)if(function(k$4)
-            {
-             eqR[0]=!b.hasOwnProperty(k$4)||a.hasOwnProperty(k$4);
-             return!eqR[0];
-            }(k$3))
-             break;
-           }
-          return eqR[0];
-         }
-    }
-    else
-     return m=="function"&&("$Func"in a?a.$Func===b.$Func&&a.$Target===b.$Target:"$Invokes"in a&&"$Invokes"in b&&Unchecked.arrayEquals(a.$Invokes,b.$Invokes));
+    eq=true;
+    i=0;
+    while(eq&&i<Arrays.length(a))
+     {
+      !Unchecked.Equals(Arrays.get(a,i),Arrays.get(b,i))?eq=false:void 0;
+      i=i+1;
+     }
+    return eq;
    }
+  else
+   return false;
+ };
+ Unchecked.dateEquals=function(a,b)
+ {
+  return a.getTime()===b.getTime();
  };
  Unchecked.compareArrays=function(a,b)
  {
@@ -2617,27 +2423,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   var m;
   m=typeof o;
   return m=="function"?0:m=="boolean"?o?1:0:m=="number"?o:m=="string"?Unchecked.hashString(o):m=="object"?o==null?0:o instanceof Global.Array?Unchecked.hashArray(o):Unchecked.hashObject(o):0;
- };
- Unchecked.arrayEquals=function(a,b)
- {
-  var eq,i;
-  if(Arrays.length(a)===Arrays.length(b))
-   {
-    eq=true;
-    i=0;
-    while(eq&&i<Arrays.length(a))
-     {
-      !Unchecked.Equals(Arrays.get(a,i),Arrays.get(b,i))?eq=false:void 0;
-      i=i+1;
-     }
-    return eq;
-   }
-  else
-   return false;
- };
- Unchecked.dateEquals=function(a,b)
- {
-  return a.getTime()===b.getTime();
  };
  Unchecked.hashString=function(s)
  {
@@ -2858,7 +2643,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   throw new FormatException.New$1("Format String can be only \"D\", \"d\", \"N\", \"n\", \"P\", \"p\", \"B\", \"b\", \"X\" or \"x\".");
  };
- Var$1=UI.Var$1=Runtime.Class({},Obj,Var$1);
+ Var$1=UI$1.Var$1=Runtime.Class({},Obj,Var$1);
  Var$1.Create$1=function(v)
  {
   return new ConcreteVar.New(false,Snap.New({
@@ -2866,21 +2651,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $0:v,
    $1:[]
   }),v);
- };
- WasmStatus.WasmNotLoaded={
-  $:0
- };
- WasmStatus.WasmWorkerLoading={
-  $:4
- };
- WasmStatus.WasmLoading={
-  $:1
- };
- WasmStatus.WasmWorkerLoaded={
-  $:5
- };
- WasmStatus.WasmLoaded={
-  $:2
  };
  Remoting$1.AjaxProvider=function()
  {
@@ -3088,28 +2858,559 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
     e.Dispose();
   }
  },Dictionary);
- List.ofArray=function(arr)
+ Seq.map=function(f,s)
  {
-  var r,i,$1;
-  r=T.Empty;
-  for(i=Arrays.length(arr)-1,$1=0;i>=$1;i--)r=new T({
-   $:1,
-   $0:Arrays.get(arr,i),
-   $1:r
+  return{
+   GetEnumerator:function()
+   {
+    var en;
+    en=Enumerator.Get(s);
+    return new T$1.New(null,null,function(e)
+    {
+     return en.MoveNext()&&(e.c=f(en.Current()),true);
+    },function()
+    {
+     en.Dispose();
+    });
+   }
+  };
+ };
+ Seq.iter=function(p,s)
+ {
+  var e;
+  e=Enumerator.Get(s);
+  try
+  {
+   while(e.MoveNext())
+    p(e.Current());
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ Seq.delay=function(f)
+ {
+  return{
+   GetEnumerator:function()
+   {
+    return Enumerator.Get(f());
+   }
+  };
+ };
+ Seq.append=function(s1,s2)
+ {
+  return{
+   GetEnumerator:function()
+   {
+    var e1,first;
+    e1=Enumerator.Get(s1);
+    first=[true];
+    return new T$1.New(e1,null,function(x)
+    {
+     var x$1;
+     return x.s.MoveNext()?(x.c=x.s.Current(),true):(x$1=x.s,!Unchecked.Equals(x$1,null)?x$1.Dispose():void 0,x.s=null,first[0]&&(first[0]=false,x.s=Enumerator.Get(s2),x.s.MoveNext()?(x.c=x.s.Current(),true):(x.s.Dispose(),x.s=null,false)));
+    },function(x)
+    {
+     var x$1;
+     x$1=x.s;
+     !Unchecked.Equals(x$1,null)?x$1.Dispose():void 0;
+    });
+   }
+  };
+ };
+ Seq.distinct=function(s)
+ {
+  return Seq.distinctBy(Global.id,s);
+ };
+ Seq.cache=function(s)
+ {
+  var cache,o;
+  cache=[];
+  o=[Enumerator.Get(s)];
+  return{
+   GetEnumerator:function()
+   {
+    return new T$1.New(0,null,function(e)
+    {
+     var en;
+     return e.s<cache.length?(e.c=cache[e.s],e.s=e.s+1,true):(en=o[0],Unchecked.Equals(en,null)?false:en.MoveNext()?(e.s=e.s+1,e.c=en.Current(),cache.push(e.c),true):(en.Dispose(),o[0]=null,false));
+    },void 0);
+   }
+  };
+ };
+ Seq.tryFind=function(ok,s)
+ {
+  var e,r,x;
+  e=Enumerator.Get(s);
+  try
+  {
+   r=null;
+   while(r==null&&e.MoveNext())
+    {
+     x=e.Current();
+     ok(x)?r={
+      $:1,
+      $0:x
+     }:void 0;
+    }
+   return r;
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ Seq.tryFindIndex=function(ok,s)
+ {
+  var e,loop,i;
+  e=Enumerator.Get(s);
+  try
+  {
+   loop=true;
+   i=0;
+   while(loop&&e.MoveNext())
+    if(ok(e.Current()))
+     loop=false;
+    else
+     i=i+1;
+   return loop?null:{
+    $:1,
+    $0:i
+   };
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ Seq.filter=function(f,s)
+ {
+  return{
+   GetEnumerator:function()
+   {
+    var o;
+    o=Enumerator.Get(s);
+    return new T$1.New(null,null,function(e)
+    {
+     var loop,c,res;
+     loop=o.MoveNext();
+     c=o.Current();
+     res=false;
+     while(loop)
+      if(f(c))
+       {
+        e.c=c;
+        res=true;
+        loop=false;
+       }
+      else
+       if(o.MoveNext())
+        c=o.Current();
+       else
+        loop=false;
+     return res;
+    },function()
+    {
+     o.Dispose();
+    });
+   }
+  };
+ };
+ Seq.distinctBy=function(f,s)
+ {
+  return{
+   GetEnumerator:function()
+   {
+    var o,seen;
+    o=Enumerator.Get(s);
+    seen=new HashSet.New$3();
+    return new T$1.New(null,null,function(e)
+    {
+     var cur,has;
+     if(o.MoveNext())
+      {
+       cur=o.Current();
+       has=seen.Add(f(cur));
+       while(!has&&o.MoveNext())
+        {
+         cur=o.Current();
+         has=seen.Add(f(cur));
+        }
+       return has&&(e.c=cur,true);
+      }
+     else
+      return false;
+    },function()
+    {
+     o.Dispose();
+    });
+   }
+  };
+ };
+ Seq.head=function(s)
+ {
+  var e;
+  e=Enumerator.Get(s);
+  try
+  {
+   return e.MoveNext()?e.Current():Seq.insufficient();
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ Seq.fold=function(f,x,s)
+ {
+  var r,e;
+  r=x;
+  e=Enumerator.Get(s);
+  try
+  {
+   while(e.MoveNext())
+    r=f(r,e.Current());
+   return r;
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ Seq.max=function(s)
+ {
+  var e,m,x;
+  e=Enumerator.Get(s);
+  try
+  {
+   if(!e.MoveNext())
+    Seq.seqEmpty();
+   m=e.Current();
+   while(e.MoveNext())
+    {
+     x=e.Current();
+     Unchecked.Compare(x,m)===1?m=x:void 0;
+    }
+   return m;
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ Seq.seqEmpty=function()
+ {
+  return Operators.FailWith("The input sequence was empty.");
+ };
+ Snap.Obsolete=function(sn)
+ {
+  var $1,m,i,$2,o;
+  m=sn.s;
+  if(m==null||(m!=null&&m.$==2?($1=m.$1,false):m!=null&&m.$==3?($1=m.$1,false):true))
+   void 0;
+  else
+   {
+    sn.s=null;
+    for(i=0,$2=Arrays.length($1)-1;i<=$2;i++){
+     o=Arrays.get($1,i);
+     typeof o=="object"?function(sn$1)
+     {
+      Snap.Obsolete(sn$1);
+     }(o):o();
+    }
+   }
+ };
+ Snap.New=function(State)
+ {
+  return{
+   s:State
+  };
+ };
+ Concurrency.FromContinuations=function(subscribe)
+ {
+  return function(c)
+  {
+   var continued;
+   function once(cont)
+   {
+    if(continued[0])
+     Operators.FailWith("A continuation provided by Async.FromContinuations was invoked multiple times");
+    else
+     {
+      continued[0]=true;
+      Concurrency.scheduler().Fork(cont);
+     }
+   }
+   continued=[false];
+   subscribe(function(a)
+   {
+    once(function()
+    {
+     c.k({
+      $:0,
+      $0:a
+     });
+    });
+   },function(e)
+   {
+    once(function()
+    {
+     c.k({
+      $:1,
+      $0:e
+     });
+    });
+   },function(e)
+   {
+    once(function()
+    {
+     c.k({
+      $:2,
+      $0:e
+     });
+    });
+   });
+  };
+ };
+ Concurrency.Delay=function(mk)
+ {
+  return function(c)
+  {
+   try
+   {
+    (mk(null))(c);
+   }
+   catch(e)
+   {
+    c.k({
+     $:1,
+     $0:e
+    });
+   }
+  };
+ };
+ Concurrency.Bind=function(r,f)
+ {
+  return Concurrency.checkCancel(function(c)
+  {
+   r(AsyncBody.New(function(a)
+   {
+    var x;
+    if(a.$==0)
+     {
+      x=a.$0;
+      Concurrency.scheduler().Fork(function()
+      {
+       try
+       {
+        (f(x))(c);
+       }
+       catch(e)
+       {
+        c.k({
+         $:1,
+         $0:e
+        });
+       }
+      });
+     }
+    else
+     Concurrency.scheduler().Fork(function()
+     {
+      c.k(a);
+     });
+   },c.ct));
   });
-  return r;
  };
- List.head=function(l)
+ Concurrency.Sleep=function(ms)
  {
-  return l.$==1?l.$0:List.listEmpty();
+  return function(c)
+  {
+   var pending,creg;
+   pending=void 0;
+   creg=void 0;
+   pending=Global.setTimeout(function()
+   {
+    creg.Dispose();
+    Concurrency.scheduler().Fork(function()
+    {
+     c.k({
+      $:0,
+      $0:null
+     });
+    });
+   },ms);
+   creg=Concurrency.Register(c.ct,function()
+   {
+    Global.clearTimeout(pending);
+    Concurrency.scheduler().Fork(function()
+    {
+     Concurrency.cancel(c);
+    });
+   });
+  };
  };
- List.tail=function(l)
+ Concurrency.Combine=function(a,b)
  {
-  return l.$==1?l.$1:List.listEmpty();
+  return Concurrency.Bind(a,function()
+  {
+   return b;
+  });
  };
- List.listEmpty=function()
+ Concurrency.Zero=function()
  {
-  return Operators.FailWith("The input list was empty.");
+  SC$3.$cctor();
+  return SC$3.Zero;
+ };
+ Concurrency.Start=function(c,ctOpt)
+ {
+  var ct,d;
+  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
+  Concurrency.scheduler().Fork(function()
+  {
+   if(!ct.c)
+    c(AsyncBody.New(function(a)
+    {
+     if(a.$==1)
+      Concurrency.UncaughtAsyncError(a.$0);
+    },ct));
+  });
+ };
+ Concurrency.checkCancel=function(r)
+ {
+  return function(c)
+  {
+   if(c.ct.c)
+    Concurrency.cancel(c);
+   else
+    r(c);
+  };
+ };
+ Concurrency.Register=function(ct,callback)
+ {
+  var i;
+  return ct===Concurrency.noneCT()?{
+   Dispose:function()
+   {
+    return null;
+   }
+  }:(i=ct.r.push(callback)-1,{
+   Dispose:function()
+   {
+    return Arrays.set(ct.r,i,Global.ignore);
+   }
+  });
+ };
+ Concurrency.cancel=function(c)
+ {
+  c.k({
+   $:2,
+   $0:new OperationCanceledException.New(c.ct)
+  });
+ };
+ Concurrency.defCTS=function()
+ {
+  SC$3.$cctor();
+  return SC$3.defCTS;
+ };
+ Concurrency.UncaughtAsyncError=function(e)
+ {
+  console.log("WebSharper: Uncaught asynchronous exception",e);
+ };
+ Concurrency.While=function(g,c)
+ {
+  return g()?Concurrency.Bind(c,function()
+  {
+   return Concurrency.While(g,c);
+  }):Concurrency.Return();
+ };
+ Concurrency.Return=function(x)
+ {
+  return function(c)
+  {
+   c.k({
+    $:0,
+    $0:x
+   });
+  };
+ };
+ Concurrency.scheduler=function()
+ {
+  SC$3.$cctor();
+  return SC$3.scheduler;
+ };
+ Concurrency.noneCT=function()
+ {
+  SC$3.$cctor();
+  return SC$3.noneCT;
+ };
+ Concurrency.GetCT=function()
+ {
+  SC$3.$cctor();
+  return SC$3.GetCT;
+ };
+ Concurrency.TryWith=function(r,f)
+ {
+  return function(c)
+  {
+   r(AsyncBody.New(function(a)
+   {
+    if(a.$==0)
+     c.k({
+      $:0,
+      $0:a.$0
+     });
+    else
+     if(a.$==1)
+      try
+      {
+       (f(a.$0))(c);
+      }
+      catch(e)
+      {
+       c.k(a);
+      }
+     else
+      c.k(a);
+   },c.ct));
+  };
+ };
+ CustomXhrProvider=Remoting.CustomXhrProvider=Runtime.Class({
+  Async:function(url,headers,data,ok,err)
+  {
+   var b;
+   Concurrency.Start((b=null,Concurrency.Delay(function()
+   {
+    var md;
+    md=Remoting.getHeaderRpc(headers);
+    ReturnQueue.add(md,[ok,err]);
+    return Concurrency.TryWith(Concurrency.Delay(function()
+    {
+     Remoting.callRunRpc(md,data);
+     return Concurrency.Zero();
+    }),function(a)
+    {
+     Remoting.returnExnExn(md,a);
+     return Concurrency.Zero();
+    });
+   })),null);
+  }
+ },Obj,CustomXhrProvider);
+ CustomXhrProvider.New=Runtime.Ctor(function()
+ {
+  Obj.New.call(this);
+ },CustomXhrProvider);
+ Require=WasmLoad.Require=Runtime.Class({},Obj,Require);
+ WsTranslator.dlls=function()
+ {
+  SC$4.$cctor();
+  return SC$4.dlls;
  };
  Arrays.choose=function(f,arr)
  {
@@ -3126,6 +3427,14 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   var r,i,$1;
   r=new Global.Array(arr.length);
   for(i=0,$1=arr.length-1;i<=$1;i++)r[i]=f(arr[i]);
+  return r;
+ };
+ Arrays.filter=function(f,arr)
+ {
+  var r,i,$1;
+  r=[];
+  for(i=0,$1=arr.length-1;i<=$1;i++)if(f(arr[i]))
+   r.push(arr[i]);
   return r;
  };
  Arrays.ofSeq=function(xs)
@@ -3214,14 +3523,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   for(i=1,$2=len;i<=$2;i++)acc=f(arr[len-i],acc);
   return acc;
  };
- Arrays.filter=function(f,arr)
- {
-  var r,i,$1;
-  r=[];
-  for(i=0,$1=arr.length-1;i<=$1;i++)if(f(arr[i]))
-   r.push(arr[i]);
-  return r;
- };
  Arrays.concat=function(xs)
  {
   return Global.Array.prototype.concat.apply([],Arrays.ofSeq(xs));
@@ -3265,282 +3566,69 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
     a=false;
   return a;
  };
- Lazy.Create=function(f)
+ List.ofArray=function(arr)
  {
-  return LazyRecord.New(false,f,Lazy.forceLazy);
+  var r,i,$1;
+  r=T.Empty;
+  for(i=Arrays.length(arr)-1,$1=0;i>=$1;i--)r=new T({
+   $:1,
+   $0:Arrays.get(arr,i),
+   $1:r
+  });
+  return r;
  };
- Lazy.forceLazy=function()
+ List.ofSeq=function(s)
  {
-  var v;
-  v=this.v();
-  this.c=true;
-  this.v=v;
-  this.f=Lazy.cachedLazy;
-  return v;
- };
- Lazy.cachedLazy=function()
- {
-  return this.v;
- };
- Pojo.newPojo=function(props)
- {
-  var pojo,f;
-  function f$1(a,a$1)
-  {
-   return function(p)
-   {
-    return Pojo.addProp(a,a$1,p);
-   };
-  }
-  function g(v)
-  {
-  }
-  pojo={};
-  Seq.iter((f=function(b)
-  {
-   return(function($1)
-   {
-    return f$1($1[0],$1[1]);
-   }(b))(pojo);
-  },function(x)
-  {
-   return g(f(x));
-  }),props);
-  return pojo;
- };
- Pojo.addProp=function(p,p$1,pojo)
- {
-  pojo[p]=p$1;
-  return pojo;
- };
- Global$1=WasmLoad.Global=Runtime.Class({},Obj,Global$1);
- Snap.Obsolete=function(sn)
- {
-  var $1,m,i,$2,o;
-  m=sn.s;
-  if(m==null||(m!=null&&m.$==2?($1=m.$1,false):m!=null&&m.$==3?($1=m.$1,false):true))
-   void 0;
+  var e,$1,go,r,res,t;
+  if(s instanceof T)
+   return s;
   else
-   {
-    sn.s=null;
-    for(i=0,$2=Arrays.length($1)-1;i<=$2;i++){
-     o=Arrays.get($1,i);
-     typeof o=="object"?function(sn$1)
+   if(s instanceof Global.Array)
+    return List.ofArray(s);
+   else
+    {
+     e=Enumerator.Get(s);
+     try
      {
-      Snap.Obsolete(sn$1);
-     }(o):o();
-    }
-   }
- };
- Snap.New=function(State)
- {
-  return{
-   s:State
-  };
- };
- CT.New=function(IsCancellationRequested,Registrations)
- {
-  return{
-   c:IsCancellationRequested,
-   r:Registrations
-  };
- };
- AsyncBody.New=function(k,ct)
- {
-  return{
-   k:k,
-   ct:ct
-  };
- };
- Seq.tryFind=function(ok,s)
- {
-  var e,r,x;
-  e=Enumerator.Get(s);
-  try
-  {
-   r=null;
-   while(r==null&&e.MoveNext())
-    {
-     x=e.Current();
-     ok(x)?r={
-      $:1,
-      $0:x
-     }:void 0;
-    }
-   return r;
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
- Seq.tryFindIndex=function(ok,s)
- {
-  var e,loop,i;
-  e=Enumerator.Get(s);
-  try
-  {
-   loop=true;
-   i=0;
-   while(loop&&e.MoveNext())
-    if(ok(e.Current()))
-     loop=false;
-    else
-     i=i+1;
-   return loop?null:{
-    $:1,
-    $0:i
-   };
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
- Seq.map=function(f,s)
- {
-  return{
-   GetEnumerator:function()
-   {
-    var en;
-    en=Enumerator.Get(s);
-    return new T$1.New(null,null,function(e)
-    {
-     return en.MoveNext()&&(e.c=f(en.Current()),true);
-    },function()
-    {
-     en.Dispose();
-    });
-   }
-  };
- };
- Seq.filter=function(f,s)
- {
-  return{
-   GetEnumerator:function()
-   {
-    var o;
-    o=Enumerator.Get(s);
-    return new T$1.New(null,null,function(e)
-    {
-     var loop,c,res;
-     loop=o.MoveNext();
-     c=o.Current();
-     res=false;
-     while(loop)
-      if(f(c))
-       {
-        e.c=c;
-        res=true;
-        loop=false;
-       }
+      go=e.MoveNext();
+      if(!go)
+       $1=T.Empty;
       else
-       if(o.MoveNext())
-        c=o.Current();
-       else
-        loop=false;
-     return res;
-    },function()
-    {
-     o.Dispose();
-    });
-   }
-  };
- };
- Seq.iter=function(p,s)
- {
-  var e;
-  e=Enumerator.Get(s);
-  try
-  {
-   while(e.MoveNext())
-    p(e.Current());
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
- Seq.append=function(s1,s2)
- {
-  return{
-   GetEnumerator:function()
-   {
-    var e1,first;
-    e1=Enumerator.Get(s1);
-    first=[true];
-    return new T$1.New(e1,null,function(x)
-    {
-     var x$1;
-     return x.s.MoveNext()?(x.c=x.s.Current(),true):(x$1=x.s,!Unchecked.Equals(x$1,null)?x$1.Dispose():void 0,x.s=null,first[0]&&(first[0]=false,x.s=Enumerator.Get(s2),x.s.MoveNext()?(x.c=x.s.Current(),true):(x.s.Dispose(),x.s=null,false)));
-    },function(x)
-    {
-     var x$1;
-     x$1=x.s;
-     !Unchecked.Equals(x$1,null)?x$1.Dispose():void 0;
-    });
-   }
-  };
- };
- Seq.head=function(s)
- {
-  var e;
-  e=Enumerator.Get(s);
-  try
-  {
-   return e.MoveNext()?e.Current():Seq.insufficient();
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
- Seq.fold=function(f,x,s)
- {
-  var r,e;
-  r=x;
-  e=Enumerator.Get(s);
-  try
-  {
-   while(e.MoveNext())
-    r=f(r,e.Current());
-   return r;
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
- Seq.max=function(s)
- {
-  var e,m,x;
-  e=Enumerator.Get(s);
-  try
-  {
-   if(!e.MoveNext())
-    Seq.seqEmpty();
-   m=e.Current();
-   while(e.MoveNext())
-    {
-     x=e.Current();
-     Unchecked.Compare(x,m)===1?m=x:void 0;
+       {
+        res=new T({
+         $:1
+        });
+        r=res;
+        while(go)
+         {
+          r.$0=e.Current();
+          e.MoveNext()?r=(t=new T({
+           $:1
+          }),r.$1=t,t):go=false;
+         }
+        r.$1=T.Empty;
+        $1=res;
+       }
+      return $1;
+     }
+     finally
+     {
+      if(typeof e=="object"&&"Dispose"in e)
+       e.Dispose();
+     }
     }
-   return m;
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
  };
- Seq.seqEmpty=function()
+ List.head=function(l)
  {
-  return Operators.FailWith("The input sequence was empty.");
+  return l.$==1?l.$0:List.listEmpty();
+ };
+ List.tail=function(l)
+ {
+  return l.$==1?l.$1:List.listEmpty();
+ };
+ List.listEmpty=function()
+ {
+  return Operators.FailWith("The input list was empty.");
  };
  T=List.T=Runtime.Class({
   GetEnumerator:function()
@@ -3560,7 +3648,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  T.Empty=new T({
   $:0
  });
- AttrProxy=UI.AttrProxy=Runtime.Class({},null,AttrProxy);
+ AttrProxy=UI$1.AttrProxy=Runtime.Class({},null,AttrProxy);
  AttrProxy.Create=function(name,value)
  {
   return Attrs.Static(function(el)
@@ -3812,7 +3900,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   ok?r.set(x):void 0;
   return ok;
  };
- ConcreteVar=UI.ConcreteVar=Runtime.Class({
+ ConcreteVar=UI$1.ConcreteVar=Runtime.Class({
   get_View:function()
   {
    return this.view;
@@ -3918,173 +4006,62 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   narr=(m=ReturnQueue.tryGetS(md),m==null?[fs]:(ReturnQueue.queues().Remove(md),m.$0.concat([fs])));
   ReturnQueue.queues().Add(md,narr);
  };
- LazyRecord.New=function(created,evalOrVal,force)
+ Enumerator.Get=function(x)
+ {
+  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):x.GetEnumerator();
+ };
+ Enumerator.ArrayEnumerator=function(s)
+ {
+  return new T$1.New(0,null,function(e)
+  {
+   var i;
+   i=e.s;
+   return i<Arrays.length(s)&&(e.c=Arrays.get(s,i),e.s=i+1,true);
+  },void 0);
+ };
+ Enumerator.StringEnumerator=function(s)
+ {
+  return new T$1.New(0,null,function(e)
+  {
+   var i;
+   i=e.s;
+   return i<s.length&&(e.c=s[i],e.s=i+1,true);
+  },void 0);
+ };
+ Enumerator.Get0=function(x)
+ {
+  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):"GetEnumerator0"in x?x.GetEnumerator0():x.GetEnumerator();
+ };
+ T$1=Enumerator.T=Runtime.Class({
+  MoveNext:function()
+  {
+   return this.n(this);
+  },
+  Current:function()
+  {
+   return this.c;
+  },
+  Dispose:function()
+  {
+   if(this.d)
+    this.d(this);
+  }
+ },Obj,T$1);
+ T$1.New=Runtime.Ctor(function(s,c,n,d)
+ {
+  Obj.New.call(this);
+  this.s=s;
+  this.c=c;
+  this.n=n;
+  this.d=d;
+ },T$1);
+ AsyncBody.New=function(k,ct)
  {
   return{
-   c:created,
-   v:evalOrVal,
-   f:force
+   k:k,
+   ct:ct
   };
  };
- CustomXhrProvider=Remoting.CustomXhrProvider=Runtime.Class({
-  Async:function(url,headers,data,ok,err)
-  {
-   var b;
-   Concurrency.Start((b=null,Concurrency.Delay(function()
-   {
-    var md;
-    md=Remoting.getHeaderRpc(headers);
-    ReturnQueue.add(md,[ok,err]);
-    return Concurrency.TryWith(Concurrency.Delay(function()
-    {
-     Remoting.callRunRpc(md,data);
-     return Concurrency.Zero();
-    }),function(a)
-    {
-     Remoting.returnExnExn(md,a);
-     return Concurrency.Zero();
-    });
-   })),null);
-  }
- },Obj,CustomXhrProvider);
- CustomXhrProvider.New=Runtime.Ctor(function()
- {
-  Obj.New.call(this);
- },CustomXhrProvider);
- Require=WasmLoad.Require=Runtime.Class({},Obj,Require);
- Task=WebSharper.Task=Runtime.Class({
-  get_Status:function()
-  {
-   return this.status;
-  },
-  Start:function()
-  {
-   var $this;
-   $this=this;
-   this.status===0?(this.status=2,Concurrency.scheduler().Fork(function()
-   {
-    var $1;
-    $this.status=3;
-    try
-    {
-     $this.Execute();
-     $this.status=5;
-    }
-    catch(m)
-    {
-     m instanceof OperationCanceledException&&(Unchecked.Equals(m.ct,$this.token)&&($1=m,true))?(console.log("Task cancellation caught:",$1),$this.exc=new AggregateException.New$3([$1]),$this.status=6):(console.log("Task error caught:",m),$this.exc=new AggregateException.New$3([m]),$this.status=7);
-    }
-    $this.RunContinuations();
-   })):Operators.InvalidOp("Task not in initial state");
-  },
-  get_IsCanceled:function()
-  {
-   return this.status===6;
-  },
-  get_IsFaulted:function()
-  {
-   return this.status===7;
-  },
-  get_Exception:function()
-  {
-   return this.exc;
-  },
-  Execute:function()
-  {
-   this.action();
-  },
-  RunContinuations:function()
-  {
-   var a,i,$1;
-   a=this.continuations;
-   for(i=0,$1=a.length-1;i<=$1;i++)Arrays.get(a,i).StartContinuation();
-  },
-  get_IsCompleted:function()
-  {
-   return this.status===5||this.status===7||this.status===6;
-  },
-  StartContinuation:function()
-  {
-   var $this;
-   $this=this;
-   this.status===1?(this.status=2,Concurrency.scheduler().Fork(function()
-   {
-    if($this.status===2)
-     {
-      $this.status=3;
-      try
-      {
-       $this.Execute();
-       $this.status=5;
-      }
-      catch(e)
-      {
-       $this.exc=new AggregateException.New$3([e]);
-       $this.status=7;
-      }
-      $this.RunContinuations();
-     }
-   })):void 0;
-  },
-  ContinueWith$1:function(action,ct)
-  {
-   var $this,res;
-   $this=this;
-   res=new Task.New$4(function()
-   {
-    return action($this);
-   },ct,1,null);
-   this.get_IsCompleted()?res.StartContinuation():this.continuations.push(res);
-   return res;
-  }
- },Obj,Task);
- Task.New$4=Runtime.Ctor(function(action,token,status,exc)
- {
-  Obj.New.call(this);
-  this.action=action;
-  this.token=token;
-  this.status=status;
-  this.continuations=[];
-  this.exc=exc;
- },Task);
- Task1=WebSharper.Task1=Runtime.Class({
-  get_Result:function()
-  {
-   var $1;
-   switch(this.get_Status())
-   {
-    case 5:
-     return this.result;
-    case 7:
-    case 6:
-     throw this.get_Exception();
-    default:
-     return Operators.InvalidOp("Task has not been completed, has no Result");
-   }
-  },
-  Execute:function()
-  {
-   this.result=this.func();
-  }
- },Task,Task1);
- Task1.New$4=Runtime.Ctor(function(func,token,status,exc,result)
- {
-  Task.New$4.call(this,null,token,status,exc);
-  this.func=func;
-  this.result=result;
- },Task1);
- OperationCanceledException=WebSharper.OperationCanceledException=Runtime.Class({},Error,OperationCanceledException);
- OperationCanceledException.New=Runtime.Ctor(function(ct)
- {
-  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
- },OperationCanceledException);
- OperationCanceledException.New$1=Runtime.Ctor(function(message,inner,ct)
- {
-  this.message=message;
-  this.inner=inner;
-  Object.setPrototypeOf(this,OperationCanceledException.prototype);
-  this.ct=ct;
- },OperationCanceledException);
  SC$3.$cctor=function()
  {
   SC$3.$cctor=Global.ignore;
@@ -4100,45 +4077,61 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    });
   };
  };
- Scheduler=Concurrency.Scheduler=Runtime.Class({
-  Fork:function(action)
-  {
-   var $this;
-   $this=this;
-   this.robin.push(action);
-   this.idle?(this.idle=false,Global.setTimeout(function()
-   {
-    $this.tick();
-   },0)):void 0;
-  },
-  tick:function()
-  {
-   var loop,$this,t;
-   $this=this;
-   t=Date.now();
-   loop=true;
-   while(loop)
-    if(this.robin.length===0)
-     {
-      this.idle=true;
-      loop=false;
-     }
-    else
-     {
-      (this.robin.shift())();
-      Date.now()-t>40?(Global.setTimeout(function()
-      {
-       $this.tick();
-      },0),loop=false):void 0;
-     }
-  }
- },Obj,Scheduler);
- Scheduler.New=Runtime.Ctor(function()
+ SC$4.$cctor=function()
  {
-  Obj.New.call(this);
-  this.idle=true;
-  this.robin=[];
- },Scheduler);
+  SC$4.$cctor=Global.ignore;
+  SC$4.dlls=["/dlls/WebSharper.Main.dll","/dlls/WebSharper.Collections.dll","/dlls/WebSharper.Control.dll","/dlls/WebSharper.Web.dll","/dlls/WebSharper.Sitelets.dll","/dlls/WebSharper.UI.dll","/dlls/WebSharper.UI.Templating.Runtime.dll","/dlls/WebSharper.Data.dll"];
+ };
+ Seq.last=function(s)
+ {
+  var e,$1;
+  e=Enumerator.Get(s);
+  try
+  {
+   if(!e.MoveNext())
+    $1=Seq.insufficient();
+   else
+    {
+     while(e.MoveNext())
+      ;
+     $1=e.Current();
+    }
+   return $1;
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ Seq.insufficient=function()
+ {
+  return Operators.FailWith("The input sequence has an insufficient number of elements.");
+ };
+ Seq.tryHead=function(s)
+ {
+  var e;
+  e=Enumerator.Get(s);
+  try
+  {
+   return e.MoveNext()?{
+    $:1,
+    $0:e.Current()
+   }:null;
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ };
+ CT.New=function(IsCancellationRequested,Registrations)
+ {
+  return{
+   c:IsCancellationRequested,
+   r:Registrations
+  };
+ };
  DomUtility.CreateText=function(s)
  {
   return DomUtility.Doc().createTextNode(s);
@@ -4160,8 +4153,8 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  DomUtility.Doc=function()
  {
-  SC$6.$cctor();
-  return SC$6.Doc;
+  SC$7.$cctor();
+  return SC$7.Doc;
  };
  DomUtility.IterSelector=function(el,selector,f)
  {
@@ -4261,6 +4254,56 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   return Attrs.Dynamic(view,set);
  };
+ Array.ofSeqNonCopying=function(xs)
+ {
+  var q,o;
+  if(xs instanceof Global.Array)
+   return xs;
+  else
+   if(xs instanceof T)
+    return Arrays.ofList(xs);
+   else
+    if(xs===null)
+     return[];
+    else
+     {
+      q=[];
+      o=Enumerator.Get(xs);
+      try
+      {
+       while(o.MoveNext())
+        q.push(o.Current());
+       return q;
+      }
+      finally
+      {
+       if(typeof o=="object"&&"Dispose"in o)
+        o.Dispose();
+      }
+     }
+ };
+ Array.TreeReduce=function(defaultValue,reduction,array)
+ {
+  var l;
+  function loop(off,len)
+  {
+   var $1,l2;
+   return len<=0?defaultValue:len===1&&(off>=0&&off<l)?Arrays.get(array,off):(l2=len/2>>0,reduction(loop(off,l2),loop(off+l2,len-l2)));
+  }
+  l=Arrays.length(array);
+  return loop(0,l);
+ };
+ Array.MapTreeReduce=function(mapping,defaultValue,reduction,array)
+ {
+  var l;
+  function loop(off,len)
+  {
+   var $1,l2;
+   return len<=0?defaultValue:len===1&&(off>=0&&off<l)?mapping(Arrays.get(array,off)):(l2=len/2>>0,reduction(loop(off,l2),loop(off+l2,len-l2)));
+  }
+  l=Arrays.length(array);
+  return loop(0,l);
+ };
  Attrs.Static=function(attr$1)
  {
   return new AttrProxy({
@@ -4286,8 +4329,8 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  Attrs.EmptyAttr=function()
  {
-  SC$9.$cctor();
-  return SC$9.EmptyAttr;
+  SC$10.$cctor();
+  return SC$10.EmptyAttr;
  };
  Attrs.Insert=function(elem,tree)
  {
@@ -4393,12 +4436,12 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $0:new DynamicAttrNode.New(view,set)
   });
  };
- SC$4.$cctor=function()
+ SC$5.$cctor=function()
  {
-  SC$4.$cctor=Global.ignore;
-  SC$4.LoadedTemplates=new Dictionary.New$5();
-  SC$4.LocalTemplatesLoaded=false;
-  SC$4.TextHoleRE="\\${([^}]+)}";
+  SC$5.$cctor=Global.ignore;
+  SC$5.LoadedTemplates=new Dictionary.New$5();
+  SC$5.LocalTemplatesLoaded=false;
+  SC$5.TextHoleRE="\\${([^}]+)}";
  };
  HashSet=Collections.HashSet=Runtime.Class({
   Add:function(item)
@@ -4526,7 +4569,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   HashSet.New$4.call(this,init,Unchecked.Equals,Unchecked.Hash);
  },HashSet);
- View=UI.View=Runtime.Class({},null,View);
+ View=UI$1.View=Runtime.Class({},null,View);
  An.get_UseAnimations=function()
  {
   return Anims.UseAnimations();
@@ -4594,8 +4637,8 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  Settings.BatchUpdatesEnabled=function()
  {
-  SC$5.$cctor();
-  return SC$5.BatchUpdatesEnabled;
+  SC$6.$cctor();
+  return SC$6.BatchUpdatesEnabled;
  };
  Mailbox.StartProcessor=function(procAsync)
  {
@@ -4622,55 +4665,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    m===0?(st[0]=1,Concurrency.Start(work(),null)):m===1?st[0]=2:void 0;
   };
  };
- Enumerator.Get=function(x)
- {
-  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):x.GetEnumerator();
- };
- Enumerator.ArrayEnumerator=function(s)
- {
-  return new T$1.New(0,null,function(e)
-  {
-   var i;
-   i=e.s;
-   return i<Arrays.length(s)&&(e.c=Arrays.get(s,i),e.s=i+1,true);
-  },void 0);
- };
- Enumerator.StringEnumerator=function(s)
- {
-  return new T$1.New(0,null,function(e)
-  {
-   var i;
-   i=e.s;
-   return i<s.length&&(e.c=s[i],e.s=i+1,true);
-  },void 0);
- };
- Enumerator.Get0=function(x)
- {
-  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):"GetEnumerator0"in x?x.GetEnumerator0():x.GetEnumerator();
- };
- T$1=Enumerator.T=Runtime.Class({
-  MoveNext:function()
-  {
-   return this.n(this);
-  },
-  Current:function()
-  {
-   return this.c;
-  },
-  Dispose:function()
-  {
-   if(this.d)
-    this.d(this);
-  }
- },Obj,T$1);
- T$1.New=Runtime.Ctor(function(s,c,n,d)
- {
-  Obj.New.call(this);
-  this.s=s;
-  this.c=c;
-  this.n=n;
-  this.d=d;
- },T$1);
  Fresh.Int=function()
  {
   Fresh.set_counter(Fresh.counter()+1);
@@ -4678,13 +4672,13 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  Fresh.set_counter=function($1)
  {
-  SC$8.$cctor();
-  SC$8.counter=$1;
+  SC$9.$cctor();
+  SC$9.counter=$1;
  };
  Fresh.counter=function()
  {
-  SC$8.$cctor();
-  return SC$8.counter;
+  SC$9.$cctor();
+  return SC$9.counter;
  };
  XhrProvider=Remoting$1.XhrProvider=Runtime.Class({
   Async:function(url,headers,data,ok,err)
@@ -4699,48 +4693,57 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  {
   Obj.New.call(this);
  },XhrProvider);
- TaskCompletionSource=WebSharper.TaskCompletionSource=Runtime.Class({
-  SetResult:function(res)
+ Scheduler=Concurrency.Scheduler=Runtime.Class({
+  Fork:function(action)
   {
-   this.task.get_IsCompleted()?Operators.FailWith("Task already completed."):void 0;
-   this.task.status=5;
-   this.task.result=res;
-   this.task.RunContinuations();
+   var $this;
+   $this=this;
+   this.robin.push(action);
+   this.idle?(this.idle=false,Global.setTimeout(function()
+   {
+    $this.tick();
+   },0)):void 0;
   },
-  SetException$1:function(exc)
+  tick:function()
   {
-   this.task.get_IsCompleted()?Operators.FailWith("Task already completed."):void 0;
-   this.task.status=7;
-   this.task.exc=new AggregateException.New$3([exc]);
-   this.task.RunContinuations();
-  },
-  SetCanceled:function()
-  {
-   this.task.get_IsCompleted()?Operators.FailWith("Task already completed."):void 0;
-   this.task.status=6;
-   this.task.RunContinuations();
-  },
-  get_Task:function()
-  {
-   return this.task;
+   var loop,$this,t;
+   $this=this;
+   t=Date.now();
+   loop=true;
+   while(loop)
+    if(this.robin.length===0)
+     {
+      this.idle=true;
+      loop=false;
+     }
+    else
+     {
+      (this.robin.shift())();
+      Date.now()-t>40?(Global.setTimeout(function()
+      {
+       $this.tick();
+      },0),loop=false):void 0;
+     }
   }
- },Obj,TaskCompletionSource);
- TaskCompletionSource.New=Runtime.Ctor(function()
+ },Obj,Scheduler);
+ Scheduler.New=Runtime.Ctor(function()
  {
   Obj.New.call(this);
-  this.task=new Task1.New$4(null,Concurrency.noneCT(),1,null,void 0);
- },TaskCompletionSource);
- AggregateException=WebSharper.AggregateException=Runtime.Class({},Error,AggregateException);
- AggregateException.New$3=Runtime.Ctor(function(innerExceptions)
+  this.idle=true;
+  this.robin=[];
+ },Scheduler);
+ OperationCanceledException=WebSharper.OperationCanceledException=Runtime.Class({},Error,OperationCanceledException);
+ OperationCanceledException.New=Runtime.Ctor(function(ct)
  {
-  AggregateException.New$4.call(this,"One or more errors occurred.",innerExceptions);
- },AggregateException);
- AggregateException.New$4=Runtime.Ctor(function(message,innerExceptions)
+  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
+ },OperationCanceledException);
+ OperationCanceledException.New$1=Runtime.Ctor(function(message,inner,ct)
  {
   this.message=message;
-  Object.setPrototypeOf(this,AggregateException.prototype);
-  this.innerExceptions=innerExceptions;
- },AggregateException);
+  this.inner=inner;
+  Object.setPrototypeOf(this,OperationCanceledException.prototype);
+  this.ct=ct;
+ },OperationCanceledException);
  CancellationTokenSource=WebSharper.CancellationTokenSource=Runtime.Class({},Obj,CancellationTokenSource);
  CancellationTokenSource.New=Runtime.Ctor(function()
  {
@@ -4750,7 +4753,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   this.r=[];
   this.init=1;
  },CancellationTokenSource);
- Elt=UI.Elt=Runtime.Class({},Doc,Elt);
+ Elt=UI$1.Elt=Runtime.Class({},Doc,Elt);
  Elt.New=function(el,attr$1,children)
  {
   var node,rvUpdates;
@@ -4769,62 +4772,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   this.elt=elt;
   this.rvUpdates=rvUpdates;
  },Elt);
- Array.ofSeqNonCopying=function(xs)
- {
-  var q,o;
-  if(xs instanceof Global.Array)
-   return xs;
-  else
-   if(xs instanceof T)
-    return Arrays.ofList(xs);
-   else
-    if(xs===null)
-     return[];
-    else
-     {
-      q=[];
-      o=Enumerator.Get(xs);
-      try
-      {
-       while(o.MoveNext())
-        q.push(o.Current());
-       return q;
-      }
-      finally
-      {
-       if(typeof o=="object"&&"Dispose"in o)
-        o.Dispose();
-      }
-     }
- };
- Array.TreeReduce=function(defaultValue,reduction,array)
- {
-  var l;
-  function loop(off,len)
-  {
-   var $1,l2;
-   return len<=0?defaultValue:len===1&&(off>=0&&off<l)?Arrays.get(array,off):(l2=len/2>>0,reduction(loop(off,l2),loop(off+l2,len-l2)));
-  }
-  l=Arrays.length(array);
-  return loop(0,l);
- };
- Array.mapInPlace=function(f,arr)
- {
-  var i,$1;
-  for(i=0,$1=arr.length-1;i<=$1;i++)arr[i]=f(arr[i]);
-  return arr;
- };
- Array.MapTreeReduce=function(mapping,defaultValue,reduction,array)
- {
-  var l;
-  function loop(off,len)
-  {
-   var $1,l2;
-   return len<=0?defaultValue:len===1&&(off>=0&&off<l)?mapping(Arrays.get(array,off)):(l2=len/2>>0,reduction(loop(off,l2),loop(off+l2,len-l2)));
-  }
-  l=Arrays.length(array);
-  return loop(0,l);
- };
  Prepare.convertTextNode=function(n)
  {
   var m,li,$1,s,strRE,hole;
@@ -5034,27 +4981,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    el.removeAttribute(a$1);
   },toRemove);
  };
- Seq.insufficient=function()
- {
-  return Operators.FailWith("The input sequence has an insufficient number of elements.");
- };
- Seq.tryHead=function(s)
- {
-  var e;
-  e=Enumerator.Get(s);
-  try
-  {
-   return e.MoveNext()?{
-    $:1,
-    $0:e.Current()
-   }:null;
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- };
  KeyCollection=Collections.KeyCollection=Runtime.Class({
   GetEnumerator$1:function()
   {
@@ -5077,7 +5003,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   Obj.New.call(this);
   this.d=d;
  },KeyCollection);
- DocElemNode=UI.DocElemNode=Runtime.Class({
+ DocElemNode=UI$1.DocElemNode=Runtime.Class({
   Equals:function(o)
   {
    return this.ElKey===o.ElKey;
@@ -5170,8 +5096,8 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  Anims.UseAnimations=function()
  {
-  SC$7.$cctor();
-  return SC$7.UseAnimations;
+  SC$8.$cctor();
+  return SC$8.UseAnimations;
  };
  Anims.Actions=function(a)
  {
@@ -5245,22 +5171,11 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    Duration:nextDuration
   };
  };
- SC$5.$cctor=function()
+ SC$6.$cctor=function()
  {
-  SC$5.$cctor=Global.ignore;
-  SC$5.BatchUpdatesEnabled=true;
+  SC$6.$cctor=Global.ignore;
+  SC$6.BatchUpdatesEnabled=true;
  };
- InvalidOperationException=WebSharper.InvalidOperationException=Runtime.Class({},Error,InvalidOperationException);
- InvalidOperationException.New=Runtime.Ctor(function(message)
- {
-  InvalidOperationException.New$2.call(this,message,null);
- },InvalidOperationException);
- InvalidOperationException.New$2=Runtime.Ctor(function(message,innerExn)
- {
-  this.message=message;
-  this.inner=innerExn;
-  Object.setPrototypeOf(this,InvalidOperationException.prototype);
- },InvalidOperationException);
  Json.Activate=function(json)
  {
   var $1,types,i,$2,$3,$4,m;
@@ -5364,12 +5279,12 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    }
   return r;
  };
- SC$6.$cctor=function()
+ SC$7.$cctor=function()
  {
-  SC$6.$cctor=Global.ignore;
-  SC$6.Doc=self.document;
+  SC$7.$cctor=Global.ignore;
+  SC$7.Doc=self.document;
  };
- Updates=UI.Updates=Runtime.Class({},null,Updates);
+ Updates=UI$1.Updates=Runtime.Class({},null,Updates);
  Updates.Create=function(v)
  {
   var _var;
@@ -5404,16 +5319,16 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   Runtime.SetOptional($1,"OnAfterRender",OnAfterRender);
   return $1;
  };
- SC$7.$cctor=function()
+ SC$8.$cctor=function()
  {
-  SC$7.$cctor=Global.ignore;
-  SC$7.CubicInOut=Easing.Custom(function(t)
+  SC$8.$cctor=Global.ignore;
+  SC$8.CubicInOut=Easing.Custom(function(t)
   {
    var t2;
    t2=t*t;
    return 3*t2-2*(t2*t);
   });
-  SC$7.UseAnimations=true;
+  SC$8.UseAnimations=true;
  };
  AppendList.Append=function(x,y)
  {
@@ -5455,8 +5370,8 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
  };
  AppendList.Empty=function()
  {
-  SC$10.$cctor();
-  return SC$10.Empty;
+  SC$11.$cctor();
+  return SC$11.Empty;
  };
  FormatException=WebSharper.FormatException=Runtime.Class({},Error,FormatException);
  FormatException.New$1=Runtime.Ctor(function(message)
@@ -5464,21 +5379,21 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
   this.message=message;
   Object.setPrototypeOf(this,FormatException.prototype);
  },FormatException);
- SC$8.$cctor=function()
+ SC$9.$cctor=function()
  {
-  SC$8.$cctor=Global.ignore;
-  SC$8.counter=0;
+  SC$9.$cctor=Global.ignore;
+  SC$9.counter=0;
  };
  Queue.Clear=function(a)
  {
   a.splice(0,Arrays.length(a));
  };
- SC$9.$cctor=function()
+ SC$10.$cctor=function()
  {
-  SC$9.$cctor=Global.ignore;
-  SC$9.EmptyAttr=null;
+  SC$10.$cctor=Global.ignore;
+  SC$10.EmptyAttr=null;
  };
- Easing=UI.Easing=Runtime.Class({},Obj,Easing);
+ Easing=UI$1.Easing=Runtime.Class({},Obj,Easing);
  Easing.Custom=function(f)
  {
   return new Easing.New(f);
@@ -5606,7 +5521,7 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $0:Array.ofSeqNonCopying(q)
   };
  };
- DynamicAttrNode=UI.DynamicAttrNode=Runtime.Class({
+ DynamicAttrNode=UI$1.DynamicAttrNode=Runtime.Class({
   NChanged:function()
   {
    return this.updates;
@@ -5646,11 +5561,36 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $this.dirty=true;
   },view);
  },DynamicAttrNode);
- SC$10.$cctor=function()
+ Lazy.Create=function(f)
  {
-  SC$10.$cctor=Global.ignore;
-  SC$10.Empty={
+  return LazyRecord.New(false,f,Lazy.forceLazy);
+ };
+ Lazy.forceLazy=function()
+ {
+  var v;
+  v=this.v();
+  this.c=true;
+  this.v=v;
+  this.f=Lazy.cachedLazy;
+  return v;
+ };
+ Lazy.cachedLazy=function()
+ {
+  return this.v;
+ };
+ SC$11.$cctor=function()
+ {
+  SC$11.$cctor=Global.ignore;
+  SC$11.Empty={
    $:0
+  };
+ };
+ LazyRecord.New=function(created,evalOrVal,force)
+ {
+  return{
+   c:created,
+   v:evalOrVal,
+   f:force
   };
  };
  View.Sink(function(v)
@@ -5660,7 +5600,13 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $0:v
   });
  },WasmLoader.wasmStatusV().get_View());
- Global.onmessage=WWorker.receiveMessage;
+ Global.onmessage=function(d)
+ {
+  return WWorker.receiveMessage(function(o)
+  {
+   WasmLoad.loadInThisThread(o);
+  },d);
+ };
  Remoting.set_messaging(IMessagingO.New(function(h)
  {
   return function(d)
@@ -5688,7 +5634,6 @@ importScripts(["//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js
    $0:v
   });
  }));
- Concurrency.Start(WasmLoad.loadInThisThread(),null);
 }());
 
 

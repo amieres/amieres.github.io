@@ -362,7 +362,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
 (function()
 {
  "use strict";
- var Global,FsRoot,Library,String,ParseO,WasmLoader,WasmStatus,Remoting,IMessagingO,ReturnQueue,WebSharper,Obj,CustomXhrProvider,WWorker,WasmLoad,Require,Global$1,Operators,Utils,Arrays,Slice,Seq,Strings,SC$1,Char,UI,Var,JavaScript,Pervasives,Unchecked,Collections,Dictionary,Remoting$1,Event,JS,List,LibraryJS,Pojo,EventTarget,XMLHttpRequestEventTarget,ArrayBufferView,testing_GeneratedPrintf,GeneratedPrintf,AjaxRemotingProvider,T,Doc,View,HtmlModule,attr,Node,Enumerator,T$1,Numeric,System,Guid,Var$1,Lazy,Object,SC$2,Concurrency,Array,Snap,AttrProxy,Client,Templates,WindowOrWorkerGlobalScope,DateUtil,ConcreteVar,DictionaryUtil,LazyExtensionsProxy,LazyRecord,XhrProvider,AsyncBody,Task,Task1,Error,OperationCanceledException,SC$3,CT,DomUtility,AttrModule,Attrs,Docs,Abbrev,Fresh,TaskCompletionSource,Scheduler,AggregateException,CancellationTokenSource,DocElemNode,CharacterData,Elt,SC$4,HashSet,An,Settings,Mailbox,Json,InvalidOperationException,Attrs$1,Dyn,SC$5,Updates,Prepare,KeyCollection,Docs$1,RunState,NodeSet,Anims,SC$6,FormatException,SC$7,Queue,SC$8,SC$9,AppendList,Easing,HashSet$1,HashSetUtil,DynamicAttrNode,DomNodes,SC$10,console,IntelliFactory,Runtime,JSON,$,Date;
+ var Global,FsRoot,Library,String,ParseO,WasmLoader,WasmStatus,Remoting,IMessagingO,ReturnQueue,WebSharper,Obj,CustomXhrProvider,WWorker,WasmLoad,Require,GlobalModule,UI,Operators,Utils,Arrays,Slice,Seq,Strings,SC$1,Char,JavaScript,Pervasives,Unchecked,Collections,Dictionary,Remoting$1,Event,UI$1,Var,EventTarget,JS,List,LibraryJS,Pojo,XMLHttpRequestEventTarget,ArrayBufferView,WsTranslator,testing_GeneratedPrintf,GeneratedPrintf,Doc,AjaxRemotingProvider,T,View,HtmlModule,attr,Node,Enumerator,T$1,Numeric,System,Guid,Var$1,Object,SC$2,Concurrency,SC$3,Array,Snap,AttrProxy,Client,Templates,WindowOrWorkerGlobalScope,DateUtil,ConcreteVar,DictionaryUtil,XhrProvider,AsyncBody,HashSet,SC$4,CT,DomUtility,AttrModule,Attrs,Docs,Abbrev,Fresh,Scheduler,Error,OperationCanceledException,CancellationTokenSource,DocElemNode,CharacterData,Elt,SC$5,An,Settings,Mailbox,Json,Attrs$1,Dyn,SC$6,Updates,Prepare,KeyCollection,Docs$1,RunState,NodeSet,Anims,SC$7,FormatException,SC$8,Queue,SC$9,SC$10,AppendList,HashSetUtil,Easing,HashSet$1,DynamicAttrNode,DomNodes,Lazy,SC$11,LazyExtensionsProxy,LazyRecord,console,IntelliFactory,Runtime,JSON,$,Date;
  Global=self;
  FsRoot=Global.FsRoot=Global.FsRoot||{};
  Library=FsRoot.Library=FsRoot.Library||{};
@@ -379,7 +379,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  WWorker=WasmLoader.WWorker=WasmLoader.WWorker||{};
  WasmLoad=WasmLoader.WasmLoad=WasmLoader.WasmLoad||{};
  Require=WasmLoad.Require=WasmLoad.Require||{};
- Global$1=WasmLoad.Global=WasmLoad.Global||{};
+ GlobalModule=WasmLoad.GlobalModule=WasmLoad.GlobalModule||{};
+ UI=WasmLoader.UI=WasmLoader.UI||{};
  Operators=WebSharper.Operators=WebSharper.Operators||{};
  Utils=WebSharper.Utils=WebSharper.Utils||{};
  Arrays=WebSharper.Arrays=WebSharper.Arrays||{};
@@ -388,8 +389,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Strings=WebSharper.Strings=WebSharper.Strings||{};
  SC$1=Global.StartupCode$testing$testing=Global.StartupCode$testing$testing||{};
  Char=WebSharper.Char=WebSharper.Char||{};
- UI=WebSharper.UI=WebSharper.UI||{};
- Var=UI.Var=UI.Var||{};
  JavaScript=WebSharper.JavaScript=WebSharper.JavaScript||{};
  Pervasives=JavaScript.Pervasives=JavaScript.Pervasives||{};
  Unchecked=WebSharper.Unchecked=WebSharper.Unchecked||{};
@@ -397,20 +396,23 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Dictionary=Collections.Dictionary=Collections.Dictionary||{};
  Remoting$1=WebSharper.Remoting=WebSharper.Remoting||{};
  Event=Global.Event;
+ UI$1=WebSharper.UI=WebSharper.UI||{};
+ Var=UI$1.Var=UI$1.Var||{};
+ EventTarget=Global.EventTarget;
  JS=JavaScript.JS=JavaScript.JS||{};
  List=WebSharper.List=WebSharper.List||{};
  LibraryJS=FsRoot.LibraryJS=FsRoot.LibraryJS||{};
  Pojo=LibraryJS.Pojo=LibraryJS.Pojo||{};
- EventTarget=Global.EventTarget;
  XMLHttpRequestEventTarget=Global.XMLHttpRequestEventTarget;
  ArrayBufferView=Global.ArrayBufferView;
+ WsTranslator=FsRoot.WsTranslator=FsRoot.WsTranslator||{};
  testing_GeneratedPrintf=Global.testing_GeneratedPrintf=Global.testing_GeneratedPrintf||{};
  GeneratedPrintf=Global.GeneratedPrintf=Global.GeneratedPrintf||{};
+ Doc=UI$1.Doc=UI$1.Doc||{};
  AjaxRemotingProvider=Remoting$1.AjaxRemotingProvider=Remoting$1.AjaxRemotingProvider||{};
  T=List.T=List.T||{};
- Doc=UI.Doc=UI.Doc||{};
- View=UI.View=UI.View||{};
- HtmlModule=UI.HtmlModule=UI.HtmlModule||{};
+ View=UI$1.View=UI$1.View||{};
+ HtmlModule=UI$1.HtmlModule=UI$1.HtmlModule||{};
  attr=HtmlModule.attr=HtmlModule.attr||{};
  Node=Global.Node;
  Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
@@ -418,73 +420,69 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Numeric=WebSharper.Numeric=WebSharper.Numeric||{};
  System=Global.System=Global.System||{};
  Guid=System.Guid=System.Guid||{};
- Var$1=UI.Var$1=UI.Var$1||{};
- Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
+ Var$1=UI$1.Var$1=UI$1.Var$1||{};
  Object=Global.Object;
  SC$2=Global.StartupCode$WebSharper_Main$Remoting=Global.StartupCode$WebSharper_Main$Remoting||{};
  Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
- Array=UI.Array=UI.Array||{};
- Snap=UI.Snap=UI.Snap||{};
- AttrProxy=UI.AttrProxy=UI.AttrProxy||{};
- Client=UI.Client=UI.Client||{};
+ SC$3=Global.StartupCode$WsTranslator$WsTranslator=Global.StartupCode$WsTranslator$WsTranslator||{};
+ Array=UI$1.Array=UI$1.Array||{};
+ Snap=UI$1.Snap=UI$1.Snap||{};
+ AttrProxy=UI$1.AttrProxy=UI$1.AttrProxy||{};
+ Client=UI$1.Client=UI$1.Client||{};
  Templates=Client.Templates=Client.Templates||{};
  WindowOrWorkerGlobalScope=Global.WindowOrWorkerGlobalScope;
  DateUtil=WebSharper.DateUtil=WebSharper.DateUtil||{};
- ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
+ ConcreteVar=UI$1.ConcreteVar=UI$1.ConcreteVar||{};
  DictionaryUtil=Collections.DictionaryUtil=Collections.DictionaryUtil||{};
- LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
- LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
  XhrProvider=Remoting$1.XhrProvider=Remoting$1.XhrProvider||{};
  AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
- Task=WebSharper.Task=WebSharper.Task||{};
- Task1=WebSharper.Task1=WebSharper.Task1||{};
+ HashSet=Collections.HashSet=Collections.HashSet||{};
+ SC$4=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
+ CT=Concurrency.CT=Concurrency.CT||{};
+ DomUtility=UI$1.DomUtility=UI$1.DomUtility||{};
+ AttrModule=UI$1.AttrModule=UI$1.AttrModule||{};
+ Attrs=UI$1.Attrs=UI$1.Attrs||{};
+ Docs=UI$1.Docs=UI$1.Docs||{};
+ Abbrev=UI$1.Abbrev=UI$1.Abbrev||{};
+ Fresh=Abbrev.Fresh=Abbrev.Fresh||{};
+ Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
  Error=Global.Error;
  OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
- SC$3=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
- CT=Concurrency.CT=Concurrency.CT||{};
- DomUtility=UI.DomUtility=UI.DomUtility||{};
- AttrModule=UI.AttrModule=UI.AttrModule||{};
- Attrs=UI.Attrs=UI.Attrs||{};
- Docs=UI.Docs=UI.Docs||{};
- Abbrev=UI.Abbrev=UI.Abbrev||{};
- Fresh=Abbrev.Fresh=Abbrev.Fresh||{};
- TaskCompletionSource=WebSharper.TaskCompletionSource=WebSharper.TaskCompletionSource||{};
- Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
- AggregateException=WebSharper.AggregateException=WebSharper.AggregateException||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
- DocElemNode=UI.DocElemNode=UI.DocElemNode||{};
+ DocElemNode=UI$1.DocElemNode=UI$1.DocElemNode||{};
  CharacterData=Global.CharacterData;
- Elt=UI.Elt=UI.Elt||{};
- SC$4=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
- HashSet=Collections.HashSet=Collections.HashSet||{};
- An=UI.An=UI.An||{};
+ Elt=UI$1.Elt=UI$1.Elt||{};
+ SC$5=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
+ An=UI$1.An=UI$1.An||{};
  Settings=Client.Settings=Client.Settings||{};
  Mailbox=Abbrev.Mailbox=Abbrev.Mailbox||{};
  Json=WebSharper.Json=WebSharper.Json||{};
- InvalidOperationException=WebSharper.InvalidOperationException=WebSharper.InvalidOperationException||{};
  Attrs$1=Client.Attrs=Client.Attrs||{};
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
- SC$5=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
- Updates=UI.Updates=UI.Updates||{};
+ SC$6=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
+ Updates=UI$1.Updates=UI$1.Updates||{};
  Prepare=Templates.Prepare=Templates.Prepare||{};
  KeyCollection=Collections.KeyCollection=Collections.KeyCollection||{};
  Docs$1=Client.Docs=Client.Docs||{};
  RunState=Docs$1.RunState=Docs$1.RunState||{};
  NodeSet=Docs$1.NodeSet=Docs$1.NodeSet||{};
- Anims=UI.Anims=UI.Anims||{};
- SC$6=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
+ Anims=UI$1.Anims=UI$1.Anims||{};
+ SC$7=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
  FormatException=WebSharper.FormatException=WebSharper.FormatException||{};
- SC$7=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
+ SC$8=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
  Queue=WebSharper.Queue=WebSharper.Queue||{};
- SC$8=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
- SC$9=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
- AppendList=UI.AppendList=UI.AppendList||{};
- Easing=UI.Easing=UI.Easing||{};
- HashSet$1=Abbrev.HashSet=Abbrev.HashSet||{};
+ SC$9=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
+ SC$10=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
+ AppendList=UI$1.AppendList=UI$1.AppendList||{};
  HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
- DynamicAttrNode=UI.DynamicAttrNode=UI.DynamicAttrNode||{};
+ Easing=UI$1.Easing=UI$1.Easing||{};
+ HashSet$1=Abbrev.HashSet=Abbrev.HashSet||{};
+ DynamicAttrNode=UI$1.DynamicAttrNode=UI$1.DynamicAttrNode||{};
  DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
- SC$10=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
+ Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
+ SC$11=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
+ LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
+ LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
  console=Global.console;
  IntelliFactory=Global.IntelliFactory;
  Runtime=IntelliFactory&&IntelliFactory.Runtime;
@@ -828,230 +826,24 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$1.$cctor();
   return SC$1.wasmStatusV;
  };
- WasmLoader.detailsV=function()
- {
-  SC$1.$cctor();
-  return SC$1.detailsV;
- };
- WasmLoader.fsErrsV=function()
- {
-  SC$1.$cctor();
-  return SC$1.fsErrsV;
- };
- WasmLoader.wsErrsV=function()
- {
-  SC$1.$cctor();
-  return SC$1.wsErrsV;
- };
- WasmLoader.wsWrnsV=function()
- {
-  SC$1.$cctor();
-  return SC$1.wsWrnsV;
- };
- WasmLoader.codeV=function()
- {
-  SC$1.$cctor();
-  return SC$1.codeV;
- };
- WasmLoader.optsV=function()
- {
-  SC$1.$cctor();
-  return SC$1.optsV;
- };
- WasmLoader.clean=function()
- {
-  WasmLoader.detailsV().Set("");
- };
  WasmLoader.printfn=function(fmt)
  {
   return fmt(Remoting.messaging().wprintfn);
- };
- WasmLoader.parseAndCheckProject=function(projectName,opts,code)
- {
-  var b;
-  b=null;
-  return Concurrency.Delay(function()
-  {
-   return Concurrency.Bind((new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.parseAndCheckProjectRpc:-1474163089",[projectName,opts,code]),function(a)
-   {
-    var a$1;
-    WasmLoader.fsErrsV().Set(Arrays.ofSeq(a[0]));
-    WasmLoader.wsErrsV().Set([]);
-    WasmLoader.wsWrnsV().Set([]);
-    a$1=(function($1)
-    {
-     return function($2)
-     {
-      return $1("("+Utils.prettyPrint($2[0])+", "+Utils.printArray(Utils.prettyPrint,$2[1])+")");
-     };
-    }(Global.id))([a[2],a[1]]);
-    WasmLoader.detailsV().Set(a$1);
-    return Concurrency.Zero();
-   });
-  });
- };
- WasmLoader.translateToJs=function(projectName,opts,code)
- {
-  var b;
-  b=null;
-  return Concurrency.Delay(function()
-  {
-   return Concurrency.Bind((new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.translateFsToJsRpc:957452724",[projectName,opts,code]),function(a)
-   {
-    var wsO;
-    wsO=a[1];
-    WasmLoader.fsErrsV().Set(a[0]);
-    return wsO==null?(WasmLoader.clean(),WasmLoader.wsErrsV().Set([]),WasmLoader.wsWrnsV().Set([]),Concurrency.Zero()):(WasmLoader.detailsV().Set(wsO.$0[0]),WasmLoader.wsErrsV().Set(Arrays.ofSeq(wsO.$0[1])),WasmLoader.wsWrnsV().Set(Arrays.ofSeq(wsO.$0[2])),Concurrency.Zero());
-   });
-  });
- };
- WasmLoader.callWasmA=function(f,p)
- {
-  var b;
-  Concurrency.Start((b=null,Concurrency.Delay(function()
-  {
-   return Concurrency.Combine(WasmLoader.wasmStatusV().Get().$===0?(WasmLoad.loadWasmInWorker(),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
-   {
-    return Concurrency.Bind(Concurrency.Sleep(50),function()
-    {
-     return Concurrency.Combine(Concurrency.While(function()
-     {
-      var m;
-      m=WasmLoader.wasmStatusV().Get();
-      return m.$==2?false:m.$==5?false:m.$==3?Operators.FailWith("Wasm is already finished (Refresh browser to restart it"):true;
-     },Concurrency.Delay(function()
-     {
-      WasmLoader.printfn(function($1)
-      {
-       return $1("Waiting for WASM to load...");
-      });
-      return Concurrency.Bind(Concurrency.Sleep(2000),function()
-      {
-       return Concurrency.Return(null);
-      });
-     })),Concurrency.Delay(function()
-     {
-      return Concurrency.Bind(f(p),function()
-      {
-       return Concurrency.Return(null);
-      });
-     }));
-    });
-   }));
-  })),null);
- };
- WasmLoader.getParms=function()
- {
-  return["WasmTest",Strings.SplitChars("fsc.exe\n"+WasmLoader.optsV().Get(),["\n"],0),WasmLoader.codeV().Get()];
- };
- WasmLoader.showMessages=function(name,f,msgsW)
- {
-  return Doc.BindView(function(msgs)
-  {
-   return Arrays.length(msgs)===0?Doc.get_Empty():Doc.Element("div",[],[Doc.TextNode(name),Doc.Element("ol",[],[Doc.Concat(Seq.map(function(x)
-   {
-    return Doc.Element("li",[],[Doc.TextNode(f(x))]);
-   },msgs))])]);
-  },msgsW);
- };
- WasmLoader.mainDoc=function()
- {
-  var c,c$1;
-  return Doc.Element("div",[],[Doc.Element("h1",[],[Doc.TextNode("HELLO WASM!")]),Doc.Element("h2",[],[Doc.TextView(View.Map(function($1)
-  {
-   return(function($2)
-   {
-    return function($3)
-    {
-     return $2(testing_GeneratedPrintf.p($3));
-    };
-   }(Global.id))($1);
-  },WasmLoader.wasmStatusV().get_View()))]),Doc.Element("div",[],[Doc.InputArea([],WasmLoader.codeV()),Doc.InputArea([],WasmLoader.optsV())]),Doc.Element("span",[],[Doc.Button("Check",[],function()
-  {
-   WasmLoader.callWasmA(function(t)
-   {
-    return WasmLoader.parseAndCheckProject(t[0],t[1],t[2]);
-   },WasmLoader.getParms());
-  }),Doc.Button("Translate",[],function()
-  {
-   WasmLoader.clean();
-   WasmLoader.printfn(function($1)
-   {
-    return $1("Initiating translation:");
-   });
-   WasmLoader.callWasmA(function(t)
-   {
-    return WasmLoader.translateToJs(t[0],t[1],t[2]);
-   },WasmLoader.getParms());
-  }),Doc.Button("Dir",[],function()
-  {
-   WasmLoader.callWasmA(function(d)
-   {
-    return(new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.dirRpc:-1181784350",[d]);
-   },"/");
-  }),Doc.Button("Clean",[],function()
-  {
-   WasmLoader.clean();
-  }),Doc.Button("Load as Worker",[],function()
-  {
-   WasmLoad.loadWasmInWorker();
-  }),Doc.Button("Load in Main thread",[],function()
-  {
-   Concurrency.Start(WasmLoad.loadInThisThread(),null);
-  })]),WasmLoader.showMessages("Fsc Messages",function($1)
-  {
-   return function($2)
-   {
-    return $1(Utils.prettyPrint($2));
-   };
-  }(Global.id),WasmLoader.fsErrsV().get_View()),WasmLoader.showMessages("Ws  Errors",(c=function($1)
-  {
-   return function($2)
-   {
-    return $1("("+testing_GeneratedPrintf.p$1($2[0])+", "+testing_GeneratedPrintf.p$2($2[1])+")");
-   };
-  }(Global.id),function(t)
-  {
-   return c([t[0],t[1]]);
-  }),WasmLoader.wsErrsV().get_View()),WasmLoader.showMessages("Ws  Warnings",(c$1=function($1)
-  {
-   return function($2)
-   {
-    return $1("("+testing_GeneratedPrintf.p$1($2[0])+", "+testing_GeneratedPrintf.p$3($2[1])+")");
-   };
-  }(Global.id),function(t)
-  {
-   return c$1([t[0],t[1]]);
-  }),WasmLoader.wsWrnsV().get_View()),Doc.Element("div",[AttrProxy.Create("style","font-family: monospace; white-space:pre")],[Doc.TextView(WasmLoader.detailsV().get_View())])]);
- };
- WasmLoader.main=function()
- {
-  var x,a;
-  x=WasmLoader.mainDoc();
-  a=self.document.body;
-  Templates.LoadLocalTemplates("");
-  Doc.Run(a,x);
- };
- WasmStatus.WasmLoading={
-  $:1
  };
  WasmStatus.WasmNotLoaded={
   $:0
  };
  WasmStatus.WasmWorkerLoading={
-  $:4
+  $:3
+ };
+ WasmStatus.WasmLoading={
+  $:1
  };
  WasmStatus.WasmWorkerLoaded={
-  $:5
+  $:4
  };
  WasmStatus.WasmLoaded={
   $:2
- };
- Remoting.appendMsg=function(txt)
- {
-  var pre;
-  console.log(txt);
-  !(!self.document)?(pre=WasmLoader.detailsV().Get(),WasmLoader.detailsV().Set(pre+(pre===""?"":"\n")+txt)):void 0;
  };
  Remoting.getHeaderRpc=function(headers)
  {
@@ -1202,7 +994,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$1.$cctor();
   return SC$1.workerO;
  };
- WWorker.receiveMessage=function(evt)
+ WWorker.receiveMessage=function(loadInThisThread,evt)
  {
   var m;
   m=evt.data;
@@ -1212,7 +1004,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    {
     return $1(Utils.toSafe($2));
    };
-  }))(m.$0):Remoting.callRunRpc(m.$0,m.$1);
+  }))(m.$0):m.$==2?loadInThisThread(m.$0):Remoting.callRunRpc(m.$0,m.$1);
  };
  WWorker.fromWorker=function(evt)
  {
@@ -1225,6 +1017,25 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     return $1(Utils.toSafe($2));
    };
   }))(m.$0):m.$==3?(v=m.$0,!Unchecked.Equals(WasmLoader.wasmStatusV().Get(),v)?WasmLoader.wasmStatusV().Set(v):void 0):Remoting.returnValue0(m.$0,m.$1);
+ };
+ WWorker.terminate=function()
+ {
+  var $1;
+  if($1=WWorker.workerO(),$1!=null&&$1.$==1)
+   {
+    WWorker.workerO().$0.terminate();
+    WWorker.set_workerO(null);
+    WasmLoader.printfn(function($2)
+    {
+     return $2("Worker terminated!");
+    });
+    WasmLoader.wasmStatusV().Set(WasmStatus.WasmNotLoaded);
+   }
+  else
+   WasmLoader.printfn(function($2)
+   {
+    return $2("Worker is not present");
+   });
  };
  WasmLoad.rootPath=function()
  {
@@ -1256,14 +1067,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    WasmLoad.bindStaticMethod(t[0],t[1],t[2]);
   },List.ofArray([["WsTranslator","FsRoot.WsTranslator","runRpc"]]));
  };
- WasmLoad.filesToPreload=function()
+ WasmLoad.preloadFiles=function(files)
  {
-  SC$1.$cctor();
-  return SC$1.filesToPreload;
- };
- WasmLoad.preloadFiles=function()
- {
-  var e,f,pathTo,e$1,file;
+  var dirFiles,e,f,file,dir,from;
   self.Browser=Pojo.newPojo([["init",Global.ignore],["asyncLoad",function(url,onload,onerror)
   {
    var xhr;
@@ -1281,35 +1087,50 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    return xhr.send(null);
   }]]);
   self.Module.preloadPlugins=[];
-  e=Enumerator.Get(WasmLoad.filesToPreload());
+  dirFiles=Seq.cache(Seq.distinct(Seq.map(function(a)
+  {
+   return[Strings.concat("/",Slice.array(a,null,{
+    $:1,
+    $0:Arrays.length(a)-2
+   })),Seq.last(a)];
+  },Seq.map(function(a)
+  {
+   return Arrays.map(Strings.Trim,a);
+  },Seq.map(function(s)
+  {
+   return Strings.SplitChars(Strings.Replace(s,"\\","/"),["/"],0);
+  },files)))));
+  Seq.iter(function(dir$1)
+  {
+   try
+   {
+    self.FS.mkdir(dir$1);
+   }
+   catch(e$1)
+   {
+    null;
+   }
+  },Seq.distinct(Seq.map(function(t)
+  {
+   return t[0];
+  },dirFiles)));
+  e=Enumerator.Get(dirFiles);
   try
   {
    while(e.MoveNext())
     {
      f=e.Current();
-     pathTo=f[1];
-     try
+     file=f[1];
+     dir=f[0];
+     from=Strings.Replace(WasmLoad.rootPath()+dir+"/"+file,"//","/");
+     (WasmLoader.printfn(function($1)
      {
-      self.FS.mkdir(pathTo);
-     }
-     catch(e$2)
-     {
-      null;
-     }
-     e$1=Enumerator.Get(f[2]);
-     try
-     {
-      while(e$1.MoveNext())
-       {
-        file=e$1.Current();
-        self.FS.createPreloadedFile(pathTo,file,f[0]+"/"+file,1,Global.$op21);
-       }
-     }
-     finally
-     {
-      if(typeof e$1=="object"&&"Dispose"in e$1)
-       e$1.Dispose();
-     }
+      return function($2)
+      {
+       return $1("Preloading "+Utils.toSafe($2));
+      };
+     }))(from);
+     self.FS.createPreloadedFile(dir,file,from,1,Global.$op21);
     }
   }
   finally
@@ -1318,16 +1139,129 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     e.Dispose();
   }
  };
- WasmLoad.loadWasm=function()
+ WasmLoad.filesToPreload=function(opts)
  {
-  SC$1.$cctor();
-  return SC$1.loadWasm;
+  return List.ofSeq(Seq.delay(function()
+  {
+   return Seq.append(WsTranslator.dlls(),Seq.delay(function()
+   {
+    return Arrays.choose(function(a)
+    {
+     var a$1;
+     a$1=String.StartsWith("-r:",a);
+     return a$1!=null&&a$1.$==1?{
+      $:1,
+      $0:a$1.$0
+     }:null;
+    },Strings.SplitChars(opts,["\n"],0));
+   }));
+  }));
  };
- WasmLoad.loadInThisThread=function()
+ WasmLoad.loadInThisThread=function(opts)
  {
-  return Concurrency.AwaitTask1(WasmLoad.loadWasm().f());
+  var $1,$2,$3;
+  $2=!self.document;
+  $3=WasmLoader.wasmStatusV().Get();
+  switch($2?$3.$==3?1:$3.$==1?2:$3.$==2?4:$3.$==0?6:0:$3.$==1?1:$3.$==3?3:$3.$==4?5:$3.$==0?6:0)
+  {
+   case 0:
+    null;
+    break;
+   case 1:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loading");
+    });
+    break;
+   case 2:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loading in the main thread");
+    });
+    break;
+   case 3:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loading in a WebWorker");
+    });
+    break;
+   case 4:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loaded in the main thread");
+    });
+    break;
+   case 5:
+    WasmLoader.printfn(function($4)
+    {
+     return $4("WASM is loaded in a WebWorker");
+    });
+    break;
+   case 6:
+    Concurrency.Start(Concurrency.FromContinuations(function(ok)
+    {
+     var b;
+     function init()
+     {
+      WasmLoad.bindWasm();
+      WasmLoader.printfn(function($4)
+      {
+       return $4("WASM Initialized!");
+      });
+      WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoaded:WasmStatus.WasmLoaded);
+      ok();
+     }
+     return Concurrency.Start((b=null,Concurrency.Delay(function()
+     {
+      WasmLoader.printfn(function($4)
+      {
+       return $4("Loading WASM. Hold on, this will take a while...");
+      });
+      WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoading:WasmStatus.WasmLoading);
+      return Concurrency.Bind(Concurrency.Sleep(50),function()
+      {
+       return Concurrency.Combine(!(!self.document)?(Remoting.installProvider(),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
+       {
+        self.App=Pojo.newPojo([["init",init]]);
+        return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"mono-config.js"]),function()
+        {
+         return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"runtime.js"]),function()
+         {
+          var a,a$1;
+          a=WasmLoader.printfn(function($4)
+          {
+           return function($5)
+           {
+            return $4(Utils.toSafe($5));
+           };
+          });
+          self.Module.print=a;
+          a$1=WasmLoader.printfn(function($4)
+          {
+           return function($5)
+           {
+            return $4(Utils.toSafe($5));
+           };
+          });
+          self.Module.printErr=a$1;
+          self.Module.preRun=[function()
+          {
+           WasmLoad.preloadFiles(WasmLoad.filesToPreload(opts));
+          }];
+          return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"dotnet.js"]),function()
+          {
+           return Concurrency.Zero();
+          });
+         });
+        });
+       }));
+      });
+     })),null);
+    }),null);
+    break;
+  }
  };
- WasmLoad.loadWasmInWorker=function()
+ WasmLoad.loadWasmInWorker=function(opts)
  {
   var w;
   if(!self.document)
@@ -1347,7 +1281,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    else
     {
      WasmLoader.wasmStatusV().Set(WasmStatus.WasmLoading);
+     WasmLoader.printfn(function($1)
+     {
+      return $1("Initiating WebWorker");
+     });
      w=new Global.Worker("/WASM/publish/testing.WasmWorker.js");
+     w.postMessage({
+      $:2,
+      $0:opts
+     });
      w.onmessage=WWorker.fromWorker;
      WWorker.set_workerO({
       $:1,
@@ -1369,10 +1311,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      },function(t)
      {
       Remoting.returnExn0(t[0],t[1]);
-     },function(t)
-     {
-      Remoting.appendMsg(t);
-     }));
+     },Remoting.messaging().wprintfn));
      Remoting.installProvider();
     }
  };
@@ -1381,11 +1320,217 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   Obj.New.call(this);
  },Require);
- Global$1=WasmLoad.Global=Runtime.Class({},Obj,Global$1);
- Global$1.New=Runtime.Ctor(function()
+ GlobalModule=WasmLoad.GlobalModule=Runtime.Class({},Obj,GlobalModule);
+ GlobalModule.New=Runtime.Ctor(function()
  {
   Obj.New.call(this);
- },Global$1);
+ },GlobalModule);
+ UI.detailsV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.detailsV;
+ };
+ UI.fsErrsV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.fsErrsV;
+ };
+ UI.wsErrsV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.wsErrsV;
+ };
+ UI.wsWrnsV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.wsWrnsV;
+ };
+ UI.codeV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.codeV;
+ };
+ UI.optsV=function()
+ {
+  SC$1.$cctor();
+  return SC$1.optsV;
+ };
+ UI.clean=function()
+ {
+  UI.detailsV().Set("");
+ };
+ UI.callWasmA=function(f,p)
+ {
+  var b;
+  Concurrency.Start((b=null,Concurrency.Delay(function()
+  {
+   return Concurrency.Combine(WasmLoader.wasmStatusV().Get().$===0?(WasmLoad.loadWasmInWorker(UI.optsV().Get()),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
+   {
+    return Concurrency.Bind(Concurrency.Sleep(50),function()
+    {
+     return Concurrency.Combine(Concurrency.While(function()
+     {
+      var m;
+      m=WasmLoader.wasmStatusV().Get();
+      return m.$==2?false:m.$!=4;
+     },Concurrency.Delay(function()
+     {
+      WasmLoader.printfn(function($1)
+      {
+       return $1("Waiting for WASM to load...");
+      });
+      return Concurrency.Bind(Concurrency.Sleep(2000),function()
+      {
+       return Concurrency.Return(null);
+      });
+     })),Concurrency.Delay(function()
+     {
+      return Concurrency.Bind(f(p),function()
+      {
+       return Concurrency.Return(null);
+      });
+     }));
+    });
+   }));
+  })),null);
+ };
+ UI.getParms=function()
+ {
+  return["WasmTest",Arrays.filter(function(s)
+  {
+   return Strings.Trim(s)!=="";
+  },Strings.SplitChars("fsc.exe\n"+UI.optsV().Get(),["\n"],0)),UI.codeV().Get()];
+ };
+ UI.showMessages=function(name,f,msgsW)
+ {
+  return Doc.BindView(function(msgs)
+  {
+   return Arrays.length(msgs)===0?Doc.get_Empty():Doc.Element("div",[],[Doc.TextNode(name),Doc.Element("ol",[],[Doc.Concat(Seq.map(function(x)
+   {
+    return Doc.Element("li",[],[Doc.TextNode(f(x))]);
+   },msgs))])]);
+  },msgsW);
+ };
+ UI.parseAndCheckProject=function(projectName,opts,code)
+ {
+  var b;
+  b=null;
+  return Concurrency.Delay(function()
+  {
+   return Concurrency.Bind((new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.parseAndCheckProjectRpc:-1474163089",[projectName,opts,code]),function(a)
+   {
+    var a$1;
+    UI.fsErrsV().Set(Arrays.ofSeq(a[0]));
+    UI.wsErrsV().Set([]);
+    UI.wsWrnsV().Set([]);
+    a$1=(function($1)
+    {
+     return function($2)
+     {
+      return $1("("+Utils.prettyPrint($2[0])+", "+Utils.printArray(Utils.prettyPrint,$2[1])+")");
+     };
+    }(Global.id))([a[2],a[1]]);
+    UI.detailsV().Set(a$1);
+    return Concurrency.Zero();
+   });
+  });
+ };
+ UI.translateToJs=function(projectName,opts,code)
+ {
+  var b;
+  b=null;
+  return Concurrency.Delay(function()
+  {
+   return Concurrency.Bind((new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.translateFsToJsRpc:957452724",[projectName,opts,code]),function(a)
+   {
+    var wsO;
+    wsO=a[1];
+    UI.fsErrsV().Set(a[0]);
+    return wsO==null?(UI.clean(),UI.wsErrsV().Set([]),UI.wsWrnsV().Set([]),Concurrency.Zero()):(UI.detailsV().Set(wsO.$0[0]),UI.wsErrsV().Set(Arrays.ofSeq(wsO.$0[1])),UI.wsWrnsV().Set(Arrays.ofSeq(wsO.$0[2])),Concurrency.Zero());
+   });
+  });
+ };
+ UI.mainDoc=function()
+ {
+  var c,c$1;
+  return Doc.Element("div",[],[Doc.Element("h1",[],[Doc.TextNode("HELLO WASM!")]),Doc.Element("h2",[],[Doc.TextView(View.Map(function($1)
+  {
+   return(function($2)
+   {
+    return function($3)
+    {
+     return $2(testing_GeneratedPrintf.p($3));
+    };
+   }(Global.id))($1);
+  },WasmLoader.wasmStatusV().get_View()))]),Doc.Element("span",[],[Doc.Button("Load as Worker",[],function()
+  {
+   WasmLoad.loadWasmInWorker(UI.optsV().Get());
+  }),Doc.Button("Load in Main thread",[],function()
+  {
+   WasmLoad.loadInThisThread(UI.optsV().Get());
+  }),Doc.Button("Terminate Worker",[],function()
+  {
+   WWorker.terminate();
+  })]),Doc.Element("div",[],[Doc.InputArea([],UI.codeV()),Doc.InputArea([],UI.optsV())]),Doc.Element("span",[],[Doc.Button("Check",[],function()
+  {
+   UI.callWasmA(function(t)
+   {
+    return UI.parseAndCheckProject(t[0],t[1],t[2]);
+   },UI.getParms());
+  }),Doc.Button("Translate",[],function()
+  {
+   UI.clean();
+   WasmLoader.printfn(function($1)
+   {
+    return $1("Initiating translation:");
+   });
+   UI.callWasmA(function(t)
+   {
+    return UI.translateToJs(t[0],t[1],t[2]);
+   },UI.getParms());
+  }),Doc.Button("Dir",[],function()
+  {
+   UI.callWasmA(function(d)
+   {
+    return(new AjaxRemotingProvider.New()).Async("WsTranslator:FsRoot.WsTranslator+Rpc.dirRpc:-1181784350",[d]);
+   },"/");
+  }),Doc.Button("Clean",[],function()
+  {
+   UI.clean();
+  })]),UI.showMessages("Fsc Messages",function($1)
+  {
+   return function($2)
+   {
+    return $1(Utils.prettyPrint($2));
+   };
+  }(Global.id),UI.fsErrsV().get_View()),UI.showMessages("Ws  Errors",(c=function($1)
+  {
+   return function($2)
+   {
+    return $1("("+testing_GeneratedPrintf.p$1($2[0])+", "+testing_GeneratedPrintf.p$2($2[1])+")");
+   };
+  }(Global.id),function(t)
+  {
+   return c([t[0],t[1]]);
+  }),UI.wsErrsV().get_View()),UI.showMessages("Ws  Warnings",(c$1=function($1)
+  {
+   return function($2)
+   {
+    return $1("("+testing_GeneratedPrintf.p$1($2[0])+", "+testing_GeneratedPrintf.p$3($2[1])+")");
+   };
+  }(Global.id),function(t)
+  {
+   return c$1([t[0],t[1]]);
+  }),UI.wsWrnsV().get_View()),Doc.Element("div",[AttrProxy.Create("style","font-family: monospace; white-space:pre")],[Doc.TextView(UI.detailsV().get_View())])]);
+ };
+ UI.main=function()
+ {
+  var x,a;
+  x=UI.mainDoc();
+  a=self.document.body;
+  Templates.LoadLocalTemplates("");
+  Doc.Run(a,x);
+ };
  Operators.range=function(min,max)
  {
   var count;
@@ -1395,17 +1540,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    return x+min;
   });
  };
- Operators.FailWith=function(msg)
- {
-  throw new Error(msg);
- };
  Operators.KeyValue=function(kvp)
  {
   return[kvp.K,kvp.V];
  };
- Operators.InvalidOp=function(msg)
+ Operators.FailWith=function(msg)
  {
-  throw new InvalidOperationException.New(msg);
+  throw new Error(msg);
  };
  Utils.toSafe=function(s)
  {
@@ -1617,9 +1758,60 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     e.Dispose();
   }
  };
+ Seq.distinct=function(s)
+ {
+  return Seq.distinctBy(Global.id,s);
+ };
+ Seq.cache=function(s)
+ {
+  var cache,o;
+  cache=[];
+  o=[Enumerator.Get(s)];
+  return{
+   GetEnumerator:function()
+   {
+    return new T$1.New(0,null,function(e)
+    {
+     var en;
+     return e.s<cache.length?(e.c=cache[e.s],e.s=e.s+1,true):(en=o[0],Unchecked.Equals(en,null)?false:en.MoveNext()?(e.s=e.s+1,e.c=en.Current(),cache.push(e.c),true):(en.Dispose(),o[0]=null,false));
+    },void 0);
+   }
+  };
+ };
  Seq.init=function(n,f)
  {
   return Seq.take(n,Seq.initInfinite(f));
+ };
+ Seq.distinctBy=function(f,s)
+ {
+  return{
+   GetEnumerator:function()
+   {
+    var o,seen;
+    o=Enumerator.Get(s);
+    seen=new HashSet.New$3();
+    return new T$1.New(null,null,function(e)
+    {
+     var cur,has;
+     if(o.MoveNext())
+      {
+       cur=o.Current();
+       has=seen.Add(f(cur));
+       while(!has&&o.MoveNext())
+        {
+         cur=o.Current();
+         has=seen.Add(f(cur));
+        }
+       return has&&(e.c=cur,true);
+      }
+     else
+      return false;
+    },function()
+    {
+     o.Dispose();
+    });
+   }
+  };
  };
  Seq.take=function(n,s)
  {
@@ -1892,12 +2084,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$1["|Double|_|"]=ParseO.parseDoubleO();
   SC$1["|Guid|_|"]=ParseO.parseGuidO();
   SC$1.wasmStatusV=Var$1.Create$1(WasmStatus.WasmNotLoaded);
-  SC$1.detailsV=Var$1.Create$1("");
-  SC$1.fsErrsV=Var$1.Create$1([]);
-  SC$1.wsErrsV=Var$1.Create$1([]);
-  SC$1.wsWrnsV=Var$1.Create$1([]);
-  SC$1.codeV=Var$1.Create$1("printfn \"Hello\"");
-  SC$1.optsV=Var$1.Create$1("/tmp/source.fsx\n-o:source.exe\n--simpleresolution\n--nowarn:3186\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/System.Numerics.dll");
   SC$1.originalProvider=Remoting$1.AjaxProvider();
   SC$1.queues=new Dictionary.New$5();
   SC$1.messaging=IMessagingO.New(function(h)
@@ -1912,117 +2098,36 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   },function(t)
   {
    Remoting.returnExn0(t[0],t[1]);
-  },function(t)
+  },function($1)
   {
-   Remoting.appendMsg(t);
-  });
+   return function($2)
+   {
+    return $1("EARLY PRINTING!: "+Utils.toSafe($2));
+   };
+  }(function(s)
+  {
+   console.log(s);
+  }));
   SC$1.workerO=null;
   SC$1.rootPath="/WASM/publish/";
-  SC$1.filesToPreload=List.ofArray([[WasmLoad.rootPath()+"dlls","/tmp",["WebSharper.Main.dll","WebSharper.Collections.dll","WebSharper.Control.dll","WebSharper.Web.dll","WebSharper.Sitelets.dll","WebSharper.UI.dll","WebSharper.UI.Templating.Runtime.dll","WebSharper.Data.dll"]],[WasmLoad.rootPath()+"managed","/tmp",Arrays.choose(function(a)
+  SC$1.detailsV=Var$1.Create$1("");
+  SC$1.fsErrsV=Var$1.Create$1([]);
+  SC$1.wsErrsV=Var$1.Create$1([]);
+  SC$1.wsWrnsV=Var$1.Create$1([]);
+  SC$1.codeV=Var$1.Create$1("printfn \"Hello\"");
+  SC$1.optsV=Var$1.Create$1(Strings.concat("\n",Seq.map(Strings.Trim,Strings.SplitChars("\r\n                                    /tmp/source.fsx\r\n                                    -o:source.exe\r\n                                    --simpleresolution\r\n                                    --nowarn:3186\r\n                                    --optimize-\r\n                                    --noframework\r\n                                    --fullpaths\r\n                                    --warn:3\r\n                                    --target:exe\r\n                                    -r:/dlls/WebSharper.Core.dll\r\n                                    -r:/dlls/WebSharper.UI.dll\r\n                                    -r:/dlls/WebSharper.Sitelets.dll\r\n                                    -r:/managed/FSharp.Core.dll\r\n                                    -r:/managed/mscorlib.dll\r\n                                    -r:/managed/netstandard.dll\r\n                                    -r:/managed/System.dll\r\n                                    -r:/managed/System.Core.dll\r\n                                    -r:/managed/System.IO.dll\r\n                                    -r:/managed/System.Runtime.dll\r\n                                    -r:/managed/System.Net.Http.dll\r\n                                    -r:/managed/System.Threading.dll\r\n                                    -r:/managed/System.Numerics.dll\r\n                                ",["\n"],0))));
+  !(!self.document)?Remoting.set_messaging(IMessagingO.New(Remoting.messaging().runRpc,Remoting.messaging().returnValue,Remoting.messaging().returnExn,function(txt)
   {
-   var a$1;
-   a$1=String.StartsWith("-r:/tmp/",a);
-   return a$1!=null&&a$1.$==1?{
-    $:1,
-    $0:a$1.$0
-   }:null;
-  },Strings.SplitChars(WasmLoader.optsV().Get(),["\n"],0))]]);
-  SC$1.loadWasm=Lazy.Create(function()
-  {
-   return Concurrency.StartAsTask(Concurrency.FromContinuations(function(ok)
-   {
-    var b;
-    function init()
-    {
-     WasmLoad.bindWasm();
-     WasmLoader.printfn(function($1)
-     {
-      return $1("WASM Initialized!");
-     });
-     WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoaded:WasmStatus.WasmLoaded);
-     ok();
-    }
-    return Concurrency.Start((b=null,Concurrency.Delay(function()
-    {
-     return WasmLoader.wasmStatusV().Get().$!==0?((WasmLoader.printfn(function($1)
-     {
-      return function($2)
-      {
-       return $1("Wasm is already "+testing_GeneratedPrintf.p($2));
-      };
-     }))(WasmLoader.wasmStatusV().Get()),ok(),Concurrency.Zero()):(WasmLoader.printfn(function($1)
-     {
-      return $1("Loading WASM. Hold on, this will take a while...");
-     }),WasmLoader.wasmStatusV().Set(!self.document?WasmStatus.WasmWorkerLoading:WasmStatus.WasmLoading),Concurrency.Bind(Concurrency.Sleep(50),function()
-     {
-      return Concurrency.Combine(!(!self.document)?(Remoting.installProvider(),Concurrency.Zero()):Concurrency.Zero(),Concurrency.Delay(function()
-      {
-       self.App=Pojo.newPojo([["init",init]]);
-       return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"mono-config.js"]),function()
-       {
-        return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"runtime.js"]),function()
-        {
-         self.Module.print=WasmLoader.printfn(function($1)
-         {
-          return function($2)
-          {
-           return $1(Utils.toSafe($2));
-          };
-         });
-         self.Module.printErr=WasmLoader.printfn(function($1)
-         {
-          return function($2)
-          {
-           return $1(Utils.toSafe($2));
-          };
-         });
-         self.Module.preRun=[function()
-         {
-          WasmLoad.preloadFiles();
-         }];
-         return Concurrency.Bind(WasmLoad.requireJsA([WasmLoad.rootPath()+"dotnet.js"]),function()
-         {
-          return Concurrency.Zero();
-         });
-        });
-       });
-      }));
-     }));
-    })),null);
-   }),null);
-  });
-  WasmLoader.printfn(function($1)
-  {
-   return $1("Initiating system...");
-  });
-  WasmLoader.callWasmA(function()
-  {
-   var b;
-   b=null;
-   return Concurrency.Delay(function()
-   {
-    var t;
-    return Concurrency.Bind((t=WasmLoader.getParms(),WasmLoader.translateToJs(t[0],t[1],t[2])),function()
-    {
-     WasmLoader.clean();
-     WasmLoader.printfn(function($1)
-     {
-      return $1("System initiated!");
-     });
-     return Concurrency.Zero();
-    });
-   });
-  },null);
+   var pre;
+   console.log(txt);
+   pre=UI.detailsV().Get();
+   UI.detailsV().Set(pre+(pre===""?"":"\n")+txt);
+  })):void 0;
  };
  Char.IsWhiteSpace=function(c)
  {
   return c.match(new Global.RegExp("\\s"))!==null;
  };
- Var=UI.Var=Runtime.Class({},Obj,Var);
- Var.New=Runtime.Ctor(function()
- {
-  Obj.New.call(this);
- },Var);
  Pervasives.NewFromSeq=function(fields)
  {
   var r,e,f;
@@ -2388,13 +2493,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   for(i=0,$1=arr.length-1;i<=$1;i++)r[i]=f(arr[i]);
   return r;
  };
- Arrays.create=function(size,value)
- {
-  var r,i,$1;
-  r=new Global.Array(size);
-  for(i=0,$1=size-1;i<=$1;i++)r[i]=value;
-  return r;
- };
  Arrays.choose=function(f,arr)
  {
   var q,i,$1,m;
@@ -2404,6 +2502,21 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    m==null?void 0:q.push(m.$0);
   }
   return q;
+ };
+ Arrays.filter=function(f,arr)
+ {
+  var r,i,$1;
+  r=[];
+  for(i=0,$1=arr.length-1;i<=$1;i++)if(f(arr[i]))
+   r.push(arr[i]);
+  return r;
+ };
+ Arrays.create=function(size,value)
+ {
+  var r,i,$1;
+  r=new Global.Array(size);
+  for(i=0,$1=size-1;i<=$1;i++)r[i]=value;
+  return r;
  };
  Arrays.tryPick=function(f,arr)
  {
@@ -2455,14 +2568,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    else
     i=i+1;
   return e;
- };
- Arrays.filter=function(f,arr)
- {
-  var r,i,$1;
-  r=[];
-  for(i=0,$1=arr.length-1;i<=$1;i++)if(f(arr[i]))
-   r.push(arr[i]);
-  return r;
  };
  Arrays.ofList=function(xs)
  {
@@ -2596,6 +2701,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    };
   xhr.send(data);
  };
+ Var=UI$1.Var=Runtime.Class({},Obj,Var);
+ Var.New=Runtime.Ctor(function()
+ {
+  Obj.New.call(this);
+ },Var);
  JS.GetFields=function(o)
  {
   var r,k;
@@ -2705,9 +2815,14 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   pojo[p]=p$1;
   return pojo;
  };
+ WsTranslator.dlls=function()
+ {
+  SC$3.$cctor();
+  return SC$3.dlls;
+ };
  testing_GeneratedPrintf.p=function($1)
  {
-  return $1.$==6?"WasmWorkerFinished":$1.$==5?"WasmWorkerLoaded":$1.$==4?"WasmWorkerLoading":$1.$==3?"WasmFinished":$1.$==2?"WasmLoaded":$1.$==1?"WasmLoading":"WasmNotLoaded";
+  return $1.$==4?"WasmWorkerLoaded":$1.$==3?"WasmWorkerLoading":$1.$==2?"WasmLoaded":$1.$==1?"WasmLoading":"WasmNotLoaded";
  };
  testing_GeneratedPrintf.p$1=function($1)
  {
@@ -2725,6 +2840,122 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return"{"+("FileName = "+Utils.prettyPrint($1.FileName))+"; "+("Start = "+("("+Utils.prettyPrint($1.Start[0])+", "+Utils.prettyPrint($1.Start[1])+")"))+"; "+("End = "+("("+Utils.prettyPrint($1.End[0])+", "+Utils.prettyPrint($1.End[1])+")"))+"}";
  };
+ Doc=UI$1.Doc=Runtime.Class({},Obj,Doc);
+ Doc.get_Empty=function()
+ {
+  return Doc.Mk(null,View.Const());
+ };
+ Doc.Concat=function(xs)
+ {
+  var x;
+  x=Array.ofSeqNonCopying(xs);
+  return Array.TreeReduce(Doc.get_Empty(),Doc.Append,x);
+ };
+ Doc.BindView=function(f,view)
+ {
+  return Doc.EmbedView(View.Map(f,view));
+ };
+ Doc.Mk=function(node,updates)
+ {
+  return new Doc.New(node,updates);
+ };
+ Doc.TextNode=function(v)
+ {
+  return Doc.Mk({
+   $:5,
+   $0:DomUtility.CreateText(v)
+  },View.Const());
+ };
+ Doc.Append=function(a,b)
+ {
+  return Doc.Mk({
+   $:0,
+   $0:a.docNode,
+   $1:b.docNode
+  },View.Map2Unit(a.updates,b.updates));
+ };
+ Doc.Button=function(caption,attrs,action)
+ {
+  var attrs$1;
+  attrs$1=AttrProxy.Concat(attrs);
+  return Elt.New(Doc.Clickable("button",action),attrs$1,Doc.TextNode(caption));
+ };
+ Doc.InputArea=function(attr$1,_var)
+ {
+  return Doc.InputInternal("textarea",function()
+  {
+   return Seq.append(attr$1,[AttrModule.Value(_var)]);
+  });
+ };
+ Doc.TextView=function(txt)
+ {
+  var node;
+  node=Docs.CreateTextNode();
+  return Doc.Mk({
+   $:4,
+   $0:node
+  },View.Map(function(t)
+  {
+   Docs.UpdateTextNode(node,t);
+  },txt));
+ };
+ Doc.Run=function(parent,doc)
+ {
+  Docs.LinkElement(parent,doc.docNode);
+  Doc.RunInPlace(false,parent,doc);
+ };
+ Doc.EmbedView=function(view)
+ {
+  var node;
+  node=Docs.CreateEmbedNode();
+  return Doc.Mk({
+   $:2,
+   $0:node
+  },View.Map(Global.ignore,View.Bind(function(doc)
+  {
+   Docs.UpdateEmbedNode(node,doc.docNode);
+   return doc.updates;
+  },view)));
+ };
+ Doc.Element=function(name,attr$1,children)
+ {
+  var a,a$1;
+  a=AttrProxy.Concat(attr$1);
+  a$1=Doc.Concat(children);
+  return Elt.New(DomUtility.CreateElement(name),a,a$1);
+ };
+ Doc.Clickable=function(elem,action)
+ {
+  var el;
+  el=DomUtility.CreateElement(elem);
+  el.addEventListener("click",function(ev)
+  {
+   ev.preventDefault();
+   return action();
+  },false);
+  return el;
+ };
+ Doc.InputInternal=function(elemTy,attr$1)
+ {
+  var el;
+  el=DomUtility.CreateElement(elemTy);
+  return Elt.New(el,AttrProxy.Concat(attr$1(el)),Doc.get_Empty());
+ };
+ Doc.RunInPlace=function(childrenOnly,parent,doc)
+ {
+  var st;
+  st=Docs.CreateRunState(parent,doc.docNode);
+  View.Sink(An.get_UseAnimations()||Settings.BatchUpdatesEnabled()?Mailbox.StartProcessor(Docs.PerformAnimatedUpdate(childrenOnly,st,doc.docNode)):function()
+  {
+   Docs.PerformSyncUpdate(childrenOnly,st,doc.docNode);
+  },doc.updates);
+ };
+ Doc.New=Runtime.Ctor(function(docNode,updates)
+ {
+  Obj.New.call(this);
+  this.docNode=docNode;
+  this.updates=updates;
+ },Doc);
  AjaxRemotingProvider=Remoting$1.AjaxRemotingProvider=Runtime.Class({
   AsyncBase:function(m,data)
   {
@@ -2803,122 +3034,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  T.Empty=new T({
   $:0
  });
- Doc=UI.Doc=Runtime.Class({},Obj,Doc);
- Doc.get_Empty=function()
- {
-  return Doc.Mk(null,View.Const());
- };
- Doc.Concat=function(xs)
- {
-  var x;
-  x=Array.ofSeqNonCopying(xs);
-  return Array.TreeReduce(Doc.get_Empty(),Doc.Append,x);
- };
- Doc.BindView=function(f,view)
- {
-  return Doc.EmbedView(View.Map(f,view));
- };
- Doc.Mk=function(node,updates)
- {
-  return new Doc.New(node,updates);
- };
- Doc.TextNode=function(v)
- {
-  return Doc.Mk({
-   $:5,
-   $0:DomUtility.CreateText(v)
-  },View.Const());
- };
- Doc.Append=function(a,b)
- {
-  return Doc.Mk({
-   $:0,
-   $0:a.docNode,
-   $1:b.docNode
-  },View.Map2Unit(a.updates,b.updates));
- };
- Doc.InputArea=function(attr$1,_var)
- {
-  return Doc.InputInternal("textarea",function()
-  {
-   return Seq.append(attr$1,[AttrModule.Value(_var)]);
-  });
- };
- Doc.Button=function(caption,attrs,action)
- {
-  var attrs$1;
-  attrs$1=AttrProxy.Concat(attrs);
-  return Elt.New(Doc.Clickable("button",action),attrs$1,Doc.TextNode(caption));
- };
- Doc.TextView=function(txt)
- {
-  var node;
-  node=Docs.CreateTextNode();
-  return Doc.Mk({
-   $:4,
-   $0:node
-  },View.Map(function(t)
-  {
-   Docs.UpdateTextNode(node,t);
-  },txt));
- };
- Doc.Run=function(parent,doc)
- {
-  Docs.LinkElement(parent,doc.docNode);
-  Doc.RunInPlace(false,parent,doc);
- };
- Doc.EmbedView=function(view)
- {
-  var node;
-  node=Docs.CreateEmbedNode();
-  return Doc.Mk({
-   $:2,
-   $0:node
-  },View.Map(Global.ignore,View.Bind(function(doc)
-  {
-   Docs.UpdateEmbedNode(node,doc.docNode);
-   return doc.updates;
-  },view)));
- };
- Doc.Element=function(name,attr$1,children)
- {
-  var a,a$1;
-  a=AttrProxy.Concat(attr$1);
-  a$1=Doc.Concat(children);
-  return Elt.New(DomUtility.CreateElement(name),a,a$1);
- };
- Doc.InputInternal=function(elemTy,attr$1)
- {
-  var el;
-  el=DomUtility.CreateElement(elemTy);
-  return Elt.New(el,AttrProxy.Concat(attr$1(el)),Doc.get_Empty());
- };
- Doc.Clickable=function(elem,action)
- {
-  var el;
-  el=DomUtility.CreateElement(elem);
-  el.addEventListener("click",function(ev)
-  {
-   ev.preventDefault();
-   return action();
-  },false);
-  return el;
- };
- Doc.RunInPlace=function(childrenOnly,parent,doc)
- {
-  var st;
-  st=Docs.CreateRunState(parent,doc.docNode);
-  View.Sink(An.get_UseAnimations()||Settings.BatchUpdatesEnabled()?Mailbox.StartProcessor(Docs.PerformAnimatedUpdate(childrenOnly,st,doc.docNode)):function()
-  {
-   Docs.PerformSyncUpdate(childrenOnly,st,doc.docNode);
-  },doc.updates);
- };
- Doc.New=Runtime.Ctor(function(docNode,updates)
- {
-  Obj.New.call(this);
-  this.docNode=docNode;
-  this.updates=updates;
- },Doc);
  View.Map=function(fn,a)
  {
   return View.CreateLazy(function()
@@ -3213,7 +3328,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   throw new FormatException.New$1("Format String can be only \"D\", \"d\", \"N\", \"n\", \"P\", \"p\", \"B\", \"b\", \"X\" or \"x\".");
  };
- Var$1=UI.Var$1=Runtime.Class({},Obj,Var$1);
+ Var$1=UI$1.Var$1=Runtime.Class({},Obj,Var$1);
  Var$1.Create$1=function(v)
  {
   return new ConcreteVar.New(false,Snap.New({
@@ -3221,23 +3336,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    $0:v,
    $1:[]
   }),v);
- };
- Lazy.Create=function(f)
- {
-  return LazyRecord.New(false,f,Lazy.forceLazy);
- };
- Lazy.forceLazy=function()
- {
-  var v;
-  v=this.v();
-  this.c=true;
-  this.v=v;
-  this.f=Lazy.cachedLazy;
-  return v;
- };
- Lazy.cachedLazy=function()
- {
-  return this.v;
  };
  Seq.tryHead=function(s)
  {
@@ -3256,13 +3354,35 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     e.Dispose();
   }
  };
- Seq.nonNegative=function()
+ Seq.last=function(s)
  {
-  return Operators.FailWith("The input must be non-negative.");
+  var e,$1;
+  e=Enumerator.Get(s);
+  try
+  {
+   if(!e.MoveNext())
+    $1=Seq.insufficient();
+   else
+    {
+     while(e.MoveNext())
+      ;
+     $1=e.Current();
+    }
+   return $1;
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
  };
  Seq.insufficient=function()
  {
   return Operators.FailWith("The input sequence has an insufficient number of elements.");
+ };
+ Seq.nonNegative=function()
+ {
+  return Operators.FailWith("The input must be non-negative.");
  };
  SC$2.$cctor=function()
  {
@@ -3316,17 +3436,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    });
   };
  };
- Concurrency.AwaitTask1=function(t)
- {
-  return Concurrency.FromContinuations(function(ok,err,cc)
-  {
-   t.get_Status()===0?t.Start():void 0;
-   t.ContinueWith$1(function(t$1)
-   {
-    return t$1.get_IsCanceled()?cc(new OperationCanceledException.New(Concurrency.noneCT())):t$1.get_IsFaulted()?err(t$1.get_Exception()):ok(t$1.get_Result());
-   },Concurrency.noneCT());
-  });
- };
  Concurrency.Delay=function(mk)
  {
   return function(c)
@@ -3377,18 +3486,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    },c.ct));
   });
  };
- Concurrency.Zero=function()
- {
-  SC$3.$cctor();
-  return SC$3.Zero;
- };
- Concurrency.Combine=function(a,b)
- {
-  return Concurrency.Bind(a,function()
-  {
-   return b;
-  });
- };
  Concurrency.Sleep=function(ms)
  {
   return function(c)
@@ -3417,6 +3514,32 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    });
   };
  };
+ Concurrency.Combine=function(a,b)
+ {
+  return Concurrency.Bind(a,function()
+  {
+   return b;
+  });
+ };
+ Concurrency.Zero=function()
+ {
+  SC$4.$cctor();
+  return SC$4.Zero;
+ };
+ Concurrency.Start=function(c,ctOpt)
+ {
+  var ct,d;
+  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
+  Concurrency.scheduler().Fork(function()
+  {
+   if(!ct.c)
+    c(AsyncBody.New(function(a)
+    {
+     if(a.$==1)
+      Concurrency.UncaughtAsyncError(a.$0);
+    },ct));
+  });
+ };
  Concurrency.While=function(g,c)
  {
   return g()?Concurrency.Bind(c,function()
@@ -3433,39 +3556,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:x
    });
   };
- };
- Concurrency.Start=function(c,ctOpt)
- {
-  var ct,d;
-  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
-  Concurrency.scheduler().Fork(function()
-  {
-   if(!ct.c)
-    c(AsyncBody.New(function(a)
-    {
-     if(a.$==1)
-      Concurrency.UncaughtAsyncError(a.$0);
-    },ct));
-  });
- };
- Concurrency.StartAsTask=function(c,ctOpt)
- {
-  var tcs;
-  tcs=new TaskCompletionSource.New();
-  Concurrency.scheduler().Fork(function()
-  {
-   Concurrency.StartWithContinuations(c,function(a)
-   {
-    tcs.SetResult(a);
-   },function(a)
-   {
-    tcs.SetException$1(a);
-   },function()
-   {
-    tcs.SetCanceled();
-   },ctOpt);
-  });
-  return tcs.get_Task();
  };
  Concurrency.checkCancel=function(r)
  {
@@ -3501,42 +3591,27 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Concurrency.defCTS=function()
  {
-  SC$3.$cctor();
-  return SC$3.defCTS;
+  SC$4.$cctor();
+  return SC$4.defCTS;
  };
  Concurrency.UncaughtAsyncError=function(e)
  {
   console.log("WebSharper: Uncaught asynchronous exception",e);
  };
- Concurrency.StartWithContinuations=function(c,s,f,cc,ctOpt)
- {
-  var ct,d;
-  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
-  !ct.c?c(AsyncBody.New(function(a)
-  {
-   if(a.$==1)
-    f(a.$0);
-   else
-    if(a.$==2)
-     cc(a.$0);
-    else
-     s(a.$0);
-  },ct)):void 0;
- };
  Concurrency.scheduler=function()
  {
-  SC$3.$cctor();
-  return SC$3.scheduler;
+  SC$4.$cctor();
+  return SC$4.scheduler;
  };
  Concurrency.noneCT=function()
  {
-  SC$3.$cctor();
-  return SC$3.noneCT;
+  SC$4.$cctor();
+  return SC$4.noneCT;
  };
  Concurrency.GetCT=function()
  {
-  SC$3.$cctor();
-  return SC$3.GetCT;
+  SC$4.$cctor();
+  return SC$4.GetCT;
  };
  Concurrency.TryWith=function(r,f)
  {
@@ -3563,6 +3638,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
       c.k(a);
    },c.ct));
   };
+ };
+ SC$3.$cctor=function()
+ {
+  SC$3.$cctor=Global.ignore;
+  SC$3.dlls=["/dlls/WebSharper.Main.dll","/dlls/WebSharper.Collections.dll","/dlls/WebSharper.Control.dll","/dlls/WebSharper.Web.dll","/dlls/WebSharper.Sitelets.dll","/dlls/WebSharper.UI.dll","/dlls/WebSharper.UI.Templating.Runtime.dll","/dlls/WebSharper.Data.dll"];
  };
  Array.ofSeqNonCopying=function(xs)
  {
@@ -3794,7 +3874,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   m=snap.s;
   m==null?Snap.Obsolete(obs):m!=null&&m.$==2?Snap.EnqueueSafe(m.$1,obs):m!=null&&m.$==3?Snap.EnqueueSafe(m.$1,obs):void 0;
  };
- AttrProxy=UI.AttrProxy=Runtime.Class({},null,AttrProxy);
+ AttrProxy=UI$1.AttrProxy=Runtime.Class({},null,AttrProxy);
  AttrProxy.Create=function(name,value)
  {
   return Attrs.Static(function(el)
@@ -3819,13 +3899,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.LocalTemplatesLoaded=function()
  {
-  SC$4.$cctor();
-  return SC$4.LocalTemplatesLoaded;
+  SC$5.$cctor();
+  return SC$5.LocalTemplatesLoaded;
  };
  Templates.set_LocalTemplatesLoaded=function($1)
  {
-  SC$4.$cctor();
-  SC$4.LocalTemplatesLoaded=$1;
+  SC$5.$cctor();
+  SC$5.LocalTemplatesLoaded=$1;
  };
  Templates.LoadNestedTemplates=function(root,baseName)
  {
@@ -3879,8 +3959,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.LoadedTemplates=function()
  {
-  SC$4.$cctor();
-  return SC$4.LoadedTemplates;
+  SC$5.$cctor();
+  return SC$5.LoadedTemplates;
  };
  Templates.LoadedTemplateFile=function(name)
  {
@@ -4128,8 +4208,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.TextHoleRE=function()
  {
-  SC$4.$cctor();
-  return SC$4.TextHoleRE;
+  SC$5.$cctor();
+  return SC$5.TextHoleRE;
  };
  DateUtil.TryParse=function(s)
  {
@@ -4148,7 +4228,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   ok?r.set(x):void 0;
   return ok;
  };
- ConcreteVar=UI.ConcreteVar=Runtime.Class({
+ ConcreteVar=UI$1.ConcreteVar=Runtime.Class({
   Set:function(v)
   {
    if(this.isConst)
@@ -4207,14 +4287,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Operators.FailWith("The given key was not present in the dictionary.");
  };
- LazyRecord.New=function(created,evalOrVal,force)
- {
-  return{
-   c:created,
-   v:evalOrVal,
-   f:force
-  };
- };
  XhrProvider=Remoting$1.XhrProvider=Runtime.Class({
   Async:function(url,headers,data,ok,err)
   {
@@ -4235,147 +4307,140 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    ct:ct
   };
  };
- Task=WebSharper.Task=Runtime.Class({
-  get_Status:function()
+ HashSet=Collections.HashSet=Runtime.Class({
+  Add:function(item)
   {
-   return this.status;
+   return this.add(item);
   },
-  Start:function()
+  add:function(item)
   {
-   var $this;
-   $this=this;
-   this.status===0?(this.status=2,Concurrency.scheduler().Fork(function()
+   var h,arr;
+   h=this.hash(item);
+   arr=this.data[h];
+   return arr==null?(this.data[h]=[item],this.count=this.count+1,true):this.arrContains(item,arr)?false:(arr.push(item),this.count=this.count+1,true);
+  },
+  Contains:function(item)
+  {
+   var arr;
+   arr=this.data[this.hash(item)];
+   return arr==null?false:this.arrContains(item,arr);
+  },
+  arrContains:function(item,arr)
+  {
+   var c,i,$1,l;
+   c=true;
+   i=0;
+   l=arr.length;
+   while(c&&i<l)
+    if(this.equals.apply(null,[arr[i],item]))
+     c=false;
+    else
+     i=i+1;
+   return!c;
+  },
+  ExceptWith:function(xs)
+  {
+   var e;
+   e=Enumerator.Get(xs);
+   try
    {
-    var $1;
-    $this.status=3;
-    try
-    {
-     $this.Execute();
-     $this.status=5;
-    }
-    catch(m)
-    {
-     m instanceof OperationCanceledException&&(Unchecked.Equals(m.ct,$this.token)&&($1=m,true))?(console.log("Task cancellation caught:",$1),$this.exc=new AggregateException.New$3([$1]),$this.status=6):(console.log("Task error caught:",m),$this.exc=new AggregateException.New$3([m]),$this.status=7);
-    }
-    $this.RunContinuations();
-   })):Operators.InvalidOp("Task not in initial state");
-  },
-  get_IsCanceled:function()
-  {
-   return this.status===6;
-  },
-  get_IsFaulted:function()
-  {
-   return this.status===7;
-  },
-  get_Exception:function()
-  {
-   return this.exc;
-  },
-  Execute:function()
-  {
-   this.action();
-  },
-  RunContinuations:function()
-  {
-   var a,i,$1;
-   a=this.continuations;
-   for(i=0,$1=a.length-1;i<=$1;i++)Arrays.get(a,i).StartContinuation();
-  },
-  get_IsCompleted:function()
-  {
-   return this.status===5||this.status===7||this.status===6;
-  },
-  StartContinuation:function()
-  {
-   var $this;
-   $this=this;
-   this.status===1?(this.status=2,Concurrency.scheduler().Fork(function()
+    while(e.MoveNext())
+     this.Remove(e.Current());
+   }
+   finally
    {
-    if($this.status===2)
-     {
-      $this.status=3;
-      try
-      {
-       $this.Execute();
-       $this.status=5;
-      }
-      catch(e)
-      {
-       $this.exc=new AggregateException.New$3([e]);
-       $this.status=7;
-      }
-      $this.RunContinuations();
-     }
-   })):void 0;
-  },
-  ContinueWith$1:function(action,ct)
-  {
-   var $this,res;
-   $this=this;
-   res=new Task.New$4(function()
-   {
-    return action($this);
-   },ct,1,null);
-   this.get_IsCompleted()?res.StartContinuation():this.continuations.push(res);
-   return res;
-  }
- },Obj,Task);
- Task.New$4=Runtime.Ctor(function(action,token,status,exc)
- {
-  Obj.New.call(this);
-  this.action=action;
-  this.token=token;
-  this.status=status;
-  this.continuations=[];
-  this.exc=exc;
- },Task);
- Task1=WebSharper.Task1=Runtime.Class({
-  get_Result:function()
-  {
-   var $1;
-   switch(this.get_Status())
-   {
-    case 5:
-     return this.result;
-    case 7:
-    case 6:
-     throw this.get_Exception();
-    default:
-     return Operators.InvalidOp("Task has not been completed, has no Result");
+    if(typeof e=="object"&&"Dispose"in e)
+     e.Dispose();
    }
   },
-  Execute:function()
+  get_Count:function()
   {
-   this.result=this.func();
+   return this.count;
+  },
+  CopyTo:function(arr)
+  {
+   var i,all,i$1,$1;
+   i=0;
+   all=HashSetUtil.concat(this.data);
+   for(i$1=0,$1=all.length-1;i$1<=$1;i$1++)Arrays.set(arr,i$1,all[i$1]);
+  },
+  IntersectWith:function(xs)
+  {
+   var other,all,i,$1,item;
+   other=new HashSet.New$4(xs,this.equals,this.hash);
+   all=HashSetUtil.concat(this.data);
+   for(i=0,$1=all.length-1;i<=$1;i++){
+    item=all[i];
+    !other.Contains(item)?this.Remove(item):void 0;
+   }
+  },
+  Remove:function(item)
+  {
+   var arr;
+   arr=this.data[this.hash(item)];
+   return arr==null?false:this.arrRemove(item,arr)&&(this.count=this.count-1,true);
+  },
+  arrRemove:function(item,arr)
+  {
+   var c,i,$1,l;
+   c=true;
+   i=0;
+   l=arr.length;
+   while(c&&i<l)
+    if(this.equals.apply(null,[arr[i],item]))
+     {
+      arr.splice.apply(arr,[i,1]);
+      c=false;
+     }
+    else
+     i=i+1;
+   return!c;
+  },
+  GetEnumerator:function()
+  {
+   return Enumerator.Get(HashSetUtil.concat(this.data));
+  },
+  GetEnumerator0:function()
+  {
+   return Enumerator.Get(HashSetUtil.concat(this.data));
   }
- },Task,Task1);
- Task1.New$4=Runtime.Ctor(function(func,token,status,exc,result)
+ },Obj,HashSet);
+ HashSet.New$3=Runtime.Ctor(function()
  {
-  Task.New$4.call(this,null,token,status,exc);
-  this.func=func;
-  this.result=result;
- },Task1);
- OperationCanceledException=WebSharper.OperationCanceledException=Runtime.Class({},Error,OperationCanceledException);
- OperationCanceledException.New=Runtime.Ctor(function(ct)
+  HashSet.New$4.call(this,[],Unchecked.Equals,Unchecked.Hash);
+ },HashSet);
+ HashSet.New$4=Runtime.Ctor(function(init,equals,hash)
  {
-  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
- },OperationCanceledException);
- OperationCanceledException.New$1=Runtime.Ctor(function(message,inner,ct)
+  var e;
+  Obj.New.call(this);
+  this.equals=equals;
+  this.hash=hash;
+  this.data=[];
+  this.count=0;
+  e=Enumerator.Get(init);
+  try
+  {
+   while(e.MoveNext())
+    this.add(e.Current());
+  }
+  finally
+  {
+   if(typeof e=="object"&&"Dispose"in e)
+    e.Dispose();
+  }
+ },HashSet);
+ HashSet.New$2=Runtime.Ctor(function(init)
  {
-  this.message=message;
-  this.inner=inner;
-  Object.setPrototypeOf(this,OperationCanceledException.prototype);
-  this.ct=ct;
- },OperationCanceledException);
- SC$3.$cctor=function()
+  HashSet.New$4.call(this,init,Unchecked.Equals,Unchecked.Hash);
+ },HashSet);
+ SC$4.$cctor=function()
  {
-  SC$3.$cctor=Global.ignore;
-  SC$3.noneCT=CT.New(false,[]);
-  SC$3.scheduler=new Scheduler.New();
-  SC$3.defCTS=[new CancellationTokenSource.New()];
-  SC$3.Zero=Concurrency.Return();
-  SC$3.GetCT=function(c)
+  SC$4.$cctor=Global.ignore;
+  SC$4.noneCT=CT.New(false,[]);
+  SC$4.scheduler=new Scheduler.New();
+  SC$4.defCTS=[new CancellationTokenSource.New()];
+  SC$4.Zero=Concurrency.Return();
+  SC$4.GetCT=function(c)
   {
    c.k({
     $:0,
@@ -4390,7 +4455,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    r:Registrations
   };
  };
- View=UI.View=Runtime.Class({},null,View);
+ View=UI$1.View=Runtime.Class({},null,View);
  DomUtility.CreateText=function(s)
  {
   return DomUtility.Doc().createTextNode(s);
@@ -4405,8 +4470,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  DomUtility.Doc=function()
  {
-  SC$5.$cctor();
-  return SC$5.Doc;
+  SC$6.$cctor();
+  return SC$6.Doc;
  };
  DomUtility.ChildrenArray=function(element)
  {
@@ -4562,8 +4627,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Attrs.EmptyAttr=function()
  {
-  SC$8.$cctor();
-  return SC$8.EmptyAttr;
+  SC$9.$cctor();
+  return SC$9.EmptyAttr;
  };
  Attrs.Insert=function(elem,tree)
  {
@@ -4893,45 +4958,14 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Fresh.set_counter=function($1)
  {
-  SC$7.$cctor();
-  SC$7.counter=$1;
+  SC$8.$cctor();
+  SC$8.counter=$1;
  };
  Fresh.counter=function()
  {
-  SC$7.$cctor();
-  return SC$7.counter;
+  SC$8.$cctor();
+  return SC$8.counter;
  };
- TaskCompletionSource=WebSharper.TaskCompletionSource=Runtime.Class({
-  SetResult:function(res)
-  {
-   this.task.get_IsCompleted()?Operators.FailWith("Task already completed."):void 0;
-   this.task.status=5;
-   this.task.result=res;
-   this.task.RunContinuations();
-  },
-  SetException$1:function(exc)
-  {
-   this.task.get_IsCompleted()?Operators.FailWith("Task already completed."):void 0;
-   this.task.status=7;
-   this.task.exc=new AggregateException.New$3([exc]);
-   this.task.RunContinuations();
-  },
-  SetCanceled:function()
-  {
-   this.task.get_IsCompleted()?Operators.FailWith("Task already completed."):void 0;
-   this.task.status=6;
-   this.task.RunContinuations();
-  },
-  get_Task:function()
-  {
-   return this.task;
-  }
- },Obj,TaskCompletionSource);
- TaskCompletionSource.New=Runtime.Ctor(function()
- {
-  Obj.New.call(this);
-  this.task=new Task1.New$4(null,Concurrency.noneCT(),1,null,void 0);
- },TaskCompletionSource);
  Scheduler=Concurrency.Scheduler=Runtime.Class({
   Fork:function(action)
   {
@@ -4971,17 +5005,18 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.idle=true;
   this.robin=[];
  },Scheduler);
- AggregateException=WebSharper.AggregateException=Runtime.Class({},Error,AggregateException);
- AggregateException.New$3=Runtime.Ctor(function(innerExceptions)
+ OperationCanceledException=WebSharper.OperationCanceledException=Runtime.Class({},Error,OperationCanceledException);
+ OperationCanceledException.New=Runtime.Ctor(function(ct)
  {
-  AggregateException.New$4.call(this,"One or more errors occurred.",innerExceptions);
- },AggregateException);
- AggregateException.New$4=Runtime.Ctor(function(message,innerExceptions)
+  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
+ },OperationCanceledException);
+ OperationCanceledException.New$1=Runtime.Ctor(function(message,inner,ct)
  {
   this.message=message;
-  Object.setPrototypeOf(this,AggregateException.prototype);
-  this.innerExceptions=innerExceptions;
- },AggregateException);
+  this.inner=inner;
+  Object.setPrototypeOf(this,OperationCanceledException.prototype);
+  this.ct=ct;
+ },OperationCanceledException);
  CancellationTokenSource=WebSharper.CancellationTokenSource=Runtime.Class({},Obj,CancellationTokenSource);
  CancellationTokenSource.New=Runtime.Ctor(function()
  {
@@ -4991,7 +5026,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.r=[];
   this.init=1;
  },CancellationTokenSource);
- DocElemNode=UI.DocElemNode=Runtime.Class({
+ DocElemNode=UI$1.DocElemNode=Runtime.Class({
   Equals:function(o)
   {
    return this.ElKey===o.ElKey;
@@ -5011,7 +5046,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    ElKey:ElKey
   },(Runtime.SetOptional($1,"Delimiters",Delimiters),Runtime.SetOptional($1,"Render",Render),$1)));
  };
- Elt=UI.Elt=Runtime.Class({},Doc,Elt);
+ Elt=UI$1.Elt=Runtime.Class({},Doc,Elt);
  Elt.New=function(el,attr$1,children)
  {
   var node,rvUpdates;
@@ -5030,139 +5065,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.elt=elt;
   this.rvUpdates=rvUpdates;
  },Elt);
- SC$4.$cctor=function()
+ SC$5.$cctor=function()
  {
-  SC$4.$cctor=Global.ignore;
-  SC$4.LoadedTemplates=new Dictionary.New$5();
-  SC$4.LocalTemplatesLoaded=false;
-  SC$4.TextHoleRE="\\${([^}]+)}";
+  SC$5.$cctor=Global.ignore;
+  SC$5.LoadedTemplates=new Dictionary.New$5();
+  SC$5.LocalTemplatesLoaded=false;
+  SC$5.TextHoleRE="\\${([^}]+)}";
  };
- HashSet=Collections.HashSet=Runtime.Class({
-  Add:function(item)
-  {
-   return this.add(item);
-  },
-  Contains:function(item)
-  {
-   var arr;
-   arr=this.data[this.hash(item)];
-   return arr==null?false:this.arrContains(item,arr);
-  },
-  add:function(item)
-  {
-   var h,arr;
-   h=this.hash(item);
-   arr=this.data[h];
-   return arr==null?(this.data[h]=[item],this.count=this.count+1,true):this.arrContains(item,arr)?false:(arr.push(item),this.count=this.count+1,true);
-  },
-  arrContains:function(item,arr)
-  {
-   var c,i,$1,l;
-   c=true;
-   i=0;
-   l=arr.length;
-   while(c&&i<l)
-    if(this.equals.apply(null,[arr[i],item]))
-     c=false;
-    else
-     i=i+1;
-   return!c;
-  },
-  ExceptWith:function(xs)
-  {
-   var e;
-   e=Enumerator.Get(xs);
-   try
-   {
-    while(e.MoveNext())
-     this.Remove(e.Current());
-   }
-   finally
-   {
-    if(typeof e=="object"&&"Dispose"in e)
-     e.Dispose();
-   }
-  },
-  get_Count:function()
-  {
-   return this.count;
-  },
-  CopyTo:function(arr)
-  {
-   var i,all,i$1,$1;
-   i=0;
-   all=HashSetUtil.concat(this.data);
-   for(i$1=0,$1=all.length-1;i$1<=$1;i$1++)Arrays.set(arr,i$1,all[i$1]);
-  },
-  IntersectWith:function(xs)
-  {
-   var other,all,i,$1,item;
-   other=new HashSet.New$4(xs,this.equals,this.hash);
-   all=HashSetUtil.concat(this.data);
-   for(i=0,$1=all.length-1;i<=$1;i++){
-    item=all[i];
-    !other.Contains(item)?this.Remove(item):void 0;
-   }
-  },
-  Remove:function(item)
-  {
-   var arr;
-   arr=this.data[this.hash(item)];
-   return arr==null?false:this.arrRemove(item,arr)&&(this.count=this.count-1,true);
-  },
-  arrRemove:function(item,arr)
-  {
-   var c,i,$1,l;
-   c=true;
-   i=0;
-   l=arr.length;
-   while(c&&i<l)
-    if(this.equals.apply(null,[arr[i],item]))
-     {
-      arr.splice.apply(arr,[i,1]);
-      c=false;
-     }
-    else
-     i=i+1;
-   return!c;
-  },
-  GetEnumerator:function()
-  {
-   return Enumerator.Get(HashSetUtil.concat(this.data));
-  },
-  GetEnumerator0:function()
-  {
-   return Enumerator.Get(HashSetUtil.concat(this.data));
-  }
- },Obj,HashSet);
- HashSet.New$3=Runtime.Ctor(function()
- {
-  HashSet.New$4.call(this,[],Unchecked.Equals,Unchecked.Hash);
- },HashSet);
- HashSet.New$4=Runtime.Ctor(function(init,equals,hash)
- {
-  var e;
-  Obj.New.call(this);
-  this.equals=equals;
-  this.hash=hash;
-  this.data=[];
-  this.count=0;
-  e=Enumerator.Get(init);
-  try
-  {
-   while(e.MoveNext())
-    this.add(e.Current());
-  }
-  finally
-  {
-   if(typeof e=="object"&&"Dispose"in e)
-    e.Dispose();
-  }
- },HashSet);
- HashSet.New$2=Runtime.Ctor(function(init)
- {
-  HashSet.New$4.call(this,init,Unchecked.Equals,Unchecked.Hash);
- },HashSet);
  An.get_UseAnimations=function()
  {
   return Anims.UseAnimations();
@@ -5230,8 +5139,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Settings.BatchUpdatesEnabled=function()
  {
-  SC$6.$cctor();
-  return SC$6.BatchUpdatesEnabled;
+  SC$7.$cctor();
+  return SC$7.BatchUpdatesEnabled;
  };
  Mailbox.StartProcessor=function(procAsync)
  {
@@ -5361,17 +5270,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }
   return r;
  };
- InvalidOperationException=WebSharper.InvalidOperationException=Runtime.Class({},Error,InvalidOperationException);
- InvalidOperationException.New=Runtime.Ctor(function(message)
- {
-  InvalidOperationException.New$2.call(this,message,null);
- },InvalidOperationException);
- InvalidOperationException.New$2=Runtime.Ctor(function(message,innerExn)
- {
-  this.message=message;
-  this.inner=innerExn;
-  Object.setPrototypeOf(this,InvalidOperationException.prototype);
- },InvalidOperationException);
  Dyn.New=function(DynElem,DynFlags,DynNodes,OnAfterRender)
  {
   var $1;
@@ -5383,12 +5281,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   Runtime.SetOptional($1,"OnAfterRender",OnAfterRender);
   return $1;
  };
- SC$5.$cctor=function()
+ SC$6.$cctor=function()
  {
-  SC$5.$cctor=Global.ignore;
-  SC$5.Doc=self.document;
+  SC$6.$cctor=Global.ignore;
+  SC$6.Doc=self.document;
  };
- Updates=UI.Updates=Runtime.Class({},null,Updates);
+ Updates=UI$1.Updates=Runtime.Class({},null,Updates);
  Updates.Create=function(v)
  {
   var _var;
@@ -5716,8 +5614,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Anims.UseAnimations=function()
  {
-  SC$9.$cctor();
-  return SC$9.UseAnimations;
+  SC$10.$cctor();
+  return SC$10.UseAnimations;
  };
  Anims.Actions=function(a)
  {
@@ -5791,10 +5689,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    Duration:nextDuration
   };
  };
- SC$6.$cctor=function()
+ SC$7.$cctor=function()
  {
-  SC$6.$cctor=Global.ignore;
-  SC$6.BatchUpdatesEnabled=true;
+  SC$7.$cctor=Global.ignore;
+  SC$7.BatchUpdatesEnabled=true;
  };
  FormatException=WebSharper.FormatException=Runtime.Class({},Error,FormatException);
  FormatException.New$1=Runtime.Ctor(function(message)
@@ -5802,30 +5700,30 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.message=message;
   Object.setPrototypeOf(this,FormatException.prototype);
  },FormatException);
- SC$7.$cctor=function()
+ SC$8.$cctor=function()
  {
-  SC$7.$cctor=Global.ignore;
-  SC$7.counter=0;
+  SC$8.$cctor=Global.ignore;
+  SC$8.counter=0;
  };
  Queue.Clear=function(a)
  {
   a.splice(0,Arrays.length(a));
  };
- SC$8.$cctor=function()
- {
-  SC$8.$cctor=Global.ignore;
-  SC$8.EmptyAttr=null;
- };
  SC$9.$cctor=function()
  {
   SC$9.$cctor=Global.ignore;
-  SC$9.CubicInOut=Easing.Custom(function(t)
+  SC$9.EmptyAttr=null;
+ };
+ SC$10.$cctor=function()
+ {
+  SC$10.$cctor=Global.ignore;
+  SC$10.CubicInOut=Easing.Custom(function(t)
   {
    var t2;
    t2=t*t;
    return 3*t2-2*(t2*t);
   });
-  SC$9.UseAnimations=true;
+  SC$10.UseAnimations=true;
  };
  AppendList.Append=function(x,y)
  {
@@ -5867,10 +5765,17 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  AppendList.Empty=function()
  {
-  SC$10.$cctor();
-  return SC$10.Empty;
+  SC$11.$cctor();
+  return SC$11.Empty;
  };
- Easing=UI.Easing=Runtime.Class({},Obj,Easing);
+ HashSetUtil.concat=function(o)
+ {
+  var r,k;
+  r=[];
+  for(var k$1 in o)r.push.apply(r,o[k$1]);
+  return r;
+ };
+ Easing=UI$1.Easing=Runtime.Class({},Obj,Easing);
  Easing.Custom=function(f)
  {
   return new Easing.New(f);
@@ -5905,14 +5810,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   set.IntersectWith(HashSet$1.ToArray(b));
   return set;
  };
- HashSetUtil.concat=function(o)
- {
-  var r,k;
-  r=[];
-  for(var k$1 in o)r.push.apply(r,o[k$1]);
-  return r;
- };
- DynamicAttrNode=UI.DynamicAttrNode=Runtime.Class({
+ DynamicAttrNode=UI$1.DynamicAttrNode=Runtime.Class({
   NChanged:function()
   {
    return this.updates;
@@ -6038,16 +5936,41 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    $0:Array.ofSeqNonCopying(q)
   };
  };
- SC$10.$cctor=function()
+ Lazy.Create=function(f)
  {
-  SC$10.$cctor=Global.ignore;
-  SC$10.Empty={
+  return LazyRecord.New(false,f,Lazy.forceLazy);
+ };
+ Lazy.forceLazy=function()
+ {
+  var v;
+  v=this.v();
+  this.c=true;
+  this.v=v;
+  this.f=Lazy.cachedLazy;
+  return v;
+ };
+ Lazy.cachedLazy=function()
+ {
+  return this.v;
+ };
+ SC$11.$cctor=function()
+ {
+  SC$11.$cctor=Global.ignore;
+  SC$11.Empty={
    $:0
+  };
+ };
+ LazyRecord.New=function(created,evalOrVal,force)
+ {
+  return{
+   c:created,
+   v:evalOrVal,
+   f:force
   };
  };
  Runtime.OnLoad(function()
  {
-  WasmLoader.main();
+  UI.main();
  });
 }());
 
