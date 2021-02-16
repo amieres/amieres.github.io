@@ -1,6 +1,6 @@
 
 
-wasmInstances View   "/WASM/v47/Interp/;/WASM/v47/AotInterp/"
+wasmInstances View   "/WASM/v47/Interp/;/WASM/v47/AOTInterp/"
 sourceFsx     View   "/tmp/source.fsx"
 executable    View   "/tmp/@{Snippets.snippets_sel}.exe"
 compilerOpts  ViewJS "(s, o) => 'fcs.exe\n' + s + '\n-o:' + o + '\n--simpleresolution\n--nowarn:3186\n--optimize-\n--noframework\n--fullpaths\n--warn:3\n--target:exe\n-r:/tmp/FSharp.Core.dll\n-r:/tmp/mscorlib.dll\n-r:/tmp/netstandard.dll\n-r:/tmp/System.dll\n-r:/tmp/System.Core.dll\n-r:/tmp/System.IO.dll\n-r:/tmp/System.Runtime.dll\n-r:/tmp/System.Net.Http.dll\n-r:/tmp/System.Threading.dll\n-r:/tmp/WebAssembly.Net.Http.dll\n-r:/tmp/WebAssembly.Bindings.dll\n-r:/tmp/WebAssembly.Net.WebSockets.dll\n-r:/tmp/System.Numerics.dll'" sourceFsx executable
