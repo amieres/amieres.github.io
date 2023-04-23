@@ -153,7 +153,7 @@ editorOp  Doc    Monaco.editor WsTranslatorPlugIn.Options  ""           "vs-dark
 editorCm  Doc    Monaco.editor WsTranslatorPlugIn.Command  ""           "vs-dark" ""
 editorMd  Doc    Monaco.editor Snippets.curSnp_explanation ""           "vs-dark" ""
 //editor3   Doc    Monaco.editor Snippets.curSnp_content     "fsharp"   "vs-dark" ""
-MarkDown0 ViewJS "t => marked(t).replace(/<\/pre>/g,'<i onclick=""copyToEditor(this)"" title=""Copy to Editor"" class=""rightArrow"" ></i> </pre>')" Snippets.curSnp_explanation
+MarkDown0 ViewJS "t => marked.parse(t).replace(/<\/pre>/g,'<i onclick=""copyToEditor(this)"" title=""Copy to Editor"" class=""rightArrow"" ></i> </pre>')" Snippets.curSnp_explanation
 
 copyToEditor Docs
 : style  "" ".rightArrow { float:right; border: solid blue; border-width: 0 6px 6px 0; display: inline-block; padding: 3px; color: red; background: white;  transform: rotate(-45deg);  -webkit-transform: rotate(-45deg); } "
