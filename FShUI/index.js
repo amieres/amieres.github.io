@@ -7,7 +7,7 @@ function requireSync(files, f) {
 
 requirejs([
      "https://code.jquery.com/jquery-3.1.1.min.js"
-    ,"https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+    ,"https://cdn.jsdelivr.net/npm/marked@14/marked.min.js"
     ,"/EPFileX/FileSaver/FileSaver.js"
     ,"FShUI/WebSharper/WebSharper.Core.JavaScript/Runtime.min.js"
 ], function( jquery  , markedJS) {
