@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recital Practice Chunks v1.2.0</title>
+<title>Recital Practice Chunks v1.2.1</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -253,7 +253,7 @@
 <body>
 <div class="container">
 
-<h1>Recital Practice Chunks <span class="version-tag">v1.2.0</span></h1>
+<h1>Recital Practice Chunks <span class="version-tag">v1.2.1</span></h1>
 <p class="subtitle">Each chunk is a window onto the full score. Drag handles to adjust; nothing else changes.</p>
 
 <div class="topbar">
@@ -261,6 +261,7 @@
     <!-- populated via renderFilters() -->
   </div>
   <button class="tool-btn" id="addBtn">+ New chunk</button>
+  <button class="tool-btn" id="helpBtn">Help</button>
   <button class="tool-btn" id="addPieceBtn">+ New piece</button>
   <button class="tool-btn" id="editPieceBtn" style="display:none;">Edit piece</button>
   <button class="tool-btn" id="settingsBtn">Settings</button>
@@ -270,9 +271,68 @@
 </div>
 
 
+<!-- Help / how-to panel -->
+<div class="edit-pane" id="helpPane" style="display:none;">
+  <h3>How to use Recital Practice Chunks</h3>
+  <details open><summary><strong>What it does</strong></summary><div>
+    <p>Cuts your sheet music into short phrases ("chunks") and serves them in random order.
+       Each chunk shows a window onto the original score plus the first note of the next phrase,
+       so the chunks chain together in your memory. Drill the hard parts without mindless start-from-the-top runs.</p>
+  </div></details>
+  <details><summary><strong>Adding a piece</strong></summary><div>
+    <ol>
+      <li>Drop your sheet-music images (JPG / PNG) into the same folder as <code>index.html</code>.
+          Each <em>page</em> of the score is one image.</li>
+      <li>Click <strong>+ New piece</strong> in the top toolbar.</li>
+      <li>Enter a piece name, click <strong>Add page (pick image)</strong> for each image
+          (the file picker reads dimensions automatically and uses the filename as a relative path).</li>
+      <li>Click <strong>Save piece</strong>.</li>
+    </ol>
+  </div></details>
+  <details><summary><strong>Adding chunks</strong></summary><div>
+    <p>Two ways:</p>
+    <ul>
+      <li><strong>Manually:</strong> filter to the piece, click <strong>+ New chunk</strong>,
+          drag the rectangle over the measures you want, fill in title / description / connector,
+          and save. Use <strong>+ Add rect on this page</strong> for chunks that span line breaks.</li>
+      <li><strong>With Claude:</strong> open the piece in <strong>Edit piece</strong> and click
+          <strong>&#10024; Generate chunks with Claude</strong>. You will need an Anthropic API
+          key (set in <strong>Settings</strong>). Cost is roughly 5&ndash;20&cent; per page;
+          the result is a 70%-there starting layout you can tweak.</li>
+    </ul>
+  </div></details>
+  <details><summary><strong>Editing a chunk window</strong></summary><div>
+    <p>Click <strong>Edit this chunk</strong> while a chunk is showing. You see the relevant
+       page(s) at full size with yellow rectangles. Drag the body to move; drag corners or edges
+       to resize. The active rectangle is highlighted; click another to switch focus.</p>
+    <p>Each page also has a <strong>red &ldquo;sig end&rdquo; ruler</strong> &mdash; drag it
+       horizontally to mark where the line clef + key + time signature end. The tool
+       auto-prepends a clef strip onto any chunk whose rectangle starts past the sig-end x.</p>
+  </div></details>
+  <details><summary><strong>Practising</strong></summary><div>
+    <p>Filter to the piece (or <em>All pieces</em>), click <strong>Random chunk</strong>.
+       Play the chunk through the bridge note. Click <strong>Got it &mdash; next</strong> to mark
+       it practised and roll a new one, or <strong>Skip / re-roll</strong> to keep it in the
+       pool but try a different one. <strong>Reset cycle</strong> brings everything back.</p>
+  </div></details>
+  <details><summary><strong>Backup &amp; share</strong></summary><div>
+    <p>Use <strong>Export</strong> to download a JSON of your pieces, pages, chunks, and page
+       settings. <strong>Import</strong> reads it back. Keep the JSON next to your image files
+       to make a setup portable.</p>
+    <p>If a future version ships better defaults, a banner appears at the top on next load.
+       <strong>Settings &rarr; Reset to bundled defaults</strong> wipes your edits
+       (export first if you want a backup) and re-seeds from the file defaults.</p>
+  </div></details>
+  <p class="hint">App version <span id="helpVer"></span>. All your data lives in this browser
+     localStorage on this machine. No server, no tracking.</p>
+  <div class="controls" style="justify-content:flex-start;margin-top:8px;">
+    <button class="secondary" id="helpCloseBtn">Close</button>
+  </div>
+</div>
+
 <!-- Version-change banner -->
 <div class="version-banner" id="versionBanner" style="display:none;">
-  <span class="grow"><strong>Updated.</strong> <span id="versionFrom"></span> &rarr; v1.2.0. New defaults may be available.</span>
+  <span class="grow"><strong>Updated.</strong> <span id="versionFrom"></span> &rarr; v1.2.1. New defaults may be available.</span>
   <button class="small-btn" id="bannerResetBtn">Restore bundled defaults</button>
   <button class="small-btn" id="bannerDismissBtn">Dismiss</button>
 </div>
@@ -415,7 +475,7 @@
 </div>
 
 <script>
-const APP_VERSION = "1.2.0";
+const APP_VERSION = "1.2.1";
 
 // =====================================================
 // Page + piece metadata (mutable, persisted in localStorage)
@@ -459,42 +519,42 @@ const DEFAULT_CHUNKS = [
     rects:[ {page:"av-p1", x:80, y:470, w:1500, h:240},
             {page:"av-p1", x:80, y:940, w:380, h:480} ] },
   { id:"ave_demo_02", piece:"ave-maria", title:"mm. 3-4",
-    description:"First vocal phrase — "A-ve, Ma-ri-a! Your light". Long melodic arc.",
+    description:"First vocal phrase — \"A-ve, Ma-ri-a! Your light\". Long melodic arc.",
     connector:"Play through to the downbeat of m. 5.",
     rects:[ {page:"av-p1", x:80, y:940, w:1500, h:480},
             {page:"av-p1", x:80, y:1645, w:380, h:480} ] },
   { id:"ave_demo_03", piece:"ave-maria", title:"m. 5",
-    description:""shines through you, your Son, our Lord and" — continues the line.",
+    description:"\"shines through you, your Son, our Lord and\" — continues the line.",
     connector:"Play through to the first note of m. 6 (next page).",
     rects:[ {page:"av-p1", x:80, y:1645, w:1500, h:480},
             {page:"av-p2", x:80, y:110, w:380, h:480} ] },
   { id:"ave_demo_04", piece:"ave-maria", title:"m. 6",
-    description:""Brother, performed the first of his great" — narrative reaches forward.",
+    description:"\"Brother, performed the first of his great\" — narrative reaches forward.",
     connector:"Play through to the downbeat of m. 7.",
     rects:[ {page:"av-p2", x:80, y:110, w:1500, h:480},
             {page:"av-p2", x:80, y:880, w:380, h:480} ] },
   { id:"ave_demo_05", piece:"ave-maria", title:"mm. 7-8",
-    description:""signs in Cana of Galilee, o Mother. Through" — gentle motion.",
+    description:"\"signs in Cana of Galilee, o Mother. Through\" — gentle motion.",
     connector:"Play through to the first note of m. 9.",
     rects:[ {page:"av-p2", x:80, y:880, w:1500, h:480},
             {page:"av-p2", x:80, y:1645, w:380, h:480} ] },
   { id:"ave_demo_06", piece:"ave-maria", title:"mm. 9-10",
-    description:""the Bridegroom for his Chosen prepared an excellent new wine".",
+    description:"\"the Bridegroom for his Chosen prepared an excellent new wine\".",
     connector:"Play through to the first note of m. 11 (next page).",
     rects:[ {page:"av-p2", x:80, y:1645, w:1500, h:480},
             {page:"av-p3", x:80, y:110, w:380, h:480} ] },
   { id:"ave_demo_07", piece:"ave-maria", title:"m. 11",
-    description:""you the followers were open to" — fp dynamic shape.",
+    description:"\"you the followers were open to\" — fp dynamic shape.",
     connector:"Play through to the downbeat of m. 12.",
     rects:[ {page:"av-p3", x:80, y:110, w:1500, h:480},
             {page:"av-p3", x:80, y:695, w:380, h:480} ] },
   { id:"ave_demo_08", piece:"ave-maria", title:"mm. 12-13",
-    description:""trust in him, Master Divine. A-ve, Ma-ri" — pp, the title phrase returns.",
+    description:"\"trust in him, Master Divine. A-ve, Ma-ri\" — pp, the title phrase returns.",
     connector:"Play through to the downbeat of m. 14.",
     rects:[ {page:"av-p3", x:80, y:695, w:1500, h:480},
             {page:"av-p3", x:80, y:1278, w:380, h:480} ] },
   { id:"ave_demo_09", piece:"ave-maria", title:"mm. 14-15",
-    description:""a!" — closing word, piano figuration sustains beneath.",
+    description:"\"a!\" — closing word, piano figuration sustains beneath.",
     connector:"Play through to the first note of m. 16 (dim. begins).",
     rects:[ {page:"av-p3", x:80, y:1278, w:1500, h:480},
             {page:"av-p3", x:80, y:1860, w:380, h:280} ] },
@@ -1502,6 +1562,13 @@ document.getElementById("bannerDismissBtn").addEventListener("click", () => {
 document.getElementById("settingsResetBtn").addEventListener("click", () => resetToBundledDefaults(false));
 
 maybeShowVersionBanner();
+
+$("helpBtn").addEventListener("click", () => {
+  $("helpVer").textContent = "v" + APP_VERSION;
+  $("helpPane").style.display = "block";
+  $("helpPane").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+$("helpCloseBtn").addEventListener("click", () => $("helpPane").style.display = "none");
 
 // Initial render
 renderFilters();
