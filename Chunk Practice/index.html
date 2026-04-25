@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recital Practice Chunks v1.1.0</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e8e8e8;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; color: #fff; text-align: center; margin-bottom: 6px; }
+  .version-tag {
+    display: inline-block; margin-left: 8px;
+    font-size: 0.7rem; color: #8aaadc;
+    font-weight: 400; letter-spacing: 0.5px;
+    vertical-align: middle;
+  }
+  .subtitle { color: #a0a0c0; text-align: center; margin-bottom: 18px; font-size: 0.9rem; }
+
+  .topbar {
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    flex-wrap: wrap; margin-bottom: 14px;
+  }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn, .tool-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #d0d0e0;
+    padding: 7px 12px;
+    border-radius: 18px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.15s;
+  }
+  .filter-btn.active { background: #4a7fc7; border-color: #4a7fc7; color: #fff; }
+  .filter-btn:hover, .tool-btn:hover { background: rgba(255,255,255,0.15); }
+
+  .card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .piece-name {
+    font-size: 0.8rem; color: #8aaadc; text-transform: uppercase;
+    letter-spacing: 1.5px; margin-bottom: 6px;
+  }
+  .measures {
+    font-size: 1.9rem; font-weight: 700; color: #fff; margin-bottom: 10px;
+  }
+  .description { color: #d0d0e0; font-size: 1rem; line-height: 1.5; margin-bottom: 14px; }
+
+  .windows {
+    background: #fafaf5;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+  }
+  .window-view {
+    background-repeat: no-repeat;
+    background-color: #fafaf5;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .window-view.is-header {
+    border-right: 1px dashed rgba(0,0,0,0.12);
+    padding-right: 4px;
+  }
+
+  .connector {
+    background: rgba(255, 200, 80, 0.08);
+    border-left: 3px solid #ffc850;
+    padding: 12px 14px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .connector-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+    color: #ffc850; margin-bottom: 4px; font-weight: 600;
+  }
+  .connector-text { color: #f0e8d0; font-size: 0.98rem; line-height: 1.5; }
+
+  .controls { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+  button.action {
+    background: #4a7fc7; color: white; border: none;
+    padding: 12px 22px; border-radius: 10px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: all 0.15s;
+    box-shadow: 0 2px 8px rgba(74,127,199,0.3);
+  }
+  button.action:hover { background: #5a8fd7; }
+  button.secondary {
+    background: rgba(255,255,255,0.1); color: #e8e8e8;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 12px 18px; border-radius: 10px; font-size: 0.95rem; cursor: pointer;
+  }
+  button.secondary:hover { background: rgba(255,255,255,0.18); }
+  button.danger {
+    background: rgba(220,80,80,0.2); border: 1px solid rgba(220,80,80,0.5); color: #ffb0b0;
+    padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; cursor: pointer;
+  }
+  button.danger:hover { background: rgba(220,80,80,0.35); }
+
+  .progress { margin-top: 14px; color: #a0a0c0; font-size: 0.85rem; text-align: center; }
+
+  /* ===== Edit mode ===== */
+  .edit-pane {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 16px; margin-bottom: 16px;
+  }
+  .edit-pane h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
+  .edit-form { display: grid; gap: 10px; margin-bottom: 14px; }
+  .edit-form label { color: #c0c0d8; font-size: 0.85rem; display: block; margin-bottom: 4px; }
+  .edit-form input, .edit-form select, .edit-form textarea {
+    width: 100%; padding: 8px 10px;
+    background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px; color: #fff; font-size: 0.95rem; font-family: inherit;
+  }
+  .edit-form textarea { min-height: 60px; resize: vertical; }
+  .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .form-row > div { flex: 1; min-width: 140px; }
+
+  .page-edit {
+    background: #fafaf5; border-radius: 8px; padding: 8px;
+    margin-bottom: 10px; position: relative;
+  }
+  .page-edit-label {
+    color: #555; font-size: 0.78rem; margin-bottom: 4px; padding: 0 4px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .page-canvas {
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  .rect-overlay {
+    position: absolute;
+    border: 2px solid #4a7fc7;
+    background: rgba(74,127,199,0.15);
+    cursor: move;
+    box-sizing: border-box;
+  }
+  .rect-overlay.active {
+    border-color: #ffc850;
+    background: rgba(255,200,80,0.15);
+    box-shadow: 0 0 0 2px rgba(255,200,80,0.4);
+  }
+  .rect-overlay .label-tag {
+    position: absolute; top: -22px; left: 0;
+    background: #4a7fc7; color: white; font-size: 0.7rem;
+    padding: 2px 6px; border-radius: 4px;
+    pointer-events: none; white-space: nowrap;
+  }
+  .rect-overlay.active .label-tag { background: #ffc850; color: #1a1a2e; }
+  .handle {
+    position: absolute; width: 12px; height: 12px;
+    background: white; border: 2px solid #4a7fc7;
+    border-radius: 2px;
+    box-sizing: border-box;
+  }
+  .rect-overlay.active .handle { border-color: #d49b00; }
+  .handle.tl { top: -7px; left: -7px; cursor: nwse-resize; }
+  .handle.tr { top: -7px; right: -7px; cursor: nesw-resize; }
+  .handle.bl { bottom: -7px; left: -7px; cursor: nesw-resize; }
+  .handle.br { bottom: -7px; right: -7px; cursor: nwse-resize; }
+  .handle.tm { top: -7px; left: 50%; margin-left: -6px; cursor: ns-resize; }
+  .handle.bm { bottom: -7px; left: 50%; margin-left: -6px; cursor: ns-resize; }
+  .handle.lm { top: 50%; left: -7px; margin-top: -6px; cursor: ew-resize; }
+  .handle.rm { top: 50%; right: -7px; margin-top: -6px; cursor: ew-resize; }
+
+  /* Per-page draggable signature-end ruler */
+  .sig-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 8px;
+    margin-left: -4px;
+    cursor: ew-resize;
+    z-index: 5;
+    background: linear-gradient(90deg,
+      transparent 0%, transparent calc(50% - 1px),
+      #d44 calc(50% - 1px), #d44 calc(50% + 1px),
+      transparent calc(50% + 1px), transparent 100%);
+  }
+  .sig-line:hover { background: linear-gradient(90deg,
+      rgba(220,68,68,0.15) 0%, rgba(220,68,68,0.15) calc(50% - 2px),
+      #d44 calc(50% - 2px), #d44 calc(50% + 2px),
+      rgba(220,68,68,0.15) calc(50% + 2px), rgba(220,68,68,0.15) 100%); }
+  .sig-tag {
+    position: absolute; top: -22px; left: 6px;
+    background: #d44; color: white; font-size: 0.7rem;
+    padding: 2px 6px; border-radius: 4px;
+    pointer-events: none; white-space: nowrap;
+  }
+
+  .start-screen { text-align: center; padding: 16px; }
+  .start-screen p { color: #c0c0d8; font-size: 1rem; line-height: 1.6; margin-bottom: 12px; }
+  .empty-state { text-align: center; padding: 24px; color: #ffc850; }
+  .empty-state h2 { color: #fff; margin-bottom: 12px; }
+
+  .hint { color: #8a8aa6; font-size: 0.78rem; margin-top: 6px; }
+  .toolbar-edit {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-bottom: 10px; align-items: center;
+  }
+  .toolbar-edit .grow { flex: 1; }
+  .small-btn {
+    background: rgba(74,127,199,0.2); border: 1px solid rgba(74,127,199,0.5);
+    color: #cfe; padding: 5px 10px; border-radius: 6px; font-size: 0.8rem;
+    cursor: pointer;
+  }
+  .small-btn:hover { background: rgba(74,127,199,0.35); }
+  details summary {
+    cursor: pointer; color: #a0a0c0; padding: 6px 0;
+    font-size: 0.85rem;
+  }
+  details > div { padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Recital Practice Chunks <span class="version-tag">v1.1.0</span></h1>
+<p class="subtitle">Each chunk is a window onto the full score. Drag handles to adjust; nothing else changes.</p>
+
+<div class="topbar">
+  <div class="filters" id="filters">
+    <!-- populated via renderFilters() -->
+  </div>
+  <button class="tool-btn" id="addBtn">+ New chunk</button>
+  <button class="tool-btn" id="addPieceBtn">+ New piece</button>
+  <button class="tool-btn" id="editPieceBtn" style="display:none;">Edit piece</button>
+  <button class="tool-btn" id="settingsBtn">Settings</button>
+  <button class="tool-btn" id="exportBtn">Export</button>
+  <button class="tool-btn" id="importBtn">Import</button>
+  <input type="file" id="importFile" accept=".json" style="display:none">
+</div>
+
+<!-- Practice card -->
+<div class="card" id="practiceCard">
+  <div class="start-screen" id="startScreen">
+    <p>Click <strong>Random chunk</strong> to get a phrase. Use <strong>Edit</strong> on a chunk to nudge its window.</p>
+    <div class="controls">
+      <button class="action" id="randomBtn">Random chunk</button>
+    </div>
+  </div>
+
+  <div id="chunkDisplay" style="display:none;">
+    <div class="piece-name" id="pieceName"></div>
+    <div class="measures" id="measures"></div>
+    <div class="description" id="description"></div>
+    <div class="windows" id="windowsView"></div>
+    <div class="connector">
+      <div class="connector-label">Bridge to next phrase</div>
+      <div class="connector-text" id="connector"></div>
+    </div>
+    <div class="progress" id="progress"></div>
+    <div class="controls" style="margin-top:14px;">
+      <button class="action" id="doneBtn">Got it &mdash; next</button>
+      <button class="secondary" id="skipBtn">Skip / re-roll</button>
+      <button class="secondary" id="editBtn">Edit this chunk</button>
+      <button class="secondary" id="resetBtn">Reset cycle</button>
+    </div>
+  </div>
+
+  <div id="emptyState" class="empty-state" style="display:none;">
+    <h2>All chunks practiced!</h2>
+    <p style="color:#c0c0d8;margin-bottom:14px;">You have cycled through every phrase in this filter.</p>
+    <button class="action" id="emptyResetBtn">Reset cycle</button>
+  </div>
+</div>
+
+<!-- Edit pane -->
+<div class="edit-pane" id="editPane" style="display:none;">
+  <h3 id="editTitle">Edit chunk</h3>
+  <div class="edit-form">
+    <div class="form-row">
+      <div>
+        <label>Piece</label>
+        <select id="ePiece">
+          <option value="time">A Time For Us</option>
+          <option value="ave">Ave Maria</option>
+          <option value="valse">Valse Noble</option>
+        </select>
+      </div>
+      <div>
+        <label>Title (e.g. "mm. 1-2")</label>
+        <input id="eTitle" placeholder="mm. 1-2" />
+      </div>
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea id="eDesc"></textarea>
+    </div>
+    <div>
+      <label>Connector / bridge to next phrase</label>
+      <textarea id="eConn"></textarea>
+    </div>
+  </div>
+
+  <div class="toolbar-edit">
+    <span style="color:#a0a0c0;font-size:0.85rem;">Rectangles (drag to move, drag corners/edges to resize):</span>
+    <span class="grow"></span>
+    <select id="addRectPage" style="background:rgba(0,0,0,0.25);color:#fff;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:4px;font-size:0.85rem;">
+      <!-- Populated via JS -->
+    </select>
+    <button class="small-btn" id="addRectBtn">+ Add rect on this page</button>
+  </div>
+
+  <div id="editPages"></div>
+
+  <div class="controls" style="justify-content:flex-start;margin-top:10px;">
+    <button class="action" id="saveEditBtn">Save</button>
+    <button class="secondary" id="cancelEditBtn">Cancel</button>
+    <button class="danger" id="deleteEditBtn" style="margin-left:auto;">Delete chunk</button>
+  </div>
+  <p class="hint">Tip: hold <kbd>Shift</kbd> while dragging an edge to nudge by 1px. Active rectangle is highlighted in yellow.</p>
+</div>
+
+<!-- Piece edit pane -->
+<div class="edit-pane" id="pieceEditPane" style="display:none;">
+  <h3 id="pieceEditTitle">New piece</h3>
+  <div class="edit-form">
+    <div>
+      <label>Piece name</label>
+      <input id="pName" placeholder="e.g. Moonlight Sonata mvt. 1" />
+    </div>
+    <div>
+      <label>Pages</label>
+      <div id="pPagesList" style="display:flex;flex-direction:column;gap:8px;"></div>
+      <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <button class="small-btn" id="pAddPageBtn">+ Add page (pick image)</button>
+        <input type="file" id="pPageFile" accept="image/*" style="display:none">
+        <span class="hint">Drop the image into the same folder as this HTML file first, then pick it here.</span>
+      </div>
+    </div>
+  </div>
+  <div class="controls" style="justify-content:flex-start;margin-top:10px;">
+    <button class="action" id="pSaveBtn">Save piece</button>
+    <button class="secondary" id="pCancelBtn">Cancel</button>
+    <button class="secondary" id="pGenerateBtn">✨ Generate chunks with Claude</button>
+    <button class="danger" id="pDeleteBtn" style="margin-left:auto;">Delete piece</button>
+  </div>
+  <div id="pGenStatus" style="margin-top:10px;color:#a0a0c0;font-size:0.85rem;"></div>
+  <p class="hint">Deleting a piece also deletes its chunks. Page settings (sig-end) are kept.</p>
+</div>
+
+<!-- Settings modal -->
+<div class="edit-pane" id="settingsPane" style="display:none;">
+  <h3>Settings</h3>
+  <div class="edit-form">
+    <div>
+      <label>Anthropic API key (stored only in your browser's localStorage)</label>
+      <input id="apiKeyInput" type="password" placeholder="sk-ant-..." autocomplete="off" />
+      <p class="hint">Get one at <code>console.anthropic.com</code> &middot; You're billed per request when generating chunks. Roughly 5–20¢ per page.</p>
+    </div>
+    <div>
+      <label>Model</label>
+      <select id="modelInput">
+        <option value="claude-sonnet-4-6">claude-sonnet-4-6 (recommended)</option>
+        <option value="claude-opus-4-6">claude-opus-4-6 (smartest, pricier)</option>
+        <option value="claude-haiku-4-5-20251001">claude-haiku-4-5 (cheapest, less accurate)</option>
+      </select>
+    </div>
+  </div>
+  <div class="controls" style="justify-content:flex-start;margin-top:10px;">
+    <button class="action" id="settingsSaveBtn">Save</button>
+    <button class="secondary" id="settingsCancelBtn">Cancel</button>
+    <button class="danger" id="settingsClearKeyBtn" style="margin-left:auto;">Clear API key</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+const APP_VERSION = "1.1.0";
+
+// =====================================================
+// Page + piece metadata (mutable, persisted in localStorage)
+// =====================================================
+const DEFAULT_PAGES = {
+  "av-p1": { url: "ave-maria-page-1.jpg", w: 1653, h: 2339, label: "Ave Maria — Page 1", defaultSigEndX: 220 },
+  "av-p2": { url: "ave-maria-page-2.jpg", w: 1653, h: 2339, label: "Ave Maria — Page 2", defaultSigEndX: 220 },
+  "av-p3": { url: "ave-maria-page-3.jpg", w: 1653, h: 2339, label: "Ave Maria — Page 3", defaultSigEndX: 220 },
+};
+const DEFAULT_PIECES = [
+  { id: "ave-maria", name: "Ave Maria — Schubert", pageIds: ["av-p1", "av-p2", "av-p3"] },
+];
+
+// Live mutables; loaded below
+let PAGES = {};      // pageId -> {url, w, h, label, defaultSigEndX}
+let pieces = [];     // [{id, name, pageIds}]
+
+function getPiece(id) { return pieces.find(p => p.id === id); }
+function getPieceName(id) { const p = getPiece(id); return p ? p.name : id; }
+function getPagesForPiece(id) { const p = getPiece(id); return p ? p.pageIds : []; }
+function slugify(s) {
+  return (s || "").toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")
+    .slice(0, 32) || "piece";
+}
+function makeUniqueId(base, existing) {
+  let id = base, n = 2;
+  while (existing[id] || existing.find?.(x => x.id === id)) {
+    id = base + "-" + n++;
+  }
+  return id;
+}
+
+// =====================================================
+// Default chunks (rectangles in PAGE-IMAGE pixel coords)
+// =====================================================
+const DEFAULT_CHUNKS = [
+  { id:"ave_demo_01", piece:"ave-maria", title:"Intro (mm. 1–2)",
+    description:"Sehr langsam — pp triplet figure, piano alone setting up the vocal entry.",
+    connector:"Play through to the first note of m. 3 (the Ave Maria entry).",
+    rects:[ {page:"av-p1", x:80, y:200, w:1500, h:260},
+            {page:"av-p1", x:80, y:490, w:260, h:340} ] },
+  { id:"ave_demo_02", piece:"ave-maria", title:"mm. 3–4 — Ave Maria entry",
+    description:"First vocal phrase. Piano keeps the steady triplet pulse beneath the long melodic line.",
+    connector:"Play through to the downbeat of m. 5.",
+    rects:[ {page:"av-p1", x:80, y:490, w:1500, h:340},
+            {page:"av-p1", x:80, y:850, w:260, h:340} ] },
+  { id:"ave_demo_03", piece:"ave-maria", title:"m. 5",
+    description:"Continuation — \"shines through you, your Son, our Lord and\".",
+    connector:"Play through to the first note of m. 6 (next page).",
+    rects:[ {page:"av-p1", x:80, y:850, w:1500, h:340},
+            {page:"av-p2", x:80, y:60,  w:260, h:300} ] },
+  { id:"ave_demo_04", piece:"ave-maria", title:"m. 6",
+    description:"\"Brother, performed the first of his great\" — reaching forward.",
+    connector:"Play through to the downbeat of m. 7.",
+    rects:[ {page:"av-p2", x:80, y:60,  w:1500, h:300},
+            {page:"av-p2", x:80, y:440, w:260, h:340} ] },
+  { id:"ave_demo_05", piece:"ave-maria", title:"mm. 7–8",
+    description:"\"signs in Cana of Galilee, o Mother. Through\" — narrative arc.",
+    connector:"Play through to the first note of m. 9.",
+    rects:[ {page:"av-p2", x:80, y:440, w:1500, h:340},
+            {page:"av-p2", x:80, y:840, w:260, h:340} ] },
+  { id:"ave_demo_06", piece:"ave-maria", title:"mm. 9–10",
+    description:"\"the Bridegroom for his Chosen prepared an excellent new wine\".",
+    connector:"Play through to the first note of m. 11 (next page).",
+    rects:[ {page:"av-p2", x:80, y:840, w:1500, h:340},
+            {page:"av-p3", x:80, y:30,  w:260, h:300} ] },
+  { id:"ave_demo_07", piece:"ave-maria", title:"m. 11",
+    description:"\"you the followers were open to\" — fp dynamic shape.",
+    connector:"Play through to the downbeat of m. 12.",
+    rects:[ {page:"av-p3", x:80, y:30,  w:1500, h:300},
+            {page:"av-p3", x:80, y:380, w:260, h:320} ] },
+  { id:"ave_demo_08", piece:"ave-maria", title:"mm. 12–13 — return of A-ve Ma-ri",
+    description:"\"trust in him, Master Divine. A-ve, Ma-ri\" — pp, the return of the title phrase.",
+    connector:"Play through to the downbeat of m. 14.",
+    rects:[ {page:"av-p3", x:80, y:380, w:1500, h:320},
+            {page:"av-p3", x:80, y:730, w:260, h:300} ] },
+  { id:"ave_demo_09", piece:"ave-maria", title:"mm. 14–15",
+    description:"\"a!\" — the closing word with held piano figuration.",
+    connector:"Play through to the first note of m. 16 (dim. begins).",
+    rects:[ {page:"av-p3", x:80, y:730, w:1500, h:300},
+            {page:"av-p3", x:80, y:1060, w:260, h:280} ] },
+  { id:"ave_demo_10", piece:"ave-maria", title:"mm. 16–end",
+    description:"Closing — dim. into the final cadence.",
+    connector:"Final phrase — chain back to the opening if cycling.",
+    rects:[ {page:"av-p3", x:80, y:1060, w:1500, h:280} ] },
+];
+
+// =====================================================
+// State + storage
+// =====================================================
+const STORAGE_KEY = "recitalChunks_v2";
+const PAGE_SETTINGS_KEY = "recitalPageSettings_v1";
+const PAGES_KEY = "recitalPages_v1";
+const PIECES_KEY = "recitalPieces_v1";
+
+PAGES = loadPages();
+pieces = loadPieces();
+let chunks = loadChunks();
+let pageSettings = loadPageSettings();
+
+function loadPages() {
+  try {
+    const raw = localStorage.getItem(PAGES_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") return parsed;
+    }
+  } catch (e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_PAGES));
+}
+function savePages() {
+  try { localStorage.setItem(PAGES_KEY, JSON.stringify(PAGES)); } catch (e) {}
+}
+function loadPieces() {
+  try {
+    const raw = localStorage.getItem(PIECES_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch (e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_PIECES));
+}
+function savePieces() {
+  try { localStorage.setItem(PIECES_KEY, JSON.stringify(pieces)); } catch (e) {}
+}
+
+function loadChunks() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch (e) { console.warn("loadChunks failed:", e); }
+  return JSON.parse(JSON.stringify(DEFAULT_CHUNKS));
+}
+function saveChunks() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(chunks)); }
+  catch (e) { console.warn("saveChunks failed:", e); }
+}
+function loadPageSettings() {
+  try {
+    const raw = localStorage.getItem(PAGE_SETTINGS_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") return parsed;
+    }
+  } catch (e) { console.warn("loadPageSettings failed:", e); }
+  return {};
+}
+function savePageSettings() {
+  try { localStorage.setItem(PAGE_SETTINGS_KEY, JSON.stringify(pageSettings)); }
+  catch (e) { console.warn("savePageSettings failed:", e); }
+}
+function getSigEndX(pageId) {
+  const o = pageSettings[pageId];
+  if (o && typeof o.sigEndX === "number") return o.sigEndX;
+  return (PAGES[pageId] && PAGES[pageId].defaultSigEndX) || 85;
+}
+function setSigEndX(pageId, x) {
+  if (!pageSettings[pageId]) pageSettings[pageId] = {};
+  pageSettings[pageId].sigEndX = Math.max(10, Math.round(x));
+  savePageSettings();
+}
+
+// =====================================================
+// Practice mode
+// =====================================================
+let currentFilter = "all";
+let practicedIds = new Set();
+let currentChunk = null;
+let editing = null;  // when editing, holds working copy
+
+function getPool() {
+  return chunks.filter(c => currentFilter === "all" || c.piece === currentFilter);
+}
+function getRemaining() { return getPool().filter(c => !practicedIds.has(c.id)); }
+
+function $(id) { return document.getElementById(id); }
+
+function showStart() {
+  $("startScreen").style.display = "block";
+  $("chunkDisplay").style.display = "none";
+  $("emptyState").style.display = "none";
+  // Tailor welcome message + button visibility based on state
+  const startEl = $("startScreen");
+  const msgP = startEl.querySelector("p");
+  const randomBtn = $("randomBtn");
+  if (pieces.length === 0) {
+    msgP.innerHTML = 'Welcome to <strong>Recital Practice Chunks</strong>!<br>' +
+      'Drop your sheet-music images in the same folder, then click ' +
+      '<strong>+ New piece</strong> in the toolbar to add your first piece.';
+    randomBtn.style.display = "none";
+  } else if (chunks.filter(c => currentFilter === "all" || c.piece === currentFilter).length === 0) {
+    msgP.innerHTML = 'No chunks for this filter yet.<br>' +
+      'Click <strong>+ New chunk</strong>, or open <strong>Edit piece</strong> and ' +
+      'use <strong>✨ Generate chunks with Claude</strong>.';
+    randomBtn.style.display = "none";
+  } else {
+    msgP.innerHTML = 'Click <strong>Random chunk</strong> to get a phrase. ' +
+      'Use <strong>Edit</strong> on a chunk to nudge its window.';
+    randomBtn.style.display = "inline-block";
+  }
+}
+function showEmpty() {
+  $("startScreen").style.display = "none";
+  $("chunkDisplay").style.display = "none";
+  $("emptyState").style.display = "block";
+}
+function showChunk(c) {
+  $("startScreen").style.display = "none";
+  $("emptyState").style.display = "none";
+  $("chunkDisplay").style.display = "block";
+  $("pieceName").textContent = getPieceName(c.piece);
+  $("measures").textContent = c.title;
+  $("description").textContent = c.description || "";
+  $("connector").textContent = c.connector || "";
+  renderWindows(c);
+  const pool = getPool();
+  const done = pool.filter(x => practicedIds.has(x.id)).length;
+  $("progress").textContent = done + " / " + pool.length + " practiced in this filter";
+}
+
+// If a rect starts past its page's signature-end x, auto-prepend a header
+// rect showing the line's clef + key-sig + time-sig (drawn from x=0 to
+// pageSettings[page].sigEndX, at the same y/h as the rect).
+function buildDisplayRects(rects) {
+  const out = [];
+  rects.forEach(r => {
+    const sigX = getSigEndX(r.page);
+    if (r.x > sigX) {
+      out.push({
+        page: r.page,
+        x: 0, y: r.y,
+        w: sigX, h: r.h,
+        isHeader: true
+      });
+    }
+    out.push(r);
+  });
+  return out;
+}
+
+function renderWindows(c) {
+  const wrap = $("windowsView");
+  wrap.innerHTML = "";
+  const display = buildDisplayRects(c.rects);
+  if (display.length === 0) return;
+
+  const gap = 10;          // matches CSS gap
+  const padding = 20;      // .windows internal padding (10 each side)
+  const totalSrcW = display.reduce((s, r) => s + r.w, 0);
+  const availW = wrap.clientWidth - padding - gap * (display.length - 1);
+  const fitScale = availW / totalSrcW;
+  // Don't enlarge beyond ~2x source resolution to keep things crisp;
+  // also don't shrink below 0.5 if it would happen on a tiny viewport.
+  const scale = Math.max(0.5, Math.min(2.0, fitScale));
+
+  display.forEach(r => {
+    const page = PAGES[r.page]; if (!page) return;
+    const div = document.createElement("div");
+    div.className = "window-view" + (r.isHeader ? " is-header" : "");
+    div.style.width = (r.w * scale) + "px";
+    div.style.height = (r.h * scale) + "px";
+    div.style.backgroundImage = "url('" + encodeURI(page.url) + "')";
+    div.style.backgroundSize = (page.w * scale) + "px " + (page.h * scale) + "px";
+    div.style.backgroundPosition = (-r.x * scale) + "px " + (-r.y * scale) + "px";
+    wrap.appendChild(div);
+  });
+}
+
+function nextChunk() {
+  const remaining = getRemaining();
+  if (remaining.length === 0) { showEmpty(); return; }
+  let pick;
+  if (remaining.length === 1) pick = remaining[0];
+  else {
+    do { pick = remaining[Math.floor(Math.random() * remaining.length)]; }
+    while (currentChunk && pick.id === currentChunk.id);
+  }
+  currentChunk = pick;
+  showChunk(pick);
+}
+function markDone() {
+  if (currentChunk) practicedIds.add(currentChunk.id);
+  nextChunk();
+}
+function resetCycle() { practicedIds.clear(); currentChunk = null; showStart(); }
+
+// =====================================================
+// Edit mode
+// =====================================================
+function openEditor(chunk, isNew) {
+  editing = { isNew, original: chunk, working: JSON.parse(JSON.stringify(chunk)), activeRectIdx: 0 };
+  $("editPane").style.display = "block";
+  $("editTitle").textContent = isNew ? "New chunk" : "Edit chunk";
+  $("ePiece").value = editing.working.piece;
+  $("eTitle").value = editing.working.title;
+  $("eDesc").value = editing.working.description || "";
+  $("eConn").value = editing.working.connector || "";
+  refreshPageSelector();
+  renderEditPages();
+  $("deleteEditBtn").style.display = isNew ? "none" : "inline-block";
+  $("editPane").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function closeEditor() { editing = null; $("editPane").style.display = "none"; }
+
+function refreshPageSelector() {
+  const sel = $("addRectPage");
+  sel.innerHTML = "";
+  const pages = getPagesForPiece($("ePiece").value);
+  if (pages.length === 0) {
+    Object.keys(PAGES).forEach(pid => pages.push(pid));
+  }
+  pages.forEach(pid => {
+    const opt = document.createElement("option");
+    opt.value = pid;
+    opt.textContent = PAGES[pid].label;
+    sel.appendChild(opt);
+  });
+}
+
+function renderEditPages() {
+  const host = $("editPages");
+  host.innerHTML = "";
+  if (!editing) return;
+  // Group rects by page, but always render pages in chunk's order so we can keep indices
+  const pagesUsed = [];
+  editing.working.rects.forEach((r, i) => {
+    if (!pagesUsed.includes(r.page)) pagesUsed.push(r.page);
+  });
+  pagesUsed.forEach(pid => renderEditPage(host, pid));
+}
+
+function renderEditPage(host, pageId) {
+  const page = PAGES[pageId];
+  if (!page) return;
+  const wrap = document.createElement("div");
+  wrap.className = "page-edit";
+  const label = document.createElement("div");
+  label.className = "page-edit-label";
+  label.innerHTML =
+    '<span>' + page.label + '</span>' +
+    '<span style="color:#888;">Sig ends at <span data-sig-readout="' + pageId + '">' +
+      getSigEndX(pageId) + '</span> px ' +
+    '<button class="small-btn" data-reset-sig="' + pageId + '" title="Reset to default">reset</button></span>';
+  wrap.appendChild(label);
+
+  const canvas = document.createElement("div");
+  canvas.className = "page-canvas";
+  canvas.style.backgroundImage = "url('" + encodeURI(page.url) + "')";
+  canvas.style.paddingBottom = ((page.h / page.w) * 100) + "%";
+  canvas.style.position = "relative";
+  wrap.appendChild(canvas);
+  host.appendChild(wrap);
+
+  // Reset-sig button
+  const resetBtn = label.querySelector('[data-reset-sig="' + pageId + '"]');
+  if (resetBtn) resetBtn.addEventListener("click", () => {
+    if (pageSettings[pageId]) delete pageSettings[pageId].sigEndX;
+    savePageSettings();
+    renderEditPages();
+  });
+
+  requestAnimationFrame(() => {
+    const cw = canvas.clientWidth;
+    const scale = cw / page.w;
+
+    // Draggable sig-end ruler
+    const sigLine = document.createElement("div");
+    sigLine.className = "sig-line";
+    const sigTag = document.createElement("div");
+    sigTag.className = "sig-tag";
+    sigTag.textContent = "sig end";
+    sigLine.appendChild(sigTag);
+    sigLine.style.left = (getSigEndX(pageId) * scale) + "px";
+    canvas.appendChild(sigLine);
+    attachSigDrag(sigLine, pageId, page, scale, canvas);
+
+    // Rect overlays
+    editing.working.rects.forEach((r, idx) => {
+      if (r.page !== pageId) return;
+      const overlay = document.createElement("div");
+      overlay.className = "rect-overlay" + (idx === editing.activeRectIdx ? " active" : "");
+      overlay.dataset.idx = idx;
+      const tag = document.createElement("div");
+      tag.className = "label-tag";
+      tag.textContent = "Rect " + (idx + 1);
+      overlay.appendChild(tag);
+      ["tl","tr","bl","br","tm","bm","lm","rm"].forEach(h => {
+        const handle = document.createElement("div");
+        handle.className = "handle " + h;
+        handle.dataset.handle = h;
+        overlay.appendChild(handle);
+      });
+      positionOverlay(overlay, r, scale);
+      canvas.appendChild(overlay);
+      attachDrag(overlay, idx, page, scale, canvas);
+
+      overlay.addEventListener("mousedown", (e) => {
+        editing.activeRectIdx = idx;
+        document.querySelectorAll(".rect-overlay").forEach(el => el.classList.remove("active"));
+        overlay.classList.add("active");
+      });
+    });
+  });
+}
+
+function attachSigDrag(line, pageId, page, scale, canvas) {
+  let startX = 0, origX = 0;
+  function onDown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    startX = (e.touches ? e.touches[0].clientX : e.clientX);
+    origX = getSigEndX(pageId);
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+    document.addEventListener("touchmove", onMoveT, { passive: false });
+    document.addEventListener("touchend", onUp);
+  }
+  function applyDelta(dx) {
+    const newX = clamp(origX + dx / scale, 10, page.w - 10);
+    setSigEndX(pageId, newX);
+    line.style.left = (getSigEndX(pageId) * scale) + "px";
+    const readout = document.querySelector('[data-sig-readout="' + pageId + '"]');
+    if (readout) readout.textContent = getSigEndX(pageId);
+  }
+  function onMove(e) { applyDelta(e.clientX - startX); }
+  function onMoveT(e) {
+    if (e.touches.length !== 1) return;
+    e.preventDefault();
+    applyDelta(e.touches[0].clientX - startX);
+  }
+  function onUp() {
+    document.removeEventListener("mousemove", onMove);
+    document.removeEventListener("mouseup", onUp);
+    document.removeEventListener("touchmove", onMoveT);
+    document.removeEventListener("touchend", onUp);
+  }
+  line.addEventListener("mousedown", onDown);
+  line.addEventListener("touchstart", onDown, { passive: false });
+}
+
+function positionOverlay(overlay, rect, scale) {
+  overlay.style.left = (rect.x * scale) + "px";
+  overlay.style.top = (rect.y * scale) + "px";
+  overlay.style.width = (rect.w * scale) + "px";
+  overlay.style.height = (rect.h * scale) + "px";
+}
+
+function attachDrag(overlay, idx, page, scale, canvas) {
+  let mode = null;        // "move" | handle name
+  let startX = 0, startY = 0;
+  let origRect = null;
+
+  function onDown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const handle = e.target.classList.contains("handle") ? e.target.dataset.handle : null;
+    mode = handle || "move";
+    startX = e.clientX;
+    startY = e.clientY;
+    origRect = { ...editing.working.rects[idx] };
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+    document.addEventListener("touchmove", onMoveT, { passive: false });
+    document.addEventListener("touchend", onUp);
+  }
+
+  function applyDelta(dx, dy) {
+    const ddx = dx / scale;
+    const ddy = dy / scale;
+    let r = { ...origRect };
+    const minSize = 8;
+    if (mode === "move") {
+      r.x = clamp(origRect.x + ddx, 0, page.w - r.w);
+      r.y = clamp(origRect.y + ddy, 0, page.h - r.h);
+    } else {
+      const m = mode;
+      if (m.includes("l")) {  // tl, bl, lm
+        const newX = clamp(origRect.x + ddx, 0, origRect.x + origRect.w - minSize);
+        r.w = origRect.w - (newX - origRect.x);
+        r.x = newX;
+      }
+      if (m.includes("r")) {  // tr, br, rm
+        r.w = clamp(origRect.w + ddx, minSize, page.w - origRect.x);
+      }
+      if (m.startsWith("t") || m === "tm" || m === "tl" || m === "tr") {
+        const newY = clamp(origRect.y + ddy, 0, origRect.y + origRect.h - minSize);
+        r.h = origRect.h - (newY - origRect.y);
+        r.y = newY;
+      }
+      if (m.startsWith("b") || m === "bm" || m === "bl" || m === "br") {
+        r.h = clamp(origRect.h + ddy, minSize, page.h - origRect.y);
+      }
+    }
+    r.x = Math.round(r.x); r.y = Math.round(r.y);
+    r.w = Math.round(r.w); r.h = Math.round(r.h);
+    editing.working.rects[idx] = r;
+    positionOverlay(overlay, r, scale);
+  }
+  function onMove(e) { applyDelta(e.clientX - startX, e.clientY - startY); }
+  function onMoveT(e) {
+    if (e.touches.length !== 1) return;
+    e.preventDefault();
+    applyDelta(e.touches[0].clientX - startX, e.touches[0].clientY - startY);
+  }
+  function onUp() {
+    document.removeEventListener("mousemove", onMove);
+    document.removeEventListener("mouseup", onUp);
+    document.removeEventListener("touchmove", onMoveT);
+    document.removeEventListener("touchend", onUp);
+    mode = null;
+  }
+  overlay.addEventListener("mousedown", onDown);
+  overlay.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
+    const t = e.touches[0];
+    onDown({ clientX: t.clientX, clientY: t.clientY,
+             target: e.target, preventDefault: () => e.preventDefault(),
+             stopPropagation: () => e.stopPropagation() });
+  }, { passive: true });
+}
+
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+// =====================================================
+// Toolbar wiring
+// =====================================================
+$("randomBtn").addEventListener("click", nextChunk);
+$("doneBtn").addEventListener("click", markDone);
+$("skipBtn").addEventListener("click", nextChunk);
+$("editBtn").addEventListener("click", () => {
+  if (!currentChunk) return;
+  openEditor(currentChunk, false);
+});
+$("resetBtn").addEventListener("click", resetCycle);
+$("emptyResetBtn").addEventListener("click", resetCycle);
+
+$("addBtn").addEventListener("click", () => {
+  const piece = currentFilter === "all" ? "time" : currentFilter;
+  const pages = getPagesForPiece(piece);
+  if (!pages.length) {
+    alert("This piece has no pages yet. Click '+ New piece' to add page images first.");
+    return;
+  }
+  const firstPage = pages[0];
+  const pg = PAGES[firstPage];
+  const newId = "user_" + Date.now();
+  const newChunk = {
+    id: newId, piece,
+    title: "New chunk", description: "", connector: "",
+    rects: [{ page: firstPage, x: Math.round(pg.w*0.1), y: Math.round(pg.h*0.1), w: Math.round(pg.w*0.5), h: Math.round(pg.h*0.15) }]
+  };
+  openEditor(newChunk, true);
+});
+
+$("ePiece").addEventListener("change", () => {
+  if (!editing) return;
+  editing.working.piece = $("ePiece").value;
+  // If existing rects belong to other piece's pages, reset to first page of new piece
+  const pages = getPagesForPiece(editing.working.piece);
+  if (pages.length) {
+    editing.working.rects = editing.working.rects.map(r => pages.includes(r.page) ? r : { ...r, page: pages[0] });
+  }
+  refreshPageSelector();
+  renderEditPages();
+});
+
+$("addRectBtn").addEventListener("click", () => {
+  if (!editing) return;
+  const pid = $("addRectPage").value;
+  const pg = PAGES[pid];
+  editing.working.rects.push({
+    page: pid,
+    x: Math.round(pg.w*0.1), y: Math.round(pg.h*0.4),
+    w: Math.round(pg.w*0.4), h: Math.round(pg.h*0.12)
+  });
+  editing.activeRectIdx = editing.working.rects.length - 1;
+  renderEditPages();
+});
+
+$("saveEditBtn").addEventListener("click", () => {
+  if (!editing) return;
+  const w = editing.working;
+  w.title = $("eTitle").value || "(untitled)";
+  w.description = $("eDesc").value;
+  w.connector = $("eConn").value;
+  w.piece = $("ePiece").value;
+  if (editing.isNew) {
+    chunks.push(w);
+    currentChunk = w;
+  } else {
+    const idx = chunks.findIndex(c => c.id === w.id);
+    if (idx >= 0) chunks[idx] = w;
+    if (currentChunk && currentChunk.id === w.id) currentChunk = w;
+  }
+  saveChunks();
+  closeEditor();
+  if (currentChunk) showChunk(currentChunk); else showStart();
+});
+
+$("cancelEditBtn").addEventListener("click", closeEditor);
+
+$("deleteEditBtn").addEventListener("click", () => {
+  if (!editing || editing.isNew) return;
+  if (!confirm("Delete this chunk?")) return;
+  chunks = chunks.filter(c => c.id !== editing.working.id);
+  if (currentChunk && currentChunk.id === editing.working.id) currentChunk = null;
+  practicedIds.delete(editing.working.id);
+  saveChunks();
+  closeEditor();
+  showStart();
+});
+
+$("exportBtn").addEventListener("click", () => {
+  const payload = { version: 3, pieces, pages: PAGES, chunks, pageSettings };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "recital-chunks.json";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+$("importBtn").addEventListener("click", () => $("importFile").click());
+$("importFile").addEventListener("change", (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      let importedChunks, importedSettings, importedPieces, importedPages;
+      if (Array.isArray(data)) {
+        importedChunks = data;
+      } else if (data && Array.isArray(data.chunks)) {
+        importedChunks = data.chunks;
+        importedSettings = data.pageSettings || null;
+        importedPieces = Array.isArray(data.pieces) ? data.pieces : null;
+        importedPages = (data.pages && typeof data.pages === "object") ? data.pages : null;
+      } else {
+        throw new Error("Unrecognised file format");
+      }
+      chunks = importedChunks; saveChunks();
+      if (importedSettings) { pageSettings = importedSettings; savePageSettings(); }
+      if (importedPages)    { PAGES = importedPages;          savePages(); }
+      if (importedPieces)   { pieces = importedPieces;        savePieces(); }
+      practicedIds.clear(); currentChunk = null;
+      renderFilters();
+      refreshPieceSelectInChunkEditor();
+      showStart();
+      alert("Imported " + chunks.length + " chunks" +
+            (importedPieces ? " + " + importedPieces.length + " pieces" : "") + ".");
+    } catch (err) {
+      alert("Import failed: " + err.message);
+    }
+  };
+  r.readAsText(f);
+  e.target.value = "";
+});
+
+function renderFilters() {
+  const host = $("filters");
+  host.innerHTML = "";
+  function makeBtn(label, value) {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (currentFilter === value ? " active" : "");
+    btn.dataset.piece = value;
+    btn.textContent = label;
+    btn.addEventListener("click", () => {
+      currentFilter = value;
+      practicedIds.clear();
+      currentChunk = null;
+      renderFilters();
+      showStart();
+    });
+    host.appendChild(btn);
+  }
+  makeBtn("All pieces", "all");
+  pieces.forEach(p => makeBtn(p.name, p.id));
+  // Show "Edit piece" only when a specific piece is filtered
+  $("editPieceBtn").style.display = (currentFilter !== "all" && getPiece(currentFilter)) ? "inline-block" : "none";
+}
+
+document.getElementById("editPieceBtn").addEventListener("click", () => {
+  const p = getPiece(currentFilter);
+  if (p) openPieceEditor(p, false);
+});
+
+function refreshPieceSelectInChunkEditor() {
+  const sel = $("ePiece");
+  if (!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = "";
+  pieces.forEach(p => {
+    const o = document.createElement("option");
+    o.value = p.id; o.textContent = p.name;
+    sel.appendChild(o);
+  });
+  if (pieces.find(p => p.id === cur)) sel.value = cur;
+}
+
+// =====================================================
+// Piece editor
+// =====================================================
+let pieceEditing = null;  // { isNew, working: {id, name, pageIds: [...]} }
+
+function openPieceEditor(piece, isNew) {
+  pieceEditing = { isNew, original: piece, working: JSON.parse(JSON.stringify(piece)) };
+  $("pieceEditPane").style.display = "block";
+  $("pieceEditTitle").textContent = isNew ? "New piece" : "Edit piece — " + piece.name;
+  $("pName").value = pieceEditing.working.name;
+  $("pDeleteBtn").style.display = isNew ? "none" : "inline-block";
+  renderPieceEditor();
+  $("pieceEditPane").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function closePieceEditor() {
+  pieceEditing = null;
+  $("pieceEditPane").style.display = "none";
+}
+
+function renderPieceEditor() {
+  const list = $("pPagesList");
+  list.innerHTML = "";
+  if (!pieceEditing) return;
+  pieceEditing.working.pageIds.forEach((pid, idx) => {
+    const page = PAGES[pid];
+    if (!page) return;
+    const row = document.createElement("div");
+    row.style.cssText = "display:flex;gap:10px;align-items:center;padding:8px;background:rgba(0,0,0,0.18);border-radius:6px;";
+    row.innerHTML =
+      '<div style="flex:1;min-width:0;">' +
+        '<div style="color:#fff;font-size:0.92rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + page.url + '</div>' +
+        '<div style="color:#8a8aa6;font-size:0.78rem;">' + page.w + ' &times; ' + page.h + ' px &middot; sig ends at ' + getSigEndX(pid) + ' px</div>' +
+      '</div>' +
+      '<input type="text" data-page-label="' + pid + '" value="' + (page.label || '').replace(/"/g, '&quot;') + '" placeholder="Label" style="flex:1;padding:6px 8px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:#fff;font-size:0.85rem;">' +
+      '<button class="danger" data-page-remove="' + idx + '">remove</button>';
+    list.appendChild(row);
+    row.querySelector('[data-page-remove]').addEventListener("click", () => {
+      pieceEditing.working.pageIds.splice(idx, 1);
+      renderPieceEditor();
+    });
+    row.querySelector('[data-page-label]').addEventListener("input", (e) => {
+      page.label = e.target.value;
+    });
+  });
+}
+
+$("addPieceBtn").addEventListener("click", () => {
+  openPieceEditor({ id: "", name: "", pageIds: [] }, true);
+});
+
+$("pAddPageBtn").addEventListener("click", () => {
+  $("pPageFile").click();
+});
+
+$("pPageFile").addEventListener("change", (e) => {
+  const f = e.target.files[0];
+  e.target.value = "";
+  if (!f || !pieceEditing) return;
+  const objUrl = URL.createObjectURL(f);
+  const img = new Image();
+  img.onload = () => {
+    const w = img.naturalWidth, h = img.naturalHeight;
+    URL.revokeObjectURL(objUrl);
+    const baseId = slugify((pieceEditing.working.name || "piece") + "-" + (pieceEditing.working.pageIds.length + 1));
+    const newPid = makeUniqueId(baseId, PAGES);
+    PAGES[newPid] = {
+      url: f.name,                // relative path in the same folder
+      w, h,
+      label: f.name.replace(/\.[^.]+$/, ""),
+      defaultSigEndX: 85
+    };
+    savePages();
+    pieceEditing.working.pageIds.push(newPid);
+    renderPieceEditor();
+  };
+  img.onerror = () => {
+    alert("Could not read the image. Make sure it's a valid image file.");
+    URL.revokeObjectURL(objUrl);
+  };
+  img.src = objUrl;
+});
+
+$("pSaveBtn").addEventListener("click", () => {
+  if (!pieceEditing) return;
+  const w = pieceEditing.working;
+  w.name = ($("pName").value || "").trim();
+  if (!w.name) { alert("Please give the piece a name."); return; }
+  if (w.pageIds.length === 0) {
+    if (!confirm("This piece has no pages — save anyway?")) return;
+  }
+  if (pieceEditing.isNew) {
+    const existingIds = pieces.reduce((acc, p) => (acc[p.id] = true, acc), {});
+    w.id = makeUniqueId(slugify(w.name), existingIds);
+    pieces.push(w);
+  } else {
+    const idx = pieces.findIndex(p => p.id === w.id);
+    if (idx >= 0) pieces[idx] = w;
+  }
+  savePieces();
+  savePages();
+  closePieceEditor();
+  renderFilters();
+  refreshPieceSelectInChunkEditor();
+  showStart();
+});
+$("pCancelBtn").addEventListener("click", closePieceEditor);
+$("pDeleteBtn").addEventListener("click", () => {
+  if (!pieceEditing || pieceEditing.isNew) return;
+  const w = pieceEditing.working;
+  if (!confirm('Delete piece "' + w.name + '" and all its chunks?')) return;
+  chunks = chunks.filter(c => c.piece !== w.id);
+  pieces = pieces.filter(p => p.id !== w.id);
+  saveChunks(); savePieces();
+  if (currentFilter === w.id) currentFilter = "all";
+  closePieceEditor();
+  renderFilters();
+  showStart();
+});
+
+// =====================================================
+// Settings + Claude integration
+// =====================================================
+const SETTINGS_KEY = "recitalSettings_v1";
+function loadSettings() {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    if (raw) return JSON.parse(raw) || {};
+  } catch (e) {}
+  return {};
+}
+function saveSettings(s) {
+  try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); } catch (e) {}
+}
+let settings = loadSettings();
+
+$("settingsBtn").addEventListener("click", () => {
+  $("apiKeyInput").value = settings.apiKey || "";
+  $("modelInput").value = settings.model || "claude-sonnet-4-6";
+  $("settingsPane").style.display = "block";
+  $("settingsPane").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+$("settingsSaveBtn").addEventListener("click", () => {
+  settings.apiKey = $("apiKeyInput").value.trim();
+  settings.model = $("modelInput").value;
+  saveSettings(settings);
+  $("settingsPane").style.display = "none";
+});
+$("settingsCancelBtn").addEventListener("click", () => {
+  $("settingsPane").style.display = "none";
+});
+$("settingsClearKeyBtn").addEventListener("click", () => {
+  if (!confirm("Clear the stored API key?")) return;
+  settings.apiKey = "";
+  saveSettings(settings);
+  $("apiKeyInput").value = "";
+});
+
+// Fetch a same-folder image and base64-encode it
+async function imageToBase64(url) {
+  const resp = await fetch(encodeURI(url));
+  if (!resp.ok) throw new Error("Could not fetch image '" + url + "' (" + resp.status + ")");
+  const blob = await resp.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const m = String(reader.result).match(/^data:([^;]+);base64,(.+)$/);
+      if (!m) reject(new Error("Bad data URL")); else resolve({ mediaType: m[1], data: m[2] });
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+}
+
+function buildPrompt(piece) {
+  let s = 'You are analyzing piano sheet music pages for a practice tool. ' +
+    'The user wants to break the piece "' + piece.name + '" into musical phrases — ' +
+    'natural chunks of typically 2–4 measures bounded by slurs, dynamic changes, ' +
+    'section markers, or breath points. They will practice each phrase in random order.\n\n' +
+    "I'm sending you " + piece.pageIds.length + ' page image(s). Page metadata:\n';
+  piece.pageIds.forEach((pid, i) => {
+    const pg = PAGES[pid];
+    s += '  Page ' + (i+1) + ': id="' + pid + '", label="' + (pg.label || pid) + '", dimensions ' + pg.w + ' × ' + pg.h + ' px\n';
+  });
+  s += '\nThe images are attached in the same order as the page list above.\n\n' +
+    'For each natural phrase you identify, output a JSON object with these fields:\n' +
+    '  "title":       brief label like "mm. 1–4" or "Section A — opening"\n' +
+    '  "description": one sentence about the phrase (dynamic, character, technical note)\n' +
+    '  "connector":   one sentence telling the practicer how to bridge into the next phrase, e.g. "Play through to the first note of m. 5 (the p contrast)."\n' +
+    '  "rects":       array of bounding boxes — each {"page": "<page-id>", "x": …, "y": …, "w": …, "h": …} in PAGE PIXEL COORDINATES (origin top-left)\n\n' +
+    'Bounding boxes must fully contain BOTH the treble and bass staves, plus any pedal markings or fingering text below the bass staff. ' +
+    'Generally start the rectangle a little AFTER the line\'s clef/key signature so the chunk excludes the clef intro (the tool prepends that automatically). ' +
+    'If a phrase spans a line break, use TWO rects in the array (first ends at end of line, second starts at beginning of next line). ' +
+    'Estimate pixel coordinates carefully by looking at where staff lines actually start and end on the page. ' +
+    'Phrases should be ~2–4 measures; aim for 8–14 chunks for a one-page piece.\n\n' +
+    'Order the chunks in playing order. The connector for the LAST chunk can say "Final phrase — chain back to the opening if cycling."\n\n' +
+    'Output ONLY a JSON array of these objects, no markdown fencing, no commentary.';
+  return s;
+}
+
+async function generateChunksForPiece(piece) {
+  if (!settings.apiKey) throw new Error("No API key. Click Settings and add your Anthropic API key.");
+  if (!piece.pageIds.length) throw new Error("Add at least one page to the piece first.");
+
+  const content = [{ type: "text", text: buildPrompt(piece) }];
+  for (const pid of piece.pageIds) {
+    const pg = PAGES[pid]; if (!pg) continue;
+    const { mediaType, data } = await imageToBase64(pg.url);
+    content.push({
+      type: "image",
+      source: { type: "base64", media_type: mediaType, data }
+    });
+  }
+
+  const body = {
+    model: settings.model || "claude-sonnet-4-6",
+    max_tokens: 8000,
+    messages: [{ role: "user", content }]
+  };
+
+  const resp = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "x-api-key": settings.apiKey,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!resp.ok) {
+    let msg = "API error " + resp.status;
+    try {
+      const errJson = await resp.json();
+      if (errJson.error && errJson.error.message) msg += ": " + errJson.error.message;
+    } catch (e) {
+      msg += ": " + (await resp.text()).slice(0, 300);
+    }
+    throw new Error(msg);
+  }
+
+  const data = await resp.json();
+  const text = (data.content || []).filter(c => c.type === "text").map(c => c.text).join("").trim();
+
+  // Strip code fences if Claude added any
+  const stripped = text
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```\s*$/, "");
+  let parsed;
+  try { parsed = JSON.parse(stripped); }
+  catch (e) {
+    // Try to find JSON array within the text
+    const m = stripped.match(/\[[\s\S]*\]/);
+    if (m) parsed = JSON.parse(m[0]);
+    else throw new Error("Could not parse JSON from model response. First 200 chars: " + stripped.slice(0, 200));
+  }
+  if (!Array.isArray(parsed)) throw new Error("Expected JSON array from model.");
+
+  const validPages = new Set(piece.pageIds);
+  const made = parsed.map((c, i) => {
+    const rects = (c.rects || [])
+      .filter(r => r && validPages.has(r.page) && [r.x, r.y, r.w, r.h].every(v => typeof v === "number"))
+      .map(r => ({
+        page: r.page,
+        x: Math.max(0, Math.round(r.x)),
+        y: Math.max(0, Math.round(r.y)),
+        w: Math.max(8, Math.round(r.w)),
+        h: Math.max(8, Math.round(r.h))
+      }));
+    return {
+      id: piece.id + "_gen_" + Date.now() + "_" + i,
+      piece: piece.id,
+      title: String(c.title || "Chunk " + (i + 1)).slice(0, 120),
+      description: String(c.description || "").slice(0, 600),
+      connector: String(c.connector || "").slice(0, 600),
+      rects
+    };
+  }).filter(c => c.rects.length > 0);
+
+  return made;
+}
+
+$("pGenerateBtn").addEventListener("click", async () => {
+  if (!pieceEditing) return;
+  if (!settings.apiKey) {
+    if (confirm("You need to add your Anthropic API key in Settings first. Open Settings now?")) {
+      $("settingsBtn").click();
+    }
+    return;
+  }
+  const w = pieceEditing.working;
+  if (!w.name || !w.pageIds.length) {
+    alert("Add a name and at least one page before generating.");
+    return;
+  }
+  // Persist current piece edits first so generate works against saved state
+  let savedNow = false;
+  if (pieceEditing.isNew) {
+    if (!confirm('Save the new piece "' + w.name + '" first, then generate chunks?')) return;
+    const existingIds = pieces.reduce((acc, p) => (acc[p.id] = true, acc), {});
+    w.id = makeUniqueId(slugify(w.name), existingIds);
+    pieces.push(w);
+    pieceEditing.isNew = false;
+    savePieces();
+    savedNow = true;
+  }
+  const status = $("pGenStatus");
+  status.textContent = "Sending pages to Claude…";
+  $("pGenerateBtn").disabled = true;
+  try {
+    const newChunks = await generateChunksForPiece(w);
+    if (!newChunks.length) {
+      status.textContent = "Claude returned no usable chunks. Check the response or try a different model.";
+      return;
+    }
+    const ok = confirm("Claude returned " + newChunks.length + " chunks. Add them to this piece? (existing chunks for the piece are kept)");
+    if (!ok) {
+      status.textContent = "Cancelled — no chunks added.";
+      return;
+    }
+    chunks = chunks.concat(newChunks);
+    saveChunks();
+    status.textContent = "✅ Added " + newChunks.length + " chunks.";
+    renderFilters();
+    refreshPieceSelectInChunkEditor();
+  } catch (err) {
+    console.error(err);
+    status.textContent = "❌ " + err.message;
+  } finally {
+    $("pGenerateBtn").disabled = false;
+  }
+});
+
+// Refresh select when piece dropdown opened
+refreshPieceSelectInChunkEditor();
+
+// Re-render windows on resize
+window.addEventListener("resize", () => {
+  if (currentChunk && $("chunkDisplay").style.display !== "none") {
+    renderWindows(currentChunk);
+  }
+});
+
+// Initial render
+renderFilters();
+showStart();
+</script>
+
+</body>
+</html>
